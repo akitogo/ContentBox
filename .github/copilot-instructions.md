@@ -28,14 +28,31 @@ These instructions help AI coding agents work productively in this repository.
   - `http://127.0.0.1:8589/tests/runner-api.cfm`
 - Migrations:
   - `box run-script contentbox:migrate:create name=YourMigration`
+  - `box run-script contentbox:migrate`
   - `box run-script contentbox:migrate:up`
   - `box run-script contentbox:migrate:down`
+  - `box run-script contentbox:migrate:fresh`
 - Frontend builds:
   - `npm run dev`
   - `npm run watch`
   - `npm run prod`
   - `npm run build-dev`
   - `npm run build-prod`
+
+## Runtime And Persistence
+
+- ContentBox uses CFML ORM backed by Hibernate (`this.ormEnabled = true`) configured in `Application.cfc`.
+- Keep ORM settings and entity locations compatible with existing mappings in `Application.cfc`.
+- Do not bypass migration scripts with ad hoc schema changes; use CommandBox migrations for DB evolution.
+- When schema behavior changes, update migrations and tests together.
+
+## Engine Support
+
+- Keep changes compatible with the 3 supported engines:
+  - Lucee
+  - Adobe ColdFusion
+  - BoxLang
+- Use the existing server config files in repo root (`server-lucee@*.json`, `server-adobe@*.json`, `server-boxlang@*.json`) as the compatibility reference.
 
 ## Architecture Boundaries
 
@@ -64,6 +81,11 @@ When implementing features/fixes:
   - `tests/resources/BaseTest.cfc`
   - `tests/resources/BaseApiTest.cfc`
 - Keep tests scoped to impacted area (`tests/specs/contentbox-web/` or `tests/specs/contentbox-api/`).
+- Follow the current test layout:
+  - API specs in `tests/specs/contentbox-api/`
+  - Web/unit/integration specs in `tests/specs/contentbox-web/`
+  - Shared fixtures/seeds/sql in `tests/resources/`
+- If DB-backed tests are involved, verify test DB prerequisites from `tests/readme.md` and engine-specific DB scripts in `tests/resources/sql/`.
 
 ## Known Pitfalls
 
