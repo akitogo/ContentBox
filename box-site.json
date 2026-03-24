@@ -27,7 +27,7 @@
         "Curt Gratz <gratz@computerknowhow.com>"
     ],
     "dependencies":{
-        "coldbox":"^7.0.0+7",
+        "coldbox":"^8",
 		"contentbox":"~@version.number@+@build.number@",
 		"commandbox-boxlang":"*",
 		"commandbox-migrations":"*"
