@@ -91,7 +91,7 @@ component {
 
 		// Force reinit to clear out caches, reload ORM and restart virtual app.
 		if ( structKeyExists( url, "fwreinit" ) ) {
-			if ( structKeyExists( server, "lucee" ) ) {
+			if ( getFunctionList().keyExists( "pagePoolClear" ) ) {
 				pagePoolClear();
 			}
 			ormReload();

@@ -169,7 +169,7 @@ component {
 			if ( this.cbLoadDynamicEnvironment ) {
 				loadEnv( force: true );
 			}
-			if ( structKeyExists( server, "lucee" ) ) {
+			if ( getFunctionList().keyExists( "pagePoolClear" ) ) {
 				pagePoolClear();
 			}
 			ormReload();
