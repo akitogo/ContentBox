@@ -1114,7 +1114,10 @@ component
 		}
 	}
 
-	function hasActiveContentVersion() {
+	/**
+	 * Verify if this content object has any content versions or not
+	 */
+	boolean function hasActiveContentVersion() {
 		return ( isLoaded() && hasContentVersion() && getActiveContent().getIsActive() );
 	}
 
