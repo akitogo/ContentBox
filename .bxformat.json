@@ -17,7 +17,7 @@
     "padding" : true,
     "empty_padding" : false,
     "quote_keys" : false,
-    "separator" : " : ",
+    "separator" : ": ",
     "multiline" : {
       "element_count" : 5,
       "comma_dangle" : false,
