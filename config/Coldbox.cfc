@@ -18,7 +18,7 @@ component {
 		 * you create the appropriate functions and define the environment in your .env or
 		 * in the `environments` struct.
 		 */
-		coldbox = {
+		variables.coldbox = {
 			// Application Setup
 			appName                  : getSystemSetting( "APPNAME", "ContentBox Modular CMS" ),
 			eventName                : "event",
@@ -63,7 +63,7 @@ component {
 		 * Custom Settings
 		 * --------------------------------------------------------------------------
 		 */
-		settings = {};
+		variables.settings = {};
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -76,14 +76,14 @@ component {
 		 *
 		 * Uncomment to use, but make sure your .env ENVIRONMENT key is also removed.
 		 */
-		environments = { development : "localhost" };
+		variables.environments = { development : "localhost" };
 
 		/**
 		 * --------------------------------------------------------------------------
 		 * Logging Directives
 		 * --------------------------------------------------------------------------
 		 */
-		logBox = {
+		variables.logBox = {
 			// Define Appenders
 			appenders : { coldboxTracer : { class : "coldbox.system.logging.appenders.ConsoleAppender" } },
 			// Root Logger
@@ -97,14 +97,14 @@ component {
 		 * Layout Settings
 		 * --------------------------------------------------------------------------
 		 */
-		layoutSettings = { defaultLayout : "", defaultView : "" };
+		variables.layoutSettings = { defaultLayout : "", defaultView : "" };
 
 		/**
 		 * --------------------------------------------------------------------------
 		 * Custom Interception Points
 		 * --------------------------------------------------------------------------
 		 */
-		interceptorSettings = { customInterceptionPoints : [] };
+		variables.interceptorSettings = { customInterceptionPoints : [] };
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -112,7 +112,7 @@ component {
 		 * --------------------------------------------------------------------------
 		 * Remember that the order of declaration is the order they will be registered and fired
 		 */
-		interceptors = [];
+		variables.interceptors = [];
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -120,7 +120,7 @@ component {
 		 * --------------------------------------------------------------------------
 		 * The available scopes are : session, client, cluster, cache, or a full instantiation CFC path
 		 */
-		flash = {
+		variables.flash = {
 			scope        : "cache",
 			properties   : { cacheName : "template" },
 			inflateToRC  : true, // automatically inflate flash data into the RC scope
@@ -142,7 +142,7 @@ component {
 		 *
 		 * }
 		 */
-		moduleSettings = {};
+		variables.moduleSettings = {};
 	}
 
 	/**
@@ -157,19 +157,19 @@ component {
 	 * ORTUS DEVELOPMENT ENVIRONMENT, REMOVE FOR YOUR APP IF NEEDED
 	 */
 	function development(){
-		coldbox.handlersIndexAutoReload = true;
-		coldbox.handlerCaching          = false;
-		coldbox.debugMode               = true;
-		coldbox.reinitpassword          = "";
-		coldbox.customErrorTemplate     = "/coldbox/system/exceptions/Whoops.cfm";
+		variables.coldbox.handlersIndexAutoReload = true;
+		variables.coldbox.handlerCaching          = false;
+		variables.coldbox.debugMode               = true;
+		variables.coldbox.reinitpassword          = "";
+		variables.coldbox.customErrorTemplate     = "/coldbox/system/exceptions/Whoops.cfm";
 
 		// No Singletons for easy testing
-		wirebox = {
+		variables.wirebox = {
 			 // singletonReload : true
 		};
 
 		// debugging file
-		logbox.appenders.files = {
+		variables.logbox.appenders.files = {
 			class      : "coldbox.system.logging.appenders.RollingFileAppender",
 			properties : {
 				filename : "contentbox",
