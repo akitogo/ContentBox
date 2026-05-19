@@ -10,7 +10,7 @@
   "bracketPadding" : true,
   "parensPadding" : true,
   "binaryOperatorsPadding" : true,
-  "semicolons" : false,
+  "semicolons" : true,
   "cfFormatCompatibility" : true,
   "sourceType" : null,
   "struct" : {
@@ -25,7 +25,7 @@
         "enabled" : false,
         "padding" : true
       },
-      "min_length" : 50
+      "min_length" : 60
     }
   },
   "property" : {
@@ -36,7 +36,7 @@
         "enabled" : false,
         "padding" : true
       },
-      "min_length" : 50
+      "min_length" : 80
     },
     "key_value" : {
       "padding" : false
@@ -52,7 +52,7 @@
         "enabled" : false,
         "padding" : true
       },
-      "min_length" : 50
+      "min_length" : 60
     }
   },
   "for_loop_semicolons" : {
@@ -76,7 +76,7 @@
     "empty_padding" : false,
     "comma_dangle" : false,
     "multiline_count" : 3,
-    "multiline_length" : 50
+    "multiline_length" : 60
   },
   "braces" : {
     "style" : "same-line",
@@ -116,7 +116,7 @@
     "member_spacing" : 1,
     "property_order" : "preserve",
     "method_order" : "preserve",
-    "method_grouping" : false
+    "method_grouping" : true
   },
   "sql" : {
     "uppercase_keywords" : true,
