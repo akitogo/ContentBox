@@ -207,7 +207,6 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var entry = entryService.new( properties = props );
 				var oStat = statsService.new( { hits : props.hits } );
 				oStat.setRelatedContent( entry );
-				entry.setStats( oStat );
 				entry.addNewContentVersion(
 						content   = props.content,
 						changelog = "Imported content",
@@ -238,6 +237,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				}
 				entry.setCategories( aCategories );
 				entitySave( entry );
+				statsService.save( oStat );
 
 				// Categories won't save in ContentBox Express without this flush :/
 				ormFlush();

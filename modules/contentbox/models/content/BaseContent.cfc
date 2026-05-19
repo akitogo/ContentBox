@@ -59,6 +59,10 @@ component
 		name="mediaService"
 		inject="provider:MediaService@contentbox"
 		persistent="false";
+	property
+		name="statsService"
+		inject="provider:statsService@contentbox"
+		persistent="false";
 	/**
 	 * --------------------------------------------------------------------------
 	 * NON PERSISTED PROPERTIES
@@ -239,7 +243,7 @@ component
 		cfc="contentbox.models.system.Site"
 		fieldtype="many-to-one"
 		fkcolumn="FK_siteID"
-		fetch="join";
+		lazy="true";
 	// O2M -> Comments
 	property
 		name="comments"
@@ -351,14 +355,6 @@ component
 		fkcolumn="FK_relatedContentID"
 		linktable="cb_relatedContent"
 		inversejoincolumn="FK_contentID";
-	// O2O -> Content Stats
-	property
-		name="stats"
-		notnull="true"
-		cfc="contentbox.models.content.Stats"
-		fieldtype="one-to-one"
-		mappedBy="relatedContent"
-		cascade="all-delete-orphan";
 	property
 		name="contentTemplate"
 		fieldtype="many-to-one"
@@ -430,12 +426,11 @@ component
 			"commentSubscriptions",
 			"contentVersions",
 			"contentTemplate",
-			"site",
-			"stats"
+			"site"
 		],
 		neverInclude : [ "passwordProtection"],
 		mappers      : {},
-		defaults     : { "stats" : {}, "contentTemplate" : {} },
+		defaults     : { "contentTemplate" : {} },
 		profiles     : {
 			response : {
 				defaultIncludes : [
@@ -498,8 +493,7 @@ component
 					"contentTemplate",
 					"customFields",
 					"linkedContentSnapshot:linkedContent",
-					"relatedContentSnapshot:relatedContent",
-					"stats"
+					"relatedContentSnapshot:relatedContent"
 				],
 				defaultExcludes : [
 					"commentSubscriptions.relatedContentSnapshot:relatedContent",
@@ -634,13 +628,13 @@ component
 	}
 
 	/**
-	 * Get the number of hits from the stats relationship
+	 * Get the number of hits from the stats service
 	 */
 	numeric function getNumberOfHits() {
-		if ( !isLoaded() || isNull( variables.stats ) ) {
+		if ( !isLoaded() ) {
 			return 0;
 		}
-		return variables.stats.getHits();
+		return variables.statsService.getTotalHitsByContent( getContentID() );
 	}
 
 	/**

@@ -1078,8 +1078,13 @@ component extends="cborm.models.VirtualEntityService" singleton {
 
 		// STATS
 		if ( structCount( thisContent.stats ) && thisContent.stats.hits > 0 ) {
-			if ( oContent.hasStats() ) {
-				oContent.getStats().setHits( thisContent.stats.hits );
+			var oStat = variables.statsService
+				.newCriteria()
+				.isEq( "relatedContent.contentID", oContent.getContentID() )
+				.get();
+			if ( !isNull( oStat ) ) {
+				oStat.setHits( thisContent.stats.hits );
+				variables.statsService.save( oStat );
 				logThis(
 					"+ Content stats found and updated for : (#thisContent.contentType#:#thisContent.slug#)"
 				);

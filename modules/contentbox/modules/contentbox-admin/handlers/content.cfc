@@ -239,20 +239,20 @@ component extends="baseHandler" {
 			)
 			.filter(
 				function( thisContent ) {
-					return ( !isNull( arguments.thisContent ) && arguments.thisContent.hasStats() );
+					return ( !isNull( arguments.thisContent ) && variables.statsService.getTotalHitsByContent( arguments.thisContent.getContentID() ) > 0 );
 				}
 			)
-			// Build out each content object
-
-			// Filter only loaded and content objects that have stats already
-
+			// Filter only loaded content objects that have stats
 			// Reset Hits
 			.each(
 				function( thisContent ) {
-					variables.contentService.save( arguments
-								.thisContent
-								.getStats()
-								.setHits( 0 ) );
+					var oStat = variables.statsService
+						.newCriteria()
+						.isEq( "relatedContent.contentID", arguments.thisContent.getContentID() )
+						.get();
+					if ( !isNull( oStat ) ) {
+						variables.statsService.save( oStat.setHits( 0 ) );
+					}
 					event.getResponse().addMessage( "Hits reset for (#arguments.thisContent.getTitle()#)" );
 				}
 			);
