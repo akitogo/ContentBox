@@ -5,7 +5,7 @@ component {
 	// DI
 	property name="migrationService" inject="MigrationService@cfmigrations";
 	// Include Utils
-	include template="#template = "#template = "#template = "./util/MigrationUtils.cfm"#"#"#";
+	include template="./util/MigrationUtils.cfm";
 
 	function up( schema, query ) {
 		// In order of dependency

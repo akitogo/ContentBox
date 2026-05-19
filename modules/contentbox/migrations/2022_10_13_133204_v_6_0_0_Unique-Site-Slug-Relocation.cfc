@@ -4,7 +4,7 @@
  */
 component {
 	// Include Utils
-	include template="#template = "#template = "#template = "./util/MigrationUtils.cfm"#"#"#";
+	include template="./util/MigrationUtils.cfm";
 
 	function up( schema, qb ) {
 		if ( schema.hasTable( "cb_relocations" ) ) {
