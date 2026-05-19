@@ -70,3 +70,7 @@ testbox/*
 /tests/**/logs/**
 /tests/test-results/*
 tests/resources/patches/tmp/
+
+# AI Skills
+.agents/skills/**
+.agents/guidelines/**
