@@ -2178,7 +2178,7 @@ component accessors="true" singleton threadSafe {
 				parent     = "",
 				showInMenu = true,
 				siteID     = site().getsiteID(),
-				properties = "contentID,slug,title,numberOfChildren",
+				properties = "contentID,slug,title",
 				sortOrder  = "order ASC, publishedDate ASC"
 			);
 		// build it out
@@ -2229,7 +2229,7 @@ component accessors="true" singleton threadSafe {
 				parent     = page.getContentID(),
 				showInMenu = true,
 				siteID     = site().getsiteID(),
-				properties = "contentID,slug,title,numberOfChildren",
+				properties = "contentID,slug,title",
 				sortOrder  = "order ASC, publishedDate ASC"
 			);
 
@@ -2465,9 +2465,10 @@ component accessors="true" singleton threadSafe {
 			if (
 				!len( arguments.excludes ) || !listFindNoCase( arguments.excludes, pageResults.content[ x ][ "title" ] )
 			) {
-				// Do we need to nest?
+				// Do we need to nest? Check if page has children by fetching the entity
+				var thisPage = pageService.get( pageResults.content[ x ][ "contentID" ] );
 				var doNesting = (
-					arguments.currentLevel LT arguments.levels && pageResults.content[ x ][ "numberOfChildren" ] > 0
+					arguments.currentLevel LT arguments.levels && !isNull( thisPage ) && thisPage.hasChild()
 				);
 				// Is element active (or one of its decendants)
 				var isElementActive = currentPageID EQ pageResults.content[ x ][ "contentID" ];
@@ -2497,7 +2498,7 @@ component accessors="true" singleton threadSafe {
 											parent     = pageResults.content[ x ][ "contentID" ],
 											showInMenu = true,
 											siteID     = site().getsiteID(),
-											properties = "contentID,slug,title,numberOfChildren",
+											properties = "contentID,slug,title",
 											sortOrder  = "order ASC, publishedDate ASC"
 										),
 									excludes           = arguments.excludes,
@@ -2528,7 +2529,7 @@ component accessors="true" singleton threadSafe {
 											parent     = pageResults.content[ x ][ "contentID" ],
 											showInMenu = true,
 											siteID     = site().getsiteID(),
-											properties = "contentID,slug,title,numberOfChildren",
+											properties = "contentID,slug,title",
 											sortOrder  = "order ASC, publishedDate ASC"
 										),
 									excludes           = arguments.excludes,
@@ -2562,7 +2563,7 @@ component accessors="true" singleton threadSafe {
 									parent     = pageResults.content[ x ][ "contentID" ],
 									showInMenu = true,
 									siteID     = site().getsiteID(),
-									properties = "contentID,slug,title,numberOfChildren",
+									properties = "contentID,slug,title",
 									sortOrder  = "order ASC, publishedDate ASC"
 								),
 							excludes           = arguments.excludes,
@@ -2575,14 +2576,14 @@ component accessors="true" singleton threadSafe {
 							activeShowChildren = arguments.activeShowChildren
 						);
 					} else if (
-						activeShowChildren && isElementActive && pageResults.content[ x ][ "numberOfChildren" ] > 0
+						activeShowChildren && isElementActive && !isNull( thisPage ) && thisPage.hasChild()
 					) {
 						pageData.subPageMenu = buildMenu(
 							pageRecords        = pageService.findPublishedContent(
 									parent     = pageResults.content[ x ][ "contentID" ],
 									showInMenu = true,
 									siteID     = site().getsiteID(),
-									properties = "contentID,slug,title,numberOfChildren",
+									properties = "contentID,slug,title",
 									sortOrder  = "order ASC, publishedDate ASC"
 								),
 							excludes           = arguments.excludes,

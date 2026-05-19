@@ -371,22 +371,8 @@ component
 	 */
 
 	property
-		name="numberOfHits"
-		formula="select cbStats.hits
-			from cb_stats cbStats
-			where cbStats.FK_contentID=contentID"
-		default="0";
-	property
-		name="numberOfChildren"
-		formula="select count(*) from cb_content content where content.FK_parentID=contentID"
-		default="0";
-	property
 		name="numberOfComments"
 		formula="select count(*) from cb_comment comment where comment.FK_contentID=contentID"
-		default="0";
-	property
-		name="numberOfVersions"
-		formula="select count(*) from cb_contentVersion versions where versions.FK_contentID=contentID"
 		default="0";
 	/**
 	 * --------------------------------------------------------------------------
@@ -641,17 +627,23 @@ component
 	}
 
 	/**
-	 * Get the number of hits
+	 * Get the number of hits from the stats relationship
 	 */
 	numeric function getNumberOfHits() {
-		return ( isNull( variables.numberOfHits ) ? 0 : variables.numberOfHits );
+		if ( !isLoaded() || isNull( variables.stats ) ) {
+			return 0;
+		}
+		return variables.stats.getHits();
 	}
 
 	/**
-	 * Get the number of children
+	 * Get the number of children from the children relationship
 	 */
 	numeric function getNumberOfChildren() {
-		return ( isNull( variables.numberOfChildren ) ? 0 : variables.numberOfChildren );
+		if ( !isLoaded() || !hasChild() ) {
+			return 0;
+		}
+		return arrayLen( variables.children );
 	}
 
 	/**
@@ -679,10 +671,13 @@ component
 	}
 
 	/**
-	 * Get the total number of versions this content object has
+	 * Get the total number of versions this content object has from the contentVersions relationship
 	 */
 	numeric function getNumberOfVersions() {
-		return ( isNull( variables.numberOfVersions ) ? 0 : variables.numberOfVersions );
+		if ( !isLoaded() || !hasContentVersion() ) {
+			return 0;
+		}
+		return arrayLen( variables.contentVersions );
 	}
 
 	/**
