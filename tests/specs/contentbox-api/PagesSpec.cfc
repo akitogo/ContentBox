@@ -27,9 +27,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Pages API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -37,13 +37,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to view a page item by id or slug",
-					function() {
+					() => {
 						given(
 							"a valid id",
-							function() {
+							() => {
 								then(
 									"then I should get the requested page",
-									function() {
+									() => {
 										var testContent = variables.pageService.findWhere( { slug : "products" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/pages/#testContent.getContentID()#"
@@ -61,10 +61,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a valid slug",
-							function() {
+							() => {
 								then(
 									"then I should get the requested page",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages/products" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -78,10 +78,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages/123kkdabugosu" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -94,13 +94,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to list all pages",
-					function() {
+					() => {
 						given(
 							"no options",
-							function() {
+							() => {
 								then(
 									"it can display all items with default filters",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -111,10 +111,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a parent search",
-							function() {
+							() => {
 								then(
 									"it can display pages from a parent",
-									function() {
+									() => {
 										var testContent = variables.pageService.findWhere( { slug : "products" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/pages?parent=#testContent.getContentID()#"
@@ -125,7 +125,7 @@ component extends="tests.resources.BaseApiTest" {
 											.getResponse()
 											.getData()
 											.each(
-												function( thisItem ) {
+												( thisItem ) => {
 													expect( thisItem.parent.slug ).toBe( "products" );
 												}
 											);
@@ -135,10 +135,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a content search",
-							function() {
+							() => {
 								then(
 									"it can find the page",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages?search=products" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -149,10 +149,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a slug prefix search",
-							function() {
+							() => {
 								then(
 									"it can find the pages",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages?slugPrefix=products" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -163,10 +163,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a slug search",
-							function() {
+							() => {
 								then(
 									"it can find the pages",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages?slugSearch=products" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -177,10 +177,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a show on menu search",
-							function() {
+							() => {
 								then(
 									"it can find pages with showInMenu = false",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/pages?showInMenu=false" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -194,15 +194,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to create a page",
-					function() {
+					() => {
 						given(
 							"valid data",
-							function() {
+							() => {
 								then(
 									"then it should create a new content object",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/pages",
 														{
@@ -243,10 +243,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate content slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/pages",
 												{
@@ -265,10 +265,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"no content on a new content object",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post( "cbapi/v1/sites/default/pages",
 												{ slug : "A nice site" } );
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -282,10 +282,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"invalid data but good content",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/pages",
 												{ content : "Hello from bdd test land!" }
@@ -303,16 +303,16 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to edit a page",
-					function() {
+					() => {
 						given(
 							"a valid id/slug and valid data",
-							function() {
+							() => {
 								then(
 									"then it should update a content item",
-									function() {
+									() => {
 										getCache( "template" ).clearAll();
 										withRollback(
-											function() {
+											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/pages/products",
 														{
@@ -332,10 +332,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate content slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.put(
 												"cbapi/v1/sites/default/pages/products",
 												{
@@ -353,10 +353,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/pages/bogusbaby",
 												{ content : "bogus" }
@@ -372,13 +372,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to delete a page",
-					function() {
+					() => {
 						given(
 							"a valid id/slug",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										var testContent = variables.pageService.save(
 												variables.pageService.new(
 														{
@@ -408,10 +408,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.delete( "/cbapi/v1/sites/default/pages/bogusbogus" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );

@@ -38,9 +38,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Relocations API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -48,13 +48,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to view a Relocation by id or slug",
-					function() {
+					() => {
 						given(
 							"a valid id",
-							function() {
+							() => {
 								then(
 									"then I should get the requested Relocation",
-									function() {
+									() => {
 										var event = this.get(
 												"/cbapi/v1/sites/default/relocations/#testRelocation.getRelocationID()#"
 											);
@@ -66,10 +66,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/relocations/XYZ" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}
@@ -81,13 +81,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to list all site relocations",
-					function() {
+					() => {
 						given(
 							"no options",
-							function() {
+							() => {
 								then(
 									"it can display all site relocations",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/relocations" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeArray().notToBeEmpty();
@@ -100,15 +100,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to create a site Relocation",
-					function() {
+					() => {
 						given(
 							"valid incoming data",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/relocations",
 														{ target : "bddtest", slug : "bddtest" }
@@ -124,10 +124,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate Relocation slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/relocations",
 												{ "slug" : testRelocation.getSlug(), target : "coldbox" }
@@ -140,10 +140,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"invalid data",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/relocations",
 												{ name : "A nice Relocation" }
@@ -159,15 +159,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to edit a Relocation",
-					function() {
+					() => {
 						given(
 							"a valid id/slug and valid data",
-							function() {
+							() => {
 								then(
 									"then it should update a Relocation",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/relocations/#testRelocation.getRelocationID()#",
 														{ target : "foo" }
@@ -182,10 +182,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.put( "/cbapi/v1/sites/default/relocations/123" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}
@@ -196,13 +196,13 @@ component extends="tests.resources.BaseApiTest" {
 				); // end edit story
 				story(
 					"I want to delete a Relocation",
-					function() {
+					() => {
 						given(
 							"a valid id/slug",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										var event = this.delete(
 												"/cbapi/v1/sites/default/relocations/#variables.testRelocation.getRelocationID()#"
 											);
@@ -214,10 +214,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.delete( "/cbapi/v1/sites/default/relocations/1232222" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}

@@ -27,9 +27,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Entries API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -37,13 +37,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to view an entry item by id or slug",
-					function() {
+					() => {
 						given(
 							"an valid id",
-							function() {
+							() => {
 								then(
 									"then I should get the requested entry",
-									function() {
+									() => {
 										var testContent = variables.entryService.findWhere( {
 													slug : "disk-queues-77caf"
 												} );
@@ -62,10 +62,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a valid slug",
-							function() {
+							() => {
 								then(
 									"then I should get the requested entry",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/entries/disk-queues-77caf" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -79,10 +79,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/entries/123kkdabugosu" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -95,13 +95,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to list all entries",
-					function() {
+					() => {
 						given(
 							"no options",
-							function() {
+							() => {
 								then(
 									"it can display all items with default filters",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/entries" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -112,10 +112,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a content search",
-							function() {
+							() => {
 								then(
 									"it can find the entries",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/entries?search=disk-queues" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -126,10 +126,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a slug search",
-							function() {
+							() => {
 								then(
 									"it can find the entries",
-									function() {
+									() => {
 										var event = this.get(
 												"/cbapi/v1/sites/default/entries?slugSearch=disk-queues-77caf"
 											);
@@ -145,15 +145,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to create an entry",
-					function() {
+					() => {
 						given(
 							"valid data",
-							function() {
+							() => {
 								then(
 									"then it should create a new content object",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/entries",
 														{
@@ -190,10 +190,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate content slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
 												{
@@ -212,10 +212,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"no content on a new content object",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
 												{ slug : "A nice site" }
@@ -231,10 +231,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"invalid data but good content",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
 												{ content : "Hello from bdd test land!" }
@@ -252,16 +252,16 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to edit an entry",
-					function() {
+					() => {
 						given(
 							"a valid id/slug and valid data",
-							function() {
+							() => {
 								then(
 									"then it should update a content item",
-									function() {
+									() => {
 										getCache( "template" ).clearAll();
 										withRollback(
-											function() {
+											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/entries/disk-queues-77caf",
 														{
@@ -281,10 +281,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate content slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.put(
 												"cbapi/v1/sites/default/entries/disk-queues-77caf",
 												{
@@ -302,10 +302,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/entries/bogusbaby",
 												{ content : "bogus" }
@@ -321,13 +321,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to delete a entry",
-					function() {
+					() => {
 						given(
 							"a valid id/slug",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										var testContent = variables.entryService.save(
 												variables.entryService.new(
 														{
@@ -357,10 +357,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.delete( "/cbapi/v1/sites/default/entries/bogusbogus" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
