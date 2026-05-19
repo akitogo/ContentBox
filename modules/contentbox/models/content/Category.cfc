@@ -79,32 +79,9 @@ component
 		cfc="contentbox.models.system.Site"
 		fieldtype="many-to-one"
 		fkcolumn="FK_siteID"
+		batchsize="25"
 		lazy="true";
-	/**********************************************************************
-	 * **							CALCULATED FIELDS
-	 **********************************************************************/
 
-	property
-		name="numberOfContentStore"
-		formula="select count(*)
-				from cb_contentCategories as contentCategories, cb_contentStore as contentStore, cb_content as content
-				where contentCategories.FK_categoryID=categoryID
-					and contentCategories.FK_contentID = contentStore.contentID
-					and contentStore.contentID = content.contentID";
-	property
-		name="numberOfEntries"
-		formula="select count(*)
-				from cb_contentCategories as contentCategories, cb_entry as entry, cb_content as content
-				where contentCategories.FK_categoryID=categoryID
-					and contentCategories.FK_contentID = entry.contentID
-					and entry.contentID = content.contentID";
-	property
-		name="numberOfPages"
-		formula="select count(*)
-				from cb_contentCategories as contentCategories, cb_page as page, cb_content as content
-				where contentCategories.FK_categoryID=categoryID
-					and contentCategories.FK_contentID = page.contentID
-					and page.contentID = content.contentID";
 	/**********************************************************************
 	 * **							PK + CONSTRAINTS + MEMENTO
 	 **********************************************************************/
@@ -159,6 +136,9 @@ component
 	function init() {
 		variables.category = "";
 		variables.slug = "";
+		variables.numberOfEntries = "";
+		variables.numberOfPages = "";
+		variables.numberOfContentStore = "";
 		variables.numberOfPublishedPages = "";
 		variables.numberOfPublishedEntries = "";
 		variables.numberOfPublishedContentStore = "";
@@ -175,7 +155,7 @@ component
 	numeric function getNumberOfPublishedPages() {
 		// Caching per load basis
 		if ( !len( variables.numberOfPublishedPages ) ) {
-			variables.numberOfPublishedPages = getNumberOfPublishedContent( variables.pageService );
+			variables.numberOfPublishedPages = getNumberOfPublishedContent( variables.pageService, "pages" );
 		}
 		return variables.numberOfPublishedPages;
 	}
@@ -186,7 +166,7 @@ component
 	numeric function getNumberOfPublishedContentStore() {
 		// Caching per load basis
 		if ( !len( variables.numberOfPublishedContentStore ) ) {
-			variables.numberOfPublishedContentStore = getNumberOfPublishedContent( variables.contentStoreService );
+			variables.numberOfPublishedContentStore = getNumberOfPublishedContent( variables.contentStoreService, "contentstore" );
 		}
 		return variables.numberOfPublishedContentStore;
 	}
@@ -197,7 +177,7 @@ component
 	numeric function getNumberOfPublishedEntries() {
 		// Caching per load basis
 		if ( !len( variables.numberOfPublishedEntries ) ) {
-			variables.numberOfPublishedEntries = getNumberOfPublishedContent( variables.entryService );
+			variables.numberOfPublishedEntries = getNumberOfPublishedContent( variables.entryService, "entries" );
 		}
 		return variables.numberOfPublishedEntries;
 	}
@@ -219,19 +199,74 @@ component
 		return "";
 	}
 
+	/**
+	 * Get the total number of entries (regardless of published state) for this category.
+	 */
+	numeric function getNumberOfEntries() {
+		if ( !len( variables.numberOfEntries ) ) {
+			variables.numberOfEntries = getNumberOfTotalContent( variables.entryService, "entries" );
+		}
+		return variables.numberOfEntries;
+	}
+
+	/**
+	 * Get the total number of pages (regardless of published state) for this category.
+	 */
+	numeric function getNumberOfPages() {
+		if ( !len( variables.numberOfPages ) ) {
+			variables.numberOfPages = getNumberOfTotalContent( variables.pageService, "pages" );
+		}
+		return variables.numberOfPages;
+	}
+
+	/**
+	 * Get the total number of content store items (regardless of published state) for this category.
+	 */
+	numeric function getNumberOfContentStore() {
+		if ( !len( variables.numberOfContentStore ) ) {
+			variables.numberOfContentStore = getNumberOfTotalContent( variables.contentStoreService, "contentstore" );
+		}
+		return variables.numberOfContentStore;
+	}
+
 	/********************************** PRIVATE **********************************/
 
 	/**
-	 * Get the number of published content by category and service type
+	 * Get the count of all (total) content for this category by service type.
+	 * Results are cached in CacheBox per category slug and content type.
 	 *
-	 * @service The target service to use.
+	 * @service     The target content service to use.
+	 * @contentType A discriminator string baked into the cache key (e.g. "entries", "pages", "contentstore").
 	 */
-	private numeric function getNumberOfPublishedContent( required service ) {
+	private numeric function getNumberOfTotalContent( required service, required string contentType ) {
 		return variables
 			.cacheBox
 			.getCache( variables.settingService.getSetting( "cb_content_cacheName" ) )
 			.getOrSet(
-				"cb-content-category-counts-#getSlug()#",
+				"cb-content-category-total-counts-#getSlug()#-#arguments.contentType#",
+				function() {
+					return service
+						.newCriteria()
+						.createAlias( "categories", "categories" )
+						.isEq( "categories.categoryID", getCategoryID() )
+						.count( "contentID" );
+				}
+			);
+	}
+
+	/**
+	 * Get the number of published content by category and service type.
+	 * Results are cached in CacheBox per category slug and content type.
+	 *
+	 * @service     The target content service to use.
+	 * @contentType A discriminator string baked into the cache key (e.g. "entries", "pages", "contentstore").
+	 */
+	private numeric function getNumberOfPublishedContent( required service, required string contentType ) {
+		return variables
+			.cacheBox
+			.getCache( variables.settingService.getSetting( "cb_content_cacheName" ) )
+			.getOrSet(
+				"cb-content-category-counts-#getSlug()#-#arguments.contentType#",
 				function() {
 					return service
 						.newCriteria()

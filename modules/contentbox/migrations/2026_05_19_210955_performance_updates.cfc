@@ -12,13 +12,6 @@ component {
 			);
 
 		schema.alter(
-				"cb_category",
-				( table ) => {
-					table.index( [ "slug"], "idx_categorySlug" );
-				}
-			);
-
-		schema.alter(
 				"cb_contentCategories",
 				( table ) => {
 					table.index(
@@ -39,13 +32,6 @@ component {
 				( table ) => {
 					table.dropIndex( "idx_content_category" );
 					table.dropIndex( "idx_category_content" );
-				}
-			);
-
-		schema.alter(
-				"cb_category",
-				( table ) => {
-					table.dropIndex( "idx_categorySlug" );
 				}
 			);
 

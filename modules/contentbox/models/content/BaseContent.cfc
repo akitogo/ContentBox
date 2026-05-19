@@ -386,7 +386,7 @@ component
 	this.pk = "contentID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"allowComments",
 			"cache",
 			"cacheLastAccessTimeout",
@@ -421,19 +421,13 @@ component
 			"siteID",
 			"title"
 		],
-		defaultExcludes : [
-			"comments",
-			"commentSubscriptions",
-			"contentVersions",
-			"contentTemplate",
-			"site"
-		],
-		neverInclude : [ "passwordProtection"],
-		mappers      : {},
-		defaults     : { "contentTemplate" : {} },
-		profiles     : {
-			response : {
-				defaultIncludes : [
+		defaultExcludes: [ "comments", "commentSubscriptions", "contentVersions", "contentTemplate", "site"],
+		neverInclude   : [ "passwordProtection"],
+		mappers        : {},
+		defaults       : { "contentTemplate": {} },
+		profiles       : {
+			response: {
+				defaultIncludes: [
 					"categoriesArray:categories",
 					"contentID",
 					"contentType",
@@ -456,10 +450,10 @@ component
 					"renderedExcerpt",
 					"childrenSnapshot:children"
 				],
-				defaultExcludes : []
+				defaultExcludes: []
 			},
-			export : {
-				defaultIncludes : [
+			export: {
+				defaultIncludes: [
 					"allowComments",
 					"cache",
 					"cacheLastAccessTimeout",
@@ -495,7 +489,7 @@ component
 					"linkedContentSnapshot:linkedContent",
 					"relatedContentSnapshot:relatedContent"
 				],
-				defaultExcludes : [
+				defaultExcludes: [
 					"commentSubscriptions.relatedContentSnapshot:relatedContent",
 					"children.parentSnapshot:parent",
 					"linkedContent",
@@ -509,21 +503,21 @@ component
 	};
 
 	this.constraints = {
-		"cacheLastAccessTimeout" : { required : false, type : "numeric" },
-		"cacheTimeout"           : { required : false, type : "numeric" },
-		"expireDate"             : { required : false, type : "date" },
-		"featuredImage"          : { required : false, size : "1..255" },
-		"HTMLDescription"        : { required : false, size : "1..160" },
-		"HTMLKeywords"           : { required : false, size : "1..160" },
-		"markup"                 : { required : true, size : "1..100" },
-		"passwordProtection"     : { required : false, size : "1..100" },
-		"publishedDate"          : { required : false, type : "date" },
-		"site"                   : { required : true },
-		"slug"                   : {
-			required   : true,
-			size       : "1..200",
-			udfMessage : "The 'slug' is not unique",
-			udf        : function( value, target ) {
+		"cacheLastAccessTimeout": { required: false, type: "numeric" },
+		"cacheTimeout"          : { required: false, type: "numeric" },
+		"expireDate"            : { required: false, type: "date" },
+		"featuredImage"         : { required: false, size: "1..255" },
+		"HTMLDescription"       : { required: false, size: "1..160" },
+		"HTMLKeywords"          : { required: false, size: "1..160" },
+		"markup"                : { required: true, size: "1..100" },
+		"passwordProtection"    : { required: false, size: "1..100" },
+		"publishedDate"         : { required: false, type: "date" },
+		"site"                  : { required: true },
+		"slug"                  : {
+			required  : true,
+			size      : "1..200",
+			udfMessage: "The 'slug' is not unique",
+			udf       : function( value, target ) {
 				return arguments
 					.target
 					.getContentService()
@@ -540,7 +534,7 @@ component
 					);
 			}
 		},
-		"title" : { required : true, size : "1..200" }
+		"title": { required: true, size: "1..200" }
 	};
 
 	/**
@@ -584,15 +578,15 @@ component
 	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
-				"contentID"     : getContentID(),
-				"title"         : getTitle(),
-				"slug"          : getSlug(),
-				"isPublished"   : getIsPublished(),
-				"publishedDate" : getPublishedDate(),
-				"createdDate"   : getCreatedDate(),
-				"modifiedDate"  : getModifiedDate(),
-				"expireDate"    : getExpireDate(),
-				"contentType"   : getContentType()
+				"contentID"    : getContentID(),
+				"title"        : getTitle(),
+				"slug"         : getSlug(),
+				"isPublished"  : getIsPublished(),
+				"publishedDate": getPublishedDate(),
+				"createdDate"  : getCreatedDate(),
+				"modifiedDate" : getModifiedDate(),
+				"expireDate"   : getExpireDate(),
+				"contentType"  : getContentType()
 			};
 		}
 		return {};
@@ -788,10 +782,10 @@ component
 			// get a new version object with our incoming content + relationships
 			var oNewVersion = variables.contentVersionService.new(
 					{
-						content        : arguments.content,
-						changelog      : arguments.changelog,
-						author         : arguments.author,
-						relatedContent : this
+						content       : arguments.content,
+						changelog     : arguments.changelog,
+						author        : arguments.author,
+						relatedContent: this
 					}
 				);
 
@@ -1319,8 +1313,8 @@ component
 							.customFieldService
 							.new(
 								{
-									key   : arguments.thisField.getKey(),
-									value : arguments.thisField.getValue()
+									key  : arguments.thisField.getKey(),
+									value: arguments.thisField.getValue()
 								}
 							)
 							.setRelatedContent( this );
@@ -1359,10 +1353,10 @@ component
 						function( thisChild ) {
 							var newChild = originalService.new(
 									{
-										creator : author,
-										title   : arguments.thisChild.getTitle(),
-										slug    : listLast( arguments.thisChild.getSlug(), "/" ),
-										site    : getSite()
+										creator: author,
+										title  : arguments.thisChild.getTitle(),
+										slug   : listLast( arguments.thisChild.getSlug(), "/" ),
+										site   : getSite()
 									}
 								).setParent( this );
 
@@ -1630,7 +1624,7 @@ component
 		// announce renderings with data, so content renderers can process them
 		interceptorService.announce(
 				"cb_onContentRendering",
-				{ builder : builder, content : this }
+				{ builder: builder, content: this }
 			);
 		// return processed content
 		return builder.toString();
@@ -1650,8 +1644,8 @@ component
 		for ( var x = 0; x LT arguments.fieldCount; x++ ) {
 			// get custom field from incoming data
 			var args = {
-				key   : arguments.memento[ "CustomFieldKeys_#x#" ],
-				value : arguments.memento[ "CustomFieldValues_#x#" ]
+				key  : arguments.memento[ "CustomFieldKeys_#x#" ],
+				value: arguments.memento[ "CustomFieldValues_#x#" ]
 			};
 			// only add if key has value
 			if ( len( trim( args.key ) ) ) {
@@ -1772,7 +1766,7 @@ component
 					invoke(
 						this,
 						"populate",
-						{ "memento" : { "#key#" : definition[ key ].value } }
+						{ "memento": { "#key#": definition[ key ].value } }
 					);
 				} else if ( isArray( currentVal ) ) {
 					switch ( key ) {
@@ -1783,8 +1777,8 @@ component
 										if ( !existingFields.contains( item.name ) ) {
 											var thisField = customFieldService.new(
 													properties = {
-														"key"   : item.name,
-														"value" : item.defaultValue ?: ""
+														"key"  : item.name,
+														"value": item.defaultValue ?: ""
 													}
 												);
 											thisField.setRelatedContent( this );
@@ -1807,8 +1801,8 @@ component
 								this,
 								"populate",
 								{
-									"memento" : {
-										"#key#" : listToArray(
+									"memento": {
+										"#key#": listToArray(
 											listRemoveDuplicates( arrayToList( definition[ key ].value ) )
 										)
 									}
@@ -1819,7 +1813,7 @@ component
 							invoke(
 								this,
 								"populate",
-								{ "memento" : { "#key#" : definition[ key ].value } }
+								{ "memento": { "#key#": definition[ key ].value } }
 							);
 						}
 					}
