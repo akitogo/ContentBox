@@ -466,7 +466,9 @@ component accessors="true" singleton threadSafe {
 
 		// Do we set a layout for them already?
 		if ( structKeyExists( arguments, "layout" ) ) {
-			event.setLayout( name = "#prc.cbThemeRecord.includePath#/layouts/#arguments.layout#" );
+			event.setLayout(
+					name = "#prc.cbThemeRecord.includePath#/layouts/#arguments.layout#"
+				);
 		}
 
 		/************************************** FORCE SITE WIDE SSL *********************************************/
@@ -2339,12 +2341,14 @@ component accessors="true" singleton threadSafe {
 			" ",
 			"ALL"
 		);
-		return trim( reReplace(
+		return trim(
+			reReplace(
 				arguments.stringTarget,
 				"\s{2,}",
 				" ",
 				"ALL"
-			) );
+			)
+		);
 	}
 
 	/**
@@ -2506,8 +2510,7 @@ component accessors="true" singleton threadSafe {
 									activeShowChildren = arguments.activeShowChildren
 								)
 							);
-					} else // Do we nest active and activeShowChildren flag is activated?
-					if (
+					} else if ( // Do we nest active and activeShowChildren flag is activated?
 						activeShowChildren && ( isElementActive || isElementActiveAncestor ) &&
 							pageResults.content[ x ].hasChild()
 					) {
@@ -2571,8 +2574,9 @@ component accessors="true" singleton threadSafe {
 							currentLevel       = arguments.currentLevel + 1,
 							activeShowChildren = arguments.activeShowChildren
 						);
-					} else // Do we nest active and activeShowChildren flag is activated?
-					if ( activeShowChildren && isElementActive && pageResults.content[ x ][ "numberOfChildren" ] > 0 ) {
+					} else if ( // Do we nest active and activeShowChildren flag is activated?
+						activeShowChildren && isElementActive && pageResults.content[ x ][ "numberOfChildren" ] > 0
+					) {
 						pageData.subPageMenu = buildMenu(
 							pageRecords        = pageService.findPublishedContent(
 									parent     = pageResults.content[ x ][ "contentID" ],

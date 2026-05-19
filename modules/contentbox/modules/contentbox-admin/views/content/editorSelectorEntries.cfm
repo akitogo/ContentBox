@@ -22,16 +22,18 @@ id="contentID-#thisContent.getContentID()#"
 			class="warning"
 		</cfif>
 		
+		
 		>
 			<td>
-				<!--- Title ---> 
+				<!--- Title --->  
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title ---> 
+				<!--- Title --->  
 				<div class="mt5">
 					<div class="text-muted">
+
 
 		<cfif structKeyExists( thisContent, "getDescription" )>
 			#thisContent.getDescription()#
@@ -42,9 +44,12 @@ id="contentID-#thisContent.getContentID()#"
 				#prc.cbHelper.stripHTML( left( thisContent.getContent(), 100 ) )#
 			</cfif>
 			
+			
 						...
 
+
 		</cfif>
+		
 		
 					</div>
 				</div>
@@ -82,7 +87,9 @@ id="contentID-#thisContent.getContentID()#"
 			</td>
 		</tr>
 
+
 	</cfloop>
+	
 	
 	</tbody>
 </table>

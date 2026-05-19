@@ -359,6 +359,7 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 			}
 		]";
 
+
 		// cfformat-ignore-end
 	}
 

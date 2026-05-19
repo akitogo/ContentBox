@@ -75,9 +75,11 @@ component extends="tests.resources.BaseTest" {
 						expect( model.getPreference( "editor" ) ).toBe( "textarea" );
 
 						// invalid
-						expect( function() {
+						expect(
+							function() {
 								model.getPreference( "invalid" );
-							} ).toThrow();
+							}
+						).toThrow();
 
 						// with default
 						model.setPreference( "UnitTest", "Hello" );

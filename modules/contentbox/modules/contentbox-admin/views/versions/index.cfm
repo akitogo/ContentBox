@@ -23,6 +23,7 @@
 		href="#event.buildLink( prc.xehEntriesEditor )#/contentId/#prc.content.getContentId()#"
 	</cfif>
 	
+	
 						class="btn btn-sm btn-default"
 					>
 						Edit
@@ -105,15 +106,18 @@
 						class="btn btn-default btn-sm"
 						title="Back to listing"
 
+
 	<cfif len( prc.content.getParentID() )>
 		onclick="to( '#event.buildLink( prc.xehBackTrack )#/parent/#prc.content.getParentID()#' );return false;"
 	<cfelse>
 		onclick="to( '#event.buildLink( prc.xehBackTrack )#' );return false;"
 	</cfif>
 	
+	
 					>
 						<i class="fa fa-chevron-left"></i> Back
 					</button>
+
 
 	<cfif len( prc.xehOpenContent )>
 		<button
@@ -124,6 +128,7 @@ onclick="window.open( '#prc.xehOpenContent#' );return false;"
 	<i class="fa fa-eye"></i> Open
 </button>
 	</cfif>
+	
 	
 				</div>
 		    </div>
@@ -146,5 +151,6 @@ onclick="window.open( '#prc.xehOpenContent#' );return false;"
 		</div>
     </div>
 </div>
+
 
 </cfoutput>

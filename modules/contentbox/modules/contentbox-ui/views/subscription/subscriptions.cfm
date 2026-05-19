@@ -1,7 +1,6 @@
 <cfoutput>
 	<div class="container">
-<h1>Manage My Subscriptions</h1>
-#cbMessageBox().renderit()#
+<h1>Manage My Subscriptions</h1>#cbMessageBox().renderit()#
 	<cfif prc.oSubscriber.isLoaded()>
 		<cfif structCount( prc.subscriptions )>
 			<form name="removeSubscriptions" action="#event.buildLink( to = "__removesubscriptions" )#" method="POST" onsubmit="return onSubmitHandler();">
@@ -20,9 +19,12 @@
 </tr>
 				</cfloop>
 				
+				
                     </table>
 
+
 			</cfloop>
+			
 			
 
                 <div class="well well-sm text-center">
@@ -31,11 +33,14 @@
                 </div>
             </form>
 
+
 		<cfelse>
-			<!--- MessageBox ---> <div class="alert alert-warning">You don't currently have any active subscriptions</div>
+			<!--- MessageBox --->  <div class="alert alert-warning">You don't currently have any active subscriptions</div>
 		</cfif>
 	</cfif>
 	
+	
 </div>
+
 
 </cfoutput>

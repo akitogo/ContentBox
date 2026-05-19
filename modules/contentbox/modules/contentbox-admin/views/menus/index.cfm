@@ -14,6 +14,7 @@
 		<div class="consoleLog">#flash.get( "importLog" )#</div>
 	</cfif>
 	
+	
     </div>
 </div>
 
@@ -37,6 +38,7 @@
 
                         <div class="col-md-6 col-xs-8">
                             <div class="text-right">
+
 
 	<cfif prc.oCurrentAuthor.hasPermission( "MENUS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
@@ -65,11 +67,14 @@
 </li>
 		</cfif>
 		
+		
                                             <li><a href="javascript:contentShowAll()"><i class="fa fa-list"></i> Show All</a></li>
                                         </ul>
                                     </div>
 
+
 	</cfif>
+	
 	
                                 <button class="btn btn-primary" onclick="return to('#event.buildLink( to = prc.xehMenuEditor )#' );">Create Menu</button>
                             </div>
@@ -77,7 +82,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <!--- entries container ---> 
+                    <!--- entries container --->  
                     <div id="menuTableContainer">
 						<p class="text-center">
 							<i id="contentLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -88,6 +93,7 @@
         #html.endForm()#
     </div>
 </div>
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "MENUS_ADMIN,TOOLS_IMPORT" )>

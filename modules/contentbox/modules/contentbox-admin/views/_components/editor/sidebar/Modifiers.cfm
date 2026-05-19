@@ -37,18 +37,22 @@
 							.getContentTemplate()
 							.getTemplateID() ==
 						template[ "templateID" ]>
-					 selected
+					selected
 				</cfif>
+				
 				>
 										#template[ "name" ]#
 									</option>
 
+
 			</cfloop>
+			
 			
 						</select>
 						<p class="text-muted text-center hidden template-highlight-info">
 							<span style="width: 10px;height:10px; display:inline-block; margin-right: 10px; border: 1px ##efefef solid" class="template-defined"></span> <small>Template defined fields are shown with this background color.</small>
 						</p>
+
 
 		<cfelse>
 			<p class="text-muted text-center">
@@ -59,8 +63,10 @@ No Content Templates are Currently Available
 </p>
 		</cfif>
 		
+		
 
 				</div>
+
 
 
 		<cfif prc.oContent.getContentType() NEQ "Entry">
@@ -85,15 +91,19 @@ No Content Templates are Currently Available
 								.getChildContentTemplate()
 								.getTemplateID() ==
 							template[ "templateID" ]>
-						 selected
+						selected
 					</cfif>
+					
 					>
 											#template[ "name" ]#
 										</option>
 
+
 				</cfloop>
 				
+				
 							</select>
+
 
 			<cfelse>
 				<p class="text-muted text-center">
@@ -105,9 +115,10 @@ No Content Templates are Currently Available
 </p>
 			</cfif>
 			
+			
 
 					</div>
-					<!--- Parent ---> 
+					<!--- Parent --->  
 					<div class="form-group">
 						<label for="parentContent" class="control-label">
 							<i class="fa fa-sitemap"></i>
@@ -128,6 +139,7 @@ No Content Templates are Currently Available
 				)#
 						</select>
 					</div>
+
 
 		<cfelse>
 			#html.hiddenField( name = "parentContent", value = "null" )#
@@ -155,14 +167,18 @@ value="#author.getAuthorID()#"
 					selected="selected"
 				</cfif>
 				
+				
 								>
 									#author.getFullName()#
 								</option>
 
+
 			</cfloop>
+			
 			
 						</select>
 					</div>
+
 
 		</cfif>
 		<cfif prc.cbSiteSettings.cb_comments_enabled && prc.oContent.commentsAllowed()>
@@ -206,9 +222,11 @@ value="#author.getAuthorID()#"
 				)#</div>
 		</cfif>
 		
+		
 			</div>
 		</div>
 	</div>
+
 
 	<cfelse>
 		#html.hiddenField( name = "parentContent", value = prc.parentcontentID )#

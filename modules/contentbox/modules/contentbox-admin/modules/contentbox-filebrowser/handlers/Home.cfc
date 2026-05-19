@@ -28,11 +28,13 @@ component extends="cbadmin.handlers.baseHandler" {
 		// Duplicate the settings so we can do overrides a-la-carte
 		prc.fbSettings = duplicate( getModuleSettings( prc.fbModuleName ) );
 
-		prc.activeDisk = cbfs().get( variables
+		prc.activeDisk = cbfs().get(
+				variables
 						.cb
 						.site()
 						.getMediaDisk() ?:
-					"contentbox" );
+					"contentbox"
+			);
 
 		// Merge Flash Settings if they exist
 		if ( structKeyExists( flash.get( "fileBrowser", {} ), "settings" ) ) {

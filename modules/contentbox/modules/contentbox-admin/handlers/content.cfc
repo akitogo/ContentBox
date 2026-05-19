@@ -361,8 +361,7 @@ component extends="baseHandler" {
 		var aContent = "";
 		if ( arguments.showExpired ) {
 			aContent = variables.contentService.findExpiredContent( argumentCollection = args );
-		} else // Future Published Content
-		{
+		} else { // Future Published Content
 			aContent = variables.contentService.findFuturePublishedContent( argumentCollection = args );
 		}
 

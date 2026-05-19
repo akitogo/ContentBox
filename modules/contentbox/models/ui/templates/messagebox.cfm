@@ -41,6 +41,8 @@
 		#msgStruct.message.toString()#
 	</cfif>
 	
+	
 </div>
+
 
 </cfoutput>

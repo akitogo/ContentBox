@@ -15,8 +15,8 @@
 		<h3 class="panel-title">
 			<i class="fa fas fa-life-ring fa-lg"></i> #$r( "dashboard.about.help.title@admin" )#</h3>
    </div>
-<div class="panel-body">#view( view = "_tags/needhelp", prePostExempt = true )#
-<h2>#$r( "dashboard.about.help.links@admin" )#</h2>
+<div class="panel-body">#view( view = "_tags/needhelp",
+		prePostExempt = true )#<h2>#$r( "dashboard.about.help.links@admin" )#</h2>
 <ul>
 	<li>
 		<a href="https://github.com/Ortus-Solutions/ContentBox" target="_blank">#$r( "dashboard.about.help.sourceCode@admin" )#</a>

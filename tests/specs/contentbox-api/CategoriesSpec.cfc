@@ -43,10 +43,12 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"then I should get the requested category",
 									function() {
-										var testCategory = variables.categoryService.findWhere( {
+										var testCategory = variables.categoryService.findWhere(
+												{
 													"slug" : "coldbox",
 													"site" : getDefaultSite()
-												} );
+												}
+											);
 										var event = this.get(
 												"/cbapi/v1/sites/default/categories/#testCategory.getCategoryID()#"
 											);
@@ -262,6 +264,7 @@ component extends="tests.resources.BaseApiTest" {
 			}
 		); // end describe
 	}
+
 
 	// end run
 }

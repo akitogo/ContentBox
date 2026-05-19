@@ -25,11 +25,13 @@
 				"full" )#</strong></p>
 </div>
 
-<p>#left( encodeForHTML( prc
+<p>#left(
+				encodeForHTML( prc
 						.latestNews
 						.items
 						.body ),
-				500 )#...
+				500
+			)#...
 	</p>
 </div>
 		</cfloop>

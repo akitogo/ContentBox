@@ -5,27 +5,23 @@
             <i class="fa fa-bars fa-lg"></i> Menu Designer
         </h1>
     </div>
-</div>
-#html.startForm(
+</div>#html.startForm(
 			action     = prc.xehMenuSave,
 			name       = "menuForm",
 			novalidate = "novalidate",
 			class      = "form-vertical"
-		)#
-<div class="row">
+		)#<div class="row">
 
-    <div class="col-md-9">
-        <div class="actions">
-            <a class="btn btn-link" onclick="window.location.href='#event.buildLink( prc.xehMenus )#';return false;">#cbAdminComponent( "ui/Icon",
+<div class="col-md-9">
+    <div class="actions">
+        <a class="btn btn-link" onclick="window.location.href='#event.buildLink( prc.xehMenus )#';return false;">#cbAdminComponent( "ui/Icon",
 		{ name : "ArrowLeftCircle" } )#Back
     </a>
 </div>
 <div class="panel panel-default">
-    <div class="panel-body" x-data="menuCrud()">
-#cbMessageBox().renderit()#
-<menu class="well well-sm">
-    <p>Click any of the options below to insert a new menu item of that type.</p>
-    <div class="btn-group" role="group">
+    <div class="panel-body" x-data="menuCrud()">#cbMessageBox().renderit()#<menu class="well well-sm">
+<p>Click any of the options below to insert a new menu item of that type.</p>
+<div class="btn-group" role="group">
 	<cfloop collection="#prc.providers#" item="provider">
 		<button 
 type="button" 
@@ -38,6 +34,7 @@ data-provider="#provider#"
     </span>
 </button>
 	</cfloop>
+	
 	
                     </div>
                 </menu>
@@ -171,9 +168,10 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
-#html.endForm()#<!--- CONTEXT MENU TEMPLATE ---> 
+#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->  
 <div id="context-menu" class="dropdown clearfix" style="position: absolute;display:none;">
     <ul class="dropdown-menu" role="menu" style="display:block;margin-bottom:5px;">
+
 
 	<cfloop collection="#prc.providers#" item="provider">
 		<li>
@@ -183,10 +181,11 @@ data-provider="#provider#"
 </li>
 	</cfloop>
 	
+	
     </ul>
 </div>
 
-<!--- PREVIEW DIALOG ---> 
+<!--- PREVIEW DIALOG --->  
 <div id="previewDialog" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">
@@ -198,5 +197,6 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
+
 
 </cfoutput>

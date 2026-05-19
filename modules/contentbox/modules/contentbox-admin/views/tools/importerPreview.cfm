@@ -18,11 +18,9 @@
 				wrapper       = "div class=controls",
 				labelClass    = "control-label",
 				groupWrapper  = "div class=form-group"
-			)#
-<div class="alert alert-danger">
+			)#<div class="alert alert-danger">
     <i class="fa fa-warning fa-lg"></i> <strong>Non-content</strong> imports (layouts, widgets, modules, etc.) will automatically overwrite any existing assets regardless of the choice above.</strong>
-</div>
-<!--- Notice ---> <div class="alert alert-info">
+</div><!--- Notice --->  <div class="alert alert-info">
         <i class="fa fa-info-circle fa-lg"></i> Please note that import is an expensive process, so please be patient when importing.
     </div>
 </div>
@@ -54,12 +52,15 @@
 			<cfif content.format EQ "zip">
 				class="warning"
 			</cfif>
+			
 			>
                                 <td class="success">#content.name#</td>
                                 <td><span class="badge badge-info">#content.total#</span></td>
                             </tr>
 
+
 		</cfloop>
+		
 		
                     </table>
                 </div>
@@ -67,17 +68,18 @@
         </div>
     </div>
     <div class="modal-footer">
-        <!--- Button Bar ---> 
+        <!--- Button Bar --->  
         <div id="importButtonBar">
             <button class="btn btn-danger" id="closeButton"> Cancel </button>
             <button class="btn btn-primary" id="importButton"> Import </button>
         </div>
-        <!--- Loader ---> 
+        <!--- Loader --->  
         <div class="center loaders" id="importBarLoader">
             <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
             <br>Please wait, doing some hardcore importing action...
         </div>
     </div>
+
 
 	</cfif>
 </cfoutput>

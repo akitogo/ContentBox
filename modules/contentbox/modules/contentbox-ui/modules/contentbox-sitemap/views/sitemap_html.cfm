@@ -21,12 +21,16 @@
 </li>
 		</cfloop>
 		
+		
 			</ul>
 		</li>
 
+
 	</cfif>
 	
+	
 	</ul>
+
 
 </cfoutput>
 </div>

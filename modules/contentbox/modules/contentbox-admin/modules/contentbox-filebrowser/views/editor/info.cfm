@@ -14,12 +14,15 @@
 		<li><b>#myKey#</b>: #prc.fileInfo[ myKey ]#</li>
 	</cfloop>
 	
+	
                         </ul>
                         <h1>Image Info</h1>
+
 
 	<cfif structKeyExists( prc, "imgInfo" )>
 		#parseStruct( prc.ImgInfo )#
 	</cfif>
+	
 	
                     </div>
                 </div>
@@ -31,6 +34,7 @@
             </div>
         </div>
     </div>
+
 
 </cfoutput>
 <cfscript>

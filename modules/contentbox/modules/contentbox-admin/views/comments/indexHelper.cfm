@@ -68,6 +68,8 @@ function removeAllModerated(){
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

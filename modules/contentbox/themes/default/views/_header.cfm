@@ -15,11 +15,13 @@
 		<a href="#cb.linkHome()#" class="navbar-brand brand-img" title="#cb.siteTagLine()#" data-toggle="tooltip"><img src="#cb.themeSetting( "headerLogo" )#" alt="#cb.siteName()#"></a>
 	</cfif>
 	
+	
 		</div>
 
-		<!--- Generate Menu ---> 
+		<!--- Generate Menu --->  
 		<div class="collapse navbar-collapse" id="cb-nav-collapse">
 			<ul class="nav navbar-nav navbar-right">
+
 
 	<cfset menuData = cb.rootMenu( type = "data", levels = "2" )>
 	<cfloop array="#menuData#" index="menuItem">
@@ -37,8 +39,10 @@
 				<li>
 			</cfif>
 			
+			
 							<a href="#menuItem.link#">#menuItem.title#</a>
 						</li>
+
 
 		</cfif>
 	</cfloop>
@@ -49,24 +53,28 @@
 			<li>
 		</cfif>
 		
+		
 						<a href="#cb.linkBlog()#">Blog</a>
 					</li>
 
+
 	</cfif>
+	
 	
 			</ul>
 
 			<!--- Blog Search Form ---
 				<form id="searchForm" class="navbar-form navbar-right" name="searchForm" method="post" action="#cb.linkSearch()#">
 					<input type="text" class="form-control col-lg-8" placeholder="Search">
-				</form> ---> 
+				</form> --->  
 		</div>
 	</div>
 </nav>
 
 
+
 	<cfif cb.themeSetting( "showSiteSearch", true )>
-		<!--- Search Bar ---> <div id="body-search">
+		<!--- Search Bar --->  <div id="body-search">
 <div class="container">
 	<form id="searchForm" name="searchForm" method="post" action="#cb.linkContentSearch()#">
 <div class="input-group">

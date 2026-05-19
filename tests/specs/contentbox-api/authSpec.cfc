@@ -48,11 +48,13 @@ component extends="tests.resources.BaseApiTest" {
 										// debug( response.getData() );
 										var decoded = jwt.decode( response.getData().tokens.access_token );
 										expect( decoded.sub ).toBe( response.getData().author.authorID );
-										expect( decoded.exp ).toBeGTE( dateAdd(
+										expect( decoded.exp ).toBeGTE(
+												dateAdd(
 													"h",
 													1,
 													decoded.iat
-												) );
+												)
+											);
 										var decoded = jwt.decode( response.getData().tokens.refresh_token );
 										expect( decoded.sub ).toBe( response.getData().author.authorID );
 										expect( response.getData().author.email ).toBe( variables.testAdminEmail );

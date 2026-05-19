@@ -747,7 +747,9 @@ component accessors="true" threadSafe singleton {
 
 					// Show group intro if there is one
 					if ( len( thisSettingMD.groupIntro ) ) {
-						writeOutput( "<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>" );
+						writeOutput(
+							"<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>"
+						);
 					}
 
 					// Set this as the last group
@@ -899,6 +901,7 @@ component accessors="true" threadSafe singleton {
 				    </div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->";
+
 
 		// cfformat-ignore-end
 	}

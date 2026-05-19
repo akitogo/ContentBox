@@ -37,6 +37,7 @@
 						<div class="col-md-6 col-xs-8">
 							<div class="text-right">
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
   	<button class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown">
@@ -86,6 +87,7 @@
 </li>
 		</cfif>
 		
+		
 
 											<li class="mb5">
 												<a href="javascript:contentListHelper.resetBulkHits()">
@@ -106,6 +108,7 @@
 										</button>
 										<ul class="dropdown-menu list-unstyled">
 
+
 		<cfif prc.availableTemplates.len()>
 			<li class="dropdown-header">
 	<i class="fa fa-object-group"></i> From Template:
@@ -120,9 +123,12 @@
 </li>
 			</cfloop>
 			
+			
 												<li role="separator" class="divider"></li>
 
+
 		</cfif>
+		
 		
 												<li class="mb-5">
 													<a
@@ -137,14 +143,16 @@
 										</ul>
 									</div>
 
+
 	</cfif>
+	
 	
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- content container ---> 
+					<!--- content container --->  
     				<div id="contentTableContainer">
     					<p class="text-center">
 							<i id="pageLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -166,33 +174,37 @@
 			action = prc.xehPageSearch,
 			class  = "form-vertical",
 			role   = "form"
-		)#<!--- Authors ---> 
+		)# 
 						<div class="form-group">
 					        <label for="fAuthors" class="control-label">Authors:</label>
 							<div class="controls">
 								<select name="fAuthors" id="fAuthors" class="form-control input-sm valid">
 									<option value="all" selected="selected">All Authors</option>
 
-	<cfloop array="#prc.authors#" index="author">
-		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
-	</cfloop>
-	
-								</select>
-							</div>
-					    </div>
-					    <!--- Creators ---> 
-						<div class="form-group">
-							<label for="fCreators" class="control-label">Creators: </label>
-							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
-								<option value="all" selected="selected">All Creators</option>
 
 	<cfloop array="#prc.authors#" index="author">
 		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
 	</cfloop>
 	
+	
+								</select>
+							</div>
+					    </div>
+					    <!--- Creators --->  
+						<div class="form-group">
+							<label for="fCreators" class="control-label">Creators: </label>
+							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
+								<option value="all" selected="selected">All Creators</option>
+
+
+	<cfloop array="#prc.authors#" index="author">
+		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
+	</cfloop>
+	
+	
 							</select>
 						</div>
-						<!--- Categories ---> 
+						<!--- Categories --->  
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
@@ -200,14 +212,16 @@
 									<option value="all">All Categories</option>
 									<option value="none">Uncategorized</option>
 
+
 	<cfloop array="#prc.categories#" index="category">
 		<option value="#category.getCategoryID()#">#category.getCategory()#</option>
 	</cfloop>
 	
+	
 								</select>
 					        </div>
 					    </div>
-						<!--- Status ---> 
+						<!--- Status --->  
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -240,6 +254,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>

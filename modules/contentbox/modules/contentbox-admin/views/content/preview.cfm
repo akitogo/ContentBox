@@ -12,7 +12,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 text-center"><!--- Responsive Previews ---> <div class="btn-group" role="group" aria-label="Preview Resizer" style="min-width: 200px">
+			<div class="col-md-6 text-center"><!--- Responsive Previews --->  <div class="btn-group" role="group" aria-label="Preview Resizer" style="min-width: 200px">
 				<button href="javascript:void( 0 )"
 						role="group"
 						title="Desktop View"
@@ -74,7 +74,7 @@
 			value = rc.slug )##html.hiddenField( name = "markup",
 			value = rc.markup )##html.hiddenField( name = "parentContent",
 			value = rc.parentContent )##html.hiddenField( name = "siteID",
-			value = prc.oCurrentSite.getsiteID() )##html.endForm()#<!--- hidden iframe for preview ---> <iframe
+			value = prc.oCurrentSite.getsiteID() )##html.endForm()#<!--- hidden iframe for preview --->  <iframe
 				id="previewFrame"
 				name="previewFrame"
 				width="100%"

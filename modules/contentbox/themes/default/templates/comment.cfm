@@ -1,13 +1,11 @@
 <cfoutput>
-	<div id="comment_#comment.getCommentID()#" class="media comment">
-<!--- Anchor ---> <a name="comment_#comment.getCommentID()#"></a>
-<!--- User Avatar ---> <a class="pull-left" href="##">#cb.quickAvatar(
+	<div id="comment_#comment.getCommentID()#" class="media comment"><!--- Anchor --->  <a name="comment_#comment.getCommentID()#"></a><!--- User Avatar --->  <a class="pull-left" href="##">#cb.quickAvatar(
 			author = comment.getAuthorEmail(),
 			size   = 60,
 			class  = "img-circle"
 		)#</a>
 
-<div><!--- Comment Author ---> <h4>
+<div><!--- Comment Author --->  <h4>
 	<cfif len( comment.getAuthorURL() )>
 		<a
 href="
@@ -23,9 +21,11 @@ href="
 					<strong>#encodeForHTML( comment.getAuthor() )#</strong>
 				</a>
 
+
 	<cfelse>
 		<strong>#encodeForHTML( comment.getAuthor() )#</strong>
 	</cfif>
+	
 	
 
 			<div>
@@ -37,12 +37,13 @@ href="
 			</div>
 		</h4>
 
-		<!--- Content ---> 
+		<!--- Content --->  
 		<div class="post-content">
 			#comment.getDisplayContent()#
 		</div>
     </div>
 </div>
+
 
 
 </cfoutput>

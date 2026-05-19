@@ -37,12 +37,11 @@
 			name  = "menuType",
 			value = args.provider.getType(),
 			id    = ""
-		)#
-<fieldset>
-	<legend>Common Attributes</legend>
-	<p>These attributes will be applied to the main &lt;li&gt; element</p>
-	<div class="row">
-		<span class="col-md-6">#html.textfield(
+		)#<fieldset>
+<legend>Common Attributes</legend>
+<p>These attributes will be applied to the main &lt;li&gt; element</p>
+<div class="row">
+	<span class="col-md-6">#html.textfield(
 			label        = "Item Content:<span class='text-danger' aria-label='required'>*</span>",
 			name         = "label",
 			id           = "",
@@ -74,10 +73,7 @@
 	<cfif len( adminTemplate )>
 		<fieldset>
 <legend>#args.provider.getName()# Attributes</legend>
-<p>These attributes can be used to customize the item's content</p>
-#adminTemplate#
-<div class="row">
-<!--- data attribute ---> <span class="col-md-6">#html.textfield(
+<p>These attributes can be used to customize the item's content</p>#adminTemplate#<div class="row"><!--- data attribute --->  <span class="col-md-6">#html.textfield(
 				label        = "Data Attributes:",
 				name         = "data",
 				id           = "",
@@ -88,8 +84,7 @@
 				wrapper      = "div class=controls",
 				labelClass   = "control-label",
 				groupWrapper = "div class=form-group"
-			)#</span>
-<!--- title ---> <span class="col-md-6">#html.textfield(
+			)#</span><!--- title --->  <span class="col-md-6">#html.textfield(
 				label        = "Title:",
 				name         = "title",
 				id           = "",
@@ -105,7 +100,8 @@
 
 </fieldset>
 	</cfif>
-	<!--- end provider thing ---> 
+	<!--- end provider thing --->  
 	</div>
+
 
 </cfoutput>

@@ -112,13 +112,13 @@ component {
 				"customHeaders"      : {},
 				// Disable Click jacking: X-Frame-Options: DENY OR SAMEORIGIN
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-				"frameOptions" : { "enabled" : true, "value" : "SAMEORIGIN" },
+				"frameOptions"       : { "enabled" : true, "value" : "SAMEORIGIN" },
 				// HTTP Strict Transport Security (HSTS)
 				// The HTTP Strict-Transport-Security response header (often abbreviated as HSTS)
 				// informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it
 				// using HTTP should automatically be converted to HTTPS.
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security,
-				"hsts"         : {
+				"hsts"               : {
 					"enabled"           : false,
 					// The time, in seconds, that the browser should remember that a site is only to be accessed using HTTPS, 1 year is the default
 					"max-age"           : "31536000",

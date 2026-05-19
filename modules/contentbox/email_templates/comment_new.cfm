@@ -12,7 +12,11 @@
 					image : "ok-circle.png",
 					text  : "Approve It"
 				},
-				{ href : "@deleteURL@", image : "minus-sign.png", text : "Delete It" },
+				{
+					href  : "@deleteURL@",
+					image : "minus-sign.png",
+					text  : "Delete It"
+				},
 				{
 					href  : "@commentURL@",
 					image : "comment-alt.png",

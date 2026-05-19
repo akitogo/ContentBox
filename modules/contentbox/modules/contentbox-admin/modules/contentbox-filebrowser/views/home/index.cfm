@@ -3,16 +3,15 @@
 Copyright since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
--------------------------------------------------------------------- ---> 
+-------------------------------------------------------------------- --->  
 <cfparam name="prc.fbPreferences.listFolder" default="all">
 <cfoutput>
-	<div class="panel panel-default" id="FileBrowser" >
-<!--- Panel Heading: Tool Bar ---> <div class="panel-heading" id="FileBrowser-heading">#html.startForm(
+	<div class="panel panel-default" id="FileBrowser" ><!--- Panel Heading: Tool Bar --->  <div class="panel-heading" id="FileBrowser-heading">#html.startForm(
 			name       = "filebrowser",
 			class      = "form-inline",
 			onkeypress = "return event.keyCode != 13;",
 			onsubmit   = "event.preventDefault();"
-		)##announce( "fb_preTitleBar" )#<!--- Tool Bar ---> <div class="btn-group btn-group-sm" role="group">
+		)##announce( "fb_preTitleBar" )# <div class="btn-group btn-group-sm" role="group">
 <a
 	href="javascript:fbRefresh()"
 	class="btn btn-more"
@@ -88,8 +87,7 @@ www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 	>
 		<i class="fa fa-camera fa-lg"></i>
 	</a>
-</div>
-<!--- Grid or listing ---> <div class="btn-group btn-group-sm" role="group">
+</div><!--- Grid or listing --->  <div class="btn-group btn-group-sm" role="group">
 <a
 	id="listingall"
 	href="javascript:fbListTypeChange( 'listing', 'all' )"
@@ -110,8 +108,7 @@ www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 	>
 		<i class="fa fa-th fa-lg"></i>
 	</a>
-</div>
-<!--- Grid or listing of Directories ---> 
+</div><!--- Grid or listing of Directories --->  
 <div class="btn-group btn-group-sm" role="group">
 	<a
 		id="listingdir"
@@ -133,37 +130,33 @@ www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 	>
 		<i class="fa fa-folder fa-lg"></i>
 	</a>
-</div>
-<!--- Sorting ---> <div class="form-group ml10">#html.label( field = "fbSorting",
+</div><!--- Sorting --->  <div class="form-group ml10">#html.label( field = "fbSorting",
 			content = $r( "sortby@fb" ) )##html.select(
 			name          = "fbSorting",
 			class         = "form-control",
 			options       = $r( "sortoptions@fb" ),
 			selectedValue = prc.fbPreferences.sorting
-		)#</div>
-<!--- Quick Filter ---> <div class="form-group pull-right">#html.textField(
+		)#</div><!--- Quick Filter --->  <div class="form-group pull-right">#html.textField(
 			name        = "fbQuickFilter",
 			class       = "form-control quicksearch",
 			placeholder = "Quick Filter"
-		)#</div>
-#html.hiddenField( name = "listType", value = prc.fbPreferences.listType )##html.hiddenField( name = "listFolder",
-			value = prc.fbPreferences.listFolder )##announce( "fb_postTitleBar" )##html.endForm()#</div><!--- Content ---> <div class="panel-body" id="FileBrowser-body">
-<!--- UploadBar ---> <div id="uploadBar">#announce( "fb_preUploadBar" )#
-<div class="row">
-	<div class="col-md-12">
+		)#</div>#html.hiddenField( name = "listType",
+			value = prc.fbPreferences.listType )##html.hiddenField( name = "listFolder",
+			value = prc.fbPreferences.listFolder )##announce( "fb_postTitleBar" )##html.endForm()#</div><!--- Content --->  <div class="panel-body" id="FileBrowser-body"><!--- UploadBar --->  <div id="uploadBar">#announce( "fb_preUploadBar" )#<div class="row">
+<div class="col-md-12">
 
-		<div class="controls" id="manual_upload_wrapper">
-               <div class="fileinput fileinput-new input-group" data-provides="fileinput" id="filewrapper">
+	<div class="controls" id="manual_upload_wrapper">
+              <div class="fileinput fileinput-new input-group" data-provides="fileinput" id="filewrapper">
 
-				<div class="form-control" data-trigger="fileinput" style="height:auto">
-					<i class="fa fa-file fileinput-exists"></i>
-					<span class="fileinput-filename"></span>
-				</div>
+			<div class="form-control" data-trigger="fileinput" style="height:auto">
+				<i class="fa fa-file fileinput-exists"></i>
+				<span class="fileinput-filename"></span>
+			</div>
 
-                   <span class="input-group-addon btn btn-default btn-file">
-                       <span class="fileinput-new">Select file</span>
-                       <span class="fileinput-exists">Change</span>
-					<input type="file" name="FILEDATA" id="file_uploader" />#html.hiddenField( name = "validated",
+                  <span class="input-group-addon btn btn-default btn-file">
+                      <span class="fileinput-new">Select file</span>
+                      <span class="fileinput-exists">Change</span>
+				<input type="file" name="FILEDATA" id="file_uploader" />#html.hiddenField( name = "validated",
 			value = "false" )##html.hiddenField( name = "overwrite", value = "false" )#</span>
 				<a
 					href="javascript:void(0)"
@@ -186,14 +179,9 @@ www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 		</button>
 	</div>
 
-</div>#announce( "fb_postUploadBar" )#</div>
-<!--- Uploader Message ---> <div id="uploaderHelp" class="rounded">#$r( "dragdrop@fb" )#</div>
-<!--- Upload Message Bar ---> <div id="fileUploaderMessage">#$r( "dropupload@fb" )#</div>
-<!--- File Listing SLOT ---> <div id="fileListing"></div><!--- end fileListing ---> 
-</div> <!--- Status Bar ---> <div class="panel-footer" id="FileBrowser-footer"><!--- The Bottom Bar ---> <div class="bottomBar">#announce( "fb_preBottomBar" )#<!--- Loader Bar ---> <div id="loaderBar" class="size14">
-<i class="fa fa-circle-o-notch fa-spin"></i> #$r( "common.loading@cbcore" )#</div>
-<!--- Status Text ---> <div id="statusText"></div>
-<!--- Selected Item & Type ---> <input type="hidden" name="selectedItem" id="selectedItem" value="">
+</div>#announce( "fb_postUploadBar" )#</div><!--- Uploader Message --->  <div id="uploaderHelp" class="rounded">#$r( "dragdrop@fb" )#</div><!--- Upload Message Bar --->  <div id="fileUploaderMessage">#$r( "dropupload@fb" )#</div><!--- File Listing SLOT --->  <div id="fileListing"></div><!--- end fileListing --->  
+</div> <!--- Status Bar --->  <div class="panel-footer" id="FileBrowser-footer"><!--- The Bottom Bar --->  <div class="bottomBar">#announce( "fb_preBottomBar" )#<!--- Loader Bar --->  <div id="loaderBar" class="size14">
+<i class="fa fa-circle-o-notch fa-spin"></i> #$r( "common.loading@cbcore" )#</div><!--- Status Text --->  <div id="statusText"></div><!--- Selected Item & Type --->  <input type="hidden" name="selectedItem" id="selectedItem" value="">
 <input type="hidden" name="selectedItemURL" id="selectedItemURL" value="">
 <input type="hidden" name="selectedItemID" id="selectedItemID" value="">
 <input type="hidden" name="selectedItemType" id="selectedItemType" value="file">
@@ -218,6 +206,7 @@ disabled="true"
 title="#$r( "choose.title@fb" )#">
 	</cfif>
 	
+	
 			</div>
 
 			#announce( "fb_postBottomBar" )#
@@ -235,14 +224,14 @@ title="#$r( "choose.title@fb" )#">
 >
 	<div class="modal-dialog">
 		<div class="modal-content" id="modalContent">
-			<!--- Header ---> 
+			<!--- Header --->  
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="categoryLabel">
 					<i class="fa fa-image"></i> Image preview
 				</h4>
 		    </div>
-			<!--- Create/Edit form ---> 
+			<!--- Create/Edit form --->  
 			<div class="modal-body">
 				<img src="" class="imagepreview img-scaled" style="" >
 			</div>

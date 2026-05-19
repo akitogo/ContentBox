@@ -61,11 +61,13 @@ component accessors="true" extends  ="BaseRenderer" {
 
 				// Detect Widget and Method Calls
 				if ( find( ".", widgetName ) ) {
-					oWidget = widgetService.getWidget( "#getToken(
+					oWidget = widgetService.getWidget(
+							"#getToken(
 								widgetName,
 								1,
 								"."
-							)#" );
+							)#"
+						);
 					oWidgetMethod = getToken(
 						widgetName,
 						2,

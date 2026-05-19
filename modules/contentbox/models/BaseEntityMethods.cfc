@@ -11,14 +11,8 @@ component {
 	 * **						GLOBAL DI
 	 **********************************************************************/
 
-	property
-		name="coldbox"
-		inject="provider:coldbox"
-		persistent="false";
-	property
-		name="cachebox"
-		inject="provider:cachebox"
-		persistent="false";
+	property name="coldbox" inject="provider:coldbox" persistent="false";
+	property name="cachebox" inject="provider:cachebox" persistent="false";
 	property
 		name="interceptorService"
 		inject="provider:coldbox:interceptorService"
@@ -242,7 +236,7 @@ component {
 			);
 
 		// Include the helper
-		include template="#targetLocation#";
+		include template="#template = "#targetLocation#"#";
 
 		return this;
 	}

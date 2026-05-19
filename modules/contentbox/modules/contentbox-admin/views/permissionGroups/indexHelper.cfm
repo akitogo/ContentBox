@@ -18,6 +18,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 		$importDialog 	= $( "##importDialog" );
 	</cfif>
 	
+	
 
 	// table sorting + filtering
 	$( "##groupFilter" ).keyup(
@@ -29,6 +30,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
@@ -52,6 +54,8 @@ function exportSelected( exportEvent ){
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- latest edits ---> <table
+	<!--- latest edits --->  <table
 name="contentTable-#args.viewletID#"
 id="contentTable-#args.viewletID#"
 	class="table table-hover  table-striped-removed"
@@ -22,11 +22,13 @@ id="contentTable-#args.viewletID#"
 </th>
 	</cfif>
 	
+	
 
 			<th width="100" class="text-center">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
+
 
 	<cfloop array="#args.aContent#" index="thisContent">
 		<tr id="contentID-#thisContent.getContentID()#" data-contentID="#thisContent.getContentID()#"
@@ -40,28 +42,32 @@ id="contentTable-#args.viewletID#"
 			</cfif>
 		</cfif>
 		
+		
 		>
-			<!--- ***************************************************************************** ---> 
+			<!--- ***************************************************************************** --->  
 			<td>
 
+
 		<cfif thisContent.getContentType() EQ "page">
-			<!--- Edit ---> <a href="#event.buildLink( prc.xehPagesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Page">#thisContent.getTitle()#</a><!--- Label ---> <div class="mt5">
+			<!--- Edit --->  <a href="#event.buildLink( prc.xehPagesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Page">#thisContent.getTitle()#</a><!--- Label --->  <div class="mt5">
 <span class="label label-success">#thisContent.getContentType()#</span>
 </div>
 		<cfelseif thisContent.getContentType() EQ "contentStore">
-			<!--- Edit ---> <a href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#thisContent.getContentID()#" title="Edit ContentStore">#thisContent.getTitle()#</a><!--- Label ---> <div class="mt5">
+			<!--- Edit --->  <a href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#thisContent.getContentID()#" title="Edit ContentStore">#thisContent.getTitle()#</a><!--- Label --->  <div class="mt5">
 <span class="label label-default">#thisContent.getContentType()#</span>
 </div>
 		<cfelse>
-			<!--- Edit ---> <a href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Entry">#thisContent.getTitle()#</a><!--- Label ---> <div class="mt5">
+			<!--- Edit --->  <a href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Entry">#thisContent.getTitle()#</a><!--- Label --->  <div class="mt5">
 <span class="label label-info">#thisContent.getContentType()#</span>
 </div>
 		</cfif>
 		
+		
 			</td>
 
-			<!--- ***************************************************************************** ---> 
+			<!--- ***************************************************************************** --->  
 			<td>
+
 
 		<cfif args.showAuthor>
 			#getInstance( "Avatar@contentbox" ).renderAvatar(
@@ -73,6 +79,7 @@ id="contentTable-#args.viewletID#"
 		</cfif>
 		#thisContent.getActiveContent().getDisplayCreatedDate()#
 			</td>
+
 
 
 		<cfif args.showPublishedStatus>
@@ -87,9 +94,9 @@ id="contentTable-#args.viewletID#"
 <span class="badge badge-info">#thisContent.getNumberOfHits()#</span>
 </td>
 		</cfif>
-		<!--- ***************************************************************************** ---> 
+		<!--- ***************************************************************************** --->  
 			<td class="text-center">
-				<!--- Page Actions ---> 
+				<!--- Page Actions --->  
 				<div class="btn-group btn-group-sm">
 					<button
 						class="btn btn-icon btn-more dropdown-toggle"
@@ -103,6 +110,7 @@ id="contentTable-#args.viewletID#"
 					<ul class="dropdown-menu text-left pull-right">
 
 
+
 		<cfif listFindNoCase( "page,entry", thisContent.getContentType() )>
 			<li>
 <a 	class=""
@@ -113,8 +121,9 @@ id="contentTable-#args.viewletID#"
 	</a>
 </li>
 		</cfif>
-		<!--- Edit ---> 
+		<!--- Edit --->  
 						<li>
+
 
 		<cfset targetEditor = prc.xehEntriesEditor>
 		<cfif thisContent.getContentType() EQ "page">
@@ -122,6 +131,7 @@ id="contentTable-#args.viewletID#"
 		<cfelseif thisContent.getContentType() EQ "contentStore">
 			<cfset targetEditor = prc.xehContentStoreEditor>
 		</cfif>
+		
 		
 							<a
 								href="#event.buildLink( targetEditor )#/contentID/#thisContent.getContentID()#"
@@ -134,10 +144,13 @@ id="contentTable-#args.viewletID#"
 			</td>
 		</tr>
 
+
 	</cfloop>
+	
 	
 	</tbody>
 </table>
+
 
 
 	<cfif !arrayLen( args.aContent )>

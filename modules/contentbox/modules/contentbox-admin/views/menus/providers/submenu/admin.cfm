@@ -10,13 +10,17 @@
 		<cfif args.existingSlug EQ menu.getSlug()>
 			selected=true
 		</cfif>
+		
 		>#menu.getTitle()#</option>
 
+
 	</cfloop>
+	
 	
                 </select>
             </div>
         </div>
     </div>
+
 
 </cfoutput>

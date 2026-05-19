@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- count ---> <input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#"><!--- authors ---> <table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
+	<!--- count --->  <input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#"><!--- authors --->  <table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
 <thead>
 	<tr>
 		<th id="checkboxHolder" class="{sorter:false} text-center" width="15">
@@ -19,8 +19,9 @@
 			class="danger"
 		</cfif>
 		
+		
 			data-authorID="#author.getAuthorID()#" >
-			<!--- check box ---> 
+			<!--- check box --->  
 			<td class="text-center">
 				<input type="checkbox" name="authorID" id="authorID" value="#author.getAuthorID()#" />
 			</td>
@@ -33,8 +34,9 @@
 			)#
 				</div>
 
-				<!--- Display Link if Admin Or yourself ---> 
+				<!--- Display Link if Admin Or yourself --->  
 				<div>
+
 
 		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
 			prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
@@ -48,6 +50,7 @@
 		<cfif author.getIs2FactorAuth()>
 			<i class="fa fa-mobile fa-lg" title="2 Factor Auth Enabled"></i>
 		</cfif>
+		
 		
 
 					<div class="mt5">
@@ -67,13 +70,14 @@
 			</td>
 
 			<td class="text-center">
-				<!--- Actions ---> 
+				<!--- Actions --->  
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="User Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 						<span class="visually-hidden">User Actions</span>
 					</button>
 			    	<ul class="dropdown-menu text-left pull-right">
+
 
 		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
 			prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
@@ -97,12 +101,13 @@
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command ---> 
+			<!--- Edit Command --->  
 							<li>
 								<a href="#event.buildLink( prc.xehAuthorEditor )#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">
 									<i class="fas fa-pen fa-lg"></i> Edit
 								</a>
 							</li>
+
 
 
 			<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
@@ -122,15 +127,19 @@
 			<li><a href="javascript:void(0)"><em>No available actions</em></a></li>
 		</cfif>
 		
+		
 			    	</ul>
 			    </div>
 			</td>
 		</tr>
 
+
 	</cfloop>
+	
 	
 	</tbody>
 </table>
+
 
 
 	<cfif !rc.showAll>

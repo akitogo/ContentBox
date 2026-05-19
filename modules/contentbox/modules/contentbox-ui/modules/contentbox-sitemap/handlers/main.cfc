@@ -45,7 +45,9 @@ component {
 		if ( cacheEnabled ) {
 			// Get appropriate cache provider from settings
 			var cache = cacheBox.getCache( prc.cbSettings.cb_content_cacheName );
-			var cacheKey = "cb-content-sitemap-#cgi.HTTP_HOST##hash( ".#rc.format#.#event.isSSL()##prc.cbox_incomingContextHash#" )#";
+			var cacheKey = "cb-content-sitemap-#cgi.HTTP_HOST##hash(
+				".#rc.format#.#event.isSSL()##prc.cbox_incomingContextHash#"
+			)#";
 
 			// get content data from cache
 			var results = cache.get( cacheKey );
@@ -145,7 +147,7 @@ component {
 			default: {
 				event.setView( "sitemap_html" );
 				return {
-					data        : layout(
+					data : layout(
 						module     = event.getCurrentLayoutModule(),
 						viewModule = event.getCurrentViewModule()
 					),

@@ -83,7 +83,7 @@ component {
 			"security" : [ { "ApiKeyAuth" : [] }, { "ApiKeyQueryAuth" : [] }, { "BearerAuth" : [] }],
 			// A list of tags used by the specification with additional metadata.
 			// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#tagObject
-			"tags" : [
+			"tags"     : [
 				{ "name" : "Authors", "description" : "Author operations" },
 				{
 					"name"        : "Authentication",

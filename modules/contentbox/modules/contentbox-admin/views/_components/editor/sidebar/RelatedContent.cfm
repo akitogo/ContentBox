@@ -37,6 +37,7 @@
 				<i class="fa fa-hdd icon-small" title="ContentStore"></i>
 			</cfif>
 			
+			
 							</td>
 							<td class="#publishedClass#">#content.getTitle()#</td>
 							<td width="14" class="center #publishedClass#">
@@ -45,7 +46,9 @@
 							</td>
 						</tr>
 
+
 		</cfloop>
+		
 		
 				</tbody>
 			</table>
@@ -57,9 +60,11 @@
 	<script>
 		document.addEventListener( "DOMContentLoaded", () => {
 
+
 		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
 			var currentContentID = "#rc.contentID#";
 		</cfif>
+		
 		
 			// listener for add button
 			$( '##add-related-content' ).on( 'click', function() {
@@ -149,6 +154,7 @@
 		}
 	</script>
 </div>
+
 
 	<cfelse>
 		#html.hiddenField( name = "relatedContentIDs", value = prc.relatedContentIDs )#

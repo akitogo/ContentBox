@@ -164,7 +164,7 @@ component {
 		variables.coldbox.customErrorTemplate = "/coldbox/system/exceptions/Whoops.cfm";
 
 		// No Singletons for easy testing
-		//variables.wirebox = {// singletonReload : true};
+		// variables.wirebox = {// singletonReload : true};
 
 		// debugging file
 		variables

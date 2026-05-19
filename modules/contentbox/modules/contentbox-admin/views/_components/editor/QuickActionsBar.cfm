@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Back Button ---> <button
+	<!--- Back Button --->  <button
 type="button"
 class="btn btn-link"
 	<cfif len( prc.parentContentID )>
@@ -8,11 +8,13 @@ class="btn btn-link"
 		onclick="location.href='#event.buildLink( prc.xehContentList )#'"
 	</cfif>
 	
+	
 	>
 		#cbAdminComponent( "ui/Icon", { name : "ArrowLeftCircle" } )#
 		Back
 	</button>
 	
+
 
 	<cfif prc.oContent.isLoaded()>
 		<div class="btn-group">
@@ -21,8 +23,7 @@ class="btn btn-link"
 	data-toggle="dropdown"
 	title="Quick Actions"
 >#cbAdminComponent( "ui/Icon", { name : "EllipsisHorizontalCircle" } )#Actions#cbAdminComponent( "ui/Icon",
-			{ name : "ChevronDown", size : "sm" } )#
-</button>
+			{ name : "ChevronDown", size : "sm" } )#</button>
 <ul class="dropdown-menu">
 	<li>
 		<a href="#prc.CBHelper.linkContent( prc.oContent )#" target="_blank">

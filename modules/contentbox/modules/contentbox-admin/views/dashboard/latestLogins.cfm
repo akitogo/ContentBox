@@ -14,7 +14,9 @@
 </tr>
 	</cfloop>
 	
+	
 	</tbody>
 </table>
+
 
 </cfoutput>

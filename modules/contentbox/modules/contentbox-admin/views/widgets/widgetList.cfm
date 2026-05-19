@@ -1,7 +1,5 @@
 <cfoutput>
-	<div id="widget-container">
-<!--- Filter ---> <div class="well well-sm">
-<!--- Filter ---> <div class="form-group m0">
+	<div id="widget-container"><!--- Filter --->  <div class="well well-sm"><!--- Filter --->  <div class="form-group m0">
 		<div class="input-group input-group-sm m0">
 			<input
 				name="widgetFilter"
@@ -24,8 +22,7 @@
 
 </div>
 
-<div class="tabs tabs-left">
-<!--- Navigation Bar ---> <ul class="nav nav-tabs" id="widget-sidebar"><!--- All Tab ---> <li class="nav-item active">
+<div class="tabs tabs-left"><!--- Navigation Bar --->  <ul class="nav nav-tabs" id="widget-sidebar"><!--- All Tab --->  <li class="nav-item active">
 <a href="##widget-store" class="nav-link current flex justify-between" data-toggle="tab">
 	<span class="categoryName">
 		All
@@ -48,16 +45,19 @@
 		</cfif>
 	</cfloop>
 	
+	
 		</ul>
 
 
+
 	<cfset aWidgetErrors = []>
-	<!--- Tab Content ---> 
+	<!--- Tab Content --->  
 		<div class="tab-content">
 			<div class="widget-store full tab-pane active">
 
-				<!--- Row ---> 
+				<!--- Row --->  
 				<div class="row">
+
 
 
 	<cfloop query="prc.widgets">
@@ -120,23 +120,26 @@ Error loading widget: #widgetName#<br>
 		<cfelse>
 			<div class="panel-heading">
 			<cfif args.mode EQ "edit">
-				<div class="btn-group btn-group-sm actions"><!--- read docs ---> <a data-toggle="tooltip" data-container="body" data-placement="left" title="Read Widget Documentation" class="btn btn-sm btn-info" href="javascript:openRemoteModal('#event.buildLink( prc.xehWidgetDocs )#',{widget:'#urlEncodedFormat( widgetName )#',type:'#urlEncodedFormat( prc.widgets.widgettype )#'} )">
+				<div class="btn-group btn-group-sm actions"><!--- read docs --->  <a data-toggle="tooltip" data-container="body" data-placement="left" title="Read Widget Documentation" class="btn btn-sm btn-info" href="javascript:openRemoteModal('#event.buildLink( prc.xehWidgetDocs )#',{widget:'#urlEncodedFormat( widgetName )#',type:'#urlEncodedFormat( prc.widgets.widgettype )#'} )">
 	<i class="fa fa-book fa-lg"></i>
 </a>
 				<cfif prc.oCurrentAuthor.hasPermission( "WIDGET_ADMIN" )>
-					<!--- Test ---> <a title="Test Widget" data-container="body" class="btn btn-sm btn-info"
+					<!--- Test --->  <a title="Test Widget" data-container="body" class="btn btn-sm btn-info"
 href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 	<i class="fa fa-bolt fa-lg"></i>
 </a>
 					<cfif prc.widgets.widgettype EQ "custom">
-						<!--- Delete Command ---> <a title="Delete Widget" data-container="body"  href="javascript:remove('#JSStringFormat( widgetName )#')" class="confirmIt btn btn-sm btn-danger" data-title="Delete #widgetName#?">
+						<!--- Delete Command --->  <a title="Delete Widget" data-container="body"  href="javascript:remove('#JSStringFormat( widgetName )#')" class="confirmIt btn btn-sm btn-danger" data-title="Delete #widgetName#?">
 	<i class="fa fa-trash fa-lg"></i>
 </a>
 					</cfif>
 				</cfif>
 				
+				
 											</div>
+
 			</cfif>
+			
 			
 										<h3 class="panel-title p5">
 											#oWidget.getName()#
@@ -156,26 +159,32 @@ href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 										<span class="pull-right label label-primary">#prc.widgets.widgettype#</span>
 									</div>
 
+
 		</cfif>
 		
+		
 							</div>
-							<!--- end widget-content ---> 
+							<!--- end widget-content --->  
 						</div>
+
 
 	</cfloop>
 	
+	
 
 				</div>
-				<!--- Errors ---> 
+				<!--- Errors --->  
 				<div class="row">
+
 
 	<cfloop array="#aWidgetErrors#" index="widgetError">
 		#widgetError#
 	</cfloop>
 	
+	
 				</div>
 
-				<!--- No Records ---> 
+				<!--- No Records --->  
 				<div id="widgetCountAlert" class="alert alert-warning" style="display:none;">
 					Sorry, no widgets matched your search!
 				</div>
@@ -183,5 +192,6 @@ href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 		</div>
 	</div>
 </div>
+
 
 </cfoutput>

@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS ---> <script>
+	<!--- Custom JS --->  <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$( "##roles" ).dataTable( {
 		"paging": false,
@@ -18,6 +18,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 		$importDialog = $( "##importDialog" );
 	</cfif>
 	
+	
 
 	// table sorting + filtering
 	$( "##roleFilter" ).keyup(
@@ -29,6 +30,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
+
 
 	<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		function remove( roleID ){
@@ -53,6 +55,8 @@ function exportSelected( exportEvent ){
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

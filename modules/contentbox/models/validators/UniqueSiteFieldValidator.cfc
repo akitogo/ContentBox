@@ -62,7 +62,7 @@ component accessors="true" singleton {
 		// validate uniqueness
 		if ( c.count() GT 0 ) {
 			var args = {
-				message        : "The '#arguments.field#' value '#arguments.targetValue#' is not unique for the site '#arguments
+				message : "The '#arguments.field#' value '#arguments.targetValue#' is not unique for the site '#arguments
 					.target
 					.getSite()
 					.getName()#' in the database",

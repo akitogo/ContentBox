@@ -7,6 +7,7 @@
 		<i class="fa fa-chevron-right fa-sm"></i> Search:#encodeForHTML( searchComments )#
 	</cfif>
 	
+	
 		</h1>
     </div>
 </div>
@@ -21,6 +22,7 @@
 	Comments are currently disabled site-wide!
 </div>
 	</cfif>
+	
 	
     </div>
 </div>
@@ -37,7 +39,7 @@
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Filter ---> 
+						<!--- Quick Filter --->  
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
@@ -48,8 +50,9 @@
 							</div>
 						</div>
 
-						<!--- Bulk Actions ---> 
+						<!--- Bulk Actions --->  
 						<div class="col-md-6 col-xs-8">
+
 
 	<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
 		<div class="text-right">
@@ -87,12 +90,13 @@
 </div>
 	</cfif>
 	
+	
 						</div>
 					</div>
 				</div>
 
 				<div class="panel-body">
-					<!--- comments table ---> 
+					<!--- comments table --->  
 					<table
 						name="comments"
 						id="comments"
@@ -117,13 +121,15 @@
 
 						<tbody>
 
+
 	<cfloop array="#prc.comments#" index="comment">
 		<tr
 		<cfif !comment.getIsApproved()>
 			class="danger"
 		</cfif>
+		
 		 data-commentID="#comment.getCommentID()#">
-								<!--- Delete Checkbox with PK ---> 
+								<!--- Delete Checkbox with PK --->  
 								<td class="text-center">
 									<input type="checkbox" name="commentID" id="commentID" value="#comment.getCommentID()#" />
 								</td>
@@ -141,6 +147,7 @@
 									<br/>
 
 
+
 		<cfif len( comment.getAuthorURL() )>
 			<div class="ml5 mt10">
 <i class="fa fa-globe"></i>
@@ -154,10 +161,13 @@
 				...
 			</cfif>
 			
+			
 											</a>
 										</div>
 
+
 		</cfif>
+		
 		
 
 									<div class="ml5 mt10">
@@ -166,12 +176,14 @@
 									</div>
 
 
+
 		<cfif len( comment.getauthorIP() )>
 			<div class="ml5 mt10">
 <i class="fa fa-laptop"></i>
 <a href="#prc.cbSettings.cb_comments_whoisURL#=#comment.getAuthorIP()#" title="Get IP Information" target="_blank">#comment.getauthorIP()#</a>
 </div>
 		</cfif>
+		
 		
 
 								</td>
@@ -191,10 +203,12 @@
 			....<strong>more</strong>
 		</cfif>
 		
+		
 									</div>
 								</td>
 
 								<td class="text-center">
+
 
 		<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
 			<div class="flex">
@@ -204,19 +218,20 @@
 				<a class="btn btn-icon btn-sm btn-default" href="javascript:changeStatus('moderate','#comment.getCommentID()#')" title="Unapprove"><i id="status_#comment.getCommentID()#" class="fa fa-thumbs-down fa-lg"></i></a>
 			</cfif>
 			
+			
 											<div class="btn-group">
 												<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" href="##" title="Actions">
 													<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 													<span class="visually-hidden">Actions</span>
 												</button>
 												<ul class="dropdown-menu text-left pull-right">
-													<!--- Edit Command ---> 
+													<!--- Edit Command --->  
 													<li>
 														<a href="javascript:openRemoteModal('#event.buildLink( prc.xehCommentEditor )#',{commentID:'#comment.getCommentID()#'} );" title="Edit Comment">
 															<i class="fas fa-pen fa-lg"></i> Edit
 														</a>
 													</li>
-													<li><!--- Delete Command ---> 
+													<li><!--- Delete Command --->  
 														<a title="Delete Comment Permanently" href="javascript:remove('#comment.getCommentID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Comment?">
 															<i id="delete_#comment.getCommentID()#" class="fa fa-trash fa-lg"></i> Delete
 														</a>
@@ -230,12 +245,16 @@
 											</div>
 										</div>
 
+
 		</cfif>
+		
 		
 								</td>
 							</tr>
 
+
 	</cfloop>
+	
 	
 						</tbody>
 					</table>
@@ -254,9 +273,11 @@
 		        <h3 class="panel-title"><i class="fa fa-search"></i> Search</h3>
 		    </div>
 		    <div class="panel-body
+
 	<cfif len( rc.searchComments )>
-		 selected
+		selected
 	</cfif>
+	
 	">
 		    	#html.startForm(
 			name   = "commentSearchForm",
@@ -287,9 +308,11 @@
 		        <h3 class="panel-title"><i class="fa fa-filter"></i> Filters</h3>
 		    </div>
 		    <div class="panel-body
+
 	<cfif rc.isFiltering>
-		 selected
+		selected
 	</cfif>
+	
 	">
 		    	#html.startForm(
 			name   = "commentFilterForm",
@@ -298,23 +321,29 @@
 			method = "get"
 		)#
 			    	<div class="form-group">
-			    		<!--- Status ---> 
+			    		<!--- Status --->  
 						<label for="fStatus">Comment Status: </label>
 						<select name="fStatus" id="fStatus" class="form-control input-sm">
 							<option value="any"
+
 	<cfif rc.fStatus EQ "any">
 		selected="selected"
 	</cfif>
+	
 	>Any Status (#prc.countApproved + prc.countUnApproved#)</option>
 							<option value="true"
+
 	<cfif rc.fStatus EQ "true">
 		selected="selected"
 	</cfif>
+	
 	>Approved (#prc.countApproved#)</option>
 							<option value="false"
+
 	<cfif rc.fStatus EQ "false">
 		selected="selected"
 	</cfif>
+	
 	>Moderated (#prc.countUnApproved#)</option>
 						</select>
 			    	</div>
@@ -328,5 +357,6 @@
 		</div>
 	</div>
 </div>
+
 
 </cfoutput>

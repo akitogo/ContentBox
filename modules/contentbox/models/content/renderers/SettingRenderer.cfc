@@ -68,8 +68,7 @@ component accessors="true" extends  ="BaseRenderer" {
 							name    = listLast( thisSetting, ":" ),
 							private = ( listFirst( thisSetting, ":" ) EQ "rc" ? false : true )
 						);
-				} else // Do we have i18n?
-				if ( reFindNoCase( "^i18n\:", thisSetting ) ) {
+				} else if ( reFindNoCase( "^i18n\:", thisSetting ) ) { // Do we have i18n?
 					var resource = listLast( thisSetting, ":" );
 					var bundle = "default";
 					// check for resource@bundle convention:
@@ -78,8 +77,7 @@ component accessors="true" extends  ="BaseRenderer" {
 						resource = listFirst( resource, "@" );
 					}
 					thisValue = variables.cbResourceService.getResource( resource = resource, bundle = bundle );
-				} else // Normal Setting
-				{
+				} else { // Normal Setting
 					thisValue = settingService.getSetting(
 							name         = thisSetting,
 							defaultValue = "${Setting: #thisSetting# not found}"

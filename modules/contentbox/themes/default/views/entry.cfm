@@ -10,29 +10,32 @@
 		</cfif>
 	</cfif>
 	
+	
 <div id="body-header" style="#bodyHeaderStyle#">
 	<div class="container">
-		<!--- Title ---> 
+		<!--- Title --->  
 		<div class="underlined-title">
 			<h1 style="#bodyHeaderH1Style#">#prc.entry.getTitle()#</h1>
 		</div>
 	</div>
 </div>
 
-<!--- Body Main ---> 
+<!--- Body Main --->  
 <section id="body-main">
 	<div class="container">
 		<div class="row">
 			<div class="
+
 	<cfif args.sidebar>
 		col-sm-9
 	<cfelse>
 		col-sm-12
 	</cfif>
+	
 	">
 				#cb.event( "cbui_preEntryDisplay" )#
 	<cfif !args.print && !isNull( "prc.entry" )>
-		<!--- Exports ---> <div class="btn-group pull-right">
+		<!--- Exports --->  <div class="btn-group pull-right">
 <button
 	type="button"
 	class="btn btn-success btn-sm dropdown-toggle"
@@ -53,13 +56,13 @@
 	</ul>
 </div>
 	</cfif>
-	<!--- post ---> 
+	<!--- post --->  
 				<div class="post" id="post_#prc.entry.getContentID()#">
 
-					<!--- Title ---> 
+					<!--- Title --->  
 					<div class="post-title">
 
-						<!--- Title ---> 
+						<!--- Title --->  
 						<h2>
 							<a
 								href="#cb.linkEntry( prc.entry )#"
@@ -74,7 +77,7 @@
 							on <i class="fa fa-calendar"></i> #prc.entry.getDisplayPublishedDate()#
 						 	| <i class="fa fa-comment"></i> <a href="#cb.linkEntry( prc.entry )###comments" title="View Comments"> #prc.entry.getNumberOfApprovedComments()# Comments</a>
 							<i class="fa fa-tags"></i> #cb.quickCategoryLinks( prc.entry )#
-						</p> ---> 
+						</p> --->  
 
 						<div class="row">
 							<div class="col-sm-7 pull-left">
@@ -87,7 +90,7 @@
 							</div>
 						</div>
 
-						<!--- content ---> 
+						<!--- content --->  
 						<div class="post-content">
 							#prc.entry.renderContent()#
 						</div>
@@ -104,10 +107,10 @@
 					</div>
 
 
+
 	<cfif !args.print>
 		
-<p>&nbsp;</p>
-#html.anchor( name = "comments" )#<div class="post-comments">
+<p>&nbsp;</p>#html.anchor( name = "comments" )#<div class="post-comments">
 <div class="infoBar">
 		<cfif !cb.isCommentsEnabled( prc.entry )>
 			<i class="icon-warning-sign icon-2x"></i>
@@ -120,13 +123,14 @@ Comments are currently closed
 </p>
 		</cfif>
 		
+		
 							</div>
 						</div>
 
-						<!--- Separator ---> 
+						<!--- Separator --->  
 						<div class="separator"></div>
 
-						<!--- Comment Form: I can build it or I can quick it? ---> 
+						<!--- Comment Form: I can build it or I can quick it? --->  
 						<div id="commentFormShell">
 							<div class="row">
 								<div class="col-sm-12">
@@ -135,12 +139,14 @@ Comments are currently closed
 							</div>
 						</div>
 
+
 	</cfif>
+	
 	
 
 					<hr>
 
-					<!--- Display Comments ---> 
+					<!--- Display Comments --->  
 					<div id="comments">
 						<div class="row">
 							<div class="col-sm-9">
@@ -156,23 +162,28 @@ Comments are currently closed
 			</div>
 
 
+
 	<cfif args.sidebar>
 		<div class="col-sm-3" id="blog-sidenav">#cb.quickView( view = "_blogsidebar", args = args )#</div>
 	</cfif>
+	
 	
 		</div>
 	</div>
 </section>
 
-<!--- Custom JS ---> 
+<!--- Custom JS --->  
 <script type="text/javascript">
 	document.addEventListener( "DOMContentLoaded", () => {
+
 
 	<cfif !cb.isCommentFormError()>
 		toggleCommentForm();
 	</cfif>
 	
+	
 	});
 </script>
+
 
 </cfoutput>

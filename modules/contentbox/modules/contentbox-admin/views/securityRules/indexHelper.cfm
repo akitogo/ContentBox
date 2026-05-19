@@ -61,7 +61,9 @@ onDrop : function( table, row ){
 } );
 	</cfif>
 	
+	
 } );
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "SECURITYRULES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
@@ -89,6 +91,8 @@ function exportSelected( exportEvent ){
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

@@ -200,9 +200,9 @@ component extends="tests.resources.BaseApiTest" {
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog     : "My first creation from the bdd test",
-															categories    : "coldbox,news",
-															customFields  : [
+															changelog    : "My first creation from the bdd test",
+															categories   : "coldbox,news",
+															customFields : [
 																{ key : "test", value : "true" },
 																{ key : "data", value : "#now()#" }
 															]
@@ -373,9 +373,9 @@ component extends="tests.resources.BaseApiTest" {
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog     : "My first creation from the bdd test",
-															site          : variables.siteService.getDefaultSite(),
-															creator       : variables.loggedInData.user
+															changelog : "My first creation from the bdd test",
+															site      : variables.siteService.getDefaultSite(),
+															creator   : variables.loggedInData.user
 														}
 													)
 											);
@@ -407,6 +407,7 @@ component extends="tests.resources.BaseApiTest" {
 			}
 		); // end describe
 	}
+
 
 	// end run
 }

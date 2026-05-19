@@ -1158,8 +1158,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 					logThis(
 						"+ Related content (#thisRelatedContent.slug#) already imported, linking to : (#thisContent.contentType#:#thisContent.slug#)"
 					);
-				} else // otherwise, we need to get it
-				{
+				} else { // otherwise, we need to get it
 					var oRelatedContent = getServiceByType( thisRelatedContent.contentType ).findWhere(
 							{
 								"slug" : thisRelatedContent.slug,
@@ -1263,9 +1262,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 										composeRelationships = false
 									);
 								var oEditor = variables.authorService.findByEmail( thisVersion.author.email );
-								return oVersion.setAuthor( isNull( oEditor )
-											? oAuthor
-											: oEditor ).setRelatedContent( oContent );
+								return oVersion.setAuthor(
+										isNull( oEditor ) ? oAuthor : oEditor
+									).setRelatedContent( oContent );
 							}
 						)
 				);

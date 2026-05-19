@@ -36,11 +36,7 @@ component
 		update="false";
 	property name="content" ormtype="text" notnull="true";
 	property name="author" length="100" notnull="true";
-	property
-		name="authorIP"
-		column="authorIP"
-		length="100"
-		notnull="true";
+	property name="authorIP" column="authorIP" length="100" notnull="true";
 	property
 		name="authorEmail"
 		column="authorEmail"
@@ -123,11 +119,13 @@ component
 	 * Render the comment using markdown and encoding it for HTML output
 	 */
 	string function getDisplayContent() {
-		return variables.markdown.toHTML( getContent().reReplace(
+		return variables.markdown.toHTML(
+				getContent().reReplace(
 						"##{1,6}\s",
 						"",
 						"all"
-					) );
+					)
+			);
 	}
 
 	/**

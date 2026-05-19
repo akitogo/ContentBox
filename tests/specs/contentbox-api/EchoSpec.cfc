@@ -5,6 +5,7 @@ component extends="tests.resources.BaseApiTest" {
 	function beforeAll() {
 		super.beforeAll();
 
+
 		// do your own stuff here
 	}
 

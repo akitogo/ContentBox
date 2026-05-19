@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS ---> <script>
+	<!--- Custom JS --->  <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// quick look
 	$( "##comments_pager" )
@@ -63,6 +63,7 @@ function( data ){
 }
 	</cfif>
 	
+	
 function commentPagerLink( page ){
 	$( "##commentsPagerLoader" ).fadeIn( "fast" );
 	$('##pagerComments')
@@ -82,5 +83,6 @@ function commentPagerLink( page ){
 		);
 }
 </script>
+
 
 </cfoutput>

@@ -134,7 +134,7 @@ component implements="ICBImporter" {
 						q.dt_posted[ x ] / 1000,
 						baseDate
 					),
-					createdDate   : dateAdd(
+					createdDate : dateAdd(
 						"s",
 						q.dt_created[ x ] / 1000,
 						baseDate

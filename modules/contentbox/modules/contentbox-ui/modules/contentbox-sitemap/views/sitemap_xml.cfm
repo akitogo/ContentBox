@@ -19,7 +19,9 @@
 </image:image>
 		</cfif>
 		
+		
 	</url>
+
 
 	</cfloop>
 	<cfif !prc.disableBlog>
@@ -40,11 +42,15 @@
 </image:image>
 			</cfif>
 			
+			
 	   		</url>
+
 
 		</cfloop>
 	</cfif>
 	
+	
 </urlset>
+
 
 </cfoutput>

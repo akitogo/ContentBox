@@ -177,7 +177,9 @@
 		</cfdefaultcase>
 	</cfswitch>
 	
+	
         </svg>
     </icon>
+
 
 </cfoutput>

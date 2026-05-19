@@ -7,11 +7,10 @@
 		)##html.hiddenField( name = "authorID", bind = prc.author )##html.hiddenField(
 			name  = "relocationURL",
 			value = event.buildLink( prc.xehTwoFactorRelocation )
-		)#
-<fieldset>
-	<p>
-		Increase your account's security by enabling Two-Factor Authentication (2FA).
-	</p>
+		)#<fieldset>
+<p>
+	Increase your account's security by enabling Two-Factor Authentication (2FA).
+</p>
 
 	<cfif prc.cbSettings.cb_security_2factorAuth_force>
 		<div class="alert alert-warning">
@@ -31,20 +30,23 @@
 			<span class="label label-danger">Not Enrolled</span>
 		</cfif>
 		
+		
 				</div>
 
+
 	</cfif>
-	<!--- Provider Name ---> 
+	<!--- Provider Name --->  
 			<div class="form-group">
 				<label>Provider: </label>
 				<span class="label label-info">#prc.twoFactorProvider.getDisplayName()#</span><br/>
 			</div>
 
-			<!--- Provider Setup Help ---> 
+			<!--- Provider Setup Help --->  
 			<div class="form-group">
 				<label>Provider Instructions: </label><br>
 				#prc.twoFactorProvider.getAuthorSetupHelp( prc.author )#
             </div>
+
 
 
 	<cfif len( prc.twoFactorProvider.getAuthorSetupForm( prc.author ) )>
@@ -60,6 +62,7 @@
 	#announce( "cbadmin_onAuthorTwoFactorOptions" )#
 
 		</fieldset>
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
@@ -80,11 +83,14 @@
 				)#
 		</cfif>
 		
+		
             </div>
 		</div>
+
 
 	</cfif>
 	#html.endForm()#
 </div>
+
 
 </cfoutput>

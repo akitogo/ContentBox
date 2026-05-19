@@ -76,12 +76,14 @@ component extends="baseHandler" {
 		// get widget
 		var widget = WidgetService.getWidget( name = rc.widgetname, type = rc.widgettype );
 		try {
-			event.renderData( data = invoke(
+			event.renderData(
+					data = invoke(
 						widget,
 						rc.widgetudf,
 						rc
 					),
-					type = "html" );
+					type = "html"
+				);
 		} catch (any e) {
 			log.error( "Error rendering widget: #e.message# #e.detail#", e );
 			event.renderData(
@@ -117,10 +119,10 @@ component extends="baseHandler" {
 					"@"
 				)
 				: "",
-			category   : !isNull( widget.getCategory() )
+			category : !isNull( widget.getCategory() )
 				? widget.getCategory()
 				: rc.widgetType == "Core" ? "Miscellaneous" : rc.widgetType,
-			icon       : !isNull( widget.getIcon() ) ? widget.getIcon() : ""
+			icon : !isNull( widget.getIcon() ) ? widget.getIcon() : ""
 		};
 		// get its metadata
 		prc.metadata = widget.getPublicMethods();

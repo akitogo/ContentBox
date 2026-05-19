@@ -8,11 +8,13 @@ component extends="coldbox.system.EventHandler" {
 	 * Pre handler
 	 */
 	function preHandler( event, currentAction, rc, prc ) {
-		prc.activeDisk = cbfs().get( variables
+		prc.activeDisk = cbfs().get(
+				variables
 						.cb
 						.site()
 						.getMediaDisk() ?:
-					"contentbox" );
+					"contentbox"
+			);
 	}
 
 	/**

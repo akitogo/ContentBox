@@ -1,7 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "contentSettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-archive fa-lg"></i>  Content Options</legend>
-<!--- Content Max Versions ---> <div class="form-group">
+<legend><i class="fa fa-archive fa-lg"></i>  Content Options</legend><!--- Content Max Versions --->  <div class="form-group">
 <label class="control-label" for="cb_versions_max_history">
     Content Max Versions To Keep:
     <span class="badge badge-info" id="cb_versions_max_history_label">#prc.cbSettings.cb_versions_max_history#</span>
@@ -23,21 +22,23 @@
         >
         <strong class="m10">500</strong>
     </div>
-</div>
-<!--- Commit Mandatory ---> <div class="form-group">#html.label(
+</div><!--- Commit Mandatory --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_versions_commit_mandatory",
 			content = "Mandatory commit changelog:"
 		)#<div class="controls">
 <small>When enabled a commit changelog will have to be entered before any content revision is saved.</small><br /><br />#html.checkbox(
 			name    = "cb_versions_commit_mandatory_toggle",
-			data    = { toggle : "toggle", match : "cb_versions_commit_mandatory" },
+			data    = {
+				toggle : "toggle",
+				match  : "cb_versions_commit_mandatory"
+			},
 			checked = prc.cbSettings.cb_versions_commit_mandatory
 		)##html.hiddenField(
 			name  = "cb_versions_commit_mandatory",
 			value = prc.cbSettings.cb_versions_commit_mandatory
 		)#</div>
-</div><!--- Page Excerpts ---> <div class="form-group">#html.label(
+</div><!--- Page Excerpts --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_page_excerpts",
 			content = "Allow Page Excerpts:"
@@ -47,7 +48,7 @@
 			data    = { toggle : "toggle", match : "cb_page_excerpts" },
 			checked = prc.cbSettings.cb_page_excerpts
 		)##html.hiddenField( name = "cb_page_excerpts", value = prc.cbSettings.cb_page_excerpts )#</div>
-</div><!--- UI Exports ---> <div class="form-group">#html.label(
+</div><!--- UI Exports --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_content_uiexport",
 			content = "Allow UI content export formats:"
@@ -64,8 +65,7 @@
    </fieldset>
 
 <fieldset>
-   	<legend><i class="fa fa-chart-bar fa-lg"></i> Content Stats Tracking</legend>
-<!--- Hit Count ---> <div class="form-group">#html.label(
+   	<legend><i class="fa fa-chart-bar fa-lg"></i> Content Stats Tracking</legend><!--- Hit Count --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_content_hit_count",
 			content = "Content Hit Count Tracking:"
@@ -78,8 +78,7 @@
 			name  = "cb_content_hit_count",
 			value = prc.cbSettings.cb_content_hit_count
 		)#</div>
-</div>
-<!--- Hit Count Ignore bots ---> <div class="form-group">#html.label(
+</div><!--- Hit Count Ignore bots --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_content_hit_ignore_bots",
 			content = "Ignore Bots Regex Matching:"
@@ -92,8 +91,7 @@
 			name  = "cb_content_hit_ignore_bots",
 			value = prc.cbSettings.cb_content_hit_ignore_bots
 		)#</div>
-</div>
-<!--- Bot Regex Matching ---> <div class="form-group">#html.label(
+</div><!--- Bot Regex Matching --->  <div class="form-group">#html.label(
 			field   = "cb_content_bot_regex",
 			content = "Bot Regex Matchers:"
 		)#<div class="controls">
@@ -108,8 +106,7 @@
 </fieldset>
 
 <fieldset>
-    <legend><i class="fa fa-hdd fa-lg"></i>  Content Caching</legend>
-<!--- Content Caching ---> <div class="form-group">#html.label(
+    <legend><i class="fa fa-hdd fa-lg"></i>  Content Caching</legend><!--- Content Caching --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_content_caching",
 			content = "Activate Page rendered content caching:"
@@ -119,7 +116,7 @@
 			data    = { toggle : "toggle", match : "cb_content_caching" },
 			checked = prc.cbSettings.cb_content_caching
 		)##html.hiddenField( name = "cb_content_caching", value = prc.cbSettings.cb_content_caching )#</div>
-</div><!--- Entry Caching ---> <div class="form-group">#html.label(
+</div><!--- Entry Caching --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_entry_caching",
 			content = "Activate Blog Entry rendered content caching:"
@@ -129,7 +126,7 @@
 			data    = { toggle : "toggle", match : "cb_entry_caching" },
 			checked = prc.cbSettings.cb_entry_caching
 		)##html.hiddenField( name = "cb_entry_caching", value = prc.cbSettings.cb_entry_caching )#</div>
-</div><!--- Custom HTML Caching ---> <div class="form-group">#html.label(
+</div><!--- Custom HTML Caching --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_contentstore_caching",
 			content = "Activate ContentStore rendered content caching:"
@@ -142,8 +139,7 @@
 			name  = "cb_contentstore_caching",
 			value = prc.cbSettings.cb_contentstore_caching
 		)#</div>
-</div>
-<!--- Content 203 Header ---> <div class="form-group">#html.label(
+</div><!--- Content 203 Header --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_content_cachingHeader",
 			content = "Send 203 Caching Header:"
@@ -156,8 +152,7 @@
 			name  = "cb_content_cachingHeader",
 			value = prc.cbSettings.cb_content_cachingHeader
 		)#</div>
-</div>
-<!--- Content Cache Name ---> <div class="form-group">
+</div><!--- Content Cache Name --->  <div class="form-group">
 <label class="control-label" for="cb_content_cacheName">Content Cache Provider:</label>
 <div class="controls">
     <small>Choose the CacheBox provider to cache rendered content (blog,page,contentStore) into.</small><br/>#html.select(
@@ -166,8 +161,7 @@
 			class         = "form-control input-sm",
 			selectedValue = prc.cbSettings.cb_content_cacheName
 		)#</div>
-</div>
-<!--- Content Cache Timeouts ---> <div class="form-group">
+</div><!--- Content Cache Timeouts --->  <div class="form-group">
 <label class="control-label" for="cb_content_cachingTimeout">
     Content Cache Timeouts:
     <span class="badge badge-info" id="cb_content_cachingTimeout_label">#prc.cbSettings.cb_content_cachingTimeout#</span>
@@ -190,8 +184,7 @@
         <strong class="m10">1440</strong>
 
     </div>
-</div>
-<!--- Content Last Access Timeouts ---> <div class="form-group">
+</div><!--- Content Last Access Timeouts --->  <div class="form-group">
 <label class="control-label" for="cb_content_cachingTimeoutIdle">
     Content Cache Idle Timeouts:
     <span class="badge badge-info" id="cb_content_cachingTimeoutIdle_label">#prc.cbSettings.cb_content_cachingTimeoutIdle#</span>
@@ -215,7 +208,6 @@
 
         </div>
     </div>
-</fieldset><!--- Button Bar ---> <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
-			class = "btn btn-danger" )#</div>
-#html.endForm()#
+</fieldset><!--- Button Bar --->  <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+			class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

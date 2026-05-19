@@ -26,9 +26,9 @@ component extends="coldbox.system.ioc.config.Binder" {
 				key     : "wireBox"
 			},
 			// DSL Namespace registrations
-			//customDSL : {namespace = "mapping name"},
+			// customDSL : {namespace = "mapping name"},
 			// Custom Storage Scopes
-			//customScopes : { annotationName = "mapping name"},
+			// customScopes : { annotationName = "mapping name"},
 			// Package scan locations
 			scanLocations  : [],
 			// Stop Recursions

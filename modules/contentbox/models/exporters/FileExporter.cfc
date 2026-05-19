@@ -34,11 +34,13 @@ component extends   ="BaseExporter" implements="contentbox.models.exporters.ICBE
 	public numeric function getTotal() {
 		var total = 0;
 		if ( getIncludeFiles() == "*" ) {
-			total = arrayLen( directoryList(
+			total = arrayLen(
+				directoryList(
 					getDirectory(),
 					true,
 					"name"
-				) );
+				)
+			);
 		} else {
 			total = listLen( getIncludeFiles() );
 		}

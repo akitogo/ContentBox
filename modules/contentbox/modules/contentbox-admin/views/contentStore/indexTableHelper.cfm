@@ -73,8 +73,10 @@ $content.tableDnD( {
 } );
 	</cfif>
 	
+	
 
 } )();
 </script>
+
 
 </cfoutput>

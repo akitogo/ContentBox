@@ -9,7 +9,7 @@
 	</h4>
 </div>
 <div id="categories" class="panel-collapse collapse">
-	<div class="panel-body"><!--- Display categories ---> <div id="categoriesChecks">
+	<div class="panel-body"><!--- Display categories --->  <div id="categoriesChecks">
 		<cfloop from="1" to="#arrayLen( prc.categories )#" index="x">
 			<div class="checkbox">
 <label>#html.checkbox(
@@ -23,10 +23,13 @@ class="ml5 fa fa-lock"
 title="Private Category"></i>
 			</cfif>
 			
+			
 						</label>
 					</div>
 
+
 		</cfloop>
+		
 		
 				</div>
 
@@ -40,6 +43,7 @@ title="Private Category"></i>
 			</div>
 		</div>
 	</div>
+
 
 	</cfif>
 </cfoutput>

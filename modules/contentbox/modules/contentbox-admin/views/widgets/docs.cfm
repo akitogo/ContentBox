@@ -21,17 +21,21 @@
 		<cfif method.name NEQ "renderIt">
 			style="display:none;"
 		</cfif>
+		
 		>
                             	<h3><code>#method.name#()</code></h3>
                             	<ul>
                             		<li><strong>Hint: </strong>
+
 		<cfif structKeyExists( method, "hint" )>
 			#method.hint#
 		<cfelse>
 			N/A
 		</cfif>
+		
 		</li>
                             		<li><strong>Arguments: </strong>
+
 
 		<cfif ArrayLen( method.parameters )>
 			<br /><br />
@@ -58,9 +62,11 @@
 				<cfelse>
 					Any
 				</cfif>
+				
 				</code>
                                                     </td>
                             						<td>
+
 
 				<cfif structKeyExists( i, "required" )>
 					#i.required#
@@ -68,37 +74,48 @@
 					true
 				</cfif>
 				
+				
                                                     </td>
                             						<td>
+
 
 				<cfif structKeyExists( i, "default" )>
 					#i.default#
 				</cfif>
 				
+				
                                                     </td>
                             						<td>
+
 
 				<cfif structKeyExists( i, "hint" )>
 					#i.hint#
 				</cfif>
 				
+				
                                                     </td>
                             					</tr>
 
+
 			</cfloop>
+			
 			
                             				</tbody>
                             				</table>
+
 
 		<cfelse>
 			No arguments defined
 		</cfif>
 		
+		
                             		</li>
                             	</ul>
                         	</div>
 
+
 	</cfloop>
+	
 	
                 	</div>
         			<div class="col-md-3" id="widget-arguments">
@@ -110,14 +127,18 @@
                         	    	<label for="renderMethodSelect" class="control-label"><strong>Select a Method:</strong></label>
                             		<select name="renderMethodSelect" id="renderMethodSelect" class="form-control input-sm">
 
+
 	<cfloop array="#prc.metadata#" index="method">
 		<option value="#method.name#"
 		<cfif method.name EQ "renderIt">
 			selected=true
 		</cfif>
+		
 		>#method.name#()</option>
 
+
 	</cfloop>
+	
 	
                             		</select>
                                 </div>
@@ -137,5 +158,6 @@
         </div>
     </div>
 </div>
+
 
 </cfoutput>

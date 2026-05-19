@@ -1,21 +1,22 @@
 <cfoutput>
 	#html.startForm( name = "loginSettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-mobile fa-lg"></i> Two Factor Authentication</legend>
-<!--- Global Two Factor Auth ---> <div class="form-group">#html.label(
+<legend><i class="fa fa-mobile fa-lg"></i> Two Factor Authentication</legend><!--- Global Two Factor Auth --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_security_2factorAuth_force",
 			content = "Force 2 Factor Authentication"
 		)#<div class="controls">
 <small>Require all users to setup Two-factor authentication.</small><br/><br />#html.checkbox(
 			name    = "cb_security_2factorAuth_force_toggle",
-			data    = { toggle : "toggle", match : "cb_security_2factorAuth_force" },
+			data    = {
+				toggle : "toggle",
+				match  : "cb_security_2factorAuth_force"
+			},
 			checked = prc.cbSettings.cb_security_2factorAuth_force
 		)##html.hiddenField(
 			name  = "cb_security_2factorAuth_force",
 			value = prc.cbSettings.cb_security_2factorAuth_force
 		)#</div>
-</div>
-<!--- Trusted Device Length ---> <div class="form-group">
+</div><!--- Trusted Device Length --->  <div class="form-group">
 <label class="control-label" for="cb_security_2factorAuth_trusted_days">
 	Trusted Device Timespan:
 	<span class="badge badge-info" id="cb_security_2factorAuth_trusted_days_label">#prc.cbSettings.cb_security_2factorAuth_trusted_days#</span>
@@ -39,8 +40,7 @@
 			<strong class="m10">30</strong>
 		</div>
 	</div>
-</div>
-<!--- Default Provider ---> <div class="form-group">
+</div><!--- Default Provider --->  <div class="form-group">
 <label class="control-label" for="cb_security_2factorAuth_provider">Default Two Factor Provider:</label>
 <div class="controls">
 	<small>Choose the default two factor provider that will be used for authentication by all ContentBox users. Please note that each provider could have different setup options. Ultimately, refer to the provider documentation.</small><br/>
@@ -53,13 +53,10 @@
 			selectedValue = prc.cbSettings.cb_security_2factorAuth_provider
 		)#<br />
 	</div>
-</div>
-#announce( "cbadmin_onTwoFactorSettingsPanel" )#
-</fieldset>
+</div>#announce( "cbadmin_onTwoFactorSettingsPanel" )#</fieldset>
 
 <fieldset>
-    <legend><i class="fas fa-user-shield fa-lg"></i>  Login Options</legend>
-<!--- Signout URL ---> <div class="form-group">#html.label(
+    <legend><i class="fas fa-user-shield fa-lg"></i>  Login Options</legend><!--- Signout URL --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_security_login_signout_url",
 			content = "After Sign Out URL:"
@@ -71,8 +68,7 @@
 			title       = "The URL to relocate a user after logout",
 			placeholder = "http://"
 		)#</div>
-</div>
-<!--- Sign In Text ---> <div class="form-group">#html.label(
+</div><!--- Sign In Text --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_security_login_signin_text",
 			content = "Sign In Text: "
@@ -85,7 +81,6 @@
 		)#</div>
 	</div>
 
-</fieldset><!--- Button Bar ---> <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
-			class = "btn btn-danger" )#</div>
-#html.endForm()#
+</fieldset><!--- Button Bar --->  <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+			class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

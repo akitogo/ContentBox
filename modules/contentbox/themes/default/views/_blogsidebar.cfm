@@ -15,7 +15,7 @@
 </div>#cb.widget( "RecentEntries" )#</div>
 	</cfif>
 	<cfif cb.themeSetting( "showSiteUpdatesBlogSide", true )>
-		<!--- RSS Buttons ---> <div class="panel panel-default">
+		<!--- RSS Buttons --->  <div class="panel panel-default">
 <div class="panel-heading">
 	<h4>Site Updates</h4>
 </div>
@@ -26,7 +26,7 @@
 	</cfif>
 	<cfif cb.isEntryView()>
 		<cfif cb.themeSetting( "showEntryCommentsBlogSide", true )>
-			<!--- RSS Entry Comments ---> <div class="panel panel-default">
+			<!--- RSS Entry Comments --->  <div class="panel panel-default">
 <div class="panel-heading">
 	<h4>Entry Comments</h4>
 </div>

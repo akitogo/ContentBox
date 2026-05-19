@@ -207,7 +207,9 @@ component {
 			}
 
 			// Incorporate internal hash + rc distinct hash + formats
-			cacheKey &= hash( ".#getFWLocale()#.#rc.format#.#event.isSSL()##prc.cbox_incomingContextHash#" );
+			cacheKey &= hash(
+				".#getFWLocale()#.#rc.format#.#event.isSSL()##prc.cbox_incomingContextHash#"
+			);
 
 			// get content data from cache
 			prc.contentCacheData = cache.get( cacheKey );
@@ -372,12 +374,14 @@ component {
 
 		// Trim values & XSS Cleanup of fields
 		rc.author = left( encodeForHTML( trim( rc.author ) ), 100 );
-		rc.authorEmail = left( canonicalize(
+		rc.authorEmail = left(
+			canonicalize(
 				trim( rc.authorEmail ),
 				true,
 				true
 			),
-			255 );
+			255
+		);
 		rc.authorURL = left( encodeForHTML( trim( rc.authorURL ) ), 255 );
 		rc.content = encodeForHTML( trim( rc.content ) );
 

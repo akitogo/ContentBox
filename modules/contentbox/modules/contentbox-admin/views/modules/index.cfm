@@ -48,8 +48,7 @@
 	</div>
 </div>
 
-   <div class="panel-body">
-#html.startForm( name = "moduleForm" )##html.hiddenField( name = "moduleName" )#<!--- modules ---> <table name="modules" id="modules" class="table table-striped-removed table-hover " width="100%">
+   <div class="panel-body">#html.startForm( name = "moduleForm" )##html.hiddenField( name = "moduleName" )#<!--- modules --->  <table name="modules" id="modules" class="table table-striped-removed table-hover " width="100%">
 <thead>
 	<tr>
 		<th class="text-center" width="50">Type</th>
@@ -64,6 +63,7 @@
 		<cfif !module.getIsActive()>
 			class="warning"
 		</cfif>
+		
 		>
 
 								<td class="text-center">
@@ -88,8 +88,9 @@
 										</button>
 										<ul class="dropdown-menu text-left pull-right">
 
+
 		<cfif module.getIsActive()>
-			<!--- Update Check ---> <li>
+			<!--- Update Check --->  <li>
 <a
 	class=""
 	title="Deactivate Module"
@@ -120,12 +121,15 @@ data-title="<i class='fa fa-trash'></i> Delete #module.getName()#?"
 </li>
 		</cfif>
 		
+		
 										</ul>
 									</div>
 								</td>
 							</tr>
 
+
 	</cfloop>
+	
 	
 						</tbody>
 					</table>
@@ -136,5 +140,6 @@ data-title="<i class='fa fa-trash'></i> Delete #module.getName()#?"
 	</div>
 
 </div>
+
 
 </cfoutput>

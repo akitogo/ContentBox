@@ -228,6 +228,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 							e
 						);
 
+
 					// dont' throw. just log and continue deactivating modules.
 				}
 			}

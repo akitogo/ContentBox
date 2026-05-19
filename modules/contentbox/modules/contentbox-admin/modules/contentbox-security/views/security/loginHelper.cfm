@@ -10,7 +10,9 @@ $( "##password" ).focus();
 		$( "##username" ).focus();
 	</cfif>
 	
+	
 } );
 </script>
+
 
 </cfoutput>

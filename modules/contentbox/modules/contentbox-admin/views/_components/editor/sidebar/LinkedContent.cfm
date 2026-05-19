@@ -32,6 +32,7 @@
 				<i class="fa fa-hdd icon-small" title="ContentStore"></i>
 			</cfif>
 			
+			
 								</td>
 								<td class="#publishedClass#">#content.getTitle()#</td>
 								<td width="14" class="center #publishedClass#">
@@ -39,7 +40,9 @@
 								</td>
 							</tr>
 
+
 		</cfloop>
+		
 		
 					</tbody>
 				</table>
@@ -49,9 +52,11 @@
 
 		<script>
 
+
 		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
 			var currentLCContentID = "#rc.contentID#";
 		</cfif>
+		
 		
 			document.addEventListener( "DOMContentLoaded", () => {
 				$( '##linkedContent-items' ).on( 'click', '.btn', function(){
@@ -84,6 +89,7 @@
 			}
 		</script>
 	</div>
+
 
 	</cfif>
 </cfoutput>

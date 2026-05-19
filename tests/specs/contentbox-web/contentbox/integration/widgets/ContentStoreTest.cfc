@@ -38,9 +38,11 @@ component extends="tests.resources.BaseTest" {
 				it(
 					"can get invalid content store items with an exception",
 					function() {
-						expect( function() {
+						expect(
+							function() {
 								widget.renderIt( "invalid" );
-							} ).toThrow();
+							}
+						).toThrow();
 					}
 				);
 

@@ -84,11 +84,7 @@ component
 		notnull="false"
 		ormtype="string"
 		default="";
-	property
-		name="active"
-		column="active"
-		ormtype="boolean"
-		default="true";
+	property name="active" column="active" ormtype="boolean" default="true";
 	property
 		name="menuType"
 		column="menuType"

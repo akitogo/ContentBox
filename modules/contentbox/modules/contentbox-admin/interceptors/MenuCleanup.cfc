@@ -38,11 +38,13 @@ component extends="coldbox.system.Interceptor" {
 	 */
 	function cbadmin_prePageRemove( required any event, required struct data ) {
 		var criteria = menuItemService.newCriteria();
-		var menuItemsInNeed = criteria.isEq( "contentSlug",
+		var menuItemsInNeed = criteria.isEq(
+				"contentSlug",
 				"#arguments
 					.data
 					.content
-					.getSlug()#" ).list();
+					.getSlug()#"
+			).list();
 		for ( var menuItem in menuItemsInNeed ) {
 			menuItem.setContentSlug( javacast( "null", "" ) );
 			menuItem.setActive( false );
@@ -72,11 +74,13 @@ component extends="coldbox.system.Interceptor" {
 	 */
 	function cbadmin_preEntryRemove( required any event, required struct data ) {
 		var criteria = menuItemService.newCriteria();
-		var menuItemsInNeed = criteria.isEq( "contentSlug",
+		var menuItemsInNeed = criteria.isEq(
+				"contentSlug",
 				"#arguments
 					.data
 					.content
-					.getSlug()#" ).list();
+					.getSlug()#"
+			).list();
 		for ( var menuItem in menuItemsInNeed ) {
 			menuItem.setContentSlug( javacast( "null", "" ) );
 			menuItem.setActive( false );
@@ -107,11 +111,13 @@ component extends="coldbox.system.Interceptor" {
 	 */
 	function cbadmin_preMenuRemove( required any event, required struct data ) {
 		var criteria = menuItemService.newCriteria();
-		var menuItemsInNeed = criteria.isEq( "menuSlug",
+		var menuItemsInNeed = criteria.isEq(
+				"menuSlug",
 				"#arguments
 					.data
 					.menu
-					.getSlug()#" ).list();
+					.getSlug()#"
+			).list();
 		for ( var menuItem in menuItemsInNeed ) {
 			menuItem.setMenuSlug( javacast( "null", "" ) );
 			menuItem.setActive( false );

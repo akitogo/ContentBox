@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS ---> <script>
+	<!--- Custom JS --->  <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importDialog = $( "##importDialog" );
 	// table sorting + filtering
@@ -34,7 +34,9 @@ $( '##btnReset' ).click( function() {
 } );
 	</cfif>
 	
+	
 } );
+
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		function edit(permissionID,permission,description){
@@ -70,6 +72,8 @@ function exportSelected( exportEvent ){
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

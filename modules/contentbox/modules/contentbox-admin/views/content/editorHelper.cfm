@@ -7,8 +7,7 @@ window.authentication = #toJSON( prc.jwtTokens )#window.assignedTemplate = #(
 					.getContentTemplate()
 					.getMemento() )
 			: booleanFormat( false )
-	)#
-// Editor alerts model
+	)#// Editor alerts model
 function alertsModel(){
 	return {
 		alerts : [],
@@ -38,8 +37,7 @@ $cbEditorStartup = function(){#prc.oEditorDriver.startup()#}
  */
 $cbEditorShutdown = function(){#prc.oEditorDriver.shutdown()#}
 
-// Load Editor Provider Assets now#prc.oEditorDriver.loadAssets()#
-// On Dom Ready
+// Load Editor Provider Assets now#prc.oEditorDriver.loadAssets()#// On Dom Ready
 document.addEventListener( "DOMContentLoaded", () => {
 
 	// Dynamic global variables coming from ColdFusion
@@ -65,6 +63,7 @@ setupEditors(
 		false,
 	</cfif>
 	
+	
 		'#event.buildLink( prc.xehContentSave )#'
 	);
 
@@ -74,5 +73,6 @@ setupEditors(
 	}
 } );
 </script>
+
 
 </cfoutput>

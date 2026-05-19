@@ -21,8 +21,10 @@ alertClose() {
 		this.alertMessage = '';
 	</cfif>
 	
+	
 		}
 	}"
+
 
 	<cfif len( args.messageModel )>
 		x-show="alertOpen || #args.messageModel#.message.length"
@@ -30,16 +32,19 @@ alertClose() {
 		x-show="alertOpen || alertMessage.length"
 	</cfif>
 	
+	
 	x-cloak
 >
 	<div
 		class="alert"
+
 
 	<cfif len( args.messageModel )>
 		:class="`alert-${#args.messageModel#.type}`"
 	<cfelse>
 		:class="`alert-${alertType}`"
 	</cfif>
+	
 	
 	>
 		<i
@@ -49,13 +54,16 @@ alertClose() {
 			x-show="alertCloseButton"
 		></i>
 
+
 	<cfif len( args.messageModel )>
 		<div x-html="#args.messageModel#.message"></div>
 	<cfelse>
 		<div x-html="alertMessage"></div>
 	</cfif>
 	
+	
 	</div>
 </alert>
+
 
 </cfoutput>

@@ -3,7 +3,7 @@
 Copyright since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
--------------------------------------------------------------------- ---> 
+-------------------------------------------------------------------- --->  
 <cfoutput>
 	<script>
 
@@ -246,6 +246,7 @@ var sType = $selectedItemType.val();#encodeForJavaScript( rc.callback )#( sPath,
 		function fbChoose(){}
 	</cfif>
 	
+	
 
 fbInit = () => {
 
@@ -341,6 +342,7 @@ fbInit = () => {
 		// The name of the $_FILES entry:
 		paramname : 'FILEDATA',
 
+
 	<cfif isNumeric( prc
 			.fbSettings
 			.html5uploads
@@ -362,6 +364,7 @@ fbInit = () => {
 	<cfif len( prc.fbSettings.acceptMimeTypes )>
 		allowedfiletypes : "#prc.fbSettings.acceptMimeTypes#".split( "," ),
 	</cfif>
+	
 	
 		url: '#event.buildLink( prc.xehFBUpload )#',
 		data: {
@@ -462,12 +465,15 @@ fbInit = () => {
 }
 
 
+
 	<cfif event.isAjax()>
 		$( document ).ready( ()=> fbInit() );
 	<cfelse>
 		document.addEventListener( 'DOMContentLoaded', fbInit );
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

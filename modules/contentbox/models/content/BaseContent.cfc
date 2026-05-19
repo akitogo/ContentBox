@@ -42,10 +42,7 @@ component
 		name="customFieldService"
 		inject="provider:customFieldService@contentbox"
 		persistent="false";
-	property
-		name="i18n"
-		inject="provider:i18n@cbi18n"
-		persistent="false";
+	property name="i18n" inject="provider:i18n@cbi18n" persistent="false";
 	property
 		name="JSONPrettyPrint"
 		inject="provider:JSONPrettyPrint@JSONPrettyPrint"
@@ -1783,7 +1780,7 @@ component
 										if ( !existingFields.contains( item.name ) ) {
 											var thisField = customFieldService.new(
 													properties = {
-														"key" : item.name,
+														"key"   : item.name,
 														"value" : item.defaultValue ?: ""
 													}
 												);

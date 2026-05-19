@@ -9,12 +9,14 @@ component extends="baseHandler" {
 		prc.xehImportAll = "#prc.cbAdminEntryPoint#.contentTemplates.importAll";
 		prc.themeRecord = getInstance( "ThemeService@contentbox" ).getActiveTheme();
 		prc.globalData = {
-			"templateSchema"      : templateService.new().getSchema(),
-			"availableLayouts"    : listToArray( reReplaceNoCase(
+			"templateSchema"   : templateService.new().getSchema(),
+			"availableLayouts" : listToArray(
+				reReplaceNoCase(
 					prc.themeRecord.layouts,
 					"blog,?",
 					""
-				) ),
+				)
+			),
 			"availableCategories" : variables
 				.categoryService
 				.newCriteria()

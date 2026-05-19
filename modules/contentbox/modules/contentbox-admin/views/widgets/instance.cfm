@@ -12,6 +12,7 @@
 <div class="modal-body">
 	</cfif>
 	
+	
         <div id="widget-preview-wrapper" class="row">
             <div class="widget-arguments col-md-3" id="widget-arguments">
                 #html.startForm(
@@ -19,22 +20,28 @@
 			class = "form-vertical"
 		)#
                     <fieldset
+
 	<cfif arrayLen( prc.metadata ) EQ 1>
 		style="display:none;"
 	</cfif>
+	
 	>
                         <legend>Public Methods</legend>
                         <label for="renderMethodSelect"><strong>Select a Method:</strong></label>
                         <select name="renderMethodSelect" id="renderMethodSelect" class="renderMethodSelect form-control input-sm">
+
 
 	<cfloop array="#prc.metadata#" index="method">
 		<option value="#method.name#"
 		<cfif prc.widget.udf EQ method.name>
 			selected=true
 		</cfif>
+		
 		>#method.name#()</option>
 
+
 	</cfloop>
+	
 	
                         </select>
                     </fieldset>
@@ -88,7 +95,7 @@
 				requiredValidator = "required";
 			}
 		</cfscript>
-		<!--- control group ---> <div class="form-group">#html.label(
+		<!--- control group --->  <div class="form-group">#html.label(
 				field   = thisArg.name,
 				content = "#thisArg.label# (#thisArg.type#) #requiredText#",
 				class   = "control-label"
@@ -148,8 +155,10 @@
 				)#
 		</cfif>
 		
+		
                             </div>
                         </div>
+
 
 	</cfloop>
 	#html.hiddenfield(
@@ -179,6 +188,7 @@
             </div>
         </div>
 
+
 	<cfif rc.modal>
 		</div>
 <div class="modal-footer">
@@ -190,10 +200,12 @@
 			<a id="widget-button-close" href="javascript:void(0);" class="btn btn-danger" onclick="closeRemoteModal()">Close</a>
 		</cfif>
 		
+		
                     </div>
                 </div>
             </div>
         </div>
+
 
 	</cfif>
 </cfoutput>

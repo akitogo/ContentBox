@@ -54,26 +54,26 @@
 			wrapper      = "div class=controls",
 			labelClass   = "control-label",
 			groupWrapper = "div class=form-group"
-		)#<!--- Nav Bar Collapse ---> <div class="form-group">#html.label(
+		)# <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "preference.sidemenuCollapse",
 			content = "Collapsed Left Navbar:"
-		)#
-<div class="controls">#html.checkbox(
+		)#<div class="controls">#html.checkbox(
 			name    = "preference.sidemenuCollapse_toggle",
-			data    = { toggle : "toggle", match : "preference\.sidemenuCollapse" },
+			data    = {
+				toggle : "toggle",
+				match  : "preference\.sidemenuCollapse"
+			},
 			checked = prc.author.getPreference( "sidemenuCollapse", false )
 		)##html.hiddenField(
 			name  = "preference.sidemenuCollapse",
 			value = prc.author.getPreference( "sidemenuCollapse", "no" )
 		)#</div>
-</div>
-<!--- Right Sidebar ---> <div class="form-group">#html.label(
+</div><!--- Right Sidebar --->  <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "preference.sidebarState",
 			content = "Show Content Sidebar:"
-		)#
-<div class="controls">#html.checkbox(
+		)#<div class="controls">#html.checkbox(
 			name    = "preference.sidebarState_toggle",
 			data    = { toggle : "toggle", match : "preference\.sidebarState" },
 			checked = prc.author.getPreference( "sidebarState", true )
@@ -81,8 +81,7 @@
 			name  = "preference.sidebarState",
 			value = prc.author.getPreference( "sidebarState", "yes" )
 		)#</div>
-</div>
-#announce( "cbadmin_UserPreferencePanel" )#
+</div>#announce( "cbadmin_UserPreferencePanel" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
 		prc.author.getAuthorID() EQ prc.oCurrentAuthor.getAuthorID()>
 		<div class="text-center mb10">
@@ -117,6 +116,7 @@
 	<input type="submit" value="Save" class="btn btn-danger">
 </div>
 	</cfif>
+	
 	
 
 	</div>

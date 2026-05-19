@@ -61,10 +61,7 @@ component
 	function init() {
 		super.init();
 
-		appendToMemento(
-			[ "contentSlug", "target", "urlClass"],
-			"defaultIncludes"
-		);
+		appendToMemento( [ "contentSlug", "target", "urlClass"], "defaultIncludes" );
 
 		return this;
 	}

@@ -15,13 +15,12 @@
 	<div class="col-md-12">
 
 		<div class="panel panel-default">
-		    <div class="panel-body">
-#html.startForm( name = "widgetForm", action = prc.xehWidgetRemove )##html.hiddenField( name = "widgetFile" )##view(
+		    <div class="panel-body">#html.startForm( name = "widgetForm",
+			action = prc.xehWidgetRemove )##html.hiddenField( name = "widgetFile" )##view(
 		view          = "widgets/widgetList",
 		args          = { mode : "edit", cols : 2 },
 		prePostExempt = true
-	)##html.endForm()#
-		    </div>
+	)##html.endForm()#</div>
 		</div>
 	</div>
 

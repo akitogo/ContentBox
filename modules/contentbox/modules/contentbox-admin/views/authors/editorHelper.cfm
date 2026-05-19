@@ -4,7 +4,7 @@
 	height: 200px;
 	min-height: 200px;
 }
-</style><!--- Custom JS ---> <script>
+</style><!--- Custom JS --->  <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// pointers
 	$authorForm 	= $( "##authorForm" );
@@ -85,6 +85,7 @@ $.validator.addMethod(
 $permissions = $( "##permissions" );
 	</cfif>
 	
+	
 
 	// Password change rules
 	$( "##password" ).keyup( passwordMeter );
@@ -116,6 +117,7 @@ function isEmailFound( email ){
 	return emailFound;
 }
 
+
 	<cfif prc.author.isLoaded()>
 		function loadPermissions(){
 $permissions.load(
@@ -124,6 +126,8 @@ $permissions.load(
 }
 	</cfif>
 	
+	
 </script>
+
 
 </cfoutput>

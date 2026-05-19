@@ -73,7 +73,9 @@ component {
 		};
 
 		// ContentBox Core Custom Events
-		variables.interceptorSettings = { customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"] };
+		variables.interceptorSettings = {
+			customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"]
+		};
 
 		// Async Executors for ContentBox Core
 		// executors = { "contentbox-tasks" : { type : "scheduled", threads : 20 } };
@@ -121,7 +123,10 @@ component {
 
 		// Manual Mappings
 		// binder.map( "customFieldService@contentbox" ).toDSL( "entityService:cbCustomField" );
-		variables.binder.map( "SystemUtil@contentbox" ).to( "coldbox.system.core.util.Util" );
+		variables
+			.binder
+			.map( "SystemUtil@contentbox" )
+			.to( "coldbox.system.core.util.Util" );
 	}
 
 	/**

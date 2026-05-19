@@ -117,15 +117,17 @@ component accessors="true" singleton threadsafe {
 			var totalPages = ceiling( arguments.foundRows / maxRows );
 
 			if ( currentPage GT totalPages ) {
-				variables.controller.relocate( url = replace(
+				variables.controller.relocate(
+						url = replace(
 							theLink,
 							"@page@",
 							totalPages
-						) );
+						)
+					);
 			}
 
 			savecontent variable="pagingTabsUI" {
-				include template="Paging.cfm";
+				include template="#template = "Paging.cfm"#";
 			}
 		}
 

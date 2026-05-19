@@ -12,7 +12,7 @@
 		</h3>
 	</div>
 
-       <div class="modal-body">#html.startForm( name = "relatedContentSelectorForm" )#<!--- Filter ---> <div class="form-group">
+       <div class="modal-body">#html.startForm( name = "relatedContentSelectorForm" )#<!--- Filter --->  <div class="form-group">
 <div class="input-group input-group-sm">
 	<input
 		type="text"
@@ -32,11 +32,9 @@
 			<i class="fa fa-times-circle fa-lg"></i>
 		</span>
 	</div>
-</div>
-<!--- Loader ---> <div class="loaders float-right" id="relatedContentLoader">
+</div><!--- Loader --->  <div class="loaders float-right" id="relatedContentLoader">
     <i class="fa fa-circle-o-notch fa-spin fa-lg"></i>
-</div>
-<!--- Render tables out ---> <div id="contentContainer" class="tabs">
+</div><!--- Render tables out --->  <div id="contentContainer" class="tabs">
 
 <ul class="nav nav-tabs" id="contentTypes">
 	<cfset types = listToArray( rc.contentType )>
@@ -44,31 +42,38 @@
 		<cfset ct = types[ i ]>
 		<li
 		<cfif i EQ 1>
-			 class="nav-item active"
+			class="nav-item active"
 		<cfelse>
 			class="nav-item"
 		</cfif>
+		
 		>
 							<a href="###ct#" data-toggle="tab" class="nav-link">
 								<i class="#getContentTypeIconCls( ct )#" title="#ct#"></i> #ct#
 							</a>
                         </li>
 
+
 	</cfloop>
+	
 	
 				</ul>
 
                 <div class="tab-content">
 
+
 	<cfloop from="1" to="#arrayLen( types )#" index="i">
 		<cfset ct = types[ i ]>
 		<div class="tab-pane fade
 		<cfif i EQ 1>
-			 active in
+			active in
 		</cfif>
+		
 		" id="#ct#"></div>
 
+
 	</cfloop>
+	
 	
                 </div>
             </div>
@@ -77,12 +82,13 @@
         #html.endForm()#
 		</div>
 
-        <!--- Button Bar ---> 
+        <!--- Button Bar --->  
         <div class="modal-footer">
             <button class="btn btn-default" onclick="closeRemoteModal()"> Close </button>
 		</div>
 
     </div>
 </div>
+
 
 </cfoutput>

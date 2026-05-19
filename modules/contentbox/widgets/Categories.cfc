@@ -101,6 +101,7 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		}
 		return rString;
 
+
 		// cfformat-ignore-end
 	}
 
@@ -132,6 +133,7 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 			writeOutput( "</ul>" );
 		}
 		return rString;
+
 
 		// cfformat-ignore-end
 	}

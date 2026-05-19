@@ -52,10 +52,7 @@ component {
 					table.index( [ "title", "isPublished"], "idx_search" );
 					table.index( [ "cache"], "idx_cache" );
 					table.index( [ "cacheTimeout"], "idx_cachetimeout" );
-					table.index(
-							[ "cacheLastAccessTimeout"],
-							"idx_cachelastaccesstimeout"
-						);
+					table.index( [ "cacheLastAccessTimeout"], "idx_cachelastaccesstimeout" );
 					table.index( [ "showInSearch"], "idx_showInSearch" );
 				}
 			);

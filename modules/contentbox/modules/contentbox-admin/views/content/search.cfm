@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Content ---> <span class="float-right">
+	<!--- Content --->  <span class="float-right">
 	<button class="btn btn-xs btn-danger" onclick="closeSearchBox()" title="close search panel">
 		<i class="fa fa-times"></i>
 	</button>
@@ -23,9 +23,11 @@ class="btn btn-xs pull-left mr5"
 class="btn btn-primary btn-xs pull-left mr5"
 			</cfif>
 			
+			
 		>
 			<i class="fa fa-external-link"></i>
 		</a>
+
 
 			<cfif thisContent.getContentType() EQ "contentStore">
 				<a 	title="Edit Content"
@@ -41,15 +43,19 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getConten
 >#thisContent.getTitle()#</a>
 			</cfif>
 			
+			
 		<span class="label label-info pull-right">#thisContent.getContentType()#</span>
 	</li>
+
 
 		</cfloop>
 		<cfif !arrayLen( prc.results.content )>
 			<li class="list-group-item list-group-item-warning"><em>No Results</em></li>
 		</cfif>
 		
+		
 </ul>
+
 
 	</cfif>
 	<cfif !len( prc.context ) || listFindNoCase( "author", prc.context )>
@@ -74,7 +80,9 @@ href="#event.buildLInk(
 			<li class="list-group-item list-group-item-warning"><em>No Results</em></li>
 		</cfif>
 		
+		
 </ul>
+
 
 	</cfif>
 	#announce( "onGlobalSearchDisplay" )#

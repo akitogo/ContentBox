@@ -18,7 +18,7 @@
 	}
 </cfscript>
 <cfoutput>
-	<!--- Custom Javascript ---> <script>
+	<!--- Custom Javascript --->  <script>
 ( () => {
 	// Shared Pointers
 	$relatedContentSelectorForm    = $( "##relatedContentSelectorForm" );
@@ -56,6 +56,7 @@
 	<cfif len( rc.search )>
 		$( "##contentSearch" ).focus();
 	</cfif>
+	
 	
 
 	// fire off requests for individual tabs...should be dynamically evaluated in the future, I think
@@ -103,5 +104,6 @@ function pagerLink( page, contentType ){
 	} );
 }
 </script>
+
 
 </cfoutput>

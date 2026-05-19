@@ -16,7 +16,7 @@
 			name       = "twofactorForm",
 			novalidate = "novalidate",
 			class      = "form-horizontal"
-		)##announce( "cbadmin_beforeTwoFactorForm" )#<!--- Challenge Text ---> <p>#prc.provider.getVerificationHelp()#</p>
+		)##announce( "cbadmin_beforeTwoFactorForm" )# <p>#prc.provider.getVerificationHelp()#</p>
 
 <div class="form-group">
     <div class="col-md-12 controls">#html.textfield(
@@ -34,6 +34,7 @@
 	<cfif prc.cbSettings.cb_security_2factorAuth_trusted_days GT 0>
 		(#prc.cbSettings.cb_security_2factorAuth_trusted_days# #cb.r( "common.days@security" )#)
 	</cfif>
+	
 	
                         </label>
                     </div>
@@ -57,5 +58,6 @@
         </div>
     </div>
 </div>
+
 
 </cfoutput>
