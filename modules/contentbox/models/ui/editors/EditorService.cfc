@@ -6,15 +6,12 @@
  * Manages editor contributions within ContentBox
  */
 component accessors="true" threadSafe singleton {
-
 	// DI
 	property name="settingService" inject="settingService@contentbox";
-
 	/**
 	 * Registered ContentBox Editors
 	 */
 	property name="editors" type="struct";
-
 	/**
 	 * Registered ContentBox Markups
 	 */
@@ -25,7 +22,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @wirebox.inject wirebox
 	 */
-	EditorService function init( required wirebox ){
+	EditorService function init( required wirebox ) {
 		// init editors and markups
 		variables.editors = {};
 		variables.markups = [];
@@ -42,14 +39,14 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Get the default system editor
 	 */
-	string function getDefaultEditor(){
+	string function getDefaultEditor() {
 		return variables.settingService.getSetting( "cb_editors_default" );
 	}
 
 	/**
 	 * Get the default system markup
 	 */
-	string function getDefaultMarkup(){
+	string function getDefaultMarkup() {
 		return variables.settingService.getSetting( "cb_editors_markup" );
 	}
 
@@ -58,7 +55,9 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @editor The editor instance to register
 	 */
-	EditorService function registerEditor( required contentbox.models.ui.editors.IEditor editor ){
+	EditorService function registerEditor(
+		required contentbox.models.ui.editors.IEditor editor
+	) {
 		variables.editors[ arguments.editor.getName() ] = arguments.editor;
 		return this;
 	}
@@ -68,7 +67,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @markup The markup name to register
 	 */
-	EditorService function registerMarkup( required markup ){
+	EditorService function registerMarkup( required markup ) {
 		arrayAppend( variables.markups, arguments.markup );
 		return this;
 	}
@@ -78,7 +77,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @name The name of the editor to unregister
 	 */
-	EditorService function unRegisterEditor( required name ){
+	EditorService function unRegisterEditor( required name ) {
 		structDelete( variables.editors, arguments.name );
 		return this;
 	}
@@ -88,15 +87,18 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @markup The markup name to unregister
 	 */
-	EditorService function unRegisterMarkup( required markup ){
-		arrayDeleteAt( variables.markups, arrayFindNoCase( variables.markups, arguments.markup ) );
+	EditorService function unRegisterMarkup( required markup ) {
+		arrayDeleteAt(
+			variables.markups,
+			arrayFindNoCase( variables.markups, arguments.markup )
+		);
 		return this;
 	}
 
 	/**
 	 * Get an array of registered editor names in alphabetical order
 	 */
-	array function getRegisteredEditors(){
+	array function getRegisteredEditors() {
 		var sortedArray = variables.editors.keyArray();
 		sortedArray.sort( "textnocase" );
 		return sortedArray;
@@ -105,7 +107,7 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Get an array of registered markup names in alphabetical order
 	 */
-	array function getRegisteredMarkups(){
+	array function getRegisteredMarkups() {
 		arraySort( variables.markups, "textnocase" );
 		return variables.markups;
 	}
@@ -113,9 +115,9 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Get an array of registered editor names in alphabetical order with their display names
 	 */
-	array function getRegisteredEditorsMap(){
+	array function getRegisteredEditorsMap() {
 		var aEditors = getRegisteredEditors();
-		var result   = [];
+		var result = [];
 		for ( var thisEditor in aEditors ) {
 			arrayAppend(
 				result,
@@ -133,7 +135,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @name The name of the editor
 	 */
-	contentbox.models.ui.editors.IEditor function getEditor( required name ){
+	contentbox.models.ui.editors.IEditor function getEditor( required name ) {
 		return variables.editors[ arguments.name ];
 	}
 
@@ -142,7 +144,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @name The name of the editor
 	 */
-	boolean function hasEditor( required name ){
+	boolean function hasEditor( required name ) {
 		return structKeyExists( variables.editors, arguments.name );
 	}
 
@@ -151,7 +153,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @markup The name of the markup
 	 */
-	boolean function hasMarkup( required markup ){
+	boolean function hasMarkup( required markup ) {
 		return structKeyExists( variables.markups, arguments.name );
 	}
 

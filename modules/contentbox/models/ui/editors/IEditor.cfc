@@ -10,12 +10,12 @@ interface {
 	/**
 	 * Get the internal name of an editor
 	 */
-	function getName();
+	default function getName();
 
 	/**
 	 * Get the display name of an editor
 	 */
-	function getDisplayName();
+	default function getDisplayName();
 
 	/**
 	 * This is fired once editor javascript loads, you can use this to return back functions, asset calls, etc.
@@ -27,18 +27,17 @@ interface {
 	 * updateEditorContent() - Updates the HTML value of the content field from the editor (if editor supports it)<br>
 	 * updateEditorExcerpt() - Updates the HTML value of the excerpt field from the editor (if editor supports it)<br>
 	 */
-	function loadAssets();
+	default function loadAssets();
 
 	/**
 	 * Startup the editor(s) on a page. This method is called inline within our dynamic JavaScript and must
 	 * return the appropriate JavaScript to turn on the editor.
 	 */
-	function startup();
+	default function startup();
 
 	/**
 	 * Shutdown the editor(s) on a page.  This method is called inline within our dynamic JavaScript and must
 	 * return the appropriate JavaScript to turn off the editor.
 	 */
-	function shutdown();
-
+	default function shutdown();
 }

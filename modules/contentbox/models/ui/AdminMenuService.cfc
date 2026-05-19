@@ -6,7 +6,6 @@
  * Manages the admin menu services for the header and top menu
  */
 component accessors="true" threadSafe singleton {
-
 	/**
 	 * This holds the top menu structure
 	 */
@@ -38,27 +37,22 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Injected Avatar
 	 */
-	property
-		name  ="avatar"
-		type  ="any"
-		inject="Avatar@contentbox";
-
+	property name="avatar" type="any" inject="Avatar@contentbox";
 	// DI
 	property name="log" inject="logbox:logger:{this}";
-
 	// Top Menu Slugs
-	this.DASHBOARD        = "dashboard";
-	this.CONTENT          = "content";
-	this.COMMENTS         = "comments";
-	this.LOOK_FEEL        = "lookAndFeel";
-	this.MODULES          = "modules";
-	this.USERS            = "users";
-	this.TOOLS            = "tools";
-	this.SYSTEM           = "system";
+	this.DASHBOARD = "dashboard";
+	this.CONTENT = "content";
+	this.COMMENTS = "comments";
+	this.LOOK_FEEL = "lookAndFeel";
+	this.MODULES = "modules";
+	this.USERS = "users";
+	this.TOOLS = "tools";
+	this.SYSTEM = "system";
 	this.ADMIN_ENTRYPOINT = "";
 
 	// Header Menu Slugs
-	this.HEADER_ABOUT   = "about";
+	this.HEADER_ABOUT = "about";
 	this.HEADER_PROFILE = "profile";
 
 	/**
@@ -69,33 +63,33 @@ component accessors="true" threadSafe singleton {
 	 * @coldbox               ColdBox Handler
 	 * @coldbox.inject        coldbox
 	 */
-	AdminMenuService function init( required requestService, required coldbox ){
+	AdminMenuService function init( required requestService, required coldbox ) {
 		// init menu array
-		variables.topMenu        = [];
+		variables.topMenu = [];
 		// init top menu structure holders
-		variables.topMenuMap     = {};
+		variables.topMenuMap = {};
 		// init header menu array
-		variables.headerMenu     = [];
+		variables.headerMenu = [];
 		// init header menu array
-		variables.supportMenu    = [];
+		variables.supportMenu = [];
 		// init header menu array
-		variables.utilsMenu      = [];
+		variables.utilsMenu = [];
 		// init header menu array
-		variables.profileMenu    = [];
+		variables.profileMenu = [];
 		// init profile menu structure
-		variables.headerMenuMap  = {};
+		variables.headerMenuMap = {};
 		// top menu pointer
-		variables.thisTopMenu    = "";
+		variables.thisTopMenu = "";
 		// header menu pointer
 		variables.thisHeaderMenu = "";
 		// store request service
 		variables.requestService = arguments.requestService;
 		// store coldbox
-		variables.coldbox        = arguments.coldbox;
+		variables.coldbox = arguments.coldbox;
 		// Store admin entry point
-		this.ADMIN_ENTRYPOINT    = arguments.coldbox.getSetting( "modules" )[ "contentbox-admin" ].entryPoint;
+		this.ADMIN_ENTRYPOINT = arguments.coldbox.getSetting( "modules" )[ "contentbox-admin" ].entryPoint;
 		// store module info
-		variables.moduleConfig   = arguments.coldbox.getSetting( "modules" )[ "contentbox" ];
+		variables.moduleConfig = arguments.coldbox.getSetting( "modules" )[ "contentbox" ];
 		// create default menus
 		createHeaderMenu();
 		createDefaultMenu();
@@ -108,13 +102,17 @@ component accessors="true" threadSafe singleton {
 	 * @event The event context
 	 * @menu  The menu struct
 	 */
-	function buildLIAttributes( required any event, required any menu ){
+	function buildLIAttributes( required any event, required any menu ) {
 		var attributes = { "class" : "#menu.class#", "data-name" : "#menu.name#" };
 		if ( structKeyExists( menu, "id" ) && len( menu.id ) ) {
 			attributes[ "id" ] = menu.id;
 		}
 		if ( event.getPrivateValue( name = "tab#menu.name#", defaultValue = false ) ) {
-			listAppend( attributes.class, "active", " " );
+			listAppend(
+				attributes.class,
+				"active",
+				" "
+			);
 		}
 		return createAttributeList( attributes );
 	}
@@ -130,7 +128,7 @@ component accessors="true" threadSafe singleton {
 		required any event,
 		required any menu,
 		structDefaults = {}
-	){
+	) {
 		var attributes = { "class" : structKeyExists( structDefaults, "class" ) ? structDefaults.class : "" };
 
 		if ( len( arguments.menu.itemClass ) ) {
@@ -182,7 +180,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @attributes The struct of attributes to build the list from
 	 */
-	function createAttributeList( required struct attributes ){
+	function createAttributeList( required struct attributes ) {
 		var attributeList = "";
 		for ( var key in arguments.attributes ) {
 			attributeList &= "#key#=""#attributes[ key ]#""";
@@ -193,13 +191,13 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Create the default ContentBox header menu contributions
 	 */
-	AdminMenuService function createHeaderMenu(){
+	AdminMenuService function createHeaderMenu() {
 		var event = requestService.getContext();
 
 		// Exit Handlers
-		var xehMyProfile   = "#this.ADMIN_ENTRYPOINT#.authors.myprofile";
-		var xehDoLogout    = "#this.ADMIN_ENTRYPOINT#.security.doLogout";
-		var xehAbout       = "#this.ADMIN_ENTRYPOINT#.dashboard.about";
+		var xehMyProfile = "#this.ADMIN_ENTRYPOINT#.authors.myprofile";
+		var xehDoLogout = "#this.ADMIN_ENTRYPOINT#.security.doLogout";
+		var xehAbout = "#this.ADMIN_ENTRYPOINT#.dashboard.about";
 		var xehAdminAction = "#this.ADMIN_ENTRYPOINT#.dashboard.reload";
 
 		// Register Profile Menu
@@ -215,8 +213,7 @@ component accessors="true" threadSafe singleton {
 				href    = variables.buildLink,
 				href_to = xehMyProfile,
 				data    = { keybinding : "ctrl+shift+a" }
-			)
-			.addHeaderSubMenu(
+			).addHeaderSubMenu(
 				name    = "logout",
 				title   = "ctrl+shift+L",
 				label   = "<i class='fa fa-power-off fa-lg width20'></i> Logout",
@@ -235,11 +232,12 @@ component accessors="true" threadSafe singleton {
 			permissions = "RELOAD_MODULES,RELOAD_CACHES",
 			data        = { placement : "right" },
 			title       = "Admin Actions"
-		).addHeaderSubMenu(
+		)
+			.addHeaderSubMenu(
 				name        = "rsscache",
 				label       = "Clear RSS Caches",
 				permissions = "RELOAD_CACHES",
-				href        = function( required menu, required event ){
+				href        = function( required menu, required event ) {
 					return "javascript:adminAction( 'rss-purge', '#arguments.event.buildLink( xehAdminAction )#' )";
 				}
 			)
@@ -247,7 +245,7 @@ component accessors="true" threadSafe singleton {
 				name        = "contentpurge",
 				label       = "Clear Content Caches",
 				permissions = "RELOAD_CACHES",
-				href        = function( required menu, required event ){
+				href        = function( required menu, required event ) {
 					return "javascript:adminAction( 'content-purge', '#arguments.event.buildLink( xehAdminAction )#' )";
 				}
 			)
@@ -255,7 +253,7 @@ component accessors="true" threadSafe singleton {
 				name        = "cachepurge",
 				label       = "Clear Template Cache",
 				permissions = "RELOAD_CACHES",
-				href        = function( required menu, required event ){
+				href        = function( required menu, required event ) {
 					return "javascript:adminAction( 'cache-purge', '#arguments.event.buildLink( xehAdminAction )#' )";
 				}
 			)
@@ -263,7 +261,7 @@ component accessors="true" threadSafe singleton {
 				name        = "app",
 				label       = "Reload Application",
 				permissions = "RELOAD_MODULES",
-				href        = function( required menu, required event ){
+				href        = function( required menu, required event ) {
 					return "javascript:adminAction( 'app', '#arguments.event.buildLink( xehAdminAction )#' )";
 				}
 			)
@@ -271,11 +269,11 @@ component accessors="true" threadSafe singleton {
 				name        = "orm",
 				label       = "Reload ORM",
 				permissions = "RELOAD_MODULES",
-				href        = function( required menu, required event ){
+				href        = function( required menu, required event ) {
 					return "javascript:adminAction( 'orm', '#arguments.event.buildLink( xehAdminAction )#' )";
 				}
-			)
-		;
+			);
+
 		return this;
 	}
 
@@ -286,7 +284,7 @@ component accessors="true" threadSafe singleton {
 	 * @menu  The menu info
 	 * @event The request context
 	 */
-	function buildLink( required menu, required event ){
+	function buildLink( required menu, required event ) {
 		// Normal a links
 		if ( structKeyExists( arguments.menu, "href_to" ) ) {
 			return arguments.event.buildLink( arguments.menu.href_to );
@@ -299,17 +297,17 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Dynamic menu label
 	 */
-	function buildProfileLabel(){
+	function buildProfileLabel() {
 		var event = requestService.getContext();
-		var prc   = event.getCollection( private = true );
+		var prc = event.getCollection( private = true );
 
 		savecontent variable="profileLabel" {
 			writeOutput(
 				variables.avatar.renderAvatar(
-					email = prc.oCurrentAuthor.getEmail(),
-					size  = "35",
-					class = "img-circle"
-				)
+						email = prc.oCurrentAuthor.getEmail(),
+						size  = "35",
+						class = "img-circle"
+					)
 			);
 			writeOutput( "<i class=""fa fa-sort-down fa-lg ml10""></i>" );
 		}
@@ -320,45 +318,45 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Create the default ContentBox menu
 	 */
-	AdminMenuService function createDefaultMenu(){
+	AdminMenuService function createDefaultMenu() {
 		var event = requestService.getContext();
-		var prc   = {};
+		var prc = {};
 
 		// Global Admin Exit Handlers
 		prc.xehDashboard = "#this.ADMIN_ENTRYPOINT#.dashboard";
 
 		// Entries Tab
-		prc.xehEntries       = "#this.ADMIN_ENTRYPOINT#.entries";
+		prc.xehEntries = "#this.ADMIN_ENTRYPOINT#.entries";
 		prc.xehEntriesEditor = "#this.ADMIN_ENTRYPOINT#.entries.editor";
-		prc.xehCategories    = "#this.ADMIN_ENTRYPOINT#.categories";
-		prc.xehTemplates     = "#this.ADMIN_ENTRYPOINT#.contentTemplates";
+		prc.xehCategories = "#this.ADMIN_ENTRYPOINT#.categories";
+		prc.xehTemplates = "#this.ADMIN_ENTRYPOINT#.contentTemplates";
 
 		// Content Tab
-		prc.xehPages        = "#this.ADMIN_ENTRYPOINT#.pages";
-		prc.xehPagesEditor  = "#this.ADMIN_ENTRYPOINT#.pages.editor";
+		prc.xehPages = "#this.ADMIN_ENTRYPOINT#.pages";
+		prc.xehPagesEditor = "#this.ADMIN_ENTRYPOINT#.pages.editor";
 		prc.xehContentStore = "#this.ADMIN_ENTRYPOINT#.contentstore";
 		prc.xehMediaManager = "#this.ADMIN_ENTRYPOINT#.mediamanager";
-		prc.xehMenuManager  = "#this.ADMIN_ENTRYPOINT#.menus";
+		prc.xehMenuManager = "#this.ADMIN_ENTRYPOINT#.menus";
 
 		// Comments Tab
-		prc.xehComments        = "#this.ADMIN_ENTRYPOINT#.comments";
+		prc.xehComments = "#this.ADMIN_ENTRYPOINT#.comments";
 		prc.xehCommentsettings = "#this.ADMIN_ENTRYPOINT#.comments.settings";
-		prc.xehSubscribers     = "#this.ADMIN_ENTRYPOINT#.subscribers";
+		prc.xehSubscribers = "#this.ADMIN_ENTRYPOINT#.subscribers";
 
 		// Look and Feel Tab
-		prc.xehThemes      = "#this.ADMIN_ENTRYPOINT#.themes";
+		prc.xehThemes = "#this.ADMIN_ENTRYPOINT#.themes";
 		prc.xehactiveTheme = "#this.ADMIN_ENTRYPOINT#.themes.active";
-		prc.xehWidgets     = "#this.ADMIN_ENTRYPOINT#.widgets";
-		prc.xehGlobalHTML  = "#this.ADMIN_ENTRYPOINT#.globalHTML";
+		prc.xehWidgets = "#this.ADMIN_ENTRYPOINT#.widgets";
+		prc.xehGlobalHTML = "#this.ADMIN_ENTRYPOINT#.globalHTML";
 
 		// Modules
 		prc.xehModules = "#this.ADMIN_ENTRYPOINT#.modules";
 
 		// Authors Tab
-		prc.xehAuthors          = "#this.ADMIN_ENTRYPOINT#.authors";
-		prc.xehAuthorEditor     = "#this.ADMIN_ENTRYPOINT#.authors.editor";
-		prc.xehPermissions      = "#this.ADMIN_ENTRYPOINT#.permissions";
-		prc.xehRoles            = "#this.ADMIN_ENTRYPOINT#.roles";
+		prc.xehAuthors = "#this.ADMIN_ENTRYPOINT#.authors";
+		prc.xehAuthorEditor = "#this.ADMIN_ENTRYPOINT#.authors.editor";
+		prc.xehPermissions = "#this.ADMIN_ENTRYPOINT#.permissions";
+		prc.xehRoles = "#this.ADMIN_ENTRYPOINT#.roles";
 		prc.xehPermissionGroups = "#this.ADMIN_ENTRYPOINT#.permissionGroups";
 
 		// Tools
@@ -366,12 +364,12 @@ component accessors="true" threadSafe singleton {
 		prc.xehToolsExport = "#this.ADMIN_ENTRYPOINT#.tools.exporter";
 
 		// System
-		prc.xehSettings      = "#this.ADMIN_ENTRYPOINT#.settings";
-		prc.xehSitesManager  = "#this.ADMIN_ENTRYPOINT#.sites";
+		prc.xehSettings = "#this.ADMIN_ENTRYPOINT#.settings";
+		prc.xehSitesManager = "#this.ADMIN_ENTRYPOINT#.sites";
 		prc.xehSecurityRules = "#this.ADMIN_ENTRYPOINT#.securityrules";
-		prc.xehRawSettings   = "#this.ADMIN_ENTRYPOINT#.settings.raw";
-		prc.xehAuthLogs      = "#this.ADMIN_ENTRYPOINT#.settings.authLogs";
-		prc.xehAbout         = "#this.ADMIN_ENTRYPOINT#.about";
+		prc.xehRawSettings = "#this.ADMIN_ENTRYPOINT#.settings.raw";
+		prc.xehAuthLogs = "#this.ADMIN_ENTRYPOINT#.settings.authLogs";
+		prc.xehAbout = "#this.ADMIN_ENTRYPOINT#.about";
 
 		// Dashboard
 		addTopMenu(
@@ -382,7 +380,10 @@ component accessors="true" threadSafe singleton {
 		);
 
 		// Content
-		addTopMenu( name = this.CONTENT, label = "<i class='fa fa-archive'></i> Content" )
+		addTopMenu(
+			name  = this.CONTENT,
+			label = "<i class='fa fa-archive'></i> Content"
+		)
 			.addSubMenu(
 				name        = "Pages",
 				label       = "Sitemap",
@@ -435,7 +436,10 @@ component accessors="true" threadSafe singleton {
 			);
 
 		// Comments
-		addTopMenu( name = this.COMMENTS, label = "<i class='fa fa-comment'></i> Comments" )
+		addTopMenu(
+			name  = this.COMMENTS,
+			label = "<i class='fa fa-comment'></i> Comments"
+		)
 			.addSubMenu(
 				name        = "Inbox",
 				label       = "Inbox",
@@ -459,7 +463,10 @@ component accessors="true" threadSafe singleton {
 			);
 
 		// Look and Feel
-		addTopMenu( name = this.LOOK_FEEL, label = "<i class='fa fa-tint'></i> Look & Feel" )
+		addTopMenu(
+			name  = this.LOOK_FEEL,
+			label = "<i class='fa fa-tint'></i> Look & Feel"
+		)
 			.addSubMenu(
 				name        = "activetheme",
 				label       = "Active Theme",
@@ -495,11 +502,11 @@ component accessors="true" threadSafe singleton {
 			label       = "<i class='fa fa-bolt'></i> Modules",
 			permissions = "MODULES_ADMIN"
 		).addSubMenu(
-			name    = "Manage",
-			label   = "Manage",
-			href    = variables.buildLink,
-			href_to = prc.xehModules
-		);
+				name    = "Manage",
+				label   = "Manage",
+				href    = variables.buildLink,
+				href_to = prc.xehModules
+			);
 
 		// User
 		addTopMenu( name = this.USERS, label = "<i class='fa fa-user'></i> Users" )
@@ -533,15 +540,16 @@ component accessors="true" threadSafe singleton {
 			);
 
 		// Tools
-		addTopMenu( name = this.TOOLS, label = "<i class='fa fa-wrench'></i> Tools" )
-			.addSubMenu(
+		addTopMenu(
+			name  = this.TOOLS,
+			label = "<i class='fa fa-wrench'></i> Tools"
+		).addSubMenu(
 				name        = "Import",
 				label       = "Import",
 				href        = variables.buildLink,
 				href_to     = prc.xehToolsImport,
 				permissions = "TOOLS_IMPORT"
-			)
-			.addSubMenu(
+			).addSubMenu(
 				name        = "Export",
 				label       = "Export",
 				href        = variables.buildLink,
@@ -554,7 +562,8 @@ component accessors="true" threadSafe singleton {
 			name        = this.SYSTEM,
 			label       = "<i class='fa fa-briefcase'></i> System",
 			permissions = "SYSTEM_TAB"
-		).addSubMenu(
+		)
+			.addSubMenu(
 				name        = "AuthLogs",
 				label       = "Auth Logs",
 				href        = variables.buildLink,
@@ -613,23 +622,23 @@ component accessors="true" threadSafe singleton {
 		required string to,
 		queryString = "",
 		boolean ssl = false
-	){
+	) {
 		var event = requestService.getContext();
 		// Remove by 6.x
 		if ( !isNull( arguments.linkTo ) ) {
 			arguments.to = arguments.linkTo;
 		}
 		return event.buildLink(
-			to          = "#this.ADMIN_ENTRYPOINT#.module.#arguments.module#.#arguments.to#",
-			queryString = arguments.queryString,
-			ssl         = arguments.ssl
-		);
+				to          = "#this.ADMIN_ENTRYPOINT#.module.#arguments.module#.#arguments.to#",
+				queryString = arguments.queryString,
+				ssl         = arguments.ssl
+			);
 	}
 
 	/**
 	 * @name The name of the top menu
 	 */
-	AdminMenuService function withTopMenu( required name ){
+	AdminMenuService function withTopMenu( required name ) {
 		thisTopMenu = arguments.name;
 		return this;
 	}
@@ -639,7 +648,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @name The name of the header menu
 	 */
-	AdminMenuService function withHeaderMenu( required name ){
+	AdminMenuService function withHeaderMenu( required name ) {
 		thisHeaderMenu = arguments.name;
 		return this;
 	}
@@ -673,9 +682,9 @@ component accessors="true" threadSafe singleton {
 		itemType    = "a",
 		itemClass   = "",
 		itemId      = ""
-	){
+	) {
 		// stash pointer
-		variables.thisTopMenu                  = arguments.name;
+		variables.thisTopMenu = arguments.name;
 		// store new top menu in reference map
 		variables.topMenuMap[ arguments.name ] = { submenu : [] };
 		structAppend(
@@ -718,9 +727,9 @@ component accessors="true" threadSafe singleton {
 		itemType    = "a",
 		itemClass   = "",
 		itemId      = ""
-	){
+	) {
 		// stash pointer
-		variables.thisHeaderMenu                  = arguments.name;
+		variables.thisHeaderMenu = arguments.name;
 		// store new top menu in reference map
 		variables.headerMenuMap[ arguments.name ] = { submenu : [] };
 
@@ -766,20 +775,22 @@ component accessors="true" threadSafe singleton {
 		itemType    = "a",
 		itemClass   = "",
 		itemId      = ""
-	){
+	) {
 		// Check if thisTopMenu set?
-		if ( !len( thisTopMenu ) AND !structKeyExists( arguments, "topMenu" ) ) {
+		if ( !len( thisTopMenu ) && !structKeyExists( arguments, "topMenu" ) ) {
 			throw( "No top menu passed or concatenated with" );
 		}
 		// check this pointer
-		if ( len( thisTopMenu ) AND !structKeyExists( arguments, "topMenu" ) ) {
+		if ( len( thisTopMenu ) && !structKeyExists( arguments, "topMenu" ) ) {
 			arguments.topmenu = thisTopMenu;
 		}
 		// store in top menu
 		if ( variables.topMenuMap.keyExists( arguments.topMenu ) ) {
 			arrayAppend( variables.topMenuMap[ arguments.topMenu ].submenu, arguments );
 		} else {
-			log.warn( "requested top menu (#arguments.topMenu#) does not exist when calling addSubMenu()" );
+			log.warn(
+					"requested top menu (#arguments.topMenu#) does not exist when calling addSubMenu()"
+				);
 		}
 		// return
 		return this;
@@ -816,14 +827,14 @@ component accessors="true" threadSafe singleton {
 		itemType    = "a",
 		itemClass   = "",
 		itemId      = ""
-	){
+	) {
 		// Check if thisTopMenu set?
-		if ( !len( thisHeaderMenu ) AND !structKeyExists( arguments, "headerMenu" ) ) {
+		if ( !len( thisHeaderMenu ) && !structKeyExists( arguments, "headerMenu" ) ) {
 			throw( "No header menu passed or concatenated with" );
 		}
 
 		// check this pointer
-		if ( len( thisHeaderMenu ) AND !structKeyExists( arguments, "headerMenu" ) ) {
+		if ( len( thisHeaderMenu ) && !structKeyExists( arguments, "headerMenu" ) ) {
 			arguments.headerMenu = thisHeaderMenu;
 		}
 
@@ -831,7 +842,9 @@ component accessors="true" threadSafe singleton {
 		if ( headerMenuMap.keyExists( arguments.headerMenu ) ) {
 			arrayAppend( headerMenuMap[ arguments.headerMenu ].submenu, arguments );
 		} else {
-			log.warn( "requested header menu (#arguments.headerMenu#) does not exist when calling addHeaderSubMenu()" );
+			log.warn(
+					"requested header menu (#arguments.headerMenu#) does not exist when calling addHeaderSubMenu()"
+				);
 		}
 
 		// return
@@ -844,17 +857,17 @@ component accessors="true" threadSafe singleton {
 	 * @topMenu The optional top menu name to add this sub level menu to or if concatenated then it uses that one.
 	 * @name    The unique name for this sub level menu
 	 */
-	AdminMenuService function removeSubMenu( required topMenu, required name ){
+	AdminMenuService function removeSubMenu( required topMenu, required name ) {
 		// Verify top menu exists, else just return
 		if ( !variables.topMenuMap.keyExists( arguments.topMenu ) ) {
 			log.warn(
-				"Cannot remove submenu (#arguments.name#) as the top menu requested (#arguments.topMenu#) does not exist"
-			);
+					"Cannot remove submenu (#arguments.name#) as the top menu requested (#arguments.topMenu#) does not exist"
+				);
 			return this;
 		}
 
-		for ( var x = 1; x lte arrayLen( variables.topMenuMap[ arguments.topMenu ].subMenu ); x++ ) {
-			if ( variables.topMenuMap[ arguments.topMenu ].subMenu[ x ].name eq arguments.name ) {
+		for ( var x = 1; x LTE arrayLen( variables.topMenuMap[ arguments.topMenu ].subMenu ); x++ ) {
+			if ( variables.topMenuMap[ arguments.topMenu ].subMenu[ x ].name EQ arguments.name ) {
 				arrayDeleteAt( variables.topMenuMap[ arguments.topMenu ].subMenu, x );
 				break;
 			}
@@ -870,17 +883,17 @@ component accessors="true" threadSafe singleton {
 	 * @headerMenu The optional header menu name to remove from
 	 * @name       The sub menu to remove
 	 */
-	AdminMenuService function removeHeaderSubMenu( required headerMenu, required name ){
+	AdminMenuService function removeHeaderSubMenu( required headerMenu, required name ) {
 		// Verify top menu exists, else just return
 		if ( !variables.headerMenuMap.keyExists( arguments.headerMenu ) ) {
 			log.warn(
-				"Cannot remove submenu (#arguments.name#) as the header menu requested (#arguments.headerMenu#) does not exist"
-			);
+					"Cannot remove submenu (#arguments.name#) as the header menu requested (#arguments.headerMenu#) does not exist"
+				);
 			return this;
 		}
 
-		for ( var x = 1; x lte arrayLen( variables.headerMenuMap[ arguments.headerMenu ].subMenu ); x++ ) {
-			if ( variables.headerMenuMap[ arguments.headerMenu ].subMenu[ x ].name eq arguments.name ) {
+		for ( var x = 1; x LTE arrayLen( variables.headerMenuMap[ arguments.headerMenu ].subMenu ); x++ ) {
+			if ( variables.headerMenuMap[ arguments.headerMenu ].subMenu[ x ].name EQ arguments.name ) {
 				arrayDeleteAt( variables.headerMenuMap[ arguments.headerMenu ].subMenu, x );
 				break;
 			}
@@ -895,11 +908,11 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @topMenu The optional top menu name to add this sub level menu to or if concatenated then it uses that one.
 	 */
-	AdminMenuService function removeTopMenu( required topMenu ){
+	AdminMenuService function removeTopMenu( required topMenu ) {
 		var found = false;
 
-		for ( var x = 1; x lte arrayLen( variables.topMenu ); x++ ) {
-			if ( variables.topMenu[ x ].name eq arguments.topMenu ) {
+		for ( var x = 1; x LTE arrayLen( variables.topMenu ); x++ ) {
+			if ( variables.topMenu[ x ].name EQ arguments.topMenu ) {
 				found = true;
 				arrayDeleteAt( variables.topMenu, x );
 				structDelete( variables.topMenuMap, arguments.topMenu );
@@ -908,7 +921,9 @@ component accessors="true" threadSafe singleton {
 		}
 
 		if ( !found ) {
-			log.warn( "Top menu: #arguments.topMenu# not found when calling removeTopMenu" );
+			log.warn(
+					"Top menu: #arguments.topMenu# not found when calling removeTopMenu"
+				);
 		}
 
 		// return
@@ -920,11 +935,11 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @headerMenu The header menu unique name to remove
 	 */
-	AdminMenuService function removeHeaderMenu( required headerMenu ){
+	AdminMenuService function removeHeaderMenu( required headerMenu ) {
 		var found = false;
 
-		for ( var x = 1; x lte arrayLen( variables.headerMenu ); x++ ) {
-			if ( variables.headerMenu[ x ].name eq arguments.headerMenu ) {
+		for ( var x = 1; x LTE arrayLen( variables.headerMenu ); x++ ) {
+			if ( variables.headerMenu[ x ].name EQ arguments.headerMenu ) {
 				found = true;
 				arrayDeleteAt( variables.headerMenu, x );
 				structDelete( variables.headerMenuMap, arguments.headerMenu );
@@ -933,7 +948,9 @@ component accessors="true" threadSafe singleton {
 		}
 
 		if ( !found ) {
-			log.warn( "Header menu: #arguments.headerMenu# not found when calling removeHeaderMenu" );
+			log.warn(
+					"Header menu: #arguments.headerMenu# not found when calling removeHeaderMenu"
+				);
 		}
 
 		// return
@@ -941,16 +958,16 @@ component accessors="true" threadSafe singleton {
 	}
 
 	/**
-	 *  Generate main top admin menu navigation bar
+	 * Generate main top admin menu navigation bar
 	 */
-	any function generateMenu(){
-		var event    = requestService.getContext();
-		var prc      = event.getCollection( private = true );
-		var genMenu  = "";
+	any function generateMenu() {
+		var event = requestService.getContext();
+		var prc = event.getCollection( private = true );
+		var genMenu = "";
 		var thisMenu = variables.topMenu;
 
 		savecontent variable="genMenu" {
-			include "templates/navAdminMenu.cfm";
+			include template="templates/navAdminMenu.cfm";
 		}
 
 		// return it
@@ -960,14 +977,14 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Generate the header menu
 	 */
-	any function generateHeaderMenu(){
-		var event    = requestService.getContext();
-		var prc      = event.getCollection( private = true );
-		var genMenu  = "";
+	any function generateHeaderMenu() {
+		var event = requestService.getContext();
+		var prc = event.getCollection( private = true );
+		var genMenu = "";
 		var thisMenu = variables.headerMenu;
 
 		savecontent variable="genMenu" {
-			include "templates/nav.cfm";
+			include template="templates/nav.cfm";
 		}
 
 		// return it
@@ -977,14 +994,14 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Generate the utility menu
 	 */
-	any function generateUtilsMenu(){
-		var event    = requestService.getContext();
-		var prc      = event.getCollection( private = true );
-		var genMenu  = "";
+	any function generateUtilsMenu() {
+		var event = requestService.getContext();
+		var prc = event.getCollection( private = true );
+		var genMenu = "";
 		var thisMenu = variables.headerMenuMap[ "utils" ];
 
 		savecontent variable="genMenu" {
-			include "templates/subNav.cfm";
+			include template="templates/subNav.cfm";
 		}
 
 		// return it
@@ -994,14 +1011,14 @@ component accessors="true" threadSafe singleton {
 	/**
 	 * Generate dynamic profile menu
 	 */
-	any function generateProfileMenu(){
-		var event    = requestService.getContext();
-		var prc      = event.getCollection( private = true );
-		var genMenu  = "";
+	any function generateProfileMenu() {
+		var event = requestService.getContext();
+		var prc = event.getCollection( private = true );
+		var genMenu = "";
 		var thisMenu = variables.headerMenuMap[ "profile" ];
 
 		savecontent variable="genMenu" {
-			include "templates/subNav.cfm";
+			include template="templates/subNav.cfm";
 		}
 
 		// return it
@@ -1013,7 +1030,7 @@ component accessors="true" threadSafe singleton {
 	 *
 	 * @data The data struct
 	 */
-	string function parseADataAttributes( required struct data ){
+	string function parseADataAttributes( required struct data ) {
 		var dataString = "";
 
 		for ( var dataKey in arguments.data ) {

@@ -1,29 +1,28 @@
 /**
-********************************************************************************
-ContentBox - A Modular Content Platform
-Copyright 2012 by Luis Majano and Ortus Solutions, Corp
-www.ortussolutions.com
-********************************************************************************
-Apache License, Version 2.0
-
-Copyright Since [2012] [Luis Majano and Ortus Solutions,Corp]
-
-Licensed under the Apache License, Version 2.0 (the "License" );
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-********************************************************************************
-* Import a blogcfc database into contentbox
-*/
+ * ********************************************************************************
+ * ContentBox - A Modular Content Platform
+ * Copyright 2012 by Luis Majano and Ortus Solutions, Corp
+ * www.ortussolutions.com
+ * ********************************************************************************
+ * Apache License, Version 2.0
+ *
+ * Copyright Since [2012] [Luis Majano and Ortus Solutions,Corp]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License" );
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ********************************************************************************
+ * Import a blogcfc database into contentbox
+ */
 component implements="contentbox.models.importers.ICBImporter" {
-
 	property name="categoryService" inject="id:categoryService@contentbox";
 	property name="entryService" inject="id:entryService@contentbox";
 	property name="pageService" inject="id:pageService@contentbox";
@@ -40,7 +39,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 	// ------------------------------------------------------------------------------------------------
 	// Constructor
 	// ------------------------------------------------------------------------------------------------
-	blogcfcImporter function init(){
+	blogcfcImporter function init() {
 		return this;
 	}
 
@@ -53,12 +52,12 @@ component implements="contentbox.models.importers.ICBImporter" {
 		dsnPassword     = "",
 		defaultPassword = "",
 		required roleID,
-		tableprefix = ""
-	){
-		var authorMap     = {};
-		var catMap        = {};
-		var entryMap      = {};
-		var slugMap       = {};
+		tableprefix     = ""
+	) {
+		var authorMap = {};
+		var catMap = {};
+		var entryMap = {};
+		var slugMap = {};
 		var defaultAuthor = {};
 
 		log.info( "Starting import process: #arguments.toString()#" );
@@ -71,7 +70,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select categoryid, categoryname, categoryalias, blog FROM tblBlogCategories"
 			).execute().getResult();
-			for ( var x = 1; x lte qCategories.recordcount; x++ ) {
+			for ( var x = 1; x LTE qCategories.recordcount; x++ ) {
 				var props = {
 					category : qCategories.categoryName[ x ],
 					slug     : qCategories.categoryAlias[ x ]
@@ -94,7 +93,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select username, password, name from tblUsers"
 			).execute().getResult();
-			for ( var x = 1; x lte qAuthors.recordcount; x++ ) {
+			for ( var x = 1; x LTE qAuthors.recordcount; x++ ) {
 				var props = {
 					email     : qAuthors.username[ x ],
 					username  : qAuthors.username[ x ],
@@ -137,7 +136,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					sql        = "select id, blog, title, alias, body from tblblogpages"
 				).execute().getResult();
 
-				for ( var x = 1; x lte qPages.recordcount; x++ ) {
+				for ( var x = 1; x LTE qPages.recordcount; x++ ) {
 					var props = {
 						title         : qPages.title[ x ],
 						slug          : qPages.alias[ x ],
@@ -153,15 +152,15 @@ component implements="contentbox.models.importers.ICBImporter" {
 					// blogCFC has no concept of authored pages, so we grab the first author we find from blogCFC
 					// This may need revising later.
 					page.addNewContentVersion(
-						content   = props.content,
-						changelog = "Imported content",
-						author    = defaultAuthor
-					);
+							content   = props.content,
+							changelog = "Imported content",
+							author    = defaultAuthor
+						);
 					page.setCreator( defaultAuthor );
 					entitySave( page );
 				}
 				log.info( "Pages imported" );
-			} catch ( any e ) {
+			} catch (any e) {
 				log.info( "Error Importing Pages - Version might support Pages" );
 			}
 
@@ -177,8 +176,8 @@ component implements="contentbox.models.importers.ICBImporter" {
 									from tblBlogEntries
 									"
 			).execute().getResult();
-			for ( var x = 1; x lte q.recordcount; x++ ) {
-				var published     = true;
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
+				var published = true;
 				var commentStatus = true;
 				if ( !trim( q.released[ x ] ) ) {
 					published = false;
@@ -210,10 +209,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 				oStat.setRelatedContent( entry );
 				entry.setStats( oStat );
 				entry.addNewContentVersion(
-					content   = props.content,
-					changelog = "Imported content",
-					author    = authorService.get( authorMap[ q.username[ x ] ] )
-				);
+						content   = props.content,
+						changelog = "Imported content",
+						author    = authorService.get( authorMap[ q.username[ x ] ] )
+					);
 				entry.setCreator( authorService.get( authorMap[ q.username[ x ] ] ) );
 
 				// entry categories
@@ -231,8 +230,11 @@ component implements="contentbox.models.importers.ICBImporter" {
 					sql        = thisSQL
 				).execute().getResult();
 				var aCategories = [];
-				for ( var y = 1; y lte qCategories.recordcount; y++ ) {
-					arrayAppend( aCategories, categoryService.get( catMap[ qCategories.categoryId[ y ] ] ) );
+				for ( var y = 1; y LTE qCategories.recordcount; y++ ) {
+					arrayAppend(
+						aCategories,
+						categoryService.get( catMap[ qCategories.categoryId[ y ] ] )
+					);
 				}
 				entry.setCategories( aCategories );
 				entitySave( entry );
@@ -249,7 +251,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					sql        = "select * from tblBlogComments where entryidfk = '#q.id[ x ]#'"
 				).execute().getResult();
 
-				for ( var y = 1; y lte qComments.recordcount; y++ ) {
+				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
 						content     : qComments.comment[ y ],
 						author      : qComments.name[ y ],
@@ -269,30 +271,28 @@ component implements="contentbox.models.importers.ICBImporter" {
 				log.info( "Entry imported: #entry.getTitle()#" );
 			}
 			log.info( "Entries imported successfully!" );
-		} catch ( any e ) {
-			transaction action="rollback" {
-			}
+		} catch (any e) {
+			transaction action="rollback";
 			log.error( "Error importing blog: #e.message# #e.detail#", e );
 			rethrow;
 		}
-		transaction action="commit" {
-		}
+		transaction action="commit";
 	}
 
 	// ------------------------------------------------------------------------------------------------
 	// Convert blogCFC code blocks to a more uniform approach
 	// ------------------------------------------------------------------------------------------------
-	private string function convertContent( required string content ){
-		if ( findNoCase( "<code>", arguments.content ) and findNoCase( "</code>", arguments.content ) ) {
+	private string function convertContent( required string content ) {
+		if ( findNoCase( "<code>", arguments.content ) && findNoCase( "</code>", arguments.content ) ) {
 			var counter = findNoCase( "<code>", arguments.content );
-			while ( counter gte 1 ) {
+			while ( counter GTE 1 ) {
 				var codeblock = reFindNoCase(
 					"(?s)(.*)(<code>)(.*)(</code>)(.*)",
 					arguments.content,
 					1,
 					1
 				);
-				if ( arrayLen( codeblock.len ) gte 6 ) {
+				if ( arrayLen( codeblock.len ) GTE 6 ) {
 					var codeportion = mid(
 						arguments.content,
 						codeblock.pos[ 4 ],
@@ -300,15 +300,23 @@ component implements="contentbox.models.importers.ICBImporter" {
 					);
 					if ( len( trim( codeportion ) ) ) {
 						var result = "[code]#codeportion#[/code]";
-						result     = htmlCodeFormat( result );
+						result = htmlCodeFormat( result );
 					}
-					var newbody = mid( arguments.content, 1, codeblock.len[ 2 ] ) & result & mid(
+					var newbody = mid(
+						arguments.content,
+						1,
+						codeblock.len[ 2 ]
+					) & result & mid(
 						arguments.content,
 						codeblock.pos[ 6 ],
 						codeblock.len[ 6 ]
 					);
 					arguments.content = newBody;
-					counter           = findNoCase( "<code>", arguments.content, counter );
+					counter = findNoCase(
+						"<code>",
+						arguments.content,
+						counter
+					);
 				} else {
 					counter = 0;
 				}
@@ -320,13 +328,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 	// ------------------------------------------------------------------------------------------------
 	// find all images in a given entry and save them to the media manager
 	// ------------------------------------------------------------------------------------------------
-	private string function findImages( required string content ){
-		var images    = reMatchNoCase( "(?i)src=""[^>]*[^>](.*)(gif|jpg|png)""\1", arguments.content );
-		var images1   = reMatchNoCase( "(?i)href=""[^>]*[^>](.*)(gif|jpg|png)""\1", arguments.content );
-		var pattern   = createObject( "java", "java.util.regex.Pattern" );
-		var exp       = "(?<=\=\"" )([^""])+(?=\"" )";
+	private string function findImages( required string content ) {
+		var images = reMatchNoCase( "(?i)src=""[^>]*[^>](.*)(gif|jpg|png)""\1", arguments.content );
+		var images1 = reMatchNoCase( "(?i)href=""[^>]*[^>](.*)(gif|jpg|png)""\1", arguments.content );
+		var pattern = createObject( "java", "java.util.regex.Pattern" );
+		var exp = "(?<=\=\"" )([^""])+(?=\"" )";
 		var mediaPath = expandPath( settingService.getSetting( "cb_media_directoryRoot" ) );
-		var newUrl    = "/__media/blogImages/";
+		var newUrl = "/__media/blogImages/";
 
 		// Create a directory in the Media Manager for all the blog entry images
 		if ( !directoryExists( mediaPath & "\blogImages" ) ) {
@@ -339,7 +347,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 			for ( var item in images ) {
 				var matcher = pattern.compile( exp ).matcher( item );
 				while ( matcher.find() ) {
-					var urlObj   = matcher.group();
+					var urlObj = matcher.group();
 					var fileName = listLast( matcher.group(), "/" );
 
 					var httpService = new http();
@@ -349,7 +357,11 @@ component implements="contentbox.models.importers.ICBImporter" {
 					httpService.setGetAsBinary( "yes" );
 					var result = httpService.send().getPrefix();
 					fileWrite( mediaPath & "\blogImages\" & fileName, result.fileContent );
-					arguments.content = replaceNoCase( arguments.content, urlObj, newUrl & fileName );
+					arguments.content = replaceNoCase(
+						arguments.content,
+						urlObj,
+						newUrl & fileName
+					);
 				}
 			}
 		}
@@ -359,7 +371,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 			for ( var item in images1 ) {
 				var matcher = pattern.compile( exp ).matcher( item );
 				while ( matcher.find() ) {
-					var urlObj   = matcher.group();
+					var urlObj = matcher.group();
 					var fileName = listLast( matcher.group(), "/" );
 
 					var httpService = new http();
@@ -369,7 +381,11 @@ component implements="contentbox.models.importers.ICBImporter" {
 					httpService.setGetAsBinary( "yes" );
 					var result = httpService.send().getPrefix();
 					fileWrite( mediaPath & "\blogImages\" & fileName, result.fileContent );
-					arguments.content = replaceNoCase( arguments.content, urlObj, newUrl & fileName );
+					arguments.content = replaceNoCase(
+						arguments.content,
+						urlObj,
+						newUrl & fileName
+					);
 				}
 			}
 		}

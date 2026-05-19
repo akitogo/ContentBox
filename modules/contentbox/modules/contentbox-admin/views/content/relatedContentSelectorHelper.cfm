@@ -1,25 +1,24 @@
 <cfscript>
-function getContentTypeIconCls( contentType ) {
-	var iconCls = "";
-	switch( arguments.contentType ) {
-		case 'Page':
-			iconCls = "fa fa-file";
-			break;
-		case 'Entry':
-			iconCls = "fas fa-blog";
-			break;
-		case 'ContentStore':
-			iconCls = "fa fa-hdd";
-			break;
-		default:
-			break;
+	function getContentTypeIconCls( contentType ) {
+		var iconCls = "";
+		switch ( arguments.contentType ) {
+			case "Page":
+				iconCls = "fa fa-file";
+				break;
+			case "Entry":
+				iconCls = "fas fa-blog";
+				break;
+			case "ContentStore":
+				iconCls = "fa fa-hdd";
+				break;
+			default:
+				break;
+		}
+		return iconCls;
 	}
-	return iconCls;
-}
 </cfscript>
 <cfoutput>
-<!--- Custom Javascript --->
-<script>
+	<!--- Custom Javascript ---> <script>
 ( () => {
 	// Shared Pointers
 	$relatedContentSelectorForm    = $( "##relatedContentSelectorForm" );
@@ -57,6 +56,7 @@ function getContentTypeIconCls( contentType ) {
 	<cfif len( rc.search )>
 		$( "##contentSearch" ).focus();
 	</cfif>
+	
 
 	// fire off requests for individual tabs...should be dynamically evaluated in the future, I think
 	loadContentTabs();
@@ -97,10 +97,11 @@ function loadContentTypeTab( contentType, params ) {
  */
 function pagerLink( page, contentType ){
 	$relatedContentSelectorLoader.fadeIn( "fast" );
-	var url = '#event.buildLink(prc.xehRelatedContentSelector )#?excludeIDs=#rc.excludeIDs#&contentType=' + contentType + '&page=' + page;
+	var url = '#event.buildLink( prc.xehRelatedContentSelector )#?excludeIDs=#rc.excludeIDs#&contentType=' + contentType + '&page=' + page;
 	$( '##' + contentType ).load( url, function( data ) {
 		$relatedContentSelectorLoader.fadeOut();
 	} );
 }
 </script>
+
 </cfoutput>

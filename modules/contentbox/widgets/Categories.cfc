@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -7,10 +7,12 @@
  */
 component extends="contentbox.models.ui.BaseWidget" singleton {
 
-	Categories function init(){
+	Categories function init() {
 		// Widget Properties
 		setName( "Categories" );
-		setDescription( "A cool widget that renders your blog categories summary." );
+		setDescription(
+			"A cool widget that renders your blog categories summary."
+		);
 		setAuthor( "Ortus Solutions" );
 		setAuthorURL( "https://www.ortussolutions.com" );
 		setIcon( "tags" );
@@ -33,13 +35,15 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		string title          = "",
 		string titleLevel     = "2",
 		boolean isPublic      = true
-	){
+	) {
 		var categories = variables.categoryService.search(
-			isPublic: (
-				isNull( arguments.isPublic ) || !len( arguments.isPublic ) ? javacast( "null", "" ) : arguments.isPublic
-			),
-			siteId: getSite().getSiteId()
-		).categories;
+				isPublic = (
+					isNull( arguments.isPublic ) || !len( arguments.isPublic )
+						? javacast( "null", "" )
+						: arguments.isPublic
+				),
+				siteId   = getSite().getSiteId()
+			).categories;
 
 		var rString = "";
 
@@ -64,20 +68,22 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		return rString;
 	}
 
-	private function buildDropDown( categories, showPostCount ){
+	private function buildDropDown( categories, showPostCount ) {
 		var rString = "";
 
 		// generate recent comments
 		// cfformat-ignore-start
 		saveContent variable="rString" {
-			writeOutput("
+			writeOutput(
+				"
 				<select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
 					<option value=""##"">Select Category</option>
-			");
+			"
+			);
 
 			// iterate and create
-			for ( var x = 1; x lte arrayLen( arguments.categories ); x++ ) {
-				if ( arguments.categories[ x ].getNumberOfEntries() gt 0 ) {
+			for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
+				if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
 					writeOutput(
 						"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
 					);
@@ -94,10 +100,11 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 			writeOutput( "</select>" );
 		}
 		return rString;
+
 		// cfformat-ignore-end
 	}
 
-	private function buildList( categories, showPostCount ){
+	private function buildList( categories, showPostCount ) {
 		var rString = "";
 
 		// generate recent comments
@@ -105,9 +112,10 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		saveContent variable="rString" {
 			writeOutput( "<ul id=""categories""> " );
 
-			for ( var x = 1; x lte arrayLen( arguments.categories ); x++ ) {
-				if ( arguments.categories[ x ].getNumberOfEntries() gt 0 ) {
-					writeOutput( "
+			for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
+				if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
+					writeOutput(
+						"
 						<li class=""categories"">
 							<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
 					);
@@ -124,6 +132,7 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 			writeOutput( "</ul>" );
 		}
 		return rString;
+
 		// cfformat-ignore-end
 	}
 

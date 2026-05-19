@@ -1,6 +1,5 @@
-﻿<cfoutput>
-<!--- Custom JS --->
-<script>
+<cfoutput>
+	<!--- Custom JS ---> <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// pointers
 	$authorForm 	= $( "##authorForm" );
@@ -14,22 +13,22 @@ document.addEventListener( "DOMContentLoaded", () => {
     	'username',
     	function( value, element ) {
 			if( value.length && value == "#prc.author.getUsername()#" ){
-				return true;
-			}
-			// verify username
-			if( isUsernameFound( value ) ){
-				return false;
-			}
-			return true;
-    	},
-    	"The username you entered already exists, try a new one!"
-    );
+	return true;
+}
+// verify username
+if( isUsernameFound( value ) ){
+	return false;
+}
+return true;
+ 	},
+ 	"The username you entered already exists, try a new one!"
+ );
 
-    // Custom email unique validator
-    $.validator.addMethod(
-    	'email',
-    	function( value, element ) {
-			if( value.length && value == "#prc.author.getEmail()#" ){
+ // Custom email unique validator
+ $.validator.addMethod(
+ 	'email',
+ 	function( value, element ) {
+if( value.length && value == "#prc.author.getEmail()#" ){
 				return true;
 			}
 			// verify email

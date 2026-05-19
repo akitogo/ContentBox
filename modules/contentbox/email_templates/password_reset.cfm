@@ -1,6 +1,7 @@
-﻿<cfoutput>
-    <cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
-    #ETH.text( "
+<cfoutput>
+	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
+	#ETH.text(
+			"
         <p>Dear @name@</p>
 
         <p>
@@ -13,5 +14,6 @@
 			If this reset was not issued by you then please contact your system administrator <a href='mailto:@adminEmail@'>@adminEmail@</a>
 		</p>
 
-    " )#
+    "
+		)#
 </cfoutput>

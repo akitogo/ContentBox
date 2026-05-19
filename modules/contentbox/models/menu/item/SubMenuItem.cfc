@@ -12,40 +12,37 @@ component
 	extends           ="contentbox.models.menu.item.BaseMenuItem"
 	discriminatorValue="SubMenu"
 {
-
-	/* *********************************************************************
-	 **                          DI
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **                          DI
+	 **********************************************************************/
 	property
-		name      ="provider"
+		name="provider"
 		persistent="false"
-		inject    ="provider:contentbox.models.menu.providers.SubMenuProvider";
-
-	/* *********************************************************************
-	 **                          PROPERTIES
-	 ********************************************************************* */
+		inject="provider:contentbox.models.menu.providers.SubMenuProvider";
+	/**********************************************************************
+	 * **                          PROPERTIES
+	 **********************************************************************/
 
 	property
-		name   ="menuSlug"
-		column ="menuSlug"
+		name="menuSlug"
+		column="menuSlug"
 		notnull="false"
 		ormtype="string"
 		default="";
-
-	/* *********************************************************************
-	 **                          PK + CONSTRAINTS
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **                          PK + CONSTRAINTS
+	 **********************************************************************/
 
 	this.constraints[ "menuSlug" ] = { required : false, size : "1..255" };
 
-	/* *********************************************************************
-	 **                          PUBLIC FUNCTIONS
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **                          PUBLIC FUNCTIONS
+	 **********************************************************************/
 
-	function init(){
+	function init() {
 		super.init();
 
-		appendToMemento( [ "menuSlug" ], "defaultIncludes" );
+		appendToMemento( [ "menuSlug"], "defaultIncludes" );
 
 		return this;
 	}
@@ -55,7 +52,7 @@ component
 	 *
 	 * @options.hint Additional arguments to be used in the method
 	 */
-	public boolean function canDisplay( required struct options = {} ){
+	public boolean function canDisplay( required struct options = {} ) {
 		var display = super.canDisplay( argumentCollection = arguments );
 		if ( display ) {
 			var slug = getMenuSlug();

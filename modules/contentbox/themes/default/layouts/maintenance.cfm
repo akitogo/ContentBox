@@ -1,29 +1,9 @@
-﻿<cfparam name="args.sidebar" default="true">
+<cfparam name="args.sidebar" default="true">
 <cfoutput>
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
-<head>
-	<!--- Page Includes --->
-	#cb.quickView( "_pageIncludes" )#
-
-	<!--- ContentBoxEvent --->
-	#cb.event( "cbui_beforeHeadEnd" )#
-</head>
-<body>
-	<!--- ContentBoxEvent --->
-	#cb.event( "cbui_afterBodyStart" )#
-
-	<!--- ContentBoxEvent --->
-	#cb.event( "cbui_beforeContent" )#
-
-	<!--- Main View --->
-	#cb.mainView( args=args )#
-
-	<!--- ContentBoxEvent --->
-	#cb.event( "cbui_afterContent" )#
-	
-	<!--- ContentBoxEvent --->
-	#cb.event( "cbui_beforeBodyEnd" )#	
+<head>#cb.quickView( "_pageIncludes" )##cb.event( "cbui_beforeHeadEnd" )#</head>
+<body>#cb.event( "cbui_afterBodyStart" )##cb.event( "cbui_beforeContent" )##cb.mainView( args = args )##cb.event( "cbui_afterContent" )##cb.event( "cbui_beforeBodyEnd" )#	
 </body>
 </html>
 </cfoutput>

@@ -1,5 +1,5 @@
-﻿<cfoutput>
-
+<cfoutput>
+	
 <div class="row">
     <div class="col-md-12">
 		<h1 class="h1">
@@ -15,13 +15,14 @@
 			<div class="panel-heading">
 				<div class="float-right mt10">
 					<a
-						<cfif prc.content.getContentType() eq "page">
-							href="#event.buildLink( prc.xehPagesEditor )#/contentId/#prc.content.getContentId()#"
-						<cfelseif prc.content.getContentType() eq "contentstore">
-							href="#event.buildLink( prc.xehContentStoreEditor )#/contentId/#prc.content.getContentId()#"
-						<cfelse>
-							href="#event.buildLink( prc.xehEntriesEditor )#/contentId/#prc.content.getContentId()#"
-						</cfif>
+	<cfif prc.content.getContentType() EQ "page">
+		href="#event.buildLink( prc.xehPagesEditor )#/contentId/#prc.content.getContentId()#"
+	<cfelseif prc.content.getContentType() EQ "contentstore">
+		href="#event.buildLink( prc.xehContentStoreEditor )#/contentId/#prc.content.getContentId()#"
+	<cfelse>
+		href="#event.buildLink( prc.xehEntriesEditor )#/contentId/#prc.content.getContentId()#"
+	</cfif>
+	
 						class="btn btn-sm btn-default"
 					>
 						Edit
@@ -34,10 +35,7 @@
 			</div>
 
 			<div class="panel-body">
-				<!--- MessageBox --->
-				#cbMessageBox().renderit()#
-				<!--- Version History Panel --->
-				#prc.versionsPager#
+				#cbMessageBox().renderit()##prc.versionsPager#
 			</div>
 		</div>
 	</div>
@@ -64,11 +62,10 @@
 						<td>
 							<a href="mailto:#prc.content.getCreatorEmail()#">
 								#getInstance( "Avatar@contentbox" ).renderAvatar(
-									email	= prc.content.getCreatorEmail(),
-									size	= "20",
-									class	= "img img-circle"
-								)#
-								#prc.content.getCreatorName()#
+			email = prc.content.getCreatorEmail(),
+			size  = "20",
+			class = "img img-circle"
+		)##prc.content.getCreatorName()#
 							</a>
 						</td>
 					</tr>
@@ -95,11 +92,10 @@
 						<td>
 							<a href="mailto:#prc.content.getAuthorEmail()#">
 								#getInstance( "Avatar@contentbox" ).renderAvatar(
-									email	= prc.content.getAuthorEmail(),
-									size	= "20",
-									class	= "img img-circle"
-								)#
-								#prc.content.getAuthorName()#
+			email = prc.content.getAuthorEmail(),
+			size  = "20",
+			class = "img img-circle"
+		)##prc.content.getAuthorName()#
 							</a>
 						</td>
 					</tr>
@@ -108,23 +104,27 @@
 					<button
 						class="btn btn-default btn-sm"
 						title="Back to listing"
-						<cfif len( prc.content.getParentID() )>
-							onclick="to( '#event.buildLink( prc.xehBackTrack )#/parent/#prc.content.getParentID()#' );return false;"
-						<cfelse>
-							onclick="to( '#event.buildLink( prc.xehBackTrack )#' );return false;"
-						</cfif>
+
+	<cfif len( prc.content.getParentID() )>
+		onclick="to( '#event.buildLink( prc.xehBackTrack )#/parent/#prc.content.getParentID()#' );return false;"
+	<cfelse>
+		onclick="to( '#event.buildLink( prc.xehBackTrack )#' );return false;"
+	</cfif>
+	
 					>
 						<i class="fa fa-chevron-left"></i> Back
 					</button>
-					<cfif len( prc.xehOpenContent )>
-						<button
-							class="btn btn-primary btn-sm"
-							title="View in Site"
-							onclick="window.open( '#prc.xehOpenContent#' );return false;"
-						>
-							<i class="fa fa-eye"></i> Open
-						</button>
-					</cfif>
+
+	<cfif len( prc.xehOpenContent )>
+		<button
+class="btn btn-primary btn-sm"
+title="View in Site"
+onclick="window.open( '#prc.xehOpenContent#' );return false;"
+>
+	<i class="fa fa-eye"></i> Open
+</button>
+	</cfif>
+	
 				</div>
 		    </div>
 		</div>
@@ -146,4 +146,5 @@
 		</div>
     </div>
 </div>
+
 </cfoutput>

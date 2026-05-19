@@ -13,311 +13,276 @@ component
 	cachename ="cbSite"
 	cacheuse  ="read-write"
 {
-
-	/* *********************************************************************
-	 **							DI
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **							DI
+	 **********************************************************************/
 
 	property
-		name      ="contentService"
-		inject    ="provider:contentService@contentbox"
+		name="contentService"
+		inject="provider:contentService@contentbox"
 		persistent="false";
-
-	/* *********************************************************************
-	 **							PROPERTIES
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **							PROPERTIES
+	 **********************************************************************/
 
 	property
-		name     ="siteID"
-		column   ="siteID"
+		name="siteID"
+		column="siteID"
 		fieldtype="id"
 		generator="uuid"
-		length   ="36"
-		ormtype  ="string"
-		update   ="false";
-
+		length="36"
+		ormtype="string"
+		update="false";
 	property
-		name   ="name"
-		column ="name"
+		name="name"
+		column="name"
 		ormtype="string"
 		notnull="true"
-		length ="255"
+		length="255"
 		default="";
-
 	property
-		name   ="slug"
-		column ="slug"
+		name="slug"
+		column="slug"
 		ormtype="string"
 		notnull="true"
-		length ="255"
-		unique ="true"
+		length="255"
+		unique="true"
 		default=""
-		index  ="idx_siteSlug";
-
+		index="idx_siteSlug";
 	property
-		name   ="description"
-		column ="description"
+		name="description"
+		column="description"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="500";
-
+		length="500";
 	property
-		name   ="keywords"
-		column ="keywords"
+		name="keywords"
+		column="keywords"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="255";
-
+		length="255";
 	property
-		name   ="domain"
-		column ="domain"
+		name="domain"
+		column="domain"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="255";
-
+		length="255";
 	property
-		name   ="domainRegex"
-		column ="domainRegex"
+		name="domainRegex"
+		column="domainRegex"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="255";
-
+		length="255";
 	property
-		name   ="domainAliases"
-		column ="domainAliases"
+		name="domainAliases"
+		column="domainAliases"
 		ormtype="text"
 		notnull="false"
-		length ="8000"
+		length="8000"
 		default="";
-
 	property
-		name   ="tagline"
-		column ="tagline"
+		name="tagline"
+		column="tagline"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="255";
-
+		length="255";
 	property
-		name   ="homepage"
-		column ="homepage"
+		name="homepage"
+		column="homepage"
 		ormtype="string"
 		notnull="false"
 		default="cbBlog"
-		length ="255";
-
+		length="255";
 	property
-		name   ="isBlogEnabled"
-		column ="isBlogEnabled"
+		name="isBlogEnabled"
+		column="isBlogEnabled"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="isSitemapEnabled"
-		column ="isSitemapEnabled"
+		name="isSitemapEnabled"
+		column="isSitemapEnabled"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="poweredByHeader"
-		column ="poweredByHeader"
+		name="poweredByHeader"
+		column="poweredByHeader"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="adminBar"
-		column ="adminBar"
+		name="adminBar"
+		column="adminBar"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="isSSL"
-		column ="isSSL"
+		name="isSSL"
+		column="isSSL"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
-
 	property
-		name   ="isActive"
-		column ="isActive"
+		name="isActive"
+		column="isActive"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="activeTheme"
-		column ="activeTheme"
+		name="activeTheme"
+		column="activeTheme"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="255";
-
+		length="255";
 	property
-		name   ="notificationEmails"
-		column ="notificationEmails"
+		name="notificationEmails"
+		column="notificationEmails"
 		ormtype="string"
 		notnull="false"
 		default=""
-		length ="500";
-
+		length="500";
 	property
-		name   ="notifyOnEntries"
-		column ="notifyOnEntries"
+		name="notifyOnEntries"
+		column="notifyOnEntries"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="notifyOnPages"
-		column ="notifyOnPages"
+		name="notifyOnPages"
+		column="notifyOnPages"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="notifyOnContentStore"
-		column ="notifyOnContentStore"
+		name="notifyOnContentStore"
+		column="notifyOnContentStore"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
-
 	property
-		name   ="mediaDisk"
-		column ="mediaDisk"
+		name="mediaDisk"
+		column="mediaDisk"
 		ormtype="string"
 		notnull="false"
 		default="contentbox"
-		length ="50";
-
-	/* *********************************************************************
-	 **							RELATIONSHIPS
-	 ********************************************************************* */
+		length="50";
+	/**********************************************************************
+	 * **							RELATIONSHIPS
+	 **********************************************************************/
 
 	// O2M -> Settings
 	property
-		name        ="settings"
+		name="settings"
 		singularName="setting"
-		fieldtype   ="one-to-many"
-		type        ="array"
-		lazy        ="true"
-		orderby     ="name"
-		cfc         ="contentbox.models.system.Setting"
-		fkcolumn    ="FK_siteID"
-		inverse     ="true"
-		cascade     ="all-delete-orphan";
-
+		fieldtype="one-to-many"
+		type="array"
+		lazy="true"
+		orderby="name"
+		cfc="contentbox.models.system.Setting"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
 	// O2M -> Categories
 	property
-		name        ="categories"
+		name="categories"
 		singularName="category"
-		fieldtype   ="one-to-many"
-		type        ="array"
-		lazy        ="true"
-		orderby     ="slug"
-		cfc         ="contentbox.models.content.Category"
-		fkcolumn    ="FK_siteID"
-		inverse     ="true"
-		cascade     ="all-delete-orphan";
-
+		fieldtype="one-to-many"
+		type="array"
+		lazy="true"
+		orderby="slug"
+		cfc="contentbox.models.content.Category"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
 	// O2M -> Entries
 	property
-		name        ="entries"
+		name="entries"
 		singularName="entry"
-		fieldtype   ="one-to-many"
-		type        ="array"
-		lazy        ="true"
-		orderby     ="createdDate desc"
-		cfc         ="contentbox.models.content.Entry"
-		fkcolumn    ="FK_siteID"
-		inverse     ="true"
-		cascade     ="all-delete-orphan";
-
+		fieldtype="one-to-many"
+		type="array"
+		lazy="true"
+		orderby="createdDate desc"
+		cfc="contentbox.models.content.Entry"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
 	// O2M -> Pages
 	property
-		name        ="pages"
+		name="pages"
 		singularName="page"
-		fieldtype   ="one-to-many"
-		type        ="array"
-		lazy        ="true"
-		orderby     ="parent"
-		cfc         ="contentbox.models.content.Page"
-		fkcolumn    ="FK_siteID"
-		inverse     ="true"
-		cascade     ="all-delete-orphan";
-
+		fieldtype="one-to-many"
+		type="array"
+		lazy="true"
+		orderby="parent"
+		cfc="contentbox.models.content.Page"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
 	// O2M -> ContentStore
 	property
-		name     ="contentStore"
+		name="contentStore"
 		fieldtype="one-to-many"
-		type     ="array"
-		lazy     ="true"
-		orderby  ="parent"
-		cfc      ="contentbox.models.content.ContentStore"
-		fkcolumn ="FK_siteID"
-		inverse  ="true"
-		cascade  ="all-delete-orphan";
-
+		type="array"
+		lazy="true"
+		orderby="parent"
+		cfc="contentbox.models.content.ContentStore"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
 	// O2M -> menus
 	property
-		name        ="menus"
+		name="menus"
 		singularName="menu"
-		fieldtype   ="one-to-many"
-		type        ="array"
-		lazy        ="true"
-		orderby     ="createdDate desc"
-		cfc         ="contentbox.models.menu.Menu"
-		fkcolumn    ="FK_siteID"
-		inverse     ="true"
-		cascade     ="all-delete-orphan";
-
-	/* *********************************************************************
-	 **							CALUCLATED FIELDS
-	 ********************************************************************* */
+		fieldtype="one-to-many"
+		type="array"
+		lazy="true"
+		orderby="createdDate desc"
+		cfc="contentbox.models.menu.Menu"
+		fkcolumn="FK_siteID"
+		inverse="true"
+		cascade="all-delete-orphan";
+	/**********************************************************************
+	 * **							CALUCLATED FIELDS
+	 **********************************************************************/
 
 	property
-		name   ="numberOfEntries"
+		name="numberOfEntries"
 		formula="select count(*)
 				from cb_entry as entry, cb_content as content
 				where entry.contentID=content.contentID
 					and content.FK_siteID = siteID";
-
 	property
-		name   ="numberOfPages"
+		name="numberOfPages"
 		formula="select count(*)
 				from cb_page as page, cb_content as content
 				where page.contentID=content.contentID
 					and content.FK_siteID = siteID";
-
 	property
-		name   ="numberOfContentStore"
+		name="numberOfContentStore"
 		formula="select count(*)
 				from cb_contentStore as contentStore, cb_content as content
 				where contentStore.contentID=content.contentID
 					and content.FK_siteID = siteID";
-
 	property
-		name   ="numberOfMenus"
+		name="numberOfMenus"
 		formula="select count(*)
 		from cb_menu as menu
 		where menu.FK_siteID = siteID";
-
 	property
-		name   ="numberOfCategories"
+		name="numberOfCategories"
 		formula="select count(*)
 		from cb_category as category
 		where category.FK_siteID = siteID";
-
-	/* *********************************************************************
-	 **							PK + CONSTRAINTS + MEMENTO
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **							PK + CONSTRAINTS + MEMENTO
+	 **********************************************************************/
 
 	this.pk = "siteID";
 
@@ -367,10 +332,7 @@ component
 					"pages",
 					"settings"
 				],
-				defaultExcludes : [
-					"settings.siteSnapshot",
-					"menus.siteSnapshot:site"
-				]
+				defaultExcludes : [ "settings.siteSnapshot", "menus.siteSnapshot:site"]
 			}
 		}
 	};
@@ -398,25 +360,30 @@ component
 		"activeTheme"      : { required : true, size : "0..255" }
 	};
 
-	/* *********************************************************************
-	 **							PUBLIC METHODS
-	 ********************************************************************* */
+	/**********************************************************************
+	 * **							PUBLIC METHODS
+	 **********************************************************************/
 
 	/**
 	 * Constructor
 	 */
-	function init(){
-		variables.settings      = [];
-		variables.categories    = [];
-		variables.entries       = [];
-		variables.pages         = [];
-		variables.contentStore  = [];
+	function init() {
+		variables.settings = [];
+		variables.categories = [];
+		variables.entries = [];
+		variables.pages = [];
+		variables.contentStore = [];
 		variables.domainAliases = "[]";
 
 		super.init();
 
 		// Incorporate all includes to the export profile
-		this.memento.profiles.export.defaultIncludes.append( this.memento.defaultIncludes, true );
+		this
+			.memento
+			.profiles
+			.export
+			.defaultIncludes
+			.append( this.memento.defaultIncludes, true );
 
 		return this;
 	}
@@ -424,14 +391,14 @@ component
 	/**
 	 * Get the total number of content items in this site
 	 */
-	numeric function getNumberOfContent(){
+	numeric function getNumberOfContent() {
 		return variables.contentService.getTotalContentCount( getsiteID() );
 	}
 
 	/**
 	 * I remove all setting associations
 	 */
-	Site function removeAllSettings(){
+	Site function removeAllSettings() {
 		if ( hasSetting() ) {
 			variables.settings.clear();
 		} else {
@@ -443,7 +410,7 @@ component
 	/**
 	 * I remove all category associations
 	 */
-	Site function removeAllCategories(){
+	Site function removeAllCategories() {
 		if ( hasCategory() ) {
 			variables.categories.clear();
 		} else {
@@ -455,7 +422,7 @@ component
 	/**
 	 * I remove all entry associations
 	 */
-	Site function removeAllEntries(){
+	Site function removeAllEntries() {
 		if ( hasEntry() ) {
 			variables.entries.clear();
 		} else {
@@ -467,7 +434,7 @@ component
 	/**
 	 * I remove all menu associations
 	 */
-	Site function removeAllMenus(){
+	Site function removeAllMenus() {
 		if ( hasMenu() ) {
 			variables.menus.clear();
 		} else {
@@ -479,7 +446,7 @@ component
 	/**
 	 * I remove all page associations
 	 */
-	Site function removeAllPages(){
+	Site function removeAllPages() {
 		if ( hasPage() ) {
 			variables.pages.clear();
 		} else {
@@ -491,7 +458,7 @@ component
 	/**
 	 * I remove all contentStore associations
 	 */
-	Site function removeAllContentStore(){
+	Site function removeAllContentStore() {
 		if ( hasContentStore() ) {
 			variables.contentStore.clear();
 		} else {
@@ -503,14 +470,17 @@ component
 	/**
 	 * Get the site root URL as defined per the settings
 	 */
-	String function getSiteRoot(){
+	string function getSiteRoot() {
 		var serverPort = getServerPort();
 		var domainName = this.getDomain();
 
 		// Return the appropriate site alias Uri from the domain aliases
 		// If the domain alias matches the incoming server host name
 		if (
-			getDomainAliases().some( ( alias ) => alias.keyExists( "domainRegex" ) && reFindNoCase( alias.domainRegex, this.getServerName() ) )
+			getDomainAliases().some(
+					( alias ) => alias.keyExists( "domainRegex" ) &&
+						reFindNoCase( alias.domainRegex, this.getServerName() )
+				)
 		) {
 			domainName = this.getServerName();
 		}
@@ -529,35 +499,9 @@ component
 	}
 
 	/**
-	 * Get the server port according to lookup order
-	 * 1. x-forwarded-port header
-	 * 2. cgi.server_port
-	 */
-	private function getServerPort(){
-		var headers = getHTTPRequestData( false ).headers;
-		if ( structKeyExists( headers, "x-forwarded-port" ) && len( headers[ "x-forwarded-port" ] ) ) {
-			return headers[ "x-forwarded-port" ];
-		}
-		return cgi.server_port;
-	}
-
-	/**
-	 * Get the server host according to lookup order
-	 * 1. x-forwarded-host header
-	 * 2. cgi.server_host
-	 */
-	private function getServerName(){
-		var headers = getHTTPRequestData( false ).headers;
-		if ( structKeyExists( headers, "x-forwarded-host" ) && len( headers[ "x-forwarded-host" ] ) ) {
-			return headers[ "x-forwarded-host" ];
-		}
-		return cgi.server_name;
-	}
-
-	/**
 	 * A nice snapshot of this entity used for mementifications
 	 */
-	struct function getInfoSnapshot(){
+	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
 				"siteID" : getId(),
@@ -573,11 +517,13 @@ component
 	 *
 	 * @return The category object or null if not found
 	 */
-	function getCategory( required slug ){
+	function getCategory( required slug ) {
 		if ( hasCategory() ) {
-			var aFound = variables.categories.filter( function( thisCategory ){
-				return arguments.thisCategory.getSlug() == slug;
-			} );
+			var aFound = variables.categories.filter(
+					function( thisCategory ) {
+						return arguments.thisCategory.getSlug() == slug;
+					}
+				);
 			if ( aFound.len() ) {
 				return aFound[ 1 ];
 			}
@@ -590,13 +536,15 @@ component
 	 * @override
 	 * @root     Show only root level pages if enabled
 	 */
-	function getPages( boolean root = true ){
+	function getPages( boolean root = true ) {
 		if ( !arguments.root ) {
 			return variables.pages;
 		}
-		return variables.pages.filter( function( thisPage ){
-			return !arguments.thisPage.hasParent();
-		} );
+		return variables.pages.filter(
+				function( thisPage ) {
+					return !arguments.thisPage.hasParent();
+				}
+			);
 	}
 
 	/**
@@ -605,13 +553,15 @@ component
 	 * @override
 	 * @root     Show only root level contentStore if enabled
 	 */
-	function getContentStore( boolean root = true ){
+	function getContentStore( boolean root = true ) {
 		if ( !arguments.root ) {
 			return variables.contentStore;
 		}
-		return variables.contentStore.filter( function( thisContent ){
-			return !arguments.thisContent.hasParent();
-		} );
+		return variables.contentStore.filter(
+				function( thisContent ) {
+					return !arguments.thisContent.hasParent();
+				}
+			);
 	}
 
 	/**
@@ -619,11 +569,11 @@ component
 	 *
 	 * @return The domain aliases as an array
 	 */
-	array function getDomainAliases(){
+	array function getDomainAliases() {
 		return (
-			!isNull( variables.domainAliases ) AND isJSON( variables.domainAliases ) ? deserializeJSON(
-				variables.domainAliases
-			) : []
+			!isNull( variables.domainAliases ) && isJSON( variables.domainAliases )
+				? deserializeJSON( variables.domainAliases )
+				: []
 		);
 	}
 
@@ -632,7 +582,7 @@ component
 	 *
 	 * @return The domain aliases as a json string
 	 */
-	string function getDomainAliasesAsJSON(){
+	string function getDomainAliasesAsJSON() {
 		return isNull( variables.domainAliases ) ? "[]" : variables.domainAliases;
 	}
 
@@ -642,11 +592,37 @@ component
 	 *
 	 * @aliases The domain aliases as an array or a JSON array string
 	 */
-	Site function setDomainAliases( any aliases = [] ){
-		variables.domainAliases = isSimpleValue( arguments.aliases ) ? arguments.aliases : serializeJSON(
-			arguments.aliases
-		);
+	Site function setDomainAliases( any aliases = [] ) {
+		variables.domainAliases = isSimpleValue( arguments.aliases )
+			? arguments.aliases
+			: serializeJSON( arguments.aliases );
 		return this;
+	}
+
+	/**
+	 * Get the server port according to lookup order
+	 * 1. x-forwarded-port header
+	 * 2. cgi.server_port
+	 */
+	private function getServerPort() {
+		var headers = getHTTPRequestData( false ).headers;
+		if ( structKeyExists( headers, "x-forwarded-port" ) && len( headers[ "x-forwarded-port" ] ) ) {
+			return headers[ "x-forwarded-port" ];
+		}
+		return cgi.server_port;
+	}
+
+	/**
+	 * Get the server host according to lookup order
+	 * 1. x-forwarded-host header
+	 * 2. cgi.server_host
+	 */
+	private function getServerName() {
+		var headers = getHTTPRequestData( false ).headers;
+		if ( structKeyExists( headers, "x-forwarded-host" ) && len( headers[ "x-forwarded-host" ] ) ) {
+			return headers[ "x-forwarded-host" ];
+		}
+		return cgi.server_name;
 	}
 
 }

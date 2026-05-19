@@ -17,7 +17,7 @@ interface {
 	 *
 	 * @return SearchResults object with the results
 	 */
-	contentbox.models.search.SearchResults function search(
+	default contentbox.models.search.SearchResults function search(
 		required string searchTerm,
 		numeric max    = 0,
 		numeric offset = 0,
@@ -29,7 +29,7 @@ interface {
 	 *
 	 * @return Itself
 	 */
-	contentbox.models.search.ISearchAdapter function refresh();
+	default contentbox.models.search.ISearchAdapter function refresh();
 
 	/**
 	 * Render the search results according to the adapter and return HTML
@@ -40,7 +40,7 @@ interface {
 	 *
 	 * @return The search html
 	 */
-	any function renderSearch(
+	default any function renderSearch(
 		required string searchTerm,
 		numeric max    = 0,
 		numeric offset = 0
@@ -53,6 +53,7 @@ interface {
 	 *
 	 * @return The search html
 	 */
-	any function renderSearchWithResults( required contentbox.models.search.SearchResults searchResults );
-
+	default any function renderSearchWithResults(
+		required contentbox.models.search.SearchResults searchResults
+	);
 }

@@ -1,19 +1,12 @@
 <cfoutput>
-<!--- Location Bar --->
-<cfif structKeyExists( rc, "parent" ) AND len( rc.parent )>
-	<div class="breadcrumb">
-		<a href="javascript:contentListHelper.contentDrilldown()" title="Go Home!">
-			<i class="fa fa-home fa-lg"></i>
-		</a>
-	  	#getInstance( "PageBreadcrumbVisitor@cbadmin" ).visit( prc.oParent )#
-	</div>
-</cfif>
-
-<!--- Hidden Elements --->
-#html.hiddenField( name="parent", value=event.getValue( "parent","" ) )#
-#html.hiddenField( name="pagesCount", value=prc.contentCount )#
-
-<!--- pages --->
+	<cfif structKeyExists( rc, "parent" ) && len( rc.parent )>
+		<div class="breadcrumb">
+<a href="javascript:contentListHelper.contentDrilldown()" title="Go Home!">
+	<i class="fa fa-home fa-lg"></i>
+</a>#getInstance( "PageBreadcrumbVisitor@cbadmin" ).visit( prc.oParent )#</div>
+	</cfif>
+	#html.hiddenField( name = "parent", value = event.getValue( "parent", "" ) )##html.hiddenField( name = "pagesCount",
+			value = prc.contentCount )#<!--- pages ---> 
 <table
 	id="pages"
 	name="pages"
@@ -47,110 +40,100 @@
         </tr>
     </thead>
     <tbody>
-        <cfloop array="#prc.content#" index="page">
-			<tr
-				<!--- We convert the - in the id to _ since the order plugin doesn't like dashes--->
-				id="contentID-#page.getContentID().replace( "-", "_", "all" )#"
-				data-contentID="#page.getContentID()#"
 
-				<!--- Classes according to content status --->
-				<cfif page.isExpired()>
-					class="danger"
-				<cfelseif page.isPublishedInFuture()>
-					class="success"
-				<cfelseif !page.isContentPublished()>
-					class="warning"
-				<cfelseif page.hasActiveContent() eq false>
-					class="danger" title="No active content versions found, please publish one."
-				</cfif>
+	<cfloop array="#prc.content#" index="page">
+		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes ---> id="contentID-#page.getContentID().replace(
+				"-",
+				"_",
+				"all"
+			)#"
+data-contentID="#page.getContentID()#"
 
-				<!--- double click drill down --->
-				<cfif page.getNumberOfChildren()>
-					ondblclick="contentListHelper.contentDrilldown( '#page.getContentID()#' )"
-				</cfif>
+		<cfif page.isExpired()>
+			class="danger"
+		<cfelseif page.isPublishedInFuture()>
+			class="success"
+		<cfelseif !page.isContentPublished()>
+			class="warning"
+		<cfelseif page.hasActiveContent() EQ false>
+			class="danger" title="No active content versions found, please publish one."
+		</cfif>
+		<cfif page.getNumberOfChildren()>
+			ondblclick="contentListHelper.contentDrilldown( '#page.getContentID()#' )"
+		</cfif>
+		
 			>
-				<!--- check box --->
+				<!--- check box ---> 
 				<td class="text-center">
 					<input type="checkbox" name="contentID" value="#page.getContentID()#" />
 				</td>
 
 				<td>
-					<!--- Home page--->
-					<cfif page.getSlug() eq prc.oCurrentSite.getHomepage()>
-						<i class="fa fa-home text-muted" title="Current Homepage"></i>
-					</cfif>
 
-
-					<!--- Children Dig Deeper --->
-					<cfif page.getNumberOfChildren()>
-						<a
-							href="javascript:contentListHelper.contentDrilldown( '#page.getContentID()#' )"
-							class="cursor-pointer text-muted"
-							title="View Child Pages (#page.getNumberOfChildren()#)"
-						>
-							<i class="fa fa-plus-square"></i>
-						</a>
-					<cfelse>
-						<i class="fa fa-dot-circle-thin"></i>
-					</cfif>
-
-					<!--- Title --->
-					<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
-						<a
-							href="#event.buildLink( prc.xehPageEditor )#/contentID/#page.getContentID()#"
-							title="Edit #page.getTitle()#"
-							class="size18"
-						>
-							#page.getTitle()#
-						</a>
-					<cfelse>
-						<span class="size18">#page.getTitle()#</span>
-					</cfif>
-
-					<!--- password protected --->
-					<cfif page.isPasswordProtected()>
-						<i class="fa fa-key text-orange" title="Password Protected Content"></i>
-					</cfif>
-
-					<!--- Search Label --->
-					<cfif len( rc.searchContent ) or prc.isFiltering>
-						<div class="mt5" title="Root Path">
-							<div class="label label-success">#page.getSlug()#</div>
-						</div>
-					</cfif>
-
-					<!--- Content Info --->
-					#view(
-						view : "_components/content/TableCreationInfo",
-						args : { content : page },
-						prepostExempt : true
-					)#
+		<cfif page.getSlug() EQ prc.oCurrentSite.getHomepage()>
+			<i class="fa fa-home text-muted" title="Current Homepage"></i>
+		</cfif>
+		<cfif page.getNumberOfChildren()>
+			<a
+href="javascript:contentListHelper.contentDrilldown( '#page.getContentID()#' )"
+class="cursor-pointer text-muted"
+title="View Child Pages (#page.getNumberOfChildren()#)"
+>
+	<i class="fa fa-plus-square"></i>
+</a>
+		<cfelse>
+			<i class="fa fa-dot-circle-thin"></i>
+		</cfif>
+		<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
+			<a
+href="#event.buildLink( prc.xehPageEditor )#/contentID/#page.getContentID()#"
+title="Edit #page.getTitle()#"
+	class="size18"
+>#page.getTitle()#</a>
+		<cfelse>
+			<span class="size18">#page.getTitle()#</span>
+		</cfif>
+		<cfif page.isPasswordProtected()>
+			<i class="fa fa-key text-orange" title="Password Protected Content"></i>
+		</cfif>
+		<cfif len( rc.searchContent ) || prc.isFiltering>
+			<div class="mt5" title="Root Path">
+<div class="label label-success">#page.getSlug()#</div>
+</div>
+		</cfif>
+		#view(
+			view          = "_components/content/TableCreationInfo",
+			args          = { content : page },
+			prepostExempt = true
+		)#
 				</td>
 
 				<td class="text-center">
 					#view(
-						view : "_components/content/TableStatus",
-						args : { content : page },
-						prepostExempt : true
-					)#
+			view          = "_components/content/TableStatus",
+			args          = { content : page },
+			prepostExempt = true
+		)#
 				</td>
 
 				<td class="text-center">
-					<cfif page.getShowInMenu()>
-						<i class="fa fa-dot-circle fa-lg text-green"></i>
-						<span class="hidden">yes</span>
-					<cfelse>
-						<i class="fa fa-dot-circle fa-lg text-gray"></i>
-						<span class="hidden">no</span>
-					</cfif>
+
+		<cfif page.getShowInMenu()>
+			<i class="fa fa-dot-circle fa-lg text-green"></i>
+<span class="hidden">yes</span>
+		<cfelse>
+			<i class="fa fa-dot-circle fa-lg text-gray"></i>
+<span class="hidden">no</span>
+		</cfif>
+		
 				</td>
 
 				<td class="text-center">
 					#view(
-						view : "_components/content/TableSearchStatus",
-						args : { content : page },
-						prepostExempt : true
-					)#
+			view          = "_components/content/TableSearchStatus",
+			args          = { content : page },
+			prepostExempt = true
+		)#
 				</td>
 
 				<td class="text-center hidden-sm hidden-xs">
@@ -158,7 +141,7 @@
 				</td>
 
 				<td class="text-center flex">
-					<!--- Drag Handle --->
+					<!--- Drag Handle ---> 
 					<a
 						href="##"
 						onclick="return false;"
@@ -168,7 +151,7 @@
 						<i class="fa fa-sort" aria-hidden="true"></i>
 					</a>
 
-					<!--- Page Actions --->
+					<!--- Page Actions ---> 
 					<div class="btn-group btn-group-sm">
 						<button
 							class="btn btn-icon btn-more dropdown-toggle"
@@ -180,45 +163,41 @@
 						</button>
 
 						<ul class="dropdown-menu text-left pull-right">
-							<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
-								<!--- Clone Command --->
-								<li class="mb5">
-									<a
-										href="javascript:contentListHelper.openCloneDialog(
-											'#encodeForJavascript( page.getContentID() )#',
-											'#encodeForJavascript( page.getTitle() )#'
-										)"
-									>
-										<i class="fa fa-clone fa fa-lg"></i> Clone
-									</a>
-								</li>
 
-								<!--- Create Child --->
-								<li class="mb5">
-									<a
-										href="#event.buildLink( prc.xehPageEditor )#/parentID/#page.getContentID()#"
-									>
-										<i class="fa fa-sitemap fa-lg"></i> Create Child
-									</a>
-								</li>
+		<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
+			<!--- Clone Command ---> <li class="mb5">
+<a
+	href="javascript:contentListHelper.openCloneDialog(
+		'#encodeForJavascript( page.getContentID() )#',
+'#encodeForJavascript( page.getTitle() )#'
+		)"
+	>
+		<i class="fa fa-clone fa fa-lg"></i> Clone
+	</a>
+</li>
+<!--- Create Child ---> <li class="mb5">
+<a
+	href="#event.buildLink( prc.xehPageEditor )#/parentID/#page.getContentID()#"
+	>
+		<i class="fa fa-sitemap fa-lg"></i> Create Child
+	</a>
+</li>
 
-								<!--- Delete Command --->
-								<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN" )>
-									<li class="mb5">
-										<a
-											href="javascript:contentListHelper.remove( '#page.getContentID()#' )"
-											class="confirmIt"
-											data-title="<i class='fa fa-trash'></i> Delete Page?"
-											data-message="This will delete the page and all of its sub-pages, are you sure?"
-										>
-											<i
-												id="delete_#page.getContentID()#"
-												class="fa fa-trash fa-lg"></i> Delete
-										</a>
-									</li>
-								</cfif>
-
-								<!--- Edit Command --->
+			<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN" )>
+				<li class="mb5">
+<a
+	href="javascript:contentListHelper.remove( '#page.getContentID()#' )"
+	class="confirmIt"
+	data-title="<i class='fa fa-trash'></i> Delete Page?"
+	data-message="This will delete the page and all of its sub-pages, are you sure?"
+>
+	<i
+		id="delete_#page.getContentID()#"
+			class="fa fa-trash fa-lg"></i> Delete
+	</a>
+</li>
+			</cfif>
+			<!--- Edit Command ---> 
 								<li class="mb5">
 									<a
 										href="#event.buildLink( prc.xehPageEditor )#/contentID/#page.getContentID()#"
@@ -226,22 +205,19 @@
 										<i class="fas fa-pen fa-lg"></i> Edit
 									</a>
 								</li>
-							</cfif>
 
-							<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_EXPORT" )>
-								<!--- Export --->
-								<li class="mb5">
-									<a
-										href="#event.buildLink( prc.xehPageExport )#/contentID/#page.getContentID()#.json"
-										target="_blank"
-									>
-										<i class="fas fa-file-export fa-lg"></i> Export
-									</a>
-								</li>
-							</cfif>
-
-
-							<!--- History Command --->
+		</cfif>
+		<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_EXPORT" )>
+			<!--- Export ---> <li class="mb5">
+<a
+	href="#event.buildLink( prc.xehPageExport )#/contentID/#page.getContentID()#.json"
+		target="_blank"
+	>
+		<i class="fas fa-file-export fa-lg"></i> Export
+	</a>
+</li>
+		</cfif>
+		<!--- History Command ---> 
 							<li class="mb5">
 								<a
 									href="#event.buildLink( prc.xehContentHistory )#/contentID/#page.getContentID()#"
@@ -250,7 +226,7 @@
 								</a>
 							</li>
 
-							<!--- Reset hits --->
+							<!--- Reset hits ---> 
 							<li class="mb5">
 								<a
 									href="javascript:contentListHelper.resetHits( '#page.getContentID()#' )"
@@ -259,7 +235,7 @@
 								</a>
 							</li>
 
-							<!--- View in Site --->
+							<!--- View in Site ---> 
 							<li class="mb5">
 								<a
 									href="#prc.cbHelper.linkPage( page )#"
@@ -272,18 +248,20 @@
 				    </div>
 				</td>
 			</tr>
-		</cfloop>
+
+	</cfloop>
+	
     </tbody>
 </table>
 
-<!--- Paging --->
-<cfif !rc.showAll>
-	#prc.oPaging.renderit(
-		foundRows = prc.contentCount,
-		link      = prc.pagingLink,
-		asList    = true
-	)#
-<cfelse>
-	<span class="label label-info">Total Records: #prc.contentCount#</span>
-</cfif>
+
+	<cfif !rc.showAll>
+		#prc.oPaging.renderit(
+				foundRows = prc.contentCount,
+				link      = prc.pagingLink,
+				asList    = true
+			)#
+	<cfelse>
+		<span class="label label-info">Total Records: #prc.contentCount#</span>
+	</cfif>
 </cfoutput>

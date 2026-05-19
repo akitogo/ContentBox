@@ -1,6 +1,5 @@
-﻿<cfoutput>
-<!--- Custom JS --->
-<script>
+<cfoutput>
+	<!--- Custom JS ---> <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$uploadForm = $( "##moduleUploadForm" );
 	$moduleForm = $( "##moduleForm" );
@@ -33,17 +32,17 @@ function activateLoaders(){
 }
 function remove(moduleName){
 	$moduleForm.find( "##moduleName" ).val( moduleName );
-	$moduleForm.attr( "action","#event.buildLink(prc.xehModuleRemove)#" );
+	$moduleForm.attr( "action","#event.buildLink( prc.xehModuleRemove )#" );
 	$moduleForm.submit();
 }
 function activate(moduleName){
 	$moduleForm.find( "##moduleName" ).val( moduleName );
-	$moduleForm.attr( "action","#event.buildLink(prc.xehModuleActivate)#" );
+	$moduleForm.attr( "action","#event.buildLink( prc.xehModuleActivate )#" );
 	$moduleForm.submit();
 }
 function deactivate(moduleName){
 	$moduleForm.find( "##moduleName" ).val( moduleName );
-	$moduleForm.attr( "action","#event.buildLink(prc.xehModuleDeactivate)#" );
+	$moduleForm.attr( "action","#event.buildLink( prc.xehModuleDeactivate )#" );
 	$moduleForm.submit();
 }
 </script>

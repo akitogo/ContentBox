@@ -3,7 +3,7 @@
  */
 component extends="contentbox.models.ui.BaseWidget" singleton {
 
-	function init(){
+	function init() {
 		// Widget Properties
 		setName( "Today" );
 		setVersion( "1.0.0" );
@@ -26,9 +26,9 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		boolean showTime = true,
 		dateMask         = "full",
 		timeMask         = "full"
-	){
+	) {
 		var rightNow = now();
-		var results  = dateTimeFormat( rightNow, arguments.dateMask );
+		var results = dateTimeFormat( rightNow, arguments.dateMask );
 
 		return ( arguments.showTime ? results & timeFormat( rightNow, arguments.timeMask ) : results );
 	}

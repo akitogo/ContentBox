@@ -1,11 +1,11 @@
-<!-----------------------------------------------------------------------
+<!--- --------------------------------------------------------------------
 ********************************************************************************
 Copyright since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
------------------------------------------------------------------------>
+-------------------------------------------------------------------- ---> 
 <cfoutput>
-<script>
+	<script>
 
 function noMultiSelectAction(){
 	if( fbSelectHistory.length != 1 ){ alert( '#$r( "jsmessages.no_multi_select@fb" )#' ); return true; }
@@ -47,21 +47,21 @@ function fbQuickView(){
 	var sPath = $selectedItem.val();
 	if( !sPath.length ){
 		alert( '#$r( "jsmessages.select@fb" )#' );
-		return;
-	}
+	return;
+}
 
-	// get ID
-	var thisID 	= $selectedItemID.val();
-	var target 	= $( "##" + thisID );
+// get ID
+var thisID 	= $selectedItemID.val();
+var target 	= $( "##" + thisID );
 
-	// only images
-	if( target.attr( "data-quickview" ) == "false" ){
-		alert( '#$r( "jsmessages.quickview_only_images@fb" )#' );
-		return;
-	}
+// only images
+if( target.attr( "data-quickview" ) == "false" ){
+	alert( '#$r( "jsmessages.quickview_only_images@fb" )#' );
+	return;
+}
 
-	// show it
-	var imgURL = "#event.buildLink( prc.xehFBDownload )#?path="+ encodeURIComponent( target.attr( "data-fullURL" ) );
+// show it
+var imgURL = "#event.buildLink( prc.xehFBDownload )#?path="+ encodeURIComponent( target.attr( "data-fullURL" ) );
 	$( '.imagepreview' ).attr( 'src', imgURL );
 	openModal( $( "##modalPreview" ), 500 );
 }
@@ -73,19 +73,19 @@ function fbRename(){
 	// check selection
 	var sPath = $selectedItem.val();
 	if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
-	// get ID
-	var thisID 		= $selectedItemID.val();
-	var target 		= $( "##"+thisID);
-	// prompt for new name
-	bootbox.prompt( {
-		title: '#$r( "jsmessages.newname@fb" )#',
-		inputType: "text",
-		value: target.attr( "data-name" ),
-		callback: function( result ){
-			// do renaming if prompt not empty
-			if( result != null){
-				$fileLoaderBar.slideDown();
-				$.post( '#event.buildLink( prc.xehFBRename )#',
+// get ID
+var thisID 		= $selectedItemID.val();
+var target 		= $( "##"+thisID);
+// prompt for new name
+bootbox.prompt( {
+	title: '#$r( "jsmessages.newname@fb" )#',
+inputType: "text",
+value: target.attr( "data-name" ),
+callback: function( result ){
+	// do renaming if prompt not empty
+	if( result != null){
+		$fileLoaderBar.slideDown();
+		$.post( '#event.buildLink( prc.xehFBRename )#',
 						{ name : result, path : target.attr( "data-fullURL" ) },
 						function( data ){
 							if( data.errors ){ alert( data.messages ); }
@@ -104,15 +104,15 @@ function fbUrl(){
 	// check selection
 	var sPath = $selectedItem.val();
 	if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
-	// get ID
-	var thisID 		= $selectedItemID.val();
+// get ID
+var thisID 		= $selectedItemID.val();
 
-	var target 		= $( "##"+thisID);
+var target 		= $( "##"+thisID);
 
-	// prompt the URL
-	bootbox.prompt( { 	title: 'URL:',
-						inputType: "text",
-						value: "#event.buildLink( '' )#" + target.attr( "data-relUrl" ).substring(1),
+// prompt the URL
+bootbox.prompt( { 	title: 'URL:',
+					inputType: "text",
+					value: "#event.buildLink( "" )#" + target.attr( "data-relUrl" ).substring(1),
 						callback: function(result){}
 	});
 
@@ -125,12 +125,12 @@ function fbEdit(){
 	// check selection
 	var sPath = $selectedItem.val();
 	if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
-	// get ID
-	var thisID 		= $selectedItemID.val();
-	var target 		= $( "##"+thisID);
-	// only images
-	if( target.attr( "data-quickview" ) == "false" ){ alert( '#$r( "jsmessages.quickview_only_images@fb" )#' ); return; }
-	openRemoteModal( "#event.buildLink( 'cbFileBrowser.editor.index' )#",{
+// get ID
+var thisID 		= $selectedItemID.val();
+var target 		= $( "##"+thisID);
+// only images
+if( target.attr( "data-quickview" ) == "false" ){ alert( '#$r( "jsmessages.quickview_only_images@fb" )#' ); return; }
+openRemoteModal( "#event.buildLink( "cbFileBrowser.editor.index" )#",{
 		imageName:target.attr( "data-name" ),
 		imageSrc:target.attr( "data-relUrl" ),
 		imagePath:target.attr( "data-fullUrl" )
@@ -144,11 +144,11 @@ function fbInfo(){
 	// check selection
 	var sPath = $selectedItem.val();
 	if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
-	// get ID
-	var thisID 		= $selectedItemID.val();
-	var target 		= $( "##"+thisID);
-	// Show info
-	openRemoteModal( "#event.buildLink( 'cbFileBrowser.editor.info' )#",{
+// get ID
+var thisID 		= $selectedItemID.val();
+var target 		= $( "##"+thisID);
+// Show info
+openRemoteModal( "#event.buildLink( "cbFileBrowser.editor.info" )#",{
 		fileName:target.attr( "data-name" ),
 		fileSrc:target.attr( "data-relUrl" ),
 		filePath:target.attr( "data-fullUrl" )
@@ -166,13 +166,12 @@ function fbListTypeChange( listType, file ){
 	fbRefresh();
 }
 
-<!--- Create Folders --->
-<cfif prc.fbSettings.createFolders>
-function fbNewFolder(){
-	bootbox.prompt( '#$r( "jsmessages.newdirectory@fb" )#', function(result){
-		if( result != null){
-			$fileLoaderBar.slideDown();
-			$.post( '#event.buildLink( prc.xehFBNewFolder )#',
+	<cfif prc.fbSettings.createFolders>
+		function fbNewFolder(){
+bootbox.prompt( '#$r( "jsmessages.newdirectory@fb" )#', function(result){
+if( result != null){
+	$fileLoaderBar.slideDown();
+	$.post( '#event.buildLink( prc.xehFBNewFolder )#',
 					{ dName : result, path : $( "##fbRoot" ).val() },
 					function( data ){
 						if( data.errors ){ alert( data.messages ); }
@@ -181,31 +180,28 @@ function fbNewFolder(){
 		}
 	});
 }
-</cfif>
+	</cfif>
+	<cfif prc.fbSettings.deleteStuff>
+		function fbDelete(){
+var sPath = $selectedItem.val();
+if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
 
-
-<!--- Remove Stuff --->
-<cfif prc.fbSettings.deleteStuff>
-function fbDelete(){
-	var sPath = $selectedItem.val();
-	if( !sPath.length ){ alert( '#$r( "jsmessages.select@fb" )#' ); return; }
-
-	bootbox.confirm({
-	    message: '#$r( "jsmessages.delete_confirm@fb" )#',
-	    buttons: {
-	        confirm: {
-	            label: 'DELETE',
-	            className: 'btn-danger'
-	        },
-	        cancel: {
-	            label: 'Cancel',
-	            className: 'btn-default'
-	        }
-	    },
-	    callback: function (result) {
-			if( result ){
-				$fileLoaderBar.slideDown();
-				$.post( '#event.buildLink( prc.xehFBRemove )#',
+bootbox.confirm({
+    message: '#$r( "jsmessages.delete_confirm@fb" )#',
+  buttons: {
+      confirm: {
+          label: 'DELETE',
+          className: 'btn-danger'
+      },
+      cancel: {
+          label: 'Cancel',
+          className: 'btn-default'
+      }
+  },
+  callback: function (result) {
+if( result ){
+	$fileLoaderBar.slideDown();
+	$.post( '#event.buildLink( prc.xehFBRemove )#',
 						{ path : sPath },
 						function( data ){
 							if( data.errors ){ alert(data.messages); }
@@ -217,22 +213,20 @@ function fbDelete(){
 
 
 }
-</cfif>
-
-<!--- Download --->
-<cfif prc.fbSettings.allowDownload>
-function fbDownload(){
-	var sPath = ($selectedItem.val() != "") ? $selectedItem.val().split(',') :[];
-	var sType = $selectedItemType.val();
-	if( !sPath.length ){
-		alert( '#$r( "jsmessages.select@fb" )#' ); return;
-	} else if ( sType == "dir" ){
-		alert( '#$r( "jsmessages.downloadFolder@fb" )#' ); return;
-	}
-	// Trigger the download
-	sPath.forEach( file => {
-		var link = document.createElement('a');
-		link.href = "#event.buildLink( prc.xehFBDownload )#?path="+ encodeURIComponent(file);
+	</cfif>
+	<cfif prc.fbSettings.allowDownload>
+		function fbDownload(){
+var sPath = ($selectedItem.val() != "") ? $selectedItem.val().split(',') :[];
+var sType = $selectedItemType.val();
+if( !sPath.length ){
+	alert( '#$r( "jsmessages.select@fb" )#' ); return;
+} else if ( sType == "dir" ){
+	alert( '#$r( "jsmessages.downloadFolder@fb" )#' ); return;
+}
+// Trigger the download
+sPath.forEach( file => {
+	var link = document.createElement('a');
+	link.href = "#event.buildLink( prc.xehFBDownload )#?path="+ encodeURIComponent(file);
 		link.download = file.split( "/" ).pop();
 		link._target = "blank";
 		document.body.appendChild(link);
@@ -241,20 +235,17 @@ function fbDownload(){
 	} );
 
 }
-</cfif>
-
-
-<!--- CallBack --->
-<cfif len( rc.callback )>
-function fbChoose(){
-	var sPath =  "#prc.activeDisk.getName()#:" + $selectedItem.val();
-	var sURL = $selectedItemURL.val();
-	var sType = $selectedItemType.val();
-	#encodeForJavaScript( rc.callback )#( sPath,sURL,sType );
+	</cfif>
+	<cfif len( rc.callback )>
+		function fbChoose(){
+var sPath =  "#prc.activeDisk.getName()#:" + $selectedItem.val();
+var sURL = $selectedItemURL.val();
+var sType = $selectedItemType.val();#encodeForJavaScript( rc.callback )#( sPath,sURL,sType );
 }
-<cfelse>
-function fbChoose(){}
-</cfif>
+	<cfelse>
+		function fbChoose(){}
+	</cfif>
+	
 
 fbInit = () => {
 
@@ -349,15 +340,29 @@ fbInit = () => {
 	$( "##FileBrowser-body" ).filedrop( {
 		// The name of the $_FILES entry:
 		paramname : 'FILEDATA',
-		<cfif isNumeric( prc.fbSettings.html5uploads.maxfiles )>
-			maxfiles: #prc.fbSettings.html5uploads.maxfiles#,
-		</cfif>
-		<cfif isNumeric( prc.fbSettings.html5uploads.maxfilesize )>
-			maxfilesize: #prc.fbSettings.html5uploads.maxfilesize#, // in mb
-		</cfif>
-		<cfif len( prc.fbSettings.acceptMimeTypes )>
-			allowedfiletypes : "#prc.fbSettings.acceptMimeTypes#".split( "," ),
-		</cfif>
+
+	<cfif isNumeric( prc
+			.fbSettings
+			.html5uploads
+			.maxfiles )>
+		maxfiles: #prc
+			.fbSettings
+			.html5uploads
+			.maxfiles#,
+	</cfif>
+	<cfif isNumeric( prc
+			.fbSettings
+			.html5uploads
+			.maxfilesize )>
+		maxfilesize: #prc
+			.fbSettings
+			.html5uploads
+			.maxfilesize#, // in mb
+	</cfif>
+	<cfif len( prc.fbSettings.acceptMimeTypes )>
+		allowedfiletypes : "#prc.fbSettings.acceptMimeTypes#".split( "," ),
+	</cfif>
+	
 		url: '#event.buildLink( prc.xehFBUpload )#',
 		data: {
 	        path: function(){
@@ -391,13 +396,28 @@ fbInit = () => {
 					alert( '#$r( "jsmessages.browsernotsupported@fb" )#' );
 					break;
 				case 'TooManyFiles':
-					alert( '#$r( resource="jsmessages.toomanyfiles@fb", values=prc.fbSettings.html5uploads.maxfiles )#' );
+					alert( '#$r(
+		resource = "jsmessages.toomanyfiles@fb",
+		values   = prc
+			.fbSettings
+			.html5uploads
+			.maxfiles
+	)#' );
 					break;
 				case 'FileTooLarge':
-					alert( file.name + ' #$r( resource="jsmessages.toolarge@fb", values=prc.fbSettings.html5uploads.maxfilesize )#');
+					alert( file.name + ' #$r(
+		resource = "jsmessages.toolarge@fb",
+		values   = prc
+			.fbSettings
+			.html5uploads
+			.maxfilesize
+	)#');
 					break;
 				case 'FileTypeNotAllowed':
-					alert( file.type + ' #$r( resource="jsmessages.invalidtype@fb", values=prc.fbSettings.acceptMimeTypes )#' );
+					alert( file.type + ' #$r(
+		resource = "jsmessages.invalidtype@fb",
+		values   = prc.fbSettings.acceptMimeTypes
+	)#' );
 					break;
 				default:
 					break;
@@ -441,10 +461,13 @@ fbInit = () => {
 	fbInited = true;
 }
 
-<cfif event.isAjax()>
-$( document ).ready( ()=> fbInit() );
-<cfelse>
-	document.addEventListener( 'DOMContentLoaded', fbInit );
-</cfif>
+
+	<cfif event.isAjax()>
+		$( document ).ready( ()=> fbInit() );
+	<cfelse>
+		document.addEventListener( 'DOMContentLoaded', fbInit );
+	</cfif>
+	
 </script>
+
 </cfoutput>

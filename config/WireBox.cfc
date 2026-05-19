@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -10,7 +10,7 @@ component extends="coldbox.system.ioc.config.Binder" {
 	/**
 	 * Configure WireBox, that's it!
 	 */
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * WireBox Configuration (https://wirebox.ortusbooks.com)
@@ -26,13 +26,9 @@ component extends="coldbox.system.ioc.config.Binder" {
 				key     : "wireBox"
 			},
 			// DSL Namespace registrations
-			customDSL : {
-				 // namespace = "mapping name"
-			},
+			customDSL : {// namespace = "mapping name"},
 			// Custom Storage Scopes
-			customScopes : {
-				 // annotationName = "mapping name"
-			},
+			customScopes : {// annotationName = "mapping name"},
 			// Package scan locations
 			scanLocations  : [],
 			// Stop Recursions
@@ -40,8 +36,9 @@ component extends="coldbox.system.ioc.config.Binder" {
 			// Parent Injector to assign to the configured injector, this must be an object reference
 			parentInjector : "",
 			// Register all event listeners here, they are created in the specified order
-			listeners      : [ { class : "coldbox.system.aop.Mixer" } ]
+			listeners      : [ { class : "coldbox.system.aop.Mixer" }]
 		};
+
 
 		// Map Bindings below
 	}

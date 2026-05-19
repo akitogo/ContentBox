@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -6,7 +6,6 @@
  * Import a WordPress database into contentbox
  */
 component implements="contentbox.models.importers.ICBImporter" {
-
 	// DI
 	property name="categoryService" inject="id:categoryService@contentbox";
 	property name="entryService" inject="id:entryService@contentbox";
@@ -19,11 +18,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 	property name="htmlHelper" inject="HTMLHelper@coldbox";
 	property name="bCrypt" inject="BCrypt@BCrypt";
 
-
 	/**
 	 * Constructor
 	 */
-	WordPressImporter function init(){
+	WordPressImporter function init() {
 		return this;
 	}
 
@@ -36,13 +34,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 		dsnPassword     = "",
 		defaultPassword = "",
 		required roleID,
-		tableprefix = ""
-	){
-		var authorMap   = {};
-		var catMap      = {};
-		var entryMap    = {};
-		var pageMap     = {};
-		var slugMap     = {};
+		tableprefix     = ""
+	) {
+		var authorMap = {};
+		var catMap = {};
+		var entryMap = {};
+		var pageMap = {};
+		var slugMap = {};
 		var pageSlugMap = {};
 
 		log.info( "Starting import process: #arguments.toString()#" );
@@ -56,9 +54,9 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select * from #arguments.tableprefix#_terms a, #arguments.tableprefix#_term_taxonomy b where a.term_id = b.term_id AND b.taxonomy = 'category'"
 			).execute().getResult();
-			for ( var x = 1; x lte q.recordcount; x++ ) {
-				var props  = { category : q.name[ x ], slug : q.slug[ x ] };
-				var cat    = categoryService.new( properties = props );
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
+				var props = { category : q.name[ x ], slug : q.slug[ x ] };
+				var cat = categoryService.new( properties = props );
 				var exists = categoryService.findAllBySlug( q.slug[ x ] );
 
 				if ( arrayLen( exists ) ) {
@@ -78,14 +76,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 			// Get the default role
 			var defaultRole = roleService.get( arguments.roleID );
 			// Import Authors
-			var q           = new Query(
+			var q = new Query(
 				datasource = arguments.dsn,
 				username   = arguments.dsnUsername,
 				password   = arguments.dsnPassword,
 				sql        = "select * from #arguments.tableprefix#_users"
 			).execute().getResult();
 			var selectedRole = roleService.get( arguments.roleID );
-			for ( var x = 1; x lte q.recordcount; x++ ) {
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
 					email     : q.user_email[ x ],
 					username  : q.user_login[ x ],
@@ -124,14 +122,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select id,post_title AS title,post_name AS name,post_content AS content,post_status,comment_status,post_password,post_date AS last_modified,post_author AS author_id from #arguments.tableprefix#_posts where post_type='page'"
 			).execute().getResult();
-			for ( var x = 1; x lte qPages.recordcount; x++ ) {
+			for ( var x = 1; x LTE qPages.recordcount; x++ ) {
 				// Get properties
-				var published     = true;
+				var published = true;
 				var commentStatus = true;
-				if ( trim( qPages.post_status[ x ] ) neq "publish" ) {
+				if ( trim( qPages.post_status[ x ] ) NEQ "publish" ) {
 					published = false;
 				}
-				if ( qPages.comment_status[ x ] neq "open" ) {
+				if ( qPages.comment_status[ x ] NEQ "open" ) {
 					commentSatus = false;
 				}
 
@@ -166,24 +164,24 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var page = pageService.new( properties = props );
 				// Add content versionized!
 				page.addNewContentVersion(
-					content   = props.content,
-					changelog = "Imported content",
-					author    = authorService.get( authorMap[ qPages.author_id[ x ] ] )
-				);
+						content   = props.content,
+						changelog = "Imported content",
+						author    = authorService.get( authorMap[ qPages.author_id[ x ] ] )
+					);
 				// Add Creator
 				page.setCreator( authorService.get( authorMap[ qPages.author_id[ x ] ] ) );
 				// Save page and store in reference map
 				pageMap[ qPages.id[ x ] ] = page;
-				var c       = pageService.newCriteria();
+				var c = pageService.newCriteria();
 				var counter = 1;
-				var count   = new query(
+				var count = new query(
 					sql = "SELECT COUNT(*) AS ct FROM cb_content WHERE contentType = 'page' AND slug = '#page.getSlug()#';"
 				).execute().getResult()[ "ct" ];
 				do {
 					var count = new query(
 						sql = "SELECT COUNT(*) AS ct FROM cb_content WHERE contentType = 'page' AND slug = '#page.getSlug()#';"
 					).execute().getResult()[ "ct" ];
-					if ( count eq 0 ) {
+					if ( count EQ 0 ) {
 						break;
 					}
 					// verify no slug exists & append if it does
@@ -202,7 +200,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 												  AND comment_approved <> 'spam'"
 				).execute().getResult();
 				var aComments = [];
-				for ( var y = 1; y lte qComments.recordcount; y++ ) {
+				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
 						content     : qComments.comment_content[ y ],
 						author      : qComments.comment_author[ y ],
@@ -234,14 +232,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select id,post_title AS title,post_name AS name,post_content AS content,post_status,comment_status,post_password,post_date AS last_modified,post_author AS author_id from #arguments.tableprefix#_posts where post_type='post'"
 			).execute().getResult();
-			for ( var x = 1; x lte qEntries.recordcount; x++ ) {
+			for ( var x = 1; x LTE qEntries.recordcount; x++ ) {
 				// Get properties
-				var published     = true;
+				var published = true;
 				var commentStatus = true;
-				if ( trim( qEntries.post_status[ x ] ) neq "publish" ) {
+				if ( trim( qEntries.post_status[ x ] ) NEQ "publish" ) {
 					published = false;
 				}
-				if ( qEntries.comment_status[ x ] neq "open" ) {
+				if ( qEntries.comment_status[ x ] NEQ "open" ) {
 					commentSatus = false;
 				}
 
@@ -276,24 +274,24 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var entry = entryService.new( properties = props );
 				// Add content versionized!
 				entry.addNewContentVersion(
-					content   = props.content,
-					changelog = "Imported content",
-					author    = authorService.get( authorMap[ qEntries.author_id[ x ] ] )
-				);
+						content   = props.content,
+						changelog = "Imported content",
+						author    = authorService.get( authorMap[ qEntries.author_id[ x ] ] )
+					);
 				entry.setCreator( authorService.get( authorMap[ qEntries.author_id[ x ] ] ) );
 
 				// Save entry and store in reference map
 				entryMap[ qEntries.id[ x ] ] = entry;
-				var c       = entryService.newCriteria();
+				var c = entryService.newCriteria();
 				var counter = 1;
-				var count   = new query(
+				var count = new query(
 					sql = "SELECT COUNT(*) AS ct FROM cb_content WHERE contentType = 'post' AND slug = '#entry.getSlug()#';"
 				).execute().getResult()[ "ct" ];
 				do {
 					var count = new query(
 						sql = "SELECT COUNT(*) AS ct FROM cb_content WHERE contentType = 'post' AND slug = '#entry.getSlug()#';"
 					).execute().getResult()[ "ct" ];
-					if ( count eq 0 ) {
+					if ( count EQ 0 ) {
 						break;
 					}
 					// verify no slug exists & append if it does
@@ -319,7 +317,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					sql        = thisSQL
 				).execute().getResult();
 				var aCategories = [];
-				for ( var y = 1; y lte qCategories.recordcount; y++ ) {
+				for ( var y = 1; y LTE qCategories.recordcount; y++ ) {
 					arrayAppend( aCategories, categoryService.get( catMap[ qCategories.term_id[ y ] ] ) );
 				}
 				entry.setCategories( aCategories );
@@ -336,7 +334,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				).execute().getResult();
 
 				var aComments = [];
-				for ( var y = 1; y lte qComments.recordcount; y++ ) {
+				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
 						content     : qComments.comment_content[ y ],
 						author      : qComments.comment_author[ y ],
@@ -358,39 +356,112 @@ component implements="contentbox.models.importers.ICBImporter" {
 				// Save entry
 				entitySave( entry );
 			}
-		}
-		// end of try
-		catch ( any e ) {
+		}// end of try
+		 catch (any e) {
 			log.error( "Error importing blog: #e.message# #e.detail#", e );
 			rethrow;
 		}
 
 		// Commit All entities
-		transaction action="commit" {
-		}
+		transaction action="commit";
 	}
 
-	private function fixWordPressContent( required string str ){
+	private function fixWordPressContent( required string str ) {
 		var myStr = trim( arguments.str );
 
-		myStr = replaceNoCase( myStr, chr( 10 ), "</p><p>", "all" );
-		myStr = replaceNoCase( myStr, chr( 13 ), "</p><p>", "all" );
-		myStr = replaceNoCase( myStr, "<p></p>", "", "all" );
-		myStr = replaceNoCase( myStr, "<p></p>", "", "all" );
-		myStr = replaceNoCase( myStr, "<p></p>", "", "all" );
-		myStr = replaceNoCase( myStr, "<p></p>", "", "all" );
-		myStr = replaceNoCase( myStr, "<p></p>", "", "all" );
-		myStr = replaceNoCase( myStr, "<p><h1", "<h1", "all" );
-		myStr = replaceNoCase( myStr, "</h1></p>", "</h1>", "all" );
+		myStr = replaceNoCase(
+			myStr,
+			chr( 10 ),
+			"</p><p>",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			chr( 13 ),
+			"</p><p>",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p></p>",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p></p>",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p></p>",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p></p>",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p></p>",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"<p><h1",
+			"<h1",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"</h1></p>",
+			"</h1>",
+			"all"
+		);
 
-		myStr = replaceNoCase( myStr, "<p><h2", "<h2", "all" );
-		myStr = replaceNoCase( myStr, "</h2></p>", "</h2>", "all" );
+		myStr = replaceNoCase(
+			myStr,
+			"<p><h2",
+			"<h2",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"</h2></p>",
+			"</h2>",
+			"all"
+		);
 
-		myStr = replaceNoCase( myStr, "<p><h3", "<h3", "all" );
-		myStr = replaceNoCase( myStr, "</h3></p>", "</h3>", "all" );
+		myStr = replaceNoCase(
+			myStr,
+			"<p><h3",
+			"<h3",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"</h3></p>",
+			"</h3>",
+			"all"
+		);
 
-		myStr = reReplace( myStr, "\[caption[^\]]*\]", "", "all" );
-		myStr = replaceNoCase( myStr, "[/caption]", "", "all" );
+		myStr = reReplace(
+			myStr,
+			"\[caption[^\]]*\]",
+			"",
+			"all"
+		);
+		myStr = replaceNoCase(
+			myStr,
+			"[/caption]",
+			"",
+			"all"
+		);
 
 		return myStr;
 	}

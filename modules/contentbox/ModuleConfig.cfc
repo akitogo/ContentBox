@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -6,25 +6,24 @@
  * ContentBox Core module configuration
  */
 component {
-
 	// Module Properties
-	this.title              = "ContentBox Core";
-	this.author             = "Ortus Solutions, Corp";
-	this.webURL             = "https://www.ortussolutions.com";
-	this.version            = "@version.number@+@build.number@";
-	this.description        = "This is the core module used to power the admin, RESTful and UI modules";
-	this.viewParentLookup   = true;
+	this.title = "ContentBox Core";
+	this.author = "Ortus Solutions, Corp";
+	this.webURL = "https://www.ortussolutions.com";
+	this.version = "@version.number@+@build.number@";
+	this.description = "This is the core module used to power the admin, RESTful and UI modules";
+	this.viewParentLookup = true;
 	this.layoutParentLookup = true;
-	this.entryPoint         = "cbcore";
-	this.modelNamespace     = "contentbox";
-	this.cfmapping          = "contentbox";
+	this.entryPoint = "cbcore";
+	this.modelNamespace = "contentbox";
+	this.cfmapping = "contentbox";
 	// Load ContentBox Dependencies First.
-	this.dependencies       = [ "contentbox-deps" ];
+	this.dependencies = [ "contentbox-deps"];
 
 	/**
 	 * Configure Module
 	 */
-	function configure(){
+	function configure() {
 		// Verify custom module, this is needed for registration and loading.
 		verifyCustomModule();
 
@@ -34,7 +33,7 @@ component {
 			"codename"     : "Psalm 144:1",
 			"codenameLink" : "https://www.bible.com/bible/114/psa.144.1.nkjv",
 			// Officially supported languages for modules
-			"languages"    : [ "de_DE", "en_US", "es_SV", "it_IT", "pt_BR" ],
+			"languages"    : [ "de_DE", "en_US", "es_SV", "it_IT", "pt_BR"],
 			// cbSecurity settings
 			"cbSecurity"   : {
 				// Load the security rules for ContentBox from our db model
@@ -57,9 +56,7 @@ component {
 				// Global settings
 				"global" : {},
 				// Site specific settings according to site slug
-				"sites"  : {
-					 // siteSlug : { ... }
-				}
+				"sites"  : {// siteSlug : { ... }}
 			}
 		};
 
@@ -76,12 +73,7 @@ component {
 		};
 
 		// ContentBox Core Custom Events
-		interceptorSettings = {
-			customInterceptionPoints : [
-				"cb_onContentRendering",
-				"cb_onContentStoreRendering"
-			]
-		};
+		interceptorSettings = { customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"] };
 
 		// Async Executors for ContentBox Core
 		// executors = { "contentbox-tasks" : { type : "scheduled", threads : 20 } };
@@ -135,13 +127,14 @@ component {
 	/**
 	 * Development tier
 	 */
-	function development(){
+	function development() {
+
 	}
 
 	/**
 	 * Fired when the module is registered and activated.
 	 */
-	function onLoad(){
+	function onLoad() {
 		// Create `cb` alias : REMOVE BY CONTENTBOX NEXT MAJOR VERSION
 		binder.mapDirectory( packagePath = "contentbox.models", namespace = "@cb" );
 		var settingService = wirebox.getInstance( "settingService@contentbox" );
@@ -156,20 +149,19 @@ component {
 
 		if ( !diskService.has( "contentbox" ) ) {
 			diskService.register(
-				"contentbox",
-				"Local",
-				{
-					path    : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
-					diskUrl : function(){
-						return variables.wirebox
-							.getInstance( "CBHelper@contentBox" )
-							.site()
-							.getSiteRoot()
-						&
-						"/modules_app/contentbox-custom/_content"
+					"contentbox",
+					"Local",
+					{
+						path    : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
+						diskUrl : function() {
+							return variables
+								.wirebox
+								.getInstance( "CBHelper@contentBox" )
+								.site()
+								.getSiteRoot() & "/modules_app/contentbox-custom/_content";
+						}
 					}
-				}
-			);
+				);
 		}
 
 		// Startup the ContentBox modules, if any
@@ -179,7 +171,8 @@ component {
 	/**
 	 * Fired when the module is unregistered and unloaded
 	 */
-	function onUnload(){
+	function onUnload() {
+
 	}
 
 	/************************************** APP LISTENERS *********************************************/
@@ -188,11 +181,10 @@ component {
 	 * Listen to when application and all modules are fully loaded.
 	 * We use this interception to startup some services and discoveries.
 	 */
-	function afterConfigurationLoad( event, data, rc, prc ){
+	function afterConfigurationLoad( event, data, rc, prc ) {
 		// Discover all widgets
 		wirebox.getInstance( "widgetservice@contentbox" ).getWidgets();
 	}
-
 
 	/************************************** PRIVATE *********************************************/
 
@@ -200,8 +192,8 @@ component {
 	 * Verify the custom module exists. If not, we will auto-generate one to avoid conflicts
 	 * and issues with new custom approaches.
 	 */
-	private function verifyCustomModule(){
-		var appPath           = controller.getSetting( "ApplicationPath" );
+	private function verifyCustomModule() {
+		var appPath = controller.getSetting( "ApplicationPath" );
 		var customModulesPath = appPath & "modules_app/contentbox-custom";
 
 		// Verify modules_app: just in case

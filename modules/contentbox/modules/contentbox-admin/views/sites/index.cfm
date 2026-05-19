@@ -1,30 +1,28 @@
-﻿<cfoutput>
-<div class="row">
-	<div class="col-md-12">
-		<h1 class="h1">
-			<i class="fa fa-globe fa-lg"></i> Sites (#arrayLen( prc.sites )#)
+<cfoutput>
+	<div class="row">
+<div class="col-md-12">
+	<h1 class="h1">
+		<i class="fa fa-globe fa-lg"></i> Sites (#arrayLen( prc.sites )#)
 		</h1>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-12">
-		#cbMessageBox().renderit()#
-		<!---Import Log --->
-		<cfif flash.exists( "importLog" )>
-			<div class="consoleLog">#flash.get( "importLog" )#</div>
-		</cfif>
+	<div class="col-md-12">#cbMessageBox().renderit()#
+	<cfif flash.exists( "importLog" )>
+		<div class="consoleLog">#flash.get( "importLog" )#</div>
+	</cfif>
+	
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-md-12">
 		#html.startForm(
-			name 	: "siteForm",
-			action 	: prc.xehSiteRemove,
-			class 	: "form-vertical"
-		)#
-			#html.hiddenField( name : "siteID", value : "" )#
+			name   = "siteForm",
+			action = prc.xehSiteRemove,
+			class  = "form-vertical"
+		)##html.hiddenField( name = "siteID", value = "" )#
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -33,40 +31,40 @@
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-									name        = "siteFilter",
-									class       = "form-control quicksearch",
-									placeholder = "Quick Search"
-								)#
+			name        = "siteFilter",
+			class       = "form-control quicksearch",
+			placeholder = "Quick Search"
+		)#
 							</div>
 						</div>
 
 						<div class="col-md-6 col-xs-8">
-							<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-							<div class="text-right">
-								<!---Global --->
-								<div class="btn-group">
-									<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
-										Bulk Actions <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_IMPORT" )>
-											<li>
-												<a href="javascript:importContent()">
-													<i class="fa fa-file-import fa-lg"></i> Import
-												</a>
-											</li>
-										</cfif>
-										<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_EXPORT" )>
-											<li>
-												<a
-													href="#event.buildLink( prc.xehExportAll )#.json"
-													target="_blank"
-												>
-													<i class="fas fa-file-export fa-lg"></i>
-													Export All
-												</a>
-											</li>
-										</cfif>
+
+	<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
+		<div class="text-right"><!--- Global ---> <div class="btn-group">
+<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
+	Bulk Actions <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+		<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_IMPORT" )>
+			<li>
+	<a href="javascript:importContent()">
+		<i class="fa fa-file-import fa-lg"></i> Import
+	</a>
+</li>
+		</cfif>
+		<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_EXPORT" )>
+			<li>
+<a
+	href="#event.buildLink( prc.xehExportAll )#.json"
+		target="_blank"
+	>
+		<i class="fas fa-file-export fa-lg"></i>
+		Export All
+	</a>
+</li>
+		</cfif>
+		
 									</ul>
 								</div>
 								<button
@@ -76,20 +74,22 @@
 									Create Site
 								</button>
 							</div>
-							</cfif>
+
+	</cfif>
+	
 						</div>
 					</div>
 				</div>
 
 				<div class="panel-body">
 
-					<!--- Info Bar --->
+					<!--- Info Bar ---> 
 					<div class="alert alert-warning">
 						<i class="fa fa-warning fa-lg"></i>
 						If you delete a site, all of the content will be deleted as well. Be very very careful!
 					</div>
 
-					<!--- sites --->
+					<!--- sites ---> 
 					<table name="sites" id="sites" class="table table-striped-removed table-hover " >
 						<thead>
 							<tr>
@@ -102,23 +102,25 @@
 						</thead>
 
 						<tbody>
-							<cfloop array="#prc.sites#" index="site">
-							<tr
-								<!--- DISABLED MARKER --->
-								<cfif !site.getIsActive()>
-									class="danger"
-									title="Site is disabled!"
-								</cfif>
+
+	<cfloop array="#prc.sites#" index="site">
+		<tr
+		<cfif !site.getIsActive()>
+			class="danger"
+title="Site is disabled!"
+		</cfif>
+		
 							>
 								<td>
 									<a
-										href="#event.buildLink( '#prc.xehSiteEditor#/siteID/#site.getsiteID()#' )#"
+										href="#event.buildLink( "#prc.xehSiteEditor#/siteID/#site.getsiteID()#" )#"
 										class="size18"
 									>
-										<cfif site.getSlug() eq 'default'>
-											<i class="fa fa-star text-orange" title="Default Site"></i>
-										</cfif>
-										#site.getName()#
+
+		<cfif site.getSlug() EQ "default">
+			<i class="fa fa-star text-orange" title="Default Site"></i>
+		</cfif>
+		#site.getName()#
 									</a>
 									<div class="mt5 mb5">
 										#site.getDescription()#
@@ -134,34 +136,34 @@
 									#site.getActiveTheme()#
 								</td>
 								<td>
-									<!--- Blog Enabled --->
+									<!--- Blog Enabled ---> 
 									<i
-										class="fas fa-blog fa-lg mr5 #site.getIsBlogEnabled() ? 'text-green' : 'text-gray'#"
+										class="fas fa-blog fa-lg mr5 #site.getIsBlogEnabled() ? "text-green" : "text-gray"#"
 										title="Blog"></i>
 
-									<!--- SiteMap Enabled --->
+									<!--- SiteMap Enabled ---> 
 									<i
-										class="fa fa-sitemap fa-lg mr5 #site.getIsSitemapEnabled() ? 'text-green' : 'text-gray'#"
+										class="fa fa-sitemap fa-lg mr5 #site.getIsSitemapEnabled() ? "text-green" : "text-gray"#"
 										title="Sitemap"></i>
 
-									<!--- PoweredBy --->
+									<!--- PoweredBy ---> 
 									<i
-										class="fa fa-broadcast-tower fa-lg mr5 #site.getPoweredByHeader() ? 'text-green' : 'text-gray'#"
+										class="fa fa-broadcast-tower fa-lg mr5 #site.getPoweredByHeader() ? "text-green" : "text-gray"#"
 										title="Powered By Header"></i>
 
-									<!--- AdminBar --->
+									<!--- AdminBar ---> 
 									<i
-										class="fa fa-laptop-house fa-lg mr5 #site.getAdminBar() ? 'text-green' : 'text-gray'#"
+										class="fa fa-laptop-house fa-lg mr5 #site.getAdminBar() ? "text-green" : "text-gray"#"
 										title="Admin Bar"></i>
 
-									<!--- SSL --->
+									<!--- SSL ---> 
 									<i
-										class="fa fa-lock fa-lg mr5 #site.getIsSSL() ? 'text-green' : 'text-gray'#"
+										class="fa fa-lock fa-lg mr5 #site.getIsSSL() ? "text-green" : "text-gray"#"
 										title="SSL"></i>
 
 								</td>
 								<td class="text-center">
-									<!--- Actions --->
+									<!--- Actions ---> 
 									<div class="btn-group">
 										<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Site Actions">
 											<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -169,39 +171,37 @@
 										</button>
 										<ul class="dropdown-menu text-left pull-right">
 
-											<!--- Delete Command --->
-											<cfif site.getSlug() neq "default">
-												<li>
-													<a
-														href="javascript:remove( '#site.getsiteID()#' )"
-														class="confirmIt"
-														data-title="<i class='fa fa-trash'></i> Delete Site?"
-													>
-														<i class="fa fa-trash fa-lg" id="delete_#site.getsiteID()#"></i> Delete
-													</a>
-												</li>
-											</cfif>
 
-											<!--- Edit Command --->
+		<cfif site.getSlug() NEQ "default">
+			<li>
+<a
+	href="javascript:remove( '#site.getsiteID()#' )"
+	class="confirmIt"
+	data-title="<i class='fa fa-trash'></i> Delete Site?"
+>
+	<i class="fa fa-trash fa-lg" id="delete_#site.getsiteID()#"></i> Delete
+	</a>
+</li>
+		</cfif>
+		<!--- Edit Command ---> 
 											<li>
-												<a href="#event.buildLink( '#prc.xehSiteEditor#/siteID/#site.getsiteID()#' )#">
+												<a href="#event.buildLink( "#prc.xehSiteEditor#/siteID/#site.getsiteID()#" )#">
 													<i class="fas fa-pen fa-lg"></i> Edit
 												</a>
 											</li>
 
-											<!--- Export --->
-											<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_EXPORT" )>
-												<li>
-													<a
-														href="#event.buildLink( prc.xehExport )#/siteID/#site.getsiteID()#.json"
-														target="_blank"
-													>
-														<i class="fas fa-file-export fa-lg"></i> Export
-													</a>
-												</li>
-											</cfif>
 
-											<!--- Open site --->
+		<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_EXPORT" )>
+			<li>
+<a
+	href="#event.buildLink( prc.xehExport )#/siteID/#site.getsiteID()#.json"
+		target="_blank"
+	>
+		<i class="fas fa-file-export fa-lg"></i> Export
+	</a>
+</li>
+		</cfif>
+		<!--- Open site ---> 
 											<li>
 												<a href="#site.getSiteRoot()#" target="_blank">
 													<i class="fa fa-external-link-alt fa-lg"></i>Open site
@@ -212,7 +212,9 @@
 									</div>
 								</td>
 							</tr>
-							</cfloop>
+
+	</cfloop>
+	
 						</tbody>
 					</table>
 				</div>
@@ -221,17 +223,17 @@
 	</div>
 </div>
 
-<!--- Sites Import --->
-<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_IMPORT" )>
-	#view(
-		view = "_tags/dialog/import",
-		args = {
-			title       : "Import Sites",
-			contentArea : "sites",
-			action      : prc.xehImportAll,
-			contentInfo : "Choose the ContentBox <strong>JSON</strong> sites file to import."
-		},
-		prePostExempt = true
-	)#
-</cfif>
+
+	<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_IMPORT" )>
+		#view(
+			view          = "_tags/dialog/import",
+			args          = {
+				title       : "Import Sites",
+				contentArea : "sites",
+				action      : prc.xehImportAll,
+				contentInfo : "Choose the ContentBox <strong>JSON</strong> sites file to import."
+			},
+			prePostExempt = true
+		)#
+	</cfif>
 </cfoutput>

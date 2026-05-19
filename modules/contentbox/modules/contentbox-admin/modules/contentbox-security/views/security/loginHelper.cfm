@@ -1,14 +1,16 @@
-﻿<cfoutput>
-<script type="text/javascript">
+<cfoutput>
+	<script type="text/javascript">
 document.addEventListener( "DOMContentLoaded", () => {
 	// form validators
 	$( "##loginForm" ).validate();
-	<cfif len(prc.rememberMe)>
+	<cfif len( prc.rememberMe )>
 		//Get Focus
-		$( "##password" ).focus();
+$( "##password" ).focus();
 	<cfelse>
 		$( "##username" ).focus();
 	</cfif>
+	
 } );
 </script>
+
 </cfoutput>

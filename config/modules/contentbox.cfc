@@ -1,6 +1,6 @@
 component {
 
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * ContentBox Runtime Config
@@ -14,9 +14,7 @@ component {
 				// Global settings
 				"global" : {},
 				// Site specific settings according to site slug
-				"sites"  : {
-					 // siteSlug : { ... }
-				}
+				"sites"  : {// siteSlug : { ... }}
 			}
 		};
 	}

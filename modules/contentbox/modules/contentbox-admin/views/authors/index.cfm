@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<div class="row">
+<cfoutput>
+	<div class="row">
 	<div class="col-md-12">
 		<h1 class="h1">
 			<i class="fa fa-user"></i> Users
@@ -9,16 +9,11 @@
 </div>
 
 <div class="row">
-	<div class="col-md-9">
-		<!--- MessageBox --->
-		#cbMessageBox().renderit()#
-
-		<!--- Import Log --->
-		<cfif flash.exists( "importLog" )>
-			<div class="consoleLog">#flash.get( "importLog" )#</div>
-		</cfif>
-
-		#html.startForm( name="authorForm", action=prc.xehAuthorRemove )#
+	<div class="col-md-9">#cbMessageBox().renderit()#
+	<cfif flash.exists( "importLog" )>
+		<div class="consoleLog">#flash.get( "importLog" )#</div>
+	</cfif>
+	#html.startForm( name = "authorForm", action = prc.xehAuthorRemove )#
 			<input type="hidden" name="targetAuthorID" id="targetAuthorID" value="" />
 
 			<div class="panel panel-default">
@@ -26,59 +21,60 @@
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Search --->
+						<!--- Quick Search ---> 
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-									name 		= "userSearch",
-									class 		= "form-control quicksearch",
-									placeholder	= "Quick Search"
-								)#
+			name        = "userSearch",
+			class       = "form-control quicksearch",
+			placeholder = "Quick Search"
+		)#
 							</div>
 						</div>
 
 						<div class="col-md-6 col-xs-8">
 
-							<!--- Actions Bar --->
+							<!--- Actions Bar ---> 
 							<div class="text-right">
-								<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-									<div class="btn-group">
 
-								    	<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
-											Bulk Actions <span class="caret"></span>
-										</button>
+	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
+		<div class="btn-group">
 
-								    	<ul class="dropdown-menu">
+  	<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
+	Bulk Actions <span class="caret"></span>
+</button>
 
-								    		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
-												<li>
-													<a href="javascript:importContent()">
-														<i class="fa fa-file-import fa-lg"></i> Import
-													</a>
-												</li>
-											</cfif>
+  	<ul class="dropdown-menu">
 
-											<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
-												<li>
-													<a href="#event.buildLink( prc.xehExportAll )#.json" target="_blank">
-														<i class="fas fa-file-export fa-lg"></i> Export All
-													</a>
-													<li>
-														<a href="javascript:exportSelected( '#event.buildLink( prc.xehExportAll )#' )">
-															<i class="fas fa-file-export fa-lg"></i> Export Selected
-														</a>
-													</li>
-												</li>
-												<li>
-													<a 	href="#event.buildLink( prc.xehGlobalPasswordReset )#"
-														class="confirmIt"
-														data-title="<i class='fa fa-exclamation-triangle'></i> Really issue a global password reset?"
-														title="Users will be prompted to change their passwords upon login"
-													>
-														<i class="fa fa-key fa-lg"></i> Reset All Passwords
-													</a>
-												</li>
-											</cfif>
+		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
+			<li>
+	<a href="javascript:importContent()">
+		<i class="fa fa-file-import fa-lg"></i> Import
+	</a>
+</li>
+		</cfif>
+		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
+			<li>
+<a href="#event.buildLink( prc.xehExportAll )#.json" target="_blank">
+	<i class="fas fa-file-export fa-lg"></i> Export All
+</a>
+<li>
+	<a href="javascript:exportSelected( '#event.buildLink( prc.xehExportAll )#' )">
+			<i class="fas fa-file-export fa-lg"></i> Export Selected
+		</a>
+	</li>
+</li>
+<li>
+	<a 	href="#event.buildLink( prc.xehGlobalPasswordReset )#"
+		class="confirmIt"
+		data-title="<i class='fa fa-exclamation-triangle'></i> Really issue a global password reset?"
+		title="Users will be prompted to change their passwords upon login"
+	>
+		<i class="fa fa-key fa-lg"></i> Reset All Passwords
+	</a>
+</li>
+		</cfif>
+		
 
 											<li>
 												<a href="javascript:contentShowAll()">
@@ -87,16 +83,17 @@
 											</li>
 								    	</ul>
 								    </div>
-								</cfif>
 
-								<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
-									<button
-										class="btn btn-primary"
-										onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
-									>
-										Create User
-									</button>
-								</cfif>
+	</cfif>
+	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
+		<button
+class="btn btn-primary"
+onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
+>
+	Create User
+</button>
+	</cfif>
+	
 
 							</div>
 						</div>
@@ -104,7 +101,7 @@
 				</div>
 
 				<div class="panel-body">
-					<!--- container --->
+					<!--- container ---> 
 					<div id="authorTableContainer">
 						<p class="text-center">
 							<i id="userLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -115,7 +112,7 @@
 		#html.endForm()#
 	</div>
 
-	<!--- Sidebar Filters --->
+	<!--- Sidebar Filters ---> 
 	<div class="col-md-3">
 
 		<div class="panel panel-primary">
@@ -126,8 +123,12 @@
 
 			<div class="panel-body">
 				<div id="filterBox">
-					#html.startForm( name="filterForm", action=prc.xehAuthorSearch, class="form-vertical",role="form" )#
-						<!---Status--->
+					#html.startForm(
+			name   = "filterForm",
+			action = prc.xehAuthorSearch,
+			class  = "form-vertical",
+			role   = "form"
+		)#<!--- Status ---> 
 						<div class="form-group">
 							<label for="fStatus" class="control-label">Status: </label>
 							<select name="fStatus" id="fStatus" class="form-control input-sm">
@@ -137,7 +138,7 @@
 							</select>
 						</div>
 
-						<!--- 2 Factor Auth --->
+						<!--- 2 Factor Auth ---> 
 						<div class="form-group">
 							<label for="f2FactorAuth" class="control-label">2 Factor Auth: </label>
 							<select name="f2FactorAuth" id="f2FactorAuth" class="form-control input-sm">
@@ -147,29 +148,33 @@
 							</select>
 						</div>
 
-						<!--- Roles --->
+						<!--- Roles ---> 
 						<div class="form-group">
 							<label for="fRole" class="control-label">Roles: </label>
 							<select name="fRole" id="fRole" class="form-control input-sm">
 								<option value="any">All Roles</option>
-								<cfloop array="#prc.aRoles#" index="thisRole">
-								<option value="#thisRole.getRoleID()#">#thisRole.getRole()# (#thisRole.getNumberOfAuthors()#)</option>
-								</cfloop>
+
+	<cfloop array="#prc.aRoles#" index="thisRole">
+		<option value="#thisRole.getRoleID()#">#thisRole.getRole()# (#thisRole.getNumberOfAuthors()#)</option>
+	</cfloop>
+	
 							</select>
 						</div>
 
-						<!--- Permission Groups --->
+						<!--- Permission Groups ---> 
 						<div class="form-group">
 							<label for="fGroups" class="control-label">Permission Groups: </label>
 							<select name="fGroups" id="fGroups" class="form-control input-sm">
 								<option value="any">All Groups</option>
-								<cfloop array="#prc.aPermissionGroups#" index="thisGroup">
-								<option value="#thisGroup.getPermissionGroupID()#">#thisGroup.getName()# (#thisGroup.getNumberOfAuthors()#)</option>
-								</cfloop>
+
+	<cfloop array="#prc.aPermissionGroups#" index="thisGroup">
+		<option value="#thisGroup.getPermissionGroupID()#">#thisGroup.getName()# (#thisGroup.getNumberOfAuthors()#)</option>
+	</cfloop>
+	
 							</select>
 						</div>
 
-						<!--- Sort By --->
+						<!--- Sort By ---> 
 						<div class="form-group">
 							<label for="sortOrder" class="control-label">Sort By: </label>
 							<select name="sortOrder" id="sortOrder" class="form-control input-sm">
@@ -194,16 +199,17 @@
 	</div>
 </div>
 
-<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
-	#view(
-		view = "_tags/dialog/import",
-		args = {
-			title 		: "Import Users",
-			contentArea : "user",
-			action 		: prc.xehImportAll,
-			contentInfo : "Choose the ContentBox <strong>JSON</strong> users file to import."
-		},
-		prePostExempt = true
-	)#
-</cfif>
+
+	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
+		#view(
+			view          = "_tags/dialog/import",
+			args          = {
+				title       : "Import Users",
+				contentArea : "user",
+				action      : prc.xehImportAll,
+				contentInfo : "Choose the ContentBox <strong>JSON</strong> users file to import."
+			},
+			prePostExempt = true
+		)#
+	</cfif>
 </cfoutput>

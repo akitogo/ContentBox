@@ -1,19 +1,18 @@
-﻿<cfoutput>
-<!--- Custom JS --->
-<script>
+<cfoutput>
+	<!--- Custom JS ---> <script>
 ( () => {
 	$permissionForm = $( "##permissionForm" );
 	$groupsForm 	= $( "##groupsForm" );
 } )();
-<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
-function addPermissions(){
-	// loader
-	$( "##permissionLoader" ).slideDown();
-	// Assign it
-	$.post(
-		'#event.buildLink( prc.xehPermissionSave )#',
-		{
-			authorID	 : '#rc.authorID#',
+	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
+		function addPermissions(){
+// loader
+$( "##permissionLoader" ).slideDown();
+// Assign it
+$.post(
+	'#event.buildLink( prc.xehPermissionSave )#',
+{
+	authorID	 : '#rc.authorID#',
 			permissionID : $permissionForm.find( "##permissionID" ).val()
 		},
 		function(){
@@ -29,8 +28,8 @@ function removePermission( permissionID ){
 	// Assign it
 	$.post(
 		'#event.buildLink( prc.xehPermissionRemove )#',
-		{
-			authorID	 : '#rc.authorID#',
+{
+	authorID	 : '#rc.authorID#',
 			permissionID : permissionID
 		},
 		function(){
@@ -46,8 +45,8 @@ function addPermissionGroup(){
 	// Assign it
 	$.post(
 		'#event.buildLink( prc.xehGroupSave )#',
-		{
-			authorID	 		: '#rc.authorID#',
+{
+	authorID	 		: '#rc.authorID#',
 			permissionGroupID 	: $groupsForm.find( "##permissionGroupID" ).val()
 		},
 		function(){
@@ -63,8 +62,8 @@ function removePermissionGroup( permissionGroupID ){
 	// Assign it
 	$.post(
 		'#event.buildLink( prc.xehGroupRemove )#',
-		{
-			authorID	 		: '#rc.authorID#',
+{
+	authorID	 		: '#rc.authorID#',
 			permissionGroupID 	: permissionGroupID
 		},
 		function(){
@@ -74,6 +73,8 @@ function removePermissionGroup( permissionGroupID ){
 		}
 	);
 }
-</cfif>
+	</cfif>
+	
 </script>
+
 </cfoutput>

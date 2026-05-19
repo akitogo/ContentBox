@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script>
+<cfoutput>
+	<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$( "##groups" ).dataTable( {
 		"paging"		: false,
@@ -15,8 +15,9 @@ document.addEventListener( "DOMContentLoaded", () => {
 	} );
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN" )>
-	$importDialog 	= $( "##importDialog" );
+		$importDialog 	= $( "##importDialog" );
 	</cfif>
+	
 
 	// table sorting + filtering
 	$( "##groupFilter" ).keyup(
@@ -29,8 +30,9 @@ document.addEventListener( "DOMContentLoaded", () => {
 	);
 } );
 
-<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-function remove( permissionGroupID ){
+
+	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
+		function remove( permissionGroupID ){
 	var $groupForm = $( "##groupForm" );
 	$( "##delete_"+ permissionGroupID).removeClass( "fa-trash-o" ).addClass( "fa fa-spinner fa-spin" );
 	$groupForm.find( "##permissionGroupID" ).val( permissionGroupID );
@@ -48,6 +50,8 @@ function exportSelected( exportEvent ){
 		alert( "Please select something to export!" );
 	}
 }
-</cfif>
+	</cfif>
+	
 </script>
+
 </cfoutput>

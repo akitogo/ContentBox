@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script>
+<cfoutput>
+	<script>
 ( () => {
 	// form validators
 	$( "##commentEditForm" ).validate();

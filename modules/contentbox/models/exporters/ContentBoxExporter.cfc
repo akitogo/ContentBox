@@ -5,28 +5,23 @@
  * ---
  * Export ContentBox data based on user selection. This is a transient object
  */
-component accessors=true {
-
+component accessors="#true#" {
 	/**
 	 * The exporters to use
 	 */
 	property name="exporters" type="array";
-
 	/**
 	 * Describes what will be exported
 	 */
 	property name="descriptor" type="struct";
-
 	/**
 	 * The location of the data services used for exporting
 	 */
 	property name="dataServiceMappings" type="struct";
-
 	/**
 	 * The location of the file mappings used for exporting
 	 */
 	property name="filePathMappings" type="struct";
-
 	// DI
 	property name="moduleSettings" inject="coldbox:setting:modules";
 	property name="entryService" inject="id:entryService@contentbox";
@@ -53,11 +48,11 @@ component accessors=true {
 	/**
 	 * Constructor
 	 */
-	ContentBoxExporter function init(){
-		variables.exporters           = [];
-		variables.descriptor          = {};
+	ContentBoxExporter function init() {
+		variables.exporters = [];
+		variables.descriptor = {};
 		variables.dataServiceMappings = {};
-		variables.filePathMappings    = {};
+		variables.filePathMappings = {};
 
 		return this;
 	}
@@ -65,9 +60,9 @@ component accessors=true {
 	/**
 	 * On DI Complete
 	 */
-	function onDIComplete(){
+	function onDIComplete() {
 		var contentBoxPath = variables.moduleSettings[ "contentbox" ].path;
-		var customPath     = variables.moduleSettings[ "contentbox-custom" ].path;
+		var customPath = variables.moduleSettings[ "contentbox-custom" ].path;
 
 		variables.dataServiceMappings = {
 			"authors" : {
@@ -194,7 +189,7 @@ component accessors=true {
 	 *
 	 * @targets The struct of targets to prepare for export
 	 */
-	ContentBoxExporter function setup( required struct targets ){
+	ContentBoxExporter function setup( required struct targets ) {
 		// loop over targets and build up exporters
 		for ( var key in arguments.targets ) {
 			// find config data struct for the given key
@@ -213,15 +208,15 @@ component accessors=true {
 					exporter.setFileName( config.def.fileName );
 					exporter.setDisplayName( config.def.displayName );
 					exporter.setContent(
-						variables[ config.def.service ].getAllForExport( variables.siteService.getCurrentWorkingSite() )
-					);
+							variables[ config.def.service ].getAllForExport( variables.siteService.getCurrentWorkingSite() )
+						);
 					exporter.setPriority( config.def.priority );
 					break;
-					// add file exporter
+				// add file exporter
 				case "file":
-					var includedFiles = !isBoolean( arguments.targets[ key ] ) && listLen( arguments.targets[ key ] ) ? arguments.targets[
-						key
-					] : "*";
+					var includedFiles = !isBoolean( arguments.targets[ key ] ) && listLen( arguments.targets[ key ] )
+						? arguments.targets[ key ]
+						: "*";
 					var exporter = wirebox.getInstance( "fileExporter@contentbox" );
 					exporter.setFileName( config.def.fileName );
 					exporter.setDisplayName( config.def.displayName );
@@ -231,7 +226,6 @@ component accessors=true {
 					// set included files dynamically from arguments
 					exporter.setIncludeFiles( includedFiles );
 					break;
-					// add exporter
 			}
 
 			addExporter( exporter );
@@ -247,7 +241,7 @@ component accessors=true {
 	 *
 	 * @return SiteExporterService
 	 */
-	ContentBoxExporter function addExporter( required any exporter ){
+	ContentBoxExporter function addExporter( required any exporter ) {
 		arrayAppend( variables.exporters, arguments.exporter );
 		return this;
 	}
@@ -255,7 +249,7 @@ component accessors=true {
 	/**
 	 * Gets the descriptor def for the export, it builds it first.
 	 */
-	struct function getDescriptor(){
+	struct function getDescriptor() {
 		// build descriptor
 		return buildDescriptor();
 	}
@@ -263,10 +257,9 @@ component accessors=true {
 	/**
 	 * Processes export!
 	 */
-	struct function export(){
-		var exportLog = createObject( "java", "java.lang.StringBuilder" ).init(
-			"Starting ContentBox package export...<br>"
-		);
+	struct function export() {
+		var exportLog = createObject( "java",
+			"java.lang.StringBuilder" ).init( "Starting ContentBox package export...<br>" );
 		// do some directory checking/creating
 		var tmpDirectory = getTempDirectory() & "cbexport";
 		if ( directoryExists( tmpDirectory ) ) {
@@ -286,17 +279,21 @@ component accessors=true {
 				var fileName = tmpDirectory & "/" & exporter.getFileName() & "." & exporter.getFormat();
 				// if all files, just grab directory
 				if ( exporter.getIncludeFiles() == "*" ) {
-					exportLog.append( "Beginning export of all #exporter.getDisplayName()#<br />" );
+					exportLog.append(
+							"Beginning export of all #exporter.getDisplayName()#<br />"
+						);
 					zipUtil.addFiles(
-						zipFilePath = fileName,
-						directory   = exporter.getDirectory(),
-						recurse     = true
-					);
-					exportLog.append( "Export of all #exporter.getDisplayName()# complete!<br />" );
+							zipFilePath = fileName,
+							directory   = exporter.getDirectory(),
+							recurse     = true
+						);
+					exportLog.append(
+							"Export of all #exporter.getDisplayName()# complete!<br />"
+						);
 				} else {
 					exportLog.append(
-						"Beginning export of #exporter.getDisplayName()#: #exporter.getFileList()#<br />"
-					);
+							"Beginning export of #exporter.getDisplayName()#: #exporter.getFileList()#<br />"
+						);
 					if ( exporter.getType() == "folder" ) {
 						var folders = listToArray( exporter.getFileList() );
 						var tmppath = tmpDirectory & "/tmp_" & exporter.getFileName();
@@ -313,18 +310,18 @@ component accessors=true {
 						}
 						// now add tmp to zip file
 						zipUtil.addFiles(
-							zipFilePath = fileName,
-							directory   = tmppath,
-							recurse     = true
-						);
+								zipFilePath = fileName,
+								directory   = tmppath,
+								recurse     = true
+							);
 						// finally, we can delete that now
 						directoryDelete( tmppath, true );
 					} else {
 						zipUtil.addFiles(
-							zipFilePath = fileName,
-							files       = exporter.getFileList(),
-							recurse     = true
-						);
+								zipFilePath = fileName,
+								files       = exporter.getFileList(),
+								recurse     = true
+							);
 					}
 					exportLog.append( "Export of #exporter.getDisplayName()# complete!<br />" );
 				}
@@ -332,7 +329,10 @@ component accessors=true {
 		}
 		exportLog.append( "Creating package descriptor file<br />" );
 		// add descriptor file
-		fileWrite( tmpDirectory & "/descriptor.json", serializeJSON( getDescriptor() ) );
+		fileWrite(
+			tmpDirectory & "/descriptor.json",
+			serializeJSON( getDescriptor() )
+		);
 		exportLog.append( "Package descriptor complete!<br />" );
 
 		// done! now we just need to compress the whole thing
@@ -340,10 +340,10 @@ component accessors=true {
 
 		var exportFile = tmpDirectory & "/cbsite.cbox";
 		zipUtil.addFiles(
-			zipFilePath = exportFile,
-			directory   = tmpDirectory,
-			recurse     = true
-		);
+				zipFilePath = exportFile,
+				directory   = tmpDirectory,
+				recurse     = true
+			);
 		exportLog.append( "ContentBox package export complete!<br />" );
 
 		var flattendExportLog = exportLog.toString();
@@ -359,7 +359,7 @@ component accessors=true {
 	 *
 	 * @return Struct of { type : "data|file", def : data service mapping }
 	 */
-	private struct function findConfig( required string key ){
+	private struct function findConfig( required string key ) {
 		var isData = structKeyExists( variables.dataServiceMappings, arguments.key );
 		var isFile = structKeyExists( variables.filePathMappings, arguments.key );
 		if ( isData ) {
@@ -380,15 +380,18 @@ component accessors=true {
 	/**
 	 * Creates descriptor structure
 	 */
-	private struct function buildDescriptor(){
+	private struct function buildDescriptor() {
 		var loggedInUser = variables.securityService.getAuthorSession();
-		var descriptor   = {};
+		var descriptor = {};
 
 		// set static descriptor values
 		descriptor[ "exportDate" ] = now();
 		descriptor[ "exportedBy" ] = "#loggedInUser.getFullName()# (#loggedInUser.getUsername()#)";
-		descriptor[ "content" ]    = {};
-		descriptor[ "site" ]       = variables.siteService.getCurrentWorkingSite().getMemento();
+		descriptor[ "content" ] = {};
+		descriptor[ "site" ] = variables
+			.siteService
+			.getCurrentWorkingSite()
+			.getMemento();
 
 		// add dynamic content
 		for ( var exporter in variables.exporters ) {
@@ -401,7 +404,6 @@ component accessors=true {
 			};
 		}
 		setDescriptor( descriptor );
-
 
 		return descriptor;
 	}

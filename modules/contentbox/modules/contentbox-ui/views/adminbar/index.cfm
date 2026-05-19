@@ -1,11 +1,12 @@
 <cfoutput>
 	<div id="cb-adminbar">
-		<cfif !isNull( args.oContent )>	
-			<div class="cb-adminbar__content">
-		<cfelse>
-			<!--- evenly distributes children  --->
-			<div class="cb-adminbar__content cb-adminbar--justify-content">
-		</cfif>
+	<cfif !isNull( args.oContent )>
+			
+<div class="cb-adminbar__content">
+	<cfelse>
+		<!--- evenly distributes children ---> <div class="cb-adminbar__content cb-adminbar--justify-content">
+	</cfif>
+	
 			<a href="#cb.linkAdmin()#" target="_blank" class="cb-adminbar__brand">
 				<svg class="cb-adminbar__icon" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 29.6" aria-label="Site Admin">
 					<path d="M25.6,5.3c-3.4-2.7-11.3-4.6-17.4,1.4C1.8,14.8,4.6,26.8,17,28c6.8-.2,10.1-3.1,10.1-3.1,.7-.1-8.9,9-20.8,1.9C.7,22.9-.7,16.9,.3,12,1.2,7.2,4.7,3.4,6.7,2.3c8.9-5.5,17.4,.3,18.9,3Z" style="fill:##8fc73e; fill-rule:evenodd;"/>
@@ -14,73 +15,74 @@
 				</svg>
 				<span class="menu-heading">&nbsp; #prc.oCurrentSite.getName()# Site</span>
 			</a>
-			<cfif !isNull( args.oContent )>
-				<nav id="cb-adminbar__actions" aria-label="Page Admin Menu">
-					<ul class="cb-adminbar__menu">
-						<li class="cb-adminbar__menu-item cb-adminbar__dropdown">
-							<button 
-								aria-expanded="false"
-								aria-controls="cb-adminbar__info-dropdown"
-								type="button" 
-								class="cb-adminbar__dropdown-toggle info" 
-								onclick="toggleDropdown(event, this )" 
-							>
-								<svg class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-								<span class="menu-heading">Page Info</span>
-							</button>
-							<!--- Page Info --->
-							<div id="cb-adminbar__info-dropdown" class="cb-adminbar__dropdown-menu">
-								<cfif !args.oContent.getIsPublished()>
-									<span class="cb-adminbar__badge bg-danger">
-										<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
-										</svg>
-										<strong>Draft</strong>
-									</span></br>
-								<cfelse>
-									<cfif args.oContent.isPublishedInFuture()>
-										<span class="cb-adminbar__badge bg-warning">
-											<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-											</svg>
-											<strong>Publish Pending</strong>
-										</span></br>
-									<cfelse>
-										<span class="cb-adminbar__badge bg-success">
-											<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-											</svg>
-											<strong>Published</strong>
-										</span></br>
-									</cfif>
-								</cfif>
-								<cfif args.oContent.isPublishedInFuture()>
-									<span class="cb-adminbar__info-item">
-										<strong>Publishes on:</strong> <br/>#args.oContent.getDisplayPublishedDate()#
-									</span>
-								</cfif> 
+
+	<cfif !isNull( args.oContent )>
+		<nav id="cb-adminbar__actions" aria-label="Page Admin Menu">
+<ul class="cb-adminbar__menu">
+	<li class="cb-adminbar__menu-item cb-adminbar__dropdown">
+		<button 
+			aria-expanded="false"
+			aria-controls="cb-adminbar__info-dropdown"
+			type="button" 
+			class="cb-adminbar__dropdown-toggle info" 
+			onclick="toggleDropdown(event, this )" 
+		>
+			<svg class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+			<span class="menu-heading">Page Info</span>
+		</button><!--- Page Info ---> <div id="cb-adminbar__info-dropdown" class="cb-adminbar__dropdown-menu">
+		<cfif !args.oContent.getIsPublished()>
+			<span class="cb-adminbar__badge bg-danger">
+	<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+	</svg>
+	<strong>Draft</strong>
+</span></br>
+		<cfelse>
+			<cfif args.oContent.isPublishedInFuture()>
+				<span class="cb-adminbar__badge bg-warning">
+	<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+	</svg>
+	<strong>Publish Pending</strong>
+</span></br>
+			<cfelse>
+				<span class="cb-adminbar__badge bg-success">
+	<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+	</svg>
+	<strong>Published</strong>
+</span></br>
+			</cfif>
+		</cfif>
+		<cfif args.oContent.isPublishedInFuture()>
+			<span class="cb-adminbar__info-item">
+<strong>Publishes on:</strong> <br/>#args.oContent.getDisplayPublishedDate()#</span>
+		</cfif>
+		 
 								<span class="cb-adminbar__info-item">
-									<strong>Modified:</strong><br/> #args.oContent.getActiveContent().getDisplayCreatedDate()#
+									<strong>Modified:</strong><br/> #args
+			.oContent
+			.getActiveContent()
+			.getDisplayCreatedDate()#
 								</span><br/>
 								<span class="cb-adminbar__info-item">
 									#getInstance( "Avatar@contentbox" ).renderAvatar(
-										email	= args.oContent.getAuthorEmail(),
-										size	= "15",
-										class	= "img img-circle"
-									)#
-									#args.oContent.getAuthorName()#
+				email = args.oContent.getAuthorEmail(),
+				size  = "15",
+				class = "img img-circle"
+			)##args.oContent.getAuthorName()#
 								</span><br/>
 								
-								<cfif args.oContent.getContentType() eq "Page">
-									<span class="cb-adminbar__info-item">
-										<strong>Layout:</strong> #args.oContent.getLayout()#
-									</span><br/>
-								</cfif>
-								<cfif args.oContent.getAllowComments()>
-									<span class="cb-adminbar__info-item">
-										<strong>Comments:</strong> #args.oContent.getNumberOfComments()#
-									</span><br/>
-								</cfif>
+
+		<cfif args.oContent.getContentType() EQ "Page">
+			<span class="cb-adminbar__info-item">
+<strong>Layout:</strong> #args.oContent.getLayout()#</span><br/>
+		</cfif>
+		<cfif args.oContent.getAllowComments()>
+			<span class="cb-adminbar__info-item">
+<strong>Comments:</strong> #args.oContent.getNumberOfComments()#</span><br/>
+		</cfif>
+		
 							</div>
 						</li>						
 						<li class="cb-adminbar__menu-item">
@@ -115,21 +117,23 @@
 								<span class="menu-heading">History</span>
 							</a>
 						</li>	
-						<!--- Only show if we are on a cached page --->
-						<cfif structKeyExists( prc, "contentCacheData" )>
-							<li class="cb-adminbar__menu-item">
-								<a href="#event.buildLink( event.getCurrentRoutedURL() )#?cbCache=true" class="clear-cache">
-									<svg class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-									</svg>
-									<span class="menu-heading">Clear Cache</span>
-								</a>
-							</li>
-						</cfif>
+
+		<cfif structKeyExists( prc, "contentCacheData" )>
+			<li class="cb-adminbar__menu-item">
+<a href="#event.buildLink( event.getCurrentRoutedURL() )#?cbCache=true" class="clear-cache">
+		<svg class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+		</svg>
+		<span class="menu-heading">Clear Cache</span>
+	</a>
+</li>
+		</cfif>
+		
 					</ul>
 				</nav>
-			</cfif>
-			<!--- Avatar --->
+
+	</cfif>
+	<!--- Avatar ---> 
 			<div id="cb-adminbar__avatar">
 				<div class="cb-adminbar__dropdown">
 					<button 
@@ -139,12 +143,11 @@
 						class="cb-adminbar__dropdown-toggle" 
 						onclick="toggleDropdown(event, this )"
 					>
-						#getInstance( "Avatar@contentbox" )
-							.renderAvatar(
-								email 	: args.oCurrentAuthor.getEmail(),
-								size 	: "25",
-								title	: "Hola"
-							)#
+						#getInstance( "Avatar@contentbox" ).renderAvatar(
+			email = args.oCurrentAuthor.getEmail(),
+			size  = "25",
+			title = "Hola"
+		)#
 					</button>
 					<div id="cb-adminbar__user-dropdown" class="cb-adminbar__dropdown-menu">
 						<span>#args.oCurrentAuthor.getFullName()#</span><br/>
@@ -158,7 +161,7 @@
 				</div>
 			</div> 
 		</div>
-		<!--- Toggle --->
+		<!--- Toggle ---> 
 		<button aria-hidden="true" type="button" class="cb-adminbar__toggle" id="adminbar-toggle" onclick="toggleAdminBar()">
 			<svg class="svg-cheveron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
 		</button>
@@ -261,5 +264,6 @@
 		return "";
 	}
 </script>
+
 </cfoutput>
 	

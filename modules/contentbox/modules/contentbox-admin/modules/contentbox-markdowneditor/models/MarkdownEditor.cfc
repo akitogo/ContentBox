@@ -5,12 +5,7 @@
  * ---
  * SimpleMDE Implementation
  */
-component
-	implements="contentbox.models.ui.editors.IEditor"
-	accessors ="true"
-	singleton
-{
-
+component implements="contentbox.models.ui.editors.IEditor" accessors ="true" singleton {
 	// DI
 	property name="log" inject="logbox:logger:{this}";
 
@@ -25,21 +20,24 @@ component
 		required coldbox,
 		required settingService,
 		required html
-	){
+	) {
 		// register dependencies
 		variables.interceptorService = arguments.coldbox.getInterceptorService();
-		variables.requestService     = arguments.coldbox.getRequestService();
-		variables.coldbox            = arguments.coldbox;
-		variables.settingService     = arguments.settingService;
-		variables.html               = arguments.html;
+		variables.requestService = arguments.coldbox.getRequestService();
+		variables.coldbox = arguments.coldbox;
+		variables.settingService = arguments.settingService;
+		variables.html = arguments.html;
 
 		// Store admin entry point and base URL settings
 		ADMIN_ENTRYPOINT = arguments.coldbox.getSetting( "modules" )[ "contentbox-admin" ].entryPoint;
-		EDITOR_ROOT      = arguments.coldbox.getSetting( "modules" )[ "contentbox-markdowneditor" ].mapping;
-		HTML_BASE_URL    = variables.requestService.getContext().getHTMLBaseURL();
+		EDITOR_ROOT = arguments.coldbox.getSetting( "modules" )[ "contentbox-markdowneditor" ].mapping;
+		HTML_BASE_URL = variables
+			.requestService
+			.getContext()
+			.getHTMLBaseURL();
 
 		// Store Toolbars
-		variables.toolbarJS        = buildToolbarJS( "content" );
+		variables.toolbarJS = buildToolbarJS( "content" );
 		variables.toolbarExcerptJS = buildToolbarJS( "excerpt" );
 
 		// Register our Editor events
@@ -51,21 +49,21 @@ component
 	/**
 	 * Get the internal name of an editor
 	 */
-	function getName(){
+	function getName() {
 		return "simplemde";
 	}
 
 	/**
 	 * Get the display name of an editor
 	 */
-	function getDisplayName(){
+	function getDisplayName() {
 		return "Code Editor";
-	};
+	}
 
 	/**
 	 * Startup the editor(s) on a page
 	 */
-	function startup(){
+	function startup() {
 		// prepare toolbar announcement on startup
 		var iData = {
 			toolbar        : variables.toolbarJS,
@@ -85,16 +83,20 @@ component
 	 * This is fired once editor javascript loads, you can use this to return back functions, asset calls, etc.
 	 * return the appropriate JavaScript
 	 */
-	function loadAssets(){
+	function loadAssets() {
 		var js = "";
 
 		// Load Assets, they are included with ContentBox
-		html.addAsset( "#variables.EDITOR_ROOT#/includes/simplemde/simplemde.min.css" );
-		html.addAsset( "#variables.EDITOR_ROOT#/includes/simplemde/simplemde.min.js" );
+		html.addAsset(
+				"#variables.EDITOR_ROOT#/includes/simplemde/simplemde.min.css"
+			);
+		html.addAsset(
+				"#variables.EDITOR_ROOT#/includes/simplemde/simplemde.min.js"
+			);
 		// Custom Styles
 		// cfformat-ignore-start
 		html.addStyleContent(
-			"
+				"
 			.CodeMirror{
 			    height: 100% !important;
 			}
@@ -105,11 +107,12 @@ component
 				z-index: 1000 !important;
 			}
 		",
-			true
-		);
+				true
+			);
 
 		savecontent variable="js" {
-			writeOutput( "
+			writeOutput(
+				"
 			function getContentEditor(){
 				return simpleMDE_content.codemirror;
 			}
@@ -189,17 +192,46 @@ component
 				insertEditorContent( simpleMDETargetEditor, link );
 				closeRemoteModal();
 			}
-			");
+			"
+			);
 		}
 		// cfformat-ignore-end
 
 		return js;
-	};
+	}
+
+	/**
+	 * Shutdown the editor(s) on a page
+	 */
+	function shutdown() {
+		var js = "";
+
+		// cfformat-ignore-start
+		savecontent variable="js" {
+			writeOutput(
+				"
+				// Activate on content object
+				simpleMDE_content.toTextArea();
+				simpleMDE_content = null;
+				// Active Excerpts
+				try{
+					simpleMDE_excerpt.toTextArea();
+					simpleMDE_excerpt = null;
+				} catch( error ){
+					// ignore.
+				}
+			"
+			);
+		}
+		// cfformat-ignore-end
+
+		return js;
+	}
 
 	/**
 	 * Compile the needed JS to display into the screen
 	 */
-	private function compileJS( required iData, required iData2 ){
+	private function compileJS( required iData, required iData2 ) {
 		var js = "";
 
 		// Determine Extra Configuration
@@ -210,7 +242,8 @@ component
 
 		// cfformat-ignore-start
 		savecontent variable="js" {
-			writeOutput( "
+			writeOutput(
+				"
 			// Activate on content object
 			simpleMDE_content = new SimpleMDE( {
 				#extraConfig#
@@ -248,33 +281,8 @@ component
 			simpleMDE_content.codemirror.on( 'change', function(){
 			    simpleMDE_content.isDirty = true;
 			} );
-			" );
-		}
-		// cfformat-ignore-end
-
-		return js;
-	}
-
-	/**
-	 * Shutdown the editor(s) on a page
-	 */
-	function shutdown(){
-		var js = "";
-
-		// cfformat-ignore-start
-		savecontent variable="js" {
-			writeOutput( "
-				// Activate on content object
-				simpleMDE_content.toTextArea();
-				simpleMDE_content = null;
-				// Active Excerpts
-				try{
-					simpleMDE_excerpt.toTextArea();
-					simpleMDE_excerpt = null;
-				} catch( error ){
-					// ignore.
-				}
-			");
+			"
+			);
 		}
 		// cfformat-ignore-end
 
@@ -286,7 +294,7 @@ component
 	 *
 	 * @editor The editor name to bind the toolbar to
 	 */
-	private function buildToolbarJS( required editor ){
+	private function buildToolbarJS( required editor ) {
 		// cfformat-ignore-start
 		return "[
 			{
@@ -350,6 +358,7 @@ component
 				title : 'Insert ContentBox Media'
 			}
 		]";
+
 		// cfformat-ignore-end
 	}
 

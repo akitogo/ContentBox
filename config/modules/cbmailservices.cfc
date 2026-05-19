@@ -1,6 +1,6 @@
 component {
 
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * ColdBox MailServices
@@ -21,9 +21,7 @@ component {
 				}
 			},
 			// The defaults for all mail config payloads and protocols
-			defaults : {
-				 // from : "",
-			},
+			defaults : {// from : "",},
 			// Whether the scheduled task is running or not
 			runQueueTask : true
 		};

@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<style>
+<cfoutput>
+	<style>
 .CodeMirror, .CodeMirror-scroll {
 	height: 200px;
 	min-height: 200px;

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -6,24 +6,23 @@
  * ContentBox Admin Module
  */
 component {
-
 	// Module Properties
-	this.title              = "ContentBox Admin";
-	this.author             = "Ortus Solutions, Corp";
-	this.webURL             = "https://www.ortussolutions.com";
-	this.version            = "@version.number@+@build.number@";
-	this.description        = "ContentBox Administration Module";
-	this.viewParentLookup   = true;
+	this.title = "ContentBox Admin";
+	this.author = "Ortus Solutions, Corp";
+	this.webURL = "https://www.ortussolutions.com";
+	this.version = "@version.number@+@build.number@";
+	this.description = "ContentBox Administration Module";
+	this.viewParentLookup = true;
 	this.layoutParentLookup = true;
-	this.entryPoint         = "cbadmin";
-	this.modelNamespace     = "cbadmin";
-	this.cfmapping          = "cbadmin";
-	this.dependencies       = [];
+	this.entryPoint = "cbadmin";
+	this.modelNamespace = "cbadmin";
+	this.cfmapping = "cbadmin";
+	this.dependencies = [];
 
 	/**
 	 * Configure Module
 	 */
-	function configure(){
+	function configure() {
 		// Layout Settings
 		layoutSettings = { defaultLayout : "admin.cfm" };
 
@@ -239,7 +238,7 @@ component {
 	/*
 	 * On Module Load
 	 */
-	function onLoad(){
+	function onLoad() {
 		// Startup the Editor Service, needed for markup translations support
 		wirebox.getInstance( "EditorService@contentbox" );
 		// Load Admin Helpers Manually: Renderer get's created and chicken and the egg issue again.

@@ -13,7 +13,6 @@
  * - CBHelper
  */
 component {
-
 	// DI
 	property name="log" inject="logbox:logger:{this}";
 	property name="settingService" inject="settingService@contentbox";
@@ -25,14 +24,14 @@ component {
 	/**
 	 * Constructor
 	 */
-	function init(){
+	function init() {
 		return this;
 	}
 
 	/**
 	 * Get all system settings
 	 */
-	struct function getAllSettings(){
+	struct function getAllSettings() {
 		return variables.settingService.getAllSettings();
 	}
 
@@ -41,7 +40,7 @@ component {
 	 *
 	 * @return Site
 	 */
-	function getDefaultSite(){
+	function getDefaultSite() {
 		return variables.siteService.getDefaultSite();
 	}
 
@@ -50,7 +49,7 @@ component {
 	 *
 	 * @return Site
 	 */
-	function discoverSite(){
+	function discoverSite() {
 		return variables.siteService.discoverSite();
 	}
 

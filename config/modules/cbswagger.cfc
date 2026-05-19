@@ -1,6 +1,6 @@
 component {
 
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * CBSwagger Configuration
@@ -9,9 +9,9 @@ component {
 		 */
 		return {
 			// The route prefix to search.  Routes beginning with this prefix will be determined to be api routes
-			"routes"        : [ "cbapi" ],
+			"routes"        : [ "cbapi"],
 			// Routes to exclude from the generated spec
-			"excludeRoutes" : [ "cbapi/v1/:anything/" ],
+			"excludeRoutes" : [ "cbapi/v1/:anything/"],
 			// The default output format, either json or yml
 			"defaultFormat" : "json",
 			// A convention route, relative to your app root, where request/response samples are stored ( e.g. resources/apidocs/responses/[module].[handler].[action].[HTTP Status Code].json )
@@ -80,11 +80,7 @@ component {
 			},
 			// A declaration of which security mechanisms can be used across the API.
 			// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#securityRequirementObject
-			"security" : [
-				{ "ApiKeyAuth" : [] },
-				{ "ApiKeyQueryAuth" : [] },
-				{ "BearerAuth" : [] }
-			],
+			"security" : [ { "ApiKeyAuth" : [] }, { "ApiKeyQueryAuth" : [] }, { "BearerAuth" : [] }],
 			// A list of tags used by the specification with additional metadata.
 			// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#tagObject
 			"tags" : [

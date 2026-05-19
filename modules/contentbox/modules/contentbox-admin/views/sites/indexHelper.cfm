@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script>
+<cfoutput>
+	<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importDialog 	= $( "##importDialog" );
 	$siteForm 		= $( "##siteForm" );

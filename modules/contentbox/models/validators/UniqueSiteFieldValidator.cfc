@@ -5,7 +5,6 @@
  * Validates if the field has a unique value by site in the database, this only applies to ORM objects
  */
 component accessors="true" singleton {
-
 	// Properties
 	property name="name";
 	property name="ormService";
@@ -13,8 +12,8 @@ component accessors="true" singleton {
 	/**
 	 * Constructor
 	 */
-	UniqueSiteFieldValidator function init(){
-		variables.name       = "UniqueSiteField";
+	UniqueSiteFieldValidator function init() {
+		variables.name = "UniqueSiteField";
 		variables.ORMService = new cborm.models.BaseORMService();
 		return this;
 	}
@@ -35,16 +34,17 @@ component accessors="true" singleton {
 		required string field,
 		any targetValue,
 		any validationData
-	){
+	) {
 		// return true if no data to check, type needs a data element to be checked.
 		if (
-			isNull( arguments.targetValue ) || ( isSimpleValue( arguments.targetValue ) && !len( arguments.targetValue ) )
+			isNull( arguments.targetValue ) ||
+				( isSimpleValue( arguments.targetValue ) && !len( arguments.targetValue ) )
 		) {
 			return true;
 		}
 
 		// process entity setups.
-		var entityName    = arguments.target.getEntityName();
+		var entityName = arguments.target.getEntityName();
 		var identityField = variables.ormService.getKey( arguments.target );
 		var identityValue = arguments.target.getId();
 
@@ -62,7 +62,10 @@ component accessors="true" singleton {
 		// validate uniqueness
 		if ( c.count() GT 0 ) {
 			var args = {
-				message        : "The '#arguments.field#' value '#arguments.targetValue#' is not unique for the site '#arguments.target.getSite().getName()#' in the database",
+				message        : "The '#arguments.field#' value '#arguments.targetValue#' is not unique for the site '#arguments
+					.target
+					.getSite()
+					.getName()#' in the database",
 				field          : arguments.field,
 				validationType : getName(),
 				validationData : arguments.validationData,
@@ -78,7 +81,7 @@ component accessors="true" singleton {
 	/**
 	 * Get the name of the validator
 	 */
-	string function getName(){
+	string function getName() {
 		return name;
 	}
 

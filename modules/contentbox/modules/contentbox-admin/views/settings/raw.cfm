@@ -1,25 +1,21 @@
-﻿<cfoutput>
-<div class="row">
+<cfoutput>
+	<div class="row">
 
-    <div class="col-md-12">
-        <h1 class="h1">
-            <img src="#prc.cbroot#/includes/images/face-glasses.png" alt="geek" height="30"/>
-            Geek Panel
-        </h1>
-        <div class="label label-info" title="Environment">#getSetting( 'Environment' )#</div>
-	</div>
+<div class="col-md-12">
+    <h1 class="h1">
+        <img src="#prc.cbroot#/includes/images/face-glasses.png" alt="geek" height="30"/>
+    Geek Panel
+</h1>
+<div class="label label-info" title="Environment">#getSetting( "Environment" )#</div>
+</div>
 
-    <div class="col-md-12">
+   <div class="col-md-12">
+<!--- messageBox ---> <div class="clearfix">#cbMessageBox().renderit()#</div>
 
-        <!--- messageBox --->
-        <div class="clearfix">
-            #cbMessageBox().renderit()#
-        </div>
-
-        <!---Import Log --->
-        <cfif flash.exists( "importLog" )>
-            <div class="consoleLog">#flash.get( "importLog" )#</div>
-        </cfif>
+	<cfif flash.exists( "importLog" )>
+		<div class="consoleLog">#flash.get( "importLog" )#</div>
+	</cfif>
+	
 
         <div class="panel panel-default">
             <div class="panel-body">
@@ -42,7 +38,7 @@
 
                     <!-- Tab Content -->
                     <div class="tab-content">
-                        <!--- Raw Settings Pane --->
+                        <!--- Raw Settings Pane ---> 
 						<div class="tab-pane active" id="raw">
 
                             <p>
@@ -52,8 +48,7 @@
                                 </div>
 							</p>
 
-                            <!---settings form--->
-                            #html.startForm( name="settingForm", action=prc.xehSettingRemove )#
+                            #html.startForm( name = "settingForm", action = prc.xehSettingRemove )#
                                 <input type="hidden" name="settingID" id="settingID" value="" />
                                 <div class="row well well-sm">
 
@@ -61,11 +56,11 @@
 
                                         <div class="form-group m0 mr5">
                                             #html.textField(
-                                                name        = "settingSearch",
-                                                class       = "form-control quicksearch",
-                                                placeholder = "Quick Search",
-                                                value       = event.getValue( "search", "" )
-                                            )#
+			name        = "settingSearch",
+			class       = "form-control quicksearch",
+			placeholder = "Quick Search",
+			value       = event.getValue( "search", "" )
+		)#
                                         </div>
 
 										<div class="form-group m0">
@@ -77,11 +72,11 @@
 												onchange="settingsLoad()"
 											>
 												<option value="" selected="selected">-- All Sites --</option>
-												<cfloop array=#prc.allSites# index="thisSite">
-													<option value="#thisSite[ 'siteID' ]#">
-														#thisSite[ 'name' ]#
-													</option>
-												</cfloop>
+
+	<cfloop array="#prc.allSites#" index="thisSite">
+		<option value="#thisSite[ "siteID" ]#">#thisSite[ "name" ]#</option>
+	</cfloop>
+	
 											</select>
 										</div>
 
@@ -99,30 +94,34 @@
 												</a>
 
                                                 <ul class="dropdown-menu">
-													<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_RAW_SETTINGS,TOOLS_EXPORT" )>
-														<li>
-															<a href="#event.buildLink( prc.xehExportAll )#.json" target="_blank">
-																<i class="fas fa-file-export fa-lg"></i> Export All
-															</a>
-														</li>
-														<li>
-															<a href="javascript:exportSelected( '#event.buildLink( prc.xehExportAll )#' )">
-																<i class="fas fa-file-export fa-lg"></i> Export Selected
-															</a>
-														</li>
-													</cfif>
+
+	<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_RAW_SETTINGS,TOOLS_EXPORT" )>
+		<li>
+<a href="#event.buildLink( prc.xehExportAll )#.json" target="_blank">
+		<i class="fas fa-file-export fa-lg"></i> Export All
+	</a>
+</li>
+<li>
+	<a href="javascript:exportSelected( '#event.buildLink( prc.xehExportAll )#' )">
+		<i class="fas fa-file-export fa-lg"></i> Export Selected
+	</a>
+</li>
+	</cfif>
+	
 													<li>
 														<a href="javascript:flushSettingsCache()">
 															<i class="fa fa-recycle fa-lg"></i> Flush Settings Cache
 														</a>
 													</li>
-                                                    <cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_RAW_SETTINGS,TOOLS_IMPORT" )>
-														<li>
-															<a href="javascript:importContent()">
-																<i class="fa fa-file-import fa-lg"></i> Import
-															</a>
-														</li>
-                                                    </cfif>
+
+	<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_RAW_SETTINGS,TOOLS_IMPORT" )>
+		<li>
+	<a href="javascript:importContent()">
+		<i class="fa fa-file-import fa-lg"></i> Import
+	</a>
+</li>
+	</cfif>
+	
 													<li>
 														<a href="javascript:openRemoteModal('#event.buildLink( prc.xehViewCached )#');">
 															<i class="fa fa-hdd fa-lg"></i> View Cached Settings
@@ -153,13 +152,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!---settings load --->
+                                <!--- settings load ---> 
                                 <div id="settingsTableContainer">
                                     <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
                                 </div>
-                            #html.endForm()#
-
-                            <!--- Settings Editor --->
+                            #html.endForm()#<!--- Settings Editor ---> 
                             <div id="settingEditorContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document" >
                                     <div class="modal-content">
@@ -170,13 +167,12 @@
 											</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <!--- Create/Edit form --->
                                             #html.startForm(
-                                                action      = prc.xehSettingsave,
-                                                name        = "settingEditor",
-                                                novalidate  = "novalidate",
-                                                class       = "vertical-form"
-                                            )#
+			action     = prc.xehSettingsave,
+			name       = "settingEditor",
+			novalidate = "novalidate",
+			class      = "vertical-form"
+		)#
 												<input type="hidden" name="settingID" id="settingID" value="" />
 
                                                 <div class="form-group">
@@ -190,11 +186,11 @@
 													<label for="name" class="control-label">Site:</label>
 													<select name="site" id="site" class="form-control">
 														<option value="" selected="selected">-- All Sites --</option>
-														<cfloop array=#prc.allSites# index="thisSite">
-															<option value="#thisSite[ 'siteID' ]#">
-																#thisSite[ 'name' ]#
-															</option>
-														</cfloop>
+
+	<cfloop array="#prc.allSites#" index="thisSite">
+		<option value="#thisSite[ "siteID" ]#">#thisSite[ "name" ]#</option>
+	</cfloop>
+	
 													</select>
 												</div>
 
@@ -219,40 +215,41 @@
                                         </div>
                                         <div class="modal-footer">
                                             #html.resetButton(
-                                                name="btnReset",
-                                                value="Cancel",
-                                                class="btn btn-default",
-                                                onclick="closeModal( $('##settingEditorContainer') )"
-                                            )#
-                                            #html.button(
-                                                name="btnSave",
-                                                value="Save",
-                                                class="btn btn-primary",
-                                                onclick="submitSettingForm()"
-                                            )#
+			name    = "btnReset",
+			value   = "Cancel",
+			class   = "btn btn-default",
+			onclick = "closeModal( $('##settingEditorContainer') )"
+		)##html.button(
+			name    = "btnSave",
+			value   = "Save",
+			class   = "btn btn-primary",
+			onclick = "submitSettingForm()"
+		)#
                                         </div>
                                     </div>
                                 </div>
                             </div>
 						</div>
 
-                        <!--- CacheBox Pane --->
+                        <!--- CacheBox Pane ---> 
                         <div class="tab-pane" id="cachebox">
                             <br>
-							<cftry>
-								<cfimport prefix = "cachebox" taglib = "/coldbox/system/cache/report">
-									<cachebox:monitor
-										cacheFactory = "#controller.getCacheBox()#"
-										baseURL = "#event.buildLink( prc.xehRawSettings )#"
-										enableMonitor = false />
-								<cfcatch type = "any" >
-									Can't render charting: #cfcatch.message# #cfcatch.detail#
-								</cfcatch>
-							</cftry>
+
+	<cftry>
+
+		<cachebox:monitor
+cacheFactory = "#controller.getCacheBox()#"
+baseURL = "#event.buildLink( prc.xehRawSettings )#"
+enableMonitor = false />
+		<cfcatch type="any">
+			Can't render charting: #cfcatch.message# #cfcatch.detail#
+		</cfcatch>
+	</cftry>
+	
 
 						</div>
 
-                        <!--- ContentBox Events Docs --->
+                        <!--- ContentBox Events Docs ---> 
                         <div class="tab-pane" id="_events">
                             <br>
                             <p>Here you can see all the registered interception events that ContentBox offers and you can implement in
@@ -262,18 +259,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group no-margin">
                                         #html.textField(
-                                            name        = "eventFilter",
-                                            size        = "30",
-                                            class       = "form-control",
-											placeholder = "Quick Filter"
-                                        )#
+			name        = "eventFilter",
+			size        = "30",
+			class       = "form-control",
+			placeholder = "Quick Filter"
+		)#
                                     </div>
                                 </div>
 							</div>
 
-                            <!---Event Forms --->
-                            #html.startForm(name="eventsForm" )#
-                                <!--- events --->
+                            #html.startForm( name = "eventsForm" )#<!--- events ---> 
                                 <table name="eventsList" id="eventsList" class="table table-striped-removed table-hover " width="100%">
                                     <thead>
                                         <tr>
@@ -284,29 +279,35 @@
 									</thead>
 
                                     <tbody>
-                                        <cfset index = 1>
-                                        <cfloop array="#prc.interceptionPoints#" index="thisEvent">
-                                        <cfif reFindNocase( "(cbui|cbadmin|fb)", thisEVent )>
-                                            <cfset thisModule = listFirst( thisEvent, "_" )>
-                                            <tr>
-                                                <td>
-                                                    <span class="badge badge-default">#index++#</badge>
-												</td>
 
-												<td>
-                                                    <code>#thisModule#:#thisEvent#</code>
-                                                </td>
+	<cfset index = 1>
+	<cfloop array="#prc.interceptionPoints#" index="thisEvent">
+		<cfif reFindNocase( "(cbui|cbadmin|fb)", thisEVent )>
+			<cfset thisModule = listFirst( thisEvent, "_" )>
+			<tr>
+<td>
+    <span class="badge badge-default">#index++#</badge>
+</td>
 
-												<td>
-                                                    <cfif structKeyExists( controller.getInterceptorService().getInterceptionStates(), thisEvent )>
-                                                        <cfdump var="#structKeyArray( controller.getInterceptorService().getInterceptionStates()[ thisEvent ].getMetadataMap() )#">
-                                                    <cfelse>
-                                                        <span class="badge badge-inverse">0</badge>
-                                                    </cfif>
+<td>
+                                        <code>#thisModule#:#thisEvent#</code>
+                                    </td>
+
+<td>
+			<cfif structKeyExists( controller.getInterceptorService().getInterceptionStates(), thisEvent )>
+				<cfdump
+					var="#structKeyArray( controller.getInterceptorService().getInterceptionStates()[ thisEvent ].getMetadataMap() )#"
+				>
+			<cfelse>
+				<span class="badge badge-inverse">0</badge>
+			</cfif>
+			
                                                 </td>
                                             </tr>
-                                        </cfif>
-                                        </cfloop>
+
+		</cfif>
+	</cfloop>
+	
                                     </tbody>
                                 </table>
                             #html.endForm()#
@@ -323,13 +324,13 @@
 </div>
 
 #view(
-	view = "_tags/dialog/import",
-	args = {
-        title       : "Import Settings",
-        contentArea : "settings",
-        action      : prc.xehSettingsImport,
-        contentInfo : "Choose the ContentBox <strong>JSON</strong> settings file to import."
-	},
-	prePostExempt = true
-)#
+		view          = "_tags/dialog/import",
+		args          = {
+			title       : "Import Settings",
+			contentArea : "settings",
+			action      : prc.xehSettingsImport,
+			contentInfo : "Choose the ContentBox <strong>JSON</strong> settings file to import."
+		},
+		prePostExempt = true
+	)#
 </cfoutput>

@@ -1,6 +1,6 @@
 component {
 
-	function seed( schema, query ){
+	function seed( schema, query ) {
 		var perms = [
 			{
 				"permission"  : "AUTHOR_ADMIN",
@@ -184,12 +184,14 @@ component {
 			}
 		];
 
-		perms = perms.map( ( thisPerm ) => {
-			thisPerm[ "permissionID" ] = createUUID();
-			thisPerm[ "isDeleted" ]    = 0;
-			thisPerm[ "createdDate" ]  = thisPerm[ "modifiedDate" ] = now();
-			return thisPerm;
-		} );
+		perms = perms.map(
+				( thisPerm ) => {
+					thisPerm[ "permissionID" ] = createUUID();
+					thisPerm[ "isDeleted" ] = 0;
+					thisPerm[ "createdDate" ] = thisPerm[ "modifiedDate" ] = now();
+					return thisPerm;
+				}
+			);
 
 		query
 			.newQuery()

@@ -2,7 +2,6 @@
  * Manage ContentBox Sites
  */
 component extends="baseHandler" {
-
 	// Dependencies
 	property name="siteService" inject="siteService@contentbox";
 	property name="themeService" inject="themeService@contentbox";
@@ -11,7 +10,13 @@ component extends="baseHandler" {
 	/**
 	 * Pre handler
 	 */
-	function preHandler( event, action, eventArguments, rc, prc ){
+	function preHandler(
+		event,
+		action,
+		eventArguments,
+		rc,
+		prc
+	) {
 		// Tab control
 		prc.tabSystem = true;
 	}
@@ -19,13 +24,13 @@ component extends="baseHandler" {
 	/**
 	 * Show sites
 	 */
-	function index( event, rc, prc ){
+	function index( event, rc, prc ) {
 		// Exit Handler
 		prc.xehSiteRemove = "#prc.cbAdminEntryPoint#.sites.remove";
 		prc.xehSiteEditor = "#prc.cbAdminEntryPoint#.sites.editor";
-		prc.xehExportAll  = "#prc.cbAdminEntryPoint#.sites.exportAll";
-		prc.xehExport     = "#prc.cbAdminEntryPoint#.sites.export";
-		prc.xehImportAll  = "#prc.cbAdminEntryPoint#.sites.importAll";
+		prc.xehExportAll = "#prc.cbAdminEntryPoint#.sites.exportAll";
+		prc.xehExport = "#prc.cbAdminEntryPoint#.sites.export";
+		prc.xehImportAll = "#prc.cbAdminEntryPoint#.sites.importAll";
 
 		// get content pieces
 		prc.sites = variables.siteService.getAll( sortOrder = "name asc" );
@@ -40,7 +45,7 @@ component extends="baseHandler" {
 	/**
 	 * Site Editor
 	 */
-	function editor( event, rc, prc ){
+	function editor( event, rc, prc ) {
 		// tab
 		prc.tabSystem_sites = true;
 		// get new or persisted
@@ -50,12 +55,12 @@ component extends="baseHandler" {
 		// Get all registered themes
 		prc.themes = variables.themeService.getThemes();
 		// pages
-		prc.pages  = variables.pageService.search(
-			sortOrder    = "slug asc",
-			isPublished  = true,
-			siteID       = prc.site.getsiteID(),
-			propertyList = "contentID,slug,title"
-		).pages;
+		prc.pages = variables.pageService.search(
+				sortOrder    = "slug asc",
+				isPublished  = true,
+				siteID       = prc.site.getsiteID(),
+				propertyList = "contentID,slug,title"
+			).pages;
 
 		prc.registeredDisks = cbfs()
 			.getDisks()
@@ -72,14 +77,17 @@ component extends="baseHandler" {
 	/**
 	 * Save a Site
 	 */
-	function save( event, rc, prc ){
+	function save( event, rc, prc ) {
 		// populate and get content
-		prc.site     = populate( model: variables.siteService.get( rc.siteID ), exclude: "siteID" );
+		prc.site = populate( model = variables.siteService.get( rc.siteID ), exclude = "siteID" );
 		// validate it
 		var vResults = validate( prc.site );
 		if ( !vResults.hasErrors() ) {
 			// announce event
-			announce( "cbadmin_preSiteSave", { site : prc.site, siteID : rc.siteID } );
+			announce(
+				"cbadmin_preSiteSave",
+				{ site : prc.site, siteID : rc.siteID }
+			);
 			// save rule
 			variables.siteService.save( prc.site );
 			// announce event
@@ -96,7 +104,7 @@ component extends="baseHandler" {
 	/**
 	 * Remove a site
 	 */
-	function remove( event, rc, prc ){
+	function remove( event, rc, prc ) {
 		// Get requested site to remove
 		var oSite = variables.siteService.get( rc.siteID );
 		// announce event
@@ -114,7 +122,7 @@ component extends="baseHandler" {
 	/**
 	 * Change current editing site
 	 */
-	function changeSite( event, rc, prc ){
+	function changeSite( event, rc, prc ) {
 		variables.siteService.setCurrentWorkingsiteID( rc.siteID );
 		relocate( prc.xehDashboard );
 	}
@@ -122,16 +130,19 @@ component extends="baseHandler" {
 	/**
 	 * Export a site
 	 */
-	function export( event, rc, prc ){
+	function export( event, rc, prc ) {
 		// Set a high timeout for long exports
 		setting requestTimeout="9999";
-		return variables.siteService.get( event.getValue( "siteID", 0 ) ).getMemento( profile: "export" );
+		return variables
+			.siteService
+			.get( event.getValue( "siteID", 0 ) )
+			.getMemento( profile = "export" );
 	}
 
 	/**
 	 * Export all sites
 	 */
-	function exportAll( event, rc, prc ){
+	function exportAll( event, rc, prc ) {
 		// Set a high timeout for long exports
 		setting requestTimeout="9999";
 		return variables.siteService.getAllForExport();
@@ -140,21 +151,21 @@ component extends="baseHandler" {
 	/**
 	 * Import sites
 	 */
-	function importAll( event, rc, prc ){
+	function importAll( event, rc, prc ) {
 		event.paramValue( "importFile", "" );
 		event.paramValue( "overrideContent", false );
 		try {
-			if ( len( rc.importFile ) and fileExists( rc.importFile ) ) {
-				var importLog = variables.siteService.importFromFile(
-					importFile = rc.importFile,
-					override   = rc.overrideContent
-				);
+			if ( len( rc.importFile ) && fileExists( rc.importFile ) ) {
+				var importLog = variables.siteService.importFromFile( importFile = rc.importFile,
+						override = rc.overrideContent );
 				cbMessageBox().info( "Site(s) imported sucessfully!" );
 				flash.put( "importLog", importLog );
 			} else {
-				cbMessageBox().error( "The import file is invalid: #rc.importFile# cannot continue with import" );
+				cbMessageBox().error(
+						"The import file is invalid: #rc.importFile# cannot continue with import"
+					);
 			}
-		} catch ( any e ) {
+		} catch (any e) {
 			rethrow;
 			var errorMessage = "Error importing file: #e.message# #e.detail# #e.stackTrace#";
 			log.error( errorMessage, e );

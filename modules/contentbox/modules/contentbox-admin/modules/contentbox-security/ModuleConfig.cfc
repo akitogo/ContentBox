@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -6,19 +6,18 @@
  * ContentBox Security module configuration
  */
 component {
-
 	// Module Properties
-	this.title              = "ContentBox Security";
-	this.author             = "Ortus Solutions, Corp";
-	this.webURL             = "https://www.ortussolutions.com";
-	this.version            = "@version.number@+@build.number@";
-	this.description        = "ContentBox Security Module";
-	this.viewParentLookup   = true;
+	this.title = "ContentBox Security";
+	this.author = "Ortus Solutions, Corp";
+	this.webURL = "https://www.ortussolutions.com";
+	this.version = "@version.number@+@build.number@";
+	this.description = "ContentBox Security Module";
+	this.viewParentLookup = true;
 	this.layoutParentLookup = true;
-	this.entryPoint         = "cbadmin/security";
-	this.dependencies       = [ "contentbox-admin" ];
+	this.entryPoint = "cbadmin/security";
+	this.dependencies = [ "contentbox-admin"];
 
-	function configure(){
+	function configure() {
 		// Layout Settings
 		layoutSettings = { defaultLayout : "simple.cfm" };
 

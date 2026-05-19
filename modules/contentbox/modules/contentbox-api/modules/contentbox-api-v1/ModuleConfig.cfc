@@ -6,24 +6,23 @@
  * ContentBox API Module: version 1.x
  */
 component {
-
 	// Module Properties
-	this.title          = "ContentBox API v1.x";
-	this.author         = "Ortus Solutions, Corp";
-	this.webURL         = "https://www.ortussolutions.com";
-	this.version        = "@version.number@+@build.number@";
-	this.description    = "ContentBox API v1.x Module";
+	this.title = "ContentBox API v1.x";
+	this.author = "Ortus Solutions, Corp";
+	this.webURL = "https://www.ortussolutions.com";
+	this.version = "@version.number@+@build.number@";
+	this.description = "ContentBox API v1.x Module";
 	// Module Entry Point
-	this.entryPoint     = "/cbapi/v1";
+	this.entryPoint = "/cbapi/v1";
 	// Inherit entry point from parent, so this will be http://{host}:{port}/cbapi/v1
 	this.modelNamespace = "contentbox-api-v1";
-	this.cfmapping      = "contentbox-api-v1";
-	this.dependencies   = [];
+	this.cfmapping = "contentbox-api-v1";
+	this.dependencies = [];
 
 	/**
 	 * Configure
 	 */
-	function configure(){
+	function configure() {
 		// module settings - stored in modules.name.settings
 		settings = {
 			// Security Configuration for the API Module via cbecurity
@@ -61,13 +60,15 @@ component {
 	/**
 	 * Fired when the module is registered and activated.
 	 */
-	function onLoad(){
+	function onLoad() {
+
 	}
 
 	/**
 	 * Fired when the module is unregistered and unloaded
 	 */
-	function onUnload(){
+	function onUnload() {
+
 	}
 
 }

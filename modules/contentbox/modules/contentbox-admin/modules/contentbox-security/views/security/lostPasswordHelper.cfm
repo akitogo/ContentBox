@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script type="text/javascript">
+<cfoutput>
+	<script type="text/javascript">
 document.addEventListener( "DOMContentLoaded", () => {
 	//Get Focus
 	$( "##email" ).focus();

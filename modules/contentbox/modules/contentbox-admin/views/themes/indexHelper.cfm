@@ -1,6 +1,5 @@
-﻿<cfoutput>
-<!--- Custom JS --->
-<script>
+<cfoutput>
+	<!--- Custom JS ---> <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$uploadForm = $( "##themeUploadForm" );
 	$themeForm = $( "##themeForm" );

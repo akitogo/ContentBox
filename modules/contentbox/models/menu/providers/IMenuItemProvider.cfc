@@ -7,16 +7,15 @@
  */
 interface {
 
-	public string function getName();
+	default public string function getName();
 
-	public string function getEntityName();
+	default public string function getEntityName();
 
-	public string function getType();
+	default public string function getType();
 
-	public string function getDescription();
+	default public string function getDescription();
 
-	public string function getAdminTemplate( required any menuItem, required struct options );
+	default public string function getAdminTemplate( required any menuItem, required struct options );
 
-	public string function getDisplayTemplate( required any menuItem, required struct options );
-
+	default public string function getDisplayTemplate( required any menuItem, required struct options );
 }

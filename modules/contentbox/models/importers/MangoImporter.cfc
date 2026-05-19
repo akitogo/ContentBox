@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -6,7 +6,6 @@
  * Import a mango database into contentbox
  */
 component implements="contentbox.models.importers.ICBImporter" {
-
 	// DI
 	property name="categoryService" inject="id:categoryService@contentbox";
 	property name="entryService" inject="id:entryService@contentbox";
@@ -19,11 +18,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 	property name="htmlHelper" inject="HTMLHelper@coldbox";
 	property name="bCrypt" inject="BCrypt@BCrypt";
 
-
 	/**
 	 * Constructor
 	 */
-	MangoImporter function init(){
+	MangoImporter function init() {
 		return this;
 	}
 
@@ -36,13 +34,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 		dsnPassword     = "",
 		defaultPassword = "",
 		required roleID,
-		tableprefix = ""
-	){
-		var authorMap   = {};
-		var catMap      = {};
-		var entryMap    = {};
-		var pageMap     = {};
-		var slugMap     = {};
+		tableprefix     = ""
+	) {
+		var authorMap = {};
+		var catMap = {};
+		var entryMap = {};
+		var pageMap = {};
+		var slugMap = {};
 		var pageSlugMap = {};
 
 		log.info( "Starting import process: #arguments.toString()#" );
@@ -56,9 +54,9 @@ component implements="contentbox.models.importers.ICBImporter" {
 				password   = arguments.dsnPassword,
 				sql        = "select * from #arguments.tablePrefix#category"
 			).execute().getResult();
-			for ( var x = 1; x lte q.recordcount; x++ ) {
-				var props  = { category : q.title[ x ], slug : q.name[ x ] };
-				var cat    = categoryService.new( properties = props );
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
+				var props = { category : q.title[ x ], slug : q.name[ x ] };
+				var cat = categoryService.new( properties = props );
 				var exists = categoryService.findAllBySlug( q.name[ x ] );
 
 				if ( arrayLen( exists ) ) {
@@ -78,20 +76,26 @@ component implements="contentbox.models.importers.ICBImporter" {
 			// Get the default role
 			var defaultRole = roleService.get( arguments.roleID );
 			// Import Authors
-			var q           = new Query(
+			var q = new Query(
 				datasource = arguments.dsn,
 				username   = arguments.dsnUsername,
 				password   = arguments.dsnPassword,
 				sql        = "select * from #arguments.tablePrefix#author"
 			).execute().getResult();
-			for ( var x = 1; x lte q.recordcount; x++ ) {
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
 					email     : q.email[ x ],
 					username  : q.username[ x ],
 					password  : bcrypt.hashPassword( defaultPassword ),
 					isActive  : 1,
 					firstName : listFirst( q.name[ x ], " " ),
-					lastName  : trim( replaceNoCase( q.name[ x ], listFirst( q.name[ x ], " " ), "" ) )
+					lastName  : trim(
+						replaceNoCase(
+							q.name[ x ],
+							listFirst( q.name[ x ], " " ),
+							""
+						)
+					)
 				};
 				var author = authorService.new( properties = props );
 				author.setRole( defaultRole );
@@ -118,10 +122,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 									where me.id = mp.id
 									order by mp.hierarchy"
 			).execute().getResult();
-			for ( var x = 1; x lte qPages.recordcount; x++ ) {
+			for ( var x = 1; x LTE qPages.recordcount; x++ ) {
 				// Get properties
 				var published = true;
-				if ( qPages.status[ x ] neq "published" ) {
+				if ( qPages.status[ x ] NEQ "published" ) {
 					published = false;
 				}
 				var props = {
@@ -151,10 +155,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var page = pageService.new( properties = props );
 				// Add content versionized!
 				page.addNewContentVersion(
-					content   = props.content,
-					changelog = "Imported content",
-					author    = authorService.get( authorMap[ qPages.author_id[ x ] ] )
-				);
+						content   = props.content,
+						changelog = "Imported content",
+						author    = authorService.get( authorMap[ qPages.author_id[ x ] ] )
+					);
 				page.setCreator( authorService.get( authorMap[ qPages.author_id[ x ] ] ) );
 				// Custom Fields
 				log.info( "Starting to import Page Custom Fields...." );
@@ -164,7 +168,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					password   = arguments.dsnPassword,
 					sql        = "select * from #arguments.tablePrefix#entry_custom_field as cf where cf.entry_id = '#qPages.id[ x ]#'"
 				).execute().getResult();
-				for ( var y = 1; y lte qCustomFields.recordcount; y++ ) {
+				for ( var y = 1; y LTE qCustomFields.recordcount; y++ ) {
 					var props = {
 						key   : qCustomFields.name[ y ],
 						value : qCustomFields.field_value[ y ]
@@ -186,7 +190,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					password   = arguments.dsnPassword,
 					sql        = "select * from #arguments.tablePrefix#comment as mc where mc.entry_id = '#qPages.id[ x ]#'"
 				).execute().getResult();
-				for ( var y = 1; y lte qComments.recordcount; y++ ) {
+				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
 						content     : qComments.content[ y ],
 						author      : qComments.creator_name[ y ],
@@ -227,9 +231,9 @@ component implements="contentbox.models.importers.ICBImporter" {
 								)
 								order by last_modified asc"
 			).execute().getResult();
-			for ( var x = 1; x lte q.recordcount; x++ ) {
+			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var published = true;
-				if ( q.status[ x ] neq "published" ) {
+				if ( q.status[ x ] NEQ "published" ) {
 					published = false;
 				}
 				var props = {
@@ -257,10 +261,10 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var entry = entryService.new( properties = props );
 				// Add content versionized!
 				entry.addNewContentVersion(
-					content   = props.content,
-					changelog = "Imported content",
-					author    = authorService.get( authorMap[ q.author_id[ x ] ] )
-				);
+						content   = props.content,
+						changelog = "Imported content",
+						author    = authorService.get( authorMap[ q.author_id[ x ] ] )
+					);
 				entry.setCreator( authorService.get( authorMap[ q.author_id[ x ] ] ) );
 				// entry categories
 				var qCategories = new Query(
@@ -270,8 +274,11 @@ component implements="contentbox.models.importers.ICBImporter" {
 					sql        = "select * from #arguments.tablePrefix#post_category as mp where mp.post_id = '#q.id[ x ]#'"
 				).execute().getResult();
 				var aCategories = [];
-				for ( var y = 1; y lte qCategories.recordcount; y++ ) {
-					arrayAppend( aCategories, categoryService.get( catMap[ qCategories.category_id[ y ] ] ) );
+				for ( var y = 1; y LTE qCategories.recordcount; y++ ) {
+					arrayAppend(
+						aCategories,
+						categoryService.get( catMap[ qCategories.category_id[ y ] ] )
+					);
 				}
 				entry.setCategories( aCategories );
 
@@ -282,7 +289,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					password   = arguments.dsnPassword,
 					sql        = "select * from #arguments.tablePrefix#entry_custom_field as cf where cf.entry_id = '#q.id[ x ]#'"
 				).execute().getResult();
-				for ( var y = 1; y lte qCustomFields.recordcount; y++ ) {
+				for ( var y = 1; y LTE qCustomFields.recordcount; y++ ) {
 					var props = {
 						key   : qCustomFields.name[ y ],
 						value : qCustomFields.field_value[ y ]
@@ -303,7 +310,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					password   = arguments.dsnPassword,
 					sql        = "select * from #arguments.tablePrefix#comment as mc where mc.entry_id = '#q.id[ x ]#'"
 				).execute().getResult();
-				for ( var y = 1; y lte qComments.recordcount; y++ ) {
+				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
 						content     : qComments.content[ y ],
 						author      : qComments.creator_name[ y ],
@@ -323,16 +330,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 				log.info( "Entry imported: #entry.getTitle()#" );
 			}
 			log.info( "Entries imported successfully!" );
-		}
-		// end of try
-		catch ( any e ) {
+		}// end of try
+		 catch (any e) {
 			log.error( "Error importing blog: #e.message# #e.detail#", e );
 			rethrow;
 		}
 
 		// Commit All entities
-		transaction action="commit" {
-		}
+		transaction action="commit";
 	}
 
 }

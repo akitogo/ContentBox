@@ -6,7 +6,6 @@
  * Listens to login attempts to keep track of them via the Login Tracker System
  */
 component extends="coldbox.system.Interceptor" {
-
 	// DI
 	property name="settingService" inject="id:settingService@contentbox";
 	property name="securityService" inject="id:securityService@contentbox";
@@ -18,7 +17,7 @@ component extends="coldbox.system.Interceptor" {
 	/**
 	 * Configure interceptor
 	 */
-	function configure(){
+	function configure() {
 		return this;
 	}
 
@@ -26,7 +25,7 @@ component extends="coldbox.system.Interceptor" {
 	 * Before login check if user has been blocked. It will verify login attempts
 	 * by username and IP address and block accordingly.
 	 */
-	function cbadmin_preLogin( event, data, buffer ){
+	function cbadmin_preLogin( event, data, buffer ) {
 		// if disabled, we do not track logins
 		if ( !settingService.getSetting( "cb_security_login_blocker" ) ) {
 			return;
@@ -35,28 +34,28 @@ component extends="coldbox.system.Interceptor" {
 		loginTrackerService.reset();
 
 		// prepare collections
-		var prc          = event.getCollection( private = true );
-		var realIP       = variables.securityService.getRealIP();
+		var prc = event.getCollection( private = true );
+		var realIP = variables.securityService.getRealIP();
 		var realUsername = event.getValue( "username", "" );
 
 		// Try to find by username or IPs being blocked
-		var aBlockIPs       = loginTrackerService.findAllByValue( realIP );
+		var aBlockIPs = loginTrackerService.findAllByValue( realIP );
 		var aBlockUsernames = loginTrackerService.findAllByValue( realUsername );
 
-		prc.oBlockByIP       = ( arrayLen( aBlockIps ) ? aBlockIps[ 1 ] : loginTrackerService.new() );
+		prc.oBlockByIP = ( arrayLen( aBlockIps ) ? aBlockIps[ 1 ] : loginTrackerService.new() );
 		prc.oBlockByUsername = ( arrayLen( aBlockUsernames ) ? aBlockUsernames[ 1 ] : loginTrackerService.new() );
 
 		// do checks to prevent login
 		var isBlocked = false;
 		// which reason?
-		var byIP      = false;
+		var byIP = false;
 		// do checks by username and IP
-		if ( !isNull( prc.oBlockByUsername ) and loginTrackerService.isBlocked( prc.oBlockByUsername ) ) {
+		if ( !isNull( prc.oBlockByUsername ) && loginTrackerService.isBlocked( prc.oBlockByUsername ) ) {
 			isBlocked = true;
 		}
-		if ( !isNull( prc.oBlockByIP ) and loginTrackerService.isBlocked( prc.oBlockByIP ) ) {
+		if ( !isNull( prc.oBlockByIP ) && loginTrackerService.isBlocked( prc.oBlockByIP ) ) {
 			isBlocked = true;
-			byIP      = true;
+			byIP = true;
 		}
 
 		// If blocked, relocate
@@ -67,7 +66,9 @@ component extends="coldbox.system.Interceptor" {
 				messagebox.warn( cb.r( "messages.user_blocked@security" ) );
 			}
 			// Log it
-			log.warn( "Request blocked (#realIP#;#realUsername#) via login tracker" );
+			log.warn(
+					"Request blocked (#realIP#;#realUsername#) via login tracker"
+				);
 			// Relocate
 			relocate( "#prc.cbAdminEntryPoint#.security.login" );
 		}
@@ -76,21 +77,23 @@ component extends="coldbox.system.Interceptor" {
 	/**
 	 * Listen to successful logins
 	 */
-	function cbadmin_onLogin( event, data, buffer ){
+	function cbadmin_onLogin( event, data, buffer ) {
 		// if disabled, we do not track logins
 		if ( !settingService.getSetting( "cb_security_login_blocker" ) ) {
 			return;
 		}
 		// get prc
-		var prc    = event.getCollection( private = true );
+		var prc = event.getCollection( private = true );
 		// get logged in user
-		var oUser  = securityService.getAuthorSession();
+		var oUser = securityService.getAuthorSession();
 		// Build entry to log
-		var oEntry = loginTrackerService.new( {
-			lastLoginSuccessIP : variables.securityService.getRealIP(),
-			attempts           : 0,
-			value              : oUser.getUsername()
-		} );
+		var oEntry = loginTrackerService.new(
+				{
+					lastLoginSuccessIP : variables.securityService.getRealIP(),
+					attempts           : 0,
+					value              : oUser.getUsername()
+				}
+			);
 
 		// If blocked username get's it right, then log it and clear attempts
 		if ( !isNull( prc.oBlockByUsername ) ) {
@@ -112,14 +115,14 @@ component extends="coldbox.system.Interceptor" {
 	 * so we can verify later if they will be blocked by username or ip misuses
 	 * the blockByIp and blockByUsername entities are prepared on pre-login
 	 */
-	void function cbadmin_onBadLogin( event, data, buffer ){
+	void function cbadmin_onBadLogin( event, data, buffer ) {
 		// if disabled, we do not track logins
 		if ( !settingService.getSetting( "cb_security_login_blocker" ) ) {
 			return;
 		}
 		// prepare collections
-		var prc          = event.getCollection( private = true );
-		var realIP       = variables.securityService.getRealIP();
+		var prc = event.getCollection( private = true );
+		var realIP = variables.securityService.getRealIP();
 		var realUsername = event.getValue( "username", "" );
 
 		// make or update entry for IP

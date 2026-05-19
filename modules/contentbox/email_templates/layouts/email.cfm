@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<base href="<cfoutput>#defaultSite.getSiteRoot()#</cfoutput>/modules/contentbox/email_templates/images/" />
+	<base href="<cfoutput>
+	#defaultSite.getSiteRoot()#
+</cfoutput>/modules/contentbox/email_templates/images/" />
 
 	<title>ContentBox Email</title>
     <!--[if gte mso 6]>
@@ -157,11 +159,8 @@
                                                 	style="border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0;padding-top:10px;">
 
                                                     <cfoutput>
-													#externalView(
-														view : getExplicitView().view,
-														args : args
-													)#
-													</cfoutput>
+	#externalView( view = getExplicitView().view, args = args )#
+</cfoutput>
 
                                                     <!-- Footer -->
                                                    <div
@@ -175,15 +174,15 @@
                                                         <br><br>
 
                                                         <cfoutput>
-                                                        <small style="color: gray">
-                                                            You're receiving this email because of your account on
-                                                            <a href="#defaultSite.getSiteRoot()#">
-                                                                <em>#defaultSite.getName()#</em>
-                                                            </a>
-                                                            <br>
-                                                            If you'd like to receive fewer emails, you can adjust your notification settings.
-                                                        </small>
-                                                        </cfoutput>
+	<small style="color: gray">
+You're receiving this email because of your account on
+<a href="#defaultSite.getSiteRoot()#">
+<em>#defaultSite.getName()#</em>
+    </a>
+    <br>
+    If you'd like to receive fewer emails, you can adjust your notification settings.
+</small>
+</cfoutput>
                                                     </div>
 
                                                 </td>

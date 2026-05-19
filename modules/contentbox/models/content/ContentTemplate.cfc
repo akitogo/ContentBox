@@ -13,10 +13,9 @@ component
 	cachename ="cbContentTemplate"
 	cacheuse  ="read-write"
 {
-
 	property
-		name      ="contentTemplateService"
-		inject    ="provider:ContentTemplateService@contentbox"
+		name="contentTemplateService"
+		inject="provider:ContentTemplateService@contentbox"
 		persistent="false";
 	/**
 	 * --------------------------------------------------------------------------
@@ -26,34 +25,30 @@ component
 	 * has never been fixed. Until it does, keep these.
 	 */
 	property
-		name   ="createdDate"
-		column ="createdDate"
-		type   ="date"
+		name="createdDate"
+		column="createdDate"
+		type="date"
 		ormtype="timestamp"
 		notnull="true"
-		update ="false";
-
+		update="false";
 	property
-		name   ="modifiedDate"
-		column ="modifiedDate"
-		type   ="date"
+		name="modifiedDate"
+		column="modifiedDate"
+		type="date"
 		ormtype="timestamp"
 		notnull="true";
-
 	property
-		name   ="isDeleted"
-		column ="isDeleted"
+		name="isDeleted"
+		column="isDeleted"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
-
 	property
-		name   ="isGlobal"
-		column ="isGlobal"
+		name="isGlobal"
+		column="isGlobal"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
-
 	/**
 	 * --------------------------------------------------------------------------
 	 * PROPERTIES
@@ -61,91 +56,81 @@ component
 	 */
 
 	property
-		name     ="templateID"
-		column   ="templateID"
+		name="templateID"
+		column="templateID"
 		fieldtype="id"
 		generator="uuid"
-		length   ="36"
-		ormtype  ="string"
-		update   ="false";
-
+		length="36"
+		ormtype="string"
+		update="false";
 	// The content type to restrict this template to.  If left blank, all content types are eligible
 	property
-		name   ="contentType"
-		column ="contentType"
-		length ="50"
+		name="contentType"
+		column="contentType"
+		length="50"
 		default=""
-		index  ="idx_templateContentType";
-
+		index="idx_templateContentType";
 	property
-		name   ="name"
-		column ="name"
+		name="name"
+		column="name"
 		notnull="true"
-		length ="225"
+		length="225"
 		default="";
-
 	property
-		name   ="description"
-		column ="description"
+		name="description"
+		column="description"
 		notnull="false"
-		length ="1000";
-
+		length="1000";
 	property
-		name   ="definition"
-		column ="definition"
+		name="definition"
+		column="definition"
 		notnull="true"
 		ormtype="text"
 		default="{}";
-
 	// M20 -> creator loaded as a proxy and fetched immediately
 	property
-		name     ="creator"
-		notnull  ="true"
-		cfc      ="contentbox.models.security.Author"
+		name="creator"
+		notnull="true"
+		cfc="contentbox.models.security.Author"
 		fieldtype="many-to-one"
-		fkcolumn ="FK_authorID"
-		insert   =true
-		update   =false;
-
+		fkcolumn="FK_authorID"
+		insert=true
+		update=false;
 	// M20 -> site loaded as a proxy and fetched immediately
 	property
-		name     ="site"
-		notnull  ="true"
-		cfc      ="contentbox.models.system.Site"
+		name="site"
+		notnull="true"
+		cfc="contentbox.models.system.Site"
 		fieldtype="many-to-one"
-		fkcolumn ="FK_siteID"
-		lazy     ="true"
-		insert   =true
-		update   =false;
-
-
+		fkcolumn="FK_siteID"
+		lazy="true"
+		insert=true
+		update=false;
 	property
-		name   ="assignedContentItems"
+		name="assignedContentItems"
 		ormtype="integer"
 		default=0
 		formula="select count(*) from cb_content cbc2 WHERE cbc2.FK_contentTemplateID=templateID or cbc2.FK_childContentTemplateID=templateID";
-
 	// The non-persistent schema of the JSON definition
 	property name="schema" persistent="false";
 
-
-	function init(){
-		variables.createdDate  = now();
+	function init() {
+		variables.createdDate = now();
 		variables.modifiedDate = now();
-		variables.schema       = {
+		variables.schema = {
 			"title"       : { "label" : "Title", "type" : "string", "sortOrder" : 1 },
 			"content"     : { "label" : "Content", "type" : "text", "sortOrder" : 2 },
 			"markup"      : { "label" : "Markup", "type" : "markdown", "sortOrder" : 3 },
 			"description" : {
 				"label"        : "Description",
 				"type"         : "text",
-				"excludeTypes" : [ "Page", "Entry" ],
+				"excludeTypes" : [ "Page", "Entry"],
 				"sortOrder"    : 4
 			},
 			"excerpt" : {
 				"label"        : "Excerpt",
 				"type"         : "text",
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 5
 			},
 			"featuredImage" : {
@@ -157,19 +142,19 @@ component
 			"HTMLTitle" : {
 				"label"        : "HTML Title",
 				"type"         : "string",
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 7
 			},
 			"HTMLKeywords" : {
 				"label"        : "HTML Keywords",
 				"type"         : "string",
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 8
 			},
 			"HTMLDescription" : {
 				"label"        : "HTML Description",
 				"type"         : "text",
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 9
 			},
 			// Modifiers
@@ -180,7 +165,7 @@ component
 				"options"      : "filteredParents",
 				"optionId"     : "contentID",
 				"optionLabel"  : "title",
-				"excludeTypes" : [ "Entry" ],
+				"excludeTypes" : [ "Entry"],
 				"sortOrder"    : 10
 			},
 			// Collections
@@ -209,7 +194,7 @@ component
 				"label"        : "Child Template",
 				"type"         : "select",
 				"options"      : "availableTemplates",
-				"excludeTypes" : [ "Entry" ],
+				"excludeTypes" : [ "Entry"],
 				"sortOrder"    : 13
 			},
 			// Layout options
@@ -217,7 +202,7 @@ component
 				"label"        : "Layout",
 				"type"         : "select",
 				"options"      : "availableLayouts",
-				"excludeTypes" : [ "ContentStore", "Entry" ],
+				"excludeTypes" : [ "ContentStore", "Entry"],
 				"sortOrder"    : 14
 			},
 			// Caching
@@ -242,14 +227,14 @@ component
 			"passwordProtection" : {
 				"label"        : "Access Password",
 				"type"         : "string",
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 18
 			},
 			"allowComments" : {
 				"label"        : "Comments Enabled",
 				"type"         : "boolean",
 				"default"      : true,
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 19
 			},
 			// Display Options
@@ -257,14 +242,14 @@ component
 				"label"        : "Show In Menu",
 				"type"         : "boolean",
 				"default"      : true,
-				"excludeTypes" : [ "ContentStore", "Entry" ],
+				"excludeTypes" : [ "ContentStore", "Entry"],
 				"sortOrder"    : 20
 			},
 			"showInSearch" : {
 				"label"        : "Show In Search",
 				"type"         : "boolean",
 				"default"      : true,
-				"excludeTypes" : [ "ContentStore" ],
+				"excludeTypes" : [ "ContentStore"],
 				"sortOrder"    : 21
 			}
 		};
@@ -293,12 +278,12 @@ component
 					"createdDate",
 					"modifiedDate"
 				],
-				defaultExcludes : [ "assignedContentItems", "site", "creator" ]
+				defaultExcludes : [ "assignedContentItems", "site", "creator"]
 			}
 		},
 		mappers : {
-			"assignedContentItems" : function( target, value ){
-				return javacast( "int", arguments.target )
+			"assignedContentItems" : function( target, value ) {
+				return javacast( "int", arguments.target );
 			}
 		}
 	};
@@ -318,13 +303,12 @@ component
 		}
 	};
 
-
 	/**
 	 * Overload getter for definition to deal with JSON conversion
 	 *
 	 * @overload
 	 */
-	function getDefinition(){
+	function getDefinition() {
 		return deserializeJSON( variables.definition );
 	}
 
@@ -333,14 +317,14 @@ component
 	 *
 	 * @overload
 	 */
-	function setDefinition( definition ){
+	function setDefinition( definition ) {
 		variables.definition = isSimpleValue( arguments.definition )
-		 ? arguments.definition
-		 : serializeJSON(
-			arguments.definition,
-			false,
-			listFindNoCase( "Lucee", server.coldfusion.productname ) ? "utf-8" : false
-		);
+			? arguments.definition
+			: serializeJSON(
+				arguments.definition,
+				false,
+				listFindNoCase( "Lucee", server.coldfusion.productname ) ? "utf-8" : false
+			);
 		return this;
 	}
 
@@ -349,7 +333,7 @@ component
 	 *
 	 * @value The name to test for uniqueness
 	 */
-	boolean function isNameUniqueInSite( value = variables.name ){
+	boolean function isNameUniqueInSite( value = variables.name ) {
 		var c = getContentTemplateService()
 			.newCriteria()
 			.isEq( "site", getSite() )
@@ -365,8 +349,10 @@ component
 	/**
 	 * UDF validation method to test for global uniqueness of a Content Template
 	 */
-	boolean function isGlobalUniqueInSite(){
-		if ( !variables.isGlobal ) return true;
+	boolean function isGlobalUniqueInSite() {
+		if ( !variables.isGlobal ) {
+			return true;
+		}
 
 		var c = getContentTemplateService()
 			.newCriteria()

@@ -1,7 +1,6 @@
 <cfset event.paramValue( "editorName", "" )>
 <cfoutput>
-<!--- Custom Javascript --->
-<script>
+	<!--- Custom Javascript ---> <script>
 ( () => {
     // register listeners
     $( '##widget-button-insert' ).off( 'click.inWidget' ).on( 'click.inWidget', insertCBWidget );
@@ -151,22 +150,22 @@ function insertCBWidget(){
         // close it
         widget += "}}}";
         insertEditorContent( '#rc.editorName#', widget );
-        closeRemoteModal();
-        return false;
-    }
+    closeRemoteModal();
+    return false;
+}
 
-    // create new widget element
-    widgetContent = new CKEDITOR.dom.element( 'widget' );
-    widgetContent.setAttributes( vals );
-    // create new widgetinfobar element
-    widgetInfobar = new CKEDITOR.dom.element( 'widgetinfobar' );
-    widgetInfobar.setAttributes( {
-        contenteditable: false
-    } );
-    // create new img element
-    widgetInfobarImage = new CKEDITOR.dom.element( 'img' );
-    widgetInfobarImage.setAttributes( {
-        src: '#prc.cbroot#/includes/images/ContentBox_30.png',
+// create new widget element
+widgetContent = new CKEDITOR.dom.element( 'widget' );
+widgetContent.setAttributes( vals );
+// create new widgetinfobar element
+widgetInfobar = new CKEDITOR.dom.element( 'widgetinfobar' );
+widgetInfobar.setAttributes( {
+    contenteditable: false
+} );
+// create new img element
+widgetInfobarImage = new CKEDITOR.dom.element( 'img' );
+widgetInfobarImage.setAttributes( {
+    src: '#prc.cbroot#/includes/images/ContentBox_30.png',
         width: 20,
         height:20,
         align:'left',

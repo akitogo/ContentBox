@@ -1,8 +1,13 @@
-﻿<cfoutput>
-<script>
-window.authentication = #toJSON( prc.jwtTokens )#
-window.assignedTemplate = #( !isNull( prc.oContent.getContentTemplate() ) ? toJSON( prc.oContent.getContentTemplate().getMemento() ) : booleanFormat( false ) )#
-
+<cfoutput>
+	<script>
+window.authentication = #toJSON( prc.jwtTokens )#window.assignedTemplate = #(
+		!isNull( prc.oContent.getContentTemplate() )
+			? toJSON( prc
+					.oContent
+					.getContentTemplate()
+					.getMemento() )
+			: booleanFormat( false )
+	)#
 // Editor alerts model
 function alertsModel(){
 	return {
@@ -26,45 +31,40 @@ function alertsModel(){
 /**
  * Enclosure for custom editor startup
  */
-$cbEditorStartup = function(){
-	#prc.oEditorDriver.startup()#
-}
+$cbEditorStartup = function(){#prc.oEditorDriver.startup()#}
 
 /**
  * Enclosure for custom editor startup
  */
-$cbEditorShutdown = function(){
-	#prc.oEditorDriver.shutdown()#
-}
+$cbEditorShutdown = function(){#prc.oEditorDriver.shutdown()#}
 
-// Load Editor Provider Assets now
-#prc.oEditorDriver.loadAssets()#
-
+// Load Editor Provider Assets now#prc.oEditorDriver.loadAssets()#
 // On Dom Ready
 document.addEventListener( "DOMContentLoaded", () => {
 
 	// Dynamic global variables coming from ColdFusion
 	$cbEditorConfig = {
 		adminEntryPoint 	: "#prc.cbAdminEntryPoint#",
-		adminEntryURL		: "#event.buildLink( prc.cbAdminEntryPoint )#",
-		changelogMandatory	: #prc.cbSettings.cb_versions_commit_mandatory#,
-		isBlogDisabled		: #prc.oCurrentSite.getIsBlogEnabled() ? 'false' : 'true'#,
-		// Set by the content type handler
-		slugifyURL			: "#event.buildLink( prc.xehSlugify )#",
-		slugCheckURL		: "#event.buildLink( prc.xehSlugCheck )#"
-	};
+adminEntryURL		: "#event.buildLink( prc.cbAdminEntryPoint )#",
+changelogMandatory	: #prc.cbSettings.cb_versions_commit_mandatory#,
+isBlogDisabled		: #prc.oCurrentSite.getIsBlogEnabled() ? "false" : "true"#,
+// Set by the content type handler
+slugifyURL			: "#event.buildLink( prc.xehSlugify )#",
+slugCheckURL		: "#event.buildLink( prc.xehSlugCheck )#"
+};
 
- 	// Editor Form Pointer
-	$contentForm = $( "##contentForm" );
+	// Editor Form Pointer
+$contentForm = $( "##contentForm" );
 
-	// Setup the Editors
-	setupEditors(
-		$contentForm,
-		<cfif structKeyExists( prc.oContent, "getExcerpt" )>
-			true,
-		<cfelse>
-			false,
-		</cfif>
+// Setup the Editors
+setupEditors(
+	$contentForm,
+	<cfif structKeyExists( prc.oContent, "getExcerpt" )>
+		true,
+	<cfelse>
+		false,
+	</cfif>
+	
 		'#event.buildLink( prc.xehContentSave )#'
 	);
 
@@ -74,4 +74,5 @@ document.addEventListener( "DOMContentLoaded", () => {
 	}
 } );
 </script>
+
 </cfoutput>

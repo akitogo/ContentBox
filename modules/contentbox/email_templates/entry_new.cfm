@@ -1,11 +1,12 @@
-﻿<cfoutput>
-    <cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
-    #ETH.author( email=args.gravatarEmail, content="
+<cfoutput>
+	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
+	#ETH.author(
+			email   = args.gravatarEmail,
+			content = "
         <strong>@entryAuthor@</strong> created a new blog entry:<br /><a href='@entryURL@'>@entryTitle@</a>
-    " )#
-    #ETH.divider()#
-    #ETH.heading( content="Entry Details" )#
-    #ETH.text( "
+    "
+		)##ETH.divider()##ETH.heading( content = "Entry Details" )##ETH.text(
+			"
         <table cellpadding='3' cellspacing='3'>
             <tbody>
                 <tr>
@@ -26,8 +27,6 @@
                 </tr>
             </tbody>
         </table>
-    " )#
-    #ETH.divider()#
-    #ETH.heading( content="Excerpt" )#
-    #ETH.text( content="@entryExcerpt@", callout="true" )#
+    "
+		)##ETH.divider()##ETH.heading( content = "Excerpt" )##ETH.text( content = "@entryExcerpt@", callout = "true" )#
 </cfoutput>

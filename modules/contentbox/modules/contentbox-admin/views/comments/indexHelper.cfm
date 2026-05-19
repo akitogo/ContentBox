@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script>
+<cfoutput>
+	<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$commentForm = $( "##commentForm" );
 	// Comment search
@@ -16,7 +16,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	$commentForm.find( "##comments" ).find( "tr" ).bind( "contextmenu",function(e) {
 	    if( e.which === 3 ){
 	    	if( $( this ).attr( 'data-commentID' ) != null){
-				openRemoteModal( '#event.buildLink(prc.xehCommentQuickLook )#', {
+				openRemoteModal( '#event.buildLink( prc.xehCommentQuickLook )#', {
 					commentID : $( this ).attr( 'data-commentID' )
 				} );
 				e.preventDefault();
@@ -38,9 +38,9 @@ document.addEventListener( "DOMContentLoaded", () => {
 	    "order": []
 	} );
 } );
-<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
-function changeStatus(status,recordID){
-	$commentForm.attr( "action","#event.buildlink(to=prc.xehCommentstatus)#" );
+	<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
+		function changeStatus(status,recordID){
+$commentForm.attr( "action","#event.buildlink( to = prc.xehCommentstatus )#" );
 	$commentForm.find( "##commentStatus" ).val(status);
 	if( recordID != null ){
 		$( "##status_"+ recordID).removeClass( "fa fa-minus-circle" ).addClass( "fa fa-spinner fa-spin" );
@@ -66,6 +66,8 @@ function removeAllModerated(){
 	$commentForm.attr( "action", "#event.buildlink( prc.xehCommentRemoveAllModerated )#" );
 	$commentForm.submit();
 }
-</cfif>
+	</cfif>
+	
 </script>
+
 </cfoutput>

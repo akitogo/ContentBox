@@ -8,7 +8,7 @@
 component {
 
 	// Configure Application
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * ColdBox Directives
@@ -89,7 +89,7 @@ component {
 			// Root Logger
 			root      : { levelmax : "INFO", appenders : "*" },
 			// Implicit Level Categories
-			info      : [ "coldbox.system", "contentbox" ]
+			info      : [ "coldbox.system", "contentbox"]
 		};
 
 		/**
@@ -148,7 +148,7 @@ component {
 	/**
 	 * Testing Mode.
 	 */
-	function testing(){
+	function testing() {
 		development();
 	}
 
@@ -156,26 +156,28 @@ component {
 	 * Development environment
 	 * ORTUS DEVELOPMENT ENVIRONMENT, REMOVE FOR YOUR APP IF NEEDED
 	 */
-	function development(){
+	function development() {
 		variables.coldbox.handlersIndexAutoReload = true;
-		variables.coldbox.handlerCaching          = false;
-		variables.coldbox.debugMode               = true;
-		variables.coldbox.reinitpassword          = "";
-		variables.coldbox.customErrorTemplate     = "/coldbox/system/exceptions/Whoops.cfm";
+		variables.coldbox.handlerCaching = false;
+		variables.coldbox.debugMode = true;
+		variables.coldbox.reinitpassword = "";
+		variables.coldbox.customErrorTemplate = "/coldbox/system/exceptions/Whoops.cfm";
 
 		// No Singletons for easy testing
-		variables.wirebox = {
-			 // singletonReload : true
-		};
+		variables.wirebox = {// singletonReload : true};
 
 		// debugging file
-		variables.logbox.appenders.files = {
+		variables
+			.logbox
+			.appenders
+			.files = {
 			class      : "coldbox.system.logging.appenders.RollingFileAppender",
 			properties : {
 				filename : "contentbox",
 				filePath : "/cbapp/config/logs/app"
 			}
 		};
+
 
 		// Specific Debugging + Logging
 		// logbox.debug 	= [ "cbsecurity" ];

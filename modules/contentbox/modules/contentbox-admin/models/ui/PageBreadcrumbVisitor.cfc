@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ContentBox - A Modular Content Platform
  * Copyright since 2012 by Ortus Solutions, Corp
  * www.ortussolutions.com/products/contentbox
@@ -10,7 +10,7 @@ component singleton {
 	/**
 	 * Constructor
 	 */
-	PageBreadcrumbVisitor function init(){
+	PageBreadcrumbVisitor function init() {
 		return this;
 	}
 
@@ -19,7 +19,7 @@ component singleton {
 	 *
 	 * @page The page content object
 	 */
-	function visit( required page ){
+	function visit( required page ) {
 		var bc = "";
 
 		if ( arguments.page.hasParent() ) {

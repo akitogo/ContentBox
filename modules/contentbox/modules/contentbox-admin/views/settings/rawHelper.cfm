@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<script>
+<cfoutput>
+	<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$settingEditor 	= $( "##settingEditor" );
 	$importDialog 	= $( "##importDialog" );
@@ -56,7 +56,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 function flushSettingsCache(){
 	$( "##specialActionsLoader" ).removeClass( "hidden" );
 	$.ajax( {
-		url : '#event.buildLink(prc.xehFlushCache)#',
+		url : '#event.buildLink( prc.xehFlushCache )#',
 		success : function(data){
 			if (data.ERROR) {
 				adminNotifier( "error", data.MESSAGES, 3000 );

@@ -1,0 +1,7 @@
+[2026-05-19T13:13:43,779] [main] [INFO ] [ASYNC] AsyncService.onStartup() 
+[2026-05-19T13:13:44,243] [main] [INFO ] [ASYNC] AsyncService.onShutdown() 
+[2026-05-19T13:13:46,907] [main] [INFO ] [ASYNC] AsyncService.onStartup() 
+[2026-05-19T13:13:47,042] [main] [INFO ] [ASYNC] AsyncService.onShutdown() 
+[2026-05-19T13:13:47,679] [main] [INFO ] [ASYNC] AsyncService.onStartup() 
+[2026-05-19T13:13:47,812] [main] [INFO ] [ASYNC] AsyncService.onShutdown() 
+[2026-05-19T13:13:48,078] [main] [INFO ] [ASYNC] AsyncService.onStartup() 

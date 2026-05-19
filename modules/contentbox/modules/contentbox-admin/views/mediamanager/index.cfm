@@ -1,5 +1,5 @@
-﻿<cfoutput>
-<div class="row">
+<cfoutput>
+	<div class="row">
 
 	<div class="col-md-12">
 		<h1 class="h1">
@@ -11,15 +11,6 @@
 
 <div class="row">
 	<div class="col-md-12">
-
-    	<!--- messageBox --->
-		#cbMessageBox().renderit()#
-
-		<!--- FileBrowser Viewlet --->
-		#runEvent(
-			event          = prc.xehFileBrowser,
-			eventArguments = prc.fbArgs
-		)#
-	</div>
+#cbMessageBox().renderit()##runEvent( event = prc.xehFileBrowser, eventArguments = prc.fbArgs )#</div>
 </div>
 </cfoutput>

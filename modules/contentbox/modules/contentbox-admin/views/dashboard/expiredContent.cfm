@@ -1,13 +1,10 @@
 <cfoutput>
-#html.anchor( name="expiredContent" )#
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			<i class="fa fa-file-archive" aria-hidden="true"></i> Expired Content
-		</h3>
-	</div>
-	<div class="panel-body">
-		#prc.expiredContent#
-	</div>
+	#html.anchor( name = "expiredContent" )#<div class="panel panel-primary">
+<div class="panel-heading">
+	<h3 class="panel-title">
+		<i class="fa fa-file-archive" aria-hidden="true"></i> Expired Content
+	</h3>
+</div>
+<div class="panel-body">#prc.expiredContent#</div>
 </div>
 </cfoutput>

@@ -1,6 +1,6 @@
 component {
 
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * ColdBox Security Configuration
@@ -108,9 +108,7 @@ component {
 				// the Content-Type headers should be followed and not be changed => X-Content-Type-Options: nosniff
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
 				"contentTypeOptions" : { "enabled" : true },
-				"customHeaders"      : {
-					 // Name : value pairs as you see fit.
-				},
+				"customHeaders"      : {// Name : value pairs as you see fit.},
 				// Disable Click jacking: X-Frame-Options: DENY OR SAMEORIGIN
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 				"frameOptions" : { "enabled" : true, "value" : "SAMEORIGIN" },

@@ -5,12 +5,7 @@
  * ---
  * Service to handle menu operations.
  */
-component
-	extends  ="cborm.models.VirtualEntityService"
-	accessors="true"
-	singleton
-{
-
+component extends  ="cborm.models.VirtualEntityService" accessors="true" singleton {
 	// DI
 	property name="renderer" inject="coldbox:renderer";
 	property name="menuItemService" inject="menuItemService@contentbox";
@@ -19,7 +14,7 @@ component
 	/**
 	 * Constructor
 	 */
-	MenuService function init(){
+	MenuService function init() {
 		// init it
 		super.init( entityName = "cbMenu" );
 		return this;
@@ -33,7 +28,7 @@ component
 	 *
 	 * @return The saved menu
 	 */
-	function save( required menu, string originalSlug = "" ){
+	function save( required menu, string originalSlug = "" ) {
 		return super.save( arguments.menu );
 	}
 
@@ -54,16 +49,16 @@ component
 		boolean asQuery   = false,
 		string sortOrder  = "title",
 		string siteID     = ""
-	){
+	) {
 		var results = {};
-		var c       = newCriteria();
+		var c = newCriteria();
 
 		// Search
 		if ( len( arguments.searchTerm ) ) {
 			c.$or(
-				c.restrictions.like( "title", "%#arguments.searchTerm#%" ),
-				c.restrictions.like( "slug", "%#arguments.searchTerm#%" )
-			);
+					c.restrictions.like( "title", "%#arguments.searchTerm#%" ),
+					c.restrictions.like( "slug", "%#arguments.searchTerm#%" )
+				);
 		}
 
 		// Site Filter
@@ -74,11 +69,11 @@ component
 		// run criteria query and projections count
 		results.count = c.count( "menuID" );
 		results.menus = c.list(
-			offset    = arguments.offset,
-			max       = arguments.max,
-			sortOrder = arguments.sortOrder,
-			asQuery   = arguments.asQuery
-		);
+				offset    = arguments.offset,
+				max       = arguments.max,
+				sortOrder = arguments.sortOrder,
+				asQuery   = arguments.asQuery
+			);
 
 		return results;
 	}
@@ -91,16 +86,19 @@ component
 	 *
 	 * @return The menu found or a new menu blank
 	 */
-	function findBySlug( required any slug, string siteID = "" ){
+	function findBySlug( required any slug, string siteID = "" ) {
 		// By criteria now
 		var menu = newCriteria()
 			.isEq( "slug", arguments.slug )
-			.when( len( arguments.siteID ), function( c ){
-				c.isEq( "site.siteID", siteID );
-			} )
+			.when(
+				len( arguments.siteID ),
+				function( c ) {
+					c.isEq( "site.siteID", siteID );
+				}
+			)
 			.get();
 		// return accordingly
-		return ( isNull( menu ) ? new () : menu );
+		return ( isNull( menu ) ? new() : menu );
 	}
 
 	/**
@@ -108,10 +106,12 @@ component
 	 *
 	 * @site The site to export from
 	 */
-	array function getAllForExport( required site ){
-		return findAllWhere( { site : arguments.site } ).map( function( thisItem ){
-			return thisItem.getMemento( profile: "export" );
-		} );
+	array function getAllForExport( required site ) {
+		return findAllWhere( { site : arguments.site } ).map(
+				function( thisItem ) {
+					return thisItem.getMemento( profile = "export" );
+				}
+			);
 	}
 
 	/**
@@ -119,11 +119,14 @@ component
 	 *
 	 * @siteID Filter by site
 	 */
-	array function getAllSlugs( string siteID = "" ){
+	array function getAllSlugs( string siteID = "" ) {
 		return newCriteria()
-			.when( len( arguments.siteID ), function( c ){
-				c.isEq( "site.siteID", siteID );
-			} )
+			.when(
+				len( arguments.siteID ),
+				function( c ) {
+					c.isEq( "site.siteID", siteID );
+				}
+			)
 			.withProjections( property = "slug" )
 			.list( sortOrder = "slug asc" );
 	}
@@ -138,14 +141,17 @@ component
 	 *
 	 * @throws InvalidImportFormat
 	 */
-	string function importFromFile( required importFile, boolean override = false ){
-		var data      = fileRead( arguments.importFile );
+	string function importFromFile( required importFile, boolean override = false ) {
+		var data = fileRead( arguments.importFile );
 		var importLog = createObject( "java", "java.lang.StringBuilder" ).init(
-			"Starting import with override = #arguments.override#...<br>"
-		);
+				"Starting import with override = #arguments.override#...<br>"
+			);
 
 		if ( !isJSON( data ) ) {
-			throw( message = "Cannot import file as the contents is not JSON", type = "InvalidImportFormat" );
+			throw(
+				message = "Cannot import file as the contents is not JSON",
+				type    = "InvalidImportFormat"
+			);
 		}
 		// deserialize packet: Should be array of { settingID, name, value }
 		return importFromData(
@@ -170,16 +176,16 @@ component
 		boolean override = false,
 		required importLog,
 		site
-	){
+	) {
 		var siteService = getWireBox().getInstance( "siteService@contentbox" );
 
 		// if struct, inflate into an array
 		if ( isStruct( arguments.importData ) ) {
-			arguments.importData = [ arguments.importData ];
+			arguments.importData = [ arguments.importData];
 		}
 
 		// Setup logging function
-		var logThis = function( message ){
+		var logThis = function( message ) {
 			variables.logger.info( arguments.message );
 			importLog.append( arguments.message & "<br>" );
 		};
@@ -189,11 +195,15 @@ component
 			for ( var thisMenu in arguments.importData ) {
 				// Determine Site if not passed from import data
 				if ( isNull( arguments.site ) ) {
-					logThis( "+ Site not sent via arguments, inflating from menu data (#thisMenu.site.slug#)" );
+					logThis(
+						"+ Site not sent via arguments, inflating from menu data (#thisMenu.site.slug#)"
+					);
 					arguments.site = siteService.getBySlugOrFail( thisMenu.site.slug );
 				}
 
-				logThis( "+ Importing menu (#thisMenu.slug#) to site (#arguments.site.getSlug()#)" );
+				logThis(
+					"+ Importing menu (#thisMenu.slug#) to site (#arguments.site.getSlug()#)"
+				);
 
 				// Get new or persisted from site by slug
 				var oMenu = findWhere( { "slug" : thisMenu.slug, "site" : arguments.site } );
@@ -218,11 +228,11 @@ component
 
 				// populate content from data
 				getBeanPopulator().populateFromStruct(
-					target               = oMenu,
-					memento              = thisMenu,
-					composeRelationships = false,
-					exclude              = "menuID,menuItems,site"
-				);
+						target               = oMenu,
+						memento              = thisMenu,
+						composeRelationships = false,
+						exclude              = "menuID,menuItems,site"
+					);
 
 				// Compose Menu Items
 				if ( arrayLen( thisMenu.menuItems ) ) {
@@ -230,13 +240,17 @@ component
 				}
 
 				entitySave( oMenu );
-				logThis( "+ Imported menu (#thisMenu.slug#) to site (#arguments.site.getSlug()#)" );
+				logThis(
+					"+ Imported menu (#thisMenu.slug#) to site (#arguments.site.getSlug()#)"
+				);
 			}
 			// end import loop
 
 			// Save them?
 			if ( !arrayLen( arguments.importData ) ) {
-				logThis( "No menus imported as none where found or able to be overriden from the import file." );
+				logThis(
+					"No menus imported as none where found or able to be overriden from the import file."
+				);
 			}
 		}
 		// end for transaction
@@ -251,15 +265,15 @@ component
 	 * @menuString build-up string for menu content
 	 * @inChild    flag for whether the content item is being evaluated as itself, or as a child of another item
 	 */
-	public String function buildEditableMenu(
+	public string function buildEditableMenu(
 		required array menu,
 		required string menuString = "",
 		boolean inChild            = false
-	){
+	) {
 		// loop over menu items
 		for ( var item in arguments.menu ) {
 			var providerContent = "";
-			var skipItem        = false;
+			var skipItem = false;
 
 			// if item has a parent, and it's being evaluated on the same level as its parent, skip it
 			if ( item.hasParent() && !inChild ) {
@@ -271,16 +285,16 @@ component
 				arguments.menuString &= "<li id=""key_#item.getMenuItemID()#"" class=""dd-item dd3-item"" data-id=""#item.getMenuItemID()#"" :key=""#item.getMenuItemID()#"">";
 
 				// render default menu item
-				var args            = { menuItem : item, provider : item.getProvider() };
+				var args = { menuItem : item, provider : item.getProvider() };
 				savecontent variable="providerContent" {
 					writeOutput(
 						variables.renderer.view(
-							view   = "menus/provider",
-							module = "contentbox-admin",
-							args   = args
-						)
+								view   = "menus/provider",
+								module = "contentbox-admin",
+								args   = args
+							)
 					);
-				};
+				}
 				menuString &= providerContent;
 
 				// if this item has children, recursively call this method to build them out too
@@ -308,16 +322,25 @@ component
 		required any slug,
 		any menuID    = "",
 		string siteID = ""
-	){
+	) {
 		return newCriteria()
-			.isEq( "slug", arguments.slug )
-			.when( len( arguments.siteID ), function( c ){
-				c.isEq( "site.siteID", siteID );
-			} )
-			.when( len( arguments.menuID ), function( c ){
-				c.ne( "menuID", menuID );
-			} )
-			.count() > 0 ? false : true;
+					.isEq( "slug", arguments.slug )
+					.when(
+						len( arguments.siteID ),
+						function( c ) {
+							c.isEq( "site.siteID", siteID );
+						}
+					)
+					.when(
+						len( arguments.menuID ),
+						function( c ) {
+							c.ne( "menuID", menuID );
+						}
+					)
+					.count() >
+				0
+			? false
+			: true;
 	}
 
 	/**
@@ -325,7 +348,7 @@ component
 	 *
 	 * @slug The slug to make unique
 	 */
-	private function getUniqueSlugHash( required string slug ){
+	private function getUniqueSlugHash( required string slug ) {
 		return "#arguments.slug#-#lCase( left( hash( now() ), 5 ) )#";
 	}
 

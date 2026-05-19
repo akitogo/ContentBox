@@ -6,25 +6,24 @@
  * ContentBox file browser module
  */
 component {
-
 	// Module Properties
-	this.title              = "File Browser";
-	this.author             = "Ortus Solutions";
-	this.webURL             = "https://www.ortussolutions.com";
-	this.version            = "@version.number@+@build.number@";
-	this.description        = "A file-directory browser and selector";
+	this.title = "File Browser";
+	this.author = "Ortus Solutions";
+	this.webURL = "https://www.ortussolutions.com";
+	this.version = "@version.number@+@build.number@";
+	this.description = "A file-directory browser and selector";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
-	this.viewParentLookup   = true;
+	this.viewParentLookup = true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
 	this.layoutParentLookup = true;
 	// Module Entry Point
-	this.entryPoint         = "cbFileBrowser";
-	this.dependencies       = [ "contentbox-admin" ];
+	this.entryPoint = "cbFileBrowser";
+	this.dependencies = [ "contentbox-admin"];
 
 	/**
 	 * Configure the module
 	 */
-	function configure(){
+	function configure() {
 		// module settings - stored in modules.name.settings
 		settings = {
 			// The title name for usage inline and the layout
@@ -75,7 +74,12 @@ component {
 		};
 
 		// clean directory root
-		settings.directoryRoot = reReplace( settings.directoryRoot, "\\", "/", "all" );
+		settings.directoryRoot = reReplace(
+			settings.directoryRoot,
+			"\\",
+			"/",
+			"all"
+		);
 		if ( right( settings.directoryRoot, 1 ) EQ "/" ) {
 			settings.directoryRoot = left( settings.directoryRoot, len( settings.directoryRoot ) - 1 );
 		}
@@ -88,38 +92,40 @@ component {
 
 		// Custom Declared Points
 		interceptorSettings = {
-			customInterceptionPoints : arrayToList( [
-				"fb_preTitleBar",
-				"fb_postTitleBar",
-				"fb_preLocationBar",
-				"fb_postLocationBar",
-				"fb_preBottomBar",
-				"fb_postBottomBar",
-				"fb_preFileListing",
-				"fb_postFileListing",
-				"fb_preUploadBar",
-				"fb_postUploadBar",
-				"fb_preQuickViewBar",
-				"fb_postQuickViewBar",
-				// folder creation
-				"fb_postFolderCreation",
-				"fb_preFolderCreation",
-				// removals
-				"fb_preFileRemoval",
-				"fb_postFileRemoval",
-				// renameing
-				"fb_preFileRename",
-				"fb_postFileRename",
-				// downloads
-				"fb_preFileDownload",
-				"fb_postFileDownload",
-				// Uploads
-				"fb_preFileUpload",
-				"fb_postFileUpload",
-				"fb_onFileUploadError",
-				// directory read
-				"fb_postDirectoryRead"
-			] )
+			customInterceptionPoints : arrayToList(
+				[
+					"fb_preTitleBar",
+					"fb_postTitleBar",
+					"fb_preLocationBar",
+					"fb_postLocationBar",
+					"fb_preBottomBar",
+					"fb_postBottomBar",
+					"fb_preFileListing",
+					"fb_postFileListing",
+					"fb_preUploadBar",
+					"fb_postUploadBar",
+					"fb_preQuickViewBar",
+					"fb_postQuickViewBar",
+					// folder creation
+					"fb_postFolderCreation",
+					"fb_preFolderCreation",
+					// removals
+					"fb_preFileRemoval",
+					"fb_postFileRemoval",
+					// renameing
+					"fb_preFileRename",
+					"fb_postFileRename",
+					// downloads
+					"fb_preFileDownload",
+					"fb_postFileDownload",
+					// Uploads
+					"fb_preFileUpload",
+					"fb_postFileUpload",
+					"fb_onFileUploadError",
+					// directory read
+					"fb_postDirectoryRead"
+				]
+			)
 		};
 
 		// Custom Declared Interceptors
@@ -129,16 +135,17 @@ component {
 	/**
 	 * Fired when the module is registered and activated.
 	 */
-	function onLoad(){
+	function onLoad() {
 		// Reset the media root setting to the one loaded in ContentBox Settings.
-		var mediaService       = wirebox.getInstance( "MediaService@contentbox" );
+		var mediaService = wirebox.getInstance( "MediaService@contentbox" );
 		settings.directoryRoot = mediaService.getCoreMediaRoot( absolute = true );
 	}
 
 	/**
 	 * Fired when the module is unregistered and unloaded
 	 */
-	function onUnload(){
+	function onUnload() {
+
 	}
 
 }

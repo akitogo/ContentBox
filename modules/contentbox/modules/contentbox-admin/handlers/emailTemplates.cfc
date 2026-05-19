@@ -6,14 +6,13 @@
  * Manage ContentBox users
  */
 component extends="baseHandler" {
-
 	// DI
 	property name="mailService" inject="mailService@cbmailservices";
 
 	/**
 	 * tester
 	 */
-	function tester( event, rc, prc ){
+	function tester( event, rc, prc ) {
 		event.paramValue( "template", "" );
 
 		var bindingArgs = { "gravatarEmail" : "info@ortussolutions.com" };
