@@ -28,14 +28,15 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Setup CommandBox CLI
-        uses: Ortus-Solutions/setup-commandbox@v2.0.1
+      # We use snapshot here due to the fixes in BoxLang for the formatter
+      # Once v1.14.0 releases, we can switch to that version
+      - name: Setup BoxLang
+        uses: ortus-boxlang/setup-boxlang@main
         with:
-          install: commandbox-cfformat
-          warmup: true
+          version: snapshot
 
-      - name: Run formatting rules
-        run: box run-script format
+      - name: Run Formatter
+        run: boxlang format --source config,handlers,modules/contentbox,tests/specs
 
       - name: Commit Format Changes
         uses: stefanzweifel/git-auto-commit-action@v7
