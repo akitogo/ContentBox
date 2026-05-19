@@ -24,6 +24,7 @@ config/logs/**
 
 # Engines + Docker Libraries
 .engines/**
+.boxlang/**
 bin/.db/**
 tests/resources/dbs/.db/**
 
