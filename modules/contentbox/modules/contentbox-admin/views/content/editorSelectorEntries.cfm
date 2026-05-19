@@ -23,16 +23,18 @@ id="contentID-#thisContent.getContentID()#"
 		</cfif>
 		
 		
+		
 		>
 			<td>
-				<!--- Title --->  
+				<!--- Title --->   
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title --->  
+				<!--- Title --->   
 				<div class="mt5">
 					<div class="text-muted">
+
 
 
 		<cfif structKeyExists( thisContent, "getDescription" )>
@@ -45,10 +47,13 @@ id="contentID-#thisContent.getContentID()#"
 			</cfif>
 			
 			
+			
 						...
 
 
+
 		</cfif>
+		
 		
 		
 					</div>
@@ -88,7 +93,9 @@ id="contentID-#thisContent.getContentID()#"
 		</tr>
 
 
+
 	</cfloop>
+	
 	
 	
 	</tbody>

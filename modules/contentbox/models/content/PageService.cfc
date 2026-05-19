@@ -164,7 +164,8 @@ component extends="ContentService" singleton {
 			// Uncategorized?
 			if ( arguments.category EQ "none" ) {
 				c.isEmpty( "categories" );
-			} else { // With categories
+			} else {
+				// With categories
 				// search the association
 				c.createAlias( "categories", "cats" ).isIn( "cats.categoryID", [ arguments.category] );
 			}
@@ -178,7 +179,8 @@ component extends="ContentService" singleton {
 				"modifiedDate",
 				"ac.createdDate"
 			);
-		} else if ( !len( arguments.sortOrder ) ) { // default to title sorting
+		} else if ( !len( arguments.sortOrder ) ) {
+			// default to title sorting
 			sortOrder = "title asc";
 		}
 
@@ -234,7 +236,7 @@ component extends="ContentService" singleton {
 		boolean showInMenu,
 		string slugSearch = ""
 	) {
-		arguments.criteria = newCriteria().when( // Show only pages with showInMenu criteria?
+		arguments.criteria = newCriteria().when(
 				!isNull( arguments.showInMenu ),
 				function( c ) {
 					arguments.c.isEq( "showInMenu", javacast( "boolean", showInMenu ) );

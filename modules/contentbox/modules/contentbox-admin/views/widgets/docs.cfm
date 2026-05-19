@@ -22,10 +22,12 @@
 			style="display:none;"
 		</cfif>
 		
+		
 		>
                             	<h3><code>#method.name#()</code></h3>
                             	<ul>
                             		<li><strong>Hint: </strong>
+
 
 		<cfif structKeyExists( method, "hint" )>
 			#method.hint#
@@ -33,8 +35,10 @@
 			N/A
 		</cfif>
 		
+		
 		</li>
                             		<li><strong>Arguments: </strong>
+
 
 
 		<cfif ArrayLen( method.parameters )>
@@ -63,9 +67,11 @@
 					Any
 				</cfif>
 				
+				
 				</code>
                                                     </td>
                             						<td>
+
 
 
 				<cfif structKeyExists( i, "required" )>
@@ -75,8 +81,10 @@
 				</cfif>
 				
 				
+				
                                                     </td>
                             						<td>
+
 
 
 				<cfif structKeyExists( i, "default" )>
@@ -84,8 +92,10 @@
 				</cfif>
 				
 				
+				
                                                     </td>
                             						<td>
+
 
 
 				<cfif structKeyExists( i, "hint" )>
@@ -93,15 +103,19 @@
 				</cfif>
 				
 				
+				
                                                     </td>
                             					</tr>
+
 
 
 			</cfloop>
 			
 			
+			
                             				</tbody>
                             				</table>
+
 
 
 		<cfelse>
@@ -109,12 +123,15 @@
 		</cfif>
 		
 		
+		
                             		</li>
                             	</ul>
                         	</div>
 
 
+
 	</cfloop>
+	
 	
 	
                 	</div>
@@ -128,16 +145,20 @@
                             		<select name="renderMethodSelect" id="renderMethodSelect" class="form-control input-sm">
 
 
+
 	<cfloop array="#prc.metadata#" index="method">
 		<option value="#method.name#"
 		<cfif method.name EQ "renderIt">
 			selected=true
 		</cfif>
 		
+		
 		>#method.name#()</option>
 
 
+
 	</cfloop>
+	
 	
 	
                             		</select>
@@ -158,6 +179,7 @@
         </div>
     </div>
 </div>
+
 
 
 </cfoutput>

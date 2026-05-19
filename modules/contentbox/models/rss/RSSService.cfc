@@ -95,7 +95,8 @@ component singleton {
 		// Comments cache Key
 		if ( arguments.comments ) {
 			cacheKey = "cb-feeds-#cgi.HTTP_HOST#-content-comments-#arguments.slug#";
-		} else { // Entries cache Key
+		} else {
+			// Entries cache Key
 			cacheKey = "cb-feeds-#cgi.HTTP_HOST#-content-#hash( arguments.category & arguments.contentType )#";
 		}
 

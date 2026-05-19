@@ -41,6 +41,7 @@
 							<div class="text-right">
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
   	<button class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown">
@@ -102,11 +103,14 @@
 		</cfif>
 		
 		
+		
 								    	</ul>
 								    </div>
 
 
+
 	</cfif>
+	
 	
 	
 								<div class="btn-group">
@@ -114,6 +118,7 @@
 										<i class="fa fa-plus"></i> New <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu list-unstyled">
+
 
 
 	<cfif prc.availableTemplates.len()>
@@ -127,11 +132,14 @@
 		</cfloop>
 		
 		
+		
 											<li role="separator" class="divider"></li>
 
 
 
+
 	</cfif>
+	
 	
 	
 											<li class="mb-5">
@@ -151,7 +159,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- entries container --->  
+					<!--- entries container --->   
     				<div id="contentTableContainer">
     					<p class="text-center"><i id="entryLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i></p>
     				</div>
@@ -180,20 +188,23 @@
 									<option value="all" selected="selected">All Authors</option>
 
 
+
 	<cfloop array="#prc.authors#" index="author">
 		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
 	</cfloop>
+	
 	
 	
 								</select>
 							</div>
 						</div>
 
-					    <!--- Creators --->  
+					    <!--- Creators --->   
 					    <div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
 								<option value="all" selected="selected">All Creators</option>
+
 
 
 	<cfloop array="#prc.authors#" index="author">
@@ -201,10 +212,11 @@
 	</cfloop>
 	
 	
+	
 							</select>
 						</div>
 
-						<!--- Categories --->  
+						<!--- Categories --->   
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
@@ -213,16 +225,18 @@
 									<option value="none">Uncategorized</option>
 
 
+
 	<cfloop array="#prc.categories#" index="category">
 		<option value="#category.getCategoryID()#">#category.getCategory()#</option>
 	</cfloop>
+	
 	
 	
 								</select>
 					        </div>
 						</div>
 
-						<!--- Status --->  
+						<!--- Status --->   
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -244,7 +258,7 @@
 			</div>
 		</div>
 
-		<!--- Help Tips --->  
+		<!--- Help Tips --->   
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		        <h3 class="panel-title"><i class="fa fas fa-life-ring"></i> Help Tips</h3>
@@ -257,6 +271,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 

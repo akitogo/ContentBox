@@ -22,14 +22,18 @@
 		</cfloop>
 		
 		
+		
 			</ul>
 		</li>
+
 
 
 	</cfif>
 	
 	
+	
 	</ul>
+
 
 
 </cfoutput>

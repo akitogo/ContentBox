@@ -33,6 +33,7 @@
 			</cfif>
 			
 			
+			
 								</td>
 								<td class="#publishedClass#">#content.getTitle()#</td>
 								<td width="14" class="center #publishedClass#">
@@ -41,7 +42,9 @@
 							</tr>
 
 
+
 		</cfloop>
+		
 		
 		
 					</tbody>
@@ -53,9 +56,11 @@
 		<script>
 
 
+
 		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
 			var currentLCContentID = "#rc.contentID#";
 		</cfif>
+		
 		
 		
 			document.addEventListener( "DOMContentLoaded", () => {
@@ -89,6 +94,7 @@
 			}
 		</script>
 	</div>
+
 
 
 	</cfif>

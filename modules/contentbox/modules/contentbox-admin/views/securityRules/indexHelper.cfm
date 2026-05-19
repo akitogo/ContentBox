@@ -62,7 +62,9 @@ onDrop : function( table, row ){
 	</cfif>
 	
 	
+	
 } );
+
 
 
 
@@ -92,7 +94,9 @@ function exportSelected( exportEvent ){
 	</cfif>
 	
 	
+	
 </script>
+
 
 
 </cfoutput>

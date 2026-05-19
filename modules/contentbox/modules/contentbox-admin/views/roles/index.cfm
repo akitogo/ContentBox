@@ -15,6 +15,7 @@
 	</cfif>
 	
 	
+	
     </div>
 </div>
 
@@ -44,8 +45,9 @@
 						<div class="col-md-6 col-xs-8">
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-		<div class="text-right"><!--- Global --->  <div class="btn-group">
+		<div class="text-right"><!--- Global --->   <div class="btn-group">
 <button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
 	Bulk Actions <span class="caret"></span>
 </button>
@@ -71,6 +73,7 @@
 		</cfif>
 		
 		
+		
 										</ul>
 									</div>
 									<button
@@ -82,7 +85,9 @@
 								</div>
 
 
+
 	</cfif>
+	
 	
 	
 						</div>
@@ -91,13 +96,13 @@
 
 				<div class="panel-body">
 
-					<!--- Info Bar --->  
+					<!--- Info Bar --->   
 					<div class="alert alert-warning">
 						<i class="fa fa-exclamation-circle fa-lg"></i>
 						You cannot delete roles that have authors attached to them.  You will need to un-attach those authors from the role first.
 					</div>
 
-					<!--- roles --->  
+					<!--- roles --->   
 					<table name="roles" id="roles" class="table table-striped-removed table-hover">
 						<thead>
 							<tr>
@@ -114,8 +119,9 @@
 						<tbody>
 
 
+
 	<cfloop array="#prc.roles#" index="role">
-		<tr><!--- check box --->  <td class="text-center">
+		<tr><!--- check box --->   <td class="text-center">
 <input
 	type="checkbox"
 	name="roleID"
@@ -133,6 +139,7 @@ title="Edit #role.getName()#"
 		</cfif>
 		
 		
+		
 
 									<div class="mt5 text-muted">
 										#role.getDescription()#
@@ -148,13 +155,14 @@ title="Edit #role.getName()#"
 								</td>
 
 								<td class="text-center">
-									<!--- Actions --->  
+									<!--- Actions --->   
 									<div class="btn-group">
 								    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" href="##" title="Role Actions">
 											<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 											<span class="visually-hidden">Role Actions</span>
 										</button>
 								    	<ul class="dropdown-menu text-left pull-right">
+
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN,TOOLS_EXPORT" )>
@@ -168,7 +176,7 @@ title="Edit #role.getName()#"
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command --->  
+			<!--- Edit Command --->   
 												<li>
 													<a
 														href="#event.buildLink( prc.xehRoleEditor & "/roleId/#role.getRoleId()#" )#"
@@ -176,6 +184,7 @@ title="Edit #role.getName()#"
 											   			<i class="fas fa-pen fa-lg"></i> Edit
 											   		</a>
 											   	</li>
+
 
 
 
@@ -192,13 +201,16 @@ title="Edit #role.getName()#"
 		</cfif>
 		
 		
+		
 								    	</ul>
 							    	</div>
 								</td>
 							</tr>
 
 
+
 	</cfloop>
+	
 	
 	
 						</tbody>
@@ -208,6 +220,7 @@ title="Edit #role.getName()#"
         #html.endForm()#
     </div>
 </div>
+
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT" )>

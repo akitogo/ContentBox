@@ -33,13 +33,15 @@ href="#event.buildLink( prc.xehTruncate )#"
 	</cfif>
 	
 	
+	
 				</div>
 
 				<p>Here you see all recent Logins and as well the login attempts to your system</p>
 
 
+
 	<cfif prc.featureEnabled>
-		<!--- templates --->  <table name="templates" id="templates" class="table table-striped-removed table-hover ">
+		<!--- templates --->   <table name="templates" id="templates" class="table table-striped-removed table-hover ">
 <thead>
 	<tr>
 		<th>Username / IP</th>
@@ -56,9 +58,11 @@ href="#event.buildLink( prc.xehTruncate )#"
 				class="danger"
 			</cfif>
 			
+			
 			>
 								<td>
 									<strong>
+
 
 
 			<cfif listLen( thisLog.getValue(), "." ) EQ 4>
@@ -66,6 +70,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 			<cfelse>
 				#thisLog.getvalue()#
 			</cfif>
+			
 			
 			
 									</strong>
@@ -77,6 +82,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 								<td>
 
 
+
 			<cfif len( thisLog.getLastLoginSuccessIP() )>
 				<a href="#prc.cbSettings.cb_comments_whoisURL#=#thisLog.getLastLoginSuccessIP()#" title="Get IP Information" target="_blank">#thisLog.getLastLoginSuccessIP()#</a>
 			<cfelse>
@@ -84,8 +90,10 @@ href="#event.buildLink( prc.xehTruncate )#"
 			</cfif>
 			
 			
+			
 								</td>
 								<td class="text-center">
+
 
 
 			<cfif thisLog.getIsBlocked()>
@@ -95,15 +103,19 @@ href="#event.buildLink( prc.xehTruncate )#"
 			</cfif>
 			
 			
+			
 								</td>
 							</tr>
+
 
 
 		</cfloop>
 		
 		
+		
 						</tbody>
 					</table>
+
 
 
 	<cfelse>
@@ -113,10 +125,12 @@ Login Tracker is disabled! Click <a href="#event.buildLink( prc.xehSettings )###
 	</cfif>
 	
 	
+	
 			</div> <!-- end panel body -->
 		</div> <!-- end panel -->
 	</div>
 </div>
+
 
 
 </cfoutput>

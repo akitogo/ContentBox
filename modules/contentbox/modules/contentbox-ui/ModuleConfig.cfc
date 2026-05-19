@@ -342,7 +342,8 @@ component {
 					namespace = "blog",
 					append    = false
 				);
-		} else { // Register Default Blog Namespace
+		} else {
+			// Register Default Blog Namespace
 			routingService.addNamespace(
 					pattern   = "#this.entryPoint#/blog",
 					namespace = "blog",

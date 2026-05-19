@@ -16,14 +16,14 @@
 			class      = "form-vertical"
 		)##html.hiddenField( name = "authorID",
 			value = prc.oAuthor.getAuthorID() )##html.hiddenField( name = "relocationURL",
-			value = rc.relocationURL )##html.hiddenField( name = "rememberMe", value = rc.rememberMe )#<fieldset><!--- Global Force --->  <div class="alert alert-warning">
+			value = rc.relocationURL )##html.hiddenField( name = "rememberMe", value = rc.rememberMe )#<fieldset><!--- Global Force --->   <div class="alert alert-warning">
 	<i class="fa fa-exclamation-triangle fa-lg"></i>
 	Global Two Factor Authentication is currently being enforced. Please make sure that you have setup
 	your device using the two factor provider shown below.
-</div><!--- Provider Name --->  <div class="form-group">
+</div><!--- Provider Name --->   <div class="form-group">
 <label>Provider: </label>
 <span class="label label-info">#prc.twoFactorProvider.getDisplayName()#</span><br/>
-</div><!--- Provider Setup Help --->  <div class="form-group">
+</div><!--- Provider Setup Help --->   <div class="form-group">
 <label>Provider Instructions: </label><br>#prc.twoFactorProvider.getAuthorSetupHelp( prc.oAuthor )#</div>
 
 	<cfif len( prc.twoFactorProvider.getAuthorSetupForm( prc.oAuthor ) )>
@@ -55,6 +55,7 @@
         </div>
     </div>
 </div>
+
 
 
 </cfoutput>

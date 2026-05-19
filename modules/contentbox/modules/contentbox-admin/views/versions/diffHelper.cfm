@@ -7,7 +7,8 @@
 		// if right is not defined, then it is removed content
 		if ( !arrayIsDefined( left, index ) && arrayIsDefined( right, index ) ) {
 			codeCSS = " ins";
-		} else if ( arrayIsDefined( right, index ) && arrayIsDefined( left, index ) ) { // if both defined, then compare
+		} else if ( arrayIsDefined( right, index ) && arrayIsDefined( left, index ) ) {
+			// if both defined, then compare
 			leftHash = hash(
 				trim(
 					reReplace(
@@ -32,7 +33,8 @@
 			if ( rightHash NEQ leftHash ) {
 				codeCSS = " upd";
 			}
-		} else if ( !arrayIsDefined( right, index ) ) { // compare removals
+		} else if ( !arrayIsDefined( right, index ) ) {
+			// compare removals
 			codeCSS = " del";
 		}
 

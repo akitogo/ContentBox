@@ -299,9 +299,9 @@ component extends="tests.resources.BaseApiTest" {
 											var testRole = variables.roleService.findWhere( {
 														role : "Administrator"
 													} );
-											var testPermission = variables.permissionService.findWhere(
-													{ permission : "TOOLS_IMPORT" }
-												);
+											var testPermission = variables.permissionService.findWhere( {
+														permission : "TOOLS_IMPORT"
+													} );
 											var testAuthor = variables.authorService.save(
 													variables.authorService.new(
 															{

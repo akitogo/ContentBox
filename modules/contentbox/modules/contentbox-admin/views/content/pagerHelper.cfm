@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS --->  <script>
+	<!--- Custom JS --->   <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// Root elements
 	$pagerLoader 	= $( "##contentPager_#prc.contentPager_id#_loader" );

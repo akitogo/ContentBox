@@ -74,8 +74,10 @@ $pages.tableDnD( {
 	</cfif>
 	
 	
+	
 } )();
 </script>
+
 
 
 </cfoutput>

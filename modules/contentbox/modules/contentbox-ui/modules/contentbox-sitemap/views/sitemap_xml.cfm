@@ -20,7 +20,9 @@
 		</cfif>
 		
 		
+		
 	</url>
+
 
 
 	</cfloop>
@@ -43,14 +45,18 @@
 			</cfif>
 			
 			
+			
 	   		</url>
+
 
 
 		</cfloop>
 	</cfif>
 	
 	
+	
 </urlset>
+
 
 
 </cfoutput>

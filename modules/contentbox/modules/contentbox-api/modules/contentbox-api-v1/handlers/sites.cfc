@@ -30,8 +30,7 @@ component extends="baseHandler" secured="SITES_ADMIN" {
 		}
 
 		// Build up a search criteria and let the base execute it
-		arguments.criteria = newCriteria().isEq( "isActive", javacast( "boolean", rc.isActive ) )// Search filter // Active filter
-			.when(
+		arguments.criteria = newCriteria().isEq( "isActive", javacast( "boolean", rc.isActive ) ).when( // Search filter // Active filter
 				len( rc.search ),
 				function( c ) {
 					c.$or(

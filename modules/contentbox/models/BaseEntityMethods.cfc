@@ -236,7 +236,7 @@ component {
 			);
 
 		// Include the helper
-		include template="#template = "#targetLocation#"#";
+		include template="#template = "#template = "#targetLocation#"#"#";
 
 		return this;
 	}

@@ -173,7 +173,8 @@ component extends="ContentService" singleton {
 			// Uncategorized?
 			if ( arguments.category EQ "none" ) {
 				c.isEmpty( "categories" );
-			} else { // With categories
+			} else {
+				// With categories
 				// search the association
 				c.createAlias( "categories", "cats" ).isIn( "cats.categoryID", [ arguments.category] );
 			}
@@ -187,7 +188,8 @@ component extends="ContentService" singleton {
 				"modifiedDate",
 				"ac.createdDate"
 			);
-		} else if ( !len( arguments.sortOrder ) ) { // default to title sorting
+		} else if ( !len( arguments.sortOrder ) ) {
+			// default to title sorting
 			sortOrder = "title asc";
 		}
 

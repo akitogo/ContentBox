@@ -5,7 +5,7 @@ component {
 	// DI
 	property name="migrationService" inject="MigrationService@cfmigrations";
 	// Include Utils
-	include template="#template = "#template = "./util/MigrationUtils.cfm"#"#";
+	include template="#template = "#template = "#template = "./util/MigrationUtils.cfm"#"#"#";
 
 	variables.today = now();
 	variables.siteTables = [ "cb_category", "cb_content", "cb_menu", "cb_setting"];

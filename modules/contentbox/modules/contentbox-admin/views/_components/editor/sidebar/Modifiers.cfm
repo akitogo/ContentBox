@@ -40,18 +40,22 @@
 					selected
 				</cfif>
 				
+				
 				>
 										#template[ "name" ]#
 									</option>
 
 
+
 			</cfloop>
+			
 			
 			
 						</select>
 						<p class="text-muted text-center hidden template-highlight-info">
 							<span style="width: 10px;height:10px; display:inline-block; margin-right: 10px; border: 1px ##efefef solid" class="template-defined"></span> <small>Template defined fields are shown with this background color.</small>
 						</p>
+
 
 
 		<cfelse>
@@ -64,8 +68,10 @@ No Content Templates are Currently Available
 		</cfif>
 		
 		
+		
 
 				</div>
+
 
 
 
@@ -94,15 +100,19 @@ No Content Templates are Currently Available
 						selected
 					</cfif>
 					
+					
 					>
 											#template[ "name" ]#
 										</option>
 
 
+
 				</cfloop>
 				
 				
+				
 							</select>
+
 
 
 			<cfelse>
@@ -116,9 +126,10 @@ No Content Templates are Currently Available
 			</cfif>
 			
 			
+			
 
 					</div>
-					<!--- Parent --->  
+					<!--- Parent --->   
 					<div class="form-group">
 						<label for="parentContent" class="control-label">
 							<i class="fa fa-sitemap"></i>
@@ -139,6 +150,7 @@ No Content Templates are Currently Available
 				)#
 						</select>
 					</div>
+
 
 
 		<cfelse>
@@ -168,16 +180,20 @@ value="#author.getAuthorID()#"
 				</cfif>
 				
 				
+				
 								>
 									#author.getFullName()#
 								</option>
 
 
+
 			</cfloop>
+			
 			
 			
 						</select>
 					</div>
+
 
 
 		</cfif>
@@ -223,9 +239,11 @@ value="#author.getAuthorID()#"
 		</cfif>
 		
 		
+		
 			</div>
 		</div>
 	</div>
+
 
 
 	<cfelse>

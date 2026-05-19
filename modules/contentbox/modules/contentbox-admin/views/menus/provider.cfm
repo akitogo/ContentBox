@@ -73,7 +73,7 @@
 	<cfif len( adminTemplate )>
 		<fieldset>
 <legend>#args.provider.getName()# Attributes</legend>
-<p>These attributes can be used to customize the item's content</p>#adminTemplate#<div class="row"><!--- data attribute --->  <span class="col-md-6">#html.textfield(
+<p>These attributes can be used to customize the item's content</p>#adminTemplate#<div class="row"><!--- data attribute --->   <span class="col-md-6">#html.textfield(
 				label        = "Data Attributes:",
 				name         = "data",
 				id           = "",
@@ -84,7 +84,7 @@
 				wrapper      = "div class=controls",
 				labelClass   = "control-label",
 				groupWrapper = "div class=form-group"
-			)#</span><!--- title --->  <span class="col-md-6">#html.textfield(
+			)#</span>  <span class="col-md-6">#html.textfield(
 				label        = "Title:",
 				name         = "title",
 				id           = "",
@@ -100,8 +100,9 @@
 
 </fieldset>
 	</cfif>
-	<!--- end provider thing --->  
+	<!--- end provider thing --->   
 	</div>
+
 
 
 </cfoutput>

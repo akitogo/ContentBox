@@ -430,7 +430,7 @@ component extends="baseHandler" {
 		// Attach creator if new page
 		if ( isNew ) {
 			oContent.setSite( prc.oCurrentSite ).setCreator( prc.oCurrentAuthor );
-		} else if ( // Override creator if persisted?
+		} else if (
 			!isNew && prc.oCurrentAuthor.hasPermission( arguments.adminPermission ) && len( rc.creatorID ) &&
 				oContent.getCreator().getAuthorID() NEQ rc.creatorID
 		) {

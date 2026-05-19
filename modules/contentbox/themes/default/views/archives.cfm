@@ -10,25 +10,27 @@
 		</cfif>
 	</cfif>
 	
+	
 			
 <div id="body-header" style="#bodyHeaderStyle#">
 	<div class="container">
-		<!--- Title --->  
+		<!--- Title --->   
 		<div class="underlined-title">
 			<h1 style="#bodyHeaderH1Style#">Blog</h1>
 		</div>
 	</div>
 </div>
 
-<!--- Body Main --->  
+<!--- Body Main --->   
 <section id="body-main">
 	<div class="container">	
 		<div class="row">
-			<!--- Content --->  
+			<!--- Content --->   
 			<div class="col-sm-9">
 
-				#cb.event( "cbui_preArchivesDisplay" )#<!--- Title --->  
+				#cb.event( "cbui_preArchivesDisplay" )#<!--- Title --->   
 				<h1>Blog Archives - #prc.entriesCount# Record(s)</h1>
+
 
 
 
@@ -45,8 +47,10 @@ Year: '#rc.year#'
 		</cfif>
 		
 		
+		
 					</div>
 					<br/>
+
 
 
 	</cfif>
@@ -59,15 +63,18 @@ Year: '#rc.year#'
 
 
 
+
 	<cfif args.sidebar>
 		<div class="col-sm-3" id="blog-sidenav">#cb.quickView( view = "_blogsidebar", args = args )#</div>
 	</cfif>
+	
 	
 	
 
 </div>
 	</div>
 </section>		
+
 
 
 </cfoutput>

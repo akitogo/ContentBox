@@ -22,8 +22,10 @@ alertClose() {
 	</cfif>
 	
 	
+	
 		}
 	}"
+
 
 
 	<cfif len( args.messageModel )>
@@ -33,10 +35,12 @@ alertClose() {
 	</cfif>
 	
 	
+	
 	x-cloak
 >
 	<div
 		class="alert"
+
 
 
 	<cfif len( args.messageModel )>
@@ -44,6 +48,7 @@ alertClose() {
 	<cfelse>
 		:class="`alert-${alertType}`"
 	</cfif>
+	
 	
 	
 	>
@@ -55,6 +60,7 @@ alertClose() {
 		></i>
 
 
+
 	<cfif len( args.messageModel )>
 		<div x-html="#args.messageModel#.message"></div>
 	<cfelse>
@@ -62,8 +68,10 @@ alertClose() {
 	</cfif>
 	
 	
+	
 	</div>
 </alert>
+
 
 
 </cfoutput>

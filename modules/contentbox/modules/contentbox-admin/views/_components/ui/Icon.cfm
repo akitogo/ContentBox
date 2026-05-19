@@ -178,8 +178,10 @@
 	</cfswitch>
 	
 	
+	
         </svg>
     </icon>
+
 
 
 </cfoutput>

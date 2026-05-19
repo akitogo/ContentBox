@@ -50,7 +50,7 @@
 			labelClass   = "control-label",
 			class        = "form-control",
 			groupWrapper = "div class=form-group"
-		)#</div><!--- Button Bar --->  <div class="modal-footer">
+		)#</div>  <div class="modal-footer">
     <button class="btn btn-default" onclick="closeRemoteModal();return false;" title="Close Modal"> Close </button>
     <button type="submit" class="btn btn-success">Save</button>
 </div>#html.endForm()#</div>

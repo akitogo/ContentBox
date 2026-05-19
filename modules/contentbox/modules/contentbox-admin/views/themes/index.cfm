@@ -41,12 +41,13 @@
 	</cfif>
 	
 	
+	
 					</div>
 				</div>
 			</div>
 
 			<div class="panel-body">
-				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->  
+				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->   
 					<table name="themes" id="themes" class="table table-striped-removed table-hover " width="100%">
 						<thead>
 							<tr>
@@ -57,6 +58,7 @@
 						<tbody>
 
 
+
 	<cfloop collection="#prc.themes#" item="themeName">
 		<cfset thisTheme = prc.themes[ themeName ]>
 		<tr>
@@ -64,6 +66,7 @@
 		<cfif prc.oCurrentSite.getActiveTheme() EQ themeName>
 			<i class="fa fa-asterisk fa-lg text-orange" title="Active Theme"></i>
 		</cfif>
+		
 		
 		
 
@@ -76,8 +79,9 @@
 
 									<p>&nbsp;</p>
 
-									<!--- Button Bar --->  
+									<!--- Button Bar --->   
 									<div class="btn-group">
+
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "THEME_ADMIN" ) && prc.activeTheme.name NEQ thisTheme.name>
@@ -96,19 +100,21 @@
 		</cfif>
 		
 		
+		
 									</div>
 
 								</td>
 								<td class="text-center">
 
 
+
 		<cfif len( thisTheme.screenShotURL )>
-			<!--- image --->  <a href="#thisTheme.screenShotURL#" target="_blank">
+			<!--- image --->   <a href="#thisTheme.screenShotURL#" target="_blank">
 <img src="#thisTheme.screenShotURL#"  alt="screenshot" class="img-thumbnail" width="300" border="0"/>
 </a>
 <br/>
 		</cfif>
-		<!--- description --->  
+		<!--- description --->   
 									<p>
 										#thisTheme.description#
 									</p>
@@ -116,7 +122,9 @@
 							</tr>
 
 
+
 	</cfloop>
+	
 	
 	
 						</tbody>
@@ -129,16 +137,17 @@
 </div>
 <div class="row-fluid">
 	<div class="box">
-		<!--- Body --->  
+		<!--- Body --->   
 		<div class="body">
-			<!--- Tabs --->  
+			<!--- Tabs --->   
 			<div class="panes tab-content"></div>
-			<!--- end panes div --->  
+			<!--- end panes div --->   
 		</div>
-		<!--- end div body --->  
+		<!--- end div body --->   
 	</div>
-	<!--- end div box --->  
+	<!--- end div box --->   
 </div>
+
 
 
 </cfoutput>

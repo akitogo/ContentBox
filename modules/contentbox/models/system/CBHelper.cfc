@@ -2510,7 +2510,7 @@ component accessors="true" singleton threadSafe {
 									activeShowChildren = arguments.activeShowChildren
 								)
 							);
-					} else if ( // Do we nest active and activeShowChildren flag is activated?
+					} else if (
 						activeShowChildren && ( isElementActive || isElementActiveAncestor ) &&
 							pageResults.content[ x ].hasChild()
 					) {
@@ -2574,7 +2574,7 @@ component accessors="true" singleton threadSafe {
 							currentLevel       = arguments.currentLevel + 1,
 							activeShowChildren = arguments.activeShowChildren
 						);
-					} else if ( // Do we nest active and activeShowChildren flag is activated?
+					} else if (
 						activeShowChildren && isElementActive && pageResults.content[ x ][ "numberOfChildren" ] > 0
 					) {
 						pageData.subPageMenu = buildMenu(

@@ -10,7 +10,7 @@
 </div>
 
 <div id="pageinfo" class="panel-collapse collapse in">
-    <div class="panel-body"><!--- Persisted Info --->  <table class="table table-hover table-condensed table-striped-removed"><!--- STATUS --->  <tr>
+    <div class="panel-body"><!--- Persisted Info --->   <table class="table table-hover table-condensed table-striped-removed"><!--- STATUS --->   <tr>
 <th class="col-md-4">Status:</th>
 <td class="col-md-8" id="publish-info">
 	<cfif prc.oContent.isExpired()>
@@ -32,8 +32,10 @@
 	</cfif>
 	
 	
+	
                     </td>
 				</tr>
+
 
 
 
@@ -43,7 +45,7 @@
 <td class="col-md-8">#prc.oContent.getDisplayExpireDate()#</td>
 </tr>
 	</cfif>
-	<!--- CONTENT VERSION --->  
+	<!--- CONTENT VERSION --->   
 				<tr>
                     <th class="col-md-4">Version:</th>
                     <td class="col-md-8">
@@ -54,7 +56,7 @@
                     </td>
 				</tr>
 
-				<!--- CREATION INFO --->  
+				<!--- CREATION INFO --->   
 				<tr>
                     <th class="col-md-4">Created By:</th>
                     <td class="col-md-8">
@@ -68,7 +70,7 @@
                     </td>
                 </tr>
 
-				<!--- CREATED DATE --->  
+				<!--- CREATED DATE --->   
                 <tr>
                     <th class="col-md-4">Created:</th>
                     <td class="col-md-8">
@@ -76,7 +78,7 @@
                     </td>
                 </tr>
 
-				<!--- PUBLISHED DATE --->  
+				<!--- PUBLISHED DATE --->   
                 <tr>
                     <th class="col-md-4">Published:</th>
                     <td class="col-md-8">
@@ -84,7 +86,7 @@
                     </td>
                 </tr>
 
-				<!--- LAST EDITOR --->  
+				<!--- LAST EDITOR --->   
                 <tr>
                     <th class="col-md-4">Last Editor:</th>
                     <td class="col-md-8">
@@ -98,7 +100,7 @@
                     </td>
                 </tr>
 
-				<!--- MODIFIED DATE --->  
+				<!--- MODIFIED DATE --->   
                 <tr>
                     <th class="col-md-4">Modified:</th>
                     <td class="col-md-8">
@@ -111,6 +113,7 @@
 
 
 
+
 	<cfif prc.oContent.hasChild()>
 		<tr>
               <th class="col-md-4">Child Pages:</th>
@@ -119,7 +122,7 @@
     </td>
 </tr>
 	</cfif>
-	<!--- NUMBER OF VIEWS --->  
+	<!--- NUMBER OF VIEWS --->   
                 <tr>
                     <th class="col-md-4">Views:</th>
                     <td class="col-md-8">
@@ -128,6 +131,7 @@
 						</span>
                     </td>
                 </tr>
+
 
 
 
@@ -141,11 +145,13 @@
 	</cfif>
 	
 	
+	
 
             </table>
         </div>
     </div>
 </div>
+
 
 
 </cfoutput>

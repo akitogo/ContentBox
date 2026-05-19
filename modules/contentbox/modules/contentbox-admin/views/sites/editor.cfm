@@ -2,14 +2,14 @@
 	<div class="row">
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->  <div class="panel-heading"><!--- Top Actions --->  <div class="float-right mt10"><!--- Back button --->  <a
+	<div class="panel panel-default"><!--- Heading --->   <div class="panel-heading"><!--- Top Actions --->   <div class="float-right mt10"><!--- Back button --->   <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehSitesManager )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Title --->  <div class="size16 p10 flex gap-x-2">
+</div><!--- Title --->   <div class="size16 p10 flex gap-x-2">
 
 <i class="fa fa-globe"></i>
 
@@ -22,6 +22,7 @@ href="#event.buildLink( prc.xehSitesManager )#"
 			<span class="label label-danger">Disabled</span>
 		</cfif>
 	</cfif>
+	
 	
 	
 					</div>
@@ -155,9 +156,9 @@ href="#event.buildLink( prc.xehSitesManager )#"
 								</div>
 							</div>
 
-							<!--- Domain Aliases Component --->  
+							<!--- Domain Aliases Component --->   
 							<div x-data="domainAliases()">
-								<!--- The property holder --->  
+								<!--- The property holder --->   
 								<input type="hidden" name="domainAliases" x-model="domainAliases">
 								<button type="button" class="btn btn-info" @click="addDomainAlias()">+ Add Domain Alias</button>
 
@@ -253,9 +254,11 @@ value="cbBlog"
 			</cfif>
 			
 			
+			
 												>
 													Latest Blog Entries
 												</option>
+
 
 
 		</cfif>
@@ -268,12 +271,15 @@ value="#thispage[ "slug" ]#"
 			</cfif>
 			
 			
+			
 												>
 													#thisPage[ "title" ]#
 												</option>
 
 
+
 		</cfloop>
+		
 		
 		
 										</select>
@@ -281,7 +287,9 @@ value="#thispage[ "slug" ]#"
 								</div>
 
 
+
 	</cfif>
+	
 	
 	
 
@@ -303,6 +311,7 @@ value="#thispage[ "slug" ]#"
 									>
 
 
+
 	<cfloop collection="#prc.themes#" item="themeKey">
 		<option
 value="#themeKey#"
@@ -312,12 +321,15 @@ value="#themeKey#"
 		</cfif>
 		
 		
+		
 										>
 											#prc.themes[ themeKey ].themeName#
 										</option>
 
 
+
 	</cfloop>
+	
 	
 	
 									</select>
@@ -342,6 +354,7 @@ value="#themeKey#"
 									>
 
 
+
 	<cfloop array="#prc.registeredDisks#" item="disk">
 		<option
 value="#disk#"
@@ -350,19 +363,22 @@ value="#disk#"
 		</cfif>
 		
 		
+		
 										>
 											#disk#
 										</option>
 
 
+
 	</cfloop>
+	
 	
 	
 									</select>
 								</div>
 							</div>
 
-							<!--- Blog Enabled --->  
+							<!--- Blog Enabled --->   
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -383,7 +399,7 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Sitemap --->  
+							<!--- Sitemap --->   
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -404,7 +420,7 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Site Admin Bar --->  
+							<!--- Site Admin Bar --->   
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -425,7 +441,7 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Site SSL --->  
+							<!--- Site SSL --->   
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -447,7 +463,7 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Powered by Header --->  
+							<!--- Powered by Header --->   
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -471,6 +487,7 @@ value="#disk#"
 
 
 
+
 	<cfif prc.site.getSlug() NEQ "default">
 		<div class="form-group alert alert-danger">#html.label(
 				class   = "control-label",
@@ -487,7 +504,7 @@ value="#disk#"
 			)##html.hiddenField( name = "isActive", bind = prc.site )#</div>
 </div>
 	</cfif>
-	#html.endFieldSet()#<!--- Action Bar --->  
+	#html.endFieldSet()#<!--- Action Bar --->   
 						<div class="form-actions">
 							<button
 								class="btn btn-default"
@@ -508,6 +525,7 @@ value="#disk#"
 			 </div>
 		</div>
 	</div>
+
 
 
 </cfoutput>

@@ -19,6 +19,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	</cfif>
 	
 	
+	
 
 	// table sorting + filtering
 	$( "##groupFilter" ).keyup(
@@ -30,6 +31,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
+
 
 
 
@@ -55,7 +57,9 @@ function exportSelected( exportEvent ){
 	</cfif>
 	
 	
+	
 </script>
+
 
 
 </cfoutput>

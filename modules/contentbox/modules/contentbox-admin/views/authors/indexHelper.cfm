@@ -159,7 +159,9 @@ function exportSelected( exportEvent ){
 	</cfif>
 	
 	
+	
 </script>
+
 
 
 </cfoutput>
