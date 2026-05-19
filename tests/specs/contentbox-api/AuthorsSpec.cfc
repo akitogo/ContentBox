@@ -28,9 +28,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Authors API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -38,13 +38,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to list all authors",
-					function() {
+					() => {
 						given(
 							"no options",
-							function() {
+							() => {
 								then(
 									"it can display all active system authors",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/authors" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeArray().notToBeEmpty();
@@ -52,7 +52,7 @@ component extends="tests.resources.BaseApiTest" {
 											.getResponse()
 											.getData()
 											.each(
-												function( thisItem ) {
+												( thisItem ) => {
 													expect( thisItem.isActive ).toBeTrue( thisItem.toString() );
 												}
 											);
@@ -62,10 +62,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"isActive = false",
-							function() {
+							() => {
 								then(
 									"it should display inactive users",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/authors?isActive=false" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeArray().notToBeEmpty();
@@ -73,7 +73,7 @@ component extends="tests.resources.BaseApiTest" {
 											.getResponse()
 											.getData()
 											.each(
-												function( thisItem ) {
+												( thisItem ) => {
 													expect( thisItem.isActive ).toBeFalse( thisItem.toString() );
 												}
 											);
@@ -83,10 +83,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a search criteria",
-							function() {
+							() => {
 								then(
 									"it should display searched users",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/authors?search=tester" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeArray().notToBeEmpty();
@@ -99,13 +99,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to view an author by id",
-					function() {
+					() => {
 						given(
 							"a valid id",
-							function() {
+							() => {
 								then(
 									"then I should get the requested author",
-									function() {
+									() => {
 										var testUser = variables.authorService.findWhere( { "username" : "lmajano" } );
 										var event = this.get( "/cbapi/v1/authors/#testUser.getAuthorID()#" );
 										expect( event.getResponse() ).toHaveStatus( 200,
@@ -117,10 +117,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/authors/123122" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -133,19 +133,19 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to create a new author",
-					function() {
+					() => {
 						given(
 							"valid incoming data",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
 													permission : "TOOLS_IMPORT"
 												} );
 										withRollback(
-											function() {
+											() => {
 												var event = this.post(
 														"cbapi/v1/authors",
 														{
@@ -169,10 +169,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate username",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
 													permission : "TOOLS_IMPORT"
@@ -197,10 +197,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate email",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
 													permission : "TOOLS_IMPORT"
@@ -225,10 +225,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"basic invalid data",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post( "cbapi/v1/authors", {} );
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -245,15 +245,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to edit an author",
-					function() {
+					() => {
 						given(
 							"a valid id and valid data",
-							function() {
+							() => {
 								then(
 									"then it should update an author",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var testAuthor = variables.authorService.findWhere( {
 															username : "lmajano"
 														} );
@@ -272,10 +272,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.put( "/cbapi/v1/authors/1232222" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -288,13 +288,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to delete an author",
-					function() {
+					() => {
 						given(
 							"a valid id",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										try {
 											var testRole = variables.roleService.findWhere( {
 														role : "Administrator"
@@ -330,10 +330,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.delete( "/cbapi/v1/sites/default/categories/1232222" );
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );

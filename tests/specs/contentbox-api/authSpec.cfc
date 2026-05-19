@@ -14,9 +14,9 @@ component extends="tests.resources.BaseApiTest" {
 	function run() {
 		describe(
 			"Authentication Specs",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 						// Make sure nothing is logged in to start our calls
@@ -27,13 +27,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to authenticate a user via username/password and receive a JWT token",
-					function() {
+					() => {
 						given(
 							"a valid username and password",
-							function() {
+							() => {
 								then(
 									"I will be authenticated and will receive the JWT token",
-									function() {
+									() => {
 										// Use a user in the seeded db
 										var event = this.post(
 												"/cbapi/v1/login",
@@ -64,10 +64,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"invalid username and password",
-							function() {
+							() => {
 								then(
 									"I will receive a 401 invalid credentials exception ",
-									function() {
+									() => {
 										var event = this.post(
 												"/cbapi/v1/login",
 												{ username : "invalid", password : "invalid" }
@@ -84,13 +84,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to be able to logout from the system using my JWT token",
-					function() {
+					() => {
 						given(
 							"a valid incoming jwt token and I issue a logout",
-							function() {
+							() => {
 								then(
 									"my token should become invalidated and I will be logged out",
-									function() {
+									() => {
 										// Log in
 										var token = jwt.attempt( variables.testAdminUsername,
 												variables.testAdminPassword );
@@ -111,10 +111,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid incoming jwt token and I issue a logout",
-							function() {
+							() => {
 								then(
 									"I should see an error message",
-									function() {
+									() => {
 										// Now Logout
 										var event = post( "/cbapi/v1/logout", { "x-auth-token" : "123" } );
 										var response = event.getPrivateValue( "Response" );
@@ -129,13 +129,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to be able to know who I am by passing my token",
-					function() {
+					() => {
 						given(
 							"an valid token",
-							function() {
+							() => {
 								then(
 									"I should get my information",
-									function() {
+									() => {
 										var tokens = jwt.attempt( variables.testAdminUsername,
 												variables.testAdminPassword );
 										var payload = jwt.decode( tokens.access_token );
@@ -155,10 +155,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid token",
-							function() {
+							() => {
 								then(
 									"I should get an error",
-									function() {
+									() => {
 										// Now Logout
 										var event = GET( "/cbapi/v1/whoami", { "x-auth-token" : "123" } );
 										expect( event.getResponse() ).toHaveStatus( 401,
@@ -175,13 +175,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				xstory(
 					"I want to send a password reset reminder when I forget my password",
-					function() {
+					() => {
 						given(
 							"an valid email",
-							function() {
+							() => {
 								then(
 									"I should get a reminder sent",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/forgotPassword",
@@ -194,10 +194,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid email",
-							function() {
+							() => {
 								then(
 									"I should get an error",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/forgotPassword",
@@ -213,13 +213,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				xstory(
 					"I want to verify password reset tokens",
-					function() {
+					() => {
 						given(
 							"a valid reset token",
-							function() {
+							() => {
 								then(
 									"I should get a true validation",
-									function() {
+									() => {
 										var testUser = getInstance( "UserService" ).retrieveUserByUsername( variables.testAdminUsername );
 										var token = securityService.generatePasswordResetToken( testUser );
 										// Now Logout
@@ -232,10 +232,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid token",
-							function() {
+							() => {
 								then(
 									"I should get an error",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/verifyPasswordReset",
@@ -252,9 +252,9 @@ component extends="tests.resources.BaseApiTest" {
 
 				xstory(
 					"I want to reset a user password",
-					function() {
+					() => {
 						beforeEach(
-							function( currentSpec ) {
+							( currentSpec ) => {
 								testResetUser = getInstance( "UserService" ).retrieveUserByUsername( variables.testContractorEmail );
 								testResetToken = securityService.generatePasswordResetToken( testResetUser );
 							}
@@ -262,10 +262,10 @@ component extends="tests.resources.BaseApiTest" {
 
 						given(
 							"a valid reset token and not the previous password",
-							function() {
+							() => {
 								then(
 									"I should reset the password",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/resetPassword",
@@ -283,10 +283,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a valid token but incoming passwords don't match",
-							function() {
+							() => {
 								then(
 									"I should get an error",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/resetPassword",
@@ -304,10 +304,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid token",
-							function() {
+							() => {
 								then(
 									"I should get an error",
-									function() {
+									() => {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/resetPassword",
