@@ -24,9 +24,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Sites Settings API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -34,13 +34,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to get site settings",
-					function() {
+					() => {
 						given(
 							"a valid site slug",
-							function() {
+							() => {
 								then(
 									"it can display all site settings",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/settings" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeStruct().notToBeEmpty();
@@ -51,10 +51,10 @@ component extends="tests.resources.BaseApiTest" {
 
 						given(
 							"an invalid site slug",
-							function() {
+							() => {
 								then(
 									"it will show me an error",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/bogus/settings" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}

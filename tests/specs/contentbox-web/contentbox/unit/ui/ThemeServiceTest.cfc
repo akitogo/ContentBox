@@ -11,9 +11,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Theme Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						setup();
 						cbHelper = getInstance( "CBHelper@contentbox" );
 						model = getInstance( "ThemeService@contentbox" );
@@ -22,7 +22,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can build the theme registry",
-					function() {
+					() => {
 						expect( model.getThemeRegistry() ).notToBeEmpty();
 						expect( model.getCoreThemesPath() ).notToBeEmpty();
 						expect( model.getCustomThemesPath() ).notToBeEmpty();
@@ -32,7 +32,7 @@ component extends="tests.resources.BaseTest" {
 
 				xit(
 					"can find maintenance view",
-					function() {
+					() => {
 						var prc = getRequestContext().getPrivateCollection();
 						prc.cbThemeRoot = "/";
 						expect( model.themeMaintenanceViewExists() ).toBeFalse();
@@ -45,7 +45,7 @@ component extends="tests.resources.BaseTest" {
 
 				xit(
 					"can find the maintenance layout",
-					function() {
+					() => {
 						var prc = getRequestContext().getPrivateCollection();
 						prc.cbThemeRoot = "/";
 						expect( model.getThemeMaintenanceLayout() ).toBe( "pages" );
@@ -58,7 +58,7 @@ component extends="tests.resources.BaseTest" {
 
 				xit(
 					"can find the search layout",
-					function() {
+					() => {
 						var prc = getRequestContext().getPrivateCollection();
 						prc.cbThemeRoot = "/";
 						expect( model.getThemeSearchLayout() ).toBe( "pages" );

@@ -9,16 +9,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Security Rule Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = new contentbox.models.security.SecurityRule();
 					}
 				);
 
 				it(
 					"be created",
-					function() {
+					() => {
 						expect( model ).toBeComponent();
 					}
 				);

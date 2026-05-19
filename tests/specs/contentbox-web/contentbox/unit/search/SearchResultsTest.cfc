@@ -9,9 +9,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Search Results",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						setup();
 						model = getInstance( "SearchResults@contentbox" );
 					}
@@ -19,7 +19,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the memento",
-					function() {
+					() => {
 						var results = model.getMemento();
 						expect( results ).toBeStruct();
 					}
@@ -27,7 +27,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can populate",
-					function() {
+					() => {
 						var r = {
 							results       : [],
 							searchTime    : getTickCount(),

@@ -11,9 +11,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"CKEditor",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = prepareMock( getInstance( "CKEditor@contentbox-ckeditor" ) );
 						prc = getRequestContext().getPrivateCollection();
 						prc.cbAdminEntryPoint = "/cbadmin";
@@ -22,7 +22,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can compileJS",
-					function() {
+					() => {
 						makePublic( model, "compileJS" );
 						var t = model.compileJS(
 								{

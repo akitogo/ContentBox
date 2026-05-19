@@ -9,9 +9,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Search Service",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						setup();
 						searchService = getInstance( "SearchService@contentbox" );
 					}
@@ -19,7 +19,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the search adapter",
-					function() {
+					() => {
 						var adapter = searchService.getSearchAdapter();
 						expect( adapter ).toBeComponent();
 					}

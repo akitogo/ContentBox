@@ -11,9 +11,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"DB Search Adapter",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						setup();
 						model = getInstance( "DBSearch@contentbox" );
 					}
@@ -21,7 +21,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can do search with no results",
-					function() {
+					() => {
 						var r = model.search( searchTerm = "bogus pocus" );
 
 						expect( r.getTotal() ).toBe( 0 );
@@ -33,7 +33,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can do search with results",
-					function() {
+					() => {
 						var r = model.search( searchTerm = "Support" );
 
 						expect( r.getTotal() ).toBeGT( 0 );
@@ -46,7 +46,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can render search results",
-					function() {
+					() => {
 						// setup
 						var r = model.search( searchTerm = "Support" );
 						var prc = getRequestContext().getPrivateCollection();
@@ -61,7 +61,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can render search with no results",
-					function() {
+					() => {
 						// setup
 						var r = model.search( searchTerm = "bogus pocus" );
 						var prc = getRequestContext().getPrivateCollection();

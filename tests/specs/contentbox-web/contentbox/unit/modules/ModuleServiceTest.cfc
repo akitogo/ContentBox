@@ -23,9 +23,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Module Services",
-			function() {
+			() => {
 				aroundEach(
-					function( spec, suite ) {
+					( spec, suite ) => {
 						ormClearSession();
 						ormCloseSession();
 						try {
@@ -41,14 +41,14 @@ component extends="tests.resources.BaseTest" {
 				);
 
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "ModuleService@contentbox" );
 					}
 				);
 
 				it(
 					"can populate a module",
-					function() {
+					() => {
 						var module = entityNew( "cbModule" );
 						var mock = createStub();
 						mock.title = mock.description = mock.author = mock.webURL = mock.forgeboxslug = mock.entryPoint = "unit";
@@ -62,7 +62,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can find modules",
-					function() {
+					() => {
 						var r = model.findModules();
 						expect( r.count ).toBeGTE( 1 );
 					}
@@ -70,13 +70,13 @@ component extends="tests.resources.BaseTest" {
 
 				story(
 					"Find modules by entry point",
-					function() {
+					() => {
 						given(
 							"an invalid entrypoint",
-							function() {
+							() => {
 								then(
 									"it should return a new module",
-									function() {
+									() => {
 										var r = model.findModuleByEntryPoint( "invalid" );
 										expect( r.isLoaded() ).toBeFalse();
 									}
@@ -86,10 +86,10 @@ component extends="tests.resources.BaseTest" {
 
 						given(
 							"a valid entrypoint",
-							function() {
+							() => {
 								then(
 									"it should return a new module",
-									function() {
+									() => {
 										var r = model.findModuleByEntryPoint( "HelloContentBox" );
 										expect( r.isLoaded() ).toBeTrue();
 									}

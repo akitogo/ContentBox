@@ -10,9 +10,9 @@ component extends="tests.resources.BaseTest" {
 		// all your suites go here.
 		describe(
 			"Comment Service",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Capture the request so the debugger can track our data. since we are in unit mode.
 						getController().getRequestService().requestCapture();
 						commentService = getInstance( "CommentService@contentbox" );
@@ -21,7 +21,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get approved comment count",
-					function() {
+					() => {
 						var r = commentService.getApprovedCount();
 						expect( r ).toBeGT( 0 );
 					}
@@ -29,7 +29,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get unapproved comment count",
-					function() {
+					() => {
 						var r = commentService.getUnApprovedCount();
 						expect( r ).toBeGT( 0 );
 					}
@@ -37,17 +37,17 @@ component extends="tests.resources.BaseTest" {
 
 				describe(
 					"Approved Comment Finders",
-					function() {
+					() => {
 						it(
 							"cand find all",
-							function() {
+							() => {
 								var r = commentService.findAllApproved();
 								expect( r.count ).toBeGT( 0 );
 							}
 						);
 						it(
 							"can find by content ID",
-							function() {
+							() => {
 								var r = commentService.findAllApproved( contentID = "779cd806-a444-11eb-ab6f-0290cc502ae3" );
 								expect( r.count ).toBe( 0 );
 
@@ -57,7 +57,7 @@ component extends="tests.resources.BaseTest" {
 						);
 						it(
 							"can find by content types",
-							function() {
+							() => {
 								var r = commentService.findAllApproved( contentType = "invalid" );
 								expect( r.count ).toBe( 0 );
 
@@ -70,7 +70,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can do comment searching by parameters",
-					function() {
+					() => {
 						// test get all
 						var r = commentService.search();
 						expect( r.count ).toBeGT( 0 );

@@ -24,9 +24,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Global Settings API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -34,13 +34,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to get global settings",
-					function() {
+					() => {
 						given(
 							"a valid request",
-							function() {
+							() => {
 								then(
 									"it can display all global settings",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/settings" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeStruct().notToBeEmpty();

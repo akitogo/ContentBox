@@ -9,9 +9,9 @@ component extends="tests.resources.BaseTest" {
 		// all your suites go here.
 		describe(
 			"Email Two Factor Provider",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						mockUser = getInstance( "authorService@contentbox" ).findByUsername( "lmajano" );
 						provider = getInstance( "EmailTwoFactorProvider@contentbox-email-twofactor" );
 					}
@@ -19,7 +19,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get names",
-					function() {
+					() => {
 						expect( provider.getName() ).toBe( "email" );
 						expect( provider.getDisplayName() ).toBe( "Email" );
 					}
@@ -27,14 +27,14 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get trusted devices",
-					function() {
+					() => {
 						expect( provider.allowTrustedDevice() ).toBeTrue();
 					}
 				);
 
 				it(
 					"can generate validation tokens",
-					function() {
+					() => {
 						var token = provider.generateValidationToken( mockUser );
 						expect( token ).notToBeEmpty();
 					}
@@ -42,7 +42,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can send challenges",
-					function() {
+					() => {
 						var results = provider.sendChallenge( mockUser );
 						debug( results );
 						expect( results.error ).toBeFalse( results.toString() );

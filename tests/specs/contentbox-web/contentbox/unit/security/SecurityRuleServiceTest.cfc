@@ -9,16 +9,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Security Rule Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = prepareMock( getInstance( "SecurityRuleService@contentbox" ) );
 					}
 				);
 
 				it(
 					"can get max orders",
-					function() {
+					() => {
 						var t = model.getMaxOrder();
 						expect( t ).toBeNumeric();
 						expect( t + 1 ).toBe( model.getNextMaxOrder() );
@@ -27,7 +27,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can save rules",
-					function() {
+					() => {
 						var t = prepareMock( entityNew( "cbSecurityRule" ) );
 						model.$( "save" ).$( "getNextMaxOrder", 99 );
 						model.saveRule( t );

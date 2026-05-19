@@ -11,9 +11,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Settings Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = prepareMock( getInstance( "SettingService@contentbox" ) );
 						cache = model.getSettingsCacheProvider();
 					}
@@ -21,7 +21,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can flush settings",
-					function() {
+					() => {
 						model.storeSettings( { global : {}, sites : {} } );
 						expect( model.getAllSettings() ).toBeEmpty();
 						model.flushSettingsCache();
@@ -31,7 +31,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get all settings",
-					function() {
+					() => {
 						var r = model.getAllSettings();
 						expect( r ).toBeStruct().notToBeEmpty();
 					}

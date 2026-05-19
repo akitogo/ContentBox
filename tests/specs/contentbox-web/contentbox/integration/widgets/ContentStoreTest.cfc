@@ -20,16 +20,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Content Store Widget",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						widget = widgetService.getWidget( "ContentStore" );
 					}
 				);
 
 				it(
 					"can get valid content store items",
-					function() {
+					() => {
 						var r = widget.renderIt( "foot" );
 						expect( r.len() ).toBeGT( 0 );
 					}
@@ -37,9 +37,9 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get invalid content store items with an exception",
-					function() {
+					() => {
 						expect(
-							function() {
+							() => {
 								widget.renderIt( "invalid" );
 							}
 						).toThrow();
@@ -48,7 +48,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get invalid content with a default value",
-					function() {
+					() => {
 						var r = widget.renderIt( "invalid", "" );
 						expect( r ).toBe( "" );
 					}
@@ -56,7 +56,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get expired content with a default value of empty",
-					function() {
+					() => {
 						var r = widget.renderIt( "my-expired-content-store" );
 						expect( r ).toBe( "" );
 					}

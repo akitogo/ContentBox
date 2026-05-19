@@ -23,16 +23,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Entry Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "EntryService@contentbox" );
 					}
 				);
 
 				it(
 					"can get archives report",
-					function() {
+					() => {
 						var r = model.getArchiveReport();
 						expect( arrayLen( r ) ).toBeGT( 0 );
 					}
@@ -40,7 +40,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get IDs by slug",
-					function() {
+					() => {
 						var r = model.getIDBySlug( "bogus" );
 						expect( r ).toBe( "" );
 
@@ -51,7 +51,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can search for entries",
-					function() {
+					() => {
 						var r = model.search();
 						expect( r.count ).toBeGT( 0 );
 
@@ -82,7 +82,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can find published entries by published dates",
-					function() {
+					() => {
 						var entry = entityLoad( "cbEntry" )[ 1 ];
 
 						// nothing
@@ -113,7 +113,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can find published entries by criteria",
-					function() {
+					() => {
 						var r = model.findPublishedContent();
 						expect( r.count ).toBeGT( 0 );
 

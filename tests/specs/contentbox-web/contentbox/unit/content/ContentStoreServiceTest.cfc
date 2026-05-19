@@ -23,16 +23,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Content Store Service",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "ContentStoreService@contentbox" );
 					}
 				);
 
 				it(
 					"can search for content items",
-					function() {
+					() => {
 						// test get all
 						var r = model.search();
 						expect( r.count ).toBeGT( 0 );

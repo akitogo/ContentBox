@@ -11,16 +11,16 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 	function run( testResults, testBox ) {
 		describe(
 			"Relocations",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = relocationService.new( { target : "unittest", slug : "unittest" } );
 					}
 				);
 
 				it(
 					"can produce a memento",
-					function() {
+					() => {
 						var memento = model.getMemento();
 						expect( memento )
 							.tobeStruct()
@@ -34,7 +34,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"will remove leading and trailing slashes from new relocation slugs",
-					function() {
+					() => {
 						model.setSlug( "/unittest/" );
 						expect( model.getSlug() ).toBe( "unittest" );
 					}
@@ -42,13 +42,13 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"Can search for a relocation by siteId",
-					function() {
+					() => {
 						var defaultSite = siteService.findBySlug( "default" );
 						var response = relocationService.search( siteID = defaultSite.getSiteId() );
 						expect( response ).toHaveKey( "relocations" );
 						expect( response.relocations ).toBeArray();
 						response.relocations.each(
-								function( r ) {
+								( r ) => {
 									expect( r.getSite().getSiteID() ).toBe( defaultSite.getSiteId() );
 								}
 							);
@@ -57,7 +57,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"Can search for a relocation by a partial value of the slug",
-					function() {
+					() => {
 						var defaultSite = siteService.findBySlug( "default" );
 						var response = relocationService.search( search = "unittest" );
 						expect( response ).toHaveKey( "relocations" );

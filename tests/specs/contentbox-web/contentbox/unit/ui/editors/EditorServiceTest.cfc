@@ -11,16 +11,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Editor Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "EditorService@contentbox" );
 					}
 				);
 
 				it(
 					"can get registered editors",
-					function() {
+					() => {
 						model.getEditors()[ "test" ] = this;
 						model.getEditors()[ "Awesome" ] = this;
 						var a = model.getRegisteredEditors();
@@ -35,7 +35,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can register a new editor",
-					function() {
+					() => {
 						var editor = prepareMock( new MockEditor() );
 						model.registerEditor( editor );
 						assertEquals( editor, model.getEditor( "mock-editor" ) );
@@ -44,7 +44,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can unregister editors",
-					function() {
+					() => {
 						var editor = prepareMock( new MockEditor() );
 						model.registerEditor( editor ).unRegisterEditor( "mock-editor" );
 						assertFalse( structKeyExists( model.getEditors(), "mock-editor" ) );

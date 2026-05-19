@@ -9,9 +9,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"DB Search Adapter",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						setup();
 						service = getInstance( "MediaService@contentbox" ).init( getWireBox() );
 					}
@@ -19,7 +19,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can register and get providers",
-					function() {
+					() => {
 						var provider = service.getProvider( "CFContentMediaProvider" );
 						expect( provider ).toBeComponent();
 						assertEquals( "CFContentMediaProvider", provider.getName() );
@@ -29,14 +29,14 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the default provider",
-					function() {
+					() => {
 						assertEquals( "CFContentMediaProvider", service.getDefaultProviderName() );
 					}
 				);
 
 				it(
 					"can unregister a provider",
-					function() {
+					() => {
 						service.unregisterProvider( "CFContentMediaProvider" );
 						expect( service.getRegisteredProviders() ).notToInclude( "CFContentMediaProvider" );
 					}
@@ -44,7 +44,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the registered providers map",
-					function() {
+					() => {
 						var map = service.getRegisteredProvidersMap();
 						debug( map );
 						expect( map ).toBeArray().notToBeEmpty();
@@ -53,7 +53,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the path to the core media root",
-					function() {
+					() => {
 						var path = service.getCoreMediaRoot();
 						expect( path ).toInclude( "/contentbox-custom/_content" );
 					}
@@ -61,7 +61,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the absolute path to the core media root",
-					function() {
+					() => {
 						var path = service.getCoreMediaRoot( true );
 						expect( directoryExists( path ) ).toBeTrue();
 					}

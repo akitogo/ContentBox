@@ -11,16 +11,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Author Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = entityNew( "cbAuthor" );
 					}
 				);
 
 				it(
 					"can load properly",
-					function() {
+					() => {
 						var testUser = entityLoad( "cbAuthor" )[ 1 ];
 						expect( testUser.isLoaded() ).toBeTrue();
 					}
@@ -28,7 +28,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can display created dates",
-					function() {
+					() => {
 						var d = model.getDisplayCreatedDate( timeFormat = "hh:mm tt" );
 						expect( dateDiff(
 								"d",
@@ -40,7 +40,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can display last login timestamps",
-					function() {
+					() => {
 						var d = model.getDisplayLastLogin();
 						expect( d ).toBe( "Never Logged In" );
 
@@ -52,7 +52,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get/set all preferences",
-					function() {
+					() => {
 						expect( model.getAllPreferences() ).toBeStruct();
 						var pref = { editor : "textarea", test : "nada" };
 						model.setPreferences( pref );
@@ -64,7 +64,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get and set preferences with marshalling",
-					function() {
+					() => {
 						// with default
 						var v = model.getPreference( "invalid", "test" );
 						expect( v ).toBe( "test" );
@@ -76,7 +76,7 @@ component extends="tests.resources.BaseTest" {
 
 						// invalid
 						expect(
-							function() {
+							() => {
 								model.getPreference( "invalid" );
 							}
 						).toThrow();
@@ -89,7 +89,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can check permissions even without a role",
-					function() {
+					() => {
 						expect( model.hasPermission( "test" ) ).toBeFalse();
 					}
 				);

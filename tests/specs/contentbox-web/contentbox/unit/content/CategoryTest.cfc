@@ -10,16 +10,16 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 	function run( testResults, testBox ) {
 		describe(
 			"Categories",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = categoryService.new( { category : "unittest", slug : "unittest" } );
 					}
 				);
 
 				it(
 					"can produce a memento",
-					function() {
+					() => {
 						var memento = model.getMemento();
 						expect( memento )
 							.tobeStruct()
@@ -31,7 +31,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"can get published pages count",
-					function() {
+					() => {
 						var thisCategory = categoryService.findBySlug( "coldbox" );
 						var count = thisCategory.getNumberOfPublishedPages();
 						expect( count ).toBeGTE( 1 );
@@ -40,7 +40,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"can get published entries count",
-					function() {
+					() => {
 						var thisCategory = categoryService.findBySlug( "coldfusion" );
 						var count = thisCategory.getNumberOfPublishedEntries();
 						expect( count ).toBeGTE( 1 );
@@ -49,7 +49,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 
 				it(
 					"can get published content store count",
-					function() {
+					() => {
 						var thisCategory = categoryService.findBySlug( "coldfusion" );
 						var count = thisCategory.getNumberOfPublishedContentStore();
 						expect( count ).toBeGTE( 1 );

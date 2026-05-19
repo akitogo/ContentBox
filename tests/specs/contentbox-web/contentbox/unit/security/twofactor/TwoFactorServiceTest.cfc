@@ -24,9 +24,9 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Two Factor Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = prepareMock( getInstance( "TwoFactorService@contentbox" ) );
 						mockProvider = createStub(
 							implements = "contentbox.models.security.twofactor.ITwoFactorProvider"
@@ -41,28 +41,28 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can validate global force authentication",
-					function() {
+					() => {
 						expect( model.isForceTwoFactorAuth() ).toBeBoolean();
 					}
 				);
 
 				it(
 					"can initialize and register the default provider",
-					function() {
+					() => {
 						expect( model.getProviders() ).notToBeEmpty();
 					}
 				);
 
 				it(
 					"can get the default provider name",
-					function() {
+					() => {
 						expect( model.getDefaultProvider() ).toBe( "Email" );
 					}
 				);
 
 				it(
 					"can get registered providers",
-					function() {
+					() => {
 						var a = model.getRegisteredProviders();
 						expect( a ).toInclude( "Email" );
 					}
@@ -70,7 +70,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get the registered providers display map",
-					function() {
+					() => {
 						var map = model.getRegisteredProvidersMap();
 						expect( map[ 1 ].displayName ).toBe( "Email" );
 					}
@@ -78,7 +78,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can get a provider instance",
-					function() {
+					() => {
 						var provider = model.getProvider( "email" );
 						expect( isObject( provider ) ).toBeTrue();
 					}
@@ -86,14 +86,14 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can verify providers",
-					function() {
+					() => {
 						expect( model.hasProvider( "email" ) ).toBeTrue();
 					}
 				);
 
 				it(
 					"can unregister providers",
-					function() {
+					() => {
 						var provider = createStub(
 							implements = "contentbox.models.security.twofactor.ITwoFactorProvider"
 						).$( "getName", "mock" ).$( "getDisplayName", "mock" );
@@ -106,7 +106,7 @@ component extends="tests.resources.BaseTest" {
 
 				xit(
 					"can set trusted devices",
-					function() {
+					() => {
 						model.setTrustedDevice( "luis" );
 						expect( cookie[ "CONTENTBOX_2FACTOR_DEVICE" ] ).notToBeEmpty();
 					}
@@ -114,7 +114,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can validate trusted devices",
-					function() {
+					() => {
 						model.setTrustedDevice( "luis" );
 						expect( model.isTrustedDevice( "luis" ) ).toBeTrue();
 
@@ -124,7 +124,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can send provider challenges",
-					function() {
+					() => {
 						var thisUser = getInstance( "AuthorService@contentbox" ).findByUsername( "lmajano" );
 						var results = { error : false, messages : "message sent" };
 						mockProvider.$( "sendChallenge", results );
@@ -134,19 +134,19 @@ component extends="tests.resources.BaseTest" {
 
 				story(
 					"I can challenge for two factor authentication with trusted device features",
-					function() {
+					() => {
 						beforeEach(
-							function() {
+							() => {
 								thisUser = getInstance( "AuthorService@contentbox" ).findByUsername( "lmajano" );
 								model.registerProvider( mockProvider );
 							}
 						);
 						given(
 							"A global force and no trusted device",
-							function() {
+							() => {
 								then(
 									"I should challenge",
-									function() {
+									() => {
 										model.$( "isForceTwoFactorAuth", true ).$( "isTrustedDevice", false );
 										expect( model.canChallenge( thisUser ) ).toBeTrue();
 									}
@@ -155,10 +155,10 @@ component extends="tests.resources.BaseTest" {
 						);
 						given(
 							"A global force and a trusted device",
-							function() {
+							() => {
 								then(
 									"I should NOT challenge",
-									function() {
+									() => {
 										model.$( "isForceTwoFactorAuth", true ).$( "isTrustedDevice", true );
 										expect( model.canChallenge( thisUser ) ).toBeFalse();
 									}
@@ -167,10 +167,10 @@ component extends="tests.resources.BaseTest" {
 						);
 						given(
 							"No global force but user set authentication and no trusted device",
-							function() {
+							() => {
 								then(
 									"I should challenge",
-									function() {
+									() => {
 										thisUser.setIs2FactorAuth( true );
 										model.$( "isForceTwoFactorAuth", false ).$( "isTrustedDevice", false );
 										expect( model.canChallenge( thisUser ) ).toBeTrue();
@@ -180,10 +180,10 @@ component extends="tests.resources.BaseTest" {
 						);
 						given(
 							"No global force but user set authentication and a trusted device",
-							function() {
+							() => {
 								then(
 									"I should NOT challenge",
-									function() {
+									() => {
 										thisUser.setIs2FactorAuth( true );
 										model.$( "isForceTwoFactorAuth", false ).$( "isTrustedDevice", true );
 										expect( model.canChallenge( thisUser ) ).toBeFalse();

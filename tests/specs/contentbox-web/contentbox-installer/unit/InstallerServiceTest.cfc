@@ -16,10 +16,10 @@ component extends="tests.resources.BaseTest" {
 		// all your suites go here.
 		describe(
 			"Installer Service",
-			function() {
+			() => {
 				it(
 					"can process ColdBox Reinit passwords",
-					function() {
+					() => {
 						var setup = getInstance( "Setup@cbi" );
 						var original = fileRead( resourcesPath & "config/Coldbox.cfc" );
 

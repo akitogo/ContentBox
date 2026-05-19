@@ -23,16 +23,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Content Version Service",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "ContentVersionService@contentbox" );
 					}
 				);
 
 				it(
 					"can find related versions",
-					function() {
+					() => {
 						var r = model.findRelatedVersions( contentID = "779cd234-a444-11eb-ab6f-0290cc502ae3" );
 						expect( r.count ).toBeGT( 0 );
 					}

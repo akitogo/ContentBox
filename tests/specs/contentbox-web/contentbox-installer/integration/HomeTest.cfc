@@ -6,21 +6,21 @@ component extends="tests.resources.BaseTest" {
 		// all your suites go here.
 		describe(
 			"ContentBox Installer",
-			function() {
-				beforeEach( function( currentSpec ) {
+			() => {
+				beforeEach( ( currentSpec ) => {
 						setup();
 					} );
 
 				it(
 					"Can startup the installer",
-					function() {
+					() => {
 						var e = execute( "contentbox-installer:Home.index" );
 					}
 				);
 
 				it(
 					"Can finalize the installer",
-					function() {
+					() => {
 						var e = execute( "contentbox-installer:Home.finished" );
 					}
 				);

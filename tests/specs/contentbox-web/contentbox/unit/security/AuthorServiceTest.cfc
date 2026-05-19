@@ -18,10 +18,10 @@ component extends="tests.resources.BaseTest" {
 		// all your suites go here.
 		describe(
 			"Author Service",
-			function() {
+			() => {
 				it(
 					"can search for authors with 2 factor auth status",
-					function() {
+					() => {
 						var results = authorService.search( twoFactorAuth = "true" );
 						for ( var item in results.authors ) {
 							expect( item.getIs2FactorAuth() ).toBeTrue();
@@ -31,7 +31,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can search for authors without 2 factor auth status",
-					function() {
+					() => {
 						var results = authorService.search( twoFactorAuth = "false" );
 						for ( var item in results.authors ) {
 							expect( item.getIs2FactorAuth() ).toBeFalse();
@@ -41,14 +41,14 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can be created",
-					function() {
+					() => {
 						expect( isObject( authorService ) ).toBeTrue();
 					}
 				);
 
 				it(
 					"can get status author reports",
-					function() {
+					() => {
 						var report = authorService.getStatusReport();
 						expect( report )
 							.toHaveKey( "active" )
@@ -60,7 +60,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can check for non existent usernames",
-					function() {
+					() => {
 						var results = authorService.usernameFound( "bogus" );
 						expect( results ).toBeFalse();
 					}
@@ -68,7 +68,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can check for existent usernames",
-					function() {
+					() => {
 						var results = authorService.usernameFound( "lmajano" );
 						expect( results ).toBeTrue();
 					}
@@ -76,7 +76,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can check for non existent emails",
-					function() {
+					() => {
 						var results = authorService.emailFound( "bogus" );
 						expect( results ).toBeFalse();
 					}
@@ -84,7 +84,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can check for existent emails",
-					function() {
+					() => {
 						var results = authorService.emailFound( "lmajano@gmail.com" );
 						expect( results ).toBeTrue();
 					}

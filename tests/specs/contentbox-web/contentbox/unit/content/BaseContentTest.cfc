@@ -23,16 +23,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Base Content",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "BaseContent@contentbox" );
 					}
 				);
 
 				it(
 					"can add expired data time combinations",
-					function() {
+					() => {
 						// Test 1: empty
 						model.setExpireDate( "" );
 						model.addExpiredTime( "11", "00" );
@@ -48,7 +48,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can add published date time combinations",
-					function() {
+					() => {
 						// Test 1: empty
 						model.setPublishedDate( "" );
 						model.addPublishedTime( "11", "00" );

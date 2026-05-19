@@ -22,16 +22,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Comment Form Widget",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						widget = widgetService.getWidget( "CommentForm" );
 					}
 				);
 
 				it(
 					"can render a form with no content object passed",
-					function() {
+					() => {
 						var r = widget.renderIt( "" );
 						expect( r.len() ).toBeGT( 0 );
 					}
@@ -39,7 +39,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can render a form with an invalid slug",
-					function() {
+					() => {
 						var r = widget.renderIt( "bogus" );
 						expect( r ).toInclude( "bogus was not found, cannot generate comment form" );
 					}
@@ -47,7 +47,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"can render a form with an valid slug",
-					function() {
+					() => {
 						var r = widget.renderIt( "support" );
 						expect( r ).toInclude( "<form " ).toInclude( "action=" );
 					}

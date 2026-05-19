@@ -23,16 +23,16 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"Page Services",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						model = getInstance( "PageService@contentbox" );
 					}
 				);
 
 				it(
 					"can search for entries",
-					function() {
+					() => {
 						var r = model.search();
 						expect( r.count ).toBeGT( 0 );
 
@@ -60,7 +60,7 @@ component extends="tests.resources.BaseTest" {
 
 				it(
 					"cand find published pages",
-					function() {
+					() => {
 						var r = model.findPublishedContent();
 						expect( r.count ).toBeGT( 0 );
 
