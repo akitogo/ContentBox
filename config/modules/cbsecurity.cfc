@@ -108,7 +108,8 @@ component {
 				// the Content-Type headers should be followed and not be changed => X-Content-Type-Options: nosniff
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
 				"contentTypeOptions" : { "enabled" : true },
-				"customHeaders"      : {// Name : value pairs as you see fit.},
+				// Name : value pairs as you see fit. These are added to all responses and can be used for custom headers or to add headers that are not yet supported by cbsecurity
+				"customHeaders"      : {},
 				// Disable Click jacking: X-Frame-Options: DENY OR SAMEORIGIN
 				// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 				"frameOptions" : { "enabled" : true, "value" : "SAMEORIGIN" },

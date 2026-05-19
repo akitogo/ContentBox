@@ -28,7 +28,7 @@ component {
 		verifyCustomModule();
 
 		// contentbox settings
-		settings = {
+		variables.settings = {
 			// Code name
 			"codename"     : "Psalm 144:1",
 			"codenameLink" : "https://www.bible.com/bible/114/psa.144.1.nkjv",
@@ -56,30 +56,30 @@ component {
 				// Global settings
 				"global" : {},
 				// Site specific settings according to site slug
-				"sites"  : {// siteSlug : { ... }}
+				"sites"  : {}
 			}
 		};
 
 		// i18n
-		cbi18n = { resourceBundles : { "cbcore" : "#moduleMapping#/i18n/cbcore" } };
+		variables.cbi18n = { resourceBundles : { "cbcore" : "#moduleMapping#/i18n/cbcore" } };
 
 		// CB Module Conventions
 		conventions = { layoutsLocation : "themes", viewsLocation : "themes" };
 
 		// Parent Affected Settings
-		parentSettings = {
+		variables.parentSettings = {
 			// File Browser module name override
 			filebrowser_module_name : "contentbox-filebrowser"
 		};
 
 		// ContentBox Core Custom Events
-		interceptorSettings = { customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"] };
+		variables.interceptorSettings = { customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"] };
 
 		// Async Executors for ContentBox Core
 		// executors = { "contentbox-tasks" : { type : "scheduled", threads : 20 } };
 
 		// interceptors
-		interceptors = [
+		variables.interceptors = [
 			// Rate Limiter
 			{
 				class : "contentbox.models.security.RateLimiter",
@@ -121,7 +121,7 @@ component {
 
 		// Manual Mappings
 		// binder.map( "customFieldService@contentbox" ).toDSL( "entityService:cbCustomField" );
-		binder.map( "SystemUtil@contentbox" ).to( "coldbox.system.core.util.Util" );
+		variables.binder.map( "SystemUtil@contentbox" ).to( "coldbox.system.core.util.Util" );
 	}
 
 	/**

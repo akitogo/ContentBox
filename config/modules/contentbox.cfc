@@ -14,7 +14,7 @@ component {
 				// Global settings
 				"global" : {},
 				// Site specific settings according to site slug
-				"sites"  : {// siteSlug : { ... }}
+				"sites"  : {}
 			}
 		};
 	}
