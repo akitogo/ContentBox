@@ -19,24 +19,24 @@
     "quote_keys" : false,
     "separator" : " : ",
     "multiline" : {
-      "element_count" : 2,
+      "element_count" : 5,
       "comma_dangle" : false,
       "leading_comma" : {
         "enabled" : false,
         "padding" : true
       },
-      "min_length" : 60
+      "min_length" : 50
     }
   },
   "property" : {
     "multiline" : {
-      "element_count" : 3,
+      "element_count" : 5,
       "comma_dangle" : false,
       "leading_comma" : {
         "enabled" : false,
         "padding" : true
       },
-      "min_length" : 30
+      "min_length" : 50
     },
     "key_value" : {
       "padding" : false
@@ -46,7 +46,7 @@
     "padding" : true,
     "empty_padding" : false,
     "multiline" : {
-      "element_count" : 2,
+      "element_count" : 5,
       "comma_dangle" : false,
       "leading_comma" : {
         "enabled" : false,
@@ -64,7 +64,7 @@
       "padding" : true,
       "empty_padding" : false,
       "comma_dangle" : false,
-      "multiline_count" : 3,
+      "multiline_count" : 5,
       "multiline_length" : 50
     },
     "arrow" : {
@@ -104,7 +104,7 @@
     "self_closing" : false
   },
   "import" : {
-    "sort" : false,
+    "sort" : true,
     "group" : false
   },
   "comments" : {

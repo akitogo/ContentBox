@@ -54,7 +54,9 @@
         "contentbox:migrate":"migrate up manager=contentbox",
         "contentbox:migrate:up":"run-script contentbox:migrate",
         "contentbox:migrate:down":"migrate down manager=contentbox",
-        "contentbox:migrate:fresh":"migrate fresh manager=contentbox"
+        "contentbox:migrate:fresh":"migrate fresh manager=contentbox",
+		"format":"!boxlang format --source config,handlers,modules/contentbox,tests/specs",
+		"format:check":"!boxlang format --check --source config,handlers,modules/contentbox,tests/specs"
     },
     "testbox":{
         "runner":[
