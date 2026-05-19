@@ -26,9 +26,9 @@ component extends="tests.resources.BaseApiTest" {
 		// all your suites go here.
 		describe(
 			"Site Categories API Suite",
-			function() {
+			() => {
 				beforeEach(
-					function( currentSpec ) {
+					( currentSpec ) => {
 						// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 						setup();
 					}
@@ -36,13 +36,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to view a category by id or slug",
-					function() {
+					() => {
 						given(
 							"a valid id",
-							function() {
+							() => {
 								then(
 									"then I should get the requested category",
-									function() {
+									() => {
 										var testCategory = variables.categoryService.findWhere(
 												{
 													"slug" : "coldbox",
@@ -60,10 +60,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a valid slug",
-							function() {
+							() => {
 								then(
 									"then I should get the requested category",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/categories/coldbox" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData().slug ).toBe( "coldbox" );
@@ -73,10 +73,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/categories/bogus" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}
@@ -88,13 +88,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to list all site categories",
-					function() {
+					() => {
 						given(
 							"no options",
-							function() {
+							() => {
 								then(
 									"it can display all site categories",
-									function() {
+									() => {
 										var event = this.get( "/cbapi/v1/sites/default/categories" );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeArray().notToBeEmpty();
@@ -107,15 +107,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to create a site category",
-					function() {
+					() => {
 						given(
 							"valid incoming data",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/categories",
 														{ category : "bddtest", slug : "bddtest" }
@@ -131,10 +131,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"duplicate category slug",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/categories",
 												{ category : "coldbox", slug : "coldbox" }
@@ -147,10 +147,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"invalid data",
-							function() {
+							() => {
 								then(
 									"it should display an error message",
-									function() {
+									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/categories",
 												{ name : "A nice category" }
@@ -166,15 +166,15 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to edit a category",
-					function() {
+					() => {
 						given(
 							"a valid id/slug and valid data",
-							function() {
+							() => {
 								then(
 									"then it should update a category",
-									function() {
+									() => {
 										withRollback(
-											function() {
+											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/categories/coldbox",
 														{ category : "ColdBox Rocks" }
@@ -189,10 +189,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"a non-unique slug",
-							function() {
+							() => {
 								then(
 									"then I should see a validation message",
-									function() {
+									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/categories/coldbox",
 												{ slug : "coldfusion" }
@@ -205,10 +205,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.put( "/cbapi/v1/sites/categories/123" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}
@@ -220,13 +220,13 @@ component extends="tests.resources.BaseApiTest" {
 
 				story(
 					"I want to delete a category",
-					function() {
+					() => {
 						given(
 							"a valid id/slug",
-							function() {
+							() => {
 								then(
 									"then I should see the confirmation",
-									function() {
+									() => {
 										try {
 											var testCategory = variables.categoryService.save(
 													variables.categoryService.new(
@@ -249,10 +249,10 @@ component extends="tests.resources.BaseApiTest" {
 						);
 						given(
 							"an invalid id or slug",
-							function() {
+							() => {
 								then(
 									"then I should see an error message",
-									function() {
+									() => {
 										var event = this.delete( "/cbapi/v1/sites/default/categories/1232222" );
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}

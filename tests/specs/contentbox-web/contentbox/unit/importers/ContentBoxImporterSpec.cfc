@@ -16,17 +16,17 @@ component extends="tests.resources.BaseTest" {
 	function run( testResults, testBox ) {
 		describe(
 			"ContentBox Importer Service",
-			function() {
+			() => {
 				it(
 					"can be created",
-					function() {
+					() => {
 						expect( contentboxImporter ).toBeComponent();
 					}
 				);
 
 				it(
 					"can import settings",
-					function() {
+					() => {
 						withRollback(
 							() => {
 								var importData = deserializeJSON(
