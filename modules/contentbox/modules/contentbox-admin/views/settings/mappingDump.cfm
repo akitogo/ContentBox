@@ -7,7 +7,7 @@
 </div>
 <div class="modal-body">
 	<cfdump var="#prc.mapping.getMemento()#" expand="false">
-	</div><!--- Button Bar --->   <div class="modal-footer">
+	</div><!--- Button Bar --->    <div class="modal-footer">
 			<button class="btn btn-danger" onclick="closeRemoteModal()"> Close </button>
 		</div>
 	</div>

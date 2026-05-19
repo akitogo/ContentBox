@@ -20,7 +20,7 @@
 			multipart  = true
 		)#<div class="panel panel-default">
 
-<div class="panel-heading"><!--- Title --->   <div class="size16 p10">
+<div class="panel-heading"><!--- Title --->    <div class="size16 p10">
 		<i class="fa fa-archive"></i> Box Archives + Database Imports
 		</div>
 </div>
@@ -63,7 +63,7 @@
 			</label>
 		</div>
 	</div>
-</div><!--- ************************************************************************************************ --->   <div id="contentbox-import">
+</div><!--- ************************************************************************************************ --->    <div id="contentbox-import">
 <p>
 	With this tool, you can import an existing ContentBox site (created by using the Export Tools). Yes, that's right: an entire ContentBox site!
 	Simply upload a valid ContentBox export package file (<strong>.cbox</strong>). You'll be shown a handy preview of the import that will occur, and will also have the opportunity to specify whether or not you'd like to overwrite existing content.
@@ -83,12 +83,12 @@
 			</div>
 		</div>
 	</fieldset>
-</div><!--- ************************************************************************************************ --->   <div id="database-import" style="display:none;">
+</div><!--- ************************************************************************************************ --->    <div id="database-import" style="display:none;">
 					<p>
 						From this import tool you can connect to other content datasources and import your data into ContentBox.
 						All importing messages are being logged,
 so please verify your application logs for information.
-					</p><!--- dsn Info --->   <fieldset>
+					</p><!--- dsn Info --->    <fieldset>
 <legend><i class="fa fa-bolt fa-lg"></i> <strong>Datasource Options</strong></legend>
 	<p>
 		This server must have a defined datasource to the source blog database in order to import it. Please
@@ -130,7 +130,7 @@ so please verify your application logs for information.
 		)#<div class="controls">
 <small>The table prefix used by the source software.</small><br/>#html.textField( name = "tableprefix",
 			class = "form-control" )#</div>
-</div><!--- Default Password --->   <div class="form-group">#html.label(
+</div><!--- Default Password --->    <div class="form-group">#html.label(
 			field   = "defaultPassword",
 			content = "Default Author Password:",
 			class   = "control-label"
@@ -150,7 +150,7 @@ default password for all authors and then do password change requests.</small><b
 			groupWrapper = "div class=form-group"
 		)#</fieldset>
 
-</div><!--- Submit Button --->   <div class="actionBar" id="uploadBar">#html.button(
+</div><!--- Submit Button --->    <div class="actionBar" id="uploadBar">#html.button(
 			type  = "submit",
 			id    = "import_button",
 			value = "<i class='fa fa-play-circle'></i> Start Import",
@@ -161,7 +161,7 @@ default password for all authors and then do password change requests.</small><b
 		</div>
 	</div>
 </div>#html.endForm()#</div>
-</div><!--- ************************************************************************************************ --->   <div id="importDialog" class="modal fade" tabindex="-1" role="dialog">
+</div><!--- ************************************************************************************************ --->    <div id="importDialog" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div id="modalContent"></div>

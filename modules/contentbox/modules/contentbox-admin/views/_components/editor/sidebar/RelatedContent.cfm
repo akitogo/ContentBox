@@ -39,6 +39,7 @@
 			
 			
 			
+			
 							</td>
 							<td class="#publishedClass#">#content.getTitle()#</td>
 							<td width="14" class="center #publishedClass#">
@@ -49,7 +50,9 @@
 
 
 
+
 		</cfloop>
+		
 		
 		
 		
@@ -65,9 +68,11 @@
 
 
 
+
 		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
 			var currentContentID = "#rc.contentID#";
 		</cfif>
+		
 		
 		
 		
@@ -159,6 +164,7 @@
 		}
 	</script>
 </div>
+
 
 
 

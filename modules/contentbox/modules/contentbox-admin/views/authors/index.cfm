@@ -21,7 +21,7 @@
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Search --->   
+						<!--- Quick Search --->    
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
@@ -34,8 +34,9 @@
 
 						<div class="col-md-6 col-xs-8">
 
-							<!--- Actions Bar --->   
+							<!--- Actions Bar --->    
 							<div class="text-right">
+
 
 
 
@@ -79,6 +80,7 @@
 		
 		
 		
+		
 
 											<li>
 												<a href="javascript:contentShowAll()">
@@ -87,6 +89,7 @@
 											</li>
 								    	</ul>
 								    </div>
+
 
 
 
@@ -102,6 +105,7 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 	
 	
 	
+	
 
 							</div>
 						</div>
@@ -109,7 +113,7 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 				</div>
 
 				<div class="panel-body">
-					<!--- container --->   
+					<!--- container --->    
 					<div id="authorTableContainer">
 						<p class="text-center">
 							<i id="userLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -120,7 +124,7 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 		#html.endForm()#
 	</div>
 
-	<!--- Sidebar Filters --->   
+	<!--- Sidebar Filters --->    
 	<div class="col-md-3">
 
 		<div class="panel panel-primary">
@@ -146,7 +150,7 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 							</select>
 						</div>
 
-						<!--- 2 Factor Auth --->   
+						<!--- 2 Factor Auth --->    
 						<div class="form-group">
 							<label for="f2FactorAuth" class="control-label">2 Factor Auth: </label>
 							<select name="f2FactorAuth" id="f2FactorAuth" class="form-control input-sm">
@@ -156,11 +160,12 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 							</select>
 						</div>
 
-						<!--- Roles --->   
+						<!--- Roles --->    
 						<div class="form-group">
 							<label for="fRole" class="control-label">Roles: </label>
 							<select name="fRole" id="fRole" class="form-control input-sm">
 								<option value="any">All Roles</option>
+
 
 
 
@@ -170,14 +175,16 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 	
 	
 	
+	
 							</select>
 						</div>
 
-						<!--- Permission Groups --->   
+						<!--- Permission Groups --->    
 						<div class="form-group">
 							<label for="fGroups" class="control-label">Permission Groups: </label>
 							<select name="fGroups" id="fGroups" class="form-control input-sm">
 								<option value="any">All Groups</option>
+
 
 
 
@@ -187,10 +194,11 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 	
 	
 	
+	
 							</select>
 						</div>
 
-						<!--- Sort By --->   
+						<!--- Sort By --->    
 						<div class="form-group">
 							<label for="sortOrder" class="control-label">Sort By: </label>
 							<select name="sortOrder" id="sortOrder" class="form-control input-sm">
@@ -214,6 +222,7 @@ onclick="return to('#event.buildLink( prc.xehAuthorCreate )#')"
 		</div>
 	</div>
 </div>
+
 
 
 

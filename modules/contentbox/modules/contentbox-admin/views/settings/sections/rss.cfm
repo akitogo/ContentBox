@@ -1,6 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "rssSettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-rss fa-lg"></i>  RSS Options</legend><!--- RSS title --->   <div class="form-group">#html.label(
+<legend><i class="fa fa-rss fa-lg"></i>  RSS Options</legend><!--- RSS title --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "",
 			content = "Feed Title: "
@@ -12,7 +12,7 @@
 			class    = "form-control input-sm width98",
 			title    = "The title of the rss feed."
 		)#</div>
-</div><!--- RSS feed generator --->   <div class="form-group">#html.label(
+</div><!--- RSS feed generator --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "",
 			content = "Feed Generator: "
@@ -24,7 +24,7 @@
 			class    = "form-control input-sm width98",
 			title    = "The generator of the rss feed."
 		)#</div>
-</div><!--- RSS feed copyright --->   <div class="form-group">#html.label(
+</div><!--- RSS feed copyright --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "",
 			content = "Feed Copyright: "
@@ -36,7 +36,7 @@
 			class    = "form-control input-sm width98",
 			title    = "Copyright."
 		)#</div>
-</div><!--- RSS feed description --->   <div class="form-group">#html.label(
+</div><!--- RSS feed description --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "",
 			content = "Feed Description: "
@@ -48,7 +48,7 @@
 			class    = "form-control input-sm width98",
 			title    = "RSS feed description."
 		)#</div>
-</div><!--- RSS feed webmaster --->   <div class="form-group">#html.label(
+</div><!--- RSS feed webmaster --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "",
 			content = "Feed Webmaster: "
@@ -59,7 +59,7 @@
 			class = "form-control input-sm width98",
 			title = "RSS feed webmaster."
 		)#</div>
-</div><!--- Max RSS Entries --->   <div class="form-group">
+</div><!--- Max RSS Entries --->    <div class="form-group">
 <label class="control-label" for="cb_rss_maxEntries">
     Max RSS Content Items:
     <span class="badge badge-info" id="cb_rss_maxEntries_label">#prc.cbSettings.cb_rss_maxEntries#</span>
@@ -81,7 +81,7 @@
         <strong class="m10">50</strong>
 
     </div>
-</div><!--- Max RSS Comments --->   <div class="form-group">
+</div><!--- Max RSS Comments --->    <div class="form-group">
 <label class="control-label" for="cb_rss_maxComments">
     Max RSS Content Comments:
     <span class="badge badge-info" id="cb_rss_maxComments_label">#prc.cbSettings.cb_rss_maxComments#</span>
@@ -106,7 +106,7 @@
     </div>
 </fieldset>
 <fieldset>
-    <legend><i class="fa fa-hdd fa-lg"></i>  RSS Caching</legend><!--- RSS Caching --->   <div class="form-group">#html.label(
+    <legend><i class="fa fa-hdd fa-lg"></i>  RSS Caching</legend><!--- RSS Caching --->    <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_rss_caching",
 			content = "Activate RSS feed caching:"
@@ -115,7 +115,7 @@
 			data    = { toggle : "toggle", match : "cb_rss_caching" },
 			checked = prc.cbSettings.cb_rss_caching
 		)##html.hiddenField( name = "cb_rss_caching", value = prc.cbSettings.cb_rss_caching )#</div>
-</div><!--- RSS Cache Name --->   <div class="form-group">
+</div><!--- RSS Cache Name --->    <div class="form-group">
 <label class="control-label" for="cb_rss_cacheName">Feed Cache Provider:</label>
 <div class="controls">
     <small>Choose the CacheBox provider to cache feeds into.</small><br/>#html.select(
@@ -124,7 +124,7 @@
 			selectedValue = prc.cbSettings.cb_rss_cacheName,
 			class         = "input-sm"
 		)#</div>
-</div><!--- Rss Cache Timeouts --->   <div class="form-group">
+</div><!--- Rss Cache Timeouts --->    <div class="form-group">
 <label class="control-label" for="cb_rss_cachingTimeout">
     Feed Cache Timeouts:
     <span class="badge badge-info" id="cb_rss_cachingTimeout_label">#prc.cbSettings.cb_rss_cachingTimeout#</span>
@@ -146,7 +146,7 @@
         >
         <strong class="m10">500</strong>
     </div>
-</div><!--- Rss Cache Last Access Timeouts --->   <div class="form-group">
+</div><!--- Rss Cache Last Access Timeouts --->    <div class="form-group">
 <label class="control-label" for="cb_rss_cachingTimeoutIdle">
     Feed Cache Idle Timeouts:
     <span class="badge badge-info" id="cb_rss_cachingTimeoutIdle_label">#prc.cbSettings.cb_rss_cachingTimeoutIdle#</span>
@@ -170,6 +170,6 @@
 
         </div>
     </div>
-</fieldset><!--- Button Bar --->   <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->    <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 			class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

@@ -18,10 +18,12 @@
 		
 		
 		
+		
 	<div class="body-header-jumbotron jumbotron #cb.themeSetting( "hpHeaderBg" )#-bg" style="#styleHTML#">
 		<div class="container">
 			<h1>#cb.themeSetting( "hpHeaderTitle" )#</h1>
 			<p>#cb.themeSetting( "hpHeaderText" )#</p>
+
 
 
 
@@ -33,8 +35,10 @@
 		
 		
 		
+		
 		</div>
 	</div>
+
 
 
 
@@ -52,9 +56,10 @@
 		
 		
 		
+		
 	<div id="body-header" style="#bodyHeaderStyle#">
 		<div class="container">
-			<!--- Title --->   
+			<!--- Title --->    
 			<div class="underlined-title">
 				<h1 style="#bodyHeaderH1Style#">#prc.page.getTitle()#</h1>
 				<div class="text-divider5">
@@ -66,16 +71,18 @@
 
 
 
+
 	</cfif>
-	#cb.event( "cbui_prePageDisplay" )#<!--- Body Main --->   
+	#cb.event( "cbui_prePageDisplay" )#<!--- Body Main --->    
 <section id="body-main">
 	<div class="container">
 
 
 
 
+
 	<cfif !args.print && !isNull( "prc.page" ) && prc.page.getSlug() NEQ cb.getHomePage()>
-		<!--- Exports --->   <div class="btn-group pull-right">
+		<!--- Exports --->    <div class="btn-group pull-right">
 <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Export Page...">
 	<i class="fa fa-print"></i> <span class="caret"></span>
 </button>
@@ -83,7 +90,7 @@
 	<li><a href="#cb.linkPage( cb.getCurrentPage() )#.print" target="_blank">Print Format</a></li>
 <li><a href="#cb.linkPage( cb.getCurrentPage() )#.pdf" target="_blank">PDF</a></li>
 	</ul>
-</div><!--- BreadCrumbs --->   <div id="body-breadcrumbs" class="col-sm-12">
+</div><!--- BreadCrumbs --->    <div id="body-breadcrumbs" class="col-sm-12">
 <i class="fa fa-home"></i> #cb.breadCrumbs( separator = "<i class='fa fa-angle-right'></i> " )#</div>
 	</cfif>
 	<cfif cb.isHomePage() || !args.sidebar>
@@ -91,6 +98,7 @@
 	<cfelse>
 		<cfset variables.span = 9>
 	</cfif>
+	
 	
 	
 	
@@ -105,13 +113,14 @@
 		</p>
 	</div>
 	<br/>
-</div><!--- Separator --->   <div class="separator"></div><!--- Comment Form: I can build it or I can quick it? --->   <div id="commentFormShell">
+</div><!--- Separator --->    <div class="separator"></div><!--- Comment Form: I can build it or I can quick it? --->    <div id="commentFormShell">
 <div class="row">
 	<div class="col-sm-12">#cb.quickCommentForm( prc.page )#</div>
 	</div>
-</div><!--- clear --->   <hr><!--- Display Comments --->   <div id="comments">#cb.quickComments()#</div>
+</div><!--- clear --->    <hr><!--- Display Comments --->    <div id="comments">#cb.quickComments()#</div>
 </section>
 	</cfif>
+	
 	
 	
 	
@@ -120,9 +129,11 @@
 
 
 
+
 	<cfif args.sidebar && !cb.isHomePage()>
 		<div class="col-sm-3 sidenav">#cb.quickView( view = "_pagesidebar" )#</div>
 	</cfif>
+	
 	
 	
 	

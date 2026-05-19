@@ -16,6 +16,7 @@ Permissions (#arrayLen( prc.permissions )#)
 	
 	
 	
+	
     </div>
 </div>
 
@@ -47,6 +48,7 @@ Permissions (#arrayLen( prc.permissions )#)
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
   	<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
@@ -75,6 +77,7 @@ Permissions (#arrayLen( prc.permissions )#)
 		
 		
 		
+		
 								    	</ul>
 								    </div>
 									<button
@@ -85,7 +88,9 @@ Permissions (#arrayLen( prc.permissions )#)
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -95,7 +100,7 @@ Permissions (#arrayLen( prc.permissions )#)
 				</div>
 
 				<div class="panel-body">
-					<!--- permissions --->   
+					<!--- permissions --->    
 					<table name="permissions" id="permissions" class="table table-striped-removed table-hover " width="100%">
 						<thead>
 							<tr>
@@ -112,8 +117,9 @@ Permissions (#arrayLen( prc.permissions )#)
 
 
 
+
 	<cfloop array="#prc.permissions#" index="permission">
-		<tr><!--- check box --->   <td class="text-center">
+		<tr><!--- check box --->    <td class="text-center">
 <input
 	type="checkbox"
 	name="permissionID"
@@ -131,6 +137,7 @@ Permissions (#arrayLen( prc.permissions )#)
 		<cfelse>
 			#permission.getPermission()#
 		</cfif>
+		
 		
 		
 		
@@ -152,6 +159,7 @@ Permissions (#arrayLen( prc.permissions )#)
 
 
 
+
 		<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN" )>
 			<div class="btn-group">
 <button
@@ -162,7 +170,7 @@ Permissions (#arrayLen( prc.permissions )#)
 	<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 	<span class="visually-hidden">Actions</span>
 </button>
-  	<ul class="dropdown-menu text-left pull-right"><!--- Edit Command --->   <li>
+  	<ul class="dropdown-menu text-left pull-right"><!--- Edit Command --->    <li>
 <a
 	class=""
 	href="javascript:edit(
@@ -183,7 +191,7 @@ title="Edit #permission.getPermission()#">
 	</a>
 </li>
 			</cfif>
-			<!--- Delete Command --->   
+			<!--- Delete Command --->    
 												<li>
 													<a
 														class="confirmIt"
@@ -198,7 +206,9 @@ title="Edit #permission.getPermission()#">
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -207,7 +217,9 @@ title="Edit #permission.getPermission()#">
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -221,8 +233,9 @@ title="Edit #permission.getPermission()#">
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN" )>
-		<!--- Permissions Editor --->   <div id="permissionEditorContainer" class="modal fade" tabindex="-1" role="dialog">
+		<!--- Permissions Editor --->    <div id="permissionEditorContainer" class="modal fade" tabindex="-1" role="dialog">
 <div class="modal-dialog">
     <div class="modal-content">
 		<div class="modal-header">

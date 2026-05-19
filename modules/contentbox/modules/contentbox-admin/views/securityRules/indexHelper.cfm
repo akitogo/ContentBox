@@ -63,7 +63,9 @@ onDrop : function( table, row ){
 	
 	
 	
+	
 } );
+
 
 
 
@@ -95,7 +97,9 @@ function exportSelected( exportEvent ){
 	
 	
 	
+	
 </script>
+
 
 
 

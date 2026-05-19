@@ -18,7 +18,7 @@
 	}
 </cfscript>
 <cfoutput>
-	<!--- Custom Javascript --->   <script>
+	<!--- Custom Javascript --->    <script>
 ( () => {
 	// Shared Pointers
 	$relatedContentSelectorForm    = $( "##relatedContentSelectorForm" );
@@ -56,6 +56,7 @@
 	<cfif len( rc.search )>
 		$( "##contentSearch" ).focus();
 	</cfif>
+	
 	
 	
 	
@@ -105,6 +106,7 @@ function pagerLink( page, contentType ){
 	} );
 }
 </script>
+
 
 
 

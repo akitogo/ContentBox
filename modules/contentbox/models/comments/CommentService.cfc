@@ -396,15 +396,14 @@ component extends="cborm.models.VirtualEntityService" singleton {
 			inComment.setIsApproved( true );
 			return true;
 		}
-
 		// Check if user has already an approved comment. If they do, then approve them
 		// cfformat-ignore-start
 		if (
-			inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
-		) {
-			inComment.setIsApproved( true );
-			return true;
-		}
+		inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
+	) {
+		inComment.setIsApproved( true );
+		return true;
+	}
 		// cfformat-ignore-end
 
 		// Execute moderation queries

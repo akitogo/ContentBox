@@ -5,7 +5,7 @@
 
  	<div class="panel panel-default">
 
-<div class="panel-heading"><!--- Top Actions --->   <div class="float-right mt10">#announce( "cbadmin_onAuthorEditorActions" )#
+<div class="panel-heading"><!--- Top Actions --->    <div class="float-right mt10">#announce( "cbadmin_onAuthorEditorActions" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
 		<div class="btn-group" role="group">
 <button type="button" class="btn btn-sms btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +30,7 @@
 	
 	
 	
+	
 				</div>
 
 				<div class="size16 p10 row">
@@ -41,11 +42,13 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
 		href="#event.buildLink( prc.xehAuthors )#">
 	<cfelse>
 		href="#event.buildLink( prc.xehDashboard )#">
 	</cfif>
+	
 	
 	
 	
@@ -69,10 +72,10 @@
 
             <div class="panel-body">
 
-            	#cbMessageBox().renderit()#<!--- Vertical Nav --->   
+            	#cbMessageBox().renderit()#<!--- Vertical Nav --->    
                 <div class="tabs tabs-left">
 
-                    <!--- Documentation Navigation Bar --->   
+                    <!--- Documentation Navigation Bar --->    
                     <ul class="nav nav-tabs">
 
                     	<li class="nav-item active">
@@ -102,6 +105,7 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission(
 			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
 		)>
@@ -119,7 +123,7 @@
 	#announce( "cbadmin_onAuthorEditorNav" )#
                     </ul>
 
-                    <!--- Tab Content --->   
+                    <!--- Tab Content --->    
                     <div class="tab-content">
                     	#view( view = "authors/editor/details",
 		prePostExempt = true )##view( view = "authors/editor/password",
@@ -134,7 +138,7 @@
 	</cfif>
 	#announce( "cbadmin_onAuthorEditorContent" )#
                    	</div>
-                   	<!--- End Tab Content --->   
+                   	<!--- End Tab Content --->    
                 </div>
             </div>
  		</div>
@@ -142,6 +146,7 @@
 
     #view( view = "authors/editor/sidebar", prePostExempt = true )#
 </div>
+
 
 
 

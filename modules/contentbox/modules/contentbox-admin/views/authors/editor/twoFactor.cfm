@@ -32,22 +32,25 @@
 		
 		
 		
+		
 				</div>
 
 
 
+
 	</cfif>
-	<!--- Provider Name --->   
+	<!--- Provider Name --->    
 			<div class="form-group">
 				<label>Provider: </label>
 				<span class="label label-info">#prc.twoFactorProvider.getDisplayName()#</span><br/>
 			</div>
 
-			<!--- Provider Setup Help --->   
+			<!--- Provider Setup Help --->    
 			<div class="form-group">
 				<label>Provider Instructions: </label><br>
 				#prc.twoFactorProvider.getAuthorSetupHelp( prc.author )#
             </div>
+
 
 
 
@@ -65,6 +68,7 @@
 	#announce( "cbadmin_onAuthorTwoFactorOptions" )#
 
 		</fieldset>
+
 
 
 
@@ -89,14 +93,17 @@
 		
 		
 		
+		
             </div>
 		</div>
+
 
 
 
 	</cfif>
 	#html.endForm()#
 </div>
+
 
 
 

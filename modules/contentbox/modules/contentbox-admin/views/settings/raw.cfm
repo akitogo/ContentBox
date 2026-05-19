@@ -9,11 +9,12 @@
 <div class="label label-info" title="Environment">#getSetting( "Environment" )#</div>
 </div>
 
-   <div class="col-md-12"><!--- messageBox --->   <div class="clearfix">#cbMessageBox().renderit()#</div>
+   <div class="col-md-12"><!--- messageBox --->    <div class="clearfix">#cbMessageBox().renderit()#</div>
 
 	<cfif flash.exists( "importLog" )>
 		<div class="consoleLog">#flash.get( "importLog" )#</div>
 	</cfif>
+	
 	
 	
 	
@@ -39,7 +40,7 @@
 
                     <!-- Tab Content -->
                     <div class="tab-content">
-                        <!--- Raw Settings Pane --->   
+                        <!--- Raw Settings Pane --->    
 						<div class="tab-pane active" id="raw">
 
                             <p>
@@ -76,9 +77,11 @@
 
 
 
+
 	<cfloop array="#prc.allSites#" index="thisSite">
 		<option value="#thisSite[ "siteID" ]#">#thisSite[ "name" ]#</option>
 	</cfloop>
+	
 	
 	
 	
@@ -102,6 +105,7 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_RAW_SETTINGS,TOOLS_EXPORT" )>
 		<li>
 <a href="#event.buildLink( prc.xehExportAll )#.json" target="_blank">
@@ -117,11 +121,13 @@
 	
 	
 	
+	
 													<li>
 														<a href="javascript:flushSettingsCache()">
 															<i class="fa fa-recycle fa-lg"></i> Flush Settings Cache
 														</a>
 													</li>
+
 
 
 
@@ -132,6 +138,7 @@
 	</a>
 </li>
 	</cfif>
+	
 	
 	
 	
@@ -165,11 +172,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--- settings load --->   
+                                <!--- settings load --->    
                                 <div id="settingsTableContainer">
                                     <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
                                 </div>
-                            #html.endForm()#<!--- Settings Editor --->   
+                            #html.endForm()#<!--- Settings Editor --->    
                             <div id="settingEditorContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document" >
                                     <div class="modal-content">
@@ -202,9 +209,11 @@
 
 
 
+
 	<cfloop array="#prc.allSites#" index="thisSite">
 		<option value="#thisSite[ "siteID" ]#">#thisSite[ "name" ]#</option>
 	</cfloop>
+	
 	
 	
 	
@@ -248,9 +257,10 @@
                             </div>
 						</div>
 
-                        <!--- CacheBox Pane --->   
+                        <!--- CacheBox Pane --->    
                         <div class="tab-pane" id="cachebox">
                             <br>
+
 
 
 
@@ -267,10 +277,11 @@ enableMonitor = false />
 	
 	
 	
+	
 
 						</div>
 
-                        <!--- ContentBox Events Docs --->   
+                        <!--- ContentBox Events Docs --->    
                         <div class="tab-pane" id="_events">
                             <br>
                             <p>Here you can see all the registered interception events that ContentBox offers and you can implement in
@@ -289,7 +300,7 @@ enableMonitor = false />
                                 </div>
 							</div>
 
-                            #html.startForm( name = "eventsForm" )#<!--- events --->   
+                            #html.startForm( name = "eventsForm" )#<!--- events --->    
                                 <table name="eventsList" id="eventsList" class="table table-striped-removed table-hover " width="100%">
                                     <thead>
                                         <tr>
@@ -300,6 +311,7 @@ enableMonitor = false />
 									</thead>
 
                                     <tbody>
+
 
 
 
@@ -327,13 +339,16 @@ enableMonitor = false />
 			
 			
 			
+			
                                                 </td>
                                             </tr>
 
 
 
+
 		</cfif>
 	</cfloop>
+	
 	
 	
 	

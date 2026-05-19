@@ -96,105 +96,104 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 		// Custom Styles
 		// cfformat-ignore-start
 		html.addStyleContent(
-				"
-			.CodeMirror{
-			    height: 100% !important;
-			}
-			.CodeMirror-fullscreen{
-				z-index: 1000 !important;
-			}
-			div.fullscreen{
-				z-index: 1000 !important;
-			}
-		",
-				true
-			);
-
-		savecontent variable="js" {
-			writeOutput(
-				"
-			function getContentEditor(){
-				return simpleMDE_content.codemirror;
-			}
-			function getExcerptEditor(){
-				return simpleMDE_excerpt.codemirror;
-			}
-			function checkIsDirty(){
-				return simpleMDE_content.isDirty;
-			}
-			function getEditorContent(){
-				return simpleMDE_content.value();
-			}
-			function getEditorExcerpt(){
-				return simpleMDE_excerpt.value();
-			}
-			function updateEditorContent(){
-			}
-			function updateEditorExcerpt(){
-			}
-			function setEditorContent( editorName, content ){
-				if( editorName.indexOf( 'content' ) >= 0 ){
-					simpleMDE_content.value( content );
-				} else {
-					simpleMDE_excerpt.value( content );
-				}
-			}
-			function insertEditorContent( editorName, content ){
-				if( editorName.indexOf( 'content' ) >= 0 ){
-					simpleMDE_content.codemirror.replaceRange( content, simpleMDE_content.codemirror.getCursor() );
-				} else {
-					simpleMDE_excerpt.codemirror.replaceRange( content, simpleMDE_excerpt.codemirror.getCursor() );
-				}
-			}
-
-			// Insert Widgets
-			$insertCBWidget = function( editor ){
-				// Open the selector widget dialog.
-    			openRemoteModal(
-                    getWidgetSelectorURL(),
-                    { editorName : editor },
-                    $( window ).width() - 200,
-                    $( window ).height() - 300,
-                    true
-                );
-			};
-
-			// Insert ContentStore
-			$insertCBContentStore = function( editor ){
-				// Open the selector widget dialog.
-    			openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
-			};
-
-			// Insert Entry Link
-			$insertCBEntryLink = function( editor ){
-				// Open the selector widget dialog.
-    			openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
-			};
-
-			// Insert Page Link
-			$insertCBPageLink = function( editor ){
-				// Open the selector widget dialog.
-    			openRemoteModal( getPageSelectorURL(), { editorName: editor } );
-			};
-
-			// Insert Media
-			$insertCBMedia = function( editor ){
-				simpleMDETargetEditor = editor;
-				loadAssetChooser( '$insertCBMediaContent' );
-			};
-			// Choose Media
-			$insertCBMediaContent = function( sPath, sURL, sType ){
-				if( !sPath.length || sType === 'dir' ){
-			        alert( 'Please select a file first.' );
-			        return;
-			    }
-				var link = '![' + sURL.substr( sURL.lastIndexOf( '/' ) + 1 ) + ']('+ sURL + ')';
-				insertEditorContent( simpleMDETargetEditor, link );
-				closeRemoteModal();
-			}
 			"
-			);
+		.CodeMirror{
+		    height: 100% !important;
 		}
+		.CodeMirror-fullscreen{
+			z-index: 1000 !important;
+		}
+		div.fullscreen{
+			z-index: 1000 !important;
+		}
+	",
+			true
+		);
+		savecontent variable="js" {
+		writeOutput(
+			"
+		function getContentEditor(){
+			return simpleMDE_content.codemirror;
+		}
+		function getExcerptEditor(){
+			return simpleMDE_excerpt.codemirror;
+		}
+		function checkIsDirty(){
+			return simpleMDE_content.isDirty;
+		}
+		function getEditorContent(){
+			return simpleMDE_content.value();
+		}
+		function getEditorExcerpt(){
+			return simpleMDE_excerpt.value();
+		}
+		function updateEditorContent(){
+		}
+		function updateEditorExcerpt(){
+		}
+		function setEditorContent( editorName, content ){
+			if( editorName.indexOf( 'content' ) >= 0 ){
+				simpleMDE_content.value( content );
+			} else {
+				simpleMDE_excerpt.value( content );
+			}
+		}
+		function insertEditorContent( editorName, content ){
+			if( editorName.indexOf( 'content' ) >= 0 ){
+				simpleMDE_content.codemirror.replaceRange( content, simpleMDE_content.codemirror.getCursor() );
+			} else {
+				simpleMDE_excerpt.codemirror.replaceRange( content, simpleMDE_excerpt.codemirror.getCursor() );
+			}
+		}
+
+		// Insert Widgets
+		$insertCBWidget = function( editor ){
+			// Open the selector widget dialog.
+   			openRemoteModal(
+                   getWidgetSelectorURL(),
+                   { editorName : editor },
+                   $( window ).width() - 200,
+                   $( window ).height() - 300,
+                   true
+               );
+		};
+
+		// Insert ContentStore
+		$insertCBContentStore = function( editor ){
+			// Open the selector widget dialog.
+   			openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
+		};
+
+		// Insert Entry Link
+		$insertCBEntryLink = function( editor ){
+			// Open the selector widget dialog.
+   			openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
+		};
+
+		// Insert Page Link
+		$insertCBPageLink = function( editor ){
+			// Open the selector widget dialog.
+   			openRemoteModal( getPageSelectorURL(), { editorName: editor } );
+		};
+
+		// Insert Media
+		$insertCBMedia = function( editor ){
+			simpleMDETargetEditor = editor;
+			loadAssetChooser( '$insertCBMediaContent' );
+		};
+		// Choose Media
+		$insertCBMediaContent = function( sPath, sURL, sType ){
+			if( !sPath.length || sType === 'dir' ){
+		        alert( 'Please select a file first.' );
+		        return;
+		    }
+			var link = '![' + sURL.substr( sURL.lastIndexOf( '/' ) + 1 ) + ']('+ sURL + ')';
+			insertEditorContent( simpleMDETargetEditor, link );
+			closeRemoteModal();
+		}
+		"
+		);
+	}
 		// cfformat-ignore-end
 
 		return js;
@@ -205,24 +204,23 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 	 */
 	function shutdown() {
 		var js = "";
-
 		// cfformat-ignore-start
 		savecontent variable="js" {
-			writeOutput(
-				"
-				// Activate on content object
-				simpleMDE_content.toTextArea();
-				simpleMDE_content = null;
-				// Active Excerpts
-				try{
-					simpleMDE_excerpt.toTextArea();
-					simpleMDE_excerpt = null;
-				} catch( error ){
-					// ignore.
-				}
+		writeOutput(
 			"
-			);
-		}
+			// Activate on content object
+			simpleMDE_content.toTextArea();
+			simpleMDE_content = null;
+			// Active Excerpts
+			try{
+				simpleMDE_excerpt.toTextArea();
+				simpleMDE_excerpt = null;
+			} catch( error ){
+				// ignore.
+			}
+		"
+		);
+	}
 		// cfformat-ignore-end
 
 		return js;
@@ -239,51 +237,50 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 		if ( len( arguments.iData2.extraConfig ) ) {
 			extraConfig = "#arguments.iData2.extraConfig#,";
 		}
-
 		// cfformat-ignore-start
 		savecontent variable="js" {
-			writeOutput(
-				"
-			// Activate on content object
-			simpleMDE_content = new SimpleMDE( {
-				#extraConfig#
-				element 		: document.getElementById( 'content' ),
-				autosave 		: { enabled : false },
-				promptURLs 		: true,
-				tabSize 		: 4,
-				forceSync 		: true,
-				placeholder 	: 'Type here...',
-				spellChecker 	: false,
-				toolbar 		: #arguments.iData.toolbar#
-			} );
-
-			// Active Excerpts
-			if( $withExcerpt ){
-				// Activate on content object
-				simpleMDE_excerpt = new SimpleMDE( {
-					#extraConfig#
-					element  		: document.getElementById( 'excerpt' ),
-					autosave  		: { enabled : false },
-					promptURLs  	: true,
-					tabSize  		: 4,
-					forceSync  		: true,
-					placeholder 	: 'Type here...',
-					spellChecker  	: false,
-					toolbar 		: #arguments.iData.excerptToolbar#
-				} );
-			};
-
-			// Global Configuration Variables
-			simpleMDETargetEditor = '';
-			simpleMDE_content.isDirty = false;
-
-			// Listen for Editor Changes
-			simpleMDE_content.codemirror.on( 'change', function(){
-			    simpleMDE_content.isDirty = true;
-			} );
+		writeOutput(
 			"
-			);
-		}
+		// Activate on content object
+		simpleMDE_content = new SimpleMDE( {
+			#extraConfig#
+			element 		: document.getElementById( 'content' ),
+			autosave 		: { enabled : false },
+			promptURLs 		: true,
+			tabSize 		: 4,
+			forceSync 		: true,
+			placeholder 	: 'Type here...',
+			spellChecker 	: false,
+			toolbar 		: #arguments.iData.toolbar#
+		} );
+
+		// Active Excerpts
+		if( $withExcerpt ){
+			// Activate on content object
+			simpleMDE_excerpt = new SimpleMDE( {
+				#extraConfig#
+				element  		: document.getElementById( 'excerpt' ),
+				autosave  		: { enabled : false },
+				promptURLs  	: true,
+				tabSize  		: 4,
+				forceSync  		: true,
+				placeholder 	: 'Type here...',
+				spellChecker  	: false,
+				toolbar 		: #arguments.iData.excerptToolbar#
+			} );
+		};
+
+		// Global Configuration Variables
+		simpleMDETargetEditor = '';
+		simpleMDE_content.isDirty = false;
+
+		// Listen for Editor Changes
+		simpleMDE_content.codemirror.on( 'change', function(){
+		    simpleMDE_content.isDirty = true;
+		} );
+		"
+		);
+	}
 		// cfformat-ignore-end
 
 		return js;
@@ -297,67 +294,67 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 	private function buildToolbarJS( required editor ) {
 		// cfformat-ignore-start
 		return "[
-			{
-				name : 'cbSave',
-				action : function(){ quickSave(); },
-				className : 'fa fa-save',
-				title : 'ContentBox Quick Save'
-			},
-			{
-				name : 'cbUndo',
-				action : function(){ simpleMDE_#arguments.editor#.undo(); },
-				className : 'fa fa-undo',
-				title : 'Undo'
-			},
-			{
-				name : 'cbRedo',
-				action : function(){ simpleMDE_#arguments.editor#.redo(); },
-				className : 'fa fa-repeat',
-				title : 'Redo'
-			},
-			'|',
-			'bold', 'italic', 'strikethrough', 'heading', 'heading-smaller', 'heading-bigger', '|',
-			'code', 'quote', 'unordered-list', 'ordered-list', '|',
-			'link', 'image', 'table', 'horizontal-rule', '|',
-			'preview', 'side-by-side', 'fullscreen',
-			{
-				name : 'cbLivePreview',
-				action : function(){ previewContent(); },
-				className : 'fa fa-bolt',
-				title : 'ContentBox Responsive Preview'
-			},
-			'|',
-			{
-				name : 'cbWidget',
-				action : function(){ $insertCBWidget( '#arguments.editor#' ); },
-				className : 'fa fa-magic',
-				title : 'Insert a ContentBox Widget'
-			},
-			{
-				name : 'cbContentStore',
-				action : function(){ $insertCBContentStore( '#arguments.editor#' ); },
-				className : 'fa fa-hdd',
-				title : 'Insert ContentBox Content Store Item'
-			},
-			{
-				name : 'cbEntryLink',
-				action : function(){ $insertCBEntryLink( '#arguments.editor#' ); },
-				className : 'fas fa-blog',
-				title : 'Insert ContentBox Entry Link'
-			},
-			{
-				name : 'cbPageLink',
-				action : function(){ $insertCBPageLink( '#arguments.editor#' ); },
-				className : 'fa fa-file-o',
-				title : 'Insert ContentBox Page Link'
-			},
-			{
-				name : 'cbMediaManager',
-				action : function(){ $insertCBMedia( '#arguments.editor#' ); },
-				className : 'fa fa-database',
-				title : 'Insert ContentBox Media'
-			}
-		]";
+		{
+			name : 'cbSave',
+			action : function(){ quickSave(); },
+			className : 'fa fa-save',
+			title : 'ContentBox Quick Save'
+		},
+		{
+			name : 'cbUndo',
+			action : function(){ simpleMDE_#arguments.editor#.undo(); },
+			className : 'fa fa-undo',
+			title : 'Undo'
+		},
+		{
+			name : 'cbRedo',
+			action : function(){ simpleMDE_#arguments.editor#.redo(); },
+			className : 'fa fa-repeat',
+			title : 'Redo'
+		},
+		'|',
+		'bold', 'italic', 'strikethrough', 'heading', 'heading-smaller', 'heading-bigger', '|',
+		'code', 'quote', 'unordered-list', 'ordered-list', '|',
+		'link', 'image', 'table', 'horizontal-rule', '|',
+		'preview', 'side-by-side', 'fullscreen',
+		{
+			name : 'cbLivePreview',
+			action : function(){ previewContent(); },
+			className : 'fa fa-bolt',
+			title : 'ContentBox Responsive Preview'
+		},
+		'|',
+		{
+			name : 'cbWidget',
+			action : function(){ $insertCBWidget( '#arguments.editor#' ); },
+			className : 'fa fa-magic',
+			title : 'Insert a ContentBox Widget'
+		},
+		{
+			name : 'cbContentStore',
+			action : function(){ $insertCBContentStore( '#arguments.editor#' ); },
+			className : 'fa fa-hdd',
+			title : 'Insert ContentBox Content Store Item'
+		},
+		{
+			name : 'cbEntryLink',
+			action : function(){ $insertCBEntryLink( '#arguments.editor#' ); },
+			className : 'fas fa-blog',
+			title : 'Insert ContentBox Entry Link'
+		},
+		{
+			name : 'cbPageLink',
+			action : function(){ $insertCBPageLink( '#arguments.editor#' ); },
+			className : 'fa fa-file-o',
+			title : 'Insert ContentBox Page Link'
+		},
+		{
+			name : 'cbMediaManager',
+			action : function(){ $insertCBMedia( '#arguments.editor#' ); },
+			className : 'fa fa-database',
+			title : 'Insert ContentBox Media'
+		}
+	]";
 
 
 		// cfformat-ignore-end

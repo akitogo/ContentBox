@@ -16,14 +16,17 @@
 	
 	
 	
+	
                         </ul>
                         <h1>Image Info</h1>
+
 
 
 
 	<cfif structKeyExists( prc, "imgInfo" )>
 		#parseStruct( prc.ImgInfo )#
 	</cfif>
+	
 	
 	
 	
@@ -37,6 +40,7 @@
             </div>
         </div>
     </div>
+
 
 
 

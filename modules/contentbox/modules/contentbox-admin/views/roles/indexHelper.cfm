@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS --->   <script>
+	<!--- Custom JS --->    <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$( "##roles" ).dataTable( {
 		"paging": false,
@@ -20,6 +20,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	
 	
 	
+	
 
 	// table sorting + filtering
 	$( "##roleFilter" ).keyup(
@@ -31,6 +32,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
+
 
 
 
@@ -59,7 +61,9 @@ function exportSelected( exportEvent ){
 	
 	
 	
+	
 </script>
+
 
 
 

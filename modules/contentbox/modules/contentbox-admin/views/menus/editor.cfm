@@ -37,6 +37,7 @@ data-provider="#provider#"
 	
 	
 	
+	
                     </div>
                 </menu>
 
@@ -169,9 +170,10 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
-#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->   
+#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->    
 <div id="context-menu" class="dropdown clearfix" style="position: absolute;display:none;">
     <ul class="dropdown-menu" role="menu" style="display:block;margin-bottom:5px;">
+
 
 
 
@@ -185,10 +187,11 @@ data-provider="#provider#"
 	
 	
 	
+	
     </ul>
 </div>
 
-<!--- PREVIEW DIALOG --->   
+<!--- PREVIEW DIALOG --->    
 <div id="previewDialog" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">
@@ -200,6 +203,7 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
+
 
 
 

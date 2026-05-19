@@ -1,4 +1,4 @@
-<!--- Container ID: remoteModelContent --->   
+<!--- Container ID: remoteModelContent --->    
 <cfoutput>
 	<div>#html.startForm( name = "permissionRolesForm",
 			class = "form-vertical" )##html.startFieldset( legend = "Role Permissions" )#
@@ -16,8 +16,10 @@
 	
 	
 	
+	
 
 		<div class="well well-sm">
+
 
 
 
@@ -28,10 +30,11 @@
 			.getPermissions()#"
 		index="perm"
 	>
-		<div><!--- Assigned --->   <i class="fa fa-dot-circle fa-lg text-green"></i><!--- Name --->   &nbsp;
+		<div><!--- Assigned --->    <i class="fa fa-dot-circle fa-lg text-green"></i><!--- Name --->    &nbsp;
 <strong>#perm.getPermission()#</strong>
 </div>
 	</cfloop>
+	
 	
 	
 	
@@ -40,12 +43,12 @@
 	#html.endFieldSet()##html.endForm()##html.startForm( name = "groupsForm",
 			class = "form-vertical" )##html.startFieldset( legend = "Permission Groups" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
-		#html.hiddenField( name = "authorID", bind = prc.author )#<!--- Loader --->   <div class="loaders float-right text-center" id="groupsLoader">
+		#html.hiddenField( name = "authorID", bind = prc.author )#<!--- Loader --->    <div class="loaders float-right text-center" id="groupsLoader">
 	<i class="fa fa-circle-o-notch fa-spin fa-lg"></i><br/>
 	<div class="text-center"><small>Please Wait...</small></div>
-</div><!--- Permissions --->   <p>You can assign permission groups to this user:</p>
+</div><!--- Permissions --->    <p>You can assign permission groups to this user:</p>
 <div class="row">
-		<div class="col-md-8 mb5"><!--- Permission Groups List --->   <select name="permissionGroupID" id="permissionGroupID" class="form-control input-sm">
+		<div class="col-md-8 mb5"><!--- Permission Groups List --->    <select name="permissionGroupID" id="permissionGroupID" class="form-control input-sm">
 		<cfset noGroups = true>
 		<cfloop array="#prc.aPermissionGroups#" index="thisGroup">
 			<cfif !prc.author.hasPermissionGroup( thisGroup )>
@@ -59,10 +62,12 @@
 		
 		
 		
+		
 						</select>
 					</div>
 
 					<div class="col-md-4">
+
 
 
 
@@ -87,8 +92,10 @@
 		
 		
 		
+		
 		        	</div>
 			</div>
+
 
 
 
@@ -112,23 +119,26 @@
 	<i class="fa fa-dot-circle fa-lg text-red"></i>
 </a>
 		</cfif>
-		<!--- Name --->   
+		<!--- Name --->    
 				<strong>#group.getName()#</strong>
 
-				<!--- Permissions --->   
+				<!--- Permissions --->    
 				<div class="well well-sm m10 rounded">
 
 
 
+
 		<cfloop array="#group.getPermissions()#" index="perm">
-			<div><!--- Assigned --->   <i class="fa fa-dot-circle fa-lg text-green"></i><!--- Name --->   <strong>#perm.getPermission()#</strong>
+			<div><!--- Assigned --->    <i class="fa fa-dot-circle fa-lg text-green"></i><!--- Name --->    <strong>#perm.getPermission()#</strong>
 </div>
 		</cfloop>
 		
 		
 		
+		
 				</div>
 			</div>
+
 
 
 
@@ -141,13 +151,13 @@
 	#html.startForm( name = "permissionForm",
 			class = "form-vertical" )##html.startFieldset( legend = "A-la-Carte Permissions" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
-		#html.hiddenField( name = "authorID", bind = prc.author )#<!--- Loader --->   <div class="loaders float-right text-center" id="permissionLoader">
+		#html.hiddenField( name = "authorID", bind = prc.author )#<!--- Loader --->    <div class="loaders float-right text-center" id="permissionLoader">
 	<i class="fa fa-circle-o-notch fa-spin fa-lg"></i><br/>
 	<div class="text-center"><small>Please Wait...</small></div>
-</div><!--- Permissions --->   <p>You can also add a-la-carte permissions to the user by adding from the selection below:</p>
+</div><!--- Permissions --->    <p>You can also add a-la-carte permissions to the user by adding from the selection below:</p>
 <div class="row">
 
-	<div class="col-md-8 mb5"><!--- Permission list --->   <select name="permissionID" id="permissionID" class="form-control input-sm">
+	<div class="col-md-8 mb5"><!--- Permission list --->    <select name="permissionID" id="permissionID" class="form-control input-sm">
 		<cfset noPerms = true>
 		<cfloop array="#prc.aPermissions#" index="thisPerm">
 			<cfif !prc.author.hasPermission( thisPerm.getPermission() )>
@@ -161,10 +171,12 @@
 		
 		
 		
+		
 					</select>
 				</div>
 
 				<div class="col-md-4">
+
 
 
 
@@ -189,10 +201,12 @@
 		
 		
 		
+		
 				</div>
 
 			</div>
 			</div>
+
 
 
 
@@ -206,11 +220,12 @@
 	<cfloop array="#prc.author.getPermissions()#" index="perm">
 		<div>
 		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
-			<!--- Remove --->   <a href="javascript:removePermission('#perm.getPermissionID()#')" onclick="return confirm('Are you sure?')" title="Remove Permission"><i class="fa fa-dot-circle fa-lg text-red"></i></a>
+			<!--- Remove --->    <a href="javascript:removePermission('#perm.getPermissionID()#')" onclick="return confirm('Are you sure?')" title="Remove Permission"><i class="fa fa-dot-circle fa-lg text-red"></i></a>
 		</cfif>
-		<!--- Name --->   
+		<!--- Name --->    
 			<strong>#perm.getPermission()#</strong>
 		</div>
+
 
 
 
@@ -218,6 +233,7 @@
 	#html.endForm()#
 
 </div>
+
 
 
 

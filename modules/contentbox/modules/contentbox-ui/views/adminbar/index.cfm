@@ -4,8 +4,9 @@
 		
 <div class="cb-adminbar__content">
 	<cfelse>
-		<!--- evenly distributes children --->   <div class="cb-adminbar__content cb-adminbar--justify-content">
+		<!--- evenly distributes children --->    <div class="cb-adminbar__content cb-adminbar--justify-content">
 	</cfif>
+	
 	
 	
 	
@@ -17,6 +18,7 @@
 				</svg>
 				<span class="menu-heading">&nbsp; #prc.oCurrentSite.getName()# Site</span>
 			</a>
+
 
 
 
@@ -33,7 +35,7 @@
 		>
 			<svg class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 			<span class="menu-heading">Page Info</span>
-		</button><!--- Page Info --->   <div id="cb-adminbar__info-dropdown" class="cb-adminbar__dropdown-menu">
+		</button><!--- Page Info --->    <div id="cb-adminbar__info-dropdown" class="cb-adminbar__dropdown-menu">
 		<cfif !args.oContent.getIsPublished()>
 			<span class="cb-adminbar__badge bg-danger">
 	<svg aria-hidden="true" class="cb-adminbar__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -64,6 +66,7 @@
 		</cfif>
 		
 		
+		
 		 
 								<span class="cb-adminbar__info-item">
 									<strong>Modified:</strong><br/> #args
@@ -82,6 +85,7 @@
 
 
 
+
 		<cfif args.oContent.getContentType() EQ "Page">
 			<span class="cb-adminbar__info-item">
 <strong>Layout:</strong> #args.oContent.getLayout()#</span><br/>
@@ -90,6 +94,7 @@
 			<span class="cb-adminbar__info-item">
 <strong>Comments:</strong> #args.oContent.getNumberOfComments()#</span><br/>
 		</cfif>
+		
 		
 		
 		
@@ -130,6 +135,7 @@
 
 
 
+
 		<cfif structKeyExists( prc, "contentCacheData" )>
 			<li class="cb-adminbar__menu-item">
 <a href="#event.buildLink( event.getCurrentRoutedURL() )#?cbCache=true" class="clear-cache">
@@ -143,13 +149,15 @@
 		
 		
 		
+		
 					</ul>
 				</nav>
 
 
 
+
 	</cfif>
-	<!--- Avatar --->   
+	<!--- Avatar --->    
 			<div id="cb-adminbar__avatar">
 				<div class="cb-adminbar__dropdown">
 					<button 
@@ -177,7 +185,7 @@
 				</div>
 			</div> 
 		</div>
-		<!--- Toggle --->   
+		<!--- Toggle --->    
 		<button aria-hidden="true" type="button" class="cb-adminbar__toggle" id="adminbar-toggle" onclick="toggleAdminBar()">
 			<svg class="svg-cheveron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
 		</button>
@@ -280,6 +288,7 @@
 		return "";
 	}
 </script>
+
 
 
 

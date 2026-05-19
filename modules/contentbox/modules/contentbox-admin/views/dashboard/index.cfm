@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8"><!--- Dashboard welcome body --->   <p class="lead">#prc.welcomeBody#</p>#cbMessageBox().renderit()##announce( "cbadmin_preDashboardContent" )#
+    <div class="col-md-8"><!--- Dashboard welcome body --->    <p class="lead">#prc.welcomeBody#</p>#cbMessageBox().renderit()##announce( "cbadmin_preDashboardContent" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_TAB" ) && prc.installerCheck>
 		<div class="alert alert-danger" id="installerCheck">
 <button
@@ -27,11 +27,13 @@
 	
 	
 	
+	
 
 		<div class="panel">
 			<div class="panel-body">
 				<div class="tabs">
 					<ul class="nav nav-tabs" id="dashboardTabs">
+
 
 
 
@@ -51,6 +53,7 @@
 	</a>
 </li>
 	</cfif>
+	
 	
 	
 	
@@ -122,7 +125,7 @@
 	<i class="fa fa-spin fa-circle-o-notch fa-lg fa-2x text-muted"></i>
 </div>
 	</cfif>
-	<!--- ****************************************************************************************** --->   
+	<!--- ****************************************************************************************** --->    
 						<div class="tab-pane" id="latestNews">
 							<i class="fa fa-spin fa-circle-o-notch fa-lg fa-2x text-muted"></i>
 						</div>
@@ -167,7 +170,7 @@
     </div>
 </div>
 	</cfif>
-	<!--- Info Box --->   
+	<!--- Info Box --->    
 		<div class="panel panel-primary">
 		    <div class="panel-heading">
 				<h3 class="panel-title">
@@ -181,6 +184,7 @@
 		#announce( "cbadmin_postDashboardSideBar" )#
     </div>
 </div>
+
 
 
 

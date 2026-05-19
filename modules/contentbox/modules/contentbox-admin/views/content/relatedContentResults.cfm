@@ -1,6 +1,6 @@
 <cfoutput>
 	<cfif arrayLen( prc.content )>
-		<!--- matches --->   <table name="content" id="#rc.contentType#" class="table table-hover table-striped-removed " >
+		<!--- matches --->    <table name="content" id="#rc.contentType#" class="table table-hover table-striped-removed " >
       <thead>
           <tr>
 		<th>
@@ -25,6 +25,7 @@ id="contentID-#content.getContentID()#"
 			
 			
 			
+			
 				ondblclick="return chooseRelatedContent(
 					'#content.getContentID()#',
 					'#encodeForJavaScript( content.getTitle() )#',
@@ -34,13 +35,14 @@ id="contentID-#content.getContentID()#"
 				title="Double click to select"
 			>
                 <td>
-                    <!--- Title --->   
+                    <!--- Title --->    
 					<div class="size16">
 						#content.getTitle()#
 					</div>
 
 					<div class="mt5">
 						<div class="text-muted">
+
 
 
 
@@ -55,11 +57,14 @@ id="contentID-#content.getContentID()#"
 				
 				
 				
+				
 							...
 
 
 
+
 			</cfif>
+			
 			
 			
 			
@@ -96,12 +101,15 @@ id="contentID-#content.getContentID()#"
 
 
 
+
 		</cfloop>
+		
 		
 		
 		
         </tbody>
 	</table>
+
 
 
 

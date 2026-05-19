@@ -1,12 +1,12 @@
 <cfoutput>
-	<div id="versionsPager"><!--- Loader --->   <div class="loaders float-right" id="versionsPagerLoader">
+	<div id="versionsPager"><!--- Loader --->    <div class="loaders float-right" id="versionsPagerLoader">
 	<i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
 </div>
 
 <p>
 	Here are the past versions of your content. You can compare previous versions and even right click on the rows to get a quick peek at the versioned
  content.
-</p><!--- History --->   <div class="buttonBar">
+</p><!--- History --->    <div class="buttonBar">
 	<cfif arrayLen( prc.versionsPager_versions ) GT 1>
 		<button
 	class="btn btn-sm btn-info"
@@ -25,6 +25,7 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 	<i class="fa fa-history"></i> Full History
 </button>
 	</cfif>
+	
 	
 	
 	
@@ -47,6 +48,7 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 
 
 
+
 	<cfset activeVersion = 0>
 	<cfloop array="#prc.versionsPager_versions#" index="thisVersion">
 		<cfif thisVersion.getIsActive()>
@@ -55,10 +57,11 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 		
 		
 		
+		
 			<tr id="version_row_#thisVersion.getContentVersionID()#" data-versionID="#thisVersion.getContentVersionID()#">
-				<!--- Diff --->   
+				<!--- Diff --->    
 				<td class="text-center">
-					<!--- old version --->   
+					<!--- old version --->    
 					<input
 						type="radio"
 						class="rb_oldversion"
@@ -68,14 +71,16 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 
 
 
+
 		<cfif thisVersion.getVersion() EQ ( activeVersion - 1 )>
 			checked="checked"
 		</cfif>
 		
 		
 		
+		
 					>
-					<!--- current version --->   
+					<!--- current version --->    
 					<input
 						type="radio"
 						class="rb_version"
@@ -85,24 +90,27 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 
 
 
+
 		<cfif thisVersion.getIsActive()>
 			checked="checked"
 		</cfif>
 		
 		
 		
+		
 					>
 				</td>
 
-				<!--- Version Number --->   
+				<!--- Version Number --->    
 				<td class="text-center">
 					<a href="javascript:openRemoteModal( '#event.buildLink( prc.xehVersionQuickLook )#/versionID/#thisVersion.getContentVersionID()#')">
 						#thisVersion.getVersion()#
 					</a>
 				</td>
 
-				<!--- Status --->   
+				<!--- Status --->    
 				<td class="text-center">
+
 
 
 
@@ -114,14 +122,15 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 		
 		
 		
+		
 				</td>
 
-				<!--- Created Version Date --->   
+				<!--- Created Version Date --->    
 				<td class="text-center">
 					#thisVersion.getDisplayCreatedDate()#
 				</td>
 
-				<!--- Author + Changelog --->   
+				<!--- Author + Changelog --->    
 				<td>
 					#getInstance( "Avatar@contentbox" ).renderAvatar(
 				email = thisVersion.getAuthorEmail(),
@@ -135,8 +144,9 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 					</div>
 				</td>
 
-				<!--- Actions --->   
+				<!--- Actions --->    
 				<td class="text-center">
+
 
 
 
@@ -145,7 +155,7 @@ onclick="return accesskey=to('#event.buildLink( prc.xehVersionHistory )#/content
 		</cfif>
 		<cfif !thisVersion.getIsActive()>
 			<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_ROLLBACK" )>
-				<!--- ROLLBACK BUTTON --->   <a
+				<!--- ROLLBACK BUTTON --->    <a
 href="javascript:versionsPagerRollback('#thisVersion.getContentVersionID()#')"
 	title="Rollback this version"
 	class="confirmIt"
@@ -155,7 +165,7 @@ href="javascript:versionsPagerRollback('#thisVersion.getContentVersionID()#')"
 </a>
 			</cfif>
 			<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_DELETE" )>
-				<!--- DELETE VERSION --->   <a
+				<!--- DELETE VERSION --->    <a
 href="javascript:versionsPagerRemove('#thisVersion.getContentVersionID()#')"
 	title="Remove this version"
 	class="confirmIt ml5"
@@ -169,12 +179,15 @@ href="javascript:versionsPagerRemove('#thisVersion.getContentVersionID()#')"
 		
 		
 		
+		
 				</td>
 			</tr>
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -183,6 +196,7 @@ href="javascript:versionsPagerRemove('#thisVersion.getContentVersionID()#')"
 
 	#html.endForm()#
 </div>
+
 
 
 

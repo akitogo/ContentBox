@@ -43,8 +43,9 @@
 
 
 
+
 	<cfloop array="#prc.content#" index="page">
-		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->   id="contentID-#page.getContentID().replace(
+		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->    id="contentID-#page.getContentID().replace(
 				"-",
 				"_",
 				"all"
@@ -66,13 +67,15 @@ data-contentID="#page.getContentID()#"
 		
 		
 		
+		
 			>
-				<!--- check box --->   
+				<!--- check box --->    
 				<td class="text-center">
 					<input type="checkbox" name="contentID" value="#page.getContentID()#" />
 				</td>
 
 				<td>
+
 
 
 
@@ -126,6 +129,7 @@ title="Edit #page.getTitle()#"
 
 
 
+
 		<cfif page.getShowInMenu()>
 			<i class="fa fa-dot-circle fa-lg text-green"></i>
 <span class="hidden">yes</span>
@@ -133,6 +137,7 @@ title="Edit #page.getTitle()#"
 			<i class="fa fa-dot-circle fa-lg text-gray"></i>
 <span class="hidden">no</span>
 		</cfif>
+		
 		
 		
 		
@@ -151,7 +156,7 @@ title="Edit #page.getTitle()#"
 				</td>
 
 				<td class="text-center flex">
-					<!--- Drag Handle --->   
+					<!--- Drag Handle --->    
 					<a
 						href="##"
 						onclick="return false;"
@@ -161,7 +166,7 @@ title="Edit #page.getTitle()#"
 						<i class="fa fa-sort" aria-hidden="true"></i>
 					</a>
 
-					<!--- Page Actions --->   
+					<!--- Page Actions --->    
 					<div class="btn-group btn-group-sm">
 						<button
 							class="btn btn-icon btn-more dropdown-toggle"
@@ -176,8 +181,9 @@ title="Edit #page.getTitle()#"
 
 
 
+
 		<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
-			<!--- Clone Command --->   <li class="mb5">
+			<!--- Clone Command --->    <li class="mb5">
 <a
 	href="javascript:contentListHelper.openCloneDialog(
 		'#encodeForJavascript( page.getContentID() )#',
@@ -186,7 +192,7 @@ title="Edit #page.getTitle()#"
 	>
 		<i class="fa fa-clone fa fa-lg"></i> Clone
 	</a>
-</li><!--- Create Child --->   <li class="mb5">
+</li><!--- Create Child --->    <li class="mb5">
 <a
 	href="#event.buildLink( prc.xehPageEditor )#/parentID/#page.getContentID()#"
 	>
@@ -208,7 +214,7 @@ title="Edit #page.getTitle()#"
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command --->   
+			<!--- Edit Command --->    
 								<li class="mb5">
 									<a
 										href="#event.buildLink( prc.xehPageEditor )#/contentID/#page.getContentID()#"
@@ -219,9 +225,10 @@ title="Edit #page.getTitle()#"
 
 
 
+
 		</cfif>
 		<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_EXPORT" )>
-			<!--- Export --->   <li class="mb5">
+			<!--- Export --->    <li class="mb5">
 <a
 	href="#event.buildLink( prc.xehPageExport )#/contentID/#page.getContentID()#.json"
 		target="_blank"
@@ -230,7 +237,7 @@ title="Edit #page.getTitle()#"
 	</a>
 </li>
 		</cfif>
-		<!--- History Command --->   
+		<!--- History Command --->    
 							<li class="mb5">
 								<a
 									href="#event.buildLink( prc.xehContentHistory )#/contentID/#page.getContentID()#"
@@ -239,7 +246,7 @@ title="Edit #page.getTitle()#"
 								</a>
 							</li>
 
-							<!--- Reset hits --->   
+							<!--- Reset hits --->    
 							<li class="mb5">
 								<a
 									href="javascript:contentListHelper.resetHits( '#page.getContentID()#' )"
@@ -248,7 +255,7 @@ title="Edit #page.getTitle()#"
 								</a>
 							</li>
 
-							<!--- View in Site --->   
+							<!--- View in Site --->    
 							<li class="mb5">
 								<a
 									href="#prc.cbHelper.linkPage( page )#"
@@ -264,12 +271,15 @@ title="Edit #page.getTitle()#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
     </tbody>
 </table>
+
 
 
 

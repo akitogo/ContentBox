@@ -25,6 +25,7 @@
 	
 	
 	
+	
 						class="btn btn-sm btn-default"
 					>
 						Edit
@@ -109,6 +110,7 @@
 
 
 
+
 	<cfif len( prc.content.getParentID() )>
 		onclick="to( '#event.buildLink( prc.xehBackTrack )#/parent/#prc.content.getParentID()#' );return false;"
 	<cfelse>
@@ -117,9 +119,11 @@
 	
 	
 	
+	
 					>
 						<i class="fa fa-chevron-left"></i> Back
 					</button>
+
 
 
 
@@ -132,6 +136,7 @@ onclick="window.open( '#prc.xehOpenContent#' );return false;"
 	<i class="fa fa-eye"></i> Open
 </button>
 	</cfif>
+	
 	
 	
 	
@@ -156,6 +161,7 @@ onclick="window.open( '#prc.xehOpenContent#' );return false;"
 		</div>
     </div>
 </div>
+
 
 
 

@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Content --->   <span class="float-right">
+	<!--- Content --->    <span class="float-right">
 	<button class="btn btn-xs btn-danger" onclick="closeSearchBox()" title="close search panel">
 		<i class="fa fa-times"></i>
 	</button>
@@ -25,9 +25,11 @@ class="btn btn-primary btn-xs pull-left mr5"
 			
 			
 			
+			
 		>
 			<i class="fa fa-external-link"></i>
 		</a>
+
 
 
 
@@ -47,8 +49,10 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getConten
 			
 			
 			
+			
 		<span class="label label-info pull-right">#thisContent.getContentType()#</span>
 	</li>
+
 
 
 
@@ -59,7 +63,9 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getConten
 		
 		
 		
+		
 </ul>
+
 
 
 
@@ -88,7 +94,9 @@ href="#event.buildLInk(
 		
 		
 		
+		
 </ul>
+
 
 
 

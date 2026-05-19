@@ -1242,9 +1242,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 										composeRelationships = false
 									);
 								var oEditor = variables.authorService.findByEmail( thisVersion.author.email );
-								return oVersion.setAuthor( isNull( oEditor )
-											? oAuthor
-											: oEditor ).setRelatedContent( oContent );
+								return oVersion.setAuthor(
+										isNull( oEditor ) ? oAuthor : oEditor
+									).setRelatedContent( oContent );
 							}
 						)
 				);

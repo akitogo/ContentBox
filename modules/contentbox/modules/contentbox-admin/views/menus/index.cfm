@@ -16,6 +16,7 @@
 	
 	
 	
+	
     </div>
 </div>
 
@@ -39,6 +40,7 @@
 
                         <div class="col-md-6 col-xs-8">
                             <div class="text-right">
+
 
 
 
@@ -71,13 +73,16 @@
 		
 		
 		
+		
                                             <li><a href="javascript:contentShowAll()"><i class="fa fa-list"></i> Show All</a></li>
                                         </ul>
                                     </div>
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -87,7 +92,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <!--- entries container --->   
+                    <!--- entries container --->    
                     <div id="menuTableContainer">
 						<p class="text-center">
 							<i id="contentLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -98,6 +103,7 @@
         #html.endForm()#
     </div>
 </div>
+
 
 
 

@@ -667,7 +667,8 @@ component
 		if ( !isLoaded() ) {
 			return 0;
 		}
-		return variables.commentService
+		return variables
+			.commentService
 			.newCriteria()
 			.isEq( "relatedContent.contentID", getContentID() )
 			.isEq( "isApproved", javacast( "boolean", true ) )
@@ -1113,12 +1114,13 @@ component
 				.first();
 			return activeContentStruct[ "content" ];
 		} else {
-			var activeVersion = variables.contentVersionService
+			var activeVersion = variables
+				.contentVersionService
 				.newCriteria()
 				.isEq( "relatedContent.contentID", getContentID() )
 				.isEq( "isActive", javacast( "boolean", true ) )
 				.order( "version", "desc" )
-				.list( max=1 );
+				.list( max = 1 );
 			return arrayLen( activeVersion ) ? activeVersion[ 1 ] : variables.contentVersionService.new();
 		}
 	}

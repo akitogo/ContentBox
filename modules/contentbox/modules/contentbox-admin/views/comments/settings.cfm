@@ -20,7 +20,7 @@
 <p>
 	From here you can control how the ContentBox commenting system operates on the currently active site:
 	<code>#prc.oCurrentSite.getName()#</code>
-</p><!--- Vertical Nav --->   <div class="tabs tabs-left"><!--- Documentation Navigation Bar --->   <ul class="nav nav-tabs">
+</p><!--- Vertical Nav --->    <div class="tabs tabs-left"><!--- Documentation Navigation Bar --->    <ul class="nav nav-tabs">
 <li class="nav-item active">
 	<a href="##general_options" data-toggle="tab" class="nav-link">
 		<i class="fa fa-sliders-h fa-lg"></i> <span class="hidden-xs">Settings</span>
@@ -30,8 +30,8 @@
 	<a href="##notifications" data-toggle="tab" class="nav-link">
 		<i class="fa fa-envelope-open fa-lg"></i> <span class="hidden-xs">Notifications</span>
 	</a>
-</li>#announce( "cbadmin_onCommentSettingsNav" )#</ul><!--- Tab Content --->   <div class="tab-content"><!--- comment options --->   <div class="tab-pane active" id="general_options">
-<fieldset><!--- Activate Comments --->   <div class="form-group">#html.label(
+</li>#announce( "cbadmin_onCommentSettingsNav" )#</ul><!--- Tab Content --->    <div class="tab-content"><!--- comment options --->    <div class="tab-pane active" id="general_options">
+<fieldset><!--- Activate Comments --->    <div class="form-group">#html.label(
 			field   = "cb_comments_enabled",
 			content = "Enable Site Wide Comments:",
 			class   = "control-label"
@@ -43,7 +43,7 @@
 			name  = "cb_comments_enabled",
 			value = prc.cbSiteSettings.cb_comments_enabled
 		)#</div>
-</div><!--- Enable Moderation --->   <div class="form-group">#html.label(
+</div><!--- Enable Moderation --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation",
 			content = "Comment Moderation:",
 			class   = "control-label"
@@ -58,7 +58,7 @@
 			name  = "cb_comments_moderation",
 			value = prc.cbSiteSettings.cb_comments_moderation
 		)#</div>
-</div><!--- Comment Previous History --->   <div class="form-group">#html.label(
+</div><!--- Comment Previous History --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation_whitelist",
 			content = "Comment author must have a previously approved comment:",
 			class   = "control-label"
@@ -76,7 +76,7 @@
 			name  = "cb_comments_moderation_whitelist",
 			value = prc.cbSiteSettings.cb_comments_moderation_whitelist
 		)#</div>
-</div><!--- Moderated Keywords --->   <div class="form-group">#html.label(
+</div><!--- Moderated Keywords --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation_blacklist",
 			content = "Moderated keywords (Affects content, Author IP, or Author Email):",
 			class   = "control-label"
@@ -90,7 +90,7 @@
 			class = "form-control",
 			title = "One per line please"
 		)#</div>
-</div><!--- Blocked Keywords --->   <div class="form-group">#html.label(
+</div><!--- Blocked Keywords --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation_blockedlist",
 			content = "Blocked keywords (Affects content, Author IP, or Author Email):"
 		)#<div class="controls">
@@ -103,7 +103,7 @@
 			class = "form-control",
 			title = "One per line please"
 		)#</div>
-</div><!--- Auto-Delete Moderated Comments --->   <div class="form-group">#html.label(
+</div><!--- Auto-Delete Moderated Comments --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation_expiration",
 			content = "Number of days before auto-deleting moderated comments:"
 		)#<div class="controls">
@@ -115,14 +115,14 @@
 		)#</div>
 </div>
                       </fieldset>
-                  </div><!--- Notifications --->   <div class="tab-pane" id="notifications">
+                  </div><!--- Notifications --->    <div class="tab-pane" id="notifications">
                        <fieldset>
                            <legend><i class="fa fa-envelope-open fa-lg"></i> Notifications</legend>
                            <p>
 	By default all comment notifications are sent to the global system email(s).
 	However, you can add per-site notification emails below:
 
-</p><!--- Email Notifications --->   <div class="form-group">#html.label(
+</p><!--- Email Notifications --->    <div class="form-group">#html.label(
 			field   = "cb_comments_notify",
 			content = "Notification Emails:",
 			class   = "control-label"
@@ -134,7 +134,7 @@
 			title   = "Comma delimited list",
 			wrapper = "div class=controls"
 		)#</div>
-</div><!--- Notification on Comment --->   <div class="form-group">#html.label(
+</div><!--- Notification on Comment --->    <div class="form-group">#html.label(
 			field   = "cb_comments_notify",
 			content = "Send a notification that a comment has been made:",
 			class   = "control-label"
@@ -143,7 +143,7 @@
 			data    = { toggle : "toggle", match : "cb_comments_notify" },
 			checked = prc.cbSiteSettings.cb_comments_notify
 		)##html.hiddenField( name = "cb_comments_notify", value = prc.cbSiteSettings.cb_comments_notify )#</div>
-</div><!--- Notification on Moderation --->   <div class="form-group">#html.label(
+</div><!--- Notification on Moderation --->    <div class="form-group">#html.label(
 			field   = "cb_comments_moderation_notify",
 			content = "Send a notification when a comment needs moderation:",
 			class   = "control-label"
@@ -160,13 +160,13 @@
 		)#</div>
         </div>
     </fieldset>
-</div>#announce( "cbadmin_onCommentSettingsContent" )#<!--- End Tab Content --->   <div class="form-actions">#html.button(
+</div>#announce( "cbadmin_onCommentSettingsContent" )#<!--- End Tab Content --->    <div class="form-actions">#html.button(
 			type  = "submit",
 			value = "Save Settings",
 			class = "btn btn-danger"
 		)#</div>
 
-</div><!--- End Tab Content --->   </div><!--- End Veritcal Nav --->   </div>
+</div><!--- End Tab Content --->    </div><!--- End Veritcal Nav --->    </div>
 </div>#html.endForm()#</div>
 </div>
 </cfoutput>

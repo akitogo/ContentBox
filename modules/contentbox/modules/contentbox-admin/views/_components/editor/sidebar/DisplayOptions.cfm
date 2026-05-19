@@ -15,24 +15,27 @@
 </div>
 
 <div id="displayoptions" class="panel-collapse collapse">
-	<div class="panel-body"><!--- PAGE LAYOUT --->   <div class="form-group">
+	<div class="panel-body"><!--- PAGE LAYOUT --->    <div class="form-group">
 <label for="layout" class="control-label">
 	<i class="fa fa-columns"></i>
 	Layout:
 </label>
-<select name="layout" id="layout" class="form-control input-sm"><!--- Core Layouts --->   <option value="-inherit-"
+<select name="layout" id="layout" class="form-control input-sm"><!--- Core Layouts --->    <option value="-inherit-"
 		<cfif prc.oContent.getLayoutWithDefault() EQ "-inherit-">
 			selected="selected"
 		</cfif>
+		
 		
 		
 		>-inherit-</option>
 						<option value="-no-layout-"
 
 
+
 		<cfif prc.oContent.getLayoutWithDefault() EQ "-no-layout-">
 			selected="selected"
 		</cfif>
+		
 		
 		
 		>-no-layout-</option>
@@ -44,7 +47,7 @@
 					</select>
 				</div>
 
-				<!--- SHOW IN MENU BUILDERS --->   
+				<!--- SHOW IN MENU BUILDERS --->    
 				<div class="form-group">
 					<label for="layout" class="control-label">
 						<i class="fa fa-bars"></i>
@@ -58,7 +61,7 @@
 			)#
 				</div>
 
-				<!--- SHOW IN SEARCH --->   
+				<!--- SHOW IN SEARCH --->    
 				<div class="form-group">
 					<label for="layout" class="control-label">
 						<i class="fa fa-search"></i>
@@ -74,6 +77,7 @@
 			</div>
 		</div>
 	</div>
+
 
 
 

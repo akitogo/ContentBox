@@ -1,9 +1,9 @@
 <cfoutput>
 	<div class="modal-dialog modal-lg" role="document" >
 
-<div class="modal-content"><!--- Header --->   <div class="modal-header">
+<div class="modal-content"><!--- Header --->    <div class="modal-header">
 
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><!--- Status --->   <div class="float-right mr20 mt5">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><!--- Status --->    <div class="float-right mr20 mt5">
 	<cfif prc.content.isExpired()>
 		<span class="p5 label label-danger">
 Expired on #prc.content.getDisplayExpiredDate()#</span>
@@ -24,9 +24,10 @@ Publishes on #prc.content.getDisplayPublishedDate()#</span>
 	
 	
 	
+	
 				</div>
 
-				<!--- Left Title --->   
+				<!--- Left Title --->    
 				<div class="size20">
 					#cbAdminComponent( "ui/Icon", { name : "Eye" } )##prc.content.getTitle()#
 	<cfif prc.content.getContentType() NEQ "contentstore">
@@ -37,12 +38,13 @@ Publishes on #prc.content.getDisplayPublishedDate()#</span>
 	
 	
 	
+	
 				</div>
 			</div>
 
 			<div class="modal-body">
 
-				<!--- Info Snapshot --->   
+				<!--- Info Snapshot --->    
 				<div class="well well-sm rounded">
 
 					<div class="float-right mt5">
@@ -54,7 +56,7 @@ Publishes on #prc.content.getDisplayPublishedDate()#</span>
 						</a>
 					</div>
 
-					<!--- Creator --->   
+					<!--- Creator --->    
 					<div>
 						<a
 							href="mailto:#prc.content.getCreatorEmail()#"
@@ -72,6 +74,7 @@ Publishes on #prc.content.getDisplayPublishedDate()#</span>
 							</span>
 						</a>
 					</div>
+
 
 
 
@@ -100,7 +103,7 @@ title="Last edit by #prc.content.getAuthorName()#"
 			.getActiveContent()
 			.getChangelog()#</div>
 	</cfif>
-	<!--- Categories --->   
+	<!--- Categories --->    
 					<div class="mt10 ml5" title="Categories">
 						<i class="fa fa-tags fa-lg"></i> #prc.content.getCategoriesList()#
 					</div>
@@ -108,7 +111,7 @@ title="Last edit by #prc.content.getAuthorName()#"
 
 				<div class="tabs">
 
-					<!--- Nav Tabs --->   
+					<!--- Nav Tabs --->    
 					<ul class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="nav-item active">
 							<a href="##preview" aria-controls="preview" role="tab" data-toggle="tab" class="nav-link">Preview</a>
@@ -118,7 +121,7 @@ title="Last edit by #prc.content.getAuthorName()#"
 						</li>
 					</ul>
 
-					<!--- Tab Panes --->   
+					<!--- Tab Panes --->    
 					<div class="tab-content m10">
 						<div role="tabpanel" class="tab-pane active" id="preview">
 							#prc.content.renderContent()#
@@ -132,8 +135,9 @@ title="Last edit by #prc.content.getAuthorName()#"
 
 			</div>
 
-			<!--- Button Bar --->   
+			<!--- Button Bar --->    
 			<div class="modal-footer">
+
 
 
 
@@ -148,10 +152,12 @@ href="#event.buildLink( prc.xehContentEditor )#/contentID/#prc.content.getConten
 	
 	
 	
+	
 				<button class="btn btn-default" onclick="closeRemoteModal()"> Close </button>
 			</div>
 		</div>
 	</div>
+
 
 
 

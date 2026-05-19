@@ -20,6 +20,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	
 	
 	
+	
 
 	// table sorting + filtering
 	$( "##groupFilter" ).keyup(
@@ -31,6 +32,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
+
 
 
 
@@ -58,7 +60,9 @@ function exportSelected( exportEvent ){
 	
 	
 	
+	
 </script>
+
 
 
 

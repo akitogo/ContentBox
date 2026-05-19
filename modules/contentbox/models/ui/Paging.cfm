@@ -18,11 +18,13 @@
 		
 		
 		
+		
 				<a href="#replace(
 			theLink,
 			"@page@",
 			currentPage - 1
 		)#" title="Previous Page">&lt;&lt;</a>
+
 
 
 
@@ -39,12 +41,14 @@
 		
 		
 		
+		
 				<a href="#replace(
 			theLink,
 			"@page@",
 			1
 		)#">1</a>
 				<a href="javascript:void(0)">...</a>
+
 
 
 
@@ -64,10 +68,13 @@
 			</cfif>
 			
 			
+			
 			"  tabindex="0">
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -79,12 +86,15 @@
 
 
 
+
 		<cfif currentPage EQ pageIndex>
 			class="selected active"
 		</cfif>
 		
 		
+		
 		>#pageIndex#</a>
+
 
 
 
@@ -99,12 +109,14 @@
 		
 		
 		
+		
 				<a href="javascript:void(0)">...</a>
 				<a href="#replace(
 			theLink,
 			"@page@",
 			totalPages
 		)#">#totalPages#</a>
+
 
 
 
@@ -119,11 +131,13 @@
 		
 		
 		
+		
 				<a href="#replace(
 			theLink,
 			"@page@",
 			currentPage + 1
 		)#" title="Next Page">&gt;&gt;</a>
+
 
 
 
@@ -137,8 +151,10 @@
 	
 	
 	
+	
 		</div>
 	</div>
+
 
 
 

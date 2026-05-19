@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- latest edits --->   <table
+	<!--- latest edits --->    <table
 name="contentTable-#args.viewletID#"
 id="contentTable-#args.viewletID#"
 	class="table table-hover  table-striped-removed"
@@ -24,11 +24,13 @@ id="contentTable-#args.viewletID#"
 	
 	
 	
+	
 
 			<th width="100" class="text-center">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
+
 
 
 
@@ -46,32 +48,36 @@ id="contentTable-#args.viewletID#"
 		
 		
 		
+		
 		>
-			<!--- ***************************************************************************** --->   
+			<!--- ***************************************************************************** --->    
 			<td>
 
 
 
+
 		<cfif thisContent.getContentType() EQ "page">
-			<!--- Edit --->   <a href="#event.buildLink( prc.xehPagesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Page">#thisContent.getTitle()#</a><!--- Label --->   <div class="mt5">
+			<!--- Edit --->    <a href="#event.buildLink( prc.xehPagesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Page">#thisContent.getTitle()#</a><!--- Label --->    <div class="mt5">
 <span class="label label-success">#thisContent.getContentType()#</span>
 </div>
 		<cfelseif thisContent.getContentType() EQ "contentStore">
-			<!--- Edit --->   <a href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#thisContent.getContentID()#" title="Edit ContentStore">#thisContent.getTitle()#</a><!--- Label --->   <div class="mt5">
+			<!--- Edit --->    <a href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#thisContent.getContentID()#" title="Edit ContentStore">#thisContent.getTitle()#</a><!--- Label --->    <div class="mt5">
 <span class="label label-default">#thisContent.getContentType()#</span>
 </div>
 		<cfelse>
-			<!--- Edit --->   <a href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Entry">#thisContent.getTitle()#</a><!--- Label --->   <div class="mt5">
+			<!--- Edit --->    <a href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getContentID()#" title="Edit Entry">#thisContent.getTitle()#</a><!--- Label --->    <div class="mt5">
 <span class="label label-info">#thisContent.getContentType()#</span>
 </div>
 		</cfif>
 		
 		
 		
+		
 			</td>
 
-			<!--- ***************************************************************************** --->   
+			<!--- ***************************************************************************** --->    
 			<td>
+
 
 
 
@@ -89,6 +95,7 @@ id="contentTable-#args.viewletID#"
 
 
 
+
 		<cfif args.showPublishedStatus>
 			<td class="text-center">#view(
 				view          = "_components/content/TableStatus",
@@ -101,9 +108,9 @@ id="contentTable-#args.viewletID#"
 <span class="badge badge-info">#thisContent.getNumberOfHits()#</span>
 </td>
 		</cfif>
-		<!--- ***************************************************************************** --->   
+		<!--- ***************************************************************************** --->    
 			<td class="text-center">
-				<!--- Page Actions --->   
+				<!--- Page Actions --->    
 				<div class="btn-group btn-group-sm">
 					<button
 						class="btn btn-icon btn-more dropdown-toggle"
@@ -119,6 +126,7 @@ id="contentTable-#args.viewletID#"
 
 
 
+
 		<cfif listFindNoCase( "page,entry", thisContent.getContentType() )>
 			<li>
 <a 	class=""
@@ -129,8 +137,9 @@ id="contentTable-#args.viewletID#"
 	</a>
 </li>
 		</cfif>
-		<!--- Edit --->   
+		<!--- Edit --->    
 						<li>
+
 
 
 
@@ -140,6 +149,7 @@ id="contentTable-#args.viewletID#"
 		<cfelseif thisContent.getContentType() EQ "contentStore">
 			<cfset targetEditor = prc.xehContentStoreEditor>
 		</cfif>
+		
 		
 		
 		
@@ -156,12 +166,15 @@ id="contentTable-#args.viewletID#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
 	</tbody>
 </table>
+
 
 
 
