@@ -80,24 +80,24 @@ component accessors="#true#" {
 
 			// set some cheat mappings
 			variables.dataServiceMappings = {
-				"Authors"        : "authorService",
-				"Categories"     : "categoryService",
-				"Content Store"  : "contentStoreService",
-				"Menus"          : "menuService",
-				"Permissions"    : "permissionService",
-				"Roles"          : "roleService",
-				"Security Rules" : "securityRuleService",
-				"Settings"       : "settingService",
-				"Entries"        : "entryService",
-				"Pages"          : "pageService"
+				"Authors"       : "authorService",
+				"Categories"    : "categoryService",
+				"Content Store" : "contentStoreService",
+				"Menus"         : "menuService",
+				"Permissions"   : "permissionService",
+				"Roles"         : "roleService",
+				"Security Rules": "securityRuleService",
+				"Settings"      : "settingService",
+				"Entries"       : "entryService",
+				"Pages"         : "pageService"
 			};
 
 			variables.filePathMappings = {
-				"Email Templates" : contentBoxPath & "/email_templates",
-				"Themes"          : customPath & "/_themes",
-				"Media Library"   : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
-				"Modules"         : customPath & "/_modules",
-				"Widgets"         : customPath & "/_widgets"
+				"Email Templates": contentBoxPath & "/email_templates",
+				"Themes"         : customPath & "/_themes",
+				"Media Library"  : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
+				"Modules"        : customPath & "/_modules",
+				"Widgets"        : customPath & "/_widgets"
 			};
 		} catch (any e) {
 			log.error(

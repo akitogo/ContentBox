@@ -55,13 +55,13 @@ component
 	this.pk = "settingID";
 
 	this.constraints = {
-		"name"  : { required : true, size : "1..100" },
-		"value" : { required : true }
+		"name" : { required: true, size: "1..100" },
+		"value": { required: true }
 	};
 
 	this.memento = {
-		defaultIncludes : [ "name", "value", "isCore", "siteSnapshot:site"],
-		defaultExcludes : [ "site"]
+		defaultIncludes: [ "name", "value", "isCore", "siteSnapshot:site"],
+		defaultExcludes: [ "site"]
 	};
 
 	/**********************************************************************

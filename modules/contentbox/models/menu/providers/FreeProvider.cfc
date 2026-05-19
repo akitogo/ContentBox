@@ -51,8 +51,8 @@ component
 		required struct options = {}
 	) {
 		var viewArgs = {
-			menuItem : arguments.menuItem,
-			data     : arguments.menuItem.getMemento()
+			menuItem: arguments.menuItem,
+			data    : arguments.menuItem.getMemento()
 		};
 		return variables.renderer.externalView(
 				view   = "/contentbox/models/menu/views/free/display",

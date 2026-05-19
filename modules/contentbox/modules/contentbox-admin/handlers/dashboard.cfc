@@ -73,8 +73,8 @@ component extends="baseHandler" {
 			arrayAppend(
 				prc.aTopContent,
 				{
-					"label" : thisContent.getTitle(),
-					"value" : thisContent.getNumberOfHits()
+					"label": thisContent.getTitle(),
+					"value": thisContent.getNumberOfHits()
 				}
 			);
 			prc.aTopContentTotalHits += thisContent.getNumberOfHits();
@@ -88,8 +88,8 @@ component extends="baseHandler" {
 			arrayAppend(
 				prc.aTopCommented,
 				{
-					"label" : thisContent.getTitle(),
-					"value" : thisContent.getNumberOfComments()
+					"label": thisContent.getTitle(),
+					"value": thisContent.getNumberOfComments()
 				}
 			);
 			prc.aTopCommentedTotalHits += thisContent.getNumberOfComments();
@@ -110,13 +110,13 @@ component extends="baseHandler" {
 		prc.latestDraftsViewlet = runEvent(
 			event          = "contentbox-admin:content.latestContentEdits",
 			eventArguments = {
-				max                 : 10,
-				author              : prc.oCurrentAuthor,
-				isPublished         : false,
-				showHits            : false,
-				colorCodings        : false,
-				showPublishedStatus : false,
-				showAuthor          : false
+				max                : 10,
+				author             : prc.oCurrentAuthor,
+				isPublished        : false,
+				showHits           : false,
+				colorCodings       : false,
+				showPublishedStatus: false,
+				showAuthor         : false
 			}
 		);
 		event.setView( view = "dashboard/latestUserDrafts", layout = "ajax" );
@@ -131,7 +131,7 @@ component extends="baseHandler" {
 		// Latest Edits
 		prc.latestEditsViewlet = runEvent(
 			event          = "contentbox-admin:content.latestContentEdits",
-			eventArguments = { max : 10, showHits : true }
+			eventArguments = { max: 10, showHits: true }
 		);
 		event.setView( view = "dashboard/latestSystemEdits", layout = "ajax" );
 	}
@@ -145,7 +145,7 @@ component extends="baseHandler" {
 		// Latest Edits
 		prc.futurePublishedContent = runEvent(
 			event          = "contentbox-admin:content.contentByPublishedStatus",
-			eventArguments = { max : 10, showHits : false, colorCodings : false }
+			eventArguments = { max: 10, showHits: false, colorCodings: false }
 		);
 		event.setView(
 				view   = "dashboard/futurePublishedContent",
@@ -163,10 +163,10 @@ component extends="baseHandler" {
 		prc.expiredContent = runEvent(
 			event          = "contentbox-admin:content.contentByPublishedStatus",
 			eventArguments = {
-				max          : 10,
-				showHits     : true,
-				showExpired  : true,
-				colorCodings : false
+				max         : 10,
+				showHits    : true,
+				showExpired : true,
+				colorCodings: false
 			}
 		);
 		event.setView( view = "dashboard/expiredContent", layout = "ajax" );
@@ -180,8 +180,8 @@ component extends="baseHandler" {
 	function latestComments( event, rc, prc ) {
 		// Get Comments viewlet
 		var eArgs = {
-			max        : prc.cbSettings.cb_dashboard_recentComments,
-			pagination : false
+			max       : prc.cbSettings.cb_dashboard_recentComments,
+			pagination: false
 		};
 		prc.commentsViewlet = runEvent(
 			event          = "contentbox-admin:comments.pager",
@@ -205,10 +205,10 @@ component extends="baseHandler" {
 						maxItems  = prc.cbsettings.cb_dashboard_newsfeed_count
 					);
 			} else {
-				prc.latestNews = { items : queryNew( "" ) };
+				prc.latestNews = { items: queryNew( "" ) };
 			}
 		} catch (Any e) {
-			prc.latestNews = { items : queryNew( "" ) };
+			prc.latestNews = { items: queryNew( "" ) };
 			log.error( "Error retrieving news feed: #e.message# #e.detail#", e );
 		}
 
@@ -233,7 +233,7 @@ component extends="baseHandler" {
 	 * @return JSON
 	 */
 	function deleteInstaller() {
-		var results = { "ERROR" : false, "MESSAGE" : "" };
+		var results = { "ERROR": false, "MESSAGE": "" };
 
 		try {
 			variables.settingService.deleteInstaller();
@@ -285,7 +285,7 @@ component extends="baseHandler" {
 
 			// Ajax requests
 			if ( event.isAjax() ) {
-				event.renderData( type = "json", data = { error : false, executed : true } );
+				event.renderData( type = "json", data = { error: false, executed: true } );
 			} else {
 				// relocate back to dashboard
 				relocate( prc.xehDashboard );
@@ -299,9 +299,9 @@ component extends="baseHandler" {
 			// Ajax requests
 			if ( event.isAjax() ) {
 				var data = {
-					error    : true,
-					executed : false,
-					messages : e.message & e.detail
+					error   : true,
+					executed: false,
+					messages: e.message & e.detail
 				};
 				event.renderData( type = "json", data = data );
 			} else {

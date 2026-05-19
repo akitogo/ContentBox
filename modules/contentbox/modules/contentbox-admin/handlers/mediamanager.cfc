@@ -31,7 +31,7 @@ component extends="baseHandler" {
 		prc.cbFileBrowserSettings.title = "Content Library";
 
 		// build argument list for widget
-		prc.fbArgs = { widget : true, settings : prc.cbFileBrowserSettings };
+		prc.fbArgs = { widget: true, settings: prc.cbFileBrowserSettings };
 
 		// Light up
 		prc.tabContent_mediaManager = true;

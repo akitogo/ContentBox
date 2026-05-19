@@ -110,7 +110,7 @@ component extends="baseHandler" {
 	 * Remove permanently a version
 	 */
 	function remove( event, rc, prc ) {
-		var results = { "ERROR" : false, "MESSAGES" : "" };
+		var results = { "ERROR": false, "MESSAGES": "" };
 		event.paramValue( "versionID", "" );
 
 		// check for length
@@ -118,14 +118,14 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preContentVersionRemove",
-				{ contentVersionID : rc.versionID }
+				{ contentVersionID: rc.versionID }
 			);
 			// remove using hibernate bulk
 			contentVersionService.deleteByID( rc.versionID );
 			// announce event
 			announce(
 				"cbadmin_postContentVersionRemove",
-				{ contentVersionID : rc.versionID }
+				{ contentVersionID: rc.versionID }
 			);
 			// results
 			results.messages = "Version removed!";
@@ -141,7 +141,7 @@ component extends="baseHandler" {
 	 * Rollback a version
 	 */
 	function rollback( event, rc, prc ) {
-		var results = { "ERROR" : false, "MESSAGES" : "" };
+		var results = { "ERROR": false, "MESSAGES": "" };
 		event.paramValue( "revertID", "" );
 		// get version
 		var oVersion = contentVersionService.get( rc.revertID );
@@ -149,7 +149,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preContentVersionRollback",
-				{ contentVersion : oVersion }
+				{ contentVersion: oVersion }
 			);
 			// Try to revert this version
 			oVersion.getRelatedContent().addNewContentVersion(
@@ -162,7 +162,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_postContentVersionRollback",
-				{ contentVersion : oVersion }
+				{ contentVersion: oVersion }
 			);
 			// results
 			results.messages = "Version #oVersion.getVersion()# rollback was successfull!";

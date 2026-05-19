@@ -18,7 +18,7 @@
 		    <div class="panel-body">#html.startForm( name = "widgetForm",
 			action = prc.xehWidgetRemove )##html.hiddenField( name = "widgetFile" )##view(
 		view          = "widgets/widgetList",
-		args          = { mode : "edit", cols : 2 },
+		args          = { mode: "edit", cols: 2 },
 		prePostExempt = true
 	)##html.endForm()#</div>
 		</div>

@@ -187,9 +187,9 @@ component extends="baseHandler" {
 								function( thisField ) {
 									return variables.customFieldService.new(
 											{
-												key            : toString( arguments.thisField.key ),
-												value          : toString( arguments.thisField.value ),
-												relatedContent : prc.oEntity
+												key           : toString( arguments.thisField.key ),
+												value         : toString( arguments.thisField.value ),
+												relatedContent: prc.oEntity
 											}
 										);
 								}
@@ -203,7 +203,7 @@ component extends="baseHandler" {
 					.settings
 					.resources
 					.eventPrefix#pre#variables.entity##len( rc.id ) ? "Update" : "Save"#",
-				{ entity : prc.oEntity, originalSlug : originalSlug }
+				{ entity: prc.oEntity, originalSlug: originalSlug }
 			);
 
 			// Save it
@@ -219,7 +219,7 @@ component extends="baseHandler" {
 					.settings
 					.resources
 					.eventPrefix#post#variables.entity##len( rc.id ) ? "Update" : "Save"#",
-				{ entity : prc.oEntity, originalSlug : originalSlug }
+				{ entity: prc.oEntity, originalSlug: originalSlug }
 			);
 		}
 		// end transaction

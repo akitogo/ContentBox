@@ -74,8 +74,8 @@ component
 	public boolean function isExtantSubscription() {
 		var extantSubscription = variables.commentSubscriptionService.findWhere(
 				{
-					relatedContent : getRelatedContent(),
-					subscriber     : getSubscriber()
+					relatedContent: getRelatedContent(),
+					subscriber    : getSubscriber()
 				}
 			);
 		return isNull( extantSubscription ) ? false : true;

@@ -40,8 +40,8 @@ component
 	 * **                          PK + CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "js" ] = { required : false, size : "1..255" };
-	this.constraints[ "urlClass" ] = { required : false, size : "1..255" };
+	this.constraints[ "js" ] = { required: false, size: "1..255" };
+	this.constraints[ "urlClass" ] = { required: false, size: "1..255" };
 
 	/**********************************************************************
 	 * **                          PUBLIC FUNCTIONS

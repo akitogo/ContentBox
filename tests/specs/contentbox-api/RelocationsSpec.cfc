@@ -14,9 +14,9 @@ component extends="tests.resources.BaseApiTest" {
 		variables.testSite = getDefaultSite();
 		variables.testRelocation = variables.relocationService.new(
 				properties = {
-					"slug"   : createUUID(),
-					"target" : createUUID(),
-					"site"   : testSite
+					"slug"  : createUUID(),
+					"target": createUUID(),
+					"site"  : testSite
 				}
 			);
 		variables.RelocationService.save( testRelocation );
@@ -111,7 +111,7 @@ component extends="tests.resources.BaseApiTest" {
 											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/relocations",
-														{ target : "bddtest", slug : "bddtest" }
+														{ target: "bddtest", slug: "bddtest" }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200 );
 												expect( event.getResponse().getData().relocationID ).notToBeEmpty();
@@ -130,7 +130,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/relocations",
-												{ "slug" : testRelocation.getSlug(), target : "coldbox" }
+												{ "slug": testRelocation.getSlug(), target: "coldbox" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400 );
 										expect( event.getResponse() ).toHaveInvalidData( "slug", "is not unique" );
@@ -146,7 +146,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/relocations",
-												{ name : "A nice Relocation" }
+												{ name: "A nice Relocation" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400 );
 										expect( event.getResponse() ).toHaveInvalidData( "slug", "is required" );
@@ -170,7 +170,7 @@ component extends="tests.resources.BaseApiTest" {
 											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/relocations/#testRelocation.getRelocationID()#",
-														{ target : "foo" }
+														{ target: "foo" }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200 );
 												expect( event.getResponse().getData().target ).toBe( "foo" );

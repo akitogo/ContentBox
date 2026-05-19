@@ -55,7 +55,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				sql        = "select * from #arguments.tableprefix#_terms a, #arguments.tableprefix#_term_taxonomy b where a.term_id = b.term_id AND b.taxonomy = 'category'"
 			).execute().getResult();
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
-				var props = { category : q.name[ x ], slug : q.slug[ x ] };
+				var props = { category: q.name[ x ], slug: q.slug[ x ] };
 				var cat = categoryService.new( properties = props );
 				var exists = categoryService.findAllBySlug( q.slug[ x ] );
 
@@ -85,13 +85,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 			var selectedRole = roleService.get( arguments.roleID );
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
-					email     : q.user_email[ x ],
-					username  : q.user_login[ x ],
-					password  : bcrypt.hashPassword( defaultPassword ),
-					isActive  : 1,
-					role      : selectedRole,
-					firstName : listFirst( q.display_name[ x ], " " ),
-					lastName  : trim(
+					email    : q.user_email[ x ],
+					username : q.user_login[ x ],
+					password : bcrypt.hashPassword( defaultPassword ),
+					isActive : 1,
+					role     : selectedRole,
+					firstName: listFirst( q.display_name[ x ], " " ),
+					lastName : trim(
 						replaceNoCase(
 							q.display_name[ x ],
 							listFirst( q.display_name[ x ], " " ),
@@ -134,15 +134,15 @@ component implements="contentbox.models.importers.ICBImporter" {
 				}
 
 				var props = {
-					title         : qPages.title[ x ],
-					slug          : qPages.name[ x ],
-					content       : fixWordPressContent( qPages.content[ x ] ),
-					excerpt       : "",
-					publishedDate : qPages.last_modified[ x ],
-					createdDate   : qPages.last_modified[ x ],
-					isPublished   : published,
-					allowComments : commentStatus,
-					layout        : "pages"
+					title        : qPages.title[ x ],
+					slug         : qPages.name[ x ],
+					content      : fixWordPressContent( qPages.content[ x ] ),
+					excerpt      : "",
+					publishedDate: qPages.last_modified[ x ],
+					createdDate  : qPages.last_modified[ x ],
+					isPublished  : published,
+					allowComments: commentStatus,
+					layout       : "pages"
 				};
 
 				var moreLoc = findNoCase( "<!--more-->", props.content );
@@ -202,13 +202,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var aComments = [];
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.comment_content[ y ],
-						author      : qComments.comment_author[ y ],
-						authorIP    : "127.0.0.1",
-						authorEmail : qComments.comment_author_email[ y ],
-						authorURL   : qComments.comment_author_url[ y ],
-						createdDate : qComments.comment_date[ y ],
-						isApproved  : qComments.comment_approved[ y ]
+						content    : qComments.comment_content[ y ],
+						author     : qComments.comment_author[ y ],
+						authorIP   : "127.0.0.1",
+						authorEmail: qComments.comment_author_email[ y ],
+						authorURL  : qComments.comment_author_url[ y ],
+						createdDate: qComments.comment_date[ y ],
+						isApproved : qComments.comment_approved[ y ]
 					};
 					var comment = commentService.new( properties = props );
 					comment.setRelatedContent( page );
@@ -244,15 +244,15 @@ component implements="contentbox.models.importers.ICBImporter" {
 				}
 
 				var props = {
-					title         : qEntries.title[ x ],
-					slug          : qEntries.name[ x ],
-					content       : fixWordPressContent( qEntries.content[ x ] ),
-					excerpt       : "",
-					publishedDate : qEntries.last_modified[ x ],
-					createdDate   : qEntries.last_modified[ x ],
-					isPublished   : published,
-					allowComments : commentStatus,
-					layout        : "entries"
+					title        : qEntries.title[ x ],
+					slug         : qEntries.name[ x ],
+					content      : fixWordPressContent( qEntries.content[ x ] ),
+					excerpt      : "",
+					publishedDate: qEntries.last_modified[ x ],
+					createdDate  : qEntries.last_modified[ x ],
+					isPublished  : published,
+					allowComments: commentStatus,
+					layout       : "entries"
 				};
 
 				var moreLoc = findNoCase( "<!--more-->", props.content );
@@ -336,13 +336,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 				var aComments = [];
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.comment_content[ y ],
-						author      : qComments.comment_author[ y ],
-						authorIP    : "127.0.0.1",
-						authorEmail : qComments.comment_author_email[ y ],
-						authorURL   : qComments.comment_author_url[ y ],
-						createdDate : qComments.comment_date[ y ],
-						isApproved  : qComments.comment_approved[ y ]
+						content    : qComments.comment_content[ y ],
+						author     : qComments.comment_author[ y ],
+						authorIP   : "127.0.0.1",
+						authorEmail: qComments.comment_author_email[ y ],
+						authorURL  : qComments.comment_author_url[ y ],
+						createdDate: qComments.comment_date[ y ],
+						isApproved : qComments.comment_approved[ y ]
 					};
 					var comment = commentService.new( properties = props );
 					comment.setRelatedContent( entry );

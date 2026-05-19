@@ -97,7 +97,7 @@ component extends="cborm.models.resources.BaseHandler" {
 				.settings
 				.resources
 				.eventPrefix#post#variables.entity#Show",
-			{ entity : prc.oEntity }
+			{ entity: prc.oEntity }
 		);
 
 		// Marshall it
@@ -159,7 +159,7 @@ component extends="cborm.models.resources.BaseHandler" {
 				.settings
 				.resources
 				.eventPrefix#pre#variables.entity#Update",
-			{ entity : prc.oEntity }
+			{ entity: prc.oEntity }
 		);
 
 		// Save it
@@ -175,7 +175,7 @@ component extends="cborm.models.resources.BaseHandler" {
 				.settings
 				.resources
 				.eventPrefix#post#variables.entity#Update",
-			{ entity : prc.oEntity }
+			{ entity: prc.oEntity }
 		);
 
 		// Marshall it out
@@ -209,7 +209,7 @@ component extends="cborm.models.resources.BaseHandler" {
 				.settings
 				.resources
 				.eventPrefix#pre#variables.entity#Delete",
-			{ entity : prc.oEntity }
+			{ entity: prc.oEntity }
 		);
 
 		// Delete it
@@ -225,7 +225,7 @@ component extends="cborm.models.resources.BaseHandler" {
 				.settings
 				.resources
 				.eventPrefix#post#variables.entity#Delete",
-			{ id : rc.id }
+			{ id: rc.id }
 		);
 
 		// Marshall it out

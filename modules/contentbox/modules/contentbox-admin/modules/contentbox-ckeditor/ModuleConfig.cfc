@@ -22,12 +22,12 @@ component {
 	 */
 	function configure() {
 		// SES Routes
-		routes = [ { pattern : "/:handler/:action?" }];
+		routes = [ { pattern: "/:handler/:action?" }];
 
 		// Custom Declared Points
 		interceptorSettings = {
 			// CB Admin Custom Events
-			customInterceptionPoints : [
+			customInterceptionPoints: [
 				"cbadmin_ckeditorToolbar",
 				"cbadmin_ckeditorExtraPlugins",
 				"cbadmin_ckeditorExtraConfig",

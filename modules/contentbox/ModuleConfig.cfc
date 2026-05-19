@@ -30,51 +30,51 @@ component {
 		// contentbox settings
 		variables.settings = {
 			// Code name
-			"codename"     : "Psalm 144:1",
-			"codenameLink" : "https://www.bible.com/bible/114/psa.144.1.nkjv",
+			"codename"    : "Psalm 144:1",
+			"codenameLink": "https://www.bible.com/bible/114/psa.144.1.nkjv",
 			// Officially supported languages for modules
-			"languages"    : [ "de_DE", "en_US", "es_SV", "it_IT", "pt_BR"],
+			"languages"   : [ "de_DE", "en_US", "es_SV", "it_IT", "pt_BR"],
 			// cbSecurity settings
-			"cbSecurity"   : {
+			"cbSecurity"  : {
 				// Load the security rules for ContentBox from our db model
-				"firewall" : {
-					"rules" : {
-						"provider" : {
-							"source"     : "model",
-							"properties" : {
-								"model"  : "securityRuleService@contentbox",
-								"method" : "getSecurityRules"
+				"firewall": {
+					"rules": {
+						"provider": {
+							"source"    : "model",
+							"properties": {
+								"model" : "securityRuleService@contentbox",
+								"method": "getSecurityRules"
 							}
 						}
 					}
 				}
 			},
 			// Array of mixins to inject into all content objects
-			"contentHelpers" : [],
+			"contentHelpers": [],
 			// Setting Overrides
-			"settings"       : {
+			"settings"      : {
 				// Global settings
-				"global" : {},
+				"global": {},
 				// Site specific settings according to site slug
-				"sites"  : {}
+				"sites" : {}
 			}
 		};
 
 		// i18n
-		variables.cbi18n = { resourceBundles : { "cbcore" : "#moduleMapping#/i18n/cbcore" } };
+		variables.cbi18n = { resourceBundles: { "cbcore": "#moduleMapping#/i18n/cbcore" } };
 
 		// CB Module Conventions
-		conventions = { layoutsLocation : "themes", viewsLocation : "themes" };
+		conventions = { layoutsLocation: "themes", viewsLocation: "themes" };
 
 		// Parent Affected Settings
 		variables.parentSettings = {
 			// File Browser module name override
-			filebrowser_module_name : "contentbox-filebrowser"
+			filebrowser_module_name: "contentbox-filebrowser"
 		};
 
 		// ContentBox Core Custom Events
 		variables.interceptorSettings = {
-			customInterceptionPoints : [ "cb_onContentRendering", "cb_onContentStoreRendering"]
+			customInterceptionPoints: [ "cb_onContentRendering", "cb_onContentStoreRendering"]
 		};
 
 		// Async Executors for ContentBox Core
@@ -84,40 +84,40 @@ component {
 		variables.interceptors = [
 			// Rate Limiter
 			{
-				class : "contentbox.models.security.RateLimiter",
-				name  : "RateLimiter@contentbox"
+				class: "contentbox.models.security.RateLimiter",
+				name : "RateLimiter@contentbox"
 			},
 			// CB RSS Cache Cleanup Ghost
 			{
-				class : "contentbox.models.rss.RSSCacheCleanup",
-				name  : "RSSCacheCleanup@contentbox"
+				class: "contentbox.models.rss.RSSCacheCleanup",
+				name : "RSSCacheCleanup@contentbox"
 			},
 			// CB Content Cache Cleanup Ghost
 			{
-				class : "contentbox.models.content.util.ContentCacheCleanup",
-				name  : "ContentCacheCleanup@contentbox"
+				class: "contentbox.models.content.util.ContentCacheCleanup",
+				name : "ContentCacheCleanup@contentbox"
 			},
 			// Content Subscriptions
 			{
-				class : "contentbox.models.subscriptions.SubscriptionListener",
-				name  : "SubscriptionListener@contentbox"
+				class: "contentbox.models.subscriptions.SubscriptionListener",
+				name : "SubscriptionListener@contentbox"
 			},
 			// Content Renderers, remember order is important.
 			{
-				class : "contentbox.models.content.renderers.LinkRenderer",
-				name  : "LinkRenderer@contentbox"
+				class: "contentbox.models.content.renderers.LinkRenderer",
+				name : "LinkRenderer@contentbox"
 			},
 			{
-				class : "contentbox.models.content.renderers.WidgetRenderer",
-				name  : "WidgetRenderer@contentbox"
+				class: "contentbox.models.content.renderers.WidgetRenderer",
+				name : "WidgetRenderer@contentbox"
 			},
 			{
-				class : "contentbox.models.content.renderers.SettingRenderer",
-				name  : "SettingRenderer@contentbox"
+				class: "contentbox.models.content.renderers.SettingRenderer",
+				name : "SettingRenderer@contentbox"
 			},
 			{
-				class : "contentbox.models.content.renderers.MarkdownRenderer",
-				name  : "MarkdownRenderer@contentbox"
+				class: "contentbox.models.content.renderers.MarkdownRenderer",
+				name : "MarkdownRenderer@contentbox"
 			}
 		];
 
@@ -157,8 +157,8 @@ component {
 					"contentbox",
 					"Local",
 					{
-						path    : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
-						diskUrl : function() {
+						path   : expandPath( settingService.getSetting( "cb_media_directoryRoot" ) ),
+						diskUrl: function() {
 							return variables
 								.wirebox
 								.getInstance( "CBHelper@contentBox" )

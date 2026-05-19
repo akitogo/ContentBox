@@ -9,15 +9,15 @@ component extends="baseHandler" {
 		prc.xehImportAll = "#prc.cbAdminEntryPoint#.contentTemplates.importAll";
 		prc.themeRecord = getInstance( "ThemeService@contentbox" ).getActiveTheme();
 		prc.globalData = {
-			"templateSchema"   : templateService.new().getSchema(),
-			"availableLayouts" : listToArray(
+			"templateSchema"  : templateService.new().getSchema(),
+			"availableLayouts": listToArray(
 				reReplaceNoCase(
 					prc.themeRecord.layouts,
 					"blog,?",
 					""
 				)
 			),
-			"availableCategories" : variables
+			"availableCategories": variables
 				.categoryService
 				.newCriteria()
 				.isEq( "site", prc.oCurrentSite )
@@ -96,7 +96,7 @@ component extends="baseHandler" {
 								structDelete( template, "templateID" );
 								var templateEntity = templateService.new();
 							}
-							var populateArgs = { "memento" : template, "model" : templateEntity };
+							var populateArgs = { "memento": template, "model": templateEntity };
 
 							populateModel( argumentCollection = populateArgs );
 

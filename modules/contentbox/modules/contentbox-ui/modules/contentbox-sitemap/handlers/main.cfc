@@ -128,30 +128,30 @@ component {
 		switch ( rc.format ) {
 			case "xml": {
 				return {
-					data        : view( view = "sitemap_xml", module = "contentbox-sitemap" ),
-					contentType : "application/xml"
+					data       : view( view = "sitemap_xml", module = "contentbox-sitemap" ),
+					contentType: "application/xml"
 				};
 			}
 			case "json": {
 				return {
-					data        : view( view = "sitemap_json", module = "contentbox-sitemap" ),
-					contentType : "application/json"
+					data       : view( view = "sitemap_json", module = "contentbox-sitemap" ),
+					contentType: "application/json"
 				};
 			}
 			case "txt": {
 				return {
-					data        : view( view = "sitemap_txt", module = "contentbox-sitemap" ),
-					contentType : "text/plain"
+					data       : view( view = "sitemap_txt", module = "contentbox-sitemap" ),
+					contentType: "text/plain"
 				};
 			}
 			default: {
 				event.setView( "sitemap_html" );
 				return {
-					data : layout(
+					data: layout(
 						module     = event.getCurrentLayoutModule(),
 						viewModule = event.getCurrentViewModule()
 					),
-					contentType : "text/html"
+					contentType: "text/html"
 				};
 			}
 		}

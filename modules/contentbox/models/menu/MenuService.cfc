@@ -107,7 +107,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 * @site The site to export from
 	 */
 	array function getAllForExport( required site ) {
-		return findAllWhere( { site : arguments.site } ).map(
+		return findAllWhere( { site: arguments.site } ).map(
 				function( thisItem ) {
 					return thisItem.getMemento( profile = "export" );
 				}
@@ -206,7 +206,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				);
 
 				// Get new or persisted from site by slug
-				var oMenu = findWhere( { "slug" : thisMenu.slug, "site" : arguments.site } );
+				var oMenu = findWhere( { "slug": thisMenu.slug, "site": arguments.site } );
 				if ( isNull( oMenu ) ) {
 					logThis( "+ New menu (#thisMenu.slug#) to import" );
 					oMenu = this.new();
@@ -285,7 +285,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				arguments.menuString &= "<li id=""key_#item.getMenuItemID()#"" class=""dd-item dd3-item"" data-id=""#item.getMenuItemID()#"" :key=""#item.getMenuItemID()#"">";
 
 				// render default menu item
-				var args = { menuItem : item, provider : item.getProvider() };
+				var args = { menuItem: item, provider: item.getProvider() };
 				savecontent variable="providerContent" {
 					writeOutput(
 						variables.renderer.view(

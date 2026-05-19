@@ -34,7 +34,7 @@ component extends="baseHandler" {
 	 * Present all assets via ckeditor integration
 	 */
 	function index( event, rc, prc ) {
-		var args = { widget : true, settings : prc.cbCKSetting };
+		var args = { widget: true, settings: prc.cbCKSetting };
 		return runEvent(
 			event          = prc.cbCKfileBrowserDefaultEvent,
 			eventArguments = args
@@ -46,7 +46,7 @@ component extends="baseHandler" {
 	 */
 	function image( event, rc, prc ) {
 		rc.filtertype = "Image";
-		var args = { widget : true, settings : prc.cbCKSetting };
+		var args = { widget: true, settings: prc.cbCKSetting };
 		return runEvent(
 			event          = prc.cbCKfileBrowserDefaultEvent,
 			eventArguments = args
@@ -58,7 +58,7 @@ component extends="baseHandler" {
 	 */
 	function flash( event, rc, prc ) {
 		rc.filtertype = "Flash";
-		var args = { widget : true, settings : prc.cbCKSetting };
+		var args = { widget: true, settings: prc.cbCKSetting };
 		return runEvent(
 			event          = prc.cbCKfileBrowserDefaultEvent,
 			eventArguments = args
@@ -71,7 +71,7 @@ component extends="baseHandler" {
 	function assetChooser( event, rc, prc ) {
 		// prepare filebrowser settings
 		prc.cbCKSetting.loadJQuery = false;
-		var args = { widget : true, settings : prc.cbCKSetting };
+		var args = { widget: true, settings: prc.cbCKSetting };
 		// load filebrowser inline
 		prc.fileBrowser = runEvent(
 			event          = prc.cbCKfileBrowserDefaultEvent,

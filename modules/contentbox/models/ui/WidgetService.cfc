@@ -470,7 +470,7 @@ component accessors="true" singleton threadSafe {
 			// Init Arguments added for backwards compat
 			return wirebox.getInstance(
 					name          = widgetPath,
-					initArguments = { "controller" : variables.coldbox }
+					initArguments = { "controller": variables.coldbox }
 				);
 		} else {
 			throw(

@@ -62,33 +62,33 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		local.q = htmlEditFormat( event.getValue( "q", "" ) );
 		// generate recent comments
 		saveContent variable="rString" {
-		writeOutput(
-			"
-		#html.startForm(
-					name   = "searchForm",
-					action = action,
-					class  = arguments.formcss
-				)#
+	writeOutput(
+		"
+	#html.startForm(
+				name   = "searchForm",
+				action = action,
+				class  = arguments.formcss
+			)#
 <div class=""input-group"">
 #html.textField(
-					name        = "q",
-					placeholder = "Search",
-					value       = local.q,
-					class       = "form-control"
-				)#
+				name        = "q",
+				placeholder = "Search",
+				value       = local.q,
+				class       = "form-control"
+			)#
 <span class=""input-group-btn"">
-	<button class=""btn btn-primary"" type=""submit"">
-		<i class=""fa fa-search""></i>
-	</button>
+<button class=""btn btn-primary"" type=""submit"">
+	<i class=""fa fa-search""></i>
+</button>
 </span>
 </div>
-		#html.endForm()#
-		"
-		);
+	#html.endForm()#
+	"
+	);
 
 
-		// cfformat-ignore-end
-	}
+	// cfformat-ignore-end
+}
 		return rString;
 	}
 

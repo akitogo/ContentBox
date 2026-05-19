@@ -1,5 +1,5 @@
 <cfoutput>
-	<title>#cb.getContentTitle()#</title><!--- ********************************************************************************* --->    <meta charset="utf-8" />
+	<title>#cb.getContentTitle()#</title><!--- ********************************************************************************* --->     <meta charset="utf-8" />
 <meta name="generator" 	 	content="ContentBox powered by ColdBox" />
 <meta name="robots" 	 	content="index,follow" />
 <meta name="viewport" 		content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
 					page = cb.getCurrentPage() )#" />
 		</cfif>
 	</cfif>
-	<!--- ********************************************************************************* --->    
+	<!--- ********************************************************************************* --->     
 
 
 <!-- injector:css -->
@@ -25,9 +25,10 @@
 		)#">
 <!-- endinjector -->
 
-<!--- Swatch Skin - Overrides Defaults --->    
+<!--- Swatch Skin - Overrides Defaults --->     
 <link rel="stylesheet" href="#cb.themeRoot()#/includes/bootswatch/#lcase( cb.themeSetting( "cbBootswatchTheme",
 				"green" ) )#/bootstrap.min.css?v=1" />
+
 
 
 
@@ -36,7 +37,7 @@
 	<cfif len( cb.themeSetting( "cssStyleOverrides" ) )>
 		<style>#cb.themeSetting( "cssStyleOverrides" )#</style>
 	</cfif>
-	<!--- ********************************************************************************* --->    
+	<!--- ********************************************************************************* --->     
 <!-- injector:js -->
 <script src="#cb.themeRoot()#/#html.elixirPath(
 			fileName     = "includes/js/runtime.js",
@@ -51,6 +52,7 @@
 			manifestRoot = "#cb.themeRoot()#/includes"
 		)#"></script>
 <!-- endinjector -->
+
 
 
 

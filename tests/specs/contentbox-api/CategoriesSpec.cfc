@@ -45,8 +45,8 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var testCategory = variables.categoryService.findWhere(
 												{
-													"slug" : "coldbox",
-													"site" : getDefaultSite()
+													"slug": "coldbox",
+													"site": getDefaultSite()
 												}
 											);
 										var event = this.get(
@@ -118,7 +118,7 @@ component extends="tests.resources.BaseApiTest" {
 											() => {
 												var event = this.post(
 														"cbapi/v1/sites/default/categories",
-														{ category : "bddtest", slug : "bddtest" }
+														{ category: "bddtest", slug: "bddtest" }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200 );
 												expect( event.getResponse().getData().categoryID ).notToBeEmpty();
@@ -137,7 +137,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/categories",
-												{ category : "coldbox", slug : "coldbox" }
+												{ category: "coldbox", slug: "coldbox" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400 );
 										expect( event.getResponse() ).toHaveInvalidData( "slug", "is not unique" );
@@ -153,7 +153,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/categories",
-												{ name : "A nice category" }
+												{ name: "A nice category" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400 );
 										expect( event.getResponse() ).toHaveInvalidData( "slug", "is required" );
@@ -177,7 +177,7 @@ component extends="tests.resources.BaseApiTest" {
 											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default/categories/coldbox",
-														{ category : "ColdBox Rocks" }
+														{ category: "ColdBox Rocks" }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200 );
 												expect( event.getResponse().getData().category ).toInclude( "ColdBox Rocks" );
@@ -195,7 +195,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/categories/coldbox",
-												{ slug : "coldfusion" }
+												{ slug: "coldfusion" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400 );
 										expect( event.getResponse() ).toHaveInvalidData( "slug", "is not unique" );
@@ -231,9 +231,9 @@ component extends="tests.resources.BaseApiTest" {
 											var testCategory = variables.categoryService.save(
 													variables.categoryService.new(
 															{
-																category : "bddtest",
-																slug     : "bddtest",
-																site     : getDefaultSite()
+																category: "bddtest",
+																slug    : "bddtest",
+																site    : getDefaultSite()
 															}
 														)
 												);

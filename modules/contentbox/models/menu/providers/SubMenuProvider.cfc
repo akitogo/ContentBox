@@ -53,7 +53,7 @@ component
 			existingSlug = arguments.menuItem.getMenuSlug();
 		}
 		var menus = criteria.list( sortOrder = "title ASC" );
-		var viewArgs = { menus : menus, existingSlug : existingSlug };
+		var viewArgs = { menus: menus, existingSlug: existingSlug };
 		return variables.renderer.view(
 				view   = "menus/providers/submenu/admin",
 				module = "contentbox-admin",
@@ -72,9 +72,9 @@ component
 		required struct options = {}
 	) {
 		var viewArgs = {
-			menuItem  : arguments.menuItem,
-			data      : arguments.menuItem.getMemento(),
-			slugCache : arguments.options.slugCache
+			menuItem : arguments.menuItem,
+			data     : arguments.menuItem.getMemento(),
+			slugCache: arguments.options.slugCache
 		};
 		return variables.renderer.externalView(
 				view   = "/contentbox/models/menu/views/submenu/display",

@@ -57,14 +57,14 @@ component
 	this.pk = "customFieldID";
 
 	this.memento = {
-		defaultIncludes : [ "key", "value"],
-		defaultExcludes : [ "relatedContent"],
-		neverInclude    : []
+		defaultIncludes: [ "key", "value"],
+		defaultExcludes: [ "relatedContent"],
+		neverInclude   : []
 	};
 
 	this.constraints = {
-		"key"   : { required : true, size : "1..255" },
-		"value" : { required : true }
+		"key"  : { required: true, size: "1..255" },
+		"value": { required: true }
 	};
 
 	/**********************************************************************

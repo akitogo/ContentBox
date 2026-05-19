@@ -1,12 +1,12 @@
 <cfoutput>
-	<!--- Setup alpine component --->    <div x-data="categoriesCrud()"><!--- TITLE --->    <div class="row">
+	<!--- Setup alpine component --->     <div x-data="categoriesCrud()"><!--- TITLE --->     <div class="row">
 	<div class="col-md-12">
 		<h1 class="h1">
 			<i class="fa fa-tags"></i> Content Categories (<span x-text="pagination.totalRecords"></span>)
 		</h1>
 	</div>
-</div><!--- MESSAGES --->    <div class="row">
-<div class="col-md-12">#cbMessageBox().renderit()##cbAdminComponent( "ui/Alert", { messageModel : "globalAlert" } )#
+</div><!--- MESSAGES --->     <div class="row">
+<div class="col-md-12">#cbMessageBox().renderit()##cbAdminComponent( "ui/Alert", { messageModel: "globalAlert" } )#
 	<cfif flash.exists( "importLog" )>
 		<div class="consoleLog">#flash.get( "importLog" )#</div>
 	</cfif>
@@ -14,20 +14,21 @@
 	
 	
 	
+	
 		</div>
 	</div>
 
-	<!--- DATA TABLES --->    
+	<!--- DATA TABLES --->     
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
 
-				<!--- Search + Filter Bar + Actions Bar --->    
+				<!--- Search + Filter Bar + Actions Bar --->     
 				<div class="panel-heading">
 					<div class="row">
 
 						<div class="col-md-6 col-xs-4 flex flex-row">
-							<!--- Search Filter --->    
+							<!--- Search Filter --->     
 							<div class="form-group m0 mr5">
 								<input
 									name="categorySearch"
@@ -38,7 +39,7 @@
 								>
 							</div>
 
-							<!--- Is Public Filter --->    
+							<!--- Is Public Filter --->     
 							<div class="form-group m0">
 								<select
 									name="isPublicFilter"
@@ -57,6 +58,7 @@
 
 						<div class="col-md-6 col-xs-8">
 							<div class="text-right">
+
 
 
 
@@ -106,8 +108,10 @@
 		
 		
 		
+		
 										</ul>
 									</div>
+
 
 
 
@@ -126,19 +130,20 @@
 	
 	
 	
+	
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<!--- Panel Content --->    
+				<!--- Panel Content --->     
 				<div class="panel-body">
-					<!--- Loader --->    
+					<!--- Loader --->     
 					<div class="text-center m20" x-show="isLoading">
 						<i class="fa fa-spinner fa-spin fa-lg"></i><br/>
 					</div>
 
-					<!--- Table --->    
+					<!--- Table --->     
 					<table id="categories" class="table table-striped-removed table-hover " cellspacing="0" width="100%" x-show="!isLoading">
 						<thead>
 							<tr>
@@ -166,7 +171,7 @@
 							<template x-for="(category, index) in categories" :key="category.categoryID">
 
 								<tr>
-									<!--- check box selector --->    
+									<!--- check box selector --->     
 									<td class="text-center">
 										<input
 											type="checkbox"
@@ -177,7 +182,7 @@
 										/>
 									</td>
 
-									<!--- Category --->    
+									<!--- Category --->     
 									<td>
 										<a
 											@click="editCategory( category )"
@@ -188,10 +193,10 @@
 										</a>
 									</td>
 
-									<!--- Slug --->    
+									<!--- Slug --->     
 									<td x-text="category.slug"></td>
 
-									<!--- Public or Private --->    
+									<!--- Public or Private --->     
 									<td class="text-center">
 										<i
 											class="text-green fa fa-check-circle"
@@ -203,24 +208,25 @@
 											x-show="!category.isPublic"></i>
 									</td>
 
-									<!--- Pages --->    
+									<!--- Pages --->     
 									<td class="text-center">
 										<span class="badge badge-info" x-text="category.numberOfPages"></span>
 									</td>
 
-									<!--- Entries --->    
+									<!--- Entries --->     
 									<td class="text-center">
 										<span class="badge badge-info" x-text="category.numberOfEntries"></span>
 									</td>
 
-									<!--- Content Store --->    
+									<!--- Content Store --->     
 									<td class="text-center">
 										<span class="badge badge-info" x-text="category.numberOfContentStore"></span>
 									</td>
 
-									<!--- Actions --->    
+									<!--- Actions --->     
 									<td class="text-center">
 										<div class="btn-group">
+
 
 
 
@@ -236,7 +242,7 @@
 		<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 		<span class="visually-hidden">Category Actions</span>
 	</button>
-	<ul class="dropdown-menu text-left pull-right"><!--- Edit --->    <li>
+	<ul class="dropdown-menu text-left pull-right"><!--- Edit --->     <li>
 	<a
 		@click="editCategory( category )"
 		class="cursor-pointer"
@@ -256,7 +262,7 @@
 	</a>
 </li>
 		</cfif>
-		<!--- Delete Command --->    
+		<!--- Delete Command --->     
 													<li>
 														<a
 															@click="deleteCategory( `${category.categoryID}`, index )"
@@ -272,7 +278,9 @@
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -293,6 +301,7 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "CATEGORIES_ADMIN" )>
 		<div class="alpine-overlay" x-show="isEditorOpen" x-cloak></div>
 <div
@@ -304,7 +313,7 @@
 	x-show="isEditorOpen"
 	x-cloak
 	x-transition
-><!--- We add a form to have html 5 validations --->    <form method="post" @submit.prevent="saveCategory()">
+><!--- We add a form to have html 5 validations --->     <form method="post" @submit.prevent="saveCategory()">
 <div
 	class="alpine-modal-inner"
 	@click.away="closeEditor"
@@ -319,15 +328,15 @@
 			@click.prevent="closeEditor">✖</button>
 	</div>
 
-	<div class="alpine-modal-body"><!--- Messages --->    <div
+	<div class="alpine-modal-body"><!--- Messages --->     <div
 	class="alert alert-danger"
 	x-show="errorMessages.length"
 	x-html="errorMessages"
-></div><!--- Id --->    <input
+></div><!--- Id --->     <input
 type="hidden"
 id="categoryID"
 name="categoryID"
-x-model="categoryForm.categoryID"><!--- Category --->    <div class="form-group">
+x-model="categoryForm.categoryID"><!--- Category --->     <div class="form-group">
 <label field="category">Category:</label>
 <div class="controls">#html.textField(
 				name        = "category",
@@ -336,9 +345,9 @@ x-model="categoryForm.categoryID"><!--- Category --->    <div class="form-group"
 				size        = "30",
 				placeholder = "Awesome Category",
 				class       = "form-control",
-				x           = { model : "categoryForm.category" }
+				x           = { model: "categoryForm.category" }
 			)#</div>
-</div><!--- Slug --->    <div class="form-group">
+</div><!--- Slug --->     <div class="form-group">
 <label field="category">Slug (blank to generate it):</label>
 <div class="controls">#html.textField(
 				name        = "slug",
@@ -346,20 +355,20 @@ x-model="categoryForm.categoryID"><!--- Category --->    <div class="form-group"
 				size        = "30",
 				placeholder = "awesome-category",
 				class       = "form-control",
-				x           = { model : "categoryForm.slug" }
+				x           = { model: "categoryForm.slug" }
 			)#</div>
 </div>
 
 <div class="form-group">#cbAdminComponent(
 			"ui/Toggle",
 			{
-				name   : "isPublic",
-				label  : "Public: ",
-				xmodel : "categoryForm.isPublic"
+				name  : "isPublic",
+				label : "Public: ",
+				xmodel: "categoryForm.isPublic"
 			}
 		)#</div>
 
-</div><!--- Footer --->    <div class="alpine-modal-footer">
+</div><!--- Footer --->     <div class="alpine-modal-footer">
 				<button
 					class="btn btn-default"
 					@click.prevent="closeEditor"
@@ -384,7 +393,9 @@ x-model="categoryForm.categoryID"><!--- Category --->    <div class="form-group"
 	
 	
 	
+	
 </div>
+
 
 
 
@@ -394,10 +405,10 @@ x-model="categoryForm.categoryID"><!--- Category --->    <div class="form-group"
 		#view(
 			view          = "_tags/dialog/import",
 			args          = {
-				title       : "Import Categories",
-				contentArea : "category",
-				action      : prc.xehImportAll,
-				contentInfo : "Choose the ContentBox <strong>JSON</strong> file to import."
+				title      : "Import Categories",
+				contentArea: "category",
+				action     : prc.xehImportAll,
+				contentInfo: "Choose the ContentBox <strong>JSON</strong> file to import."
 			},
 			prePostExempt = true
 		)#

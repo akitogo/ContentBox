@@ -33,25 +33,25 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		// build links accordingly to authentication
 		if ( securityService.getAuthorSession().isLoggedIn() ) {
 			var links = [
-				{ link : cb.linkAdmin(), title : "Site Admin" },
-				{ link : cb.linkAdminLogout(), title : "Logout" }
+				{ link: cb.linkAdmin(), title: "Site Admin" },
+				{ link: cb.linkAdminLogout(), title: "Logout" }
 			];
 		} else {
-			var links = [ { link : cb.linkAdminLogin(), title : "Login" }];
+			var links = [ { link: cb.linkAdminLogin(), title: "Login" }];
 		}
-		arrayAppend( links, { link : cb.linkRSS(), title : "Entries RSS" } );
+		arrayAppend( links, { link: cb.linkRSS(), title: "Entries RSS" } );
 		arrayAppend(
 			links,
 			{
-				link  : cb.linkRSS( comments = true ),
-				title : "Comments RSS"
+				link : cb.linkRSS( comments = true ),
+				title: "Comments RSS"
 			}
 		);
 		arrayAppend(
 			links,
 			{
-				link  : "https://www.ortussolutions.com/products/contentbox",
-				title : "ContentBox"
+				link : "https://www.ortussolutions.com/products/contentbox",
+				title: "ContentBox"
 			}
 		);
 
@@ -102,19 +102,19 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		var rString = "";
 		// cfformat-ignore-start
 		saveContent variable="rString" {
-		writeOutput( "<ul id=""meta"">" );
-		// iterate and create
-		for ( var x = 1; x LTE arrayLen( arguments.links ); x++ ) {
-			writeOutput(
-				"<li class=""archives"">
-				<a href=""#links[ x ].link#"">#links[ x ].title#</a>
-				</li>
-			"
-			);
-		}
-		// close ul
-		writeOutput( "</ul>" );
+	writeOutput( "<ul id=""meta"">" );
+	// iterate and create
+	for ( var x = 1; x LTE arrayLen( arguments.links ); x++ ) {
+		writeOutput(
+			"<li class=""archives"">
+			<a href=""#links[ x ].link#"">#links[ x ].title#</a>
+			</li>
+		"
+		);
 	}
+	// close ul
+	writeOutput( "</ul>" );
+}
 
 		// cfformat-ignore-end
 		return rString;

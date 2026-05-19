@@ -92,7 +92,7 @@ component
 					// announce renderings with data, so content renderers can process them
 					variables.interceptorService.announce(
 							"cb_onContentRendering",
-							{ builder : builder, content : this }
+							{ builder: builder, content: this }
 						);
 					// store processed content
 					variables.renderedExcerpt = builder.toString();

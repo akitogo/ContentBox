@@ -70,7 +70,7 @@ component accessors="true" singleton threadsafe {
 	 * @return struct of { startrow:numeric, maxrow:numeric }
 	 */
 	struct function getBoundaries( numeric pagingMaxRows, numeric page ) {
-		var boundaries = { "startrow" : 1, "maxrow" : 0 };
+		var boundaries = { "startrow": 1, "maxrow": 0 };
 		var event = getController().getRequestService().getContext();
 		var maxRows = !isNull( arguments.pagingMaxRows ) ? arguments.pagingMaxRows : getPagingMaxRows();
 

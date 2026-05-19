@@ -40,6 +40,7 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
   	<button class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown">
@@ -92,6 +93,7 @@
 		
 		
 		
+		
 
 											<li class="mb5">
 												<a href="javascript:contentListHelper.resetBulkHits()">
@@ -115,6 +117,7 @@
 
 
 
+
 		<cfif prc.availableTemplates.len()>
 			<li class="dropdown-header">
 	<i class="fa fa-object-group"></i> From Template:
@@ -132,12 +135,15 @@
 			
 			
 			
+			
 												<li role="separator" class="divider"></li>
 
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -158,7 +164,9 @@
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -168,7 +176,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- content container --->    
+					<!--- content container --->     
     				<div id="contentTableContainer">
     					<p class="text-center">
 							<i id="pageLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -200,6 +208,7 @@
 
 
 
+
 	<cfloop array="#prc.authors#" index="author">
 		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
 	</cfloop>
@@ -207,10 +216,11 @@
 	
 	
 	
+	
 								</select>
 							</div>
 					    </div>
-					    <!--- Creators --->    
+					    <!--- Creators --->     
 						<div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
@@ -219,6 +229,7 @@
 
 
 
+
 	<cfloop array="#prc.authors#" index="author">
 		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
 	</cfloop>
@@ -226,15 +237,17 @@
 	
 	
 	
+	
 							</select>
 						</div>
-						<!--- Categories --->    
+						<!--- Categories --->     
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
 								<select name="fCategories" id="fCategories" class="form-control input-sm valid">
 									<option value="all">All Categories</option>
 									<option value="none">Uncategorized</option>
+
 
 
 
@@ -246,10 +259,11 @@
 	
 	
 	
+	
 								</select>
 					        </div>
 					    </div>
-						<!--- Status --->    
+						<!--- Status --->     
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -287,16 +301,17 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
 		#view(
 			view          = "_tags/dialog/clone",
 			args          = {
-				title        : "Page Cloning",
-				infoMsg      : "",
-				action       : prc.xehPageClone,
-				titleLabel   : "Title",
-				publishLabel : "Publish all pages in hierarchy?",
-				publishInfo  : "By default all cloned pages are published as drafts."
+				title       : "Page Cloning",
+				infoMsg     : "",
+				action      : prc.xehPageClone,
+				titleLabel  : "Title",
+				publishLabel: "Publish all pages in hierarchy?",
+				publishInfo : "By default all cloned pages are published as drafts."
 			},
 			prePostExempt = true
 		)#
@@ -305,10 +320,10 @@
 		#view(
 			view          = "_tags/dialog/import",
 			args          = {
-				title       : "Import Pages",
-				contentArea : "page",
-				action      : prc.xehPageImport,
-				contentInfo : "Choose the ContentBox <strong>JSON</strong> pages file to import. The creator of the page is matched via their <strong>username</strong> and
+				title      : "Import Pages",
+				contentArea: "page",
+				action     : prc.xehPageImport,
+				contentInfo: "Choose the ContentBox <strong>JSON</strong> pages file to import. The creator of the page is matched via their <strong>username</strong> and
                 page overrides are matched via their <strong>slug</strong>.
                 If the importer cannot find the username from the import file in your installation, then it will ignore the record."
 			},

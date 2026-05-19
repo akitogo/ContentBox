@@ -87,12 +87,12 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_prePermissionGroupSave",
-				{ group : oGroup, permissionGroupID : rc.permissionGroupID }
+				{ group: oGroup, permissionGroupID: rc.permissionGroupID }
 			);
 			// save group
 			permissionGroupService.save( oGroup );
 			// announce event
-			announce( "cbadmin_postPermissionGroupSave", { group : oGroup } );
+			announce( "cbadmin_postPermissionGroupSave", { group: oGroup } );
 			// messagebox
 			cbMessageBox().setMessage( "info", "Permission Group saved!" );
 		} else {
@@ -110,7 +110,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_prePermissionGroupRemove",
-			{ permissionGroupID : rc.permissionGroupID }
+			{ permissionGroupID: rc.permissionGroupID }
 		);
 
 		var allGroups = permissionGroupService.getAll( rc.permissionGroupID );
@@ -126,7 +126,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_postPermissionGroupRemove",
-			{ permissionGroupID : rc.permissionGroupID }
+			{ permissionGroupID: rc.permissionGroupID }
 		);
 		// Message
 		cbMessageBox().setMessage( "info", "Permission Group Removed!" );

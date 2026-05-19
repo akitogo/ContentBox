@@ -81,18 +81,18 @@ component extends="cborm.models.VirtualEntityService" singleton {
 							modifiedDate = :modifiedDate
 							WHERE FK_contentID = :contentId",
 						{
-							modifiedDate : {
-								value     : createODBCDateTime( now() ),
-								cfsqltype : "timestamp"
+							modifiedDate: {
+								value    : createODBCDateTime( now() ),
+								cfsqltype: "timestamp"
 							},
-							contentId : arguments.content.getContentId()
+							contentId: arguments.content.getContentId()
 						},
-						{ result : "local.qResults" }
+						{ result: "local.qResults" }
 					);
 
 					// if no record, means, new record, so insert
 					if ( qResults.recordcount EQ 0 ) {
-						save( this.new( { hits : 1, relatedContent : arguments.content } ) );
+						save( this.new( { hits: 1, relatedContent: arguments.content } ) );
 					}
 				}
 			} catch (any e) {

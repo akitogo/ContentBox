@@ -106,7 +106,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"then I should get the requested author",
 									() => {
-										var testUser = variables.authorService.findWhere( { "username" : "lmajano" } );
+										var testUser = variables.authorService.findWhere( { "username": "lmajano" } );
 										var event = this.get( "/cbapi/v1/authors/#testUser.getAuthorID()#" );
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event.getResponse().getMessagesString() );
@@ -140,21 +140,21 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"then I should see the confirmation",
 									() => {
-										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
+										var testRole = variables.roleService.findWhere( { role: "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
-													permission : "TOOLS_IMPORT"
+													permission: "TOOLS_IMPORT"
 												} );
 										withRollback(
 											() => {
 												var event = this.post(
 														"cbapi/v1/authors",
 														{
-															firstName   : "bdd",
-															lastName    : "bdd",
-															email       : "bdd@ortussolutions.com",
-															username    : "bdd@ortussolutions.com",
-															role        : testRole.getRoleID(),
-															permissions : testPermission.getPermissionID()
+															firstName  : "bdd",
+															lastName   : "bdd",
+															email      : "bdd@ortussolutions.com",
+															username   : "bdd@ortussolutions.com",
+															role       : testRole.getRoleID(),
+															permissions: testPermission.getPermissionID()
 														}
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
@@ -173,19 +173,19 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it should display an error message",
 									() => {
-										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
+										var testRole = variables.roleService.findWhere( { role: "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
-													permission : "TOOLS_IMPORT"
+													permission: "TOOLS_IMPORT"
 												} );
 										var event = this.post(
 												"cbapi/v1/authors",
 												{
-													firstName   : "bdd",
-													lastName    : "bdd",
-													email       : "bdd@ortussolutions.com",
-													username    : variables.testAdminUsername,
-													role        : testRole.getRoleID(),
-													permissions : testPermission.getPermissionID()
+													firstName  : "bdd",
+													lastName   : "bdd",
+													email      : "bdd@ortussolutions.com",
+													username   : variables.testAdminUsername,
+													role       : testRole.getRoleID(),
+													permissions: testPermission.getPermissionID()
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -201,19 +201,19 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it should display an error message",
 									() => {
-										var testRole = variables.roleService.findWhere( { role : "Administrator" } );
+										var testRole = variables.roleService.findWhere( { role: "Administrator" } );
 										var testPermission = variables.permissionService.findWhere( {
-													permission : "TOOLS_IMPORT"
+													permission: "TOOLS_IMPORT"
 												} );
 										var event = this.post(
 												"cbapi/v1/authors",
 												{
-													firstName   : "bdd",
-													lastName    : "bdd",
-													email       : variables.testAdminEmail,
-													username    : "uniquebaby!",
-													role        : testRole.getRoleID(),
-													permissions : testPermission.getPermissionID()
+													firstName  : "bdd",
+													lastName   : "bdd",
+													email      : variables.testAdminEmail,
+													username   : "uniquebaby!",
+													role       : testRole.getRoleID(),
+													permissions: testPermission.getPermissionID()
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -255,11 +255,11 @@ component extends="tests.resources.BaseApiTest" {
 										withRollback(
 											() => {
 												var testAuthor = variables.authorService.findWhere( {
-															username : "lmajano"
+															username: "lmajano"
 														} );
 												var event = this.put(
 														"/cbapi/v1/authors/#testAuthor.getAuthorID()#",
-														{ biography : "ColdBox Daddy!" }
+														{ biography: "ColdBox Daddy!" }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
 														event.getResponse().getMessagesString() );
@@ -296,21 +296,19 @@ component extends="tests.resources.BaseApiTest" {
 									"then I should see the confirmation",
 									() => {
 										try {
-											var testRole = variables.roleService.findWhere( {
-														role : "Administrator"
+											var testRole = variables.roleService.findWhere( { role: "Administrator" } );
+											var testPermission = variables.permissionService.findWhere( {
+														permission: "TOOLS_IMPORT"
 													} );
-											var testPermission = variables.permissionService.findWhere(
-													{ permission : "TOOLS_IMPORT" }
-												);
 											var testAuthor = variables.authorService.save(
 													variables.authorService.new(
 															{
-																firstName   : "bdd",
-																lastName    : "bdd",
-																email       : "bdd@ortussolutions.com",
-																username    : "bddtest",
-																role        : testRole.getRoleID(),
-																permissions : testPermission.getPermissionID()
+																firstName  : "bdd",
+																lastName   : "bdd",
+																email      : "bdd@ortussolutions.com",
+																username   : "bddtest",
+																role       : testRole.getRoleID(),
+																permissions: testPermission.getPermissionID()
 															}
 														)
 												);

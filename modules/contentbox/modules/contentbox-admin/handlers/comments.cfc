@@ -106,7 +106,7 @@ component extends="baseHandler" {
 		// param values
 		event.paramValue( "commentID", "" );
 		event.paramValue( "page", "1" );
-		var data = { "ERROR" : false, "MESSAGES" : "" };
+		var data = { "ERROR": false, "MESSAGES": "" };
 
 		// check if comment id list has length
 		if ( len( rc.commentID ) ) {
@@ -114,7 +114,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_onCommentStatusUpdate",
-				{ commentID : rc.commentID, status : rc.commentStatus }
+				{ commentID: rc.commentID, status: rc.commentStatus }
 			);
 			// Message
 			data.messages = "#listLen( rc.commentID )# Comment(s) #rc.commentStatus#d";
@@ -201,12 +201,12 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preCommentSave",
-			{ comment : oComment, commentID : rc.commentID }
+			{ comment: oComment, commentID: rc.commentID }
 		);
 		// save comment
 		commentService.save( oComment );
 		// announce event
-		announce( "cbadmin_postCommentSave", { comment : oComment } );
+		announce( "cbadmin_postCommentSave", { comment: oComment } );
 		// notice
 		cbMessageBox().info( "Comment Saved!" );
 		// relocate
@@ -223,7 +223,7 @@ component extends="baseHandler" {
 	 * @return JSON or relocation
 	 */
 	function removeAllModerated( event, rc, prc ) {
-		var data = { "ERROR" : false, "MESSAGES" : "" };
+		var data = { "ERROR": false, "MESSAGES": "" };
 		// announce event
 		announce( "cbadmin_preCommentRemoveAllModerated" );
 		// passing 0 will delete all unapproved...
@@ -256,7 +256,7 @@ component extends="baseHandler" {
 		event.paramValue( "commentID", "" ).paramValue( "page", "1" );
 
 		// prepare data return object
-		var data = { "ERROR" : false, "MESSAGES" : [] };
+		var data = { "ERROR": false, "MESSAGES": [] };
 
 		// Remove incoming comments
 		rc
@@ -274,7 +274,7 @@ component extends="baseHandler" {
 					} else {
 						announce(
 							"cbadmin_preCommentRemove",
-							{ comment : oComment, commentID : thisCommentID }
+							{ comment: oComment, commentID: thisCommentID }
 						);
 
 						commentService.delete( oComment );
@@ -282,7 +282,7 @@ component extends="baseHandler" {
 
 						announce(
 							"cbadmin_postCommentRemove",
-							{ commentID : thisCommentID }
+							{ commentID: thisCommentID }
 						);
 					}
 				}
@@ -393,7 +393,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preCommentSettingsSave",
-			{ oldSettings : prc.cbSettings, newSettings : rc }
+			{ oldSettings: prc.cbSettings, newSettings: rc }
 		);
 		// bulk save the options
 		settingsService.bulkSave(

@@ -2,7 +2,7 @@
 	<ul class="nav nav-pills nav-stacked">
 	<cfloop array="#local.thisMenu#" index="local.topMenu">
 		<cfif !len( local.topMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.topMenu.permissions )>
-			<!--- LI --->    <li
+			<!--- LI --->     <li
 class="
 			<cfif arrayLen( local.topMenu.subMenu )>
 				nav-dropdown
@@ -22,13 +22,16 @@ class="
 
 
 
+
 			<cfif arrayLen( local.topMenu.subMenu )>
 				dropdown-toggle
 			</cfif>
 			
 			
 			
+			
 			"
+
 
 
 
@@ -46,6 +49,7 @@ class="
 			
 			
 			
+			
 				>
 					#( isCustomFunction( local.topMenu.label ) ? local.topMenu.label() : local.topMenu.label )#
 			<cfif arrayLen( local.topMenu.subMenu )></cfif>
@@ -53,7 +57,9 @@ class="
 			
 			
 			
+			
 				</a>
+
 
 
 
@@ -83,6 +89,7 @@ class="
 
 
 
+
 						<cfif len( local.thisSubMenu.title )>
 							title="#local.thisSubMenu.title#"
 						</cfif>
@@ -96,11 +103,13 @@ class="
 						
 						
 						
+						
 								>
 									#( isCustomFunction( local.thisSubMenu.label ) ? local.thisSubMenu.label() : local.thisSubMenu.label )#
 								</a>
 
 							</li>
+
 
 
 
@@ -111,7 +120,9 @@ class="
 				
 				
 				
+				
 					</ul>
+
 
 
 
@@ -121,7 +132,9 @@ class="
 			
 			
 			
+			
 			</li>
+
 
 
 
@@ -132,7 +145,9 @@ class="
 	
 	
 	
+	
 </ul>
+
 
 
 

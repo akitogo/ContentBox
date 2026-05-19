@@ -14,7 +14,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 			() => {
 				beforeEach(
 					( currentSpec ) => {
-						model = relocationService.new( { target : "unittest", slug : "unittest" } );
+						model = relocationService.new( { target: "unittest", slug: "unittest" } );
 					}
 				);
 

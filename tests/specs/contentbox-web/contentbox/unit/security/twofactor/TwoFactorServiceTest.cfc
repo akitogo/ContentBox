@@ -126,7 +126,7 @@ component extends="tests.resources.BaseTest" {
 					"can send provider challenges",
 					() => {
 						var thisUser = getInstance( "AuthorService@contentbox" ).findByUsername( "lmajano" );
-						var results = { error : false, messages : "message sent" };
+						var results = { error: false, messages: "message sent" };
 						mockProvider.$( "sendChallenge", results );
 						expect( model.sendChallenge( thisUser ) ).toBe( results );
 					}

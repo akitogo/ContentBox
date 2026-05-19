@@ -61,8 +61,8 @@ component implements="ICBImporter" {
 			).execute().getResult();
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
-					category : q.category_name[ x ],
-					slug     : htmlHelper.slugify( q.category_name[ x ] )
+					category: q.category_name[ x ],
+					slug    : htmlHelper.slugify( q.category_name[ x ] )
 				};
 				var cat = categoryService.new( properties = props );
 				entitySave( cat );
@@ -85,12 +85,12 @@ component implements="ICBImporter" {
 			).execute().getResult();
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
-					email     : q.email[ x ],
-					username  : q.email[ x ],
-					password  : bcrypt.hashPassword( defaultPassword ),
-					isActive  : q.is_active[ x ],
-					firstName : q.first_name[ x ],
-					lastName  : q.last_name[ x ]
+					email    : q.email[ x ],
+					username : q.email[ x ],
+					password : bcrypt.hashPassword( defaultPassword ),
+					isActive : q.is_active[ x ],
+					firstName: q.first_name[ x ],
+					lastName : q.last_name[ x ]
 				};
 				var author = authorService.new( properties = props );
 				author.setRole( defaultRole );
@@ -125,22 +125,22 @@ component implements="ICBImporter" {
 					published = false;
 				}
 				var props = {
-					title         : q.title[ x ],
-					slug          : htmlHelper.slugify( q.title[ x ] ),
-					content       : q.body[ x ] & q.more_body[ x ],
-					excerpt       : q.body[ x ],
-					publishedDate : dateAdd(
+					title        : q.title[ x ],
+					slug         : htmlHelper.slugify( q.title[ x ] ),
+					content      : q.body[ x ] & q.more_body[ x ],
+					excerpt      : q.body[ x ],
+					publishedDate: dateAdd(
 						"s",
 						q.dt_posted[ x ] / 1000,
 						baseDate
 					),
-					createdDate : dateAdd(
+					createdDate: dateAdd(
 						"s",
 						q.dt_created[ x ] / 1000,
 						baseDate
 					),
-					isPublished   : published,
-					allowComments : q.allow_comments[ x ]
+					isPublished  : published,
+					allowComments: q.allow_comments[ x ]
 				};
 
 				// slug checks
@@ -194,17 +194,17 @@ component implements="ICBImporter" {
 				).execute().getResult();
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.comment[ y ],
-						author      : qComments.name[ y ],
-						authorIP    : qComments.ip_created[ y ],
-						authorEmail : qComments.email[ y ],
-						authorURL   : qComments.url[ y ],
-						createdDate : dateAdd(
+						content    : qComments.comment[ y ],
+						author     : qComments.name[ y ],
+						authorIP   : qComments.ip_created[ y ],
+						authorEmail: qComments.email[ y ],
+						authorURL  : qComments.url[ y ],
+						createdDate: dateAdd(
 							"s",
 							qComments.dt_created[ y ] / 1000,
 							baseDate
 						),
-						isApproved : qComments.is_active[ y ]
+						isApproved: qComments.is_active[ y ]
 					};
 					var comment = commentService.new( properties = props );
 					comment.setRelatedContent( entry );

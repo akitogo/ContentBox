@@ -45,7 +45,7 @@
 	>
 		<i class="fa fa-plus"></i>
 	</a>
-</legend>#cbAdminComponent( "ui/Alert", { messageModel : "globalAlert" } )#<template x-if="!isLoading">
+</legend>#cbAdminComponent( "ui/Alert", { messageModel: "globalAlert" } )#<template x-if="!isLoading">
 <table class="table table-hover table-striped" border="0">
 	<thead>
 		<tr>
@@ -54,7 +54,7 @@
 			<th width="50">Actions</th>
 		</tr>
 	</thead>
-	<tbody><!--- new form --->    <tr x-show="showForm">
+	<tbody><!--- new form --->     <tr x-show="showForm">
 	<td colspan="3" class="form-group">
 
 		<label for="slug">Create New Redirect</label>
@@ -87,7 +87,7 @@
 			</button>
 		</div>
 	</td>
-</tr><!--- Show Relocations --->    <template x-for="( item, index  ) in relocations">
+</tr><!--- Show Relocations --->     <template x-for="( item, index  ) in relocations">
 	<tr :key="item.relocationID">
 		<td>
 			<code x-text="'/' + item.slug"></code>
@@ -105,7 +105,7 @@
 			</button>
 		</td>
 	</tr>
-</template><!--- No Relocations --->    <template x-if="!relocations.length">
+</template><!--- No Relocations --->     <template x-if="!relocations.length">
 <tr>
 	<td colspan="3" class="text-center text-muted">No Redirects are Currently Configured for this #prc.oContent.getContentType()#</td>
 					</tr>
@@ -119,7 +119,9 @@
 	
 	
 	
+	
 </div>
+
 
 
 

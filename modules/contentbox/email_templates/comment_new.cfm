@@ -8,19 +8,19 @@
 		)##ETH.heading( content = "Comment" )##ETH.text( content = "@content@", callout = "true" )##ETH.buttonBar(
 			[
 				{
-					href  : "@approveURL@",
-					image : "ok-circle.png",
-					text  : "Approve It"
+					href : "@approveURL@",
+					image: "ok-circle.png",
+					text : "Approve It"
 				},
 				{
-					href  : "@deleteURL@",
-					image : "minus-sign.png",
-					text  : "Delete It"
+					href : "@deleteURL@",
+					image: "minus-sign.png",
+					text : "Delete It"
 				},
 				{
-					href  : "@commentURL@",
-					image : "comment-alt.png",
-					text  : "View Comment"
+					href : "@commentURL@",
+					image: "comment-alt.png",
+					text : "View Comment"
 				}
 			]
 		)##ETH.heading( content = "Comment Details" )##ETH.text(

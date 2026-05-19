@@ -15,7 +15,7 @@ component extends="baseHandler" {
 	function tester( event, rc, prc ) {
 		event.paramValue( "template", "" );
 
-		var bindingArgs = { "gravatarEmail" : "info@ortussolutions.com" };
+		var bindingArgs = { "gravatarEmail": "info@ortussolutions.com" };
 
 		return layout(
 			view   = "/contentbox/email_templates/#encodeForHTML( rc.template )#",

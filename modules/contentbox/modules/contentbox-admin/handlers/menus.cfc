@@ -41,7 +41,7 @@ component extends="baseHandler" {
 		prc.xehMenuTable = "#prc.cbAdminEntryPoint#.menus.menuTable";
 		// Get all menus
 		prc.menus = variables.menuService.list(
-				criteria  = { "site" : prc.oCurrentSite },
+				criteria  = { "site": prc.oCurrentSite },
 				sortOrder = "title",
 				asQuery   = false
 			);
@@ -63,7 +63,7 @@ component extends="baseHandler" {
 		// load jquery as it is standalone
 		prc.cbSetting.loadJQuery = true;
 
-		var args = { widget : true, settings : prc.cbSetting };
+		var args = { widget: true, settings: prc.cbSetting };
 		return runEvent(
 			event          = "contentbox-filebrowser:home.index",
 			eventArguments = args
@@ -91,7 +91,7 @@ component extends="baseHandler" {
 		// Params
 		event.paramValue( "slug", "" ).paramValue( "menuID", "" );
 		// set default data result
-		var data = { "UNIQUE" : false };
+		var data = { "UNIQUE": false };
 		// check slug if something is passed in
 		if ( len( rc.slug ) ) {
 			data[ "UNIQUE" ] = variables.menuService.isSlugUnique( trim( rc.slug ), trim( rc.menuID ) );
@@ -140,8 +140,8 @@ component extends="baseHandler" {
 		prc.provider = menuItemService.getProvider( arguments.rc.type );
 		// get new or persisted
 		var args = {
-			menuItem : entityNew( prc.provider.getEntityName() ),
-			provider : prc.provider
+			menuItem: entityNew( prc.provider.getEntityName() ),
+			provider: prc.provider
 		};
 
 		// set new or persisted id in args
@@ -220,14 +220,14 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preMenuSave",
-			{ menu : oMenu, menuID : rc.menuID }
+			{ menu: oMenu, menuID: rc.menuID }
 		);
 		// save menu
 		variables.menuService.save( oMenu.setSite( prc.oCurrentSite ) );
 		// announce event
 		announce(
 			"cbadmin_postMenuSave",
-			{ menu : oMenu, originalSlug : originalSlug }
+			{ menu: oMenu, originalSlug: originalSlug }
 		);
 		// messagebox
 		cbMessageBox().setMessage( "info", "Menu saved!" );
@@ -293,13 +293,13 @@ component extends="baseHandler" {
 				// announce event
 				announce(
 					"cbadmin_preMenuRemove",
-					{ menu : oMenu, menuID : menuID }
+					{ menu: oMenu, menuID: menuID }
 				);
 				// Delete it
 				variables.menuService.delete( oMenu );
 				arrayAppend( messages, "Menu '#title#' removed" );
 				// announce event
-				announce( "cbadmin_postMenuRemove", { menuID : menuID } );
+				announce( "cbadmin_postMenuRemove", { menuID: menuID } );
 			}
 		}
 

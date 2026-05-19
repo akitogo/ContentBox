@@ -101,12 +101,12 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preCategorySave",
-				{ category : oCategory, categoryID : rc.categoryID }
+				{ category: oCategory, categoryID: rc.categoryID }
 			);
 			// save category
 			variables.categoryService.save( oCategory );
 			// announce event
-			announce( "cbadmin_postCategorySave", { category : oCategory } );
+			announce( "cbadmin_postCategorySave", { category: oCategory } );
 			// response
 			event
 				.getResponse()
@@ -156,13 +156,13 @@ component extends="baseHandler" {
 				// announce event
 				announce(
 					"cbadmin_preCategoryRemove",
-					{ category : category, categoryID : categoryID }
+					{ category: category, categoryID: categoryID }
 				);
 				// Delete category via service
 				variables.categoryService.delete( category );
 				arrayAppend( messages, "Category '#title#' removed" );
 				// announce event
-				announce( "cbadmin_postCategoryRemove", { categoryID : categoryID } );
+				announce( "cbadmin_postCategoryRemove", { categoryID: categoryID } );
 			}
 		}
 

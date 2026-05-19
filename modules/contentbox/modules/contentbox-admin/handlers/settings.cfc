@@ -79,7 +79,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preSettingsSave",
-			{ oldSettings : prc.cbSettings, newSettings : rc }
+			{ oldSettings: prc.cbSettings, newSettings: rc }
 		);
 
 		// bulk save the options
@@ -285,13 +285,13 @@ component extends="baseHandler" {
 	 */
 	function remove( event, rc, prc ) {
 		// announce event
-		announce( "cbadmin_preSettingRemove", { settingID : rc.settingID } );
+		announce( "cbadmin_preSettingRemove", { settingID: rc.settingID } );
 		// delete by id
 		if ( !settingsService.deleteByID( rc.settingID ) ) {
 			cbMessageBox().setMessage( "warning", "Invalid Setting detected!" );
 		} else {
 			// announce event
-			announce( "cbadmin_postSettingRemove", { settingID : rc.settingID } );
+			announce( "cbadmin_postSettingRemove", { settingID: rc.settingID } );
 			// flush cache
 			settingsService.flushSettingsCache();
 			cbMessageBox().setMessage( "info", "Setting Removed!" );
@@ -303,7 +303,7 @@ component extends="baseHandler" {
 	 * Flush settings cache
 	 */
 	function flushCache( event, rc, prc ) {
-		var data = { error : false, messages : "" };
+		var data = { error: false, messages: "" };
 		try {
 			settingsService.flushSettingsCache();
 			data.messages = "Settings cache flushed!";

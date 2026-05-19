@@ -33,7 +33,7 @@ component extends="tests.resources.BaseApiTest" {
 						var event = execute(
 							event          = "contentbox-api-v1:echo.onInvalidHTTPMethod",
 							renderResults  = true,
-							eventArguments = { faultAction : "test" }
+							eventArguments = { faultAction: "test" }
 						);
 						var response = event.getPrivateValue( "response" );
 						expect( response.getError() ).toBeTrue();
@@ -48,10 +48,10 @@ component extends="tests.resources.BaseApiTest" {
 							event          = "contentbox-api-v1:echo.onError",
 							renderResults  = true,
 							eventArguments = {
-								exception : {
-									message    : "unit test",
-									detail     : "unit test",
-									stacktrace : ""
+								exception: {
+									message   : "unit test",
+									detail    : "unit test",
+									stacktrace: ""
 								}
 							}
 						);

@@ -17,7 +17,7 @@
 <div id="relatedcontent" class="panel-collapse collapse">
 	<div class="panel-body">
 		<button class="btn btn-sm btn-secondary" type="button" id="add-related-content">#cbAdminComponent( "ui/Icon",
-			{ name : "PlusSmall", size : "sm" } )#Add related content
+			{ name: "PlusSmall", size: "sm" } )#Add related content
 </button>
 
 <br /><br />
@@ -40,6 +40,7 @@
 			
 			
 			
+			
 							</td>
 							<td class="#publishedClass#">#content.getTitle()#</td>
 							<td width="14" class="center #publishedClass#">
@@ -51,7 +52,9 @@
 
 
 
+
 		</cfloop>
+		
 		
 		
 		
@@ -69,9 +72,11 @@
 
 
 
+
 		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
 			var currentContentID = "#rc.contentID#";
 		</cfif>
+		
 		
 		
 		
@@ -164,6 +169,7 @@
 		}
 	</script>
 </div>
+
 
 
 

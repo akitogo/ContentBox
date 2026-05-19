@@ -26,12 +26,12 @@ component extends="tests.resources.BaseTest" {
 						makePublic( model, "compileJS" );
 						var t = model.compileJS(
 								{
-									toolbar        : { "unit" : "true" },
-									excerptToolbar : { "excerptTest" : "true" }
+									toolbar       : { "unit": "true" },
+									excerptToolbar: { "excerptTest": "true" }
 								},
-								{ extraPlugins : listToArray( model.getExtraPlugins() ) },
-								{ extraConfig : "extraconfig = 'true'" },
-								{ contentsCss : [ "/unit/css"] }
+								{ extraPlugins: listToArray( model.getExtraPlugins() ) },
+								{ extraConfig: "extraconfig = 'true'" },
+								{ contentsCss: [ "/unit/css"] }
 							);
 
 						expect( t ).notToBeEmpty();

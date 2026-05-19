@@ -49,19 +49,19 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		// cfformat-ignore-start
 		// generate recent comments
 		saveContent variable="rString" {
-		// title
-		if ( len( arguments.title ) ) {
-			writeOutput(
-				"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
-			);
-		}
-		// Build Type
-		if ( arguments.dropdown ) {
-			writeOutput( buildDropDown( categories, arguments.showPostCount ) );
-		} else {
-			writeOutput( buildList( categories, arguments.showPostCount ) );
-		}
+	// title
+	if ( len( arguments.title ) ) {
+		writeOutput(
+			"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
+		);
 	}
+	// Build Type
+	if ( arguments.dropdown ) {
+		writeOutput( buildDropDown( categories, arguments.showPostCount ) );
+	} else {
+		writeOutput( buildList( categories, arguments.showPostCount ) );
+	}
+}
 		// cfformat-ignore-end
 
 		return rString;
@@ -72,31 +72,31 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		// generate recent comments
 		// cfformat-ignore-start
 		saveContent variable="rString" {
-		writeOutput(
-			"
-			<select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
-				<option value=""##"">Select Category</option>
+	writeOutput(
 		"
-		);
+		<select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
+			<option value=""##"">Select Category</option>
+	"
+	);
 
-		// iterate and create
-		for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
-			if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-				writeOutput(
-					"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-				);
+	// iterate and create
+	for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
+		if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
+			writeOutput(
+				"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+			);
 
-				if ( arguments.showPostCount ) {
-					writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-				}
-
-				writeOutput( "</option>" );
+			if ( arguments.showPostCount ) {
+				writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 			}
-		}
 
-		// close
-		writeOutput( "</select>" );
+			writeOutput( "</option>" );
+		}
 	}
+
+	// close
+	writeOutput( "</select>" );
+}
 		return rString;
 
 
@@ -108,27 +108,27 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		// generate recent comments
 		// cfformat-ignore-start
 		saveContent variable="rString" {
-		writeOutput( "<ul id=""categories""> " );
+	writeOutput( "<ul id=""categories""> " );
 
-		for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
-			if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-				writeOutput(
-					"
-					<li class=""categories"">
-						<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-				);
+	for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
+		if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
+			writeOutput(
+				"
+				<li class=""categories"">
+					<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+			);
 
-				if ( arguments.showPostCount ) {
-					writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-				}
-
-				writeOutput( "</a></li>" );
+			if ( arguments.showPostCount ) {
+				writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 			}
-		}
 
-		// close ul
-		writeOutput( "</ul>" );
+			writeOutput( "</a></li>" );
+		}
 	}
+
+	// close ul
+	writeOutput( "</ul>" );
+}
 		return rString;
 
 

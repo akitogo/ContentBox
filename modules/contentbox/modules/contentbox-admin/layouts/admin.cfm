@@ -7,7 +7,7 @@
 <html class="no-js">
 <!--<![endif]-->
 	<cfinclude template="inc/HTMLHead.cfm">
-	<!--- ************************************************************************************************ --->    <body
+	<!--- ************************************************************************************************ --->     <body
 class="off-canvas"
 id="contentbox-body"
 data-showsidebar="#encodeForHTMLAttribute(
@@ -16,7 +16,7 @@ data-showsidebar="#encodeForHTMLAttribute(
 		)
 	)#"
 data-adminURL="#encodeForHTMLAttribute( event.buildLink( prc.cbHelper.adminRoot() ) )#"
-data-preferenceURL="#encodeForHTMLAttribute( event.buildLink( prc.xehSavePreference ) )#"<!--- Global Alpine Root --->    x-data="{
+data-preferenceURL="#encodeForHTMLAttribute( event.buildLink( prc.xehSavePreference ) )#"<!--- Global Alpine Root --->     x-data="{
 adminURL : '#encodeForHTMLAttribute( event.buildLink( prc.cbHelper.adminRoot() ) )#',
 
 		/**
@@ -40,10 +40,10 @@ adminURL : '#encodeForHTMLAttribute( event.buildLink( prc.cbHelper.adminRoot() )
 			return this.toLocaleDateTime( Date.now() );
 		}
 	}"
->#announce( "cbadmin_afterBodyStart" )#<!--- ************************************************************************************************ --->    <div
+>#announce( "cbadmin_afterBodyStart" )#<!--- ************************************************************************************************ --->     <div
 id="container"
 class="#prc.sideMenuClass#layout-wrapper"
-><!--- ************************************************************************************************ --->    <header id="header" class="header-default">
+><!--- ************************************************************************************************ --->     <header id="header" class="header-default">
 <div class="flex">
 	<!-- Toggle Navigation Button -->
 	<button
@@ -53,7 +53,7 @@ class="#prc.sideMenuClass#layout-wrapper"
 		data-placement="right"
 		title="Toggle Navigation (Control+Shift+n)"
 		data-keybinding="Control+Shift+n"
-	>#cbAdminComponent( "ui/Icon", { name : "Bars3" } )#</button>
+	>#cbAdminComponent( "ui/Icon", { name: "Bars3" } )#</button>
 <!--Branding-->
 <div class="brand">
 	<a
@@ -119,9 +119,11 @@ value="#thisSite[ "siteID" ]#"
 		
 		
 		
+		
 								>
 									#thisSite[ "name" ]#
 								</option>
+
 
 
 
@@ -131,8 +133,10 @@ value="#thisSite[ "siteID" ]#"
 	
 	
 	
+	
 						</select>
 					</span>
+
 
 
 
@@ -145,7 +149,7 @@ value="#thisSite[ "siteID" ]#"
 	title="Press 'Control+K' to focus"
 	data-toggle="tooltip"
 	data-placement="left"
-><!--- Search Results --->    <span id="div-search-results"></span><!--- Search Inputs --->    <input
+><!--- Search Results --->     <span id="div-search-results"></span><!--- Search Inputs --->     <input
 type="hidden"
 value="#event.buildLink( prc.xehSearchGlobal )#"
 		id="nav-search-url">
@@ -163,12 +167,13 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 	
 	
 	
+	
 				</div>
 
 				<!-- User Nav -->
 				<div class="user-nav">
 					<ul>
-						<!--- View Site --->    
+						<!--- View Site --->     
 						<li data-placement="right auto" title="Visit Site">
 							<a
 								class="btn options toggle btn-more"
@@ -178,6 +183,7 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 								<i class="fa fa-home"></i>
 							</a>
 						</li>
+
 
 
 
@@ -241,8 +247,10 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 		
 		
 		
+		
 								</ul>
 							</li>
+
 
 
 
@@ -263,15 +271,15 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 
 			</header>
 
-			<!--- ************************************************************************************************ --->    
+			<!--- ************************************************************************************************ --->     
 			<nav class="sidebar sidebar-left" id="main-navbar">
 				#prc.adminMenuService.generateMenu()#
 			</nav>
 
-			<!--- ************************************************************************************************ --->    
+			<!--- ************************************************************************************************ --->     
 			<main class="main-content-wrapper" id="main-content-wrapper">
 				<section id="main-content">
-					#announce( "cbadmin_beforeContent" )#<!--- Side Bar Trigger --->    
+					#announce( "cbadmin_beforeContent" )#<!--- Side Bar Trigger --->     
 					<div
 						class="pull-right"
 						id="main-content-sidebar-trigger"
@@ -294,12 +302,13 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 			#view( view = "_tags/footer", module = "contentbox-admin" )#
 		</div>
 
-		<!--- ************************************************************************************************ --->    
+		<!--- ************************************************************************************************ --->     
 		<div class="sidebarRight">
 			<div id="rightside-navigation">
 				<div class="sidebar-heading"><i class="fa fa-bullhorn"></i> Notifications</div>
 					<div class="sidebar-title">system</div>
 					<div class="list-contacts">
+
 
 
 
@@ -331,13 +340,14 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 	
 	
 	
+	
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--sidebar right end-->
 
-		<!--- ************************************************************************************************ --->    
+		<!--- ************************************************************************************************ --->     
 		<div
 			id="confirmIt"
 			class="modal fade"
@@ -368,11 +378,11 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 							<button class="btn btn-danger" data-action="confirm"><i class="icon-check"></i>  Confirm </button>
 						</span>
 					</div>
-				</div> <!--- end modal-content --->    
-			</div> <!--- end modal-dialog --->    
+				</div> <!--- end modal-content --->     
+			</div> <!--- end modal-dialog --->     
 		</div>
 
-		<!--- ************************************************************************************************ --->    
+		<!--- ************************************************************************************************ --->     
 		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="remoteModal" aria-hidden="true" id="modal">
 			 <div class="modal-dialog modal-lg" role="document" >
 				<div class="modal-content">
@@ -390,7 +400,9 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 
 
 
+
 	<cfinclude template="inc/HTMLBodyEnd.cfm">
+	
 	
 	
 	
@@ -398,6 +410,7 @@ value="#event.buildLink( prc.xehSearchGlobal )#"
 
 	</body>
 </html>
+
 
 
 

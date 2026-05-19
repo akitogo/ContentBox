@@ -113,7 +113,7 @@ component
 	 * @return struct:{ error:boolean, messages=string }
 	 */
 	struct function sendChallenge( required author ) {
-		var results = { "error" : false, "messages" : "" };
+		var results = { "error": false, "messages": "" };
 		var settings = getAllSettings();
 		var site = getDefaultSite();
 
@@ -122,13 +122,13 @@ component
 
 			// Build body tokens
 			var bodyTokens = {
-				name         : arguments.author.getFullName(),
-				email        : arguments.author.getEmail(),
-				username     : arguments.author.getUsername(),
-				ip           : variables.securityService.getRealIP(),
-				tokenTimeout : TOKEN_TIMEOUT,
-				token        : token,
-				siteName     : site.getName()
+				name        : arguments.author.getFullName(),
+				email       : arguments.author.getEmail(),
+				username    : arguments.author.getUsername(),
+				ip          : variables.securityService.getRealIP(),
+				tokenTimeout: TOKEN_TIMEOUT,
+				token       : token,
+				siteName    : site.getName()
 			};
 
 			// Build email out
@@ -188,7 +188,7 @@ component
 	 * @return struct:{ error:boolean, messages:string }
 	 */
 	struct function verifyChallenge( required string code, required author ) {
-		var results = { "error" : false, "messages" : "" };
+		var results = { "error": false, "messages": "" };
 		var authorID = variables.cache.get( "email-twofactor-token-#arguments.code#" );
 
 		// Verify it exists and is valid

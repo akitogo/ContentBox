@@ -43,12 +43,13 @@
 	
 	
 	
+	
 					</div>
 				</div>
 			</div>
 
 			<div class="panel-body">
-				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->    
+				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->     
 					<table name="themes" id="themes" class="table table-striped-removed table-hover " width="100%">
 						<thead>
 							<tr>
@@ -57,6 +58,7 @@
 							</tr>
 						</thead>
 						<tbody>
+
 
 
 
@@ -72,6 +74,7 @@
 		
 		
 		
+		
 
 									<strong>#thisTheme.themeName#</strong>
 
@@ -82,8 +85,9 @@
 
 									<p>&nbsp;</p>
 
-									<!--- Button Bar --->    
+									<!--- Button Bar --->     
 									<div class="btn-group">
+
 
 
 
@@ -106,6 +110,7 @@
 		
 		
 		
+		
 									</div>
 
 								</td>
@@ -114,13 +119,14 @@
 
 
 
+
 		<cfif len( thisTheme.screenShotURL )>
-			<!--- image --->    <a href="#thisTheme.screenShotURL#" target="_blank">
+			<!--- image --->     <a href="#thisTheme.screenShotURL#" target="_blank">
 <img src="#thisTheme.screenShotURL#"  alt="screenshot" class="img-thumbnail" width="300" border="0"/>
 </a>
 <br/>
 		</cfif>
-		<!--- description --->    
+		<!--- description --->     
 									<p>
 										#thisTheme.description#
 									</p>
@@ -130,7 +136,9 @@
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -145,16 +153,17 @@
 </div>
 <div class="row-fluid">
 	<div class="box">
-		<!--- Body --->    
+		<!--- Body --->     
 		<div class="body">
-			<!--- Tabs --->    
+			<!--- Tabs --->     
 			<div class="panes tab-content"></div>
-			<!--- end panes div --->    
+			<!--- end panes div --->     
 		</div>
-		<!--- end div body --->    
+		<!--- end div body --->     
 	</div>
-	<!--- end div box --->    
+	<!--- end div box --->     
 </div>
+
 
 
 

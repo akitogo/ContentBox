@@ -4,7 +4,7 @@
 	height: 200px;
 	min-height: 200px;
 }
-</style><!--- Custom JS --->    <script>
+</style><!--- Custom JS --->     <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// pointers
 	$authorForm 	= $( "##authorForm" );
@@ -88,6 +88,7 @@ $permissions = $( "##permissions" );
 	
 	
 	
+	
 
 	// Password change rules
 	$( "##password" ).keyup( passwordMeter );
@@ -122,6 +123,7 @@ function isEmailFound( email ){
 
 
 
+
 	<cfif prc.author.isLoaded()>
 		function loadPermissions(){
 $permissions.load(
@@ -133,7 +135,9 @@ $permissions.load(
 	
 	
 	
+	
 </script>
+
 
 
 

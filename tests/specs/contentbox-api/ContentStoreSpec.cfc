@@ -44,7 +44,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"then I should get the requested content store item",
 									() => {
-										var testContent = variables.contentStoreService.findWhere( { slug : "foot" } );
+										var testContent = variables.contentStoreService.findWhere( { slug: "foot" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/contentstore/#testContent.getContentID()#"
 											);
@@ -114,7 +114,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it can display content store items from a parent",
 									() => {
-										var testContent = variables.contentStoreService.findWhere( { slug : "foot" } );
+										var testContent = variables.contentStoreService.findWhere( { slug: "foot" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/contentstore?parent=#testContent.getContentID()#"
 											);
@@ -191,20 +191,20 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.post(
 														"cbapi/v1/sites/default/contentstore",
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															description   : "my bdd test site",
-															content       : "This is my awesome bdd test content store item",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															description  : "my bdd test site",
+															content      : "This is my awesome bdd test content store item",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog    : "My first creation from the bdd test",
-															categories   : "coldbox,news",
-															customFields : [
-																{ key : "test", value : "true" },
-																{ key : "data", value : "#now()#" }
+															changelog   : "My first creation from the bdd test",
+															categories  : "coldbox,news",
+															customFields: [
+																{ key: "test", value: "true" },
+																{ key: "data", value: "#now()#" }
 															]
 														}
 													);
@@ -230,10 +230,10 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.post(
 												"cbapi/v1/sites/default/contentStore",
 												{
-													title   : "foot",
-													slug    : "foot",
-													content : "Footer is here",
-													order   : 10
+													title  : "foot",
+													slug   : "foot",
+													content: "Footer is here",
+													order  : 10
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -251,7 +251,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/contentStore",
-												{ slug : "A nice site" }
+												{ slug: "A nice site" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -270,7 +270,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/contentStore",
-												{ content : "Hello from bdd test land!" }
+												{ content: "Hello from bdd test land!" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -298,8 +298,8 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.put(
 														"/cbapi/v1/sites/default/contentstore/foot",
 														{
-															content   : "I am a new piece of content for the footer!",
-															changelog : "Update from a bdd test!"
+															content  : "I am a new piece of content for the footer!",
+															changelog: "Update from a bdd test!"
 														}
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
@@ -321,9 +321,9 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.put(
 												"cbapi/v1/sites/default/contentStore/foot",
 												{
-													title   : "foot",
-													slug    : "my-awesome-news",
-													content : "Footer is here"
+													title  : "foot",
+													slug   : "my-awesome-news",
+													content: "Footer is here"
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -341,7 +341,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/contentstore/bogusbaby",
-												{ content : "bogus" }
+												{ content: "bogus" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -364,18 +364,18 @@ component extends="tests.resources.BaseApiTest" {
 										var testContent = variables.contentstoreService.save(
 												variables.contentstoreService.new(
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															description   : "my bdd test site",
-															content       : "This is my awesome bdd test content store item",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															description  : "my bdd test site",
+															content      : "This is my awesome bdd test content store item",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog : "My first creation from the bdd test",
-															site      : variables.siteService.getDefaultSite(),
-															creator   : variables.loggedInData.user
+															changelog: "My first creation from the bdd test",
+															site     : variables.siteService.getDefaultSite(),
+															creator  : variables.loggedInData.user
 														}
 													)
 											);

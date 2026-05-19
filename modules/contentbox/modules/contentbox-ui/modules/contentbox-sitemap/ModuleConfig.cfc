@@ -24,13 +24,13 @@ component {
 		// SES Routes
 		routes = [
 			// Module Entry Point
-			{ pattern : "/", handler : "main", action : "index" },
+			{ pattern: "/", handler: "main", action: "index" },
 			// Convention Route
-			{ pattern : "/:handler/:action?" }
+			{ pattern: "/:handler/:action?" }
 		];
 
 		// Custom Declared Points
-		interceptorSettings = { customInterceptionPoints : "" };
+		interceptorSettings = { customInterceptionPoints: "" };
 
 		// Custom Declared Interceptors
 		interceptors = [];

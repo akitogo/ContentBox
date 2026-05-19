@@ -26,12 +26,12 @@ component {
 				.from( "cb_permission" )
 				.insert(
 					{
-						"permissionID" : permID,
-						"createdDate"  : today,
-						"modifiedDate" : today,
-						"isDeleted"    : 0,
-						"permission"   : "RELOAD_CACHES",
-						"description"  : "Ability to reload caches"
+						"permissionID": permID,
+						"createdDate" : today,
+						"modifiedDate": today,
+						"isDeleted"   : 0,
+						"permission"  : "RELOAD_CACHES",
+						"description" : "Ability to reload caches"
 					}
 				);
 			systemOutput( "√ - Reload Caches permission created", true );
@@ -63,7 +63,7 @@ component {
 				.newQuery()
 				.from( "cb_rolePermissions" )
 				.insert(
-					{ "FK_roleID" : admin.roleID, "FK_permissionID" : permID }
+					{ "FK_roleID": admin.roleID, "FK_permissionID": permID }
 				);
 			systemOutput( "√ - Admin role updated with new permissions", true );
 		}
@@ -87,7 +87,7 @@ component {
 				.newQuery()
 				.from( "cb_rolePermissions" )
 				.insert(
-					{ "FK_roleID" : editor.roleID, "FK_permissionID" : permID }
+					{ "FK_roleID": editor.roleID, "FK_permissionID": permID }
 				);
 			systemOutput( "√ - Editor role updated with new permissions", true );
 		}

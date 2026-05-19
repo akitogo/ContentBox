@@ -91,7 +91,7 @@ component {
 				event.overrideEvent( "contentbox-ui:page.index" );
 				prc.pageOverride = prc.oCurrentSite.getHomepage();
 				// run it
-				var eArgs = { noCache : true };
+				var eArgs = { noCache: true };
 				runEvent(
 					event          = "contentbox-ui:page.index",
 					eventArguments = eArgs
@@ -150,9 +150,9 @@ component {
 		announce(
 			"cbui_onError",
 			{
-				faultAction    : arguments.faultAction,
-				exception      : arguments.exception,
-				eventArguments : arguments.eventArguments
+				faultAction   : arguments.faultAction,
+				exception     : arguments.exception,
+				eventArguments: arguments.eventArguments
 			}
 		);
 
@@ -235,15 +235,15 @@ component {
 
 		// Prepare data packet for rendering and caching and more
 		var data = {
-			contentID   : "",
-			contentType : "text/html",
-			isBinary    : false
+			contentID  : "",
+			contentType: "text/html",
+			isBinary   : false
 		};
 		// Prepare args for action execution
 		var args = {
-			event : arguments.event,
-			rc    : arguments.rc,
-			prc   : arguments.prc
+			event: arguments.event,
+			rc   : arguments.rc,
+			prc  : arguments.prc
 		};
 		structAppend( args, arguments.eventArguments );
 		// execute the wrapped action
@@ -404,9 +404,9 @@ component {
 		announce(
 			"cbui_preCommentPost",
 			{
-				commentErrors : commentErrors,
-				content       : arguments.thisContent,
-				contentType   : arguments.thisContent.getContentType()
+				commentErrors: commentErrors,
+				content      : arguments.thisContent,
+				contentType  : arguments.thisContent.getContentType()
 			}
 		);
 
@@ -452,11 +452,11 @@ component {
 		announce(
 			"cbui_onCommentPost",
 			{
-				comment           : comment,
-				content           : arguments.thisContent,
-				moderationResults : results,
-				contentType       : arguments.thisContent.getContentType(),
-				subscribe         : arguments.subscribe
+				comment          : comment,
+				content          : arguments.thisContent,
+				moderationResults: results,
+				contentType      : arguments.thisContent.getContentType(),
+				subscribe        : arguments.subscribe
 			}
 		);
 

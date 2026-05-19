@@ -50,9 +50,9 @@ component
 	 * **                          PK + CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "contentSlug" ] = { required : false, size : "1..255" };
-	this.constraints[ "target" ] = { required : false, size : "1..255" };
-	this.constraints[ "urlClass" ] = { required : false, size : "1..255" };
+	this.constraints[ "contentSlug" ] = { required: false, size: "1..255" };
+	this.constraints[ "target" ] = { required: false, size: "1..255" };
+	this.constraints[ "urlClass" ] = { required: false, size: "1..255" };
 
 	/**********************************************************************
 	 * **                          PUBLIC FUNCTIONS

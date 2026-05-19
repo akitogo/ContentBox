@@ -60,13 +60,13 @@ component
 	this.pk = "subscriberID";
 
 	this.memento = {
-		defaultIncludes : [ "subscriberEmail", "subscriptionToken", "subscriptionsSnapshot:subscriptions"],
-		defaultExcludes : []
+		defaultIncludes: [ "subscriberEmail", "subscriptionToken", "subscriptionsSnapshot:subscriptions"],
+		defaultExcludes: []
 	};
 
 	this.constraints = {
-		"subscriptionToken" : { required : true, size : "1..255" },
-		"subscriberEmail"   : { required : true, size : "1..255", type : "email" }
+		"subscriptionToken": { required: true, size: "1..255" },
+		"subscriberEmail"  : { required: true, size: "1..255", type: "email" }
 	};
 
 	/**********************************************************************
@@ -84,9 +84,9 @@ component
 	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
-				"subscriberID"    : getSubscriberID(),
-				"subscriberEmail" : getSubscriberEmail(),
-				"subscriberToken" : getSubscriberToken()
+				"subscriberID"   : getSubscriberID(),
+				"subscriberEmail": getSubscriberEmail(),
+				"subscriberToken": getSubscriberToken()
 			};
 		}
 		return {};
@@ -127,7 +127,7 @@ component
 			if ( !structKeyExists( subs, contentType ) ) {
 				subs[ "#contentType#" ] = [];
 			}
-			var memento = { "subscriptionToken" : subscription.getSubscriptionToken() };
+			var memento = { "subscriptionToken": subscription.getSubscriptionToken() };
 			switch ( contentType ) {
 				case "Comment":
 					memento[ "title" ] = subscription.getRelatedContent().getTitle();

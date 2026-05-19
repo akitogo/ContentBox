@@ -88,7 +88,7 @@ component extends="ContentService" singleton {
 		string siteID               = "",
 		string propertyList
 	) {
-		var results = { "count" : 0, "content" : [] };
+		var results = { "count": 0, "content": [] };
 		// criteria queries
 		var c = newCriteria();
 		// stub out activeContent alias based on potential conditions...

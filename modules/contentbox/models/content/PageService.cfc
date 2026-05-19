@@ -87,7 +87,7 @@ component extends="ContentService" singleton {
 		string siteID               = "",
 		string propertyList
 	) {
-		var results = { "count" : 0, "pages" : [] };
+		var results = { "count": 0, "pages": [] };
 		// criteria queries
 		var c = newCriteria();
 

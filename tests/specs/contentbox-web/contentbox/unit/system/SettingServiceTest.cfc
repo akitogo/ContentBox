@@ -22,7 +22,7 @@ component extends="tests.resources.BaseTest" {
 				it(
 					"can flush settings",
 					() => {
-						model.storeSettings( { global : {}, sites : {} } );
+						model.storeSettings( { global: {}, sites: {} } );
 						expect( model.getAllSettings() ).toBeEmpty();
 						model.flushSettingsCache();
 						expect( model.getAllSettings() ).notToBeEmpty();

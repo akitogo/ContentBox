@@ -118,7 +118,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 			// run it
 			var results = executeQuery(
 				query   = hql,
-				params  = { "idsToDelete" : aToDelete },
+				params  = { "idsToDelete": aToDelete },
 				asQuery = false
 			);
 
@@ -148,7 +148,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		WHERE 	createdDate <= :limit
 		";
 
-		var params = { "limit" : limit };
+		var params = { "limit": limit };
 
 		// run it
 		executeQuery(

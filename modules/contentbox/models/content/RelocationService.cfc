@@ -55,7 +55,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		offset    = 0,
 		sortOrder = "slug asc"
 	) {
-		var results = { "count" : 0, "relocations" : [] };
+		var results = { "count": 0, "relocations": [] };
 		var c = newCriteria()
 			.when(
 				len( arguments.search ),
@@ -114,9 +114,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		if ( isNull( relocation ) ) {
 			relocation = new(
 				properties = {
-					"slug"           : arguments.originalSlug,
-					"relatedContent" : arguments.contentItem,
-					"site"           : siteId
+					"slug"          : arguments.originalSlug,
+					"relatedContent": arguments.contentItem,
+					"site"          : siteId
 				}
 			);
 		} else {
@@ -141,9 +141,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		if ( isNull( relocation ) ) {
 			relocation = new(
 				properties = {
-					"slug"   : arguments.slug,
-					"target" : arguments.target,
-					"site"   : site
+					"slug"  : arguments.slug,
+					"target": arguments.target,
+					"site"  : site
 				}
 			);
 		} else {

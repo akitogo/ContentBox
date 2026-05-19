@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- settings --->    <table name="settings" id="settings" class="table table-striped-removed table-hover">
+	<!--- settings --->     <table name="settings" id="settings" class="table table-striped-removed table-hover">
 <thead>
 	<tr>
 		<th id="checkboxHolder" class="{sorter:false} text-center" width="15">
@@ -14,7 +14,7 @@
 
 <tbody>
 	<cfloop array="#prc.settings#" index="setting">
-		<tr><!--- check box --->    <td class="text-center">
+		<tr><!--- check box --->     <td class="text-center">
 <input
 	type="checkbox"
 	name="settingID"
@@ -44,10 +44,12 @@
 		
 		
 		
+		
 				</div>
 			</td>
 
 			<td>
+
 
 
 
@@ -61,9 +63,11 @@
 		
 		
 		
+		
 			</td>
 
 			<td class="text-center">
+
 
 
 
@@ -77,19 +81,20 @@
 		
 		
 		
+		
 			</td>
 
 			<td class="text-center">
 				<div class="btn-group btn-group-sm">
 
-					<!--- Actions --->    
+					<!--- Actions --->     
 					<div class="btn-group btn-group-sm">
 						<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Setting Actions">
 							<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 							<span class="visually-hidden">Setting Actions</span>
 						</button>
 						<ul class="dropdown-menu text-left pull-right">
-							<!--- Edit Command --->    
+							<!--- Edit Command --->     
 							<li>
 								<a
 									href="javascript:edit(
@@ -108,6 +113,7 @@
 
 
 
+
 		<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_EXPORT" )>
 			<li>
 <a href="#event.buildLink( prc.xehExport )#/settingID/#setting.getSettingID()#.json" target="_blank">
@@ -115,8 +121,9 @@
 	</a>
 </li>
 		</cfif>
-		<!--- Delete Command --->    
+		<!--- Delete Command --->     
 							<li>
+
 
 
 
@@ -130,6 +137,7 @@ class="confirmIt"
 href="javascript:remove( '#setting.getsettingID()#' )"
 title="Delete Setting"
 		</cfif>
+		
 		
 		
 		
@@ -151,13 +159,16 @@ title="Delete Setting"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
 	
 	</tbody>
 </table>
+
 
 
 

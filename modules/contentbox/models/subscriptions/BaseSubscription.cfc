@@ -82,13 +82,13 @@ component
 	this.pk = "subscriptionID";
 
 	this.memento = {
-		defaultIncludes : [ "subscriptionToken", "type", "subscriberSnapshot:subscriber"],
-		defaultExcludes : []
+		defaultIncludes: [ "subscriptionToken", "type", "subscriberSnapshot:subscriber"],
+		defaultExcludes: []
 	};
 
 	this.constraints = {
-		"subscriptionToken" : { required : true, size : "1..255" },
-		"type"              : { required : true, size : "1..255", regex : "^(comment)$" }
+		"subscriptionToken": { required: true, size: "1..255" },
+		"type"             : { required: true, size: "1..255", regex: "^(comment)$" }
 	};
 
 	/**********************************************************************

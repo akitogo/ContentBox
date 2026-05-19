@@ -54,7 +54,7 @@ component extends="tests.resources.BaseTest" {
 					"can get/set all preferences",
 					() => {
 						expect( model.getAllPreferences() ).toBeStruct();
-						var pref = { editor : "textarea", test : "nada" };
+						var pref = { editor: "textarea", test: "nada" };
 						model.setPreferences( pref );
 
 						expect( model.getPreferences() ).toBeJSON();
@@ -70,7 +70,7 @@ component extends="tests.resources.BaseTest" {
 						expect( v ).toBe( "test" );
 
 						// existent
-						var pref = { editor : "textarea", test : "nada" };
+						var pref = { editor: "textarea", test: "nada" };
 						model.setPreferences( pref );
 						expect( model.getPreference( "editor" ) ).toBe( "textarea" );
 

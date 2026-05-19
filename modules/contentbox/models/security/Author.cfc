@@ -199,7 +199,7 @@ component
 
 	this.memento = {
 		// Default properties to serialize
-		defaultIncludes : [
+		defaultIncludes: [
 			"firstName",
 			"lastName",
 			"email",
@@ -216,7 +216,7 @@ component
 			"numberOfContentStore"
 		],
 		// Default Exclusions
-		defaultExcludes : [
+		defaultExcludes: [
 			"entries",
 			"pages",
 			"permissions",
@@ -225,27 +225,27 @@ component
 			"isPasswordReset",
 			"is2FactorAuth"
 		],
-		neverInclude : [ "password"],
+		neverInclude: [ "password"],
 		// Defaults
-		defaults     : { "role" : {} }
+		defaults    : { "role": {} }
 	};
 
 	this.constraints = {
-		"firstName" : { required : true, size : "1..100" },
-		"lastName"  : { required : true, size : "1..100" },
-		"email"     : {
-			required  : true,
-			size      : "1..255",
-			type      : "email",
-			validator : "UniqueValidator@cborm"
+		"firstName": { required: true, size: "1..100" },
+		"lastName" : { required: true, size: "1..100" },
+		"email"    : {
+			required : true,
+			size     : "1..255",
+			type     : "email",
+			validator: "UniqueValidator@cborm"
 		},
-		"username" : {
-			required  : true,
-			size      : "1..100",
-			validator : "UniqueValidator@cborm"
+		"username": {
+			required : true,
+			size     : "1..100",
+			validator: "UniqueValidator@cborm"
 		},
-		"password" : { required : true, size : "1..100" },
-		"role"     : { required : true }
+		"password": { required: true, size: "1..100" },
+		"role"    : { required: true }
 	};
 
 	/**********************************************************************
@@ -588,10 +588,10 @@ component
 	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
-				"authorID"   : getAuthorID(),
-				"name"       : getFullName(),
-				"email"      : getEmail(),
-				"avatarLink" : getAvatarLink()
+				"authorID"  : getAuthorID(),
+				"name"      : getFullName(),
+				"email"     : getEmail(),
+				"avatarLink": getAvatarLink()
 			};
 		}
 

@@ -287,7 +287,7 @@ component
 	this.pk = "siteID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"activeTheme",
 			"adminBar",
 			"description",
@@ -314,7 +314,7 @@ component
 			"slug",
 			"tagline"
 		],
-		defaultExcludes : [
+		defaultExcludes: [
 			"categories",
 			"contentStore",
 			"entries",
@@ -322,9 +322,9 @@ component
 			"pages",
 			"settings"
 		],
-		profiles : {
-			export : {
-				defaultIncludes : [
+		profiles: {
+			export: {
+				defaultIncludes: [
 					"categories",
 					"contentStore",
 					"entries",
@@ -332,32 +332,32 @@ component
 					"pages",
 					"settings"
 				],
-				defaultExcludes : [ "settings.siteSnapshot", "menus.siteSnapshot:site"]
+				defaultExcludes: [ "settings.siteSnapshot", "menus.siteSnapshot:site"]
 			}
 		}
 	};
 
 	this.constraints = {
-		"name" : { required : true, size : "2..255" },
-		"slug" : {
-			required  : true,
-			size      : "2..255",
-			validator : "UniqueValidator@cborm"
+		"name": { required: true, size: "2..255" },
+		"slug": {
+			required : true,
+			size     : "2..255",
+			validator: "UniqueValidator@cborm"
 		},
-		"description"      : { required : false, size : "0..500" },
-		"keywords"         : { required : false, size : "0..255" },
-		"domain"           : { required : true, size : "1..255" },
-		"domainRegex"      : { required : true, size : "1..255" },
-		"domainAliases"    : { required : false, type : "array" },
-		"tagline"          : { required : false, size : "0..255" },
-		"homepage"         : { required : false, size : "0..255" },
-		"isBlogEnabled"    : { required : true, type : "boolean" },
-		"isSitemapEnabled" : { required : true, type : "boolean" },
-		"poweredByHeader"  : { required : true, type : "boolean" },
-		"adminBar"         : { required : true, type : "boolean" },
-		"isSSL"            : { required : true, type : "boolean" },
-		"isActive"         : { required : true, type : "boolean" },
-		"activeTheme"      : { required : true, size : "0..255" }
+		"description"     : { required: false, size: "0..500" },
+		"keywords"        : { required: false, size: "0..255" },
+		"domain"          : { required: true, size: "1..255" },
+		"domainRegex"     : { required: true, size: "1..255" },
+		"domainAliases"   : { required: false, type: "array" },
+		"tagline"         : { required: false, size: "0..255" },
+		"homepage"        : { required: false, size: "0..255" },
+		"isBlogEnabled"   : { required: true, type: "boolean" },
+		"isSitemapEnabled": { required: true, type: "boolean" },
+		"poweredByHeader" : { required: true, type: "boolean" },
+		"adminBar"        : { required: true, type: "boolean" },
+		"isSSL"           : { required: true, type: "boolean" },
+		"isActive"        : { required: true, type: "boolean" },
+		"activeTheme"     : { required: true, size: "0..255" }
 	};
 
 	/**********************************************************************
@@ -504,9 +504,9 @@ component
 	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
-				"siteID" : getId(),
-				"slug"   : getSlug(),
-				"name"   : getName()
+				"siteID": getId(),
+				"slug"  : getSlug(),
+				"name"  : getName()
 			};
 		}
 		return {};

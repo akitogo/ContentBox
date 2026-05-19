@@ -59,13 +59,13 @@ component extends="content" {
 		// Construct the preview entry according to passed arguments
 		prc.entry = variables.entryService.new(
 				{
-					title         : rc.title,
-					slug          : rc.slug,
-					publishedDate : now(),
-					allowComments : false,
-					cache         : false,
-					markup        : rc.markup,
-					site          : variables.siteService.getOrFail( rc.siteID )
+					title        : rc.title,
+					slug         : rc.slug,
+					publishedDate: now(),
+					allowComments: false,
+					cache        : false,
+					markup       : rc.markup,
+					site         : variables.siteService.getOrFail( rc.siteID )
 				}
 			);
 		// Comments need to be empty
@@ -132,7 +132,7 @@ component extends="content" {
 		// announce event
 		announce(
 			"cbui_onIndex",
-			{ entries : prc.entries, entriesCount : prc.entriesCount }
+			{ entries: prc.entries, entriesCount: prc.entriesCount }
 		);
 
 		// Export Formats?
@@ -195,7 +195,7 @@ component extends="content" {
 		// announce event
 		announce(
 			"cbui_onArchives",
-			{ entries : prc.entries, entriesCount : prc.entriesCount }
+			{ entries: prc.entries, entriesCount: prc.entriesCount }
 		);
 
 		// Export Formats?
@@ -263,7 +263,7 @@ component extends="content" {
 			// announce event
 			announce(
 				"cbui_onEntry",
-				{ entry : prc.entry, entrySlug : rc.entrySlug }
+				{ entry: prc.entry, entrySlug: rc.entrySlug }
 			);
 			// set skin view
 			event.setLayout( name = "#prc.cbTheme#/layouts/blog",
@@ -288,7 +288,7 @@ component extends="content" {
 			// announce event
 			announce(
 				"cbui_onEntryNotFound",
-				{ entry : prc.entry, entrySlug : rc.entrySlug }
+				{ entry: prc.entry, entrySlug: rc.entrySlug }
 			);
 			// missing page
 			prc.missingPage = rc.entrySlug;

@@ -26,7 +26,7 @@ component hint="My Module Configuration" {
 		settings = {};
 
 		// Layout Settings
-		layoutSettings = { defaultLayout : "" };
+		layoutSettings = { defaultLayout: "" };
 
 		// datasources
 		datasources = {};
@@ -37,13 +37,13 @@ component hint="My Module Configuration" {
 		// SES Routes
 		routes = [
 			// Module Entry Point
-			{ pattern : "/", handler : "home", action : "index" },
+			{ pattern: "/", handler: "home", action: "index" },
 			// Convention Route
-			{ pattern : "/:handler/:action?" }
+			{ pattern: "/:handler/:action?" }
 		];
 
 		// Custom Declared Points
-		interceptorSettings = { customInterceptionPoints : "" };
+		interceptorSettings = { customInterceptionPoints: "" };
 
 		// Custom Declared Interceptors
 		interceptors = [];

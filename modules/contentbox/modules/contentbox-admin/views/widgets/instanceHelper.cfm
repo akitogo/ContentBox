@@ -1,6 +1,6 @@
 <cfset event.paramValue( "editorName", "" )>
 <cfoutput>
-	<!--- Custom Javascript --->    <script>
+	<!--- Custom Javascript --->     <script>
 ( () => {
     // register listeners
     $( '##widget-button-insert' ).off( 'click.inWidget' ).on( 'click.inWidget', insertCBWidget );

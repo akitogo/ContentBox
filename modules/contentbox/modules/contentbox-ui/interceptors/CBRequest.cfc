@@ -113,10 +113,10 @@ component extends="coldbox.system.Interceptor" {
 					view   = "adminbar/index",
 					module = "contentbox-ui",
 					args   = {
-						oContent       : oContent ?: javacast( "null", "" ),
-						linkEdit       : linkEdit,
-						linkLogout     : "#prc.cbAdminEntryPoint#/security/doLogout",
-						oCurrentAuthor : prc.oCurrentAuthor
+						oContent      : oContent ?: javacast( "null", "" ),
+						linkEdit      : linkEdit,
+						linkLogout    : "#prc.cbAdminEntryPoint#/security/doLogout",
+						oCurrentAuthor: prc.oCurrentAuthor
 					}
 				)
 			);

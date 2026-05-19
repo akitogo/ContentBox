@@ -162,12 +162,12 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				// Get new or persisted with enough info to match
 				var oRule = this.findWhere(
 						criteria = {
-							match       : thisRule.match,
-							whitelist   : thisRule.whitelist,
-							securelist  : thisRule.securelist,
-							redirect    : thisRule.redirect,
-							roles       : thisRule.roles,
-							permissions : thisRule.permissions
+							match      : thisRule.match,
+							whitelist  : thisRule.whitelist,
+							securelist : thisRule.securelist,
+							redirect   : thisRule.redirect,
+							roles      : thisRule.roles,
+							permissions: thisRule.permissions
 						}
 					);
 				oRule = ( isNull( oRule ) ? new() : oRule );

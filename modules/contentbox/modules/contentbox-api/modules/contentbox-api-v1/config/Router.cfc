@@ -62,13 +62,13 @@ component {
 			resource = "comments",
 			pattern  = "#siteprefix#/entries/:contentIdOrSlug/comments",
 			except   = except,
-			meta     = { contentType : "entry" }
+			meta     = { contentType: "entry" }
 		);
 		resources(
 			resource = "versions",
 			pattern  = "#siteprefix#/entries/:contentIdOrSlug/versions",
 			except   = "new,edit,create,update",
-			meta     = { contentType : "entry" }
+			meta     = { contentType: "entry" }
 		);
 		resources(
 			resource = "entries",
@@ -96,7 +96,7 @@ component {
 			resource = "versions",
 			pattern  = "#siteprefix#/contentStore/:contentIdOrSlug/versions",
 			except   = "new,edit,create,update",
-			meta     = { contentType : "contentStore" }
+			meta     = { contentType: "contentStore" }
 		);
 		resources(
 			resource = "contentStore",
@@ -113,13 +113,13 @@ component {
 			resource = "versions",
 			pattern  = "#siteprefix#/pages/:contentIdOrSlug/versions",
 			except   = "new,edit,create,update",
-			meta     = { contentType : "page" }
+			meta     = { contentType: "page" }
 		);
 		resources(
 			resource = "comments",
 			pattern  = "#siteprefix#/pages/:contentIdOrSlug/comments",
 			except   = except,
-			meta     = { contentType : "page" }
+			meta     = { contentType: "page" }
 		);
 		resources(
 			resource = "pages",

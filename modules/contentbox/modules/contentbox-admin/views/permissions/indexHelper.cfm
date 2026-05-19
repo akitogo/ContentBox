@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS --->    <script>
+	<!--- Custom JS --->     <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importDialog = $( "##importDialog" );
 	// table sorting + filtering
@@ -37,7 +37,9 @@ $( '##btnReset' ).click( function() {
 	
 	
 	
+	
 } );
+
 
 
 
@@ -79,7 +81,9 @@ function exportSelected( exportEvent ){
 	
 	
 	
+	
 </script>
+
 
 
 

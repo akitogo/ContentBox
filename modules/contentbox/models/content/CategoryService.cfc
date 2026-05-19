@@ -41,7 +41,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		offset    = 0,
 		sortOrder = "category asc"
 	) {
-		var results = { "count" : 0, "categories" : [] };
+		var results = { "count": 0, "categories": [] };
 		var c = newCriteria()
 			.when(
 				len( arguments.search ),
@@ -101,9 +101,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 			oTargetCategory = save(
 				new(
 					{
-						category : arguments.category.getCategory(),
-						slug     : arguments.category.getSlug(),
-						site     : arguments.site
+						category: arguments.category.getCategory(),
+						slug    : arguments.category.getSlug(),
+						site    : arguments.site
 					}
 				)
 			);
@@ -136,9 +136,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 			var oTargetCategory = save(
 				new(
 					{
-						category : arguments.category,
-						slug     : arguments.category,
-						site     : arguments.site
+						category: arguments.category,
+						slug    : arguments.category,
+						site    : arguments.site
 					}
 				)
 			);
@@ -242,10 +242,10 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				function( thisCategory ) {
 					return new(
 						{
-							"category" : thisCategory,
-							"slug"     : variables.htmlHelper.slugify( thisCategory ),
-							"site"     : site,
-							"isPublic" : isPublic
+							"category": thisCategory,
+							"slug"    : variables.htmlHelper.slugify( thisCategory ),
+							"site"    : site,
+							"isPublic": isPublic
 						}
 					);
 				}
@@ -331,7 +331,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	 * @site The site to export from
 	 */
 	array function getAllForExport( required site ) {
-		return findAllWhere( { site : arguments.site } ).map(
+		return findAllWhere( { site: arguments.site } ).map(
 				function( thisItem ) {
 					return thisItem.getMemento( profile = "export" );
 				}

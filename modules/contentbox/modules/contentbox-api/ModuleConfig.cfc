@@ -26,7 +26,7 @@ component {
 		// Custom Declared Points
 		interceptorSettings = {
 			// CB Admin Custom Events
-			customInterceptionPoints : []
+			customInterceptionPoints: []
 		};
 
 		// Custom Declared Interceptors

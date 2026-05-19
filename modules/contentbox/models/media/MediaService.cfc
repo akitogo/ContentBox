@@ -119,9 +119,9 @@ component accessors="true" singleton {
 		return getRegisteredProviders().map(
 				function( thisProvider ) {
 					return {
-						name        : arguments.thisProvider,
-						displayName : variables.providers[ arguments.thisProvider ].getDisplayName(),
-						description : variables.providers[ arguments.thisProvider ].getDescription()
+						name       : arguments.thisProvider,
+						displayName: variables.providers[ arguments.thisProvider ].getDisplayName(),
+						description: variables.providers[ arguments.thisProvider ].getDescription()
 					};
 				}
 			);

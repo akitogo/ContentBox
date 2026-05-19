@@ -42,14 +42,14 @@ component extends="content" {
 		// Construct the preview entry according to passed arguments
 		prc.page = typeService.new(
 				{
-					title         : rc.title,
-					slug          : rc.slug,
-					publishedDate : now(),
-					allowComments : false,
-					cache         : false,
-					markup        : rc.markup,
-					layout        : rc.layout,
-					site          : variables.siteService.getOrFail( rc.siteID )
+					title        : rc.title,
+					slug         : rc.slug,
+					publishedDate: now(),
+					allowComments: false,
+					cache        : false,
+					markup       : rc.markup,
+					layout       : rc.layout,
+					site         : variables.siteService.getOrFail( rc.siteID )
 				}
 			);
 
@@ -150,7 +150,7 @@ component extends="content" {
 			// announce event
 			announce(
 				"cbui_onPage",
-				{ page : prc.page, isMobile : prc.isMobileDevice }
+				{ page: prc.page, isMobile: prc.isMobileDevice }
 			);
 			// Get the layout
 			var thisLayout = prc.page.getLayoutWithInheritance();
@@ -185,15 +185,15 @@ component extends="content" {
 		prc.missingRoutedURL = event.getCurrentRoutedURL();
 
 		var interceptData = {
-			page          : prc.page,
-			missingPage   : prc.missingPage,
-			routedURL     : prc.missingRoutedURL,
-			layout        : "#prc.cbTheme#/layouts/pages",
-			layoutModule  : prc.cbThemeRecord.module,
-			view          : "#prc.cbTheme#/views/notfound",
-			viewModule    : prc.cbThemeRecord.module,
-			statusCode    : "404",
-			statusMessage : "Page not found"
+			page         : prc.page,
+			missingPage  : prc.missingPage,
+			routedURL    : prc.missingRoutedURL,
+			layout       : "#prc.cbTheme#/layouts/pages",
+			layoutModule : prc.cbThemeRecord.module,
+			view         : "#prc.cbTheme#/views/notfound",
+			viewModule   : prc.cbThemeRecord.module,
+			statusCode   : "404",
+			statusMessage: "Page not found"
 		};
 
 		// announce event
@@ -248,8 +248,8 @@ component extends="content" {
 		announce(
 			"cbui_onContentSearch",
 			{
-				searchResults        : prc.searchResults,
-				searchResultsContent : prc.searchResultsContent
+				searchResults       : prc.searchResults,
+				searchResultsContent: prc.searchResultsContent
 			}
 		);
 	}

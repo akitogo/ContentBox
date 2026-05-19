@@ -89,9 +89,9 @@ component extends="coldbox.system.Interceptor" {
 		// Build entry to log
 		var oEntry = loginTrackerService.new(
 				{
-					lastLoginSuccessIP : variables.securityService.getRealIP(),
-					attempts           : 0,
-					value              : oUser.getUsername()
+					lastLoginSuccessIP: variables.securityService.getRealIP(),
+					attempts          : 0,
+					value             : oUser.getUsername()
 				}
 			);
 
@@ -129,7 +129,7 @@ component extends="coldbox.system.Interceptor" {
 		if ( !isNull( prc.oBlockByIP ) ) {
 			prc.oBlockByIP.setAttempts( prc.oBlockByIP.getAttempts() + 1 );
 		} else {
-			prc.oBlockByIP = loginTrackerService.new( { value : realIP, attempts : 1 } );
+			prc.oBlockByIP = loginTrackerService.new( { value: realIP, attempts: 1 } );
 		}
 		// Update date + Log it by ip
 		prc.oBlockByIP.setCreatedDate( now() );
@@ -139,7 +139,7 @@ component extends="coldbox.system.Interceptor" {
 		if ( !isNull( prc.oBlockByUsername ) ) {
 			prc.oBlockByUsername.setAttempts( prc.oBlockByUsername.getAttempts() + 1 );
 		} else {
-			prc.oBlockByUsername = loginTrackerService.new( { value : realUsername, attempts : 1 } );
+			prc.oBlockByUsername = loginTrackerService.new( { value: realUsername, attempts: 1 } );
 		}
 		// Update date + Log it by ip
 		prc.oBlockByUsername.setCreatedDate( now() );

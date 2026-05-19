@@ -9,7 +9,7 @@ component extends="baseHandler" {
 	// DI
 	property name="markdown" inject="Processor@cbmarkdown";
 	// Method Security
-	this.allowedMethods = { doLogin : "POST", doLostPassword : "POST" };
+	this.allowedMethods = { doLogin: "POST", doLostPassword: "POST" };
 
 	/**
 	 * Change language
@@ -80,9 +80,9 @@ component extends="baseHandler" {
 				return runEvent(
 					event          = "contentbox-security:twoFactorEnrollment.forceEnrollment",
 					eventArguments = {
-						authorID      : prc.oAuthor.getAuthorID(),
-						relocationURL : _securedURL,
-						rememberMe    : rc.rememberMe
+						authorID     : prc.oAuthor.getAuthorID(),
+						relocationURL: _securedURL,
+						rememberMe   : rc.rememberMe
 					}
 				);
 			}
@@ -93,10 +93,10 @@ component extends="baseHandler" {
 				flash.put(
 						"authorData",
 						{
-							authorID     : prc.oAuthor.getAuthorID(),
-							rememberMe   : rc.rememberMe,
-							securedURL   : rc._securedURL,
-							isEnrollment : false
+							authorID    : prc.oAuthor.getAuthorID(),
+							rememberMe  : rc.rememberMe,
+							securedURL  : rc._securedURL,
+							isEnrollment: false
 						}
 					);
 				// Send challenge
@@ -118,7 +118,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_onLogin",
-				{ author : prc.oAuthor, securedURL : rc._securedURL }
+				{ author: prc.oAuthor, securedURL: rc._securedURL }
 			);
 
 			// check if securedURL came in?
@@ -191,7 +191,7 @@ component extends="baseHandler" {
 			);
 		} else {
 			// Try To get the Author
-			oAuthor = authorService.findWhere( { email : rc.email, isActive : 1 } );
+			oAuthor = authorService.findWhere( { email: rc.email, isActive: 1 } );
 			if ( isNull( oAuthor ) || !oAuthor.isLoaded() ) {
 				// Don't give away that the email did not exist.
 				messagebox.info(
@@ -209,7 +209,7 @@ component extends="baseHandler" {
 			// Send Reminder
 			securityService.sendPasswordReminder( oAuthor );
 			// announce event
-			announce( "cbadmin_onPasswordReminder", { author : oAuthor } );
+			announce( "cbadmin_onPasswordReminder", { author: oAuthor } );
 			// messagebox
 			messagebox.info(
 					cb.r(
@@ -221,7 +221,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_onInvalidPasswordReminder",
-				{ errors : errors, email : rc.email }
+				{ errors: errors, email: rc.email }
 			);
 			// messagebox
 			messagebox.error( errors );
@@ -240,7 +240,7 @@ component extends="baseHandler" {
 		var results = variables.securityService.validateResetToken( trim( rc.token ) );
 		if ( results.error ) {
 			// announce event
-			announce( "cbadmin_onInvalidPasswordReset", { token : rc.token } );
+			announce( "cbadmin_onInvalidPasswordReset", { token: rc.token } );
 			// Exception
 			variables.messagebox.error( cb.r( "messages.invalid_token@security" ) );
 			return relocate( "#prc.cbAdminEntryPoint#.security.lostPassword" );
@@ -296,7 +296,7 @@ component extends="baseHandler" {
 		var results = securityService.validateResetToken( trim( rc.token ) );
 		if ( results.error ) {
 			// announce event
-			announce( "cbadmin_onInvalidPasswordReset", { token : rc.token } );
+			announce( "cbadmin_onInvalidPasswordReset", { token: rc.token } );
 			// Exception
 			messagebox.error( cb.r( "messages.invalid_token@security" ) );
 			relocate( "#prc.cbAdminEntryPoint#.security.lostPassword" );
@@ -306,7 +306,7 @@ component extends="baseHandler" {
 		// Validate you are not using the same password if persisted already
 		if ( authorService.isSameHash( rc.password, results.author.getPassword() ) ) {
 			// announce event
-			announce( "cbadmin_onInvalidPasswordReset", { token : rc.token } );
+			announce( "cbadmin_onInvalidPasswordReset", { token: rc.token } );
 			// Exception
 			messagebox.error( cb.r( "messages.password_used@security" ) );
 			relocate(
@@ -325,14 +325,14 @@ component extends="baseHandler" {
 
 		if ( resetResults.error ) {
 			// announce event
-			announce( "cbadmin_onInvalidPasswordReset", { token : rc.token } );
+			announce( "cbadmin_onInvalidPasswordReset", { token: rc.token } );
 			messagebox.error( resetResults.messages );
 			relocate( "#prc.cbAdminEntryPoint#.security.lostPassword" );
 			return;
 		}
 
 		// announce event and relcoate to login with new password
-		announce( "cbadmin_onPasswordReset", { author : results.author } );
+		announce( "cbadmin_onPasswordReset", { author: results.author } );
 		messagebox.info( cb.r( "messages.password_reset@security" ) );
 		relocate( "#prc.cbAdminEntryPoint#.security.login" );
 	}

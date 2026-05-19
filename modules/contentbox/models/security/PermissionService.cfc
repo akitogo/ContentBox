@@ -30,22 +30,22 @@ component extends="cborm.models.VirtualEntityService" singleton {
 
 			queryExecute(
 				"delete from cb_rolePermissions where FK_permissionID = :permissionID",
-				{ "permissionID" : arguments.permissionID }
+				{ "permissionID": arguments.permissionID }
 			);
 
 			queryExecute(
 				"delete from cb_authorPermissions where FK_permissionID = :permissionID",
-				{ "permissionID" : arguments.permissionID }
+				{ "permissionID": arguments.permissionID }
 			);
 
 			queryExecute(
 				"delete from cb_groupPermissions where FK_permissionID = :permissionID",
-				{ "permissionID" : arguments.permissionID }
+				{ "permissionID": arguments.permissionID }
 			);
 
 			queryExecute(
 				"delete from cb_permission where permissionID = :permissionID",
-				{ "permissionID" : arguments.permissionID }
+				{ "permissionID": arguments.permissionID }
 			);
 		}
 

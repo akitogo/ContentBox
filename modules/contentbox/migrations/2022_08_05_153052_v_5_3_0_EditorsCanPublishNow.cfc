@@ -19,7 +19,7 @@ component {
 			.from( "cb_permission" )
 			.where( "permission", "CONTENTSTORE_EDITOR" )
 			.update(
-				{ "description" : "Ability to create, edit and publish content store elements" }
+				{ "description": "Ability to create, edit and publish content store elements" }
 			);
 		arguments
 			.qb
@@ -27,7 +27,7 @@ component {
 			.from( "cb_permission" )
 			.where( "permission", "ENTRIES_EDITOR" )
 			.update(
-				{ "description" : "Ability to create, edit and publish blog entries" }
+				{ "description": "Ability to create, edit and publish blog entries" }
 			);
 		arguments
 			.qb
@@ -35,7 +35,7 @@ component {
 			.from( "cb_permission" )
 			.where( "permission", "PAGES_EDITOR" )
 			.update(
-				{ "description" : "Ability to create, edit and publish pages" }
+				{ "description": "Ability to create, edit and publish pages" }
 			);
 	}
 

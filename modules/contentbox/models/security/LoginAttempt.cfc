@@ -71,8 +71,8 @@ component
 	this.pk = "loginAttemptsID";
 
 	this.memento = {
-		defaultIncludes : [ "value", "attempts", "lastLoginSuccessIP", "isBlocked"],
-		defaultExcludes : [ ""]
+		defaultIncludes: [ "value", "attempts", "lastLoginSuccessIP", "isBlocked"],
+		defaultExcludes: [ ""]
 	};
 
 	/**********************************************************************

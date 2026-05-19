@@ -65,10 +65,10 @@ component
 				view   = "menus/providers/content/admin",
 				module = "contentbox-admin",
 				args   = {
-					menuItem           : arguments.menuItem,
-					xehContentSelector : "#prc.cbAdminEntryPoint#.content.showRelatedContentSelector",
-					title              : title,
-					slug               : slug
+					menuItem          : arguments.menuItem,
+					xehContentSelector: "#prc.cbAdminEntryPoint#.content.showRelatedContentSelector",
+					title             : title,
+					slug              : slug
 				}
 			);
 	}
@@ -93,9 +93,9 @@ component
 				view   = "/contentbox/models/menu/views/content/display",
 				module = "contentbox",
 				args   = {
-					menuItem    : arguments.menuItem,
-					contentLink : variables.CBHelper.linkContent( content = content ),
-					data        : arguments.menuItem.getMemento()
+					menuItem   : arguments.menuItem,
+					contentLink: variables.CBHelper.linkContent( content = content ),
+					data       : arguments.menuItem.getMemento()
 				}
 			);
 	}

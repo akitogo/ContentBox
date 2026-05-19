@@ -43,8 +43,8 @@ component
 		required struct options = {}
 	) {
 		var viewArgs = {
-			menuItem         : arguments.menuItem,
-			xehMediaSelector : "#requestService.getContext().buildLink( to = "cbadmin.menus.filebrowser" )#"
+			menuItem        : arguments.menuItem,
+			xehMediaSelector: "#requestService.getContext().buildLink( to = "cbadmin.menus.filebrowser" )#"
 		};
 		return variables.renderer.view(
 				view   = "menus/providers/media/admin",
@@ -63,7 +63,7 @@ component
 		required any menuItem,
 		required struct options = {}
 	) {
-		var viewArgs = { menuItem : arguments.menuItem };
+		var viewArgs = { menuItem: arguments.menuItem };
 		return variables.renderer.externalView(
 				view   = "/contentbox/models/menu/views/media/display",
 				module = "contentbox",

@@ -92,26 +92,26 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		// cfformat-ignore-start
 		// generate Items
 		saveContent variable="rString" {
-		writeOutput( "<ul class=""rssItems"">
+	writeOutput( "<ul class=""rssItems"">
 " );
-		// iterate and create
-		for ( var x = 1; x LTE arguments.entries.recordcount; x++ ) {
-			writeOutput(
-				"<li class=""rssItem"">
-	<a href=""#arguments.entries.URL[ x ]#"" target=""#arguments.linkTarget#"">#arguments.entries.title[ x ]#"
-			);
-			if ( arguments.showBody ) {
-				writeOutput( "<br/>#arguments.entries.body[ x ]#" );
-			}
-			writeOutput( "
+	// iterate and create
+	for ( var x = 1; x LTE arguments.entries.recordcount; x++ ) {
+		writeOutput(
+			"<li class=""rssItem"">
+<a href=""#arguments.entries.URL[ x ]#"" target=""#arguments.linkTarget#"">#arguments.entries.title[ x ]#"
+		);
+		if ( arguments.showBody ) {
+			writeOutput( "<br/>#arguments.entries.body[ x ]#" );
+		}
+		writeOutput( "
 </li>
 " );
-		}
-		// close ul
-		writeOutput( "
+	}
+	// close ul
+	writeOutput( "
 </ul>
 " );
-	}
+}
 
 		// cfformat-ignore-end
 

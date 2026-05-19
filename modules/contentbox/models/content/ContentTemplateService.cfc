@@ -39,7 +39,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		offset    = 0,
 		sortOrder = "name asc"
 	) {
-		var results = { "count" : 0, "templates" : [] };
+		var results = { "count": 0, "templates": [] };
 		var c = newCriteria().when(
 				len( arguments.siteID ),
 				function( c ) {
@@ -155,7 +155,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	 * @site The site to export from
 	 */
 	array function getAllForExport( required site ) {
-		return findAllWhere( { site : arguments.site } ).map(
+		return findAllWhere( { site: arguments.site } ).map(
 				function( thisItem ) {
 					return thisItem.getMemento( profile = "export" );
 				}
@@ -165,11 +165,11 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	ContentTemplate function newFromContentItem( required BaseContent contentItem ) {
 		var newTemplate = new(
 			properties = {
-				"site"        : arguments.contentItem.getSite(),
-				"name"        : arguments.contentItem.getTitle(),
-				"contentType" : arguments.contentItem.getContentType(),
-				"description" : "Template automatically created from " & arguments.contentItem.getContentType() & " " & arguments.contentItem.getTitle(),
-				"creator"     : arguments.contentItem.getCreator()
+				"site"       : arguments.contentItem.getSite(),
+				"name"       : arguments.contentItem.getTitle(),
+				"contentType": arguments.contentItem.getContentType(),
+				"description": "Template automatically created from " & arguments.contentItem.getContentType() & " " & arguments.contentItem.getTitle(),
+				"creator"    : arguments.contentItem.getCreator()
 			}
 		);
 		var schema = newTemplate.getSchema();
@@ -185,13 +185,13 @@ component extends="cborm.models.VirtualEntityService" singleton {
 					switch ( key ) {
 						case "customFields": {
 							if ( arrayLen( contentItem.getCustomFields() ) ) {
-								acc[ key ] = { "value" : [] };
+								acc[ key ] = { "value": [] };
 								contentItem.getCustomFields().each(
 										function( field ) {
 											acc[ key ].value.append(
 													{
-														"name"         : field.getKey(),
-														"defaultValue" : field.getValue()
+														"name"        : field.getKey(),
+														"defaultValue": field.getValue()
 													}
 												);
 										}
@@ -202,7 +202,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 						case "categories": {
 							if ( arrayLen( contentItem.getCategories() ) ) {
 								acc[ key ] = {
-									"value" : contentItem.getCategories().map(
+									"value": contentItem.getCategories().map(
 											function( cat ) {
 												return cat.getCategoryID();
 											}
@@ -213,14 +213,14 @@ component extends="cborm.models.VirtualEntityService" singleton {
 						}
 						case "parent": {
 							if ( !isNull( contentItem.getParent() ) ) {
-								acc[ key ] = { "value" : contentItem.getParent.getContentID() };
+								acc[ key ] = { "value": contentItem.getParent.getContentID() };
 							}
 							break;
 						}
 						default: {
 							var val = invoke( contentItem, "get" & key );
 							if ( !isNull( val ) && isSimpleValue( val ) && len( val ) ) {
-								acc[ key ] = { "value" : val };
+								acc[ key ] = { "value": val };
 								if ( !isNumeric( acc[ key ].value ) && isBoolean( acc[ key ].value ) ) {
 									acc[ key ].value = javacast( "boolean", true );
 								}

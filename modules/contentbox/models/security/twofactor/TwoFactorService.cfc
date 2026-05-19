@@ -105,8 +105,8 @@ component accessors="true" threadSafe singleton {
 			arrayAppend(
 				result,
 				{
-					name        : thisProvider,
-					displayName : variables.providers[ thisProvider ].getDisplayName()
+					name       : thisProvider,
+					displayName: variables.providers[ thisProvider ].getDisplayName()
 				}
 			);
 		}

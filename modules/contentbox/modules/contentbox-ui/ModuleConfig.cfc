@@ -34,114 +34,114 @@ component {
 			/************************************** COMMAND ROUTES *********************************************/
 			// search filter
 			{
-				pattern : "/__search/:q?/:page-numeric?",
-				handler : "page",
-				action  : "search"
+				pattern: "/__search/:q?/:page-numeric?",
+				handler: "page",
+				action : "search"
 			},
 			// layout preview
 			{
-				pattern : "/__preview",
-				handler : "content",
-				action  : "previewSite"
+				pattern: "/__preview",
+				handler: "content",
+				action : "previewSite"
 			},
 			// entry preview
 			{
-				pattern : "/__entry_preview",
-				handler : "blog",
-				action  : "preview"
+				pattern: "/__entry_preview",
+				handler: "blog",
+				action : "preview"
 			},
 			// page preview
 			{
-				pattern : "/__page_preview",
-				handler : "page",
-				action  : "preview"
+				pattern: "/__page_preview",
+				handler: "page",
+				action : "preview"
 			},
 			// media delivery
 			{
-				pattern : "/__media",
-				handler : "media",
-				action  : "index"
+				pattern: "/__media",
+				handler: "media",
+				action : "index"
 			},
 			// subscribe link
 			{
-				pattern : "/__subscribe",
-				handler : "subscription",
-				action  : "subscribe"
+				pattern: "/__subscribe",
+				handler: "subscription",
+				action : "subscribe"
 			},
 			// manage subscriptions
 			{
-				pattern : "/__subscriptions/:subscribertoken",
-				handler : "subscription",
-				action  : "subscriptions"
+				pattern: "/__subscriptions/:subscribertoken",
+				handler: "subscription",
+				action : "subscriptions"
 			},
 			// remove subscriptions
 			{
-				pattern : "/__removesubscriptions/",
-				handler : "subscription",
-				action  : "removeSubscriptions"
+				pattern: "/__removesubscriptions/",
+				handler: "subscription",
+				action : "removeSubscriptions"
 			},
 			// unsubscribe link for single subscription
 			{
-				pattern : "/__unsubscribe/:subscriptionToken",
-				handler : "subscription",
-				action  : "unsubscribe"
+				pattern: "/__unsubscribe/:subscriptionToken",
+				handler: "subscription",
+				action : "unsubscribe"
 			},
 			// change language
 			{
-				pattern : "/__changeLang/:lang{5}",
-				handler : "content",
-				action  : "changeLang"
+				pattern: "/__changeLang/:lang{5}",
+				handler: "content",
+				action : "changeLang"
 			},
 			/************************************** RSS ROUTES *********************************************/
 
 			// Global Page RSS feeds with filtering
 			{
-				pattern : "/__rss/pages/category/:category?",
-				handler : "rss",
-				action  : "pages"
+				pattern: "/__rss/pages/category/:category?",
+				handler: "rss",
+				action : "pages"
 			},
 			{
-				pattern    : "/__rss/pages/comments/:slug?",
-				handler    : "rss",
-				action     : "pages",
-				commentRSS : true
+				pattern   : "/__rss/pages/comments/:slug?",
+				handler   : "rss",
+				action    : "pages",
+				commentRSS: true
 			},
 			{
-				pattern : "/__rss/pages/",
-				handler : "rss",
-				action  : "pages"
+				pattern: "/__rss/pages/",
+				handler: "rss",
+				action : "pages"
 			},
 			// Site Global RSS feeds Filtered by Categories
 			{
-				pattern : "/__rss/category/:category",
-				handler : "rss",
-				action  : "index"
+				pattern: "/__rss/category/:category",
+				handler: "rss",
+				action : "index"
 			},
 			// Global Site RSS Comments Feed With an extra content slug
 			{
-				pattern    : "/__rss/comments",
-				handler    : "rss",
-				action     : "index",
-				commentRSS : true
+				pattern   : "/__rss/comments",
+				handler   : "rss",
+				action    : "index",
+				commentRSS: true
 			},
 			// Global Site RSS Content Feed
-			{ pattern : "/__rss", handler : "rss", action : "index" },
+			{ pattern: "/__rss", handler: "rss", action: "index" },
 			/************************************** CATCH ALL PAGE ROUTE *********************************************/
 
 			// page permalink, discovery of nested pages is done here, the aboved slugs are reserved.
 			{
-				pattern : "/__pageCommentPost",
-				handler : "page",
-				action  : "commentPost"
+				pattern: "/__pageCommentPost",
+				handler: "page",
+				action : "commentPost"
 			},
 			// Catch All Page Routing
 			{
-				pattern : "/:pageUri",
-				handler : "page",
-				action  : "index"
+				pattern: "/:pageUri",
+				handler: "page",
+				action : "index"
 			},
 			// Home Pattern
-			{ pattern : "/", handler : "blog", action : "index" }
+			{ pattern: "/", handler: "blog", action: "index" }
 		];
 
 		/************************************** BLOG ROUTES NAMESPACE *********************************************/
@@ -149,72 +149,72 @@ component {
 		variables.blogRoutes = [
 			// Blog Archives
 			{
-				pattern   : "/archives/:year-numeric{4}?/:month-numeric{1,2}?/:day-numeric{1,2}?",
-				handler   : "blog",
-				action    : "archives",
-				namespace : "blog"
+				pattern  : "/archives/:year-numeric{4}?/:month-numeric{1,2}?/:day-numeric{1,2}?",
+				handler  : "blog",
+				action   : "archives",
+				namespace: "blog"
 			},
 			// Blog RSS feeds
 			{
-				pattern   : "/rss/category/:category",
+				pattern  : "/rss/category/:category",
+				handler  : "blog",
+				action   : "rss",
+				namespace: "blog"
+			},
+			{
+				pattern   : "/rss/comments/:entrySlug?",
 				handler   : "blog",
 				action    : "rss",
+				commentRSS: true,
 				namespace : "blog"
 			},
 			{
-				pattern    : "/rss/comments/:entrySlug?",
-				handler    : "blog",
-				action     : "rss",
-				commentRSS : true,
-				namespace  : "blog"
-			},
-			{
-				pattern   : "/rss/",
-				handler   : "blog",
-				action    : "rss",
-				namespace : "blog"
+				pattern  : "/rss/",
+				handler  : "blog",
+				action   : "rss",
+				namespace: "blog"
 			},
 			// category filter
 			{
-				pattern   : "/category/:category/:page-numeric?",
-				handler   : "blog",
-				action    : "index",
-				namespace : "blog"
+				pattern  : "/category/:category/:page-numeric?",
+				handler  : "blog",
+				action   : "index",
+				namespace: "blog"
 			},
 			// search filter
 			{
-				pattern   : "/search/:q?/:page-numeric?",
-				handler   : "blog",
-				action    : "index",
-				namespace : "blog"
+				pattern  : "/search/:q?/:page-numeric?",
+				handler  : "blog",
+				action   : "index",
+				namespace: "blog"
 			},
 			// Blog comment post
 			{
-				pattern   : "/:entrySlug/commentPost",
-				handler   : "blog",
-				action    : "commentPost",
-				namespace : "blog"
+				pattern  : "/:entrySlug/commentPost",
+				handler  : "blog",
+				action   : "commentPost",
+				namespace: "blog"
 			},
 			// blog permalink
 			{
-				pattern   : "/:entrySlug",
-				handler   : "blog",
-				action    : "entry",
-				namespace : "blog"
+				pattern  : "/:entrySlug",
+				handler  : "blog",
+				action   : "entry",
+				namespace: "blog"
 			},
 			// Blog reserved route
 			{
-				pattern   : "/",
-				handler   : "blog",
-				action    : "index",
-				namespace : "blog"
+				pattern  : "/",
+				handler  : "blog",
+				action   : "index",
+				namespace: "blog"
 			}
 		];
 
 		// CB UI Event driven programming extensions
 		interceptorSettings = {
 			// ContentBox UI Custom Events, you can add your own if you like to!
-			customInterceptionPoints : arrayToList(
+			customInterceptionPoints: arrayToList(
 				[
 					// Layout HTML points: A layout must announce them via cb.event( "cbui_footer",{renderer=this} ) make sure you pass in the renderer
 					"cbui_beforeHeadEnd",
@@ -262,19 +262,19 @@ component {
 		interceptors = [
 			// CB UI Request Interceptor
 			{
-				class      : "#moduleMapping#.interceptors.CBRequest",
-				name       : "CBRequest",
-				properties : { entryPoint : this.entryPoint }
+				class     : "#moduleMapping#.interceptors.CBRequest",
+				name      : "CBRequest",
+				properties: { entryPoint: this.entryPoint }
 			},
 			// Simple Security For pages and blog entries
 			{
-				class : "#moduleMapping#.interceptors.SimpleSecurity",
-				name  : "SimpleSecurity"
+				class: "#moduleMapping#.interceptors.SimpleSecurity",
+				name : "SimpleSecurity"
 			},
 			// Global HTML interceptor for rendering HTML Points
 			{
-				class : "#moduleMapping#.interceptors.GlobalHTML",
-				name  : "GlobalHTML"
+				class: "#moduleMapping#.interceptors.GlobalHTML",
+				name : "GlobalHTML"
 			}
 		];
 	}
@@ -333,7 +333,7 @@ component {
 		// Get setting service
 		var settingService = wirebox.getInstance( "settingService@contentbox" );
 		// Get blog entry point from DB
-		var blogEntryPoint = settingService.findWhere( { name : "cb_site_blog_entrypoint" } );
+		var blogEntryPoint = settingService.findWhere( { name: "cb_site_blog_entrypoint" } );
 
 		// Register Custom Blog Namespace
 		if ( !isNull( blogEntryPoint ) ) {

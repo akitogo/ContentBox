@@ -40,7 +40,7 @@ component {
 							.where( "contentID", item.contentID )
 							.update(
 								{
-									"featuredImage" : replaceNoCase(
+									"featuredImage": replaceNoCase(
 										item.featuredImage,
 										mediaRoot,
 										"contentbox:"

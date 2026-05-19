@@ -15,7 +15,7 @@
 <div class="col-md-9">
     <div class="actions">
         <a class="btn btn-link" onclick="window.location.href='#event.buildLink( prc.xehMenus )#';return false;">#cbAdminComponent( "ui/Icon",
-		{ name : "ArrowLeftCircle" } )#Back
+		{ name: "ArrowLeftCircle" } )#Back
     </a>
 </div>
 <div class="panel panel-default">
@@ -38,6 +38,7 @@ data-provider="#provider#"
 	
 	
 	
+	
                     </div>
                 </menu>
 
@@ -53,13 +54,13 @@ data-provider="#provider#"
                         <div class="btn-group" role="group">
                             <button class="btn btn-sm btn-link" type="button" @click="collapseAll()">
                                 <span style="display:inline-block;" title="Collapse All">
-                                    #cbAdminComponent( "ui/Icon", { name : "ChevronDoubleRight", size : "sm" } )# 
+                                    #cbAdminComponent( "ui/Icon", { name: "ChevronDoubleRight", size: "sm" } )# 
                                     Collapse All
                                 </span>
                             </button>
                             <button class="btn btn-sm btn-link" type="button" @click="expandAll()">
                                 <span style="display:inline-block;" title="Expand All">
-                                    #cbAdminComponent( "ui/Icon", { name : "ChevronDoubleDown", size : "sm" } )# 
+                                    #cbAdminComponent( "ui/Icon", { name: "ChevronDoubleDown", size: "sm" } )# 
                                     Expand All</span>
                             </button>
                         </div>
@@ -77,7 +78,7 @@ data-provider="#provider#"
                         <p>Here's an instant preview of your menu.</p>
                         <div class="text-right">
                             <button class="btn btn-sm btn-link" id="preview-button">
-                                #cbAdminComponent( "ui/Icon", { name : "ArrowPath", size : "sm" } )# 
+                                #cbAdminComponent( "ui/Icon", { name: "ArrowPath", size: "sm" } )# 
                                 Refresh
                             </button>
                         </div>
@@ -170,9 +171,10 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
-#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->    
+#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->     
 <div id="context-menu" class="dropdown clearfix" style="position: absolute;display:none;">
     <ul class="dropdown-menu" role="menu" style="display:block;margin-bottom:5px;">
+
 
 
 
@@ -188,21 +190,23 @@ data-provider="#provider#"
 	
 	
 	
+	
     </ul>
 </div>
 
-<!--- PREVIEW DIALOG --->    
+<!--- PREVIEW DIALOG --->     
 <div id="previewDialog" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>#cbAdminComponent( "ui/Icon", { name : "Eye" } )# Menu Preview</h3>
+                <h3>#cbAdminComponent( "ui/Icon", { name: "Eye" } )# Menu Preview</h3>
             </div>
             <div class="modal-body"></div>
         </div>
     </div>
 </div>
+
 
 
 

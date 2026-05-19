@@ -140,7 +140,7 @@ component
 	this.pk = "ruleID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"action",
 			"allowedIps",
 			"httpMethods",
@@ -157,31 +157,31 @@ component
 			"useSSL",
 			"whitelist"
 		],
-		defaultExcludes : [ ""]
+		defaultExcludes: [ ""]
 	};
 
 	this.constraints = {
-		"whitelist"  : { required : false, size : "1..255" },
-		"securelist" : { required : true, size : "1..255" },
-		"match"      : {
-			required : false,
-			size     : "1..50",
-			regex    : "^(event|url)$"
+		"whitelist" : { required: false, size: "1..255" },
+		"securelist": { required: true, size: "1..255" },
+		"match"     : {
+			required: false,
+			size    : "1..50",
+			regex   : "^(event|url)$"
 		},
-		"roles"         : { required : false, size : "1..255" },
-		"permissions"   : { required : false, size : "1..500" },
-		"redirect"      : { required : false, size : "1..500" },
-		"overrideEvent" : { required : false, size : "1..500" },
-		"useSSL"        : { required : false, type : "boolean" },
-		"action"        : {
-			required : false,
-			size     : "1..50",
-			regex    : "^(redirect|override)$"
+		"roles"        : { required: false, size: "1..255" },
+		"permissions"  : { required: false, size: "1..500" },
+		"redirect"     : { required: false, size: "1..500" },
+		"overrideEvent": { required: false, size: "1..500" },
+		"useSSL"       : { required: false, type: "boolean" },
+		"action"       : {
+			required: false,
+			size    : "1..50",
+			regex   : "^(redirect|override)$"
 		},
-		"module"      : { required : false, size : "1..255" },
-		"order"       : { required : false, type : "numeric" },
-		"message"     : { required : false, size : "1..255" },
-		"messageType" : { required : false, size : "1..50" }
+		"module"     : { required: false, size: "1..255" },
+		"order"      : { required: false, type: "numeric" },
+		"message"    : { required: false, size: "1..255" },
+		"messageType": { required: false, size: "1..50" }
 	};
 
 	/**********************************************************************

@@ -68,13 +68,13 @@ component accessors="true" {
 	 */
 	struct function getMemento() {
 		return {
-			"results"       : results,
-			"searchTime"    : searchTime,
-			"total"         : total,
-			"metadata"      : metadata,
-			"error"         : error,
-			"errorMessages" : errorMessages,
-			"searchTerm"    : searchTerm
+			"results"      : results,
+			"searchTime"   : searchTime,
+			"total"        : total,
+			"metadata"     : metadata,
+			"error"        : error,
+			"errorMessages": errorMessages,
+			"searchTerm"   : searchTerm
 		};
 	}
 

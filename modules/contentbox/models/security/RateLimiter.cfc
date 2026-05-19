@@ -56,7 +56,7 @@ component extends="coldbox.system.Interceptor" {
 		var targetData = cache.getOrSet(
 				cacheKey,
 				function() {
-					return { attempts : 0, lastAttempt : now() };
+					return { attempts: 0, lastAttempt: now() };
 				}
 			);
 

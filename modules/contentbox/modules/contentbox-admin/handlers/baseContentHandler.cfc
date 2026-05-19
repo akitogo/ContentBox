@@ -82,7 +82,7 @@ component extends="baseHandler" {
 
 		// get all categories
 		prc.categories = variables.categoryService.list(
-				criteria  = { "site" : prc.oCurrentSite },
+				criteria  = { "site": prc.oCurrentSite },
 				sortOrder = "category"
 			);
 
@@ -249,7 +249,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_on#variables.entity#StatusUpdate",
-				{ contentID : rc.contentID, status : rc.contentStatus }
+				{ contentID: rc.contentID, status: rc.contentStatus }
 			);
 			// Message
 			cbMessageBox().info(
@@ -273,7 +273,7 @@ component extends="baseHandler" {
 	function editor( event, rc, prc ) {
 		// get all categories
 		prc.categories = variables.categoryService.list(
-				criteria  = { "site" : prc.oCurrentSite },
+				criteria  = { "site": prc.oCurrentSite },
 				sortOrder = "category"
 			);
 
@@ -285,12 +285,12 @@ component extends="baseHandler" {
 			// Get Comments viewlet
 			prc.commentsViewlet = runEvent(
 				event          = "contentbox-admin:comments.pager",
-				eventArguments = { contentID : rc.contentID }
+				eventArguments = { contentID: rc.contentID }
 			);
 			// Get History Versions Viewlet
 			prc.versionsViewlet = runEvent(
 				event          = "contentbox-admin:versions.pager",
-				eventArguments = { contentID : rc.contentID }
+				eventArguments = { contentID: rc.contentID }
 			);
 		} else {
 			prc.oContent.setSite( prc.oCurrentSite );
@@ -491,9 +491,9 @@ component extends="baseHandler" {
 		announce(
 			"cbadmin_pre#variables.Entity#Save",
 			{
-				content      : oContent,
-				isNew        : isNew,
-				originalSlug : originalSlug
+				content     : oContent,
+				isNew       : isNew,
+				originalSlug: originalSlug
 			}
 		);
 
@@ -507,15 +507,15 @@ component extends="baseHandler" {
 		announce(
 			"cbadmin_post#variables.entity#Save",
 			{
-				content      : oContent,
-				isNew        : isNew,
-				originalSlug : originalSlug
+				content     : oContent,
+				isNew       : isNew,
+				originalSlug: originalSlug
 			}
 		);
 
 		// Ajax?
 		if ( event.isAjax() ) {
-			var rData = { "CONTENTID" : oContent.getContentID() };
+			var rData = { "CONTENTID": oContent.getContentID() };
 			event.renderData( type = "json", data = rData );
 		} else {
 			// relocate
@@ -562,10 +562,10 @@ component extends="baseHandler" {
 			.ormService
 			.new(
 				{
-					title   : rc.title,
-					slug    : variables.HTMLHelper.slugify( rc.title ),
-					creator : prc.oCurrentAuthor,
-					site    : variables.siteService.get( rc.site )
+					title  : rc.title,
+					slug   : variables.HTMLHelper.slugify( rc.title ),
+					creator: prc.oCurrentAuthor,
+					site   : variables.siteService.get( rc.site )
 				}
 			)
 			.setParent( original.getParent() );
@@ -627,7 +627,7 @@ component extends="baseHandler" {
 				// announce event
 				announce(
 					"cbadmin_pre#variables.entity#Remove",
-					{ content : oContent }
+					{ content: oContent }
 				);
 				// Diassociate it, bi-directional relationship
 				if ( oContent.hasParent() ) {
@@ -639,7 +639,7 @@ component extends="baseHandler" {
 				// announce event
 				announce(
 					"cbadmin_post#variables.entity#Remove",
-					{ contentID : contentID }
+					{ contentID: contentID }
 				);
 			}
 		}

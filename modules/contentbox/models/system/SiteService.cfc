@@ -505,9 +505,9 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 									}
 									return variables.categoryService.new(
 											{
-												category : arguments.thisCategory.category,
-												slug     : arguments.thisCategory.slug,
-												site     : oSite
+												category: arguments.thisCategory.category,
+												slug    : arguments.thisCategory.slug,
+												site    : oSite
 											}
 										);
 								}
@@ -618,10 +618,10 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 								arguments.result.append(
 										variables.settingService.new(
 												{
-													name   : arguments.setting,
-													value  : trim( arguments.value ),
-													isCore : true,
-													site   : site
+													name  : arguments.setting,
+													value : trim( arguments.value ),
+													isCore: true,
+													site  : site
 												}
 											)
 									);

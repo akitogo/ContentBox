@@ -31,7 +31,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preGlobalHTMLSave",
-			{ oldSettings : prc.cbSettings, newSettings : rc }
+			{ oldSettings: prc.cbSettings, newSettings: rc }
 		);
 		// bulk save the options
 		settingsService.bulkSave(

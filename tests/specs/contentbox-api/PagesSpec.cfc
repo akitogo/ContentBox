@@ -44,7 +44,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"then I should get the requested page",
 									() => {
-										var testContent = variables.pageService.findWhere( { slug : "products" } );
+										var testContent = variables.pageService.findWhere( { slug: "products" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/pages/#testContent.getContentID()#"
 											);
@@ -115,7 +115,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it can display pages from a parent",
 									() => {
-										var testContent = variables.pageService.findWhere( { slug : "products" } );
+										var testContent = variables.pageService.findWhere( { slug: "products" } );
 										var event = this.get(
 												"/cbapi/v1/sites/default/pages?parent=#testContent.getContentID()#"
 											);
@@ -206,22 +206,22 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.post(
 														"cbapi/v1/sites/default/pages",
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															excerpt       : "bdd rules!",
-															content       : "This is my awesome bdd test page",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															excerpt      : "bdd rules!",
+															content      : "This is my awesome bdd test page",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															layout       : "pages",
-															showInMenu   : "false",
-															changelog    : "My first creation from the bdd test",
-															categories   : "coldbox,news",
-															customFields : [
-																{ key : "test", value : "true" },
-																{ key : "data", value : "#now()#" }
+															layout      : "pages",
+															showInMenu  : "false",
+															changelog   : "My first creation from the bdd test",
+															categories  : "coldbox,news",
+															customFields: [
+																{ key: "test", value: "true" },
+																{ key: "data", value: "#now()#" }
 															]
 														}
 													);
@@ -250,10 +250,10 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.post(
 												"cbapi/v1/sites/default/pages",
 												{
-													title   : "products",
-													slug    : "products",
-													content : "Products are here",
-													order   : 10
+													title  : "products",
+													slug   : "products",
+													content: "Products are here",
+													order  : 10
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -270,7 +270,7 @@ component extends="tests.resources.BaseApiTest" {
 									"it should display an error message",
 									() => {
 										var event = this.post( "cbapi/v1/sites/default/pages",
-												{ slug : "A nice site" } );
+												{ slug: "A nice site" } );
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
 										// debug( event.getResponse().getMemento() );
@@ -288,7 +288,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/pages",
-												{ content : "Hello from bdd test land!" }
+												{ content: "Hello from bdd test land!" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -316,8 +316,8 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.put(
 														"/cbapi/v1/sites/default/pages/products",
 														{
-															content   : "I am a new piece of content for the products!",
-															changelog : "Update from a bdd test!"
+															content  : "I am a new piece of content for the products!",
+															changelog: "Update from a bdd test!"
 														}
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
@@ -339,9 +339,9 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.put(
 												"cbapi/v1/sites/default/pages/products",
 												{
-													title   : "products",
-													slug    : "support",
-													content : "Products are here"
+													title  : "products",
+													slug   : "support",
+													content: "Products are here"
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -359,7 +359,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/pages/bogusbaby",
-												{ content : "bogus" }
+												{ content: "bogus" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -382,17 +382,17 @@ component extends="tests.resources.BaseApiTest" {
 										var testContent = variables.pageService.save(
 												variables.pageService.new(
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															content       : "This is my awesome bdd test page",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															content      : "This is my awesome bdd test page",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog : "My first creation from the bdd test",
-															site      : variables.siteService.getDefaultSite(),
-															creator   : variables.loggedInData.user
+															changelog: "My first creation from the bdd test",
+															site     : variables.siteService.getDefaultSite(),
+															creator  : variables.loggedInData.user
 														}
 													)
 											);

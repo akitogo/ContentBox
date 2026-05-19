@@ -87,7 +87,7 @@ component extends="baseHandler" {
 					: prc.cbSettings.cb_admin_quicksearch_max
 			);
 		} else {
-			prc.results = { "count" : 0, "content" : [] };
+			prc.results = { "count": 0, "content": [] };
 			prc.minContentCount = 0;
 		}
 
@@ -100,7 +100,7 @@ component extends="baseHandler" {
 					: prc.cbSettings.cb_admin_quicksearch_max
 			);
 		} else {
-			prc.authors = { "count" : 0, "authors" : [] };
+			prc.authors = { "count": 0, "authors": [] };
 			prc.minAuthorCount = 0;
 		}
 
@@ -123,7 +123,7 @@ component extends="baseHandler" {
 		param rc.contentID = "";
 		param rc.contentType = "";
 
-		var data = { "UNIQUE" : false };
+		var data = { "UNIQUE": false };
 
 		if ( len( rc.slug ) ) {
 			data[ "UNIQUE" ] = variables.contentService.isSlugUnique(
@@ -239,14 +239,18 @@ component extends="baseHandler" {
 			)
 			.filter(
 				function( thisContent ) {
-					return ( !isNull( arguments.thisContent ) && variables.statsService.getTotalHitsByContent( arguments.thisContent.getContentID() ) > 0 );
+					return (
+						!isNull( arguments.thisContent ) &&
+							variables.statsService.getTotalHitsByContent( arguments.thisContent.getContentID() ) > 0
+					);
 				}
 			)
 			// Filter only loaded content objects that have stats
 			// Reset Hits
 			.each(
 				function( thisContent ) {
-					var oStat = variables.statsService
+					var oStat = variables
+						.statsService
 						.newCriteria()
 						.isEq( "relatedContent.contentID", arguments.thisContent.getContentID() )
 						.get();
@@ -286,8 +290,8 @@ component extends="baseHandler" {
 	) {
 		// Setup args so we can use them in the viewlet
 		var args = {
-			max    : arguments.max,
-			siteID : prc.oCurrentSite.getsiteID()
+			max   : arguments.max,
+			siteID: prc.oCurrentSite.getsiteID()
 		};
 		if ( structKeyExists( arguments, "author" ) ) {
 			args.author = arguments.author;
@@ -309,12 +313,12 @@ component extends="baseHandler" {
 			view   = "content/contentViewlet",
 			module = "contentbox-admin",
 			args   = {
-				viewletID           : createUUID(),
-				aContent            : aLatestEdits,
-				showHits            : arguments.showHits,
-				colorCodings        : arguments.colorCodings,
-				showPublishedStatus : arguments.showPublishedStatus,
-				showAuthor          : arguments.showAuthor
+				viewletID          : createUUID(),
+				aContent           : aLatestEdits,
+				showHits           : arguments.showHits,
+				colorCodings       : arguments.colorCodings,
+				showPublishedStatus: arguments.showPublishedStatus,
+				showAuthor         : arguments.showAuthor
 			}
 		);
 	}
@@ -349,9 +353,9 @@ component extends="baseHandler" {
 	) {
 		// Setup args so we can use them in the viewlet
 		var args = {
-			max    : arguments.max,
-			offset : arguments.offset,
-			siteID : prc.oCurrentSite.getsiteID()
+			max   : arguments.max,
+			offset: arguments.offset,
+			siteID: prc.oCurrentSite.getsiteID()
 		};
 		if ( structKeyExists( arguments, "author" ) ) {
 			args.author = arguments.author;
@@ -371,12 +375,12 @@ component extends="baseHandler" {
 			view   = "content/contentViewlet",
 			module = "contentbox-admin",
 			args   = {
-				viewletID           : createUUID(),
-				aContent            : aContent,
-				showHits            : arguments.showHits,
-				colorCodings        : arguments.colorCodings,
-				showPublishedStatus : arguments.showPublishedStatus,
-				showAuthor          : arguments.showAuthor
+				viewletID          : createUUID(),
+				aContent           : aContent,
+				showHits           : arguments.showHits,
+				colorCodings       : arguments.colorCodings,
+				showPublishedStatus: arguments.showPublishedStatus,
+				showAuthor         : arguments.showAuthor
 			}
 		);
 	}

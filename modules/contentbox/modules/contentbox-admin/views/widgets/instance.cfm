@@ -15,6 +15,7 @@
 	
 	
 	
+	
         <div id="widget-preview-wrapper" class="row">
             <div class="widget-arguments col-md-3" id="widget-arguments">
                 #html.startForm(
@@ -25,9 +26,11 @@
 
 
 
+
 	<cfif arrayLen( prc.metadata ) EQ 1>
 		style="display:none;"
 	</cfif>
+	
 	
 	
 	
@@ -35,6 +38,7 @@
                         <legend>Public Methods</legend>
                         <label for="renderMethodSelect"><strong>Select a Method:</strong></label>
                         <select name="renderMethodSelect" id="renderMethodSelect" class="renderMethodSelect form-control input-sm">
+
 
 
 
@@ -47,12 +51,15 @@
 		
 		
 		
+		
 		>#method.name#()</option>
 
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -109,7 +116,7 @@
 				requiredValidator = "required";
 			}
 		</cfscript>
-		<!--- control group --->    <div class="form-group">#html.label(
+		<!--- control group --->     <div class="form-group">#html.label(
 				field   = thisArg.name,
 				content = "#thisArg.label# (#thisArg.type#) #requiredText#",
 				class   = "control-label"
@@ -172,8 +179,10 @@
 		
 		
 		
+		
                             </div>
                         </div>
+
 
 
 
@@ -209,6 +218,7 @@
 
 
 
+
 	<cfif rc.modal>
 		</div>
 <div class="modal-footer">
@@ -223,10 +233,12 @@
 		
 		
 		
+		
                     </div>
                 </div>
             </div>
         </div>
+
 
 
 

@@ -136,12 +136,12 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preSecurityRulesSave",
-				{ rule : prc.rule, ruleID : rc.ruleID }
+				{ rule: prc.rule, ruleID: rc.ruleID }
 			);
 			// save rule
 			variables.ruleService.saveRule( prc.rule );
 			// announce event
-			announce( "cbadmin_postSecurityRulesSave", { rule : prc.rule } );
+			announce( "cbadmin_postSecurityRulesSave", { rule: prc.rule } );
 			// Message + Relocate
 			cbMessageBox().info( "Security Rule saved! Isn't that awesome!" );
 			relocate( prc.xehsecurityRules );
@@ -156,11 +156,11 @@ component extends="baseHandler" {
 		// check for length
 		if ( len( rc.ruleID ) ) {
 			// announce event
-			announce( "cbadmin_preSecurityRulesRemove", { ruleID : rc.ruleID } );
+			announce( "cbadmin_preSecurityRulesRemove", { ruleID: rc.ruleID } );
 			// remove using hibernate bulk
 			ruleService.deleteByID( listToArray( rc.ruleID ) );
 			// announce event
-			announce( "cbadmin_postSecurityRulesRemove", { ruleID : rc.ruleID } );
+			announce( "cbadmin_postSecurityRulesRemove", { ruleID: rc.ruleID } );
 			// message
 			cbMessageBox().info( "Security Rule Removed!" );
 		} else {

@@ -33,7 +33,7 @@ component
 	 * **                          PK + CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "menuSlug" ] = { required : false, size : "1..255" };
+	this.constraints[ "menuSlug" ] = { required: false, size: "1..255" };
 
 	/**********************************************************************
 	 * **                          PUBLIC FUNCTIONS

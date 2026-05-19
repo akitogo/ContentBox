@@ -91,14 +91,14 @@ component
 	this.pk = "contentVersionID";
 
 	this.memento = {
-		defaultIncludes : [ "content", "changelog", "version", "isActive", "authorSnapshot:author"],
-		defaultExcludes : [ "relatedContent"],
-		neverInclude    : [ ""]
+		defaultIncludes: [ "content", "changelog", "version", "isActive", "authorSnapshot:author"],
+		defaultExcludes: [ "relatedContent"],
+		neverInclude   : [ ""]
 	};
 
 	this.constraints = {
-		"content" : { required : true },
-		"version" : { required : true, type : "integer" }
+		"content": { required: true },
+		"version": { required: true, type: "integer" }
 	};
 
 	function init() {
@@ -189,7 +189,7 @@ component
 					// announce renderings with data, so content renderers can process them
 					variables.interceptorService.announce(
 							"cb_onContentRendering",
-							{ builder : builder, content : this }
+							{ builder: builder, content: this }
 						);
 
 					// save content

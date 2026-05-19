@@ -11,6 +11,7 @@
 	
 	
 	
+	
 
 function setupWidgetListing(){
     // Widget Filter by text input
@@ -125,6 +126,7 @@ function clearFilter(){
 
 
 
+
 	<cfif args.mode EQ "edit">
 		function testWidgetCode( name, type ){
 // Test it
@@ -141,7 +143,9 @@ return openRemoteModal( '#event.buildLink( prc.xehWidgetTest )#', {
 	
 	
 	
+	
 </script>
+
 
 
 

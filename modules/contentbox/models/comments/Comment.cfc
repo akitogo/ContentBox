@@ -74,7 +74,7 @@ component
 	this.pk = "commentID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"content",
 			"displayContent:renderedContent",
 			"author",
@@ -83,17 +83,17 @@ component
 			"authorURL",
 			"isApproved"
 		],
-		defaultExcludes : [ "relatedContent"]
+		defaultExcludes: [ "relatedContent"]
 	};
 
 	this.constraints = {
-		"content"        : { required : true },
-		"author"         : { required : true, size : "1..100" },
-		"authorIP"       : { required : true, size : "1..100" },
-		"authorEmail"    : { required : true, size : "1..255", type : "email" },
-		"authorURL"      : { required : true, size : "1..255", type : "URL" },
-		"isApproved"     : { required : true, type : "boolean" },
-		"relatedContent" : { required : true }
+		"content"       : { required: true },
+		"author"        : { required: true, size: "1..100" },
+		"authorIP"      : { required: true, size: "1..100" },
+		"authorEmail"   : { required: true, size: "1..255", type: "email" },
+		"authorURL"     : { required: true, size: "1..255", type: "URL" },
+		"isApproved"    : { required: true, type: "boolean" },
+		"relatedContent": { required: true }
 	};
 
 	function init() {

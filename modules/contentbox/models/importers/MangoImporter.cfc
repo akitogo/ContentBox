@@ -55,7 +55,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 				sql        = "select * from #arguments.tablePrefix#category"
 			).execute().getResult();
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
-				var props = { category : q.title[ x ], slug : q.name[ x ] };
+				var props = { category: q.title[ x ], slug: q.name[ x ] };
 				var cat = categoryService.new( properties = props );
 				var exists = categoryService.findAllBySlug( q.name[ x ] );
 
@@ -84,12 +84,12 @@ component implements="contentbox.models.importers.ICBImporter" {
 			).execute().getResult();
 			for ( var x = 1; x LTE q.recordcount; x++ ) {
 				var props = {
-					email     : q.email[ x ],
-					username  : q.username[ x ],
-					password  : bcrypt.hashPassword( defaultPassword ),
-					isActive  : 1,
-					firstName : listFirst( q.name[ x ], " " ),
-					lastName  : trim(
+					email    : q.email[ x ],
+					username : q.username[ x ],
+					password : bcrypt.hashPassword( defaultPassword ),
+					isActive : 1,
+					firstName: listFirst( q.name[ x ], " " ),
+					lastName : trim(
 						replaceNoCase(
 							q.name[ x ],
 							listFirst( q.name[ x ], " " ),
@@ -129,16 +129,16 @@ component implements="contentbox.models.importers.ICBImporter" {
 					published = false;
 				}
 				var props = {
-					title         : qPages.title[ x ],
-					slug          : qPages.name[ x ],
-					content       : qPages.content[ x ],
-					excerpt       : qPages.excerpt[ x ],
-					publishedDate : qPages.last_modified[ x ],
-					createdDate   : qPages.last_modified[ x ],
-					isPublished   : published,
-					allowComments : qPages.comments_allowed[ x ],
-					order         : qPages.sort_order[ x ],
-					layout        : "pages"
+					title        : qPages.title[ x ],
+					slug         : qPages.name[ x ],
+					content      : qPages.content[ x ],
+					excerpt      : qPages.excerpt[ x ],
+					publishedDate: qPages.last_modified[ x ],
+					createdDate  : qPages.last_modified[ x ],
+					isPublished  : published,
+					allowComments: qPages.comments_allowed[ x ],
+					order        : qPages.sort_order[ x ],
+					layout       : "pages"
 				};
 
 				// slug checks
@@ -170,8 +170,8 @@ component implements="contentbox.models.importers.ICBImporter" {
 				).execute().getResult();
 				for ( var y = 1; y LTE qCustomFields.recordcount; y++ ) {
 					var props = {
-						key   : qCustomFields.name[ y ],
-						value : qCustomFields.field_value[ y ]
+						key  : qCustomFields.name[ y ],
+						value: qCustomFields.field_value[ y ]
 					};
 					var thisCustomField = customFieldService.new( properties = props );
 					page.addCustomField( thisCustomField );
@@ -192,13 +192,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 				).execute().getResult();
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.content[ y ],
-						author      : qComments.creator_name[ y ],
-						authorIP    : "127.0.0.1",
-						authorEmail : qComments.creator_email[ y ],
-						authorURL   : qComments.creator_url[ y ],
-						createdDate : qComments.created_on[ y ],
-						isApproved  : qComments.approved[ y ]
+						content    : qComments.content[ y ],
+						author     : qComments.creator_name[ y ],
+						authorIP   : "127.0.0.1",
+						authorEmail: qComments.creator_email[ y ],
+						authorURL  : qComments.creator_url[ y ],
+						createdDate: qComments.created_on[ y ],
+						isApproved : qComments.approved[ y ]
 					};
 					var comment = commentService.new( properties = props );
 					comment.setRelatedContent( page );
@@ -237,14 +237,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 					published = false;
 				}
 				var props = {
-					title         : q.title[ x ],
-					slug          : q.name[ x ],
-					content       : q.content[ x ],
-					excerpt       : q.excerpt[ x ],
-					publishedDate : q.last_modified[ x ],
-					createdDate   : q.last_modified[ x ],
-					isPublished   : published,
-					allowComments : q.comments_allowed[ x ]
+					title        : q.title[ x ],
+					slug         : q.name[ x ],
+					content      : q.content[ x ],
+					excerpt      : q.excerpt[ x ],
+					publishedDate: q.last_modified[ x ],
+					createdDate  : q.last_modified[ x ],
+					isPublished  : published,
+					allowComments: q.comments_allowed[ x ]
 				};
 
 				// slug checks
@@ -291,8 +291,8 @@ component implements="contentbox.models.importers.ICBImporter" {
 				).execute().getResult();
 				for ( var y = 1; y LTE qCustomFields.recordcount; y++ ) {
 					var props = {
-						key   : qCustomFields.name[ y ],
-						value : qCustomFields.field_value[ y ]
+						key  : qCustomFields.name[ y ],
+						value: qCustomFields.field_value[ y ]
 					};
 					var thisCustomField = customFieldService.new( properties = props );
 					entry.addCustomField( thisCustomField );
@@ -312,13 +312,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 				).execute().getResult();
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.content[ y ],
-						author      : qComments.creator_name[ y ],
-						authorIP    : "127.0.0.1",
-						authorEmail : qComments.creator_email[ y ],
-						authorURL   : qComments.creator_url[ y ],
-						createdDate : qComments.created_on[ y ],
-						isApproved  : qComments.approved[ y ]
+						content    : qComments.content[ y ],
+						author     : qComments.creator_name[ y ],
+						authorIP   : "127.0.0.1",
+						authorEmail: qComments.creator_email[ y ],
+						authorURL  : qComments.creator_url[ y ],
+						createdDate: qComments.created_on[ y ],
+						isApproved : qComments.approved[ y ]
 					};
 					var comment = commentService.new( properties = props );
 					comment.setRelatedContent( entry );

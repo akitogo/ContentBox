@@ -29,11 +29,11 @@
 <span class="col-md-6">#html.select(
 			options       = html.options(
 					[
-						{ "name" : "Select", "value" : "" },
-						{ "name" : "_self", "value" : "_self" },
-						{ "name" : "_blank", "value" : "_blank" },
-						{ "name" : "_parent", "value" : "_parent" },
-						{ "name" : "_top", "value" : "_top" }
+						{ "name": "Select", "value": "" },
+						{ "name": "_self", "value": "_self" },
+						{ "name": "_blank", "value": "_blank" },
+						{ "name": "_parent", "value": "_parent" },
+						{ "name": "_top", "value": "_top" }
 					]
 				),
 			selectedValue = "",

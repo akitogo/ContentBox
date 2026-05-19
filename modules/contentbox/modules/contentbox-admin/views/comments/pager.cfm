@@ -1,7 +1,7 @@
 <cfoutput>
-	<div id="pagerComments"><!--- Loader --->    <div class="loaders float-right" id="commentsPagerLoader">
+	<div id="pagerComments"><!--- Loader --->     <div class="loaders float-right" id="commentsPagerLoader">
 	<i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
-</div>#html.startForm( name = "commentPagerForm" )#<!--- comments --->    <table name="comments_pager" id="comments_pager" class="table table-hover  table-striped-removed" width="100%">
+</div>#html.startForm( name = "commentPagerForm" )#<!--- comments --->     <table name="comments_pager" id="comments_pager" class="table table-hover  table-striped-removed" width="100%">
 <thead>
 	<tr>
 		<th width="200">Author</th>
@@ -19,6 +19,7 @@
 		
 		
 		
+		
 		 data-commentID="#comment.getCommentID()#">
 			<td>
 				#getInstance( "Avatar@contentbox" ).renderAvatar(
@@ -30,6 +31,7 @@
 				&nbsp;<a href="mailto:#comment.getAUthorEmail()#" title="#comment.getAUthorEmail()#">#comment.getAuthor()#</a>
 
 				<br/>
+
 
 
 
@@ -50,13 +52,16 @@
 			
 			
 			
+			
 					</a>
 					<br />
 
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -71,12 +76,14 @@
 
 
 
+
 		<cfif len( comment.getauthorIP() )>
 			<div class="ml5 mt10">
 <i class="fa fa-laptop"></i>
 <a href="#prc.cbSettings.cb_comments_whoisURL#=#comment.getAuthorIP()#" title="Get IP Information" target="_blank">#comment.getauthorIP()#</a>
 </div>
 		</cfif>
+		
 		
 		
 		
@@ -101,10 +108,12 @@
 		
 		
 		
+		
 				</div>
 			</td>
 
 			<td class="text-center">
+
 
 
 
@@ -120,13 +129,14 @@
 		
 		
 		
+		
 
 				<div class="btn-group">
 					<a class="btn btn-sm btn-more dropdown-toggle" data-toggle="dropdown" href="##" title="Actions">
 						<i class="fa fa-ellipsis-v fa-lg"></i>
 					</a>
 					<ul class="dropdown-menu text-left pull-right">
-						<li><!--- Delete Command --->    
+						<li><!--- Delete Command --->     
 							<a title="Delete Comment Permanently" href="javascript:remove('#comment.getCommentID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Comment?">
 								<i id="delete_#comment.getCommentID()#" class="fa fa-trash fa-lg"></i> Delete
 							</a>
@@ -144,7 +154,9 @@
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -163,8 +175,10 @@
 	
 	
 	
+	
 
 </div>
+
 
 
 

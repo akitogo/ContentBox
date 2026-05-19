@@ -1,5 +1,5 @@
 <cfoutput>
-	<head><!--- charset --->    <meta charset="utf-8" /><!--- IE Stuff --->    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--- Robots --->    <meta name="robots" content="noindex,nofollow" /><!--- SES --->    <base href="#event.getHTMLBaseURL()#" />
+	<head><!--- charset --->     <meta charset="utf-8" /><!--- IE Stuff --->     <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--- Robots --->     <meta name="robots" content="noindex,nofollow" /><!--- SES --->     <base href="#event.getHTMLBaseURL()#" />
 	<cfif event.privateValueExists( "htmlTitle" )>
 		<title>#prc.htmlTitle# &mdash; ContentBox Administrator</title>
 	<cfelseif structKeyExists( prc, "oCurrentSite" )>
@@ -7,23 +7,24 @@
 	<cfelse>
 		<title>ContentBox Administrator</title>
 	</cfif>
-	<!--- Description --->    
+	<!--- Description --->     
     <meta name="description" content="ContentBox Modular CMS - Admin">
-    <!--- Viewport for scaling --->    
+    <!--- Viewport for scaling --->     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!--- Favicon --->    
+    <!--- Favicon --->     
     <link href="#prc.cbroot#/includes/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <!--- For non-Retina iPhone, iPod Touch, and Android 2.2+ devices: --->    
+    <!--- For non-Retina iPhone, iPod Touch, and Android 2.2+ devices: --->     
     <link href="#prc.cbroot#/includes/images/ContentBox-Circle-57.png" rel="apple-touch-icon"/>
-    <!--- For first-generation iPad: --->    
+    <!--- For first-generation iPad: --->     
     <link href="#prc.cbroot#/includes/images/ContentBox-Circle-72.png" rel="apple-touch-icon" sizes="72x72"/>
-    <!--- For iPhone 4 with high-resolution Retina display: --->    
+    <!--- For iPhone 4 with high-resolution Retina display: --->     
     <link href="#prc.cbroot#/includes/images/ContentBox-Circle-114.png" rel="apple-touch-icon" sizes="114x114"/>
     <!-- Favicon -->
     <link href="#prc.cbroot#/includes/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <!--- ********************************************************************* --->    
+    <!--- ********************************************************************* --->     
 	<link rel="stylesheet" href="#cbadminElixirPath( fileName = "css/contentbox.css" )#">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
 
 
 
@@ -54,7 +55,7 @@
 	<cfelse>
 		#announce( "cbadmin_beforeHeadEnd" )#
 	</cfif>
-	<!--- ********************************************************************* --->    
+	<!--- ********************************************************************* --->     
 	<script defer src="#prc.cbroot#/includes/js/runtime.js"></script>
 	<script defer src="#prc.cbroot#/includes/js/vendor.js"></script>
 	<script defer src="#cbadminElixirPath( fileName = "js/bootstrap.js" )#"></script>
@@ -62,6 +63,7 @@
 	<script defer src="#cbadminElixirPath( fileName = "js/admin.js" )#"></script>
 
 </head>
+
 
 
 

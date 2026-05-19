@@ -95,7 +95,7 @@ component
 	this.pk = "moduleID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"author",
 			"description",
 			"entryPoint",
@@ -107,17 +107,17 @@ component
 			"version",
 			"webURL"
 		],
-		defaultExcludes : [ ""]
+		defaultExcludes: [ ""]
 	};
 
 	this.constraints = {
-		"name"         : { required : true, size : "1..255" },
-		"title"        : { required : true, size : "1..255" },
-		"version"      : { required : false, size : "1..255" },
-		"entryPoint"   : { required : false, size : "1..255" },
-		"author"       : { required : false, size : "1..255" },
-		"webURL"       : { required : false, size : "1..500" },
-		"forgeBoxSlug" : { required : false, size : "1..255" }
+		"name"        : { required: true, size: "1..255" },
+		"title"       : { required: true, size: "1..255" },
+		"version"     : { required: false, size: "1..255" },
+		"entryPoint"  : { required: false, size: "1..255" },
+		"author"      : { required: false, size: "1..255" },
+		"webURL"      : { required: false, size: "1..500" },
+		"forgeBoxSlug": { required: false, size: "1..255" }
 	};
 
 	function init() {

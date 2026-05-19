@@ -76,8 +76,10 @@ $pages.tableDnD( {
 	
 	
 	
+	
 } )();
 </script>
+
 
 
 

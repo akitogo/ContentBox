@@ -30,7 +30,7 @@ component extends  ="coldbox.system.Interceptor" accessors="true" {
 
 		// if author has elected to subscribe to comments, do it
 		if ( subscribe ) {
-			var criteria = { subscriberEmail : comment.getAuthorEmail() };
+			var criteria = { subscriberEmail: comment.getAuthorEmail() };
 			var subscriber = variables.subscriberService.findWhere( criteria = criteria );
 			var exists = false;
 
@@ -38,9 +38,9 @@ component extends  ="coldbox.system.Interceptor" accessors="true" {
 				subscriber = variables.subscriberService.new( criteria );
 			}
 			var args = {
-				relatedContent : comment.getRelatedContent(),
-				subscriber     : subscriber,
-				type           : "Comment"
+				relatedContent: comment.getRelatedContent(),
+				subscriber    : subscriber,
+				type          : "Comment"
 			};
 			if ( subscriber.isLoaded() ) {
 				exists = !isNull( commentSubscriptionService.findWhere( criteria = args ) );

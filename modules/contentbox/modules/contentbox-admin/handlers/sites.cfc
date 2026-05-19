@@ -86,12 +86,12 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preSiteSave",
-				{ site : prc.site, siteID : rc.siteID }
+				{ site: prc.site, siteID: rc.siteID }
 			);
 			// save rule
 			variables.siteService.save( prc.site );
 			// announce event
-			announce( "cbadmin_postSiteSave", { site : prc.site } );
+			announce( "cbadmin_postSiteSave", { site: prc.site } );
 			// Message
 			cbMessageBox().info( "Site saved!" );
 			relocate( prc.xehSitesManager );
@@ -108,11 +108,11 @@ component extends="baseHandler" {
 		// Get requested site to remove
 		var oSite = variables.siteService.get( rc.siteID );
 		// announce event
-		announce( "cbadmin_preSiteRemove", { site : oSite } );
+		announce( "cbadmin_preSiteRemove", { site: oSite } );
 		// Now delete it
 		variables.siteService.delete( oSite );
 		// announce event
-		announce( "cbadmin_postSiteRemove", { siteID : rc.siteID } );
+		announce( "cbadmin_postSiteRemove", { siteID: rc.siteID } );
 		// Message
 		cbMessageBox().setMessage( "info", "Site Removed!" );
 		// relocate

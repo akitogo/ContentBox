@@ -10,6 +10,7 @@
 	
 	
 	
+	
 		</h1>
     </div>
 </div>
@@ -24,6 +25,7 @@
 	Comments are currently disabled site-wide!
 </div>
 	</cfif>
+	
 	
 	
 	
@@ -43,7 +45,7 @@
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Filter --->    
+						<!--- Quick Filter --->     
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
@@ -54,8 +56,9 @@
 							</div>
 						</div>
 
-						<!--- Bulk Actions --->    
+						<!--- Bulk Actions --->     
 						<div class="col-md-6 col-xs-8">
+
 
 
 
@@ -99,12 +102,13 @@
 	
 	
 	
+	
 						</div>
 					</div>
 				</div>
 
 				<div class="panel-body">
-					<!--- comments table --->    
+					<!--- comments table --->     
 					<table
 						name="comments"
 						id="comments"
@@ -132,6 +136,7 @@
 
 
 
+
 	<cfloop array="#prc.comments#" index="comment">
 		<tr
 		<cfif !comment.getIsApproved()>
@@ -140,8 +145,9 @@
 		
 		
 		
+		
 		 data-commentID="#comment.getCommentID()#">
-								<!--- Delete Checkbox with PK --->    
+								<!--- Delete Checkbox with PK --->     
 								<td class="text-center">
 									<input type="checkbox" name="commentID" id="commentID" value="#comment.getCommentID()#" />
 								</td>
@@ -157,6 +163,7 @@
 									<a href="mailto:#comment.getAUthorEmail()#" title="#comment.getAUthorEmail()#">#comment.getAuthor()#</a>
 
 									<br/>
+
 
 
 
@@ -178,13 +185,16 @@
 			
 			
 			
+			
 											</a>
 										</div>
 
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -199,12 +209,14 @@
 
 
 
+
 		<cfif len( comment.getauthorIP() )>
 			<div class="ml5 mt10">
 <i class="fa fa-laptop"></i>
 <a href="#prc.cbSettings.cb_comments_whoisURL#=#comment.getAuthorIP()#" title="Get IP Information" target="_blank">#comment.getauthorIP()#</a>
 </div>
 		</cfif>
+		
 		
 		
 		
@@ -230,10 +242,12 @@
 		
 		
 		
+		
 									</div>
 								</td>
 
 								<td class="text-center">
+
 
 
 
@@ -249,19 +263,20 @@
 			
 			
 			
+			
 											<div class="btn-group">
 												<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" href="##" title="Actions">
 													<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 													<span class="visually-hidden">Actions</span>
 												</button>
 												<ul class="dropdown-menu text-left pull-right">
-													<!--- Edit Command --->    
+													<!--- Edit Command --->     
 													<li>
 														<a href="javascript:openRemoteModal('#event.buildLink( prc.xehCommentEditor )#',{commentID:'#comment.getCommentID()#'} );" title="Edit Comment">
 															<i class="fas fa-pen fa-lg"></i> Edit
 														</a>
 													</li>
-													<li><!--- Delete Command --->    
+													<li><!--- Delete Command --->     
 														<a title="Delete Comment Permanently" href="javascript:remove('#comment.getCommentID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Comment?">
 															<i id="delete_#comment.getCommentID()#" class="fa fa-trash fa-lg"></i> Delete
 														</a>
@@ -278,7 +293,9 @@
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -289,7 +306,9 @@
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -314,9 +333,11 @@
 
 
 
+
 	<cfif len( rc.searchComments )>
 		selected
 	</cfif>
+	
 	
 	
 	
@@ -353,9 +374,11 @@
 
 
 
+
 	<cfif rc.isFiltering>
 		selected
 	</cfif>
+	
 	
 	
 	
@@ -367,10 +390,11 @@
 			method = "get"
 		)#
 			    	<div class="form-group">
-			    		<!--- Status --->    
+			    		<!--- Status --->     
 						<label for="fStatus">Comment Status: </label>
 						<select name="fStatus" id="fStatus" class="form-control input-sm">
 							<option value="any"
+
 
 
 
@@ -380,8 +404,10 @@
 	
 	
 	
+	
 	>Any Status (#prc.countApproved + prc.countUnApproved#)</option>
 							<option value="true"
+
 
 
 
@@ -391,14 +417,17 @@
 	
 	
 	
+	
 	>Approved (#prc.countApproved#)</option>
 							<option value="false"
+
 
 
 
 	<cfif rc.fStatus EQ "false">
 		selected="selected"
 	</cfif>
+	
 	
 	
 	
@@ -415,6 +444,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 

@@ -118,139 +118,139 @@ component
 		variables.createdDate = now();
 		variables.modifiedDate = now();
 		variables.schema = {
-			"title"       : { "label" : "Title", "type" : "string", "sortOrder" : 1 },
-			"content"     : { "label" : "Content", "type" : "text", "sortOrder" : 2 },
-			"markup"      : { "label" : "Markup", "type" : "markdown", "sortOrder" : 3 },
-			"description" : {
-				"label"        : "Description",
-				"type"         : "text",
-				"excludeTypes" : [ "Page", "Entry"],
-				"sortOrder"    : 4
+			"title"      : { "label": "Title", "type": "string", "sortOrder": 1 },
+			"content"    : { "label": "Content", "type": "text", "sortOrder": 2 },
+			"markup"     : { "label": "Markup", "type": "markdown", "sortOrder": 3 },
+			"description": {
+				"label"       : "Description",
+				"type"        : "text",
+				"excludeTypes": [ "Page", "Entry"],
+				"sortOrder"   : 4
 			},
-			"excerpt" : {
-				"label"        : "Excerpt",
-				"type"         : "text",
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 5
+			"excerpt": {
+				"label"       : "Excerpt",
+				"type"        : "text",
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 5
 			},
-			"featuredImage" : {
-				"label"     : "Featured Image",
-				"type"      : "file",
-				"sortOrder" : 6
+			"featuredImage": {
+				"label"    : "Featured Image",
+				"type"     : "file",
+				"sortOrder": 6
 			},
 			// SEO
-			"HTMLTitle" : {
-				"label"        : "HTML Title",
-				"type"         : "string",
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 7
+			"HTMLTitle": {
+				"label"       : "HTML Title",
+				"type"        : "string",
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 7
 			},
-			"HTMLKeywords" : {
-				"label"        : "HTML Keywords",
-				"type"         : "string",
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 8
+			"HTMLKeywords": {
+				"label"       : "HTML Keywords",
+				"type"        : "string",
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 8
 			},
-			"HTMLDescription" : {
-				"label"        : "HTML Description",
-				"type"         : "text",
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 9
+			"HTMLDescription": {
+				"label"       : "HTML Description",
+				"type"        : "text",
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 9
 			},
 			// Modifiers
-			"parent" : {
-				"label"        : "Content Parent",
-				"type"         : "typeahead",
-				"search"       : "/cbapi/v1/sites/:siteId/pages",
-				"options"      : "filteredParents",
-				"optionId"     : "contentID",
-				"optionLabel"  : "title",
-				"excludeTypes" : [ "Entry"],
-				"sortOrder"    : 10
+			"parent": {
+				"label"       : "Content Parent",
+				"type"        : "typeahead",
+				"search"      : "/cbapi/v1/sites/:siteId/pages",
+				"options"     : "filteredParents",
+				"optionId"    : "contentID",
+				"optionLabel" : "title",
+				"excludeTypes": [ "Entry"],
+				"sortOrder"   : 10
 			},
 			// Collections
-			"customFields" : {
-				"label"  : "Custom Fields",
-				"type"   : "array",
-				"schema" : {
-					"name" : {
-						"label"    : "Field Name",
-						"required" : true,
-						"type"     : "string"
+			"customFields": {
+				"label" : "Custom Fields",
+				"type"  : "array",
+				"schema": {
+					"name": {
+						"label"   : "Field Name",
+						"required": true,
+						"type"    : "string"
 					},
-					"defaultValue" : { "label" : "Default Value", "type" : "string" }
+					"defaultValue": { "label": "Default Value", "type": "string" }
 				},
-				"presentation" : "input",
-				"sortOrder"    : 11
+				"presentation": "input",
+				"sortOrder"   : 11
 			},
-			"categories" : {
-				"label"     : "Assigned Categories",
-				"type"      : "select",
-				"options"   : "availableCategories",
-				"multiple"  : true,
-				"sortOrder" : 12
+			"categories": {
+				"label"    : "Assigned Categories",
+				"type"     : "select",
+				"options"  : "availableCategories",
+				"multiple" : true,
+				"sortOrder": 12
 			},
-			"childContentTemplate" : {
-				"label"        : "Child Template",
-				"type"         : "select",
-				"options"      : "availableTemplates",
-				"excludeTypes" : [ "Entry"],
-				"sortOrder"    : 13
+			"childContentTemplate": {
+				"label"       : "Child Template",
+				"type"        : "select",
+				"options"     : "availableTemplates",
+				"excludeTypes": [ "Entry"],
+				"sortOrder"   : 13
 			},
 			// Layout options
-			"layout" : {
-				"label"        : "Layout",
-				"type"         : "select",
-				"options"      : "availableLayouts",
-				"excludeTypes" : [ "ContentStore", "Entry"],
-				"sortOrder"    : 14
+			"layout": {
+				"label"       : "Layout",
+				"type"        : "select",
+				"options"     : "availableLayouts",
+				"excludeTypes": [ "ContentStore", "Entry"],
+				"sortOrder"   : 14
 			},
 			// Caching
-			"cache" : {
-				"label"     : "Cache Enabled",
-				"type"      : "boolean",
-				"default"   : true,
-				"sortOrder" : 15
+			"cache": {
+				"label"    : "Cache Enabled",
+				"type"     : "boolean",
+				"default"  : true,
+				"sortOrder": 15
 			},
-			"cacheTimeout" : {
-				"label"     : "Cache Timeout",
-				"type"      : "integer",
-				"default"   : 0,
-				"sortOrder" : 16
+			"cacheTimeout": {
+				"label"    : "Cache Timeout",
+				"type"     : "integer",
+				"default"  : 0,
+				"sortOrder": 16
 			},
-			"cacheLastAccessTimeout" : {
-				"label"     : "Cache Last Access Timeout",
-				"type"      : "integer",
-				"default"   : 0,
-				"sortOrder" : 17
+			"cacheLastAccessTimeout": {
+				"label"    : "Cache Last Access Timeout",
+				"type"     : "integer",
+				"default"  : 0,
+				"sortOrder": 17
 			},
-			"passwordProtection" : {
-				"label"        : "Access Password",
-				"type"         : "string",
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 18
+			"passwordProtection": {
+				"label"       : "Access Password",
+				"type"        : "string",
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 18
 			},
-			"allowComments" : {
-				"label"        : "Comments Enabled",
-				"type"         : "boolean",
-				"default"      : true,
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 19
+			"allowComments": {
+				"label"       : "Comments Enabled",
+				"type"        : "boolean",
+				"default"     : true,
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 19
 			},
 			// Display Options
-			"showInMenu" : {
-				"label"        : "Show In Menu",
-				"type"         : "boolean",
-				"default"      : true,
-				"excludeTypes" : [ "ContentStore", "Entry"],
-				"sortOrder"    : 20
+			"showInMenu": {
+				"label"       : "Show In Menu",
+				"type"        : "boolean",
+				"default"     : true,
+				"excludeTypes": [ "ContentStore", "Entry"],
+				"sortOrder"   : 20
 			},
-			"showInSearch" : {
-				"label"        : "Show In Search",
-				"type"         : "boolean",
-				"default"      : true,
-				"excludeTypes" : [ "ContentStore"],
-				"sortOrder"    : 21
+			"showInSearch": {
+				"label"       : "Show In Search",
+				"type"        : "boolean",
+				"default"     : true,
+				"excludeTypes": [ "ContentStore"],
+				"sortOrder"   : 21
 			}
 		};
 
@@ -258,7 +258,7 @@ component
 	}
 
 	this.memento = {
-		"defaultIncludes" : [
+		"defaultIncludes": [
 			"templateID",
 			"contentType",
 			"name",
@@ -267,9 +267,9 @@ component
 			"definition",
 			"assignedContentItems"
 		],
-		profiles : {
-			export : {
-				defaultIncludes : [
+		profiles: {
+			export: {
+				defaultIncludes: [
 					"templateID",
 					"contentType",
 					"name",
@@ -278,28 +278,28 @@ component
 					"createdDate",
 					"modifiedDate"
 				],
-				defaultExcludes : [ "assignedContentItems", "site", "creator"]
+				defaultExcludes: [ "assignedContentItems", "site", "creator"]
 			}
 		},
-		mappers : {
-			"assignedContentItems" : function( target, value ) {
+		mappers: {
+			"assignedContentItems": function( target, value ) {
 				return javacast( "int", arguments.target );
 			}
 		}
 	};
 
 	this.constraints = {
-		"name" : {
-			required : true,
-			size     : "1..200",
-			"udf"    : ( value, target ) => target.isNameUniqueInSite( value )
+		"name": {
+			required: true,
+			size    : "1..200",
+			"udf"   : ( value, target ) => target.isNameUniqueInSite( value )
 		},
-		"definition" : { required : true },
-		"site"       : { required : true },
-		"isGlobal"   : {
-			required     : true,
-			"udf"        : ( value, target ) => target.isGlobalUniqueInSite( value ),
-			"udfMessage" : "A site may only have one global template per content type.  If you wish to make this template global, please deactivate the existing global template."
+		"definition": { required: true },
+		"site"      : { required: true },
+		"isGlobal"  : {
+			required    : true,
+			"udf"       : ( value, target ) => target.isGlobalUniqueInSite( value ),
+			"udfMessage": "A site may only have one global template per content type.  If you wish to make this template global, please deactivate the existing global template."
 		}
 	};
 

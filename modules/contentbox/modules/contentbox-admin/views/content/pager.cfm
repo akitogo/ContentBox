@@ -1,7 +1,7 @@
 <cfoutput>
-	<div id="contentPager_#prc.contentPager_id#"><!--- Loader --->    <div class="loaders float-right" id="contentPager_#prc.contentPager_id#_loader">
+	<div id="contentPager_#prc.contentPager_id#"><!--- Loader --->     <div class="loaders float-right" id="contentPager_#prc.contentPager_id#_loader">
 	<i class="fa fa-spinner fa-spin fa-lg"></i>
-</div><!--- entries --->    <table
+</div><!--- entries --->     <table
 name="contentPager_#prc.contentPager_id#_table"
 id="contentPager_#prc.contentPager_id#_table"
 class="table table-hover table-striped-removed"
@@ -38,9 +38,10 @@ data-contentID="#thisContent.getContentID()#"
 		
 		
 		
+		
 			>
 
-				<!--- Title --->    
+				<!--- Title --->     
 				<td>
 					<a href="#event.buildLink( prc.xehContentPagerEditor )#/contentID/#thisContent.getContentID()#">
 						#thisContent.getTitle()#
@@ -54,8 +55,9 @@ data-contentID="#thisContent.getContentID()#"
 					</small>
 				</td>
 
-				<!--- Info Columns --->    
+				<!--- Info Columns --->     
 				<td class="text-center">
+
 
 
 
@@ -85,14 +87,15 @@ title="Page Publishes in the future (#thisContent.getDisplayPublishedDate()#)"><
 		
 		
 		
+		
 				</td>
 
-				<!--- Hits --->    
+				<!--- Hits --->     
 				<td class="text-center">
 					<span class="badge badge-info">#thisContent.getNumberOfHits()#</span>
 				</td>
 
-				<!--- Actions --->    
+				<!--- Actions --->     
 				<td class="text-center">
 					<div class="btn-group btn-xs">
 				    	<a
@@ -107,21 +110,23 @@ title="Page Publishes in the future (#thisContent.getDisplayPublishedDate()#)"><
 
 
 
+
 		<cfif prc.oCurrentAuthor.hasPermission(
 				"#prc.contentPager_securityPrefix#_EDITOR,#prc.contentPager_securityPrefix#_ADMIN"
 			)>
-			<!--- Edit Command --->    <li>
+			<!--- Edit Command --->     <li>
 <a href="#event.buildLink( prc.xehContentPagerEditor )#/contentID/#thisContent.getContentID()#">
 		<i class="fas fa-pen fa-lg"></i> Edit
 	</a>
 </li>
 		</cfif>
-		<!--- History Command --->    
+		<!--- History Command --->     
 							<li>
 								<a href="#event.buildLink( prc.xehContentPagerHistory )#/contentID/#thisContent.getContentID()#">
 									<i class="fa fa-history fa-lg"></i> History
 								</a>
 							</li>
+
 
 
 
@@ -137,10 +142,12 @@ title="Page Publishes in the future (#thisContent.getDisplayPublishedDate()#)"><
 		
 		
 		
+		
 				    	</ul>
 				    </div>
 				</td>
 			</tr>
+
 
 
 
@@ -150,8 +157,10 @@ title="Page Publishes in the future (#thisContent.getDisplayPublishedDate()#)"><
 	
 	
 	
+	
 		</tbody>
 	</table>
+
 
 
 
@@ -169,8 +178,10 @@ title="Page Publishes in the future (#thisContent.getDisplayPublishedDate()#)"><
 	
 	
 	
+	
 
 </div>
+
 
 
 

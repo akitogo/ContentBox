@@ -43,6 +43,7 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
 		<div class="btn-group">
   	<button class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown">
@@ -106,8 +107,10 @@
 		
 		
 		
+		
 								    	</ul>
 								    </div>
+
 
 
 
@@ -117,11 +120,13 @@
 	
 	
 	
+	
 								<div class="btn-group">
 									<button class="btn dropdown-toggle btn-primary btn-sm" data-toggle="dropdown">
 										<i class="fa fa-plus"></i> New <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu list-unstyled">
+
 
 
 
@@ -139,13 +144,16 @@
 		
 		
 		
+		
 											<li role="separator" class="divider"></li>
 
 
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -167,7 +175,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- entries container --->    
+					<!--- entries container --->     
     				<div id="contentTableContainer">
     					<p class="text-center"><i id="entryLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i></p>
     				</div>
@@ -198,9 +206,11 @@
 
 
 
+
 	<cfloop array="#prc.authors#" index="author">
 		<option value="#author.getAuthorID()#">#author.getFullName()#</option>
 	</cfloop>
+	
 	
 	
 	
@@ -209,11 +219,12 @@
 							</div>
 						</div>
 
-					    <!--- Creators --->    
+					    <!--- Creators --->     
 					    <div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
 								<option value="all" selected="selected">All Creators</option>
+
 
 
 
@@ -225,16 +236,18 @@
 	
 	
 	
+	
 							</select>
 						</div>
 
-						<!--- Categories --->    
+						<!--- Categories --->     
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
 								<select name="fCategories" id="fCategories" class="form-control input-sm valid">
 									<option value="all">All Categories</option>
 									<option value="none">Uncategorized</option>
+
 
 
 
@@ -246,11 +259,12 @@
 	
 	
 	
+	
 								</select>
 					        </div>
 						</div>
 
-						<!--- Status --->    
+						<!--- Status --->     
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -272,7 +286,7 @@
 			</div>
 		</div>
 
-		<!--- Help Tips --->    
+		<!--- Help Tips --->     
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		        <h3 class="panel-title"><i class="fa fas fa-life-ring"></i> Help Tips</h3>
@@ -290,16 +304,17 @@
 
 
 
+
 	<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_EDITOR,ENTRIES_ADMIN" )>
 		#view(
 			view          = "_tags/dialog/clone",
 			args          = {
-				title        : "Blog Entry Cloning",
-				infoMsg      : "",
-				action       : prc.xehEntryClone,
-				titleLabel   : "Title",
-				publishLabel : "Publish",
-				publishInfo  : "By default all cloned entries are saved as drafts."
+				title       : "Blog Entry Cloning",
+				infoMsg     : "",
+				action      : prc.xehEntryClone,
+				titleLabel  : "Title",
+				publishLabel: "Publish",
+				publishInfo : "By default all cloned entries are saved as drafts."
 			},
 			prePostExempt = true
 		)#
@@ -308,10 +323,10 @@
 		#view(
 			view          = "_tags/dialog/import",
 			args          = {
-				title       : "Import Blog Entries",
-				contentArea : "entry",
-				action      : prc.xehEntryImport,
-				contentInfo : "Choose the ContentBox <strong>JSON</strong> entries file to import. The creator of the entry is matched via their <strong>username</strong> and
+				title      : "Import Blog Entries",
+				contentArea: "entry",
+				action     : prc.xehEntryImport,
+				contentInfo: "Choose the ContentBox <strong>JSON</strong> entries file to import. The creator of the entry is matched via their <strong>username</strong> and
                 entry overrides are matched via their <strong>slug</strong>.
                 If the importer cannot find the username from the import file in your installation, then it will ignore the record."
 			},

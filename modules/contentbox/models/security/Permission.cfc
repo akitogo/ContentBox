@@ -63,17 +63,17 @@ component
 	this.pk = "permissionID";
 
 	this.memento = {
-		defaultIncludes : [ "permission", "description"],
-		defaultExcludes : [ ""]
+		defaultIncludes: [ "permission", "description"],
+		defaultExcludes: [ ""]
 	};
 
 	this.constraints = {
-		"permission" : {
-			required  : true,
-			size      : "1..255",
-			validator : "UniqueValidator@cborm"
+		"permission": {
+			required : true,
+			size     : "1..255",
+			validator: "UniqueValidator@cborm"
 		},
-		"description" : { required : false, size : "1..500" }
+		"description": { required: false, size: "1..500" }
 	};
 
 	/**********************************************************************

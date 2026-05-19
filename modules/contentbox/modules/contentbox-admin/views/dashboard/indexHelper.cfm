@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom Javascript --->    <script>
+	<!--- Custom Javascript --->     <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	<cfif prc.oCurrentAuthor.hasPermission(
 			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
@@ -17,9 +17,11 @@ $( "##latestUserDrafts" ).load( '#event.buildLink( prc.xehLatestUserDrafts )#' )
 	
 	
 	
+	
 
 	 // Load news
 	$( "##latestNews" ).load( '#event.buildLink( prc.xehLatestNews )#' );
+
 
 
 
@@ -43,10 +45,12 @@ $( "##latestLogins" ).load( '#event.buildLink( prc.xehLatestLogins )#' );
 	
 	
 	
+	
 
 	// Select first dashboard tab
 	$( "##dashboardTabs a:first" ).tab( 'show' )
 } );
+
 
 
 
@@ -70,7 +74,9 @@ function deleteModule(link, id){
 	
 	
 	
+	
 </script>
+
 
 
 

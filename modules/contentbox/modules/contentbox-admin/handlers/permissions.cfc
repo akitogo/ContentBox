@@ -71,14 +71,14 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_prePermissionSave",
-				{ permission : oPermission, permissionID : rc.permissionID }
+				{ permission: oPermission, permissionID: rc.permissionID }
 			);
 			// save permission
 			permissionService.save( oPermission );
 			// announce event
 			announce(
 				"cbadmin_postPermissionSave",
-				{ permission : oPermission }
+				{ permission: oPermission }
 			);
 			// messagebox
 			cbMessageBox().setMessage( "info", "Permission saved!" );
@@ -101,7 +101,7 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_prePermissionRemove",
-			{ permissionID : rc.permissionID }
+			{ permissionID: rc.permissionID }
 		);
 		// delete by id
 		if ( !permissionService.deletePermission( rc.permissionID ) ) {
@@ -110,7 +110,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_postPermissionRemove",
-				{ permissionID : rc.permissionID }
+				{ permissionID: rc.permissionID }
 			);
 			// Message
 			cbMessageBox().setMessage( "info", "Permission and all relationships Removed!" );

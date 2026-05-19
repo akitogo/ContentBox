@@ -1142,28 +1142,28 @@ component accessors="true" singleton threadSafe {
 		var content = "";
 		// cfformat-ignore-start
 		savecontent variable="content" {
-		writeOutput(
-			"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
-		);
-		writeOutput(
-			"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
-		);
-		writeOutput(
-			"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
-		);
+	writeOutput(
+		"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
+	);
+	writeOutput(
+		"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
+	);
+	writeOutput(
+		"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
+	);
 
-		if ( len( getContentURL() ) ) {
-			writeOutput(
-				"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
-			);
-		}
-
-		if ( len( getContentImageURL() ) ) {
-			writeOutput(
-				"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
-			);
-		}
+	if ( len( getContentURL() ) ) {
+		writeOutput(
+			"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
+		);
 	}
+
+	if ( len( getContentImageURL() ) ) {
+		writeOutput(
+			"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
+		);
+	}
+}
 		// cfformat-ignore-end
 
 		return content;
@@ -1181,7 +1181,7 @@ component accessors="true" singleton threadSafe {
 	 * quickSearchForm will build a standard ContentBox Content Search Form according to the SearchForm widget
 	 */
 	function quickSearchForm() {
-		return widget( "SearchForm", { type : "content" } );
+		return widget( "SearchForm", { type: "content" } );
 	}
 
 	/**
@@ -2078,7 +2078,7 @@ component accessors="true" singleton threadSafe {
 	 * @content The content this comment form will be linked to, page or entry
 	 */
 	function quickCommentForm( required content ) {
-		return widget( "CommentForm", { content : arguments.content } );
+		return widget( "CommentForm", { content: arguments.content } );
 	}
 
 	/**
@@ -2375,8 +2375,8 @@ component accessors="true" singleton threadSafe {
 		// loop over items to build out level
 		for ( var item in arguments.items ) {
 			var extras = {
-				slugCache : arguments.slugCache,
-				listType  : arguments.listType
+				slugCache: arguments.slugCache,
+				listType : arguments.listType
 			};
 			// check that item can be added
 			if ( item.canDisplay( options = extras ) ) {
@@ -2554,8 +2554,8 @@ component accessors="true" singleton threadSafe {
 					b.append( "</li>" );
 				} else if ( arguments.type EQ "data" ) {
 					var pageData = {
-						title : pageResults.content[ x ][ "title" ],
-						link  : linkPageWithSlug( pageResults.content[ x ][ "slug" ] )
+						title: pageResults.content[ x ][ "title" ],
+						link : linkPageWithSlug( pageResults.content[ x ][ "slug" ] )
 					};
 					if ( doNesting ) {
 						pageData.subPageMenu = buildMenu(

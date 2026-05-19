@@ -88,17 +88,17 @@ component
 	this.pk = "roleID";
 
 	this.memento = {
-		defaultIncludes : [ "role", "description"],
-		defaultExcludes : [ "permissionList"]
+		defaultIncludes: [ "role", "description"],
+		defaultExcludes: [ "permissionList"]
 	};
 
 	this.constraints = {
-		"role" : {
-			required  : true,
-			size      : "1..255",
-			validator : "UniqueValidator@cborm"
+		"role": {
+			required : true,
+			size     : "1..255",
+			validator: "UniqueValidator@cborm"
 		},
-		"description" : { required : false, size : "1..500" }
+		"description": { required: false, size: "1..500" }
 	};
 
 	/**********************************************************************

@@ -42,6 +42,7 @@
 				
 				
 				
+				
 				>
 										#template[ "name" ]#
 									</option>
@@ -49,7 +50,9 @@
 
 
 
+
 			</cfloop>
+			
 			
 			
 			
@@ -62,20 +65,23 @@
 
 
 
+
 		<cfelse>
 			<p class="text-muted text-center">
 No Content Templates are Currently Available
 <br/><br/>
 <a class="btn btn-secondary btn-sm" href="#event.buildLink( prc.xehTemplates & "##create-" & prc.oContent.getContentType() )#" target="_blank">#cbAdminComponent( "ui/Icon",
-				{ name : "PlusSmall", size : "sm" } )#Create Template</a>
+				{ name: "PlusSmall", size: "sm" } )#Create Template</a>
 </p>
 		</cfif>
 		
 		
 		
 		
+		
 
 				</div>
+
 
 
 
@@ -108,9 +114,11 @@ No Content Templates are Currently Available
 					
 					
 					
+					
 					>
 											#template[ "name" ]#
 										</option>
+
 
 
 
@@ -120,7 +128,9 @@ No Content Templates are Currently Available
 				
 				
 				
+				
 							</select>
+
 
 
 
@@ -130,7 +140,7 @@ No Content Templates are Currently Available
 No Content Templates are Currently Available
 <br/><br/>
 <a class="btn btn-secondary btn-sm" href="#event.buildLink( prc.xehTemplates & "##create-" & prc.oContent.getContentType() )#" target="_blank">#cbAdminComponent( "ui/Icon",
-					{ name : "PlusSmall", size : "sm" } )#Create Template
+					{ name: "PlusSmall", size: "sm" } )#Create Template
 	</a>
 </p>
 			</cfif>
@@ -138,9 +148,10 @@ No Content Templates are Currently Available
 			
 			
 			
+			
 
 					</div>
-					<!--- Parent --->    
+					<!--- Parent --->     
 					<div class="form-group">
 						<label for="parentContent" class="control-label">
 							<i class="fa fa-sitemap"></i>
@@ -161,6 +172,7 @@ No Content Templates are Currently Available
 				)#
 						</select>
 					</div>
+
 
 
 
@@ -194,9 +206,11 @@ value="#author.getAuthorID()#"
 				
 				
 				
+				
 								>
 									#author.getFullName()#
 								</option>
+
 
 
 
@@ -206,8 +220,10 @@ value="#author.getAuthorID()#"
 			
 			
 			
+			
 						</select>
 					</div>
+
 
 
 
@@ -257,9 +273,11 @@ value="#author.getAuthorID()#"
 		
 		
 		
+		
 			</div>
 		</div>
 	</div>
+
 
 
 

@@ -109,7 +109,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		string sortOrder = "desc",
 		string siteID    = ""
 	) {
-		var results = { "count" : 0, "comments" : [] };
+		var results = { "count": 0, "comments": [] };
 		var c = newCriteria()
 			.isTrue( "isApproved" )
 			.when(
@@ -157,7 +157,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	 */
 	CommentService function deleteUnApproved( numeric expirationDays = 0 ) {
 		var hqlQuery = "from cbComment where isApproved = :approved";
-		var params = { "approved" : false };
+		var params = { "approved": false };
 
 		// if we have an expirationDays setting greater than 0, add it to query for our date filter
 		if ( arguments.expirationDays ) {
@@ -190,7 +190,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 			// get site settings
 			var siteSettings = variables.settingService.getAllSiteSettings( siteSlug = inComment.getRelatedContent().getSiteSlug() );
 			// results
-			var results = { "moderated" : true, "messages" : [] };
+			var results = { "moderated": true, "messages": [] };
 
 			// Log the IP Address
 			inComment.setAuthorIP( variables.securityService.getRealIP() );
@@ -276,7 +276,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 						variables.renderer.layout(
 								view   = "/contentbox/email_templates/comment_notification",
 								layout = "/contentbox/email_templates/layouts/email",
-								args   = { gravatarEmail : commentAuthorEmail }
+								args   = { gravatarEmail: commentAuthorEmail }
 							)
 					);
 
@@ -308,7 +308,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		sortOrder      = "createdDate DESC",
 		string siteID  = ""
 	) {
-		var results = { "count" : 0, "comments" : [] };
+		var results = { "count": 0, "comments": [] };
 		var c = newCriteria();
 
 		// isApproved filter
@@ -399,11 +399,11 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		// Check if user has already an approved comment. If they do, then approve them
 		// cfformat-ignore-start
 		if (
-		inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
-	) {
-		inComment.setIsApproved( true );
-		return true;
-	}
+	inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
+) {
+	inComment.setIsApproved( true );
+	return true;
+}
 		// cfformat-ignore-end
 
 		// Execute moderation queries
@@ -426,9 +426,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 
 		// announce it.
 		var iData = {
-			comment   : arguments.comment,
-			settings  : arguments.settings,
-			allowSave : allowSave
+			comment  : arguments.comment,
+			settings : arguments.settings,
+			allowSave: allowSave
 		};
 		interceptorService.announce( "cbui_onCommentModerationRules", iData );
 
@@ -464,7 +464,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	 * @email The email address to check.
 	 */
 	private boolean function userHasPreviousAcceptedComment( required email ) {
-		var args = { "authorEmail" : arguments.email, "isApproved" : true };
+		var args = { "authorEmail": arguments.email, "isApproved": true };
 		return ( countWhere( argumentCollection = args ) GT 0 );
 	}
 
@@ -536,7 +536,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				renderer.layout(
 						view   = "/contentbox/email_templates/#template#",
 						layout = "/contentbox/email_templates/layouts/email",
-						args   = { gravatarEmail : inComment.getAuthorEmail() }
+						args   = { gravatarEmail: inComment.getAuthorEmail() }
 					)
 			);
 

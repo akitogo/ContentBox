@@ -24,32 +24,32 @@ component {
 	 */
 	function configure() {
 		// Layout Settings
-		layoutSettings = { defaultLayout : "admin.cfm" };
+		layoutSettings = { defaultLayout: "admin.cfm" };
 
 		// Module Settings
 		settings = {
 			// Security for the admin: Rules are loaded by the core contentbox module as it impacts the entire set of modules
-			cbsecurity : {
-				firewall : {
+			cbsecurity: {
+				firewall: {
 					// The global invalid authentication event or URI or URL to go if an invalid authentication occurs
-					"invalidAuthenticationEvent"  : "cbadmin/security/login",
+					"invalidAuthenticationEvent" : "cbadmin/security/login",
 					// Default Auhtentication Action: override or redirect when a user has not logged in
-					"defaultAuthenticationAction" : "redirect",
+					"defaultAuthenticationAction": "redirect",
 					// The global invalid authorization event or URI or URL to go if an invalid authorization occurs
-					"invalidAuthorizationEvent"   : "cbadmin",
+					"invalidAuthorizationEvent"  : "cbadmin",
 					// Default Authorization Action: override or redirect when a user does not have enough permissions to access something
-					"defaultAuthorizationAction"  : "redirect"
+					"defaultAuthorizationAction" : "redirect"
 				}
 			}
 		};
 
 		// i18n
-		cbi18n = { resourceBundles : { "admin" : "#moduleMapping#/includes/i18n/admin" } };
+		cbi18n = { resourceBundles: { "admin": "#moduleMapping#/includes/i18n/admin" } };
 
 		// Custom Declared Points
 		interceptorSettings = {
 			// CB Admin Custom Events
-			customInterceptionPoints : [
+			customInterceptionPoints: [
 				// Admin Layout HTML points
 				"cbadmin_beforeHeadEnd",
 				"cbadmin_afterBodyStart",
@@ -203,34 +203,34 @@ component {
 		interceptors = [
 			// CB Admin Request Interceptor
 			{
-				class      : "#moduleMapping#.interceptors.CBRequest",
-				properties : { entryPoint : this.entryPoint },
-				name       : "CBRequest@cbAdmin"
+				class     : "#moduleMapping#.interceptors.CBRequest",
+				properties: { entryPoint: this.entryPoint },
+				name      : "CBRequest@cbAdmin"
 			},
 			// Login Tracker and Preventer
 			{
-				class : "contentbox.models.security.LoginTracker",
-				name  : "LoginTracker@cbAdmin"
+				class: "contentbox.models.security.LoginTracker",
+				name : "LoginTracker@cbAdmin"
 			},
 			// Admin Notification services
 			{
-				class : "contentbox.models.system.NotificationService",
-				name  : "NotificationService@cbAdmin"
+				class: "contentbox.models.system.NotificationService",
+				name : "NotificationService@cbAdmin"
 			},
 			// Admin MenuBuilder Cleanups
 			{
-				class : "#moduleMapping#.interceptors.MenuCleanup",
-				name  : "MenuCleanup@cbAdmin"
+				class: "#moduleMapping#.interceptors.MenuCleanup",
+				name : "MenuCleanup@cbAdmin"
 			},
 			// Two Factor Authentication Enrollment Verifier
 			{
-				class : "#moduleMapping#.interceptors.CheckForForceTwoFactorEnrollment",
-				name  : "CheckForForceTwoFactorEnrollment"
+				class: "#moduleMapping#.interceptors.CheckForForceTwoFactorEnrollment",
+				name : "CheckForForceTwoFactorEnrollment"
 			},
 			// Unenroll Two Factor on Provider Change
 			{
-				class : "#moduleMapping#.interceptors.UnenrollTwoFactorOnProviderChange",
-				name  : "UnenrollTwoFactorOnProviderChange@cbAdmin"
+				class: "#moduleMapping#.interceptors.UnenrollTwoFactorOnProviderChange",
+				name : "UnenrollTwoFactorOnProviderChange@cbAdmin"
 			}
 		];
 	}

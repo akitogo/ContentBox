@@ -105,11 +105,11 @@ component
 	this.pk = "menuID";
 
 	this.memento = {
-		defaultIncludes : [ "listClass", "listType", "menuClass", "slug", "title"],
-		defaultExcludes : [ "site", "menuItems"],
-		profiles        : {
-			export : {
-				defaultIncludes : [
+		defaultIncludes: [ "listClass", "listType", "menuClass", "slug", "title"],
+		defaultExcludes: [ "site", "menuItems"],
+		profiles       : {
+			export: {
+				defaultIncludes: [
 					"listClass",
 					"listType",
 					"menuClass",
@@ -120,17 +120,17 @@ component
 					"menuItems.parentSnapshot:parent",
 					"siteSnapshot:site"
 				],
-				defaultExcludes : []
+				defaultExcludes: []
 			}
 		}
 	};
 
 	this.constraints = {
-		"title"     : { required : true, size : "1..200" },
-		"slug"      : { required : true, size : "1..200" },
-		"menuClass" : { required : false, size : "1..160" },
-		"listClass" : { required : false, size : "1..160" },
-		"listType"  : { required : false, size : "1..20" }
+		"title"    : { required: true, size: "1..200" },
+		"slug"     : { required: true, size: "1..200" },
+		"menuClass": { required: false, size: "1..160" },
+		"listClass": { required: false, size: "1..160" },
+		"listType" : { required: false, size: "1..20" }
 	};
 
 	/**********************************************************************

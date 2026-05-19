@@ -37,7 +37,7 @@ component
 		required any menuItem,
 		required struct options = {}
 	) {
-		var viewArgs = { menuItem : arguments.menuItem };
+		var viewArgs = { menuItem: arguments.menuItem };
 		return variables.renderer.view(
 				view   = "menus/providers/js/admin",
 				module = "contentbox-admin",
@@ -55,7 +55,7 @@ component
 		required any menuItem,
 		required struct options = {}
 	) {
-		var viewArgs = { menuItem : arguments.menuItem };
+		var viewArgs = { menuItem: arguments.menuItem };
 		return variables.renderer.externalView(
 				view   = "/contentbox/models/menu/views/js/display",
 				module = "contentbox",

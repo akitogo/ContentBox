@@ -25,16 +25,18 @@ id="contentID-#thisContent.getContentID()#"
 		
 		
 		
+		
 		>
 			<td>
-				<!--- Title --->    
+				<!--- Title --->     
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title --->    
+				<!--- Title --->     
 				<div class="mt5">
 					<div class="text-muted">
+
 
 
 
@@ -51,12 +53,15 @@ id="contentID-#thisContent.getContentID()#"
 			
 			
 			
+			
 						...
 
 
 
 
+
 		</cfif>
+		
 		
 		
 		
@@ -68,7 +73,7 @@ id="contentID-#thisContent.getContentID()#"
 			<td class="text-center">
 				#view(
 			view          = "_components/content/TableStatus",
-			args          = { content : thisContent },
+			args          = { content: thisContent },
 			prepostExempt = true
 		)#
 			</td>
@@ -100,7 +105,9 @@ id="contentID-#thisContent.getContentID()#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	

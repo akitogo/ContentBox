@@ -24,10 +24,12 @@
 		
 		
 		
+		
 		>
                             	<h3><code>#method.name#()</code></h3>
                             	<ul>
                             		<li><strong>Hint: </strong>
+
 
 
 
@@ -39,8 +41,10 @@
 		
 		
 		
+		
 		</li>
                             		<li><strong>Arguments: </strong>
+
 
 
 
@@ -73,9 +77,11 @@
 				
 				
 				
+				
 				</code>
                                                     </td>
                             						<td>
+
 
 
 
@@ -89,8 +95,10 @@
 				
 				
 				
+				
                                                     </td>
                             						<td>
+
 
 
 
@@ -102,8 +110,10 @@
 				
 				
 				
+				
                                                     </td>
                             						<td>
+
 
 
 
@@ -115,8 +125,10 @@
 				
 				
 				
+				
                                                     </td>
                             					</tr>
+
 
 
 
@@ -126,8 +138,10 @@
 			
 			
 			
+			
                             				</tbody>
                             				</table>
+
 
 
 
@@ -139,6 +153,7 @@
 		
 		
 		
+		
                             		</li>
                             	</ul>
                         	</div>
@@ -146,7 +161,9 @@
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -164,6 +181,7 @@
 
 
 
+
 	<cfloop array="#prc.metadata#" index="method">
 		<option value="#method.name#"
 		<cfif method.name EQ "renderIt">
@@ -172,12 +190,15 @@
 		
 		
 		
+		
 		>#method.name#()</option>
 
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -200,6 +221,7 @@
         </div>
     </div>
 </div>
+
 
 
 

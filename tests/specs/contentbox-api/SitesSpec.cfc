@@ -165,14 +165,14 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.post(
 														"cbapi/v1/sites",
 														{
-															name          : "bddtest",
-															slug          : "bddtest",
-															description   : "my bdd test site",
-															domain        : "bddtest.com",
-															domainRegex   : "bddtest\.com",
-															domainAliases : "[]",
-															activeTheme   : "default",
-															homepage      : "cbBlog"
+															name         : "bddtest",
+															slug         : "bddtest",
+															description  : "my bdd test site",
+															domain       : "bddtest.com",
+															domainRegex  : "bddtest\.com",
+															domainAliases: "[]",
+															activeTheme  : "default",
+															homepage     : "cbBlog"
 														}
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
@@ -194,14 +194,14 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.post(
 												"cbapi/v1/sites",
 												{
-													name          : "default",
-													slug          : "default",
-													description   : "my bdd test site",
-													domain        : "bddtest.com",
-													domainRegex   : "bddtest\.com",
-													domainAliases : "[]",
-													activeTheme   : "default",
-													homepage      : "cbBlog"
+													name         : "default",
+													slug         : "default",
+													description  : "my bdd test site",
+													domain       : "bddtest.com",
+													domainRegex  : "bddtest\.com",
+													domainAliases: "[]",
+													activeTheme  : "default",
+													homepage     : "cbBlog"
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -217,7 +217,7 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it should display an error message",
 									() => {
-										var event = this.post( "cbapi/v1/sites", { description : "A nice site" } );
+										var event = this.post( "cbapi/v1/sites", { description: "A nice site" } );
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
 										expect( event.getResponse() ).toHaveInvalidData( "name", "is required" );
@@ -243,7 +243,7 @@ component extends="tests.resources.BaseApiTest" {
 											() => {
 												var event = this.put(
 														"/cbapi/v1/sites/default",
-														{ description : "bdd test baby!", isActive : false }
+														{ description: "bdd test baby!", isActive: false }
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
 														event.getResponse().getMessagesString() );
@@ -284,14 +284,14 @@ component extends="tests.resources.BaseApiTest" {
 										var testSite = variables.siteService.save(
 												variables.siteService.new(
 														{
-															name          : "bddtest-#siteId#",
-															slug          : "bddtest-#siteId#",
-															description   : "my bdd test site",
-															domain        : "bddtest.com",
-															domainRegex   : "bddtest\.com",
-															domainAliases : "[]",
-															activeTheme   : "default",
-															homepage      : "cbBlog"
+															name         : "bddtest-#siteId#",
+															slug         : "bddtest-#siteId#",
+															description  : "my bdd test site",
+															domain       : "bddtest.com",
+															domainRegex  : "bddtest\.com",
+															domainAliases: "[]",
+															activeTheme  : "default",
+															homepage     : "cbBlog"
 														}
 													)
 											);

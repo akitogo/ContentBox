@@ -80,10 +80,10 @@ component extends="baseHandler" {
 		flash.put(
 				"authorData",
 				{
-					authorID     : prc.oAuthor.getAuthorID(),
-					rememberMe   : rc.rememberMe,
-					securedURL   : rc.relocationURL,
-					isEnrollment : true
+					authorID    : prc.oAuthor.getAuthorID(),
+					rememberMe  : rc.rememberMe,
+					securedURL  : rc.relocationURL,
+					isEnrollment: true
 				}
 			);
 

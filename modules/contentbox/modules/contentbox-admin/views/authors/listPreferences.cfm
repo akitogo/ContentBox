@@ -61,21 +61,21 @@
 		)#<div class="controls">#html.checkbox(
 			name    = "preference.sidemenuCollapse_toggle",
 			data    = {
-				toggle : "toggle",
-				match  : "preference\.sidemenuCollapse"
+				toggle: "toggle",
+				match : "preference\.sidemenuCollapse"
 			},
 			checked = prc.author.getPreference( "sidemenuCollapse", false )
 		)##html.hiddenField(
 			name  = "preference.sidemenuCollapse",
 			value = prc.author.getPreference( "sidemenuCollapse", "no" )
 		)#</div>
-</div><!--- Right Sidebar --->    <div class="form-group">#html.label(
+</div><!--- Right Sidebar --->     <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "preference.sidebarState",
 			content = "Show Content Sidebar:"
 		)#<div class="controls">#html.checkbox(
 			name    = "preference.sidebarState_toggle",
-			data    = { toggle : "toggle", match : "preference\.sidebarState" },
+			data    = { toggle: "toggle", match: "preference\.sidebarState" },
 			checked = prc.author.getPreference( "sidebarState", true )
 		)##html.hiddenField(
 			name  = "preference.sidebarState",
@@ -116,6 +116,7 @@
 	<input type="submit" value="Save" class="btn btn-danger">
 </div>
 	</cfif>
+	
 	
 	
 	

@@ -81,7 +81,6 @@ component
 		fkcolumn="FK_siteID"
 		batchsize="25"
 		lazy="true";
-
 	/**********************************************************************
 	 * **							PK + CONSTRAINTS + MEMENTO
 	 **********************************************************************/
@@ -89,7 +88,7 @@ component
 	this.pk = "categoryID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"category",
 			"isPublic",
 			"numberOfContentStore",
@@ -98,17 +97,17 @@ component
 			"slug",
 			"siteSnapshot:site"
 		],
-		defaultExcludes : [ "site"]
+		defaultExcludes: [ "site"]
 	};
 
 	this.constraints = {
-		"category" : { required : true, size : "1..200" },
-		"isPublic" : { required : true, type : "boolean" },
-		"slug"     : {
-			required   : true,
-			size       : "1..200",
-			udfMessage : "The 'slug' is not unique",
-			udf        : function( value, target ) {
+		"category": { required: true, size: "1..200" },
+		"isPublic": { required: true, type: "boolean" },
+		"slug"    : {
+			required  : true,
+			size      : "1..200",
+			udfMessage: "The 'slug' is not unique",
+			udf       : function( value, target ) {
 				return arguments
 					.target
 					.getCategoryService()
@@ -166,7 +165,8 @@ component
 	numeric function getNumberOfPublishedContentStore() {
 		// Caching per load basis
 		if ( !len( variables.numberOfPublishedContentStore ) ) {
-			variables.numberOfPublishedContentStore = getNumberOfPublishedContent( variables.contentStoreService, "contentstore" );
+			variables.numberOfPublishedContentStore = getNumberOfPublishedContent( variables.contentStoreService,
+				"contentstore" );
 		}
 		return variables.numberOfPublishedContentStore;
 	}

@@ -29,13 +29,13 @@ component extends="tests.resources.BaseTest" {
 					"can populate",
 					() => {
 						var r = {
-							results       : [],
-							searchTime    : getTickCount(),
-							total         : 0,
-							metadata      : { name : "luis", value : "awesome" },
-							error         : false,
-							errorMessages : [],
-							searchTerm    : "luis"
+							results      : [],
+							searchTime   : getTickCount(),
+							total        : 0,
+							metadata     : { name: "luis", value: "awesome" },
+							error        : false,
+							errorMessages: [],
+							searchTerm   : "luis"
 						};
 
 						model.populate( r );

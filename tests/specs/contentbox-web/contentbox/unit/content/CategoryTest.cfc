@@ -13,7 +13,7 @@ component extends ="tests.resources.BaseTest" autowire="true" {
 			() => {
 				beforeEach(
 					( currentSpec ) => {
-						model = categoryService.new( { category : "unittest", slug : "unittest" } );
+						model = categoryService.new( { category: "unittest", slug: "unittest" } );
 					}
 				);
 

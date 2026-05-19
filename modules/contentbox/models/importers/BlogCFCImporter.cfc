@@ -72,8 +72,8 @@ component implements="contentbox.models.importers.ICBImporter" {
 			).execute().getResult();
 			for ( var x = 1; x LTE qCategories.recordcount; x++ ) {
 				var props = {
-					category : qCategories.categoryName[ x ],
-					slug     : qCategories.categoryAlias[ x ]
+					category: qCategories.categoryName[ x ],
+					slug    : qCategories.categoryAlias[ x ]
 				};
 				var cat = categoryService.new( properties = props );
 				entitySave( cat );
@@ -95,12 +95,12 @@ component implements="contentbox.models.importers.ICBImporter" {
 			).execute().getResult();
 			for ( var x = 1; x LTE qAuthors.recordcount; x++ ) {
 				var props = {
-					email     : qAuthors.username[ x ],
-					username  : qAuthors.username[ x ],
-					password  : bcrypt.hashPassword( defaultPassword ),
-					isActive  : 1,
-					firstName : listFirst( qAuthors.name[ x ], " " ),
-					lastName  : trim(
+					email    : qAuthors.username[ x ],
+					username : qAuthors.username[ x ],
+					password : bcrypt.hashPassword( defaultPassword ),
+					isActive : 1,
+					firstName: listFirst( qAuthors.name[ x ], " " ),
+					lastName : trim(
 						replaceNoCase(
 							qAuthors.name[ x ],
 							listFirst( qAuthors.name[ x ], " " ),
@@ -109,7 +109,7 @@ component implements="contentbox.models.importers.ICBImporter" {
 					)
 				};
 
-				var author = authorService.findWhere( { username : qAuthors.username[ x ] } );
+				var author = authorService.findWhere( { username: qAuthors.username[ x ] } );
 				if ( isNull( author ) ) {
 					author = authorService.new( properties = props );
 				}
@@ -138,14 +138,14 @@ component implements="contentbox.models.importers.ICBImporter" {
 
 				for ( var x = 1; x LTE qPages.recordcount; x++ ) {
 					var props = {
-						title         : qPages.title[ x ],
-						slug          : qPages.alias[ x ],
-						content       : qPages.body[ x ],
-						publishedDate : now(),
-						createdDate   : now(),
-						isPublished   : true,
-						allowComments : false,
-						layout        : "pages"
+						title        : qPages.title[ x ],
+						slug         : qPages.alias[ x ],
+						content      : qPages.body[ x ],
+						publishedDate: now(),
+						createdDate  : now(),
+						isPublished  : true,
+						allowComments: false,
+						layout       : "pages"
 					};
 					var page = pageService.new( properties = props );
 
@@ -187,25 +187,25 @@ component implements="contentbox.models.importers.ICBImporter" {
 				}
 
 				var importedBody = q.Body[ x ] & q.moreBody[ x ];
-				interceptorService.announce( "preImportEntry", { post : importedBody } );
+				interceptorService.announce( "preImportEntry", { post: importedBody } );
 				importedBody = findImages( importedBody );
 				importedBody = convertContent( importedBody );
-				interceptorService.announce( "postImportEntry", { post : importedBody } );
+				interceptorService.announce( "postImportEntry", { post: importedBody } );
 
 				var props = {
-					title         : q.title[ x ],
-					slug          : q.alias[ x ],
-					content       : importedBody,
-					excerpt       : q.Body[ x ],
-					publishedDate : q.posted[ x ],
-					createdDate   : q.posted[ x ],
-					isPublished   : published,
-					allowComments : commentStatus,
-					hits          : q.views[ x ]
+					title        : q.title[ x ],
+					slug         : q.alias[ x ],
+					content      : importedBody,
+					excerpt      : q.Body[ x ],
+					publishedDate: q.posted[ x ],
+					createdDate  : q.posted[ x ],
+					isPublished  : published,
+					allowComments: commentStatus,
+					hits         : q.views[ x ]
 				};
 
 				var entry = entryService.new( properties = props );
-				var oStat = statsService.new( { hits : props.hits } );
+				var oStat = statsService.new( { hits: props.hits } );
 				oStat.setRelatedContent( entry );
 				entry.addNewContentVersion(
 						content   = props.content,
@@ -253,13 +253,13 @@ component implements="contentbox.models.importers.ICBImporter" {
 
 				for ( var y = 1; y LTE qComments.recordcount; y++ ) {
 					var props = {
-						content     : qComments.comment[ y ],
-						author      : qComments.name[ y ],
-						authorEmail : qComments.email[ y ],
-						createdDate : qComments.posted[ y ],
-						authorIP    : "127.0.0.1",
-						isApproved  : qComments.moderated[ y ],
-						authorUrl   : qComments.website[ y ]
+						content    : qComments.comment[ y ],
+						author     : qComments.name[ y ],
+						authorEmail: qComments.email[ y ],
+						createdDate: qComments.posted[ y ],
+						authorIP   : "127.0.0.1",
+						isApproved : qComments.moderated[ y ],
+						authorUrl  : qComments.website[ y ]
 					};
 
 					var comment = commentService.new( properties = props );

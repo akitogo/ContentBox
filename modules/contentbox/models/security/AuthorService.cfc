@@ -45,7 +45,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				WHERE creator.authorID = :authorId AND
 				content.contentType = 'Page'
 			",
-			params = { "authorId" : arguments.authorId },
+			params = { "authorId": arguments.authorId },
 			unique = true
 		);
 	}
@@ -63,7 +63,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				WHERE creator.authorID = :authorId AND
 				content.contentType = 'Entry'
 			",
-			params = { "authorId" : arguments.authorId },
+			params = { "authorId": arguments.authorId },
 			unique = true
 		);
 	}
@@ -81,7 +81,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				WHERE creator.authorID = :authorId AND
 				content.contentType = 'ContentStore'
 			",
-			params = { "authorId" : arguments.authorId },
+			params = { "authorId": arguments.authorId },
 			unique = true
 		);
 	}
@@ -98,7 +98,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				FROM cbContent content join content.creator creator
 				WHERE creator.authorID = :authorId
 			",
-			params = { "authorId" : arguments.authorId },
+			params = { "authorId": arguments.authorId },
 			unique = true
 		);
 	}
@@ -109,10 +109,10 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	function getStatusReport() {
 		var c = newCriteria();
 		var results = {
-			"active"              : 0,
-			"deactivated"         : 0,
-			"2FactorAuthEnabled"  : 0,
-			"2FactorAuthDisabled" : 0
+			"active"             : 0,
+			"deactivated"        : 0,
+			"2FactorAuthEnabled" : 0,
+			"2FactorAuthDisabled": 0
 		};
 
 		var statusReport = c
@@ -246,7 +246,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 		string permissionGroups,
 		string twoFactorAuth
 	) {
-		var results = { "count" : 0, "authors" : [] };
+		var results = { "count": 0, "authors": [] };
 		var c = newCriteria();
 
 		// Search
@@ -348,7 +348,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 * @username The username to check if it exists already
 	 */
 	boolean function usernameFound( required username ) {
-		var args = { "username" : arguments.username };
+		var args = { "username": arguments.username };
 		return ( countWhere( argumentCollection = args ) GT 0 );
 	}
 
@@ -358,7 +358,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 * @email The email to check if it exists already
 	 */
 	boolean function emailFound( required email ) {
-		var args = { "email" : arguments.email };
+		var args = { "email": arguments.email };
 		return ( countWhere( argumentCollection = args ) GT 0 );
 	}
 
@@ -548,15 +548,15 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 
 		// get mail payload
 		var bodyTokens = {
-			name        : arguments.author.getFullName(),
-			email       : arguments.author.getEmail(),
-			username    : arguments.author.getUsername(),
-			linkTimeout : settings.cb_security_password_reset_expiration,
-			linkToken   : adminUrl & "/security/verifyReset?token=#token#",
-			resetLink   : adminUrl & "/security/lostPassword",
-			siteName    : defaultSite.getName(),
-			issuedBy    : "",
-			issuedEmail : ""
+			name       : arguments.author.getFullName(),
+			email      : arguments.author.getEmail(),
+			username   : arguments.author.getUsername(),
+			linkTimeout: settings.cb_security_password_reset_expiration,
+			linkToken  : adminUrl & "/security/verifyReset?token=#token#",
+			resetLink  : adminUrl & "/security/lostPassword",
+			siteName   : defaultSite.getName(),
+			issuedBy   : "",
+			issuedEmail: ""
 		};
 
 		// Build email out

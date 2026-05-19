@@ -27,50 +27,50 @@ component {
 		// module settings - stored in modules.name.settings
 		settings = {
 			// The title name for usage inline and the layout
-			title               : "FileBrowser",
+			title              : "FileBrowser",
 			// the directory root path to start the visualizer on, absolute path, set it to contentbox default location
-			directoryRoot       : expandPath( "/contentbox-custom/_content" ),
+			directoryRoot      : expandPath( "/contentbox-custom/_content" ),
 			// Secure the visualization or creation of stuff above the directory root or not
-			traversalSecurity   : true,
+			traversalSecurity  : true,
 			// Show files on the visualizer or not
-			showFiles           : true,
+			showFiles          : true,
 			// Ability to create folders
-			createFolders       : true,
+			createFolders      : true,
 			// Ability to remove stuff
-			deleteStuff         : true,
+			deleteStuff        : true,
 			// Allow downloads
-			allowDownload       : true,
+			allowDownload      : true,
 			// Allow uploads
-			allowUploads        : true,
+			allowUploads       : true,
 			// CFFile Upload accepted mime types, blank means all.
-			acceptMimeTypes     : "",
+			acceptMimeTypes    : "",
 			// Name filtering applies to both files and directories. This is also a regex
-			nameFilter          : ".*",
+			nameFilter         : ".*",
 			// Exclusion Filter: A list of files/directory regex names to exclude from showing
-			excludeFilter       : "Application\.cfc",
+			excludeFilter      : "Application\.cfc",
 			// Extension filtering that applies to file extensions to display, matches the filter argument to directoryList()
-			extensionFilter     : "",
+			extensionFilter    : "",
 			// Image Name filtering applies to both files and directories. This is also a regex.  Where the filterType=image.
-			imgNameFilter       : "^((?!\.).)*$|.+\.(jpg|jpeg|bmp|gif|png)/? *",
+			imgNameFilter      : "^((?!\.).)*$|.+\.(jpg|jpeg|bmp|gif|png)/? *",
 			// Flash Name filtering applies to both files and directories. This is also a regex.  Where the filterType=flash.
-			flashNameFilter     : "^((?!\.).)*$|.+\.(swf|fla)/? *",
+			flashNameFilter    : "^((?!\.).)*$|.+\.(swf|fla)/? *",
 			// Volume Chooser, display the volume navigator
-			volumeChooser       : false,
+			volumeChooser      : false,
 			// Load jQuery
-			loadJQuery          : true,
+			loadJQuery         : true,
 			// Load Select Callback hooks
-			loadSelectCallbacks : true,
+			loadSelectCallbacks: true,
 			// Quick View image width in pixels
-			quickViewWidth      : 400,
+			quickViewWidth     : 400,
 			// HTML Uploads
-			html5uploads        : {
+			html5uploads       : {
 				// max file size in mbytes
-				maxfilesize : 100,
+				maxfilesize: 100,
 				// max multiple upload files
-				maxfiles    : 25
+				maxfiles   : 25
 			},
-			useMediaPath : false,
-			mediaPath    : "__media"
+			useMediaPath: false,
+			mediaPath   : "__media"
 		};
 
 		// clean directory root
@@ -85,14 +85,14 @@ component {
 		}
 
 		// i18n
-		cbi18n = { resourceBundles : { "fb" : "#moduleMapping#/includes/i18n/fb" } };
+		cbi18n = { resourceBundles: { "fb": "#moduleMapping#/includes/i18n/fb" } };
 
 		// Layout Settings
-		layoutSettings = { defaultLayout : "filebrowser.cfm" };
+		layoutSettings = { defaultLayout: "filebrowser.cfm" };
 
 		// Custom Declared Points
 		interceptorSettings = {
-			customInterceptionPoints : arrayToList(
+			customInterceptionPoints: arrayToList(
 				[
 					"fb_preTitleBar",
 					"fb_postTitleBar",

@@ -45,9 +45,9 @@ component
 	 * **                          PK + CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "mediaPath" ] = { required : false, size : "1..255" };
-	this.constraints[ "target" ] = { required : false, size : "1..255" };
-	this.constraints[ "urlClass" ] = { required : false, size : "1..255" };
+	this.constraints[ "mediaPath" ] = { required: false, size: "1..255" };
+	this.constraints[ "target" ] = { required: false, size: "1..255" };
+	this.constraints[ "urlClass" ] = { required: false, size: "1..255" };
 
 	/**********************************************************************
 	 * **                          PUBLIC FUNCTIONS

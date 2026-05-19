@@ -119,7 +119,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 * @return The persisted module or a new module object representing not found.
 	 */
 	Module function findModuleByEntryPoint( required entryPoint ) {
-		var module = findWhere( { entryPoint : arguments.entryPoint } );
+		var module = findWhere( { entryPoint: arguments.entryPoint } );
 		return ( isNull( module ) ? new() : module );
 	}
 
@@ -188,7 +188,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				"component",
 				thisInvocationPath & ".#arguments.name#.ModuleConfig"
 			);
-			var oModule = new( { name : arguments.name, moduleType : arguments.type } );
+			var oModule = new( { name: arguments.name, moduleType: arguments.type } );
 
 			save( populateModule( oModule, oConfig ) );
 
@@ -199,7 +199,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 				);
 		}
 
-		return new( { name : arguments.name } );
+		return new( { name: arguments.name } );
 	}
 
 	/**
@@ -209,7 +209,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 */
 	ModuleService function deactivateModule( required name ) {
 		// Get Module Record
-		var oModule = findWhere( { name : arguments.name } );
+		var oModule = findWhere( { name: arguments.name } );
 
 		// deactivate record
 		oModule.setIsActive( false );
@@ -253,7 +253,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 	 * @name The name of the module to activate
 	 */
 	ModuleService function activateModule( required name ) {
-		var oModule = findWhere( { name : arguments.name } );
+		var oModule = findWhere( { name: arguments.name } );
 		var sModuleMap = variables.moduleMap[ arguments.name ];
 
 		// Set module as active
@@ -363,9 +363,9 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 
 			// Register type lookup for faster finding, instead of querying the db.
 			variables.moduleMap[ arguments.name ] = {
-				type           : arguments.moduleType,
-				path           : arguments.path,
-				invocationPath : arguments.invocationPath
+				type          : arguments.moduleType,
+				path          : arguments.path,
+				invocationPath: arguments.invocationPath
 			};
 
 			// check if module already in database records or new
@@ -503,10 +503,10 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" singlet
 									);
 
 									variables.moduleWidgetCache[ widgetName & "@" & thisModule.getName() ] = {
-										name           : widgetName,
-										invocationPath : moduleRecord.invocationPath & ".#thisModule.getName()#.widgets.#widgetName#",
-										path           : thisWidgetsPath & "/" & thisWidget,
-										module         : thisModule.getName()
+										name          : widgetName,
+										invocationPath: moduleRecord.invocationPath & ".#thisModule.getName()#.widgets.#widgetName#",
+										path          : thisWidgetsPath & "/" & thisWidget,
+										module        : thisModule.getName()
 									};
 								}
 							);

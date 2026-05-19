@@ -122,8 +122,8 @@ component accessors="true" threadSafe singleton {
 			arrayAppend(
 				result,
 				{
-					name        : thisEditor,
-					displayName : variables.editors[ thisEditor ].getDisplayName()
+					name       : thisEditor,
+					displayName: variables.editors[ thisEditor ].getDisplayName()
 				}
 			);
 		}

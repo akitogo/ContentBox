@@ -103,7 +103,7 @@ component accessors="true" threadSafe singleton {
 	 * @menu  The menu struct
 	 */
 	function buildLIAttributes( required any event, required any menu ) {
-		var attributes = { "class" : "#menu.class#", "data-name" : "#menu.name#" };
+		var attributes = { "class": "#menu.class#", "data-name": "#menu.name#" };
 		if ( structKeyExists( menu, "id" ) && len( menu.id ) ) {
 			attributes[ "id" ] = menu.id;
 		}
@@ -129,7 +129,7 @@ component accessors="true" threadSafe singleton {
 		required any menu,
 		structDefaults = {}
 	) {
-		var attributes = { "class" : structKeyExists( structDefaults, "class" ) ? structDefaults.class : "" };
+		var attributes = { "class": structKeyExists( structDefaults, "class" ) ? structDefaults.class : "" };
 
 		if ( len( arguments.menu.itemClass ) ) {
 			attributes.class &= " #arguments.menu.itemClass#";
@@ -212,14 +212,14 @@ component accessors="true" threadSafe singleton {
 				label   = "<i class='fa fa-id-badge fa-lg width20'></i> My Profile",
 				href    = variables.buildLink,
 				href_to = xehMyProfile,
-				data    = { keybinding : "ctrl+shift+a" }
+				data    = { keybinding: "ctrl+shift+a" }
 			).addHeaderSubMenu(
 				name    = "logout",
 				title   = "ctrl+shift+L",
 				label   = "<i class='fa fa-power-off fa-lg width20'></i> Logout",
 				href    = variables.buildLink,
 				href_to = xehDoLogout,
-				data    = { keybinding : "ctrl+shift+l" }
+				data    = { keybinding: "ctrl+shift+l" }
 			);
 
 		// Register modules reload menu
@@ -230,7 +230,7 @@ component accessors="true" threadSafe singleton {
 			itemType    = "button",
 			itemClass   = "btn btn-more options toggle",
 			permissions = "RELOAD_MODULES,RELOAD_CACHES",
-			data        = { placement : "right" },
+			data        = { placement: "right" },
 			title       = "Admin Actions"
 		)
 			.addHeaderSubMenu(
@@ -590,7 +590,7 @@ component accessors="true" threadSafe singleton {
 				label   = "Settings",
 				href    = variables.buildLink,
 				href_to = prc.xehSettings,
-				data    = { "keybinding" : "ctrl+shift+c" }
+				data    = { "keybinding": "ctrl+shift+c" }
 			)
 			.addSubMenu(
 				name        = "SecurityRules",
@@ -686,7 +686,7 @@ component accessors="true" threadSafe singleton {
 		// stash pointer
 		variables.thisTopMenu = arguments.name;
 		// store new top menu in reference map
-		variables.topMenuMap[ arguments.name ] = { submenu : [] };
+		variables.topMenuMap[ arguments.name ] = { submenu: [] };
 		structAppend(
 			variables.topMenuMap[ arguments.name ],
 			arguments,
@@ -731,7 +731,7 @@ component accessors="true" threadSafe singleton {
 		// stash pointer
 		variables.thisHeaderMenu = arguments.name;
 		// store new top menu in reference map
-		variables.headerMenuMap[ arguments.name ] = { submenu : [] };
+		variables.headerMenuMap[ arguments.name ] = { submenu: [] };
 
 		structAppend(
 			variables.headerMenuMap[ arguments.name ],

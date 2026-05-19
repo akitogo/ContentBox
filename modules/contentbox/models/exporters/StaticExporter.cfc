@@ -49,11 +49,11 @@ component accessors="#true#" threadSafe singleton {
 	) {
 		var lb = chr( 13 ) & chr( 10 );
 		var results = {
-			"exportLog" : createObject( "java", "java.lang.StringBuilder" ).init(
+			"exportLog": createObject( "java", "java.lang.StringBuilder" ).init(
 					"Starting static site generation with the following options: #arguments.toString()#. #lb#"
 				),
-			"exportDirectory" : arguments.exportDirectory,
-			"exportFile"      : getTempDirectory() & "/" & createUUID() & ".zip"
+			"exportDirectory": arguments.exportDirectory,
+			"exportFile"     : getTempDirectory() & "/" & createUUID() & ".zip"
 		};
 		var allSettings = variables.settingService.getAllSettings();
 
@@ -120,7 +120,7 @@ component accessors="#true#" threadSafe singleton {
 		}
 
 		// Announce export
-		interceptorService.announce( "cbadmin_preStaticSiteExport", { options : arguments } );
+		interceptorService.announce( "cbadmin_preStaticSiteExport", { options: arguments } );
 
 		// Get root pages, we need objects in order to render out the site
 		var aPages = variables.pageService.search(
@@ -199,7 +199,7 @@ component accessors="#true#" threadSafe singleton {
 		// Announce export
 		interceptorService.announce(
 				"cbadmin_postStaticSiteExport",
-				{ options : arguments, results : results }
+				{ options: arguments, results: results }
 			);
 
 		// Remove creation Folder now

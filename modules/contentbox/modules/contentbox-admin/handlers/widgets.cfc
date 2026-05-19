@@ -108,21 +108,21 @@ component extends="baseHandler" {
 				type   = rc.widgettype
 			);
 		prc.widget = {
-			name       : rc.widgetname,
-			widgetType : rc.widgettype,
-			widget     : widget,
-			udf        : rc.widgetudf,
-			module     : find( "@", rc.widgetname )
+			name      : rc.widgetname,
+			widgetType: rc.widgettype,
+			widget    : widget,
+			udf       : rc.widgetudf,
+			module    : find( "@", rc.widgetname )
 				? listGetAt(
 					rc.widgetname,
 					2,
 					"@"
 				)
 				: "",
-			category : !isNull( widget.getCategory() )
+			category: !isNull( widget.getCategory() )
 				? widget.getCategory()
 				: rc.widgetType == "Core" ? "Miscellaneous" : rc.widgetType,
-			icon : !isNull( widget.getIcon() ) ? widget.getIcon() : ""
+			icon: !isNull( widget.getIcon() ) ? widget.getIcon() : ""
 		};
 		// get its metadata
 		prc.metadata = widget.getPublicMethods();

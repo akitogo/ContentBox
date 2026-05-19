@@ -19,32 +19,32 @@ component {
 
 	function configure() {
 		// Layout Settings
-		layoutSettings = { defaultLayout : "simple.cfm" };
+		layoutSettings = { defaultLayout: "simple.cfm" };
 
 		// i18n
-		cbi18n = { resourceBundles : { "security" : "#moduleMapping#/includes/i18n/security" } };
+		cbi18n = { resourceBundles: { "security": "#moduleMapping#/includes/i18n/security" } };
 
 		// SES Routes
 		routes = [
-			{ pattern : "/", handler : "security", action : "login" },
-			{ pattern : "/twofactor/:action?", handler : "twofactor" },
+			{ pattern: "/", handler: "security", action: "login" },
+			{ pattern: "/twofactor/:action?", handler: "twofactor" },
 			{
-				pattern : "/twofactorEnrollment/:action?",
-				handler : "twofactorEnrollment"
+				pattern: "/twofactorEnrollment/:action?",
+				handler: "twofactorEnrollment"
 			},
 			{
-				pattern : "/language/:lang",
-				handler : "security",
-				action  : "changelang"
+				pattern: "/language/:lang",
+				handler: "security",
+				action : "changelang"
 			},
-			{ pattern : "/:action", handler : "security" },
-			{ pattern : "/:handler/:action?" }
+			{ pattern: "/:action", handler: "security" },
+			{ pattern: "/:handler/:action?" }
 		];
 
 		// Custom Declared Points
 		interceptorSettings = {
 			// CB Admin Custom Events
-			customInterceptionPoints : [
+			customInterceptionPoints: [
 				// Login Layout HTML points
 				"cbadmin_beforeLoginHeadEnd",
 				"cbadmin_afterLoginBodyStart",

@@ -2,20 +2,20 @@ component {
 
 	function seed( schema, query ) {
 		var admin = {
-			"roleID"       : createUUID(),
-			"isDeleted"    : 0,
-			"createdDate"  : now(),
-			"modifiedDate" : now(),
-			"role"         : "Administrator",
-			"description"  : "A ContentBox Administrator"
+			"roleID"      : createUUID(),
+			"isDeleted"   : 0,
+			"createdDate" : now(),
+			"modifiedDate": now(),
+			"role"        : "Administrator",
+			"description" : "A ContentBox Administrator"
 		};
 		var editor = {
-			"roleID"       : createUUID(),
-			"isDeleted"    : 0,
-			"createdDate"  : now(),
-			"modifiedDate" : now(),
-			"role"         : "Editor",
-			"description"  : "A ContentBox Editor"
+			"roleID"      : createUUID(),
+			"isDeleted"   : 0,
+			"createdDate" : now(),
+			"modifiedDate": now(),
+			"role"        : "Editor",
+			"description" : "A ContentBox Editor"
 		};
 
 		// ADMIN ROLE
@@ -37,8 +37,8 @@ component {
 						.from( "cb_rolePermissions" )
 						.insert(
 							{
-								"FK_permissionID" : record.permissionID,
-								"FK_roleID"       : admin.roleID
+								"FK_permissionID": record.permissionID,
+								"FK_roleID"      : admin.roleID
 							}
 						);
 				}
@@ -92,8 +92,8 @@ component {
 						.from( "cb_rolePermissions" )
 						.insert(
 							{
-								"FK_permissionID" : record.permissionID,
-								"FK_roleID"       : editor.roleID
+								"FK_permissionID": record.permissionID,
+								"FK_roleID"      : editor.roleID
 							}
 						);
 				}

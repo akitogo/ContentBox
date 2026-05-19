@@ -54,7 +54,7 @@ component
 	this.pk = "relocationID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"relocationID",
 			"createdDate",
 			"modifiedDate",
@@ -65,10 +65,10 @@ component
 	};
 
 	this.constraints = {
-		"slug" : {
-			required  : true,
-			size      : "1..500",
-			validator : "UniqueSiteFieldValidator@contentbox"
+		"slug": {
+			required : true,
+			size     : "1..500",
+			validator: "UniqueSiteFieldValidator@contentbox"
 		}
 	};
 

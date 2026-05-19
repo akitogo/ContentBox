@@ -8,9 +8,9 @@
 component extends="baseHandler" {
 	// Method Security
 	this.allowedMethods = {
-		"index"        : "GET",
-		"doValidation" : "POST",
-		"resendCode"   : "GET"
+		"index"       : "GET",
+		"doValidation": "POST",
+		"resendCode"  : "GET"
 	};
 
 	/**
@@ -69,7 +69,7 @@ component extends="baseHandler" {
 
 		// Check for errors
 		if ( results.error ) {
-			announce( "cbadmin_onInvalidTwoFactor", { author : prc.oAuthor } );
+			announce( "cbadmin_onInvalidTwoFactor", { author: prc.oAuthor } );
 			// message and redirect
 			variables.messagebox.error( results.messages );
 			flash.keep( "authorData" );
@@ -88,7 +88,7 @@ component extends="baseHandler" {
 					days     = val( authorData.rememberMe )
 				);
 			// announce valid two factor
-			announce( "cbadmin_onValidTwoFactor", { author : prc.oAuthor } );
+			announce( "cbadmin_onValidTwoFactor", { author: prc.oAuthor } );
 
 			// Are we in enrollment or loging in mode.
 			if ( authorData.isEnrollment ) {
@@ -104,7 +104,7 @@ component extends="baseHandler" {
 				// announce event
 				announce(
 					"cbadmin_onLogin",
-					{ author : prc.oAuthor, securedURL : authorData.securedURL }
+					{ author: prc.oAuthor, securedURL: authorData.securedURL }
 				);
 			}
 

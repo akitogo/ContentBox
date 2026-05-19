@@ -41,7 +41,7 @@
 		#html.endForm()#
 	<cfelse>
 		<!--- <p>Issue a Password Reset upon User's next login</p>
-		<p><a href="#event.buildLink( to=prc.xehPasswordReset )#/authorID/#rc.authorID()#" class="btn btn-danger">Issue Password Reset</a></p> --->    <div class="alert alert-info">
+		<p><a href="#event.buildLink( to=prc.xehPasswordReset )#/authorID/#rc.authorID()#" class="btn btn-danger">Issue Password Reset</a></p> --->     <div class="alert alert-info">
 	As an admin you can reset the user's password and send them a notification so they can reset their password.
 </div>
 <p class="text-center">
@@ -57,7 +57,9 @@
 	
 	
 	
+	
 </div>
+
 
 
 

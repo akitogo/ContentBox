@@ -43,8 +43,8 @@ component
 	 * **							CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "description" ] = { required : false, size : "1..500" };
-	this.constraints[ "order" ] = { required : false, type : "numeric" };
+	this.constraints[ "description" ] = { required: false, size: "1..500" };
+	this.constraints[ "order" ] = { required: false, type: "numeric" };
 
 	/**********************************************************************
 	 * **							CONSTRUCTOR

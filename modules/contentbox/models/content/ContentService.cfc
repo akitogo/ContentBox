@@ -177,7 +177,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		string siteID               = "",
 		string propertyList
 	) {
-		var results = { "count" : 0, "content" : [] };
+		var results = { "count": 0, "content": [] };
 		var c = newCriteria();
 
 		// only published contentwithClause
@@ -468,7 +468,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		any criteria,
 		string slugSearch = ""
 	) {
-		var results = { "count" : 0, "content" : [] };
+		var results = { "count": 0, "content": [] };
 		var c = ( isNull( arguments.criteria ) ? newCriteria() : arguments.criteria );
 
 		// Do we evaluate parent roots or not?
@@ -783,7 +783,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				GROUP BY content
 				ORDER BY count( comments.commentID ) DESC
 			",
-			params     = { siteID : arguments.siteID },
+			params     = { siteID: arguments.siteID },
 			max        = arguments.max,
 			ignoreCase = true
 		)// We just need the content objects, not the comments count
@@ -934,7 +934,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		var thisContent = arguments.contentData;
 
 		// Get content by slug, if not found then it returns a new entity so we can persist it.
-		var oContent = findWhere( { "slug" : thisContent.slug, "site" : arguments.site } );
+		var oContent = findWhere( { "slug": thisContent.slug, "site": arguments.site } );
 		if ( isNull( oContent ) ) {
 			logThis(
 				"! Content (#thisContent.contentType#:#thisContent.slug#) not found in site, proceeding to import as new content."
@@ -1011,8 +1011,8 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		} else if ( structCount( thisContent.parent ) ) {
 			var oParent = findWhere(
 				{
-					"slug" : thisContent.parent.slug,
-					"site" : arguments.site
+					"slug": thisContent.parent.slug,
+					"site": arguments.site
 				}
 			);
 			// assign if persisted
@@ -1064,9 +1064,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				oContent.addCustomField(
 						customFieldService.new(
 								{
-									key            : thisCF.key,
-									value          : toString( thisCF.value ),
-									relatedContent : oContent
+									key           : thisCF.key,
+									value         : toString( thisCF.value ),
+									relatedContent: oContent
 								}
 							)
 					);
@@ -1078,7 +1078,8 @@ component extends="cborm.models.VirtualEntityService" singleton {
 
 		// STATS
 		if ( structCount( thisContent.stats ) && thisContent.stats.hits > 0 ) {
-			var oStat = variables.statsService
+			var oStat = variables
+				.statsService
 				.newCriteria()
 				.isEq( "relatedContent.contentID", oContent.getContentID() )
 				.get();
@@ -1094,7 +1095,7 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				);
 				variables.statsService.save(
 						variables.statsService.new(
-								{ hits : thisContent.stats.hits, relatedContent : oContent }
+								{ hits: thisContent.stats.hits, relatedContent: oContent }
 							)
 					);
 			}
@@ -1146,8 +1147,8 @@ component extends="cborm.models.VirtualEntityService" singleton {
 					// otherwise, we need to get it
 					var oRelatedContent = getServiceByType( thisRelatedContent.contentType ).findWhere(
 							{
-								"slug" : thisRelatedContent.slug,
-								"site" : arguments.site
+								"slug": thisRelatedContent.slug,
+								"site": arguments.site
 							}
 						);
 					if ( !isNull( oRelatedContent ) ) {
@@ -1198,9 +1199,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				// Subscription
 				var oSubscription = variables.commentSubscriptionService.new(
 						{
-							relatedContent    : oContent,
-							subscriptionToken : thisSubscription.subscriptionToken,
-							type              : thisSubscription.type
+							relatedContent   : oContent,
+							subscriptionToken: thisSubscription.subscriptionToken,
+							type             : thisSubscription.type
 						}
 					);
 				// Subscriber
@@ -1208,8 +1209,8 @@ component extends="cborm.models.VirtualEntityService" singleton {
 				if ( isNull( oSubscriber ) ) {
 					oSubscriber = variables.subscriberService.new(
 							{
-								subscriberEmail : thisSubscription.subscriber.subscriberEmail,
-								subscriberToken : thisSubscription.subscriber.subscriberToken
+								subscriberEmail: thisSubscription.subscriber.subscriberEmail,
+								subscriberToken: thisSubscription.subscriber.subscriberToken
 							}
 						);
 				}
@@ -1247,9 +1248,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 										composeRelationships = false
 									);
 								var oEditor = variables.authorService.findByEmail( thisVersion.author.email );
-								return oVersion.setAuthor(
-										isNull( oEditor ) ? oAuthor : oEditor
-									).setRelatedContent( oContent );
+								return oVersion.setAuthor( isNull( oEditor )
+											? oAuthor
+											: oEditor ).setRelatedContent( oContent );
 							}
 						)
 				);

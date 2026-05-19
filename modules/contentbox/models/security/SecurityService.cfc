@@ -79,7 +79,7 @@ component singleton {
 		if ( len( authorID ) ) {
 			// try to get it with that ID
 			var author = variables.authorService.findWhere(
-					{ authorID : authorID, isActive : true, isDeleted : false }
+					{ authorID: authorID, isActive: true, isDeleted: false }
 				);
 			// If user found? Inflate them back
 			if ( !isNull( author ) ) {
@@ -246,14 +246,14 @@ component singleton {
 
 		// get mail payload
 		var bodyTokens = {
-			name        : arguments.author.getFullName(),
-			ip          : getRealIP(),
-			linkTimeout : settings.cb_security_password_reset_expiration,
-			siteName    : defaultSite.getName(),
-			linkToken   : CBHelper.linkAdmin( event = "security.verifyReset",
+			name       : arguments.author.getFullName(),
+			ip         : getRealIP(),
+			linkTimeout: settings.cb_security_password_reset_expiration,
+			siteName   : defaultSite.getName(),
+			linkToken  : CBHelper.linkAdmin( event = "security.verifyReset",
 					ssl = settings.cb_admin_ssl ) & "?token=#token#",
-			issuedBy    : "",
-			issuedEmail : ""
+			issuedBy   : "",
+			issuedEmail: ""
 		};
 
 		// Check if an issuer was passed
@@ -303,7 +303,7 @@ component singleton {
 	 * @return {error, author}
 	 */
 	struct function validateResetToken( required token ) {
-		var results = { "error" : false, "author" : "" };
+		var results = { "error": false, "author": "" };
 		var cacheKey = "reset-token-#arguments.token#";
 		var authorID = cache.get( cacheKey );
 
@@ -337,7 +337,7 @@ component singleton {
 		required Author author,
 		required password
 	) {
-		var results = { "error" : false, "messages" : "" };
+		var results = { "error": false, "messages": "" };
 		var cacheKey = "reset-token-#arguments.token#";
 		var authorID = cache.get( cacheKey );
 
@@ -369,11 +369,11 @@ component singleton {
 
 		// get mail payload
 		var bodyTokens = {
-			name       : arguments.author.getFullName(),
-			ip         : getRealIP(),
-			linkLogin  : CBHelper.linkAdminLogin( ssl = settings.cb_admin_ssl ),
-			siteName   : defaultSite.getName(),
-			adminEmail : settings.cb_site_email
+			name      : arguments.author.getFullName(),
+			ip        : getRealIP(),
+			linkLogin : CBHelper.linkAdminLogin( ssl = settings.cb_admin_ssl ),
+			siteName  : defaultSite.getName(),
+			adminEmail: settings.cb_site_email
 		};
 		var mail = mailservice.newMail(
 				to         = arguments.author.getEmail(),
@@ -503,9 +503,9 @@ component singleton {
 		// Look up the user ID and store for the duration specified
 		var author = variables.authorService.findWhere(
 				{
-					username  : arguments.username,
-					isActive  : true,
-					isDeleted : false
+					username : arguments.username,
+					isActive : true,
+					isDeleted: false
 				}
 			);
 		if ( !isNull( author ) ) {
@@ -566,14 +566,14 @@ component singleton {
 		}
 
 		// Verify we have one in the installation, else generate one
-		var oSetting = settingService.findWhere( { name : "cb_enc_key" } );
+		var oSetting = settingService.findWhere( { name: "cb_enc_key" } );
 
 		// if no key, then create it for this ContentBox installation
 		if ( isNull( oSetting ) ) {
 			oSetting = settingService.new(
 					{
-						name  : "cb_enc_key",
-						value : generateSecretKey( "BLOWFISH" )
+						name : "cb_enc_key",
+						value: generateSecretKey( "BLOWFISH" )
 					}
 				);
 			settingService.save( entity = oSetting );

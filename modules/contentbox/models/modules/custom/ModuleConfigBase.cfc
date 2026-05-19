@@ -33,7 +33,7 @@ component {
 		settings = {};
 
 		// CB Module Conventions
-		conventions = { layoutsLocation : "_themes", viewsLocation : "_themes" };
+		conventions = { layoutsLocation: "_themes", viewsLocation: "_themes" };
 
 		// Parent Affected Settings
 		parentSettings = {};
@@ -41,7 +41,7 @@ component {
 		// interceptor settings
 		interceptorSettings = {
 			// ContentBox Custom Events
-			customInterceptionPoints : []
+			customInterceptionPoints: []
 		};
 
 		// interceptors

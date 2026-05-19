@@ -1,4 +1,4 @@
-<!--- Component Args --->    
+<!--- Component Args --->     
 <cfparam name="args.title" default="Clone">
 <cfparam name="args.infoMsg" default="">
 <cfparam name="args.action" default="">
@@ -7,7 +7,7 @@
 <cfparam name="args.publishLabel" default="Publish">
 <cfparam name="args.publishInfo" default="By default all cloned items are published as drafts.">
 <cfparam name="args.statusName" default="contentStatus">
-<!--- Template --->    
+<!--- Template --->     
 <cfoutput>
 	<div
 	id="cloneDialog"
@@ -26,7 +26,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="cloneTitle">
 					<i class="fa fa-clone"></i> #args.title#</h4>
-</div><!--- Modal Body --->    <div class="modal-body" id="remoteModelContent">
+</div><!--- Modal Body --->     <div class="modal-body" id="remoteModelContent">
 <!--body-->#html.startForm(
 			name   = "cloneForm",
 			action = "#args.action#",
@@ -64,12 +64,14 @@
 
 
 
+
 	<cfloop array="#prc.allSites#" index="thisSite">
 		<option
 value="#thisSite[ "siteID" ]#"
 		<cfif thisSite[ "siteID" ] EQ prc.oCurrentSite.getsiteID()>
 			selected="selected"
 		</cfif>
+		
 		
 		
 		
@@ -81,7 +83,9 @@ value="#thisSite[ "siteID" ]#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -114,7 +118,7 @@ value="#thisSite[ "siteID" ]#"
             <!-- footer -->
 			<div class="modal-footer">
 
-                <!--- Button Bar --->    
+                <!--- Button Bar --->     
                 <div id="cloneButtonBar">
                     <button
                     	class="btn btn-default"
@@ -133,7 +137,7 @@ value="#thisSite[ "siteID" ]#"
                     </button>
 				</div>
 
-                <!--- Loader --->    
+                <!--- Loader --->     
                 <div class="center loaders" id="clonerBarLoader">
                     <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
                     <div class="m5">
@@ -144,6 +148,7 @@ value="#thisSite[ "siteID" ]#"
         </div>
     </div>
 </div>
+
 
 
 

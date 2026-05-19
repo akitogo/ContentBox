@@ -55,7 +55,7 @@ component singleton {
 		}
 
 		// Announce media delivery
-		var iData = { mediaPath : prc.mediaPath, mediaProvider : mediaProvider };
+		var iData = { mediaPath: prc.mediaPath, mediaProvider: mediaProvider };
 		announce( "cbui_onMediaRequest", iData );
 
 		// Media Caching Headers
@@ -91,7 +91,7 @@ component singleton {
 	// Invalid Media
 	private function invalidMedia( event, rc, prc ) {
 		// Announce invalid media
-		var iData = { mediaPath : prc.mediaPath };
+		var iData = { mediaPath: prc.mediaPath };
 		announce( "cbui_onInvalidMediaRequest", iData );
 		// Render invalid media
 		event.renderData(

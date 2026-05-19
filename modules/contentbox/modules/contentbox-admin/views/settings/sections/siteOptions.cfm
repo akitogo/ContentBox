@@ -1,6 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "siteSettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-globe fa-lg"></i> All Site Options</legend><!--- Caching of Settings --->    <div class="form-group">
+<legend><i class="fa fa-globe fa-lg"></i> All Site Options</legend><!--- Caching of Settings --->     <div class="form-group">
 <label class="control-label" for="cb_site_settings_cache">Settings Cache Provider:</label>
 <div class="controls">
 	<p>Choose the CacheBox provider to cache global site settings into.</p>#html.select(
@@ -9,7 +9,7 @@
 			selectedValue = prc.cbSettings.cb_site_settings_cache,
 			class         = "form-control"
 		)#</div>
-</div><!--- Blog EntryPoint --->    <div class="form-group">#html.label(
+</div><!--- Blog EntryPoint --->     <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_site_blog_entrypoint",
 			content = "Blog Entry Point:"
@@ -31,21 +31,21 @@
 		</div>
 	</div>
 
-</fieldset><!--- Site Maintenance --->    <fieldset>
+</fieldset><!--- Site Maintenance --->     <fieldset>
 <legend><i class="fas fa-hand-holding-medical fa-lg"></i> <strong>Maintenance</strong></legend>
-<p>You can put your sites in maintenance mode if you are doing upgrades or anything funky!</p><!--- Site maintenance --->    <div class="form-group">#html.label(
+<p>You can put your sites in maintenance mode if you are doing upgrades or anything funky!</p><!--- Site maintenance --->     <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_site_maintenance",
 			content = "Site Maintenance:"
 		)#<div class="controls">#html.checkbox(
 			name    = "cb_site_maintenance_toggle",
-			data    = { toggle : "toggle", match : "cb_site_maintenance" },
+			data    = { toggle: "toggle", match: "cb_site_maintenance" },
 			checked = prc.cbSettings.cb_site_maintenance
 		)##html.hiddenField(
 			name  = "cb_site_maintenance",
 			value = prc.cbSettings.cb_site_maintenance
 		)#</div>
-</div><!--- Maintenance Message --->    <div class="form-group">#html.label(
+</div><!--- Maintenance Message --->     <div class="form-group">#html.label(
 			class   = "control-label",
 			field   = "cb_site_maintenance_message",
 			content = "Offline Message: "
@@ -58,6 +58,6 @@
 			title = "Make it meaningful?"
 		)#</div>
 	</div>
-</fieldset><!--- Button Bar --->    <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->     <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 			class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

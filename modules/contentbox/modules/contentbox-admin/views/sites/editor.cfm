@@ -2,14 +2,14 @@
 	<div class="row">
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->    <div class="panel-heading"><!--- Top Actions --->    <div class="float-right mt10"><!--- Back button --->    <a
+	<div class="panel panel-default"><!--- Heading --->     <div class="panel-heading"><!--- Top Actions --->     <div class="float-right mt10"><!--- Back button --->     <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehSitesManager )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Title --->    <div class="size16 p10 flex gap-x-2">
+</div><!--- Title --->     <div class="size16 p10 flex gap-x-2">
 
 <i class="fa fa-globe"></i>
 
@@ -22,6 +22,7 @@ href="#event.buildLink( prc.xehSitesManager )#"
 			<span class="label label-danger">Disabled</span>
 		</cfif>
 	</cfif>
+	
 	
 	
 	
@@ -157,9 +158,9 @@ href="#event.buildLink( prc.xehSitesManager )#"
 								</div>
 							</div>
 
-							<!--- Domain Aliases Component --->    
+							<!--- Domain Aliases Component --->     
 							<div x-data="domainAliases()">
-								<!--- The property holder --->    
+								<!--- The property holder --->     
 								<input type="hidden" name="domainAliases" x-model="domainAliases">
 								<button type="button" class="btn btn-info" @click="addDomainAlias()">+ Add Domain Alias</button>
 
@@ -257,9 +258,11 @@ value="cbBlog"
 			
 			
 			
+			
 												>
 													Latest Blog Entries
 												</option>
+
 
 
 
@@ -276,6 +279,7 @@ value="#thispage[ "slug" ]#"
 			
 			
 			
+			
 												>
 													#thisPage[ "title" ]#
 												</option>
@@ -283,7 +287,9 @@ value="#thispage[ "slug" ]#"
 
 
 
+
 		</cfloop>
+		
 		
 		
 		
@@ -295,7 +301,9 @@ value="#thispage[ "slug" ]#"
 
 
 
+
 	</cfif>
+	
 	
 	
 	
@@ -321,6 +329,7 @@ value="#thispage[ "slug" ]#"
 
 
 
+
 	<cfloop collection="#prc.themes#" item="themeKey">
 		<option
 value="#themeKey#"
@@ -332,6 +341,7 @@ value="#themeKey#"
 		
 		
 		
+		
 										>
 											#prc.themes[ themeKey ].themeName#
 										</option>
@@ -339,7 +349,9 @@ value="#themeKey#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -368,12 +380,14 @@ value="#themeKey#"
 
 
 
+
 	<cfloop array="#prc.registeredDisks#" item="disk">
 		<option
 value="#disk#"
 		<cfif prc.site.getMediaDisk() EQ disk>
 			selected="selected"
 		</cfif>
+		
 		
 		
 		
@@ -385,7 +399,9 @@ value="#disk#"
 
 
 
+
 	</cfloop>
+	
 	
 	
 	
@@ -394,7 +410,7 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Blog Enabled --->    
+							<!--- Blog Enabled --->     
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -409,13 +425,13 @@ value="#disk#"
 								<div class="controls">
 									#html.checkbox(
 			name    = "isBlogEnabled_toggle",
-			data    = { toggle : "toggle", match : "isBlogEnabled" },
+			data    = { toggle: "toggle", match: "isBlogEnabled" },
 			checked = prc.site.getIsBlogEnabled()
 		)##html.hiddenField( name = "isBlogEnabled", value = prc.site.getIsBlogEnabled() )#
 								</div>
 							</div>
 
-							<!--- Sitemap --->    
+							<!--- Sitemap --->     
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -430,13 +446,13 @@ value="#disk#"
 								<div class="controls">
 									#html.checkbox(
 			name    = "isSitemapEnabled_toggle",
-			data    = { toggle : "toggle", match : "isSitemapEnabled" },
+			data    = { toggle: "toggle", match: "isSitemapEnabled" },
 			checked = prc.site.getIsSitemapEnabled()
 		)##html.hiddenField( name = "isSitemapEnabled", value = prc.site.getIsSitemapEnabled() )#
 								</div>
 							</div>
 
-							<!--- Site Admin Bar --->    
+							<!--- Site Admin Bar --->     
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -451,13 +467,13 @@ value="#disk#"
 								<div class="controls">
 									#html.checkbox(
 			name    = "adminBar_toggle",
-			data    = { toggle : "toggle", match : "adminBar" },
+			data    = { toggle: "toggle", match: "adminBar" },
 			checked = prc.site.getAdminBar()
 		)##html.hiddenField( name = "adminBar", bind = prc.site )#
 								</div>
 							</div>
 
-							<!--- Site SSL --->    
+							<!--- Site SSL --->     
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -473,13 +489,13 @@ value="#disk#"
 								<div class="controls">
 									#html.checkbox(
 			name    = "isSSL_toggle",
-			data    = { toggle : "toggle", match : "isSSL" },
+			data    = { toggle: "toggle", match: "isSSL" },
 			checked = prc.site.getIsSSL()
 		)##html.hiddenField( name = "isSSL", bind = prc.site )#
 								</div>
 							</div>
 
-							<!--- Powered by Header --->    
+							<!--- Powered by Header --->     
 							<div class="form-group">
 								#html.label(
 			class   = "control-label",
@@ -494,11 +510,12 @@ value="#disk#"
 								<div class="controls">
 									#html.checkbox(
 			name    = "poweredByHeader_toggle",
-			data    = { toggle : "toggle", match : "poweredByHeader" },
+			data    = { toggle: "toggle", match: "poweredByHeader" },
 			checked = prc.site.getPoweredByHeader()
 		)##html.hiddenField( name = "poweredByHeader", bind = prc.site )#
 								</div>
 							</div>
+
 
 
 
@@ -516,12 +533,12 @@ value="#disk#"
 
 <div class="controls">#html.checkbox(
 				name    = "isActive_toggle",
-				data    = { toggle : "toggle", match : "isActive" },
+				data    = { toggle: "toggle", match: "isActive" },
 				checked = prc.site.getIsActive()
 			)##html.hiddenField( name = "isActive", bind = prc.site )#</div>
 </div>
 	</cfif>
-	#html.endFieldSet()#<!--- Action Bar --->    
+	#html.endFieldSet()#<!--- Action Bar --->     
 						<div class="form-actions">
 							<button
 								class="btn btn-default"
@@ -542,6 +559,7 @@ value="#disk#"
 			 </div>
 		</div>
 	</div>
+
 
 
 

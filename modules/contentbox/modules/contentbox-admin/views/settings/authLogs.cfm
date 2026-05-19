@@ -35,6 +35,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 	
 	
 	
+	
 				</div>
 
 				<p>Here you see all recent Logins and as well the login attempts to your system</p>
@@ -42,8 +43,9 @@ href="#event.buildLink( prc.xehTruncate )#"
 
 
 
+
 	<cfif prc.featureEnabled>
-		<!--- templates --->    <table name="templates" id="templates" class="table table-striped-removed table-hover ">
+		<!--- templates --->     <table name="templates" id="templates" class="table table-striped-removed table-hover ">
 <thead>
 	<tr>
 		<th>Username / IP</th>
@@ -62,9 +64,11 @@ href="#event.buildLink( prc.xehTruncate )#"
 			
 			
 			
+			
 			>
 								<td>
 									<strong>
+
 
 
 
@@ -74,6 +78,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 			<cfelse>
 				#thisLog.getvalue()#
 			</cfif>
+			
 			
 			
 			
@@ -89,6 +94,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 
 
 
+
 			<cfif len( thisLog.getLastLoginSuccessIP() )>
 				<a href="#prc.cbSettings.cb_comments_whoisURL#=#thisLog.getLastLoginSuccessIP()#" title="Get IP Information" target="_blank">#thisLog.getLastLoginSuccessIP()#</a>
 			<cfelse>
@@ -98,8 +104,10 @@ href="#event.buildLink( prc.xehTruncate )#"
 			
 			
 			
+			
 								</td>
 								<td class="text-center">
+
 
 
 
@@ -113,8 +121,10 @@ href="#event.buildLink( prc.xehTruncate )#"
 			
 			
 			
+			
 								</td>
 							</tr>
+
 
 
 
@@ -124,8 +134,10 @@ href="#event.buildLink( prc.xehTruncate )#"
 		
 		
 		
+		
 						</tbody>
 					</table>
+
 
 
 
@@ -139,10 +151,12 @@ Login Tracker is disabled! Click <a href="#event.buildLink( prc.xehSettings )###
 	
 	
 	
+	
 			</div> <!-- end panel body -->
 		</div> <!-- end panel -->
 	</div>
 </div>
+
 
 
 

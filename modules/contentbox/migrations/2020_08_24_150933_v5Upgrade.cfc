@@ -11,8 +11,8 @@ component {
 	variables.siteTables = [ "cb_category", "cb_content", "cb_menu", "cb_setting"];
 	variables.newPermissions = [
 		{
-			name        : "SITES_ADMIN",
-			description : "Ability to manage sites"
+			name       : "SITES_ADMIN",
+			description: "Ability to manage sites"
 		}
 	];
 
@@ -146,7 +146,7 @@ component {
 					query
 						.newQuery()
 						.from( tableName )
-						.update( { "id" : query.raw( "#guidFn#" ) } );
+						.update( { "id": query.raw( "#guidFn#" ) } );
 					systemOutput(
 						"	√ - #tablename# new uuid pk created and populated",
 						true
@@ -368,164 +368,164 @@ component {
 	 */
 	function scopeGrammarUDFs( query, schema ) {
 		variables.idTables = {
-			"cb_author"          : "authorID",
-			"cb_category"        : "categoryID",
-			"cb_comment"         : "commentID",
-			"cb_content"         : "contentID",
-			"cb_contentVersion"  : "contentVersionID",
-			"cb_customfield"     : "customFieldID",
-			"cb_loginAttempts"   : "loginAttemptsID",
-			"cb_menu"            : "menuID",
-			"cb_menuItem"        : "menuItemID",
-			"cb_module"          : "moduleID",
-			"cb_permission"      : "permissionID",
-			"cb_permissionGroup" : "permissionGroupID",
-			"cb_role"            : "roleID",
-			"cb_securityRule"    : "ruleID",
-			"cb_setting"         : "settingID",
-			"cb_stats"           : "statsID",
-			"cb_subscribers"     : "subscriberID",
-			"cb_subscriptions"   : "subscriptionID"
+			"cb_author"         : "authorID",
+			"cb_category"       : "categoryID",
+			"cb_comment"        : "commentID",
+			"cb_content"        : "contentID",
+			"cb_contentVersion" : "contentVersionID",
+			"cb_customfield"    : "customFieldID",
+			"cb_loginAttempts"  : "loginAttemptsID",
+			"cb_menu"           : "menuID",
+			"cb_menuItem"       : "menuItemID",
+			"cb_module"         : "moduleID",
+			"cb_permission"     : "permissionID",
+			"cb_permissionGroup": "permissionGroupID",
+			"cb_role"           : "roleID",
+			"cb_securityRule"   : "ruleID",
+			"cb_setting"        : "settingID",
+			"cb_stats"          : "statsID",
+			"cb_subscribers"    : "subscriberID",
+			"cb_subscriptions"  : "subscriptionID"
 		};
 
 		variables.childTables = {
-			"cb_entry"                : { "parent" : "cb_content", "key" : "contentID" },
-			"cb_page"                 : { "parent" : "cb_content", "key" : "contentID" },
-			"cb_contentStore"         : { "parent" : "cb_content", "key" : "contentID" },
-			"cb_commentSubscriptions" : { "parent" : "cb_subscriptions", "key" : "subscriptionID" }
+			"cb_entry"               : { "parent": "cb_content", "key": "contentID" },
+			"cb_page"                : { "parent": "cb_content", "key": "contentID" },
+			"cb_contentStore"        : { "parent": "cb_content", "key": "contentID" },
+			"cb_commentSubscriptions": { "parent": "cb_subscriptions", "key": "subscriptionID" }
 		};
 
 		variables.FKMap = {
-			"cb_authorPermissionGroups" : [
+			"cb_authorPermissionGroups": [
 				{
-					"column"    : "FK_permissionGroupID",
-					"reference" : {
-						"table"  : "cb_permissionGroup",
-						"column" : "permissionGroupID"
+					"column"   : "FK_permissionGroupID",
+					"reference": {
+						"table" : "cb_permissionGroup",
+						"column": "permissionGroupID"
 					}
 				},
 				{
-					"column"    : "FK_authorID",
-					"reference" : { "table" : "cb_author", "column" : "authorID" }
+					"column"   : "FK_authorID",
+					"reference": { "table": "cb_author", "column": "authorID" }
 				}
 			],
-			"cb_authorPermissions" : [
+			"cb_authorPermissions": [
 				{
-					"column"    : "FK_permissionID",
-					"reference" : { "table" : "cb_permission", "column" : "permissionID" }
+					"column"   : "FK_permissionID",
+					"reference": { "table": "cb_permission", "column": "permissionID" }
 				},
 				{
-					"column"    : "FK_authorID",
-					"reference" : { "table" : "cb_author", "column" : "authorID" }
+					"column"   : "FK_authorID",
+					"reference": { "table": "cb_author", "column": "authorID" }
 				}
 			],
-			"cb_rolePermissions" : [
+			"cb_rolePermissions": [
 				{
-					"column"    : "FK_permissionID",
-					"reference" : { "table" : "cb_permission", "column" : "permissionID" }
+					"column"   : "FK_permissionID",
+					"reference": { "table": "cb_permission", "column": "permissionID" }
 				},
 				{
-					"column"    : "FK_roleID",
-					"reference" : { "table" : "cb_role", "column" : "roleID" }
+					"column"   : "FK_roleID",
+					"reference": { "table": "cb_role", "column": "roleID" }
 				}
 			],
-			"cb_relatedContent" : [
+			"cb_relatedContent": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				},
 				{
-					"column"    : "FK_relatedContentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_relatedContentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_groupPermissions" : [
+			"cb_groupPermissions": [
 				{
-					"column"    : "FK_permissionGroupID",
-					"reference" : {
-						"table"  : "cb_permissionGroup",
-						"column" : "permissionGroupID"
+					"column"   : "FK_permissionGroupID",
+					"reference": {
+						"table" : "cb_permissionGroup",
+						"column": "permissionGroupID"
 					}
 				},
 				{
-					"column"    : "FK_permissionID",
-					"reference" : { "table" : "cb_permission", "column" : "permissionID" }
+					"column"   : "FK_permissionID",
+					"reference": { "table": "cb_permission", "column": "permissionID" }
 				}
 			],
-			"cb_contentCategories" : [
+			"cb_contentCategories": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				},
 				{
-					"column"    : "FK_categoryID",
-					"reference" : { "table" : "cb_category", "column" : "categoryID" }
+					"column"   : "FK_categoryID",
+					"reference": { "table": "cb_category", "column": "categoryID" }
 				}
 			],
-			"cb_commentSubscriptions" : [
+			"cb_commentSubscriptions": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_author" : [
+			"cb_author": [
 				{
-					"column"    : "FK_roleID",
-					"reference" : { "table" : "cb_role", "column" : "roleID" }
+					"column"   : "FK_roleID",
+					"reference": { "table": "cb_role", "column": "roleID" }
 				}
 			],
-			"cb_menuItem" : [
+			"cb_menuItem": [
 				{
-					"column"    : "FK_menuID",
-					"reference" : { "table" : "cb_menu", "column" : "menuID" }
+					"column"   : "FK_menuID",
+					"reference": { "table": "cb_menu", "column": "menuID" }
 				},
 				{
-					"column"    : "FK_parentID",
-					"reference" : { "table" : "cb_menuItem", "column" : "menuItemID" }
+					"column"   : "FK_parentID",
+					"reference": { "table": "cb_menuItem", "column": "menuItemID" }
 				}
 			],
-			"cb_customField" : [
+			"cb_customField": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_stats" : [
+			"cb_stats": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_comment" : [
+			"cb_comment": [
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_content" : [
+			"cb_content": [
 				{
-					"column"    : "FK_authorID",
-					"reference" : { "table" : "cb_author", "column" : "authorID" }
+					"column"   : "FK_authorID",
+					"reference": { "table": "cb_author", "column": "authorID" }
 				},
 				{
-					"column"    : "FK_parentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_parentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_contentVersion" : [
+			"cb_contentVersion": [
 				{
-					"column"    : "FK_authorID",
-					"reference" : { "table" : "cb_author", "column" : "authorID" }
+					"column"   : "FK_authorID",
+					"reference": { "table": "cb_author", "column": "authorID" }
 				},
 				{
-					"column"    : "FK_contentID",
-					"reference" : { "table" : "cb_content", "column" : "contentID" }
+					"column"   : "FK_contentID",
+					"reference": { "table": "cb_content", "column": "contentID" }
 				}
 			],
-			"cb_subscriptions" : [
+			"cb_subscriptions": [
 				{
-					"column"    : "FK_subscriberID",
-					"reference" : { "table" : "cb_subscribers", "column" : "subscriberID" }
+					"column"   : "FK_subscriberID",
+					"reference": { "table": "cb_subscribers", "column": "subscriberID" }
 				}
 			]
 		};
@@ -647,8 +647,8 @@ component {
 							.map(
 								function( row ) {
 									return {
-										"table"      : row.table_name,
-										"constraint" : row.constraint_name
+										"table"     : row.table_name,
+										"constraint": row.constraint_name
 									};
 								}
 							)
@@ -818,8 +818,8 @@ component {
 							.map(
 								function( row ) {
 									return {
-										"table"      : row.table_name,
-										"constraint" : row.constraint_name
+										"table"     : row.table_name,
+										"constraint": row.constraint_name
 									};
 								}
 							)
@@ -942,7 +942,7 @@ component {
 							.newQuery()
 							.from( thisTable )
 							.whereNull( "FK_siteID" )
-							.update( { "FK_siteID" : siteId } );
+							.update( { "FK_siteID": siteId } );
 
 						systemOutput(
 							"√ - Populated '#thisTable#' with default site data",
@@ -989,8 +989,8 @@ component {
 				.from( "cb_rolePermissions" )
 				.insert(
 					{
-						"FK_roleID"       : admin.roleID,
-						"FK_permissionID" : siteAdmin.permissionID
+						"FK_roleID"      : admin.roleID,
+						"FK_permissionID": siteAdmin.permissionID
 					}
 				);
 			systemOutput( "√ - Admin role updated with new permissions", true );
@@ -1029,12 +1029,12 @@ component {
 						.from( "cb_permission" )
 						.insert(
 							{
-								"permissionID" : uuidLib.randomUUID().toString(),
-								"createdDate"  : today,
-								"modifiedDate" : today,
-								"isDeleted"    : 0,
-								"permission"   : thisPermission.name,
-								"description"  : thisPermission.description
+								"permissionID": uuidLib.randomUUID().toString(),
+								"createdDate" : today,
+								"modifiedDate": today,
+								"isDeleted"   : 0,
+								"permission"  : thisPermission.name,
+								"description" : thisPermission.description
 							}
 						);
 					systemOutput( "√ - #thisPermission.name# permission created", true );
@@ -1109,26 +1109,26 @@ component {
 			.from( "cb_site" )
 			.insert(
 				{
-					"siteID"             : initialSiteIdentifier,
-					"createdDate"        : today,
-					"modifiedDate"       : today,
-					"isDeleted"          : 0,
-					"isActive"           : 1,
-					"name"               : allSettings.cb_site_name,
-					"slug"               : "default",
-					"homepage"           : allSettings.cb_site_homepage,
-					"description"        : allSettings.cb_site_description,
-					"keywords"           : allSettings.cb_site_keywords,
-					"tagline"            : allSettings.cb_site_tagline,
-					"domainRegex"        : "127\.0\.0\.1",
-					"isBlogEnabled"      : allSettings.cb_site_disable_blog ? 0 : 1,
-					"isSitemapEnabled"   : allSettings.cb_site_sitemap ? 1 : 0,
-					"poweredByHeader"    : allSettings.cb_site_poweredby ? 1 : 0,
-					"adminBar"           : allSettings.cb_site_adminbar ? 1 : 0,
-					"isSSL"              : allSettings.cb_admin_ssl ? 1 : 0,
-					"activeTheme"        : allSettings.cb_site_theme,
-					"domain"             : "127.0.0.1",
-					"notificationEmails" : allSettings.cb_site_email
+					"siteID"            : initialSiteIdentifier,
+					"createdDate"       : today,
+					"modifiedDate"      : today,
+					"isDeleted"         : 0,
+					"isActive"          : 1,
+					"name"              : allSettings.cb_site_name,
+					"slug"              : "default",
+					"homepage"          : allSettings.cb_site_homepage,
+					"description"       : allSettings.cb_site_description,
+					"keywords"          : allSettings.cb_site_keywords,
+					"tagline"           : allSettings.cb_site_tagline,
+					"domainRegex"       : "127\.0\.0\.1",
+					"isBlogEnabled"     : allSettings.cb_site_disable_blog ? 0 : 1,
+					"isSitemapEnabled"  : allSettings.cb_site_sitemap ? 1 : 0,
+					"poweredByHeader"   : allSettings.cb_site_poweredby ? 1 : 0,
+					"adminBar"          : allSettings.cb_site_adminbar ? 1 : 0,
+					"isSSL"             : allSettings.cb_admin_ssl ? 1 : 0,
+					"activeTheme"       : allSettings.cb_site_theme,
+					"domain"            : "127.0.0.1",
+					"notificationEmails": allSettings.cb_site_email
 				}
 			);
 		systemOutput( "√ - Default site created", true );
@@ -1171,7 +1171,7 @@ component {
 			.newQuery()
 			.from( "cb_setting" )
 			.whereIn( "name", siteSettings )
-			.update( { "FK_siteID" : initialSiteIdentifier } );
+			.update( { "FK_siteID": initialSiteIdentifier } );
 
 		return initialSiteIdentifier;
 	}

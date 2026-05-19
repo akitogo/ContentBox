@@ -38,8 +38,8 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.post(
 												"/cbapi/v1/login",
 												{
-													username : variables.testAdminUsername,
-													password : variables.testAdminPassword
+													username: variables.testAdminUsername,
+													password: variables.testAdminPassword
 												}
 											);
 										var response = event.getPrivateValue( "Response" );
@@ -70,7 +70,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"/cbapi/v1/login",
-												{ username : "invalid", password : "invalid" }
+												{ username: "invalid", password: "invalid" }
 											);
 										var response = event.getPrivateValue( "Response" );
 										expect( response.getError() ).toBeTrue();
@@ -99,7 +99,7 @@ component extends="tests.resources.BaseApiTest" {
 										// Now Logout
 										var event = post(
 											"/cbapi/v1/logout",
-											{ "x-auth-token" : token.access_token }
+											{ "x-auth-token": token.access_token }
 										);
 										var response = event.getPrivateValue( "Response" );
 										expect( response.getError() ).toBeFalse( response.getMessagesString() );
@@ -116,7 +116,7 @@ component extends="tests.resources.BaseApiTest" {
 									"I should see an error message",
 									() => {
 										// Now Logout
-										var event = post( "/cbapi/v1/logout", { "x-auth-token" : "123" } );
+										var event = post( "/cbapi/v1/logout", { "x-auth-token": "123" } );
 										var response = event.getPrivateValue( "Response" );
 										expect( response.getError() ).toBeTrue( response.getMessagesString() );
 										expect( response.getStatusCode() ).toBe( 401 );
@@ -141,7 +141,7 @@ component extends="tests.resources.BaseApiTest" {
 										var payload = jwt.decode( tokens.access_token );
 										var event = GET(
 											"/cbapi/v1/whoami",
-											{ "x-auth-token" : tokens.access_token }
+											{ "x-auth-token": tokens.access_token }
 										);
 										expect( event.getResponse() ).toHaveStatus( 200,
 												event
@@ -160,7 +160,7 @@ component extends="tests.resources.BaseApiTest" {
 									"I should get an error",
 									() => {
 										// Now Logout
-										var event = GET( "/cbapi/v1/whoami", { "x-auth-token" : "123" } );
+										var event = GET( "/cbapi/v1/whoami", { "x-auth-token": "123" } );
 										expect( event.getResponse() ).toHaveStatus( 401,
 												event
 													.getResponse()
@@ -185,7 +185,7 @@ component extends="tests.resources.BaseApiTest" {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/forgotPassword",
-											{ "email" : variables.testAdminUsername }
+											{ "email": variables.testAdminUsername }
 										);
 										expect( event.getResponse() ).toHaveStatus( 200 );
 									}
@@ -201,7 +201,7 @@ component extends="tests.resources.BaseApiTest" {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/forgotPassword",
-											{ "email" : "bogus@bogus.com" }
+											{ "email": "bogus@bogus.com" }
 										);
 										expect( event.getResponse() ).toHaveStatus( 404 );
 									}
@@ -223,7 +223,7 @@ component extends="tests.resources.BaseApiTest" {
 										var testUser = getInstance( "UserService" ).retrieveUserByUsername( variables.testAdminUsername );
 										var token = securityService.generatePasswordResetToken( testUser );
 										// Now Logout
-										var event = POST( "/cbapi/v1/verifyPasswordReset", { "token" : token } );
+										var event = POST( "/cbapi/v1/verifyPasswordReset", { "token": token } );
 										expect( event.getResponse() ).toHaveStatus( 200 );
 										expect( event.getResponse().getData() ).toBeTrue();
 									}
@@ -239,7 +239,7 @@ component extends="tests.resources.BaseApiTest" {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/verifyPasswordReset",
-											{ "token" : "12312312sadfasd4" }
+											{ "token": "12312312sadfasd4" }
 										);
 										expect( event.getResponse() ).toHaveStatus( 406 );
 										expect( event.getResponse().getData() ).toBeFalse();
@@ -270,9 +270,9 @@ component extends="tests.resources.BaseApiTest" {
 										var event = POST(
 											"/cbapi/v1/resetPassword",
 											{
-												"token"                : testResetToken,
-												"password"             : "testing123",
-												"passwordConfirmation" : "testing123"
+												"token"               : testResetToken,
+												"password"            : "testing123",
+												"passwordConfirmation": "testing123"
 											}
 										);
 										expect( event.getResponse() ).toHaveStatus( 200 );
@@ -291,9 +291,9 @@ component extends="tests.resources.BaseApiTest" {
 										var event = POST(
 											"/cbapi/v1/resetPassword",
 											{
-												"token"                : testResetToken,
-												"password"             : "12345678abc$dd",
-												"passwordConfirmation" : "12344"
+												"token"               : testResetToken,
+												"password"            : "12345678abc$dd",
+												"passwordConfirmation": "12344"
 											}
 										);
 										expect( event.getResponse() ).toHaveStatus( 400 );
@@ -311,7 +311,7 @@ component extends="tests.resources.BaseApiTest" {
 										// Now Logout
 										var event = POST(
 											"/cbapi/v1/resetPassword",
-											{ "token" : "12312312sadfasd4" }
+											{ "token": "12312312sadfasd4" }
 										);
 										expect( event.getResponse() ).toHaveStatus( 500 );
 									}

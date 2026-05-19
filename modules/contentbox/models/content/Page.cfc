@@ -67,9 +67,9 @@ component
 	 * **							CONSTRAINTS
 	 **********************************************************************/
 
-	this.constraints[ "layout" ] = { required : false, size : "1..200" };
-	this.constraints[ "order" ] = { required : true, type : "numeric" };
-	this.constraints[ "showInMenu" ] = { required : false, type : "boolean" };
+	this.constraints[ "layout" ] = { required: false, size: "1..200" };
+	this.constraints[ "order" ] = { required: true, type: "numeric" };
+	this.constraints[ "showInMenu" ] = { required: false, type: "boolean" };
 
 	/**********************************************************************
 	 * **							CONSTRUCTOR
@@ -126,7 +126,7 @@ component
 					// announce renderings with data, so content renderers can process them
 					variables.interceptorService.announce(
 							"cb_onContentRendering",
-							{ builder : builder, content : this }
+							{ builder: builder, content: this }
 						);
 					// store processed content
 					variables.renderedExcerpt = builder.toString();

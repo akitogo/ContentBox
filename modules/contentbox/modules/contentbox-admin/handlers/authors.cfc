@@ -105,7 +105,7 @@ component extends="baseHandler" {
 					issuer      = prc.oCurrentAuthor
 				);
 			// announce individual event
-			announce( "cbadmin_onPasswordReset", { author : thisAuthor } );
+			announce( "cbadmin_onPasswordReset", { author: thisAuthor } );
 		}
 
 		// Bulk Save
@@ -262,7 +262,7 @@ component extends="baseHandler" {
 					issuer      = prc.oCurrentAuthor
 				);
 			// announce event
-			announce( "cbadmin_onPasswordReset", { author : oAuthor } );
+			announce( "cbadmin_onPasswordReset", { author: oAuthor } );
 			cbMessagebox().info(
 					"Author marked for password reset upon login and email notification sent!"
 				);
@@ -310,9 +310,9 @@ component extends="baseHandler" {
 		// Get new author with defaults
 		var oAuthor = authorService.new(
 				{
-					isActive        : true,
-					isPasswordReset : true,
-					password        : hash( createUUID() & now() )
+					isActive       : true,
+					isPasswordReset: true,
+					password       : hash( createUUID() & now() )
 				}
 			);
 
@@ -337,11 +337,11 @@ component extends="baseHandler" {
 		var vResults = validate( target = oAuthor, excludes = "password" );
 		if ( !vResults.hasErrors() ) {
 			// announce event
-			announce( "cbadmin_preNewAuthorSave", { author : oAuthor } );
+			announce( "cbadmin_preNewAuthorSave", { author: oAuthor } );
 			// save author
 			authorService.createNewAuthor( oAuthor );
 			// announce event
-			announce( "cbadmin_postNewAuthorSave", { author : oAuthor } );
+			announce( "cbadmin_postNewAuthorSave", { author: oAuthor } );
 			// message
 			cbMessagebox().setMessage( "info", "New Author Created and Notified!" );
 			// relocate
@@ -392,11 +392,11 @@ component extends="baseHandler" {
 		if ( prc.author.isLoaded() ) {
 			// Preferences Viewlet
 			var args = {
-				authorID   : rc.authorID,
-				sorting    : false,
-				max        : 5,
-				pagination : false,
-				latest     : true
+				authorID  : rc.authorID,
+				sorting   : false,
+				max       : 5,
+				pagination: false,
+				latest    : true
 			};
 			prc.preferencesViewlet = listPreferences(
 				event,
@@ -408,9 +408,9 @@ component extends="baseHandler" {
 			prc.latestEditsViewlet = runEvent(
 				event          = "contentbox-admin:content.latestContentEdits",
 				eventArguments = {
-					author     : prc.author,
-					showHits   : false,
-					showAuthor : false
+					author    : prc.author,
+					showHits  : false,
+					showAuthor: false
 				}
 			);
 
@@ -418,12 +418,12 @@ component extends="baseHandler" {
 			prc.latestDraftsViewlet = runEvent(
 				event          = "contentbox-admin:content.latestContentEdits",
 				eventArguments = {
-					author              : prc.author,
-					isPublished         : false,
-					showHits            : false,
-					colorCodings        : false,
-					showPublishedStatus : false,
-					showAuthor          : false
+					author             : prc.author,
+					isPublished        : false,
+					showHits           : false,
+					colorCodings       : false,
+					showPublishedStatus: false,
+					showAuthor         : false
 				}
 			);
 		}
@@ -445,7 +445,7 @@ component extends="baseHandler" {
 	 * change user editor preferences
 	 */
 	function changeEditor( event, rc, prc ) {
-		var results = { "ERROR" : false, "MESSAGES" : "" };
+		var results = { "ERROR": false, "MESSAGES": "" };
 		try {
 			// store the new author preference
 			prc.oCurrentAuthor.setPreference( name = "editor", value = rc.editor );
@@ -476,7 +476,7 @@ component extends="baseHandler" {
 			// save Author preference
 			variables.authorService.save( prc.oCurrentAuthor );
 			// response
-			response.setData( { "preference" : rc.preference, "value" : rc.value } ).addMessage( "Preference saved!" );
+			response.setData( { "preference": rc.preference, "value": rc.value } ).addMessage( "Preference saved!" );
 		} else {
 			response.setErrorMessage(
 					"No preference sent",
@@ -510,14 +510,14 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preAuthorPreferencesSave",
-			{ author : oAuthor, preferences : newPreferences }
+			{ author: oAuthor, preferences: newPreferences }
 		);
 		// save Author
 		variables.authorService.save( oAuthor );
 		// announce event
 		announce(
 			"cbadmin_postAuthorPreferencesSave",
-			{ author : oAuthor, preferences : newPreferences }
+			{ author: oAuthor, preferences: newPreferences }
 		);
 		// message
 		cbMessagebox().setMessage( "info", "Author Preferences Saved!" );
@@ -536,7 +536,7 @@ component extends="baseHandler" {
 		// Validate raw preferences
 		var vResult = validate(
 			target      = rc,
-			constraints = { preferences : { required : true, type : "json" } }
+			constraints = { preferences: { required: true, type: "json" } }
 		);
 		if ( !vResult.hasErrors() ) {
 			// store preferences
@@ -544,14 +544,14 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_preAuthorPreferencesSave",
-				{ author : oAuthor, preferences : rc.preferences }
+				{ author: oAuthor, preferences: rc.preferences }
 			);
 			// save Author
 			variables.authorService.save( oAuthor );
 			// announce event
 			announce(
 				"cbadmin_postAuthorPreferencesSave",
-				{ author : oAuthor, preferences : rc.preferences }
+				{ author: oAuthor, preferences: rc.preferences }
 			);
 			// message
 			cbMessagebox().setMessage( "info", "Author Preferences Saved!" );
@@ -597,9 +597,9 @@ component extends="baseHandler" {
 			announce(
 				"cbadmin_preAuthorSave",
 				{
-					author   : oAuthor,
-					authorID : rc.authorID,
-					isNew    : newAuthor
+					author  : oAuthor,
+					authorID: rc.authorID,
+					isNew   : newAuthor
 				}
 			);
 			// save Author
@@ -607,7 +607,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_postAuthorSave",
-				{ author : oAuthor, isNew : newAuthor }
+				{ author: oAuthor, isNew: newAuthor }
 			);
 			// message
 			cbMessagebox().setMessage( "info", "Author saved!" );
@@ -645,7 +645,7 @@ component extends="baseHandler" {
 			// announce event
 			announce(
 				"cbadmin_onAuthorPasswordChange",
-				{ author : oAuthor, password : rc.password }
+				{ author: oAuthor, password: rc.password }
 			);
 			// message
 			cbMessagebox().info( "Password Updated!" );
@@ -676,14 +676,14 @@ component extends="baseHandler" {
 		// announce event
 		announce(
 			"cbadmin_preAuthorRemove",
-			{ author : oAuthor, authorID : rc.targetAuthorID }
+			{ author: oAuthor, authorID: rc.targetAuthorID }
 		);
 		// remove
 		variables.authorService.delete( oAuthor );
 		// announce event
 		announce(
 			"cbadmin_postAuthorRemove",
-			{ authorID : rc.targetAuthorID }
+			{ authorID: rc.targetAuthorID }
 		);
 		// message
 		cbMessagebox().setMessage( "info", "Author Removed!" );

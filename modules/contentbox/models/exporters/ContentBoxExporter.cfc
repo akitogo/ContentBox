@@ -65,121 +65,121 @@ component accessors="#true#" {
 		var customPath = variables.moduleSettings[ "contentbox-custom" ].path;
 
 		variables.dataServiceMappings = {
-			"authors" : {
-				fileName    : "authors",
-				service     : "authorService",
-				displayName : "Authors",
-				priority    : 3
+			"authors": {
+				fileName   : "authors",
+				service    : "authorService",
+				displayName: "Authors",
+				priority   : 3
 			},
-			"categories" : {
-				fileName    : "categories",
-				service     : "categoryService",
-				displayName : "Categories",
-				priority    : 1
+			"categories": {
+				fileName   : "categories",
+				service    : "categoryService",
+				displayName: "Categories",
+				priority   : 1
 			},
-			"contentstore" : {
-				fileName    : "contentstore",
-				service     : "contentStoreService",
-				displayName : "Content Store",
-				priority    : 4
+			"contentstore": {
+				fileName   : "contentstore",
+				service    : "contentStoreService",
+				displayName: "Content Store",
+				priority   : 4
 			},
-			"entries" : {
-				fileName    : "entries",
-				service     : "entryService",
-				displayName : "Entries",
-				priority    : 4
+			"entries": {
+				fileName   : "entries",
+				service    : "entryService",
+				displayName: "Entries",
+				priority   : 4
 			},
-			"menus" : {
-				fileName    : "menus",
-				service     : "menuService",
-				displayName : "Menus",
-				priority    : 5
+			"menus": {
+				fileName   : "menus",
+				service    : "menuService",
+				displayName: "Menus",
+				priority   : 5
 			},
-			"pages" : {
-				fileName    : "pages",
-				service     : "pageService",
-				displayName : "Pages",
-				priority    : 4
+			"pages": {
+				fileName   : "pages",
+				service    : "pageService",
+				displayName: "Pages",
+				priority   : 4
 			},
-			"permissions" : {
-				fileName    : "permissions",
-				service     : "permissionService",
-				displayName : "Permissions",
-				priority    : 1
+			"permissions": {
+				fileName   : "permissions",
+				service    : "permissionService",
+				displayName: "Permissions",
+				priority   : 1
 			},
-			"permissionGroups" : {
-				fileName    : "permissionGroups",
-				service     : "permissionGroupService",
-				displayName : "Permission Groups",
-				priority    : 2
+			"permissionGroups": {
+				fileName   : "permissionGroups",
+				service    : "permissionGroupService",
+				displayName: "Permission Groups",
+				priority   : 2
 			},
-			"roles" : {
-				fileName    : "roles",
-				service     : "roleService",
-				displayName : "Roles",
-				priority    : 2
+			"roles": {
+				fileName   : "roles",
+				service    : "roleService",
+				displayName: "Roles",
+				priority   : 2
 			},
-			"securityrules" : {
-				fileName    : "securityrules",
-				service     : "securityRuleService",
-				displayName : "Security Rules",
-				priority    : 1
+			"securityrules": {
+				fileName   : "securityrules",
+				service    : "securityRuleService",
+				displayName: "Security Rules",
+				priority   : 1
 			},
-			"settings" : {
-				fileName    : "settings",
-				service     : "settingService",
-				displayName : "Settings",
-				priority    : 1
+			"settings": {
+				fileName   : "settings",
+				service    : "settingService",
+				displayName: "Settings",
+				priority   : 1
 			},
-			"sites" : {
-				fileName    : "site",
-				service     : "siteService",
-				displayName : "Site",
-				priority    : 1
+			"sites": {
+				fileName   : "site",
+				service    : "siteService",
+				displayName: "Site",
+				priority   : 1
 			}
 		};
 
 		variables.filePathMappings = {
-			"emailtemplates" : {
-				fileName    : "emailtemplates",
-				displayName : "Email Templates",
-				directory   : contentBoxPath & "/email_templates",
-				type        : "template",
-				extension   : "",
-				priority    : 1
+			"emailtemplates": {
+				fileName   : "emailtemplates",
+				displayName: "Email Templates",
+				directory  : contentBoxPath & "/email_templates",
+				type       : "template",
+				extension  : "",
+				priority   : 1
 			},
-			"medialibrary" : {
-				fileName     : "medialibrary",
-				displayName  : "Media Library",
-				directory    : expandPath( variables.settingService.getSetting( "cb_media_directoryRoot" ) ),
-				includeFiles : "*",
-				type         : "folder",
-				extension    : "",
-				priority     : 1
-			},
-			"modules" : {
-				fileName    : "modules",
-				displayName : "Modules",
-				directory   : customPath & "/_modules",
+			"medialibrary": {
+				fileName    : "medialibrary",
+				displayName : "Media Library",
+				directory   : expandPath( variables.settingService.getSetting( "cb_media_directoryRoot" ) ),
+				includeFiles: "*",
 				type        : "folder",
 				extension   : "",
 				priority    : 1
 			},
-			"themes" : {
-				fileName    : "themes",
-				displayName : "Themes",
-				directory   : customPath & "/_themes",
-				type        : "folder",
-				extension   : "",
-				priority    : 1
+			"modules": {
+				fileName   : "modules",
+				displayName: "Modules",
+				directory  : customPath & "/_modules",
+				type       : "folder",
+				extension  : "",
+				priority   : 1
 			},
-			"widgets" : {
-				fileName    : "widgets",
-				displayName : "Widgets",
-				directory   : customPath & "/_widgets",
-				type        : "component",
-				extension   : ".cfc",
-				priority    : 1
+			"themes": {
+				fileName   : "themes",
+				displayName: "Themes",
+				directory  : customPath & "/_themes",
+				type       : "folder",
+				extension  : "",
+				priority   : 1
+			},
+			"widgets": {
+				fileName   : "widgets",
+				displayName: "Widgets",
+				directory  : customPath & "/_widgets",
+				type       : "component",
+				extension  : ".cfc",
+				priority   : 1
 			}
 		};
 	}
@@ -349,7 +349,7 @@ component accessors="#true#" {
 		var flattendExportLog = exportLog.toString();
 		log.info( flattendExportLog );
 
-		return { "exportfile" : exportFile, exportlog : flattendExportLog };
+		return { "exportfile": exportFile, exportlog: flattendExportLog };
 	}
 
 	/**
@@ -364,14 +364,14 @@ component accessors="#true#" {
 		var isFile = structKeyExists( variables.filePathMappings, arguments.key );
 		if ( isData ) {
 			return {
-				"type" : "data",
-				"def"  : variables.dataServiceMappings[ arguments.key ]
+				"type": "data",
+				"def" : variables.dataServiceMappings[ arguments.key ]
 			};
 		}
 		if ( isFile ) {
 			return {
-				"type" : "file",
-				"def"  : variables.filePathMappings[ arguments.key ]
+				"type": "file",
+				"def" : variables.filePathMappings[ arguments.key ]
 			};
 		}
 		return {};
@@ -396,11 +396,11 @@ component accessors="#true#" {
 		// add dynamic content
 		for ( var exporter in variables.exporters ) {
 			descriptor[ "content" ][ exporter.getFileName() ] = {
-				"total"    : exporter.getTotal(),
-				"name"     : exporter.getDisplayName(),
-				"format"   : exporter.getFormat(),
-				"filename" : exporter.getFileName() & "." & exporter.getFormat(),
-				"priority" : exporter.getPriority()
+				"total"   : exporter.getTotal(),
+				"name"    : exporter.getDisplayName(),
+				"format"  : exporter.getFormat(),
+				"filename": exporter.getFileName() & "." & exporter.getFormat(),
+				"priority": exporter.getPriority()
 			};
 		}
 		setDescriptor( descriptor );

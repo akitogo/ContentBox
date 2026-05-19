@@ -122,8 +122,8 @@
 			.from( "cb_rolePermissions" )
 			.insert(
 				{
-					"FK_roleID"       : arguments.roleId,
-					"FK_permissionID" : permissionId
+					"FK_roleID"      : arguments.roleId,
+					"FK_permissionID": permissionId
 				}
 			);
 	}

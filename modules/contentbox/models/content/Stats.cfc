@@ -50,9 +50,9 @@ component
 
 	this.pk = "statsID";
 
-	this.memento = { defaultIncludes : [ "hits"], defaultExcludes : [ ""] };
+	this.memento = { defaultIncludes: [ "hits"], defaultExcludes: [ ""] };
 
-	this.constraints = { "hits" : { required : false, type : "numeric" } };
+	this.constraints = { "hits": { required: false, type: "numeric" } };
 
 	function init() {
 		super.init();

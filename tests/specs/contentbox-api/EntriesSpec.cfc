@@ -45,7 +45,7 @@ component extends="tests.resources.BaseApiTest" {
 									"then I should get the requested entry",
 									() => {
 										var testContent = variables.entryService.findWhere( {
-													slug : "disk-queues-77caf"
+													slug: "disk-queues-77caf"
 												} );
 										var event = this.get(
 												"/cbapi/v1/sites/default/entries/#testContent.getContentID()#"
@@ -157,20 +157,20 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.post(
 														"cbapi/v1/sites/default/entries",
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															excerpt       : "bdd rules!",
-															content       : "This is my awesome bdd test entry",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															excerpt      : "bdd rules!",
+															content      : "This is my awesome bdd test entry",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog    : "My first creation from the bdd test",
-															categories   : "coldbox,news",
-															customFields : [
-																{ key : "test", value : "true" },
-																{ key : "data", value : "#now()#" }
+															changelog   : "My first creation from the bdd test",
+															categories  : "coldbox,news",
+															customFields: [
+																{ key: "test", value: "true" },
+																{ key: "data", value: "#now()#" }
 															]
 														}
 													);
@@ -197,10 +197,10 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
 												{
-													title   : "disk-queues-77caf",
-													slug    : "disk-queues-77caf",
-													content : "disk-queues-77caf are here",
-													order   : 10
+													title  : "disk-queues-77caf",
+													slug   : "disk-queues-77caf",
+													content: "disk-queues-77caf are here",
+													order  : 10
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -218,7 +218,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
-												{ slug : "A nice site" }
+												{ slug: "A nice site" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -237,7 +237,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.post(
 												"cbapi/v1/sites/default/entries",
-												{ content : "Hello from bdd test land!" }
+												{ content: "Hello from bdd test land!" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
@@ -265,8 +265,8 @@ component extends="tests.resources.BaseApiTest" {
 												var event = this.put(
 														"/cbapi/v1/sites/default/entries/disk-queues-77caf",
 														{
-															content   : "I am a new piece of content for the disk-queues-77caf!",
-															changelog : "Update from a bdd test!"
+															content  : "I am a new piece of content for the disk-queues-77caf!",
+															changelog: "Update from a bdd test!"
 														}
 													);
 												expect( event.getResponse() ).toHaveStatus( 200,
@@ -288,9 +288,9 @@ component extends="tests.resources.BaseApiTest" {
 										var event = this.put(
 												"cbapi/v1/sites/default/entries/disk-queues-77caf",
 												{
-													title   : "this-is-just-awesome",
-													slug    : "this-is-just-awesome",
-													content : "disk-queues-77caf are here"
+													title  : "this-is-just-awesome",
+													slug   : "this-is-just-awesome",
+													content: "disk-queues-77caf are here"
 												}
 											);
 										expect( event.getResponse() ).toHaveStatus( 400,
@@ -308,7 +308,7 @@ component extends="tests.resources.BaseApiTest" {
 									() => {
 										var event = this.put(
 												"/cbapi/v1/sites/default/entries/bogusbaby",
-												{ content : "bogus" }
+												{ content: "bogus" }
 											);
 										expect( event.getResponse() ).toHaveStatus( 404,
 												event.getResponse().getMessagesString() );
@@ -331,17 +331,17 @@ component extends="tests.resources.BaseApiTest" {
 										var testContent = variables.entryService.save(
 												variables.entryService.new(
 														{
-															title         : "bddtest",
-															slug          : "bddtest",
-															content       : "This is my awesome bdd test entry",
-															publishedDate : dateTimeFormat(
+															title        : "bddtest",
+															slug         : "bddtest",
+															content      : "This is my awesome bdd test entry",
+															publishedDate: dateTimeFormat(
 																now(),
 																"yyyy-mm-dd'T'HH:mm:ssZ",
 																"UTC"
 															),
-															changelog : "My first creation from the bdd test",
-															site      : variables.siteService.getDefaultSite(),
-															creator   : variables.loggedInData.user
+															changelog: "My first creation from the bdd test",
+															site     : variables.siteService.getDefaultSite(),
+															creator  : variables.loggedInData.user
 														}
 													)
 											);

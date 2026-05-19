@@ -3,7 +3,7 @@
 	<cfif !len( local.topMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.topMenu.permissions )>
 		
 <li #buildLIAttributes( event, local.topMenu )#>
-		<cfset itemDefaults = { "class" : "dropdown-toggle" }>
+		<cfset itemDefaults = { "class": "dropdown-toggle" }>
 		
 <#local.topMenu.itemType# #buildItemAttributes(
 			event,
@@ -39,8 +39,10 @@
 			
 			
 			
+			
 
                 </ul>
+
 
 
 
@@ -50,7 +52,9 @@
 		
 		
 		
+		
         </li>
+
 
 
 

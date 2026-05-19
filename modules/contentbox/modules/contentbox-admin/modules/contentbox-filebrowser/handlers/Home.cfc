@@ -180,7 +180,7 @@ component extends="cbadmin.handlers.baseHandler" {
 				( file ) => rc.verbose ? prc.activeDisk.info( file ) : file
 			);
 
-		var iData = { directory : prc.fbCurrentRoot, listing : prc.fbListing };
+		var iData = { directory: prc.fbCurrentRoot, listing: prc.fbListing };
 
 		announce( "fb_postDirectoryRead", iData );
 
@@ -191,7 +191,7 @@ component extends="cbadmin.handlers.baseHandler" {
 	 * Creates folders asynchrounsly return json information:
 	 */
 	function createfolder( event, rc, prc ) {
-		var data = { errors : false, messages : "" };
+		var data = { errors: false, messages: "" };
 
 		// param value
 		event.paramValue( "path", "" );
@@ -218,7 +218,7 @@ component extends="cbadmin.handlers.baseHandler" {
 		// creation
 		try {
 			// Announce it
-			var iData = { path : rc.path, directoryName : rc.dName };
+			var iData = { path: rc.path, directoryName: rc.dName };
 			announce( "fb_preFolderCreation", iData );
 			prc.activeDisk.createDirectory( rc.path & "/" & rc.dName );
 			data.errors = false;
@@ -244,7 +244,7 @@ component extends="cbadmin.handlers.baseHandler" {
 	 * Removes folders + files asynchrounsly return json information:
 	 */
 	function remove( event, rc, prc ) {
-		var data = { errors : false, messages : "" };
+		var data = { errors: false, messages: "" };
 		// param value
 		event.paramValue( "path", "" );
 
@@ -269,7 +269,7 @@ component extends="cbadmin.handlers.baseHandler" {
 			// removal
 			try {
 				// Announce it
-				var iData = { path : thisFile };
+				var iData = { path: thisFile };
 				announce( "fb_preFileRemoval", iData );
 
 				prc.activeDisk.exists( thisFile );
@@ -302,7 +302,7 @@ component extends="cbadmin.handlers.baseHandler" {
 	 * download file
 	 */
 	function download( event, rc, prc ) {
-		var data = { errors : false, messages : "" };
+		var data = { errors: false, messages: "" };
 		// param value
 		event.paramValue( "path", "" );
 
@@ -339,7 +339,7 @@ component extends="cbadmin.handlers.baseHandler" {
 		try {
 			// Announce it
 			// clean incoming path and names
-			var iData = { path : rc.path };
+			var iData = { path: rc.path };
 			announce( "fb_preFileDownload", iData );
 
 			if ( rc.pathsArray.len() > 1 ) {
@@ -369,7 +369,7 @@ component extends="cbadmin.handlers.baseHandler" {
 	 * rename
 	 */
 	function rename( event, rc, prc ) {
-		var data = { errors : false, messages : "" };
+		var data = { errors: false, messages: "" };
 		// param value
 		event.paramValue( "path", "" );
 		event.paramValue( "name", "" );
@@ -387,7 +387,7 @@ component extends="cbadmin.handlers.baseHandler" {
 		// rename
 		try {
 			// Announce it
-			var iData = { original : rc.path, newName : rc.name };
+			var iData = { original: rc.path, newName: rc.name };
 			announce( "fb_preFileRename", iData );
 			if ( prc.activeDisk.isFile( rc.path ) ) {
 				prc.activeDisk.move( rc.path, getDirectoryFromPath( rc.path ) & rc.name );
@@ -416,7 +416,7 @@ component extends="cbadmin.handlers.baseHandler" {
 	 */
 	function upload( event, rc, prc ) {
 		// setup results
-		var data = { "errors" : false, "messages" : "" };
+		var data = { "errors": false, "messages": "" };
 		// param values
 		event.paramValue( "path", "" ).paramValue( "manual", false );
 
@@ -434,7 +434,7 @@ component extends="cbadmin.handlers.baseHandler" {
 		// upload
 		try {
 			// Announce it
-			var iData = { fileField : "FILEDATA", path : rc.path };
+			var iData = { fileField: "FILEDATA", path: rc.path };
 			announce( "fb_preFileUpload", iData );
 
 			// We have to perform this in two separate actions until https://github.com/coldbox-modules/cbfs/issues/21 is implemented
@@ -478,7 +478,7 @@ component extends="cbadmin.handlers.baseHandler" {
 			log.error( data.messages, e );
 
 			// Announce exception
-			var iData = { fileField : "FILEDATA", path : rc.path, exception : e };
+			var iData = { fileField: "FILEDATA", path: rc.path, exception: e };
 			announce( "fb_onFileUploadError", iData );
 		}
 		// Manual uploader?
@@ -577,7 +577,7 @@ component extends="cbadmin.handlers.baseHandler" {
 
 		// not found or not JSON setup defaults
 		if ( !len( prefs ) || !isJSON( prefs ) ) {
-			prefs = { sorting : "name", listType : "listing" };
+			prefs = { sorting: "name", listType: "listing" };
 			cookieStorage.set( "fileBrowserPrefs", serializeJSON( prefs ) );
 		} else {
 			prefs = deserializeJSON( prefs );
@@ -685,10 +685,10 @@ component extends="cbadmin.handlers.baseHandler" {
 
 		if ( !flash.exists( "filebrowser" ) ) {
 			var filebrowser = {
-				callback       : rc.callback,
-				cancelCallback : rc.cancelCallback,
-				filterType     : rc.filterType,
-				settings       : prc.fbsettings
+				callback      : rc.callback,
+				cancelCallback: rc.cancelCallback,
+				filterType    : rc.filterType,
+				settings      : prc.fbsettings
 			};
 			flash.put(
 					name      = "filebrowser",

@@ -44,8 +44,8 @@ component extends="baseHandler" {
 			.response
 			.setData(
 				{
-					"tokens" : prc.tokens,
-					"author" : prc.oCurrentAuthor.getMemento(
+					"tokens": prc.tokens,
+					"author": prc.oCurrentAuthor.getMemento(
 							includes       = rc.includes,
 							excludes       = rc.excludes,
 							ignoreDefaults = rc.ignoreDefaults

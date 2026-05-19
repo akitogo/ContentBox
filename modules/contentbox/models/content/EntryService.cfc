@@ -67,7 +67,7 @@ component extends="ContentService" singleton {
 		string siteId               = "",
 		string propertyList
 	) {
-		var results = { "count" : 0, "entries" : [] };
+		var results = { "count": 0, "entries": [] };
 		// criteria queries
 		var c = newCriteria();
 		// stub out activeContent alias based on potential conditions...
@@ -176,7 +176,7 @@ component extends="ContentService" singleton {
 		// run report
 		return executeQuery(
 			query  = hql,
-			params = { "isPublished" : true, "now" : now() }
+			params = { "isPublished": true, "now": now() }
 		);
 	}
 
@@ -207,7 +207,7 @@ component extends="ContentService" singleton {
 				  WHERE isPublished = :isPublished
 				    AND passwordProtection = ''
 				    AND publishedDate <= :now";
-		var params = { "isPublished" : true };
+		var params = { "isPublished": true };
 		params[ "now" ] = now();
 
 		// Site
@@ -263,7 +263,7 @@ component extends="ContentService" singleton {
 	 * @site The site to get the export from
 	 */
 	array function getAllForExport( required site ) {
-		return super.getAllForExport( findAllWhere( { site : arguments.site } ) );
+		return super.getAllForExport( findAllWhere( { site: arguments.site } ) );
 	}
 
 }

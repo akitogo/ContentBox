@@ -127,7 +127,7 @@ component
 	this.pk = "menuItemID";
 
 	this.memento = {
-		defaultIncludes : [
+		defaultIncludes: [
 			"active",
 			"data",
 			"itemClass",
@@ -136,14 +136,14 @@ component
 			"children",
 			"parentSnapshot:parent"
 		],
-		defaultExcludes : [ "menu", "parent"]
+		defaultExcludes: [ "menu", "parent"]
 	};
 
 	this.constraints = {
-		"title"     : { required : true, size : "1..200" },
-		"label"     : { required : false, size : "1..200" },
-		"itemClass" : { required : false, size : "1..200" },
-		"data"      : { required : false, size : "1..255" }
+		"title"    : { required: true, size: "1..200" },
+		"label"    : { required: false, size: "1..200" },
+		"itemClass": { required: false, size: "1..200" },
+		"data"     : { required: false, size: "1..255" }
 	};
 
 	/**********************************************************************
@@ -172,10 +172,10 @@ component
 	struct function getInfoSnapshot() {
 		if ( isLoaded() ) {
 			return {
-				"menuItemID" : getId(),
-				"title"      : getTitle(),
-				"active"     : getActive(),
-				"menuType"   : getMenuType()
+				"menuItemID": getId(),
+				"title"     : getTitle(),
+				"active"    : getActive(),
+				"menuType"  : getMenuType()
 			};
 		}
 		return {};
