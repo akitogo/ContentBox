@@ -4,7 +4,7 @@
 	output="false"
 	cache="false"
 >
-	<!--- ---------------------------------------- CONSTRUCTOR ---------------------------------------- --->   
+	<!--- ---------------------------------------- CONSTRUCTOR ---------------------------------------- --->
 
 	<cffunction name="init" access="public" returntype="ZipUtil" output="false">
 		<cfscript>
@@ -13,7 +13,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- configure --->   
+	<!--- configure --->
 	<cffunction name="configure" output="false" access="public" returntype="ZipUtil" hint="Configure for operation">
 		<cfscript>
 			// This plugin's properties
@@ -41,7 +41,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ---------------------------------------- PUBLIC ---------------------------------------- --->   
+	<!--- ---------------------------------------- PUBLIC ---------------------------------------- --->
 
 	<cffunction
 		name="AddFiles"
@@ -50,7 +50,7 @@
 		returntype="boolean"
 		hint="Add files to a new or an existing Zip file archive."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* Default variables */
 			var i = 0;
@@ -162,7 +162,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="DeleteFiles"
@@ -171,7 +171,7 @@
 		returntype="boolean"
 		hint="Delete files from an existing Zip file archive."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* NOTICE: There is no function in the Java API to delete entrys from a Zip file.
 			 * So we have to create a workaround for this function. At first we create
@@ -273,7 +273,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="Extract"
@@ -282,7 +282,7 @@
 		returntype="boolean"
 		hint="Extracts a specified Zip file into a specified directory."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* Default variables */
 			var l = 0;
@@ -417,7 +417,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="List"
@@ -426,7 +426,7 @@
 		returntype="query"
 		hint="List the content of a specified Zip file."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* Default variables */
 			var i = 0;
@@ -486,10 +486,10 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction name="gzipAddFile" access="public" output="no" returntype="boolean" hint="Create a new GZip file archive.">
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* Default variables */
 			var l = 0;
@@ -543,7 +543,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="gzipExtract"
@@ -552,7 +552,7 @@
 		returntype="boolean"
 		hint="Extracts a specified GZip file into a specified directory."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfscript>
 			/* Default variables */
 			var l = 0;
@@ -605,11 +605,11 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
-	<!--- ---------------------------------------- PRIVATE ---------------------------------------- --->   
+	<!--- ---------------------------------------- PRIVATE ---------------------------------------- --->
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="FilesList"
@@ -618,7 +618,7 @@
 		returntype="array"
 		hint="Create an array with the file names of specified directory."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfset var i = 0>
 		<cfset var n = 0>
 		<cfset var dir = "">
@@ -633,10 +633,12 @@
 			for ( i = 1; i LTE dir.recordcount; i = i + 1 ) {
 				path = pathFormat( arguments.directory & instance.slash & dir.name[ i ] );
 
-				/* Add file to array */
+				// Add file to array
 				if ( dir.type[ i ] EQ "file" && dir.name[ i ] NEQ instance.filename ) {
 					arrayAppend( array, path );
-				} else /* Get files from sub directorys and add them to the array */ if (
+				}
+				// Get files from sub directorys and add them to the array
+				else if (
 					dir.type[ i ] EQ "dir" && arguments.recurse EQ "yes"
 				) {
 					subdir = filesList(
@@ -656,7 +658,7 @@
 		</cfscript>
 	</cffunction>
 
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 
 	<cffunction
 		name="pathFormat"
@@ -665,7 +667,7 @@
 		returntype="string"
 		hint="Convert path into Windows or Unix format."
 	>
-		<!--- ************************************************************* --->   
+		<!--- ************************************************************* --->
 		<cfreturn replace(
 			arguments.path,
 			"\",
@@ -673,5 +675,5 @@
 			"all"
 		)>
 	</cffunction>
-	<!--- ************************************************************* --->   
+	<!--- ************************************************************* --->
 </cfcomponent>
