@@ -560,27 +560,6 @@ component extends="cborm.models.VirtualEntityService" singleton {
 					arguments.c.isEq( "parent.contentID", parent );
 				}
 			)
-			// only non-password pages
-
-			// Category Filter
-
-			// create association with categories by slug.
-
-			// Search Criteria
-
-			// like disjunctions
-
-			// Slug Search Criteria
-
-			// Site Filter
-
-			// Creator Filter
-
-			// Slug Prefix hierarchy search
-
-			// Parent Included Filter
-
-			// Parent Root when parent = ''
 			.when(
 				!isNull( arguments.parent ) && !len( arguments.parent ) && !hasSearchContext,
 				function( c ) {

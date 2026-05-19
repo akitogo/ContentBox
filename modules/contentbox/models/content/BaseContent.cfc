@@ -39,6 +39,10 @@ component
 		inject="provider:ContentTemplateService@contentbox"
 		persistent="false";
 	property
+		name="commentService"
+		inject="provider:commentService@contentbox"
+		persistent="false";
+	property
 		name="customFieldService"
 		inject="provider:customFieldService@contentbox"
 		persistent="false";
@@ -313,6 +317,7 @@ component
 		fieldtype="many-to-many"
 		type="array"
 		lazy="true"
+		batchsize="25"
 		orderby="category"
 		cascade="save-update"
 		cfc="contentbox.models.content.Category"
@@ -325,6 +330,7 @@ component
 		fieldtype="many-to-many"
 		type="array"
 		lazy="true"
+		batchsize="25"
 		orderby="title"
 		cascade="save-update"
 		cfc="contentbox.models.content.BaseContent"
@@ -337,6 +343,7 @@ component
 		fieldtype="many-to-many"
 		type="array"
 		lazy="true"
+		batchsize="25"
 		cascade="save-update"
 		inverse="true"
 		orderby="title"
@@ -660,14 +667,11 @@ component
 		if ( !isLoaded() ) {
 			return 0;
 		}
-		return variables
-			.comments
-			.filter(
-				function( comment ) {
-					return comment.getIsApproved();
-				}
-			)
-			.len();
+		return variables.commentService
+			.newCriteria()
+			.isEq( "relatedContent.contentID", getContentID() )
+			.isEq( "isApproved", javacast( "boolean", true ) )
+			.count();
 	}
 
 	/**
@@ -1109,8 +1113,13 @@ component
 				.first();
 			return activeContentStruct[ "content" ];
 		} else {
-			var activeVersions = getContentVersions().filter( ( version ) => version.getIsActive() );
-			return activeVersions.len() ? activeVersions.first() : variables.contentVersionService.new();
+			var activeVersion = variables.contentVersionService
+				.newCriteria()
+				.isEq( "relatedContent.contentID", getContentID() )
+				.isEq( "isActive", javacast( "boolean", true ) )
+				.order( "version", "desc" )
+				.list( max=1 );
+			return arrayLen( activeVersion ) ? activeVersion[ 1 ] : variables.contentVersionService.new();
 		}
 	}
 

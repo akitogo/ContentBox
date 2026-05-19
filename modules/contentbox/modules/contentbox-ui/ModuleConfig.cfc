@@ -27,10 +27,10 @@ component {
 	function configure() {
 		// PARENT APPLICATION ROUTING IF IN TAKE OVER MODE. YOU CAN CUSTOMIZE THIS IF YOU LIKE.
 		// THIS MEANS THAT IF YOU WANT TO EXECUTE PARENT EVENTS YOU NEED TO PREFIX THEM WITH '/parent'
-		parentSESPrefix = "/parent";
+		variables.parentSESPrefix = "/parent";
 
 		// CB UI SES Routing
-		routes = [
+		variables.routes = [
 			/************************************** COMMAND ROUTES *********************************************/
 			// search filter
 			{
@@ -146,7 +146,7 @@ component {
 
 		/************************************** BLOG ROUTES NAMESPACE *********************************************/
 
-		blogRoutes = [
+		variables.blogRoutes = [
 			// Blog Archives
 			{
 				pattern   : "/archives/:year-numeric{4}?/:month-numeric{1,2}?/:day-numeric{1,2}?",
