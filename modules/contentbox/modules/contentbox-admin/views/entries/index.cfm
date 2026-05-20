@@ -175,7 +175,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- entries container --->       
+					<!--- entries container --->        
     				<div id="contentTableContainer">
     					<p class="text-center"><i id="entryLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i></p>
     				</div>
@@ -219,7 +219,7 @@
 							</div>
 						</div>
 
-					    <!--- Creators --->       
+					    <!--- Creators --->        
 					    <div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
@@ -240,7 +240,7 @@
 							</select>
 						</div>
 
-						<!--- Categories --->       
+						<!--- Categories --->        
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
@@ -264,7 +264,7 @@
 					        </div>
 						</div>
 
-						<!--- Status --->       
+						<!--- Status --->        
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -286,7 +286,7 @@
 			</div>
 		</div>
 
-		<!--- Help Tips --->       
+		<!--- Help Tips --->        
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		        <h3 class="panel-title"><i class="fa fas fa-life-ring"></i> Help Tips</h3>

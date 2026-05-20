@@ -39,7 +39,7 @@
 		autocomplete = "off"
 	)#<i class="fa fa-key"></i>
 	</div>
-</div><!--- Show Rules --->       <div id="passwordRules" class="well well-sm" data-min-length="#prc.cbSettings.cb_security_min_password_length#">
+</div><!--- Show Rules --->        <div id="passwordRules" class="well well-sm" data-min-length="#prc.cbSettings.cb_security_min_password_length#">
 <span class="badge" id="pw_rule_lower">abc</span>
 <span class="badge" id="pw_rule_upper">ABC</span>
 <span class="badge" id="pw_rule_digit">123</span>

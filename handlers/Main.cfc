@@ -33,6 +33,7 @@ component {
 		// Grab Exception From request collection, placed by ColdBox
 		var exceptionBean = event.getValue( "ExceptionBean" );
 
+
 		// Place exception handler below:
 	}
 

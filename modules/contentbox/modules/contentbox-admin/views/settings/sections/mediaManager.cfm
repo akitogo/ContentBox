@@ -1,7 +1,7 @@
 <cfoutput>
 	#html.startForm( name = "mediaSettingsForm", action = prc.xehSaveSettings )#<fieldset>
 <legend><i class="fas fa-photo-video fa-lg"></i> Media Manager</legend>
-    <p>From here you can control the media manager settings.</p><!--- Location --->       <div class="form-group">#html.label(
+    <p>From here you can control the media manager settings.</p><!--- Location --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "",
 		content = "Directory Root: "
@@ -13,7 +13,7 @@
 		class    = "form-control",
 		title    = "The directory root of all your media files, make sure it is web accessible please"
 	)#</div>
-</div><!--- Media Providers --->       <div class="form-group">#html.label(
+</div><!--- Media Providers --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "",
 		content = "Media Providers: "
@@ -37,7 +37,7 @@
 	
             </div>
         </div>
-        <!--- Media Provider Caching --->       
+        <!--- Media Provider Caching --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -62,7 +62,7 @@
     <fieldset>
     <legend><i class="fa fa-cog fa-lg"></i> FileBrowser Options</legend>
 
-        <!--- Create Folders --->       
+        <!--- Create Folders --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -80,7 +80,7 @@
 	)#
             </div>
         </div>
-        <!--- Delete --->       
+        <!--- Delete --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -98,7 +98,7 @@
 	)#
             </div>
         </div>
-        <!--- Downloads --->       
+        <!--- Downloads --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -116,7 +116,7 @@
 	)#
             </div>
         </div>
-        <!--- Uploads --->       
+        <!--- Uploads --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -134,7 +134,7 @@
 	)#
             </div>
         </div>
-        <!--- Mime Types --->       
+        <!--- Mime Types --->        
         <div class="form-group">
             #html.label(
 		class   = "control-label",
@@ -184,7 +184,7 @@
 	)#
 
     </fieldset>
-	<!--- Button Bar --->       
+	<!--- Button Bar --->        
 	<div class="form-actions mt20">
 		#html.submitButton( value = "Save Settings", class = "btn btn-danger" )#
 	</div>

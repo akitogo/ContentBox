@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Count --->       <input type="hidden" name="rulesCount" id="rulesCount" value="#arrayLen( prc.rules )#"><!--- rules --->       <table
+	<!--- Count --->        <input type="hidden" name="rulesCount" id="rulesCount" value="#arrayLen( prc.rules )#"><!--- rules --->        <table
 name="rules"
 id="rules"
 class="table table-hover table-striped-removed "
@@ -17,12 +17,12 @@ width="100%">
 
 <tbody>
 	<cfloop array="#prc.rules#" index="rule">
-		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->       id="contentID-#rule.getRuleId().replace(
+		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->        id="contentID-#rule.getRuleId().replace(
 		"-",
 		"_",
 		"all"
 	)#"
-><!--- check box --->       <td class="text-center">
+><!--- check box --->        <td class="text-center">
 <input
 	type="checkbox"
 	name="securityRuleID"
@@ -106,7 +106,7 @@ width="100%">
 			</td>
 
 			<td class="text-center">
-				<!--- Actions --->       
+				<!--- Actions --->        
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Rule Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -119,15 +119,15 @@ width="100%">
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "SECURITYRULES_ADMIN" )>
-			<!--- Delete Command --->       <li>
+			<!--- Delete Command --->        <li>
 <a title="Delete Rule Permanently" href="javascript:remove('#rule.getRuleID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Rule?">
 <i class="fa fa-trash fa-lg" id="delete_#rule.getRuleID()#"></i> Delete
 	</a>
-</li><!--- Edit Command --->       <li>
+</li><!--- Edit Command --->        <li>
 <a href="#event.buildLink( prc.xehEditorRule )#/ruleID/#rule.getRuleID()#" title="Edit Rule">
 		<i class="fas fa-pen fa-lg"></i> Edit
 	</a>
-</li><!--- Export --->       <li>
+</li><!--- Export --->        <li>
 <a href="#event.buildLink( prc.xehExport )#/ruleID/#rule.getRuleID()#.json" target="_blank">
 		<i class="fas fa-file-export fa-lg"></i> Export
 	</a>

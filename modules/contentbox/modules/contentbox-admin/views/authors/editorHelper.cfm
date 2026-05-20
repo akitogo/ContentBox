@@ -4,7 +4,7 @@
 	height: 200px;
 	min-height: 200px;
 }
-</style><!--- Custom JS --->       <script>
+</style><!--- Custom JS --->        <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// pointers
 	$authorForm 	= $( "##authorForm" );

@@ -28,7 +28,7 @@
 			</div>
 
 		    <div class="panel-body">
-		    	<!--- Usage --->       
+		    	<!--- Usage --->        
 				<div class="alert alert-danger">
 					<i class="fa fa-exclamation-triangle fa-lg"></i>
 					Please remember that the security rules are fired in the order shown. You can drag and drop
@@ -53,7 +53,7 @@
 			<div class="panel-heading">
 				<div class="row">
 
-					<!--- Quick Search --->       
+					<!--- Quick Search --->        
 					<div class="col-md-6 col-xs-4">
 						<div class="form-group form-inline no-margin">
 							#html.textField(
@@ -71,7 +71,7 @@
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "SECURITYRULES_ADMIN,TOOLS_EXPORT,TOOLS_IMPORT" )>
-		<div class="text-right"><!--- Global --->       <div class="btn-group">
+		<div class="text-right"><!--- Global --->        <div class="btn-group">
 <button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
 	Bulk Actions <span class="caret"></span>
 </button>

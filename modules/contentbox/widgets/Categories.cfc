@@ -52,7 +52,7 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 // title
 if ( len( arguments.title ) ) {
 writeOutput(
-	"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
+"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
 );
 }
 // Build Type
@@ -75,22 +75,22 @@ writeOutput( buildList( categories, arguments.showPostCount ) );
 writeOutput(
 "
 <select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
-	<option value=""##"">Select Category</option>
+<option value=""##"">Select Category</option>
 "
 );
 
 // iterate and create
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
 if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-	writeOutput(
-		"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-	);
+writeOutput(
+	"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+);
 
-	if ( arguments.showPostCount ) {
-		writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-	}
+if ( arguments.showPostCount ) {
+	writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
+}
 
-	writeOutput( "</option>" );
+writeOutput( "</option>" );
 }
 }
 
@@ -112,17 +112,17 @@ writeOutput( "<ul id=""categories""> " );
 
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
 if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-	writeOutput(
-		"
-		<li class=""categories"">
-			<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-	);
+writeOutput(
+	"
+	<li class=""categories"">
+		<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+);
 
-	if ( arguments.showPostCount ) {
-		writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-	}
+if ( arguments.showPostCount ) {
+	writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
+}
 
-	writeOutput( "</a></li>" );
+writeOutput( "</a></li>" );
 }
 }
 

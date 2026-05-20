@@ -69,7 +69,7 @@
 		name  = "preference.sidemenuCollapse",
 		value = prc.author.getPreference( "sidemenuCollapse", "no" )
 	)#</div>
-</div><!--- Right Sidebar --->       <div class="form-group">#html.label(
+</div><!--- Right Sidebar --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "preference.sidebarState",
 		content = "Show Content Sidebar:"

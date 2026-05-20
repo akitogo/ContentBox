@@ -1,8 +1,8 @@
 <cfoutput>
-	#html.startForm( name = "mailSettingsForm", action = prc.xehSaveSettings )#<!--- Mail Server Settings --->       <fieldset>
+	#html.startForm( name = "mailSettingsForm", action = prc.xehSaveSettings )#<!--- Mail Server Settings --->        <fieldset>
 <legend><i class="fa fa-envelope-open fa-lg"></i> <strong>Mail Server</strong></legend>
 <p>By default ContentBox will use the mail settings in your application server.  You can override those settings by completing
-   the settings below</p><!--- Mail Server --->       <div class="form-group">#html.label(
+   the settings below</p><!--- Mail Server --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_server",
 		content = "Mail Server:"
@@ -13,7 +13,7 @@
 		class = "form-control",
 		title = "The complete mail server URL to use."
 	)#</div>
-</div><!--- Mail Username --->       <div class="form-group">#html.label(
+</div><!--- Mail Username --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_username",
 		content = "Mail Server Username:"
@@ -24,7 +24,7 @@
 		class = "form-control",
 		title = "The optional mail server username to use."
 	)#</div>
-</div><!--- Mail Password --->       <div class="form-group">#html.label(
+</div><!--- Mail Password --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_password",
 		content = "Mail Server Password:"
@@ -35,7 +35,7 @@
 		class = "form-control",
 		title = "The optional mail server password to use."
 	)#</div>
-</div><!--- SMTP Port --->       <div class="form-group">#html.label(
+</div><!--- SMTP Port --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_smtp",
 		content = "Mail SMTP Port:"
@@ -49,7 +49,7 @@ defaults to port 25.</small><br/>#html.inputfield(
 		size  = "5",
 		title = "The mail SMPT port to use."
 	)#</div>
-</div><!--- TLS --->       <div class="form-group">#html.label(
+</div><!--- TLS --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_tls",
 		content = "Use TLS:"
@@ -59,7 +59,7 @@ defaults to port 25.</small><br/>#html.inputfield(
 		data    = { toggle: "toggle", match: "cb_site_mail_tls" },
 		checked = prc.cbSettings.cb_site_mail_tls
 	)##html.hiddenField( name = "cb_site_mail_tls", value = prc.cbSettings.cb_site_mail_tls )#</div>
-</div><!--- SSL --->       <div class="form-group">#html.label(
+</div><!--- SSL --->        <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_mail_ssl",
 		content = "Use SSL:"
@@ -69,11 +69,11 @@ defaults to port 25.</small><br/>#html.inputfield(
 		data    = { toggle: "toggle", match: "cb_site_mail_ssl" },
 		checked = prc.cbSettings.cb_site_mail_ssl
 	)##html.hiddenField( name = "cb_site_mail_ssl", value = prc.cbSettings.cb_site_mail_ssl )#</div>
-</div><!--- Test Connection --->       <hr/>
+</div><!--- Test Connection --->        <hr/>
     <div id="emailTestDiv"></div>
     <button id="emailTestButton" class="btn btn-primary" title="Send a test email with these settings" onclick="return emailTest()">
         <i class="fa fa-spinner fa-lg" id="iTest"></i> Test Connection
     </button>
-</fieldset><!--- Button Bar --->       <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->        <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

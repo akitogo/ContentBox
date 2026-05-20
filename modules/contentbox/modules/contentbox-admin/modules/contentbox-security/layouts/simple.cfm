@@ -42,7 +42,7 @@
               </a>
           </div>
 
-          <div class="user-nav"><!--- i18n navbar --->       <ul class="pull-right">
+          <div class="user-nav"><!--- i18n navbar --->        <ul class="pull-right">
 <li class="dropdown settings">
 	<a href="##" class="dropdown-toggle" data-toggle="dropdown" role="button">
 		<i class="fa fa-globe"></i> #cb.r( "lang.localize@cbcore" )# <b class="caret"></b>
@@ -63,7 +63,7 @@
             </header>
         </section>
 
-    	<!--- Login Container --->       
+    	<!--- Login Container --->        
 		<section id="login-container">
 			#announce( "cbadmin_beforeLoginContent" )##view()##announce( "cbadmin_afterLoginContent" )#
 		</section>

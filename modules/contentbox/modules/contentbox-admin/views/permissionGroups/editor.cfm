@@ -2,14 +2,14 @@
 	<div class="row">
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->       <div class="panel-heading"><!--- Top Actions --->       <div class="float-right mt10"><!--- Back button --->       <a
+	<div class="panel panel-default"><!--- Heading --->        <div class="panel-heading"><!--- Top Actions --->        <div class="float-right mt10"><!--- Back button --->        <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehPermissionGroups )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Panel Title --->       <div class="size16 p10">
+</div><!--- Panel Title --->        <div class="size16 p10">
 <i class="fa fa-users"></i>
 	<cfif prc.oGroup.isLoaded()>
 		Update
@@ -25,7 +25,7 @@ href="#event.buildLink( prc.xehPermissionGroups )#"
 					</div>
 				</div>
 
-				<!--- Panel Body --->       
+				<!--- Panel Body --->        
 				<div class="panel-body">
 
 					#cbMessageBox().renderit()##html.startForm(
@@ -54,7 +54,7 @@ href="#event.buildLink( prc.xehPermissionGroups )#"
 		wrapper      = "div class=controls",
 		labelClass   = "control-label",
 		groupWrapper = "div class=form-group"
-	)##html.startFieldset( legend = "Permissions" )#<!--- Filter --->       
+	)##html.startFieldset( legend = "Permissions" )#<!--- Filter --->        
 						<div class="form-group">
 							<div class="input-group input-group-sm">
 								<input
@@ -97,7 +97,7 @@ href="#event.buildLink( prc.xehPermissionGroups )#"
 	)##html.hiddenField( id = "permissions_" & thisPerm.getPermissionId() )#</div>
 </div>
 	</cfloop>
-	#html.endFieldset()#<!--- Action Bar --->       
+	#html.endFieldset()#<!--- Action Bar --->        
 						<div class="form-actions">
 							<input type="submit" value="Save" class="btn btn-success btn-lg">
 						</div>

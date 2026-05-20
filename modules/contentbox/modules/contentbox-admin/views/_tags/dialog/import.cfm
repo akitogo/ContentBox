@@ -41,10 +41,10 @@
 </div>
 
 <!-- footer -->
-<div class="modal-footer"><!--- Button Bar --->       <div id="importButtonBar">
+<div class="modal-footer"><!--- Button Bar --->        <div id="importButtonBar">
 	<button class="btn btn-default" id="closeButton" data-dismiss="modal"> Cancel </button>
 	<button class="btn btn-danger" id="importButton"> Import </button>
-</div><!--- Loader --->       <div class="center loaders" id="importBarLoader">
+</div><!--- Loader --->        <div class="center loaders" id="importBarLoader">
 		<i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
 		<br>Please wait, doing some hardcore importing action...
 	</div>

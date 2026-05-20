@@ -117,36 +117,36 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 writeOutput(
 "
 function getContentEditor(){
-	return $content.ckeditorGet();
+return $content.ckeditorGet();
 }
 function getExcerptEditor(){
-	return $excerpt.ckeditorGet();
+return $excerpt.ckeditorGet();
 }
 function checkIsDirty(){
-	return $content.ckeditorGet().checkDirty();
+return $content.ckeditorGet().checkDirty();
 }
 function getEditorContent(){
-	return $content.ckeditorGet().getData();
+return $content.ckeditorGet().getData();
 }
 function getEditorExcerpt(){
-	return $excerpt.ckeditorGet().getData();
+return $excerpt.ckeditorGet().getData();
 }
 function updateEditorContent(){
-	CKEDITOR.instances.content.updateElement();
+CKEDITOR.instances.content.updateElement();
 }
 function updateEditorExcerpt(){
-	CKEDITOR.instances.excerpt.updateElement();
+CKEDITOR.instances.excerpt.updateElement();
 }
 function setEditorContent( editorName, content ){
-	$( '##' + editorName ).ckeditorGet().setData( content );
+$( '##' + editorName ).ckeditorGet().setData( content );
 }
 function insertEditorContent( editorName, content ){
-	// if simple value, insert as html
-	if( jQuery.type( content ) == 'string' )
-		$( '##' + editorName ).ckeditorGet().insertHtml( content );
-	// else insert as element
-	else
-		$( '##' + editorName ).ckeditorGet().insertElement( content );
+// if simple value, insert as html
+if( jQuery.type( content ) == 'string' )
+	$( '##' + editorName ).ckeditorGet().insertHtml( content );
+// else insert as element
+else
+	$( '##' + editorName ).ckeditorGet().insertElement( content );
 }
 "
 );
@@ -222,13 +222,13 @@ baseHref                  : '#HTML_BASE_URL#/'
 // Active Excerpts
 if( $withExcerpt ){
 $excerpt.ckeditor( function(){}, {
-	#extraConfig#
-	contentsCss          : [ '#arrayToList( arguments.iData4.contentsCss, "', '" )#' ],
-	toolbar              : ckExcerptToolbar,
-	toolbarCanCollapse   : true,
-	height               : 200,
-	filebrowserBrowseUrl : '#event.buildLink( xehCKFileBrowserURL )#',
-	baseHref             : '#HTML_BASE_URL#/'
+#extraConfig#
+contentsCss          : [ '#arrayToList( arguments.iData4.contentsCss, "', '" )#' ],
+toolbar              : ckExcerptToolbar,
+toolbarCanCollapse   : true,
+height               : 200,
+filebrowserBrowseUrl : '#event.buildLink( xehCKFileBrowserURL )#',
+baseHref             : '#HTML_BASE_URL#/'
 } );
 }
 "

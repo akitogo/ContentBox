@@ -45,7 +45,7 @@
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Filter --->       
+						<!--- Quick Filter --->        
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
@@ -56,7 +56,7 @@
 							</div>
 						</div>
 
-						<!--- Bulk Actions --->       
+						<!--- Bulk Actions --->        
 						<div class="col-md-6 col-xs-8">
 
 
@@ -108,7 +108,7 @@
 				</div>
 
 				<div class="panel-body">
-					<!--- comments table --->       
+					<!--- comments table --->        
 					<table
 						name="comments"
 						id="comments"
@@ -147,7 +147,7 @@
 		
 		
 		 data-commentID="#comment.getCommentID()#">
-								<!--- Delete Checkbox with PK --->       
+								<!--- Delete Checkbox with PK --->        
 								<td class="text-center">
 									<input type="checkbox" name="commentID" id="commentID" value="#comment.getCommentID()#" />
 								</td>
@@ -270,13 +270,13 @@
 													<span class="visually-hidden">Actions</span>
 												</button>
 												<ul class="dropdown-menu text-left pull-right">
-													<!--- Edit Command --->       
+													<!--- Edit Command --->        
 													<li>
 														<a href="javascript:openRemoteModal('#event.buildLink( prc.xehCommentEditor )#',{commentID:'#comment.getCommentID()#'} );" title="Edit Comment">
 															<i class="fas fa-pen fa-lg"></i> Edit
 														</a>
 													</li>
-													<li><!--- Delete Command --->       
+													<li><!--- Delete Command --->        
 														<a title="Delete Comment Permanently" href="javascript:remove('#comment.getCommentID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Comment?">
 															<i id="delete_#comment.getCommentID()#" class="fa fa-trash fa-lg"></i> Delete
 														</a>
@@ -390,7 +390,7 @@
 		method = "get"
 	)#
 			    	<div class="form-group">
-			    		<!--- Status --->       
+			    		<!--- Status --->        
 						<label for="fStatus">Comment Status: </label>
 						<select name="fStatus" id="fStatus" class="form-control input-sm">
 							<option value="any"

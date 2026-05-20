@@ -1,11 +1,11 @@
 <cfoutput>
-	<!--- Setup alpine component --->       <div x-data="templatesCrud()"><!--- TITLE --->       <div class="row">
+	<!--- Setup alpine component --->        <div x-data="templatesCrud()"><!--- TITLE --->        <div class="row">
 	<div class="col-md-12">
 		<h1 class="h1">
 			<i class="fa fa-object-group"></i> Content Templates (<span x-text="templates.length"></span>)
 		</h1>
 	</div>
-</div><!--- MESSAGES --->       <div class="row">
+</div><!--- MESSAGES --->        <div class="row">
 <div class="col-md-12">#cbMessageBox().renderit()##cbAdminComponent( "ui/Alert", { messageModel: "globalAlert" } )#
 	<cfif flash.exists( "importLog" )>
 		<div class="consoleLog">#flash.get( "importLog" )#</div>
@@ -18,17 +18,17 @@
 			</div>
 		</div>
 
-		<!--- DATA TABLES --->       
+		<!--- DATA TABLES --->        
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
 
-					<!--- Search + Filter Bar + Actions Bar --->       
+					<!--- Search + Filter Bar + Actions Bar --->        
 					<div class="panel-heading">
 						<div class="row">
 
 							<div class="col-md-6 col-xs-4 flex flex-row">
-								<!--- Search Filter --->       
+								<!--- Search Filter --->        
 								<div class="form-group m0 mr5">
 									<div class="input-group">
 										<input
@@ -126,9 +126,9 @@
 						</div>
 					</div>
 
-					<!--- Panel Content --->       
+					<!--- Panel Content --->        
 					<div class="panel-body">
-						<!--- Loader --->       
+						<!--- Loader --->        
 						<template x-if="isLoading">
 							<div class="text-center m20" x-show="isLoading">
 								<i class="fa fa-spinner fa-spin fa-lg"></i><br/>
@@ -136,7 +136,7 @@
 						</template>
 
 						<template x-if="!isLoading">
-							<!--- Table --->       
+							<!--- Table --->        
 							<table x-show="!isEditorOpen" id="templates" class="table table-striped-removed table-hover " cellspacing="0" width="100%" x-show="!isLoading" x-cloak>
 								<thead>
 									<tr>
@@ -203,7 +203,7 @@
 													<i class="fa fa-globe fa-2x"></i>
 												</a>
 											</td>
-											<!--- Actions --->       
+											<!--- Actions --->        
 											<td class="text-center">
 												<div class="btn-group">
 
@@ -221,7 +221,7 @@
 		<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 		<span class="visually-hidden">Template Actions</span>
 	</button>
-	<ul class="dropdown-menu text-left pull-right"><!--- Edit --->       <li>
+	<ul class="dropdown-menu text-left pull-right"><!--- Edit --->        <li>
 	<a
 		@click="editTemplate( template )"
 		class="cursor-pointer"
@@ -229,14 +229,14 @@
 	>
 		<i class="fa fa-edit fa-sm"></i> Edit
 	</a>
-</li><!--- Duplicate --->       <li>
+</li><!--- Duplicate --->        <li>
 	<a
 		@click="duplicateTemplate( template )"
 		title="Duplicate"
 	>
 		<i class="fa fa-clone fa-sm"></i> Duplicate
 	</a>
-</li><!--- Delete Command --->       <li>
+</li><!--- Delete Command --->        <li>
 			<a
 				@click="deleteTemplate( `${template.templateID}`, index )"
 				data-title="Delete Template?"
@@ -286,11 +286,11 @@
 			<h3 x-show="!templateForm.templateID">Create Template</h3>
 			<h3 x-show="templateForm.templateID">Editing : <span x-text="templateForm.name"></span></h3>
 
-		<div class="template-fields"><!--- Messages --->       <div
+		<div class="template-fields"><!--- Messages --->        <div
 	class="alert alert-danger"
 	x-show="errorMessages.length"
 	x-html="errorMessages"
-></div><!--- Id --->       <input
+></div><!--- Id --->        <input
 	type="hidden"
 	id="templateID"
 	name="templateID"
@@ -313,7 +313,7 @@
 				<div style="margin-top:5px">
 					<label class="flex items-center cursor-pointer">
 						<!-- toggle -->
-						<div class="relative"><!--- Input --->       <input
+						<div class="relative"><!--- Input --->        <input
 							id="isGlobal"
 							name="isGlobal"
 							class="hidden"
@@ -331,7 +331,7 @@
 			</div>
 		</toggle>
 	</div>
-</template><!--- Template --->       <div class="form-group col-sm-12">
+</template><!--- Template --->        <div class="form-group col-sm-12">
 <label field="template">Template:</label>
 <div class="controls">#html.textField(
 		name        = "name",
@@ -342,7 +342,7 @@
 		class       = "form-control",
 		x           = { model: "templateForm.name" }
 	)#</div>
-</div><!--- Slug --->       <div class="form-group col-sm-12">
+</div><!--- Slug --->        <div class="form-group col-sm-12">
 <label field="template">Description:</label>
 <div class="controls">#html.textArea(
 		name        = "description",
@@ -367,7 +367,7 @@
 						<div>
 							<label class="flex items-center cursor-pointer">
 								<!-- toggle -->
-								<div class="relative"><!--- Input --->       <input
+								<div class="relative"><!--- Input --->        <input
 										:id="'toggle_'+templateField.key"
 										:name="templateField.key"
 										class="hidden"
@@ -439,7 +439,7 @@
 						<label class="flex items-center cursor-pointer">
 							<div class="pr5" x-text="definition.label"></div>
 							<!-- toggle -->
-							<div class="relative"><!--- Input --->       <input
+							<div class="relative"><!--- Input --->        <input
 													:id="'toggle_definition_'+fieldKey"
 													:name="'input_value_'+fieldKey"
 													class="hidden"

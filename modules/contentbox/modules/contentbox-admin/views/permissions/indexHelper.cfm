@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS --->       <script>
+	<!--- Custom JS --->        <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importDialog = $( "##importDialog" );
 	// table sorting + filtering

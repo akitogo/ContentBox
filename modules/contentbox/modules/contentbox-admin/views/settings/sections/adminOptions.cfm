@@ -17,7 +17,7 @@
 		rows  = "3",
 		class = "form-control mde"
 	)#</div>
-</div><!--- Dashboard Feed --->       <div class="form-group">
+</div><!--- Dashboard Feed --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_newsfeed">News Feed</label>
 <div class="controls">
     <small>The RSS feed URL to present in the dashboard. Leave blank if you don't want any news to display.</small><br/>#html.URLField(
@@ -26,7 +26,7 @@
 		class = "form-control",
 		title = "The RSS feed to present in the dashboard"
 	)#</div>
-</div><!--- Recent Feed Count --->       <div class="form-group">
+</div><!--- Recent Feed Count --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_newsfeed_count">
     News Feed Count
     <span class="badge badge-info" id="cb_dashboard_newsfeed_count_label">#prc.cbSettings.cb_dashboard_newsfeed_count#</span>
@@ -46,7 +46,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Recent Entries --->       <div class="form-group">
+</div><!--- Recent Entries --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_recentEntries">
     Recent Entries Count
     <span class="badge badge-info" id="cb_dashboard_recentEntries_label">#prc.cbSettings.cb_dashboard_recentEntries#</span>
@@ -66,7 +66,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Recent Pages --->       <div class="form-group">
+</div><!--- Recent Pages --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_recentPages">
     Recent Pages Count
     <span class="badge badge-info" id="cb_dashboard_recentPages_label">#prc.cbSettings.cb_dashboard_recentPages#</span>
@@ -86,7 +86,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Recent ContentStore --->       <div class="form-group">
+</div><!--- Recent ContentStore --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_recentContentStore">
     Recent Content Store Count
     <span class="badge badge-info" id="cb_dashboard_recentContentStore_label">#prc.cbSettings.cb_dashboard_recentContentStore#</span>
@@ -106,7 +106,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Recent Comments --->       <div class="form-group">
+</div><!--- Recent Comments --->        <div class="form-group">
 <label class="control-label" for="cb_dashboard_recentComments">
     Recent Comments Count
     <span class="badge badge-info" id="cb_dashboard_recentComments_label">#prc.cbSettings.cb_dashboard_recentComments#</span>
@@ -126,7 +126,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Recent Logins --->       <div class="form-group">
+</div><!--- Recent Logins --->        <div class="form-group">
 <label class="control-label" for="cb_security_latest_logins">
     Recent Logins Count
     <span class="badge badge-info" id="cb_security_latest_logins_label">#prc.cbSettings.cb_security_latest_logins#</span>
@@ -151,7 +151,7 @@
 
 
 <fieldset>
-    <legend><i class="fa fa-clone fa-lg"></i>  Paging Options</legend><!--- Quick Search --->       <div class="form-group">
+    <legend><i class="fa fa-clone fa-lg"></i>  Paging Options</legend><!--- Quick Search --->        <div class="form-group">
 <label class="control-label" for="cb_admin_quicksearch_max">
     Max Quick Search Count:
     <span class="badge badge-info" id="cb_admin_quicksearch_max_label">#prc.cbSettings.cb_admin_quicksearch_max#</span>
@@ -172,7 +172,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Max Blog Post --->       <div class="form-group">
+</div><!--- Max Blog Post --->        <div class="form-group">
 <label class="control-label" for="cb_paging_maxentries">
     Max Home Page Blog Entries:
     <span class="badge badge-info" id="cb_paging_maxentries_label">#prc.cbSettings.cb_paging_maxentries#</span>
@@ -193,7 +193,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Max Rows --->       <div class="form-group">
+</div><!--- Max Rows --->        <div class="form-group">
 <label class="control-label" for="cb_paging_maxrows">
     Paging Max Rows
     <span class="badge badge-info" id="cb_paging_maxrows_label">#prc.cbSettings.cb_paging_maxrows#</span>
@@ -214,7 +214,7 @@
         >
         <strong class="m10">50</strong>
     </div>
-</div><!--- Max Band Gap --->       <div class="form-group">
+</div><!--- Max Band Gap --->        <div class="form-group">
 <label class="control-label" for="cb_paging_bandgap">
     Paging Band Gap
     <span class="badge badge-info" id="cb_paging_bandgap_label">#prc.cbSettings.cb_paging_bandgap#</span>
@@ -236,6 +236,6 @@
             <strong class="m10">10</strong>
         </div>
     </div>
-</fieldset><!--- Button Bar --->       <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->        <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

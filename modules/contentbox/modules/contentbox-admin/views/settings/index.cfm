@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-md-12">#html.anchor( name = "top" )#<div class="panel panel-default">
 
-<div class="panel-body"><!--- Vertical Nav --->       <div class="tabs tabs-left"><!--- Tabs --->       <ul class="nav nav-tabs">
+<div class="panel-body"><!--- Vertical Nav --->        <div class="tabs tabs-left"><!--- Tabs --->        <ul class="nav nav-tabs">
                      <li class="nav-item active">
 	<a href="##site_options" data-toggle="tab" class="nav-link">
 		<i class="fa fa-globe fa-lg"></i> All Sites
@@ -75,53 +75,53 @@
 	<a href="##rss_options" data-toggle="tab" class="nav-link">
 		<i class="fa fa-rss fa-lg"></i> RSS
 	</a>
-                     </li>#announce( "cbadmin_onSettingsNav" )#</ul><!--- Tab Content --->       <div class="tab-content"><!--- ********************************************************************* --->       
+                     </li>#announce( "cbadmin_onSettingsNav" )#</ul><!--- Tab Content --->        <div class="tab-content"><!--- ********************************************************************* --->        
 <div class="tab-pane active" id="site_options">#view(
 	view          = "settings/sections/siteOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="dashboard_options">#view(
 	view          = "settings/sections/adminOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="security_options">#view(
 	view          = "settings/sections/securityOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="login_options">#view(
 	view          = "settings/sections/loginOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="content_options">#view(
 	view          = "settings/sections/contentOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="editor_options">#view(
 	view          = "settings/sections/editorOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="mediamanager">#view(
 	view          = "settings/sections/mediaManager",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="gravatars">#view(
 	view          = "settings/sections/gravatars",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="notifications">#view(
 	view          = "settings/sections/notifications",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="email_server">#view(
 	view          = "settings/sections/mailServer",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="search_options">#view(
 	view          = "settings/sections/searchOptions",
 	prePostExempt = true
-)#</div><!--- ********************************************************************* --->       
+)#</div><!--- ********************************************************************* --->        
 <div class="tab-pane" id="rss_options">#view( view = "settings/sections/rss",
-	prePostExempt = true )#</div>#announce( "cbadmin_onSettingsContent" )#</div><!--- End Tab Content --->       </div><!--- End Vertical Nav --->       </div>
+	prePostExempt = true )#</div>#announce( "cbadmin_onSettingsContent" )#</div><!--- End Tab Content --->        </div><!--- End Vertical Nav --->        </div>
             </div>
     </div>
 </div>

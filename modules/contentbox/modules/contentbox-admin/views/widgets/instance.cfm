@@ -116,7 +116,7 @@
 		requiredValidator = "required";
 	}
 </cfscript>
-		<!--- control group --->       <div class="form-group">#html.label(
+		<!--- control group --->        <div class="form-group">#html.label(
 		field   = thisArg.name,
 		content = "#thisArg.label# (#thisArg.type#) #requiredText#",
 		class   = "control-label"

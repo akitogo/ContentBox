@@ -1174,13 +1174,13 @@ writeOutput(
 
 if ( len( getContentURL() ) ) {
 writeOutput(
-	"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
+"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
 );
 }
 
 if ( len( getContentImageURL() ) ) {
 writeOutput(
-	"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
+"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
 );
 }
 }
