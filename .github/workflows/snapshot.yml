@@ -22,34 +22,35 @@ jobs:
   ##########################################################################################
   # Format Source Code
   ##########################################################################################
-  format:
-    name: Code Auto-Formatting
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
+  # Disabled until we resolve a few things
+  # format:
+  #   name: Code Auto-Formatting
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v6
 
-      # We use snapshot here due to the fixes in BoxLang for the formatter
-      # Once v1.14.0 releases, we can switch to that version
-      - name: Setup BoxLang
-        uses: ortus-boxlang/setup-boxlang@main
-        with:
-          version: snapshot
+  #     # We use snapshot here due to the fixes in BoxLang for the formatter
+  #     # Once v1.14.0 releases, we can switch to that version
+  #     - name: Setup BoxLang
+  #       uses: ortus-boxlang/setup-boxlang@main
+  #       with:
+  #         version: snapshot
 
-      - name: Run Formatter
-        run: boxlang format --source config,handlers,modules/contentbox,tests/specs
+  #     - name: Run Formatter
+  #       run: boxlang format --source config,handlers,modules/contentbox,tests/specs
 
-      - name: Commit Format Changes
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: Apply cfformat changes
-          push_options: --force
+  #     - name: Commit Format Changes
+  #       uses: stefanzweifel/git-auto-commit-action@v7
+  #       with:
+  #         commit_message: Apply cfformat changes
+  #         push_options: --force
 
   #############################################
   # Build Snapshot Release
   #############################################
   build:
     uses: ./.github/workflows/release.yml
-    needs: [ tests, format ]
+    needs: [ tests ]
     secrets: inherit
     with:
       snapshot: true

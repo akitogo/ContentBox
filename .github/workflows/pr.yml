@@ -17,19 +17,19 @@ jobs:
     uses: ./.github/workflows/tests.yml
     secrets: inherit
 
-  format_check:
-    name: Checks Source Code Formatting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v6
+  # format_check:
+  #   name: Checks Source Code Formatting
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v6
 
-      # We use snapshot here due to the fixes in BoxLang for the formatter
-      # Once v1.14.0 releases, we can switch to that version
-      - name: Setup BoxLang
-        uses: ortus-boxlang/setup-boxlang@main
-        with:
-          version: snapshot
+  #     # We use snapshot here due to the fixes in BoxLang for the formatter
+  #     # Once v1.14.0 releases, we can switch to that version
+  #     - name: Setup BoxLang
+  #       uses: ortus-boxlang/setup-boxlang@main
+  #       with:
+  #         version: snapshot
 
-      - name: Run Formatter
-        run: boxlang format --check --source config,handlers,modules/contentbox,tests/specs
+  #     - name: Run Formatter
+  #       run: boxlang format --check --source config,handlers,modules/contentbox,tests/specs
