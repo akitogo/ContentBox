@@ -975,7 +975,7 @@ component accessors="true" threadSafe singleton {
 		var thisMenu = variables.topMenu;
 
 		savecontent variable="genMenu" {
-			include( "templates/navAdminMenu.cfm" );
+			include "templates/navAdminMenu.cfm";
 		}
 
 		// return it
@@ -992,7 +992,7 @@ component accessors="true" threadSafe singleton {
 		var thisMenu = variables.headerMenu;
 
 		savecontent variable="genMenu" {
-			include( "templates/nav.cfm" );
+			include "templates/nav.cfm";
 		}
 
 		// return it
@@ -1009,7 +1009,7 @@ component accessors="true" threadSafe singleton {
 		var thisMenu = variables.headerMenuMap[ "utils" ];
 
 		savecontent variable="genMenu" {
-			include( "templates/subNav.cfm" );
+			include "templates/subNav.cfm";
 		}
 
 		// return it
@@ -1026,7 +1026,7 @@ component accessors="true" threadSafe singleton {
 		var thisMenu = variables.headerMenuMap[ "profile" ];
 
 		savecontent variable="genMenu" {
-			include( "templates/subNav.cfm" );
+			include "templates/subNav.cfm";
 		}
 
 		// return it

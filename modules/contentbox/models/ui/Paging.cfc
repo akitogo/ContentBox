@@ -130,7 +130,7 @@ component accessors="true" singleton threadsafe {
 			}
 
 			savecontent variable="pagingTabsUI" {
-				include( "Paging.cfm" );
+				include "Paging.cfm";
 			}
 		}
 
