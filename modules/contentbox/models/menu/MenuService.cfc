@@ -8,7 +8,9 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" singleton {
 	// DI
 	property name="renderer" inject="coldbox:renderer";
+
 	property name="menuItemService" inject="menuItemService@contentbox";
+
 	property name="dateUtil" inject="DateUtil@contentbox";
 
 	/**

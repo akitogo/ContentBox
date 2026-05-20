@@ -19,6 +19,7 @@ component
 		name="provider"
 		persistent="false"
 		inject="provider:contentbox.models.menu.providers.SubMenuProvider";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/

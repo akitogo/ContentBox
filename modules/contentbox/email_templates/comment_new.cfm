@@ -1,30 +1,30 @@
 <cfoutput>
 	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
 	#ETH.author(
-			email   = args.gravatarEmail,
-			content = "
+		email   = args.gravatarEmail,
+		content = "
         <strong>@author@</strong> has posted a new comment on the page:<br /> <a href='@contentURL@'>@contentTitle@<a/>
     "
-		)##ETH.heading( content = "Comment" )##ETH.text( content = "@content@", callout = "true" )##ETH.buttonBar(
-			[
-				{
-					href : "@approveURL@",
-					image: "ok-circle.png",
-					text : "Approve It"
-				},
-				{
-					href : "@deleteURL@",
-					image: "minus-sign.png",
-					text : "Delete It"
-				},
-				{
-					href : "@commentURL@",
-					image: "comment-alt.png",
-					text : "View Comment"
-				}
-			]
-		)##ETH.heading( content = "Comment Details" )##ETH.text(
-			"
+	)##ETH.heading( content = "Comment" )##ETH.text( content = "@content@", callout = "true" )##ETH.buttonBar(
+		[
+			{
+				href : "@approveURL@",
+				image: "ok-circle.png",
+				text : "Approve It"
+			},
+			{
+				href : "@deleteURL@",
+				image: "minus-sign.png",
+				text : "Delete It"
+			},
+			{
+				href : "@commentURL@",
+				image: "comment-alt.png",
+				text : "View Comment"
+			}
+		]
+	)##ETH.heading( content = "Comment Details" )##ETH.text(
+		"
         <table cellpadding=""3"" cellspacing=""3"">
             <tbody>
                 <tr>
@@ -50,5 +50,5 @@
             </tbody>
         </table>
     "
-		)#
+	)#
 </cfoutput>

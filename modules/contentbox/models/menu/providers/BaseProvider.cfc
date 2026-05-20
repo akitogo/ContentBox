@@ -11,14 +11,19 @@ component accessors="true" {
 	 **********************************************************************/
 
 	property name="renderer" inject="coldbox:renderer";
+
 	/**********************************************************************
 	 * **                      PROPERTIES
 	 **********************************************************************/
 
 	property name="name" type="string";
+
 	property name="entityName" type="string";
+
 	property name="type" type="string";
+
 	property name="iconClass" type="string";
+
 	property name="description" type="string";
 
 	/**********************************************************************

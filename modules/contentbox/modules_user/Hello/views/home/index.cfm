@@ -9,7 +9,7 @@
 	<div class="col-md-9">
 
 		<div class="panel panel-default">
-		    <div class="panel-body"><!--- Logo --->     <div class="text-center">
+		    <div class="panel-body"><!--- Logo --->      <div class="text-center">
 <img src="#prc.cbroot#/includes/images/ContentBox_300.png" alt="logo"/><br/>
 v.#getModuleConfig( "contentbox" ).version# <br/>
 (Codename: <a href="#getModuleSettings( "contentbox" ).codenameLink#" target="_blank">#getModuleSettings( "contentbox" ).codename#</a>)
@@ -24,7 +24,7 @@ v.#getModuleConfig( "contentbox" ).version# <br/>
 	</div>
 
 </div>
-<div class="col-md-3"><!--- Info Box --->     <div class="panel panel-primary">
+<div class="col-md-3"><!--- Info Box --->      <div class="panel panel-primary">
 <div class="panel-heading">
     <h3 class="panel-title"><i class="fa fas fa-life-ring"></i> Need Help?</h3>
 </div>

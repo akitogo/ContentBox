@@ -10,36 +10,57 @@ component accessors="#true#" {
 	 * The import file names found
 	 */
 	property name="fileNames" type="array";
+
 	/**
 	 * The location of the import file (zip|box)
 	 */
 	property name="ContentBoxPackagePath" type="any";
+
 	/**
 	 * The location of the data services used for exporting
 	 */
 	property name="dataServiceMappings" type="struct";
+
 	/**
 	 * The location of the file mappings used for exporting
 	 */
 	property name="filePathMappings" type="struct";
+
 	// DI
 	property name="moduleSettings" inject="coldbox:setting:modules";
+
 	property name="entryService" inject="id:entryService@contentbox";
+
 	property name="pageService" inject="id:pageService@contentbox";
+
 	property name="categoryService" inject="id:categoryService@contentbox";
+
 	property name="contentStoreService" inject="id:contentStoreService@contentbox";
+
 	property name="menuService" inject="id:menuService@contentbox";
+
 	property name="securityRuleService" inject="id:securityRuleService@contentbox";
+
 	property name="authorService" inject="id:authorService@contentbox";
+
 	property name="roleService" inject="id:roleService@contentbox";
+
 	property name="permissionService" inject="id:permissionService@contentbox";
+
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="securityService" inject="id:securityService@contentbox";
+
 	property name="moduleService" inject="id:moduleService@contentbox";
+
 	property name="themeService" inject="id:themeService@contentbox";
+
 	property name="widgetService" inject="id:widgetService@contentbox";
+
 	property name="templateService" inject="id:emailtemplateService@contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="zipUtil" inject="zipUtil@contentbox";
 
 	/**

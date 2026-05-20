@@ -15,12 +15,12 @@
 </div>
 
 <div id="displayoptions" class="panel-collapse collapse">
-	<div class="panel-body"><!--- PAGE LAYOUT --->     <div class="form-group">
+	<div class="panel-body"><!--- PAGE LAYOUT --->      <div class="form-group">
 <label for="layout" class="control-label">
 	<i class="fa fa-columns"></i>
 	Layout:
 </label>
-<select name="layout" id="layout" class="form-control input-sm"><!--- Core Layouts --->     <option value="-inherit-"
+<select name="layout" id="layout" class="form-control input-sm"><!--- Core Layouts --->      <option value="-inherit-"
 		<cfif prc.oContent.getLayoutWithDefault() EQ "-inherit-">
 			selected="selected"
 		</cfif>
@@ -44,38 +44,38 @@
 		>-no-layout-</option>
 						<!-- Custom Layouts -->
 						#html.options(
-				values        = prc.availableLayouts,
-				selectedValue = prc.oContent.getLayoutWithDefault()
-			)#
+		values        = prc.availableLayouts,
+		selectedValue = prc.oContent.getLayoutWithDefault()
+	)#
 					</select>
 				</div>
 
-				<!--- SHOW IN MENU BUILDERS --->     
+				<!--- SHOW IN MENU BUILDERS --->      
 				<div class="form-group">
 					<label for="layout" class="control-label">
 						<i class="fa fa-bars"></i>
 						Show in Menus:
 					</label>
 					#html.select(
-				name          = "showInMenu",
-				class         = "form-control input-sm",
-				options       = "Yes,No",
-				selectedValue = yesNoFormat( prc.oContent.getShowInMenu() )
-			)#
+		name          = "showInMenu",
+		class         = "form-control input-sm",
+		options       = "Yes,No",
+		selectedValue = yesNoFormat( prc.oContent.getShowInMenu() )
+	)#
 				</div>
 
-				<!--- SHOW IN SEARCH --->     
+				<!--- SHOW IN SEARCH --->      
 				<div class="form-group">
 					<label for="layout" class="control-label">
 						<i class="fa fa-search"></i>
 						Show in Search:
 					</label>
 					#html.select(
-				name          = "showInSearch",
-				class         = "form-control input-sm",
-				options       = "Yes,No",
-				selectedValue = yesNoFormat( prc.oContent.getShowInSearch() )
-			)#
+		name          = "showInSearch",
+		class         = "form-control input-sm",
+		options       = "Yes,No",
+		selectedValue = yesNoFormat( prc.oContent.getShowInSearch() )
+	)#
 				</div>
 			</div>
 		</div>

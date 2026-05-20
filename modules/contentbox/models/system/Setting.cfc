@@ -27,8 +27,11 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property name="name" column="name" notnull="true" length="100";
+
 	property name="value" column="value" notnull="true" ormtype="text";
+
 	property
 		name="isCore"
 		column="isCore"
@@ -36,6 +39,7 @@ component
 		notnull="true"
 		default="false"
 		index="idx_core";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/

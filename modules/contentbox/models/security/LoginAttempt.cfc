@@ -28,6 +28,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	/**
 	 * The username attempt value
 	 */
@@ -38,6 +39,7 @@ component
 		default=""
 		length="255"
 		index="idx_values";
+
 	/**
 	 * How many attempts in the system
 	 */
@@ -47,6 +49,7 @@ component
 		ormtype="integer"
 		notnull="true"
 		default="0";
+
 	/**
 	 * Tracks the last successful login IP address
 	 */
@@ -55,6 +58,7 @@ component
 		column="lastLoginSuccessIP"
 		notnull="false"
 		length="100";
+
 	/**
 	 * Verifies if tracking is blocked or not
 	 */

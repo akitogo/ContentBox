@@ -7,8 +7,11 @@
  */
 component extends   ="BaseExporter" implements="contentbox.models.exporters.ICBExporter" accessors ="#true#" {
 	property name="directory" type="string";
+
 	property name="includeFiles" type="string";
+
 	property name="type" type="string";
+
 	property name="extension" type="string";
 
 	/**

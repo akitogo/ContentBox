@@ -21,10 +21,10 @@
 
 					<div class="col-md-6 col-xs-4">
 						<div class="form-group form-inline no-margin">#html.textField(
-			name        = "themeFilter",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#</div>
+		name        = "themeFilter",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#</div>
 </div>
 
 <div class="col-md-6 col-xs-8">
@@ -49,7 +49,7 @@
 			</div>
 
 			<div class="panel-body">
-				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->     
+				#html.startForm( name = "themeForm", action = prc.xehThemeRemove )##html.hiddenField( name = "themeName" )#<!--- themes --->      
 					<table name="themes" id="themes" class="table table-striped-removed table-hover " width="100%">
 						<thead>
 							<tr>
@@ -85,7 +85,7 @@
 
 									<p>&nbsp;</p>
 
-									<!--- Button Bar --->     
+									<!--- Button Bar --->      
 									<div class="btn-group">
 
 
@@ -121,12 +121,12 @@
 
 
 		<cfif len( thisTheme.screenShotURL )>
-			<!--- image --->     <a href="#thisTheme.screenShotURL#" target="_blank">
+			<!--- image --->      <a href="#thisTheme.screenShotURL#" target="_blank">
 <img src="#thisTheme.screenShotURL#"  alt="screenshot" class="img-thumbnail" width="300" border="0"/>
 </a>
 <br/>
 		</cfif>
-		<!--- description --->     
+		<!--- description --->      
 									<p>
 										#thisTheme.description#
 									</p>
@@ -153,15 +153,15 @@
 </div>
 <div class="row-fluid">
 	<div class="box">
-		<!--- Body --->     
+		<!--- Body --->      
 		<div class="body">
-			<!--- Tabs --->     
+			<!--- Tabs --->      
 			<div class="panes tab-content"></div>
-			<!--- end panes div --->     
+			<!--- end panes div --->      
 		</div>
-		<!--- end div body --->     
+		<!--- end div body --->      
 	</div>
-	<!--- end div box --->     
+	<!--- end div box --->      
 </div>
 
 

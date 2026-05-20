@@ -24,16 +24,27 @@
  */
 component implements="contentbox.models.importers.ICBImporter" {
 	property name="categoryService" inject="id:categoryService@contentbox";
+
 	property name="entryService" inject="id:entryService@contentbox";
+
 	property name="pageService" inject="id:pageService@contentbox";
+
 	property name="statsService" inject="id:statsService@contentbox";
+
 	property name="authorService" inject="id:authorService@contentbox";
+
 	property name="roleService" inject="id:roleService@contentbox";
+
 	property name="commentService" inject="id:commentService@contentbox";
+
 	property name="customFieldService" inject="id:customFieldService@contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="interceptorService" inject="coldbox:interceptorService";
+
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="bCrypt" inject="BCrypt@BCrypt";
 
 	// ------------------------------------------------------------------------------------------------

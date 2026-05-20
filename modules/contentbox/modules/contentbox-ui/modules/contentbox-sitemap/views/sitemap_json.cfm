@@ -8,10 +8,10 @@
 		<cfif len( content.get( "featuredImageURL" ) )>
 			,"image": {
 "loc": "#prc.siteBaseURL & "/" & reReplace(
-				content.get( "featuredImageURL" ),
-				"^/",
-				""
-			)#"
+	content.get( "featuredImageURL" ),
+	"^/",
+	""
+)#"
 }
 		</cfif>
 		
@@ -35,10 +35,10 @@
 			<cfif len( content.get( "featuredImageURL" ) )>
 				, "image": {
 "loc": "#prc.siteBaseURL & "/" & reReplace(
-					content.get( "featuredImageURL" ),
-					"^/",
-					""
-				)#"
+	content.get( "featuredImageURL" ),
+	"^/",
+	""
+)#"
 }
 			</cfif>
 			

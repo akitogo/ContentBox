@@ -1,5 +1,5 @@
 <cfoutput>
-	<div id="widget-container"><!--- Filter --->     <div class="well well-sm"><!--- Filter --->     <div class="form-group m0">
+	<div id="widget-container"><!--- Filter --->      <div class="well well-sm"><!--- Filter --->      <div class="form-group m0">
 		<div class="input-group input-group-sm m0">
 			<input
 				name="widgetFilter"
@@ -22,7 +22,7 @@
 
 </div>
 
-<div class="tabs tabs-left"><!--- Navigation Bar --->     <ul class="nav nav-tabs" id="widget-sidebar"><!--- All Tab --->     <li class="nav-item active">
+<div class="tabs tabs-left"><!--- Navigation Bar --->      <ul class="nav nav-tabs" id="widget-sidebar"><!--- All Tab --->      <li class="nav-item active">
 <a href="##widget-store" class="nav-link current flex justify-between" data-toggle="tab">
 	<span class="categoryName">
 		All
@@ -36,10 +36,10 @@
 <a href="##widget-store" data-toggle="tab" class="nav-link flex justify-between">
 	<span class="categoryName">#prc.categories.category#</span>
 <span class="badge badge-info ml10">#duplicate( prc.widgets ).filter(
-					function( thisWidget ) {
-						return thisWidget.category EQ prc.categories.category;
-					}
-				).recordcount#</span>
+		function( thisWidget ) {
+			return thisWidget.category EQ prc.categories.category;
+		}
+	).recordcount#</span>
 	</a>
 </li>
 		</cfif>
@@ -57,11 +57,11 @@
 
 
 	<cfset aWidgetErrors = []>
-	<!--- Tab Content --->     
+	<!--- Tab Content --->      
 		<div class="tab-content">
 			<div class="widget-store full tab-pane active">
 
-				<!--- Row --->     
+				<!--- Row --->      
 				<div class="row">
 
 
@@ -71,44 +71,44 @@
 
 	<cfloop query="prc.widgets">
 		<cfscript>
-			widgetName = prc.widgets.name;
-			widgetSelector = prc.widgets.name;
-			category = prc.widgets.category;
-			switch ( prc.widgets.widgettype ) {
-				case "module":
-					widgetName &= "@" & prc.widgets.module;
-					break;
-				case "layout":
-					widgetName = "~" & widgetName;
-					break;
-			}
+	widgetName = prc.widgets.name;
+	widgetSelector = prc.widgets.name;
+	category = prc.widgets.category;
+	switch ( prc.widgets.widgettype ) {
+		case "module":
+			widgetName &= "@" & prc.widgets.module;
+			break;
+		case "layout":
+			widgetName = "~" & widgetName;
+			break;
+	}
 
-			// Try to get the widget object
-			try {
-				oWidget = prc.widgetService.getWidget( name = widgetName, type = prc.widgets.widgetType );
-			} catch (Any e) {
-				log.error(
-						"Error Building #prc.widgets.toString()#. #e.message# #e.detail#",
-						e
-					);
-				arrayAppend(
-					aWidgetErrors,
-					"<div class='alert alert-danger m10'>Error building '#prc.widgets.name#' widget: #e.message# <p><a data-toggle='collapse' data-target='##Widget_Error_#prc.widgets.name#'>Toggle Full Error</a></p><div id='Widget_Error_#prc.widgets.name#' class='collapse'>#e.detail#</div></div>"
-				);
-				continue;
-			}
+	// Try to get the widget object
+	try {
+		oWidget = prc.widgetService.getWidget( name = widgetName, type = prc.widgets.widgetType );
+	} catch (Any e) {
+		log.error(
+				"Error Building #prc.widgets.toString()#. #e.message# #e.detail#",
+				e
+			);
+		arrayAppend(
+			aWidgetErrors,
+			"<div class='alert alert-danger m10'>Error building '#prc.widgets.name#' widget: #e.message# <p><a data-toggle='collapse' data-target='##Widget_Error_#prc.widgets.name#'>Toggle Full Error</a></p><div id='Widget_Error_#prc.widgets.name#' class='collapse'>#e.detail#</div></div>"
+		);
+		continue;
+	}
 
-			iconName = prc.widgets.icon;
-			if ( args.cols EQ 2 ) {
-				extraClasses = "half ";
-				extraClasses &= currentRow % 2 == 0 ? "spacer" : "";
-				extraClasses = "third ";
-				extraClasses &= currentRow % 3 != 1 ? "spacer" : "";
-			} else {
-				extraClasses = "third ";
-				extraClasses &= currentRow % 3 != 1 ? "spacer" : "";
-			}
-		</cfscript>
+	iconName = prc.widgets.icon;
+	if ( args.cols EQ 2 ) {
+		extraClasses = "half ";
+		extraClasses &= currentRow % 2 == 0 ? "spacer" : "";
+		extraClasses = "third ";
+		extraClasses &= currentRow % 3 != 1 ? "spacer" : "";
+	} else {
+		extraClasses = "third ";
+		extraClasses &= currentRow % 3 != 1 ? "spacer" : "";
+	}
+</cfscript>
 		<cfset hasProtocol = reFindNoCase( "\b(?:https?):?", oWidget.getAuthorURL() )>
 		<cfset widgetURL = hasProtocol ? oWidget.getAuthorURL() : "http://" & oWidget.getAuthorURL()>
 		<cfset widgetCursor = args.mode EQ "edit" ? "" : "widget-selector ">
@@ -129,16 +129,16 @@ Error loading widget: #widgetName#<br>
 		<cfelse>
 			<div class="panel-heading">
 			<cfif args.mode EQ "edit">
-				<div class="btn-group btn-group-sm actions"><!--- read docs --->     <a data-toggle="tooltip" data-container="body" data-placement="left" title="Read Widget Documentation" class="btn btn-sm btn-info" href="javascript:openRemoteModal('#event.buildLink( prc.xehWidgetDocs )#',{widget:'#urlEncodedFormat( widgetName )#',type:'#urlEncodedFormat( prc.widgets.widgettype )#'} )">
+				<div class="btn-group btn-group-sm actions"><!--- read docs --->      <a data-toggle="tooltip" data-container="body" data-placement="left" title="Read Widget Documentation" class="btn btn-sm btn-info" href="javascript:openRemoteModal('#event.buildLink( prc.xehWidgetDocs )#',{widget:'#urlEncodedFormat( widgetName )#',type:'#urlEncodedFormat( prc.widgets.widgettype )#'} )">
 	<i class="fa fa-book fa-lg"></i>
 </a>
 				<cfif prc.oCurrentAuthor.hasPermission( "WIDGET_ADMIN" )>
-					<!--- Test --->     <a title="Test Widget" data-container="body" class="btn btn-sm btn-info"
+					<!--- Test --->      <a title="Test Widget" data-container="body" class="btn btn-sm btn-info"
 href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 	<i class="fa fa-bolt fa-lg"></i>
 </a>
 					<cfif prc.widgets.widgettype EQ "custom">
-						<!--- Delete Command --->     <a title="Delete Widget" data-container="body"  href="javascript:remove('#JSStringFormat( widgetName )#')" class="confirmIt btn btn-sm btn-danger" data-title="Delete #widgetName#?">
+						<!--- Delete Command --->      <a title="Delete Widget" data-container="body"  href="javascript:remove('#JSStringFormat( widgetName )#')" class="confirmIt btn btn-sm btn-danger" data-title="Delete #widgetName#?">
 	<i class="fa fa-trash fa-lg"></i>
 </a>
 					</cfif>
@@ -188,7 +188,7 @@ href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 		
 		
 							</div>
-							<!--- end widget-content --->     
+							<!--- end widget-content --->      
 						</div>
 
 
@@ -203,7 +203,7 @@ href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 	
 
 				</div>
-				<!--- Errors --->     
+				<!--- Errors --->      
 				<div class="row">
 
 
@@ -220,7 +220,7 @@ href="javascript:testWidgetCode( '#widgetName#', '#prc.widgets.widgetType#' )">
 	
 				</div>
 
-				<!--- No Records --->     
+				<!--- No Records --->      
 				<div id="widgetCountAlert" class="alert alert-warning" style="display:none;">
 					Sorry, no widgets matched your search!
 				</div>

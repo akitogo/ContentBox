@@ -15,37 +15,37 @@
 </div>
 <div class="row">
     <span class="col-md-6">#html.textfield(
-			label        = "URL Classes:",
-			name         = "urlClass",
-			id           = "",
-			bind         = args.menuItem,
-			maxlength    = "100",
-			title        = "Extra CSS classes to add to this menu item",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#</span>
+		label        = "URL Classes:",
+		name         = "urlClass",
+		id           = "",
+		bind         = args.menuItem,
+		maxlength    = "100",
+		title        = "Extra CSS classes to add to this menu item",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</span>
 <span class="col-md-6">#html.select(
-			options       = html.options(
-					[
-						{ "name": "Select", "value": "" },
-						{ "name": "_self", "value": "_self" },
-						{ "name": "_blank", "value": "_blank" },
-						{ "name": "_parent", "value": "_parent" },
-						{ "name": "_top", "value": "_top" }
-					]
-				),
-			selectedValue = "",
-			name          = "target",
-			label         = "Target:",
-			id            = "",
-			bind          = args.menuItem,
-			title         = "Where URL should be opened",
-			class         = "form-control input-sm",
-			wrapper       = "div class=controls",
-			labelClass    = "control-label",
-			groupWrapper  = "div class=form-group"
-		)#</span>
+		options       = html.options(
+				[
+					{ "name": "Select", "value": "" },
+					{ "name": "_self", "value": "_self" },
+					{ "name": "_blank", "value": "_blank" },
+					{ "name": "_parent", "value": "_parent" },
+					{ "name": "_top", "value": "_top" }
+				]
+			),
+		selectedValue = "",
+		name          = "target",
+		label         = "Target:",
+		id            = "",
+		bind          = args.menuItem,
+		title         = "Where URL should be opened",
+		class         = "form-control input-sm",
+		wrapper       = "div class=controls",
+		labelClass    = "control-label",
+		groupWrapper  = "div class=form-group"
+	)#</span>
 </div>
 </cfoutput>

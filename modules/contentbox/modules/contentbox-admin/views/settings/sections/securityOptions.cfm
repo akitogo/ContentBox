@@ -1,6 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "securitySettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-key fa-lg"></i> Password Options</legend><!--- Min Password Length --->     <div class="form-group">
+<legend><i class="fa fa-key fa-lg"></i> Password Options</legend><!--- Min Password Length --->      <div class="form-group">
 <label class="control-label" for="cb_security_min_password_length">
 	Minimum Password Length:
 	<span class="badge badge-info" id="cb_security_min_password_length_label">#prc.cbSettings.cb_security_min_password_length#</span>
@@ -24,7 +24,7 @@
 			<strong class="m10">50</strong>
 		</div>
 	</div>
-</div><!--- Password Reset Token Expiration --->     <div class="form-group">
+</div><!--- Password Reset Token Expiration --->      <div class="form-group">
 <label class="control-label" for="cb_security_password_reset_expiration">
 	Reset Password Token Expiration:
 	<span class="badge badge-info" id="cb_security_password_reset_expiration_label">#prc.cbSettings.cb_security_password_reset_expiration#</span>
@@ -55,20 +55,20 @@
 </fieldset>
 
 <fieldset>
-	<legend><i class="fa fa-paw fa-lg"></i> Login Tracker</legend><!--- Login Blocker --->     <div class="form-group">#html.label(
-			class   = "control-label",
-			field   = "cb_security_login_blocker",
-			content = "Enable Login Tracker:"
-		)#<div class="controls">
+	<legend><i class="fa fa-paw fa-lg"></i> Login Tracker</legend><!--- Login Blocker --->      <div class="form-group">#html.label(
+		class   = "control-label",
+		field   = "cb_security_login_blocker",
+		content = "Enable Login Tracker:"
+	)#<div class="controls">
 <small>When enabled, all logins attempts will by tracked and blocking is enabled if too many attempts occur.</small><br/><br />#html.checkbox(
-			name    = "cb_security_login_blocker_toggle",
-			data    = { toggle: "toggle", match: "cb_security_login_blocker" },
-			checked = prc.cbSettings.cb_security_login_blocker
-		)##html.hiddenField(
-			name  = "cb_security_login_blocker",
-			value = prc.cbSettings.cb_security_login_blocker
-		)#</div>
-</div><!--- Max Attempts --->     <div class="form-group">
+		name    = "cb_security_login_blocker_toggle",
+		data    = { toggle: "toggle", match: "cb_security_login_blocker" },
+		checked = prc.cbSettings.cb_security_login_blocker
+	)##html.hiddenField(
+		name  = "cb_security_login_blocker",
+		value = prc.cbSettings.cb_security_login_blocker
+	)#</div>
+</div><!--- Max Attempts --->      <div class="form-group">
      <label class="control-label" for="cb_security_max_attempts">
 Max Invalid Attempts To Block:
 <span class="badge badge-info" id="cb_security_max_attempts_label">#prc.cbSettings.cb_security_max_attempts#</span>
@@ -89,7 +89,7 @@ Max Invalid Attempts To Block:
 >
 <strong class="m10">50</strong>
      </div>
- </div><!--- Block Time --->     <div class="form-group">
+ </div><!--- Block Time --->      <div class="form-group">
      <label class="control-label" for="cb_security_blocktime">
 Minutes To Block:
 <span class="badge badge-info" id="cb_security_blocktime_label">#prc.cbSettings.cb_security_blocktime#</span>
@@ -110,7 +110,7 @@ Minutes To Block:
 >
 <strong class="m10">60</strong>
      </div>
- </div><!--- Max Auth Logs --->     <div class="form-group">
+ </div><!--- Max Auth Logs --->      <div class="form-group">
      <label class="control-label" for="cb_security_max_auth_logs">
 Max Auth Logs:
 <span class="badge badge-info" id="cb_security_max_auth_logs_label">#prc.cbSettings.cb_security_max_auth_logs#</span>
@@ -137,52 +137,52 @@ Max Auth Logs:
 </fieldset>
 
 <fieldset>
-	<legend><i class="fa fa-filter"></i> <strong>Rate Limiter</strong></legend><!--- Rate Limiter --->     <div class="form-group">#html.label(
-			class   = "control-label",
-			field   = "cb_security_rate_limiter",
-			content = "Enable Rate Limiter:"
-		)#<div class="controls">
+	<legend><i class="fa fa-filter"></i> <strong>Rate Limiter</strong></legend><!--- Rate Limiter --->      <div class="form-group">#html.label(
+		class   = "control-label",
+		field   = "cb_security_rate_limiter",
+		content = "Enable Rate Limiter:"
+	)#<div class="controls">
 <small>When enabled, it will keep track of requests and apply rate limiting according to count and duration settings according to client IP Address.</small><br/><br />#html.checkbox(
-			name    = "cb_security_rate_limiter_toggle",
-			data    = { toggle: "toggle", match: "cb_security_rate_limiter" },
-			checked = prc.cbSettings.cb_security_rate_limiter
-		)##html.hiddenField(
-			name  = "cb_security_rate_limiter",
-			value = prc.cbSettings.cb_security_rate_limiter
-		)#</div>
-</div><!--- Rate Limiter logging --->     <div class="form-group">#html.label(
-			class   = "control-label",
-			field   = "cb_security_rate_limiter_logging",
-			content = "Enable Rate Limiter Logging:"
-		)#<div class="controls">
+		name    = "cb_security_rate_limiter_toggle",
+		data    = { toggle: "toggle", match: "cb_security_rate_limiter" },
+		checked = prc.cbSettings.cb_security_rate_limiter
+	)##html.hiddenField(
+		name  = "cb_security_rate_limiter",
+		value = prc.cbSettings.cb_security_rate_limiter
+	)#</div>
+</div><!--- Rate Limiter logging --->      <div class="form-group">#html.label(
+		class   = "control-label",
+		field   = "cb_security_rate_limiter_logging",
+		content = "Enable Rate Limiter Logging:"
+	)#<div class="controls">
 <small>When enabled, and if an IP is rate limited then ContentBox will log the blocked event using the system logs.</small><br/><br />#html.checkbox(
-			name    = "cb_security_rate_limiter_logging_toggle",
-			data    = {
-				toggle: "toggle",
-				match : "cb_security_rate_limiter_logging"
-			},
-			checked = prc.cbSettings.cb_security_rate_limiter_logging
-		)##html.hiddenField(
-			name  = "cb_security_rate_limiter_logging",
-			value = prc.cbSettings.cb_security_rate_limiter_logging
-		)#</div>
-</div><!--- Bot Limiter --->     <div class="form-group">#html.label(
-			class   = "control-label",
-			field   = "cb_security_rate_limiter_bots_only",
-			content = "Enable For Automated Requests Only:"
-		)#<div class="controls">
+		name    = "cb_security_rate_limiter_logging_toggle",
+		data    = {
+			toggle: "toggle",
+			match : "cb_security_rate_limiter_logging"
+		},
+		checked = prc.cbSettings.cb_security_rate_limiter_logging
+	)##html.hiddenField(
+		name  = "cb_security_rate_limiter_logging",
+		value = prc.cbSettings.cb_security_rate_limiter_logging
+	)#</div>
+</div><!--- Bot Limiter --->      <div class="form-group">#html.label(
+		class   = "control-label",
+		field   = "cb_security_rate_limiter_bots_only",
+		content = "Enable For Automated Requests Only:"
+	)#<div class="controls">
 <small>When enabled, it will apply rate limiting only for cookie-less requests. If disabled, it will limit ALL requests, including "legit" user requests. Usually, automated scripts and DOS attacks have no cookies enabled.</small><br/><br />#html.checkbox(
-			name    = "cb_security_rate_limiter_bots_only_toggle",
-			data    = {
-				toggle: "toggle",
-				match : "cb_security_rate_limiter_bots_only"
-			},
-			checked = prc.cbSettings.cb_security_rate_limiter_bots_only
-		)##html.hiddenField(
-			name  = "cb_security_rate_limiter_bots_only",
-			value = prc.cbSettings.cb_security_rate_limiter_bots_only
-		)#</div>
-</div><!--- Limiter Count --->     <div class="form-group">
+		name    = "cb_security_rate_limiter_bots_only_toggle",
+		data    = {
+			toggle: "toggle",
+			match : "cb_security_rate_limiter_bots_only"
+		},
+		checked = prc.cbSettings.cb_security_rate_limiter_bots_only
+	)##html.hiddenField(
+		name  = "cb_security_rate_limiter_bots_only",
+		value = prc.cbSettings.cb_security_rate_limiter_bots_only
+	)#</div>
+</div><!--- Limiter Count --->      <div class="form-group">
      <label class="control-label" for="cb_security_rate_limiter_count">
 Limiter Count:
 <span class="badge badge-info" id="cb_security_rate_limiter_count_label">#prc.cbSettings.cb_security_rate_limiter_count#</span>
@@ -203,7 +203,7 @@ Limiter Count:
 		>
 		<strong class="m10">25</strong>
        </div>
-</div><!--- Limiter Duration --->     <div class="form-group">
+</div><!--- Limiter Duration --->      <div class="form-group">
      <label class="control-label" for="cb_security_rate_limiter_duration">
 Limiter Duration (Seconds):
 <span class="badge badge-info" id="cb_security_rate_limiter_duration_label">#prc.cbSettings.cb_security_rate_limiter_duration#</span>
@@ -224,45 +224,45 @@ Limiter Duration (Seconds):
 		>
 		<strong class="m10">60</strong>
        </div>
-</div><!--- Limiter Message --->     <div class="form-group">#html.label(
-			field   = "cb_security_rate_limiter_message",
-			class   = "control-label",
-			content = "Limiter Message:"
-		)#<div class="controls">
+</div><!--- Limiter Message --->      <div class="form-group">#html.label(
+		field   = "cb_security_rate_limiter_message",
+		class   = "control-label",
+		content = "Limiter Message:"
+	)#<div class="controls">
 <small>The message displayed to users when the rate limit has been exceeded. A 503 status header is also sent in the response.The <code>{duration}</code> element will be replaced with the setting at runtime.</small>#html.textarea(
-			name  = "cb_security_rate_limiter_message",
-			class = "form-control",
-			value = prc.cbSettings.cb_security_rate_limiter_message,
-			rows  = "4"
-		)#</div>
+		name  = "cb_security_rate_limiter_message",
+		class = "form-control",
+		value = prc.cbSettings.cb_security_rate_limiter_message,
+		rows  = "4"
+	)#</div>
 </div>
 
 <div class="form-group">#html.label(
-			field   = "cb_security_rate_limiter_redirectURL",
-			class   = "control-label",
-			content = "Limiter Redirect URL:"
-		)#<div class="controls">
+		field   = "cb_security_rate_limiter_redirectURL",
+		class   = "control-label",
+		content = "Limiter Redirect URL:"
+	)#<div class="controls">
 <small>If you fill out this URL, then instead of showing the above limiter message, we will redirect (302) the request to this URL.</small>#html.URLField(
-			name  = "cb_security_rate_limiter_redirectURL",
-			class = "form-control",
-			value = prc.cbSettings.cb_security_rate_limiter_redirectURL
-		)#</div>
+		name  = "cb_security_rate_limiter_redirectURL",
+		class = "form-control",
+		value = prc.cbSettings.cb_security_rate_limiter_redirectURL
+	)#</div>
     </div>
 
 </fieldset>
 
 <fieldset>
-    <legend><i class="fa fa-key fa-lg"></i>  Secure Sockets Layer (SSL) Encryption</legend><!--- Admin SSL --->     <div class="form-group">#html.label(
-			class   = "control-label",
-			field   = "cb_admin_ssl",
-			content = "Admin Force SSL (Secure Sockets Layer):"
-		)#<div class="controls">
+    <legend><i class="fa fa-key fa-lg"></i>  Secure Sockets Layer (SSL) Encryption</legend><!--- Admin SSL --->      <div class="form-group">#html.label(
+		class   = "control-label",
+		field   = "cb_admin_ssl",
+		content = "Admin Force SSL (Secure Sockets Layer):"
+	)#<div class="controls">
 <small>You can enable SSL encryption for the administrator module.</small><br /><br />#html.checkbox(
-			name    = "cb_admin_ssl_toggle",
-			data    = { toggle: "toggle", match: "cb_admin_ssl" },
-			checked = prc.cbSettings.cb_admin_ssl
-		)##html.hiddenField( name = "cb_admin_ssl", value = prc.cbSettings.cb_admin_ssl )#</div>
+		name    = "cb_admin_ssl_toggle",
+		data    = { toggle: "toggle", match: "cb_admin_ssl" },
+		checked = prc.cbSettings.cb_admin_ssl
+	)##html.hiddenField( name = "cb_admin_ssl", value = prc.cbSettings.cb_admin_ssl )#</div>
     </div>
-</fieldset><!--- Button Bar --->     <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
-			class = "btn btn-danger" )#</div>#html.endForm()#
+</fieldset><!--- Button Bar --->      <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

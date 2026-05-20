@@ -1,5 +1,5 @@
 <cfoutput>
-	<title>#cb.getContentTitle()#</title><!--- ********************************************************************************* --->     <meta charset="utf-8" />
+	<title>#cb.getContentTitle()#</title><!--- ********************************************************************************* --->      <meta charset="utf-8" />
 <meta name="generator" 	 	content="ContentBox powered by ColdBox" />
 <meta name="robots" 	 	content="index,follow" />
 <meta name="viewport" 		content="width=device-width, initial-scale=1">
@@ -14,21 +14,21 @@
 <link rel="alternate" type="application/rss+xml" title="Recent Content Comment Updates" href="#cb.linkSiteRSS( comments = true )#" />
 		<cfif cb.isEntryView()>
 			<link rel="alternate" type="application/rss+xml" title="Entry's Recent Comments" href="#cb.linkRSS( comments = true,
-					entry = cb.getCurrentEntry() )#" />
+		entry = cb.getCurrentEntry() )#" />
 		</cfif>
 	</cfif>
-	<!--- ********************************************************************************* --->     
+	<!--- ********************************************************************************* --->      
 
 <!-- injector:css -->
 <link rel="stylesheet" href="#cb.themeRoot()#/#html.elixirPath(
-			fileName     = "css/theme.css",
-			manifestRoot = "#cb.themeRoot()#/includes"
-		)#">
+		fileName     = "css/theme.css",
+		manifestRoot = "#cb.themeRoot()#/includes"
+	)#">
 <!-- endinjector -->
 
-<!--- Swatch Skin - Overrides Defaults --->     
+<!--- Swatch Skin - Overrides Defaults --->      
 <link rel="stylesheet" href="#cb.themeRoot()#/includes/bootswatch/#lcase( cb.themeSetting( "cbBootswatchTheme",
-				"green" ) )#/bootstrap.min.css?v=1" />
+			"green" ) )#/bootstrap.min.css?v=1" />
 
 
 
@@ -38,20 +38,20 @@
 	<cfif len( cb.themeSetting( "cssStyleOverrides" ) )>
 		<style>#cb.themeSetting( "cssStyleOverrides" )#</style>
 	</cfif>
-	<!--- ********************************************************************************* --->     
+	<!--- ********************************************************************************* --->      
 <!-- injector:js -->
 <script src="#cb.themeRoot()#/#html.elixirPath(
-			fileName     = "js/runtime.js",
-			manifestRoot = "#cb.themeRoot()#/includes"
-		)#"></script>
+		fileName     = "js/runtime.js",
+		manifestRoot = "#cb.themeRoot()#/includes"
+	)#"></script>
 <script src="#cb.themeRoot()#/#html.elixirPath(
-			fileName     = "js/vendor.js",
-			manifestRoot = "#cb.themeRoot()#/includes"
-		)#"></script>
+		fileName     = "js/vendor.js",
+		manifestRoot = "#cb.themeRoot()#/includes"
+	)#"></script>
 <script src="#cb.themeRoot()#/#html.elixirPath(
-			fileName     = "js/theme.js",
-			manifestRoot = "#cb.themeRoot()#/includes"
-		)#"></script>
+		fileName     = "js/theme.js",
+		manifestRoot = "#cb.themeRoot()#/includes"
+	)#"></script>
 <!-- endinjector -->
 
 

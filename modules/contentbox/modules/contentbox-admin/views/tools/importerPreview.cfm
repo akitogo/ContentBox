@@ -11,16 +11,16 @@
     <div class="col-md-5">
         <h4><strong>Override Existing Content?</strong></h4>
         <small>By default all content that exists is not overwritten.</small><br>#html.select(
-				options       = "true,false",
-				name          = "overrideContent",
-				selectedValue = "false",
-				class         = "form-control input-sm",
-				wrapper       = "div class=controls",
-				labelClass    = "control-label",
-				groupWrapper  = "div class=form-group"
-			)#<div class="alert alert-danger">
+		options       = "true,false",
+		name          = "overrideContent",
+		selectedValue = "false",
+		class         = "form-control input-sm",
+		wrapper       = "div class=controls",
+		labelClass    = "control-label",
+		groupWrapper  = "div class=form-group"
+	)#<div class="alert alert-danger">
     <i class="fa fa-warning fa-lg"></i> <strong>Non-content</strong> imports (layouts, widgets, modules, etc.) will automatically overwrite any existing assets regardless of the choice above.</strong>
-</div><!--- Notice --->     <div class="alert alert-info">
+</div><!--- Notice --->      <div class="alert alert-info">
         <i class="fa fa-info-circle fa-lg"></i> Please note that import is an expensive process, so please be patient when importing.
     </div>
 </div>
@@ -41,11 +41,11 @@
     <td>Total</td>
 </tr>
 		<cfset sortedContent = structSort(
-			prc.contents.content,
-			"text",
-			"asc",
-			"name"
-		)>
+	prc.contents.content,
+	"text",
+	"asc",
+	"name"
+)>
 		<cfloop array="#sortedContent#" index="key">
 			<cfset content = prc.contents.content[ key ]>
 			<tr
@@ -77,12 +77,12 @@
         </div>
     </div>
     <div class="modal-footer">
-        <!--- Button Bar --->     
+        <!--- Button Bar --->      
         <div id="importButtonBar">
             <button class="btn btn-danger" id="closeButton"> Cancel </button>
             <button class="btn btn-primary" id="importButton"> Import </button>
         </div>
-        <!--- Loader --->     
+        <!--- Loader --->      
         <div class="center loaders" id="importBarLoader">
             <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
             <br>Please wait, doing some hardcore importing action...

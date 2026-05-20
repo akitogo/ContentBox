@@ -8,16 +8,25 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="securityService" inject="securityService@contentbox";
+
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="permissionService" inject="permissionService@contentbox";
+
 	property
 		name="permissionGroupService"
 		inject="permissionGroupService@contentbox";
+
 	property name="roleService" inject="roleService@contentbox";
+
 	property name="editorService" inject="editorService@contentbox";
+
 	property name="paging" inject="paging@contentbox";
+
 	property name="twoFactorService" inject="twoFactorService@contentbox";
+
 	property
 		name="markdownEditor"
 		inject="markdownEditor@contentbox-markdowneditor";

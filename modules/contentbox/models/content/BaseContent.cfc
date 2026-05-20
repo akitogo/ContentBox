@@ -26,43 +26,54 @@ component
 		name="categoryService"
 		inject="provider:categoryService@contentbox"
 		persistent="false";
+
 	property
 		name="contentService"
 		inject="provider:contentService@contentbox"
 		persistent="false";
+
 	property
 		name="contentVersionService"
 		inject="provider:contentVersionService@contentbox"
 		persistent="false";
+
 	property
 		name="contentTemplateService"
 		inject="provider:ContentTemplateService@contentbox"
 		persistent="false";
+
 	property
 		name="commentService"
 		inject="provider:commentService@contentbox"
 		persistent="false";
+
 	property
 		name="customFieldService"
 		inject="provider:customFieldService@contentbox"
 		persistent="false";
+
 	property name="i18n" inject="provider:i18n@cbi18n" persistent="false";
+
 	property
 		name="JSONPrettyPrint"
 		inject="provider:JSONPrettyPrint@JSONPrettyPrint"
 		persistent="false";
+
 	property
 		name="settingService"
 		inject="provider:settingService@contentbox"
 		persistent="false";
+
 	property
 		name="mediaService"
 		inject="provider:MediaService@contentbox"
 		persistent="false";
+
 	property
 		name="statsService"
 		inject="provider:statsService@contentbox"
 		persistent="false";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * NON PERSISTED PROPERTIES
@@ -70,6 +81,7 @@ component
 	 */
 
 	property name="renderedContent" persistent="false" default="";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * STUPID PROPERTIES DUE TO ACF BUG
@@ -85,18 +97,21 @@ component
 		ormtype="timestamp"
 		notnull="true"
 		update="false";
+
 	property
 		name="modifiedDate"
 		column="modifiedDate"
 		type="date"
 		ormtype="timestamp"
 		notnull="true";
+
 	property
 		name="isDeleted"
 		column="isDeleted"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * PROPERTIES
@@ -111,6 +126,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="contentType"
 		column="contentType"
@@ -119,6 +135,7 @@ component
 		insert="false"
 		index="idx_discriminator,idx_published"
 		default="";
+
 	property
 		name="title"
 		column="title"
@@ -126,6 +143,7 @@ component
 		length="500"
 		default=""
 		index="idx_search";
+
 	property
 		name="slug"
 		column="slug"
@@ -133,18 +151,21 @@ component
 		length="500"
 		default=""
 		index="idx_slug,idx_publishedSlug";
+
 	property
 		name="publishedDate"
 		column="publishedDate"
 		notnull="false"
 		ormtype="timestamp"
 		index="idx_publishedDate";
+
 	property
 		name="expireDate"
 		column="expireDate"
 		notnull="false"
 		ormtype="timestamp"
 		index="idx_expireDate";
+
 	property
 		name="isPublished"
 		column="isPublished"
@@ -152,36 +173,42 @@ component
 		ormtype="boolean"
 		default="true"
 		index="idx_published,idx_search,idx_publishedSlug";
+
 	property
 		name="allowComments"
 		column="allowComments"
 		notnull="true"
 		ormtype="boolean"
 		default="true";
+
 	property
 		name="passwordProtection"
 		column="passwordProtection"
 		notnull="false"
 		length="100"
 		default="";
+
 	property
 		name="HTMLKeywords"
 		column="HTMLKeywords"
 		notnull="false"
 		length="160"
 		default="";
+
 	property
 		name="HTMLDescription"
 		column="HTMLDescription"
 		notnull="false"
 		length="160"
 		default="";
+
 	property
 		name="HTMLTitle"
 		column="HTMLTitle"
 		notnull="false"
 		length="255"
 		default="";
+
 	property
 		name="cache"
 		column="cache"
@@ -189,6 +216,7 @@ component
 		ormtype="boolean"
 		default="true"
 		index="idx_cache";
+
 	property
 		name="cacheTimeout"
 		column="cacheTimeout"
@@ -196,6 +224,7 @@ component
 		ormtype="integer"
 		default="0"
 		index="idx_cachetimeout";
+
 	property
 		name="cacheLastAccessTimeout"
 		column="cacheLastAccessTimeout"
@@ -203,12 +232,14 @@ component
 		ormtype="integer"
 		default="0"
 		index="idx_cachelastaccesstimeout";
+
 	property
 		name="markup"
 		column="markup"
 		notnull="true"
 		length="100"
 		default="HTML";
+
 	property
 		name="showInSearch"
 		column="showInSearch"
@@ -216,12 +247,14 @@ component
 		ormtype="boolean"
 		default="true"
 		index="idx_showInSearch";
+
 	property
 		name="featuredImage"
 		column="featuredImage"
 		notnull="false"
 		default=""
 		length="500";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * RELATIONSHIPS
@@ -236,6 +269,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_authorID"
 		lazy="true";
+
 	// M20 -> site loaded as a proxy and fetched immediately
 	property
 		name="site"
@@ -244,6 +278,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_siteID"
 		lazy="true";
+
 	// O2M -> Comments
 	property
 		name="comments"
@@ -257,6 +292,7 @@ component
 		fkcolumn="FK_contentID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> CustomFields
 	property
 		name="customFields"
@@ -269,6 +305,7 @@ component
 		fkcolumn="FK_contentID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> ContentVersions
 	property
 		name="contentVersions"
@@ -282,7 +319,9 @@ component
 		fkcolumn="FK_contentID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	property name="activeContentVersions" persistent="false";
+
 	// M20 -> Parent Page loaded as a proxy
 	property
 		name="parent"
@@ -290,6 +329,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_parentID"
 		lazy="true";
+
 	// O2M -> Sub Content Inverse
 	property
 		name="children"
@@ -303,6 +343,7 @@ component
 		fkcolumn="FK_parentID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> Comment Subscribers
 	property
 		name="commentSubscriptions"
@@ -315,6 +356,7 @@ component
 		fkcolumn="FK_contentID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// M2M -> Categories
 	property
 		name="categories"
@@ -328,6 +370,7 @@ component
 		fkcolumn="FK_contentID"
 		linktable="cb_contentCategories"
 		inversejoincolumn="FK_categoryID";
+
 	// M2M -> Related Content - Content related from this content to other content
 	property
 		name="relatedContent"
@@ -341,6 +384,7 @@ component
 		fkcolumn="FK_contentID"
 		linktable="cb_relatedContent"
 		inversejoincolumn="FK_relatedContentID";
+
 	// M2M -> Linked Content - Content related to this content from other content
 	property
 		name="linkedContent"
@@ -355,18 +399,21 @@ component
 		fkcolumn="FK_relatedContentID"
 		linktable="cb_relatedContent"
 		inversejoincolumn="FK_contentID";
+
 	property
 		name="contentTemplate"
 		fieldtype="many-to-one"
 		cfc="contentbox.models.content.ContentTemplate"
 		fkcolumn="FK_contentTemplateID"
 		lazy="true";
+
 	property
 		name="childContentTemplate"
 		fieldtype="many-to-one"
 		cfc="contentbox.models.content.ContentTemplate"
 		fkcolumn="FK_childContentTemplateID"
 		lazy="true";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * CALCULATED FIELDS

@@ -13,10 +13,15 @@
 component extends  ="coldbox.system.Interceptor" accessors="true" {
 	// DI
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="securityService" inject="securityService@contentbox";
+
 	property name="mailService" inject="mailService@cbmailservices";
+
 	property name="renderer" inject="coldbox:renderer";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
 
 	/**

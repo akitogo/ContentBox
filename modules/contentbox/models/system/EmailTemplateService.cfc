@@ -25,7 +25,9 @@
 component accessors="true" singleton {
 	// Dependecnies
 	property name="moduleSettings" inject="coldbox:setting:modules";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	// Local properties
 	property name="templatesPath" type="string";
 

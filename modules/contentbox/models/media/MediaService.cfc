@@ -12,7 +12,9 @@ component accessors="true" singleton {
 	 * --------------------------------------------------------------------------
 	 */
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="settingService" inject="settingservice@contentbox";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * Properties

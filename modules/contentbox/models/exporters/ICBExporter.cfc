@@ -10,15 +10,15 @@ interface {
 	/**
 	 * Custom validator for this exporter...any rules can be applied
 	 */
-	default public array function validate();
+	public array function validate();
 
 	/**
 	 * Determines if exporter is valid based on validation criteria
 	 */
-	default public boolean function isValid();
+	public boolean function isValid();
 
 	/**
 	 * Gets "total" based on content type
 	 */
-	default public numeric function getTotal();
+	public numeric function getTotal();
 }

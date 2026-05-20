@@ -12,11 +12,14 @@ component {
 	 **********************************************************************/
 
 	property name="coldbox" inject="provider:coldbox" persistent="false";
+
 	property name="cachebox" inject="provider:cachebox" persistent="false";
+
 	property
 		name="interceptorService"
 		inject="provider:coldbox:interceptorService"
 		persistent="false";
+
 	property name="wirebox" inject="wirebox" persistent="false";
 	/**********************************************************************
 	 * **						CONCRETE PROPERTIES

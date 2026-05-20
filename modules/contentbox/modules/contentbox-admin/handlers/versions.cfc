@@ -4,8 +4,11 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="contentVersionService" inject="contentVersionService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
+
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="JSONPrettyPrint" inject="JSONPrettyPrint@JSONPrettyPrint";
 
 	/**

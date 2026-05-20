@@ -8,7 +8,9 @@
 component extends="cbadmin.handlers.baseHandler" {
 	// DI
 	property name="cookieStorage" inject="cookieStorage@cbStorages";
+
 	property name="html" inject="HTMLHelper@coldbox";
+
 	property name="cb" inject="CBHelper@contentbox";
 
 	/**

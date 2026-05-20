@@ -8,12 +8,19 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
+
 	property name="commentService" inject="commentService@contentbox";
+
 	property name="categoryService" inject="categoryService@contentbox";
+
 	property name="feedReader" inject="FeedReader@cbfeeds";
+
 	property name="loginTrackerService" inject="loginTrackerService@contentbox";
+
 	property name="markdown" inject="Processor@cbmarkdown";
 
 	/**

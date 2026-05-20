@@ -10,34 +10,36 @@ interface {
 	/**
 	 * Get the internal name of an editor
 	 */
-	default function getName();
+	function getName();
 
 	/**
 	 * Get the display name of an editor
 	 */
-	default function getDisplayName();
+	function getDisplayName();
 
 	/**
 	 * This is fired once editor javascript loads, you can use this to return back functions, asset calls, etc.
 	 * return the appropriate JavaScript.
 	 * Each editor must implement the following JS functions:
-	 * checkIsDirty() - Checks if the editor has detected any changes<br>
-	 * getEditorContent() - Get's the HTML value of the content field<br>
-	 * getEditorExcerpt() - Get's the HTML value of the excerpt field<br>
-	 * updateEditorContent() - Updates the HTML value of the content field from the editor (if editor supports it)<br>
-	 * updateEditorExcerpt() - Updates the HTML value of the excerpt field from the editor (if editor supports it)<br>
+	 * <pre>
+	 * - checkIsDirty() - Checks if the editor has detected any changes
+	 * - getEditorContent() - Get the HTML value of the content field
+	 * - getEditorExcerpt() - Get the HTML value of the excerpt field
+	 * - updateEditorContent() - Updates the HTML value of the content field from the editor (if editor supports it)
+	 * - updateEditorExcerpt() - Updates the HTML value of the excerpt field from the editor (if editor supports it)
+	 * </pre>
 	 */
-	default function loadAssets();
+	function loadAssets();
 
 	/**
 	 * Startup the editor(s) on a page. This method is called inline within our dynamic JavaScript and must
 	 * return the appropriate JavaScript to turn on the editor.
 	 */
-	default function startup();
+	function startup();
 
 	/**
 	 * Shutdown the editor(s) on a page.  This method is called inline within our dynamic JavaScript and must
 	 * return the appropriate JavaScript to turn off the editor.
 	 */
-	default function shutdown();
+	function shutdown();
 }

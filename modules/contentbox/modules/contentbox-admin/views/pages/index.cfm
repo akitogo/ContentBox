@@ -19,7 +19,7 @@
 </div>
 	</cfif>
 	#html.startForm( name = "pageForm", action = prc.xehPageRemove )##html.hiddenField( name = "contentStatus",
-			value = "" )##html.hiddenField( name = "contentID", value = "" )#
+		value = "" )##html.hiddenField( name = "contentID", value = "" )#
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
@@ -27,10 +27,10 @@
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-			name        = "searchContent",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#
+		name        = "searchContent",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#
 							</div>
 						</div>
 
@@ -176,7 +176,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- content container --->     
+					<!--- content container --->      
     				<div id="contentTableContainer">
     					<p class="text-center">
 							<i id="pageLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -194,11 +194,11 @@
 			<div class="panel-body">
 				<div id="filterBox">
 					#html.startForm(
-			name   = "pageFilterForm",
-			action = prc.xehPageSearch,
-			class  = "form-vertical",
-			role   = "form"
-		)# 
+		name   = "pageFilterForm",
+		action = prc.xehPageSearch,
+		class  = "form-vertical",
+		role   = "form"
+	)# 
 						<div class="form-group">
 					        <label for="fAuthors" class="control-label">Authors:</label>
 							<div class="controls">
@@ -220,7 +220,7 @@
 								</select>
 							</div>
 					    </div>
-					    <!--- Creators --->     
+					    <!--- Creators --->      
 						<div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
@@ -240,7 +240,7 @@
 	
 							</select>
 						</div>
-						<!--- Categories --->     
+						<!--- Categories --->      
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
@@ -263,7 +263,7 @@
 								</select>
 					        </div>
 					    </div>
-						<!--- Status --->     
+						<!--- Status --->      
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -304,30 +304,30 @@
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_EDITOR,PAGES_ADMIN" )>
 		#view(
-			view          = "_tags/dialog/clone",
-			args          = {
-				title       : "Page Cloning",
-				infoMsg     : "",
-				action      : prc.xehPageClone,
-				titleLabel  : "Title",
-				publishLabel: "Publish all pages in hierarchy?",
-				publishInfo : "By default all cloned pages are published as drafts."
-			},
-			prePostExempt = true
-		)#
+	view          = "_tags/dialog/clone",
+	args          = {
+		title       : "Page Cloning",
+		infoMsg     : "",
+		action      : prc.xehPageClone,
+		titleLabel  : "Title",
+		publishLabel: "Publish all pages in hierarchy?",
+		publishInfo : "By default all cloned pages are published as drafts."
+	},
+	prePostExempt = true
+)#
 	</cfif>
 	<cfif prc.oCurrentAuthor.hasPermission( "PAGES_ADMIN,TOOLS_IMPORT" )>
 		#view(
-			view          = "_tags/dialog/import",
-			args          = {
-				title      : "Import Pages",
-				contentArea: "page",
-				action     : prc.xehPageImport,
-				contentInfo: "Choose the ContentBox <strong>JSON</strong> pages file to import. The creator of the page is matched via their <strong>username</strong> and
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Pages",
+		contentArea: "page",
+		action     : prc.xehPageImport,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> pages file to import. The creator of the page is matched via their <strong>username</strong> and
                 page overrides are matched via their <strong>slug</strong>.
                 If the importer cannot find the username from the import file in your installation, then it will ignore the record."
-			},
-			prePostExempt = true
-		)#
+	},
+	prePostExempt = true
+)#
 	</cfif>
 </cfoutput>

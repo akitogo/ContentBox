@@ -29,6 +29,7 @@ component
 		notnull="false"
 		length="500"
 		default="";
+
 	/**
 	 * The ordering numeric sequence
 	 */

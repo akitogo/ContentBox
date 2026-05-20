@@ -22,6 +22,7 @@ component
 		name="menuItemService"
 		inject="provider:menuItemService@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES due to ACF Bug
 	 **********************************************************************/
@@ -33,18 +34,21 @@ component
 		ormtype="timestamp"
 		notnull="true"
 		update="false";
+
 	property
 		name="modifiedDate"
 		column="modifiedDate"
 		type="date"
 		ormtype="timestamp"
 		notnull="true";
+
 	property
 		name="isDeleted"
 		column="isDeleted"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -57,6 +61,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="title"
 		column="title"
@@ -64,6 +69,7 @@ component
 		ormtype="string"
 		length="200"
 		default="";
+
 	property
 		name="label"
 		column="label"
@@ -71,6 +77,7 @@ component
 		ormtype="string"
 		length="200"
 		default="";
+
 	property
 		name="itemClass"
 		column="itemClass"
@@ -78,18 +85,22 @@ component
 		ormtype="string"
 		length="200"
 		default="";
+
 	property
 		name="data"
 		column="data"
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property name="active" column="active" ormtype="boolean" default="true";
+
 	property
 		name="menuType"
 		column="menuType"
 		insert="false"
 		update="false";
+
 	/**********************************************************************
 	 * **                          RELATIONSHIPS
 	 **********************************************************************/
@@ -102,6 +113,7 @@ component
 		fkcolumn="FK_menuID"
 		lazy="true"
 		notnull="true";
+
 	// M20 - Parent Menu item
 	property
 		name="parent"
@@ -109,6 +121,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_parentID"
 		lazy="true";
+
 	// O2M - Child Menu Item
 	property
 		name="children"

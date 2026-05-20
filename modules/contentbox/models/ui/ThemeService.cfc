@@ -8,28 +8,41 @@
 component accessors="true" threadSafe singleton {
 	// DI
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	// Provide this one in, due to chicken and the egg issues.
 	property name="widgetService" inject="provider:widgetService@contentbox";
+
 	property name="moduleSettings" inject="coldbox:setting:modules";
+
 	property name="interceptorService" inject="coldbox:interceptorService";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="wirebox" inject="wirebox";
+
 	property name="html" inject="HTMLHelper@coldbox";
+
 	property name="cbHelper" inject="provider:CBHelper@contentbox";
+
 	property name="moduleService" inject="coldbox:moduleService";
+
 	/**
 	 * The location of core themes on disk: Defaults to /modules/contentbox/themes
 	 */
 	property name="coreThemesPath";
+
 	/**
 	 * The location of custom themes on disk: Defaults to /modules_app/contentbox-custom/_themes
 	 */
 	property name="customThemesPath";
+
 	/**
 	 * The theme registry of records
 	 */
 	property name="themeRegistry" type="struct";
+
 	/**
 	 * The cache of widgets for the active theme
 	 */
@@ -656,218 +669,218 @@ component accessors="true" threadSafe singleton {
 		}
 		// cfformat-ignore-start
 		savecontent variable="settingForm" {
-	// Write out panel container
-	writeOutput(
-		"<div id=""settings-accordion"" class=""panel-group accordion"">"
-	);
+// Write out panel container
+writeOutput(
+	"<div id=""settings-accordion"" class=""panel-group accordion"">"
+);
 
-	// Iterate and create settings
-	var lastGroup = "NeverHadAGroup";
-	var firstPanel = true;
-	for ( var x = 1; x LTE arrayLen( oTheme.settings ); x++ ) {
-		var thisSettingMD = oTheme.settings[ x ];
-		var requiredText = "";
-		var requiredValidator = "";
+// Iterate and create settings
+var lastGroup = "NeverHadAGroup";
+var firstPanel = true;
+for ( var x = 1; x LTE arrayLen( oTheme.settings ); x++ ) {
+	var thisSettingMD = oTheme.settings[ x ];
+	var requiredText = "";
+	var requiredValidator = "";
 
-		// get actual setting value which should be guaranteed to exist
-		var settingName = "cb_theme_#arguments.activeTheme.name#_#thisSettingMD.name#";
-		var oSetting = settingService.findSiteSetting( oSite, settingName );
+	// get actual setting value which should be guaranteed to exist
+	var settingName = "cb_theme_#arguments.activeTheme.name#_#thisSettingMD.name#";
+	var oSetting = settingService.findSiteSetting( oSite, settingName );
 
-		thisSettingMD.defaultValue = oSetting.getValue();
+	thisSettingMD.defaultValue = oSetting.getValue();
 
-		// Default values for settings
-		if ( !structKeyExists( thisSettingMD, "required" ) ) {
-			thisSettingMD.required = false;
-		}
-		if ( !structKeyExists( thisSettingMD, "label" ) ) {
-			thisSettingMD.label = thisSettingMD.name;
-		}
-		if ( !structKeyExists( thisSettingMD, "type" ) ) {
-			thisSettingMD.type = "text";
-		}
-		if ( !structKeyExists( thisSettingMD, "title" ) ) {
-			thisSettingMD.title = "";
-		}
-		if ( !structKeyExists( thisSettingMD, "group" ) ) {
-			thisSettingMD.group = "Main";
-		}
-		if ( !structKeyExists( thisSettingMD, "groupIntro" ) ) {
-			thisSettingMD.groupIntro = "";
-		}
-		if ( !structKeyExists( thisSettingMD, "fieldHelp" ) ) {
-			thisSettingMD.fieldHelp = "";
-		}
-		if ( !structKeyExists( thisSettingMD, "fieldDescription" ) ) {
-			thisSettingMD.fieldDescription = "";
-		}
-
-		// required static strings
-		if ( thisSettingMD.required ) {
-			requiredText = "<span class='text-danger'>*Required</span>";
-			requiredValidator = "required";
-		}
-
-		// Starting a group panel?
-		if ( thisSettingMD.group != lastGroup ) {
-			// Close out previous group panel-body
-			if ( lastGroup != "NeverHadAGroup" ) {
-				writeOutput( "</div></div></div>" );
-			}
-
-			// Write out group panel header
-			writeOutput( "<div class=""panel panel-default"">" );
-			if ( thisSettingMD.group != "" ) {
-				writeOutput(
-					"
-								<div class=""panel-heading"">
-									<h4 class=""panel-title"">
-								<a 	class=""accordion-toggle""
-									data-toggle=""collapse""
-									data-parent=""##settings-accordion""
-									href=""##settingtab-#hash( thisSettingMD.group )#""
-									style=""display: block""
-								>
-									#thisSettingMD.group#
-								</a>
-									</h4>
-								</div>
-							"
-				);
-			}
-
-			// Start group body panel
-			writeOutput(
-				"
-				<div id=""settingtab-#hash( thisSettingMD.group )#"" class=""panel-collapse collapse #firstPanel ? "in" : ""#"" role=""tabpanel"">
-					<div class=""panel-body"">
-			"
-			);
-
-			// Show group intro if there is one
-			if ( len( thisSettingMD.groupIntro ) ) {
-				writeOutput(
-					"<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>"
-				);
-			}
-
-			// Set this as the last group
-			lastGroup = thisSettingMD.group;
-			firstpanel = false;
-		}
-
-		// writeout control wrapper
-		writeOutput( "<div class=""form-group marginTop25"">" );
-
-		// write out label
-		writeOutput(
-			html.label(
-					field   = settingName,
-					content = "#thisSettingMD.label# #requiredText#"
-				)
-		);
-
-		// Generate question mark icon for field Help to open modal
-		if ( len( thisSettingMD.fieldHelp ) ) {
-			writeOutput(
-				" <a data-toggle=""modal"" data-target=""##help_#settingName#""><i class=""fa fa-question-circle""></i></a>"
-			);
-		}
-
-		// write out field description
-		if ( len( thisSettingMD.fieldDescription ) ) {
-			writeOutput( "<div class=""pb5"">" & thisSettingMD.fieldDescription & "</div>" );
-		}
-
-		// write out control
-		switch ( thisSettingMD.type ) {
-			case "boolean": {
-				writeOutput(
-					html.select(
-							name          = settingName,
-							options       = "true,false",
-							selectedValue = thisSettingMD.defaultValue,
-							title         = thisSettingMD.title,
-							class         = "form-control input-lg"
-						)
-				);
-				break;
-			}
-			case "select": {
-				var options = "";
-				// Check options UDF
-				if ( structKeyExists( thisSettingMD, "optionsUDF" ) ) {
-					options = invoke( oTheme, thisSettingMD.optionsUDF );
-				} else if ( structKeyExists( thisSettingMD, "options" ) ) {
-					options = thisSettingMD.options;
-				}
-				writeOutput(
-					html.select(
-							name          = settingName,
-							options       = options,
-							selectedValue = thisSettingMD.defaultValue,
-							title         = thisSettingMD.title,
-							class         = "form-control input-lg"
-						)
-				);
-				break;
-			}
-			case "textarea": {
-				writeOutput(
-					html.textarea(
-							name     = settingName,
-							required = requiredValidator,
-							title    = thisSettingMD.title,
-							value    = thisSettingMD.defaultValue,
-							class    = "form-control",
-							rows     = 5
-						)
-				);
-				break;
-			}
-			case "color": {
-				writeOutput(
-					html.inputField(
-							name     = settingName,
-							class    = "textfield",
-							required = requiredValidator,
-							title    = thisSettingMD.title,
-							value    = thisSettingMD.defaultValue,
-							class    = "form-control",
-							type     = "color"
-						)
-				);
-				break;
-			}
-			default: {
-				writeOutput(
-					html.textfield(
-							name     = settingName,
-							class    = "textfield",
-							required = requiredValidator,
-							title    = thisSettingMD.title,
-							value    = thisSettingMD.defaultValue,
-							class    = "form-control"
-						)
-				);
-			}
-		}
-
-		// End form group
-		writeOutput( "</div>" );
-
-		// Generate modal for field Help
-		if ( len( thisSettingMD.fieldHelp ) ) {
-			writeOutput( generateModal( settingName, thisSettingMD ) );
-		}
-	} // end looping over theme settings
-
-	// Finalize Group Panel: In case we only had one setting in this group.
-	if ( lastGroup != "NeverHadAGroup" ) {
-		writeOutput( "</div></div></div>" );
+	// Default values for settings
+	if ( !structKeyExists( thisSettingMD, "required" ) ) {
+		thisSettingMD.required = false;
+	}
+	if ( !structKeyExists( thisSettingMD, "label" ) ) {
+		thisSettingMD.label = thisSettingMD.name;
+	}
+	if ( !structKeyExists( thisSettingMD, "type" ) ) {
+		thisSettingMD.type = "text";
+	}
+	if ( !structKeyExists( thisSettingMD, "title" ) ) {
+		thisSettingMD.title = "";
+	}
+	if ( !structKeyExists( thisSettingMD, "group" ) ) {
+		thisSettingMD.group = "Main";
+	}
+	if ( !structKeyExists( thisSettingMD, "groupIntro" ) ) {
+		thisSettingMD.groupIntro = "";
+	}
+	if ( !structKeyExists( thisSettingMD, "fieldHelp" ) ) {
+		thisSettingMD.fieldHelp = "";
+	}
+	if ( !structKeyExists( thisSettingMD, "fieldDescription" ) ) {
+		thisSettingMD.fieldDescription = "";
 	}
 
-	// Finalize Container
+	// required static strings
+	if ( thisSettingMD.required ) {
+		requiredText = "<span class='text-danger'>*Required</span>";
+		requiredValidator = "required";
+	}
+
+	// Starting a group panel?
+	if ( thisSettingMD.group != lastGroup ) {
+		// Close out previous group panel-body
+		if ( lastGroup != "NeverHadAGroup" ) {
+			writeOutput( "</div></div></div>" );
+		}
+
+		// Write out group panel header
+		writeOutput( "<div class=""panel panel-default"">" );
+		if ( thisSettingMD.group != "" ) {
+			writeOutput(
+				"
+							<div class=""panel-heading"">
+								<h4 class=""panel-title"">
+							<a 	class=""accordion-toggle""
+								data-toggle=""collapse""
+								data-parent=""##settings-accordion""
+								href=""##settingtab-#hash( thisSettingMD.group )#""
+								style=""display: block""
+							>
+								#thisSettingMD.group#
+							</a>
+								</h4>
+							</div>
+						"
+			);
+		}
+
+		// Start group body panel
+		writeOutput(
+			"
+			<div id=""settingtab-#hash( thisSettingMD.group )#"" class=""panel-collapse collapse #firstPanel ? "in" : ""#"" role=""tabpanel"">
+				<div class=""panel-body"">
+		"
+		);
+
+		// Show group intro if there is one
+		if ( len( thisSettingMD.groupIntro ) ) {
+			writeOutput(
+				"<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>"
+			);
+		}
+
+		// Set this as the last group
+		lastGroup = thisSettingMD.group;
+		firstpanel = false;
+	}
+
+	// writeout control wrapper
+	writeOutput( "<div class=""form-group marginTop25"">" );
+
+	// write out label
+	writeOutput(
+		html.label(
+				field   = settingName,
+				content = "#thisSettingMD.label# #requiredText#"
+			)
+	);
+
+	// Generate question mark icon for field Help to open modal
+	if ( len( thisSettingMD.fieldHelp ) ) {
+		writeOutput(
+			" <a data-toggle=""modal"" data-target=""##help_#settingName#""><i class=""fa fa-question-circle""></i></a>"
+		);
+	}
+
+	// write out field description
+	if ( len( thisSettingMD.fieldDescription ) ) {
+		writeOutput( "<div class=""pb5"">" & thisSettingMD.fieldDescription & "</div>" );
+	}
+
+	// write out control
+	switch ( thisSettingMD.type ) {
+		case "boolean": {
+			writeOutput(
+				html.select(
+						name          = settingName,
+						options       = "true,false",
+						selectedValue = thisSettingMD.defaultValue,
+						title         = thisSettingMD.title,
+						class         = "form-control input-lg"
+					)
+			);
+			break;
+		}
+		case "select": {
+			var options = "";
+			// Check options UDF
+			if ( structKeyExists( thisSettingMD, "optionsUDF" ) ) {
+				options = invoke( oTheme, thisSettingMD.optionsUDF );
+			} else if ( structKeyExists( thisSettingMD, "options" ) ) {
+				options = thisSettingMD.options;
+			}
+			writeOutput(
+				html.select(
+						name          = settingName,
+						options       = options,
+						selectedValue = thisSettingMD.defaultValue,
+						title         = thisSettingMD.title,
+						class         = "form-control input-lg"
+					)
+			);
+			break;
+		}
+		case "textarea": {
+			writeOutput(
+				html.textarea(
+						name     = settingName,
+						required = requiredValidator,
+						title    = thisSettingMD.title,
+						value    = thisSettingMD.defaultValue,
+						class    = "form-control",
+						rows     = 5
+					)
+			);
+			break;
+		}
+		case "color": {
+			writeOutput(
+				html.inputField(
+						name     = settingName,
+						class    = "textfield",
+						required = requiredValidator,
+						title    = thisSettingMD.title,
+						value    = thisSettingMD.defaultValue,
+						class    = "form-control",
+						type     = "color"
+					)
+			);
+			break;
+		}
+		default: {
+			writeOutput(
+				html.textfield(
+						name     = settingName,
+						class    = "textfield",
+						required = requiredValidator,
+						title    = thisSettingMD.title,
+						value    = thisSettingMD.defaultValue,
+						class    = "form-control"
+					)
+			);
+		}
+	}
+
+	// End form group
 	writeOutput( "</div>" );
+
+	// Generate modal for field Help
+	if ( len( thisSettingMD.fieldHelp ) ) {
+		writeOutput( generateModal( settingName, thisSettingMD ) );
+	}
+} // end looping over theme settings
+
+// Finalize Group Panel: In case we only had one setting in this group.
+if ( lastGroup != "NeverHadAGroup" ) {
+	writeOutput( "</div></div></div>" );
+}
+
+// Finalize Container
+writeOutput( "</div>" );
 }
 
 		// cfformat-ignore-end
@@ -884,21 +897,21 @@ component accessors="true" threadSafe singleton {
 	function generateModal( required settingName, required thisSettingMD ) {
 		// cfformat-ignore-start
 		return "<div class=""modal fade"" tabindex=""-1"" role=""dialog"" id=""help_#arguments.settingName#"">
-		  <div class=""modal-dialog"" role=""document"">
-		    <div class=""modal-content"">
-		      <div class=""modal-header"">
-		        <button type=""button"" class=""close"" data-dismiss=""modal"" aria-label=""Close""><span aria-hidden=""true"">&times;</span></button>
-		        <h4 class=""modal-title"">#arguments.thisSettingMD.label#</h4>
-		      </div>
-		      <div class=""modal-body"">
-		       #arguments.thisSettingMD.fieldHelp#
-		      </div>
-		      <div class=""modal-footer"">
-		        <button type=""button"" class=""btn btn-default"" data-dismiss=""modal"">Close</button>
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->";
+	  <div class=""modal-dialog"" role=""document"">
+	    <div class=""modal-content"">
+	      <div class=""modal-header"">
+	        <button type=""button"" class=""close"" data-dismiss=""modal"" aria-label=""Close""><span aria-hidden=""true"">&times;</span></button>
+	        <h4 class=""modal-title"">#arguments.thisSettingMD.label#</h4>
+	      </div>
+	      <div class=""modal-body"">
+	       #arguments.thisSettingMD.fieldHelp#
+	      </div>
+	      <div class=""modal-footer"">
+	        <button type=""button"" class=""btn btn-default"" data-dismiss=""modal"">Close</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->";
 
 
 		// cfformat-ignore-end

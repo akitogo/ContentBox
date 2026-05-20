@@ -23,10 +23,10 @@
 <div class="row">
 	<div class="col-md-12">
 		#html.startForm(
-			name   = "siteForm",
-			action = prc.xehSiteRemove,
-			class  = "form-vertical"
-		)##html.hiddenField( name = "siteID", value = "" )#
+		name   = "siteForm",
+		action = prc.xehSiteRemove,
+		class  = "form-vertical"
+	)##html.hiddenField( name = "siteID", value = "" )#
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -35,10 +35,10 @@
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-			name        = "siteFilter",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#
+		name        = "siteFilter",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#
 							</div>
 						</div>
 
@@ -49,7 +49,7 @@
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "SITES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-		<div class="text-right"><!--- Global --->     <div class="btn-group">
+		<div class="text-right"><!--- Global --->      <div class="btn-group">
 <button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
 	Bulk Actions <span class="caret"></span>
 </button>
@@ -103,13 +103,13 @@
 
 				<div class="panel-body">
 
-					<!--- Info Bar --->     
+					<!--- Info Bar --->      
 					<div class="alert alert-warning">
 						<i class="fa fa-warning fa-lg"></i>
 						If you delete a site, all of the content will be deleted as well. Be very very careful!
 					</div>
 
-					<!--- sites --->     
+					<!--- sites --->      
 					<table name="sites" id="sites" class="table table-striped-removed table-hover " >
 						<thead>
 							<tr>
@@ -168,34 +168,34 @@ title="Site is disabled!"
 									#site.getActiveTheme()#
 								</td>
 								<td>
-									<!--- Blog Enabled --->     
+									<!--- Blog Enabled --->      
 									<i
 										class="fas fa-blog fa-lg mr5 #site.getIsBlogEnabled() ? "text-green" : "text-gray"#"
 										title="Blog"></i>
 
-									<!--- SiteMap Enabled --->     
+									<!--- SiteMap Enabled --->      
 									<i
 										class="fa fa-sitemap fa-lg mr5 #site.getIsSitemapEnabled() ? "text-green" : "text-gray"#"
 										title="Sitemap"></i>
 
-									<!--- PoweredBy --->     
+									<!--- PoweredBy --->      
 									<i
 										class="fa fa-broadcast-tower fa-lg mr5 #site.getPoweredByHeader() ? "text-green" : "text-gray"#"
 										title="Powered By Header"></i>
 
-									<!--- AdminBar --->     
+									<!--- AdminBar --->      
 									<i
 										class="fa fa-laptop-house fa-lg mr5 #site.getAdminBar() ? "text-green" : "text-gray"#"
 										title="Admin Bar"></i>
 
-									<!--- SSL --->     
+									<!--- SSL --->      
 									<i
 										class="fa fa-lock fa-lg mr5 #site.getIsSSL() ? "text-green" : "text-gray"#"
 										title="SSL"></i>
 
 								</td>
 								<td class="text-center">
-									<!--- Actions --->     
+									<!--- Actions --->      
 									<div class="btn-group">
 										<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Site Actions">
 											<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -219,7 +219,7 @@ title="Site is disabled!"
 	</a>
 </li>
 		</cfif>
-		<!--- Edit Command --->     
+		<!--- Edit Command --->      
 											<li>
 												<a href="#event.buildLink( "#prc.xehSiteEditor#/siteID/#site.getsiteID()#" )#">
 													<i class="fas fa-pen fa-lg"></i> Edit
@@ -241,7 +241,7 @@ title="Site is disabled!"
 	</a>
 </li>
 		</cfif>
-		<!--- Open site --->     
+		<!--- Open site --->      
 											<li>
 												<a href="#site.getSiteRoot()#" target="_blank">
 													<i class="fa fa-external-link-alt fa-lg"></i>Open site
@@ -278,14 +278,14 @@ title="Site is disabled!"
 
 	<cfif prc.oCurrentAuthor.hasPermission( "TOOLS_IMPORT" )>
 		#view(
-			view          = "_tags/dialog/import",
-			args          = {
-				title      : "Import Sites",
-				contentArea: "sites",
-				action     : prc.xehImportAll,
-				contentInfo: "Choose the ContentBox <strong>JSON</strong> sites file to import."
-			},
-			prePostExempt = true
-		)#
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Sites",
+		contentArea: "sites",
+		action     : prc.xehImportAll,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> sites file to import."
+	},
+	prePostExempt = true
+)#
 	</cfif>
 </cfoutput>

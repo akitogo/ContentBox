@@ -25,18 +25,21 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="subscriberEmail"
 		column="subscriberEmail"
 		notnull="true"
 		length="255"
 		index="idx_subscriberEmail";
+
 	property
 		name="subscriberToken"
 		column="subscriberToken"
 		ormtype="string"
 		length="255"
 		notnull="true";
+
 	/**********************************************************************
 	 * **                          RELATIONSHIPS
 	 **********************************************************************/

@@ -6,16 +6,16 @@
         </h1>
     </div>
 </div>#html.startForm(
-			action     = prc.xehMenuSave,
-			name       = "menuForm",
-			novalidate = "novalidate",
-			class      = "form-vertical"
-		)#<div class="row">
+		action     = prc.xehMenuSave,
+		name       = "menuForm",
+		novalidate = "novalidate",
+		class      = "form-vertical"
+	)#<div class="row">
 
 <div class="col-md-9">
     <div class="actions">
         <a class="btn btn-link" onclick="window.location.href='#event.buildLink( prc.xehMenus )#';return false;">#cbAdminComponent( "ui/Icon",
-		{ name: "ArrowLeftCircle" } )#Back
+	{ name: "ArrowLeftCircle" } )#Back
     </a>
 </div>
 <div class="panel panel-default">
@@ -99,42 +99,42 @@ data-provider="#provider#"
             </div>
             <div class="panel-body">
                 #html.hiddenField( name = "menuID",
-			bind = prc.menu )##html.hiddenField( name = "menuItems" )##html.textfield(
-			label        = "Title:",
-			name         = "title",
-			bind         = prc.menu,
-			maxlength    = "100",
-			required     = "required",
-			title        = "The title for this menu",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.select(
-			options      = "ul,ol",
-			name         = "listType",
-			label        = "List Type:",
-			bind         = prc.menu,
-			required     = "required",
-			title        = "Select the type of list (ordered or unordered)",
-			class        = "form-control input-sm",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#
+		bind = prc.menu )##html.hiddenField( name = "menuItems" )##html.textfield(
+		label        = "Title:",
+		name         = "title",
+		bind         = prc.menu,
+		maxlength    = "100",
+		required     = "required",
+		title        = "The title for this menu",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.select(
+		options      = "ul,ol",
+		name         = "listType",
+		label        = "List Type:",
+		bind         = prc.menu,
+		required     = "required",
+		title        = "Select the type of list (ordered or unordered)",
+		class        = "form-control input-sm",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#
                 <div class="form-group">
                     <label for="slug" class="control-label">Menu Slug:</label>
                     <div class="controls">
                         <div id='slugCheckErrors'></div>
                         <div class="input-group">
                             #html.textfield(
-			name      = "slug",
-			value     = prc.menu.getSlug(),
-			maxlength = "100",
-			class     = "form-control",
-			title     = "The unique slug for this menu",
-			disabled  = "#prc.menu.isLoaded() ? "true" : "false"#"
-		)#
+		name      = "slug",
+		value     = prc.menu.getSlug(),
+		maxlength = "100",
+		class     = "form-control",
+		title     = "The unique slug for this menu",
+		disabled  = "#prc.menu.isLoaded() ? "true" : "false"#"
+	)#
                             <a title="" class="input-group-addon" href="javascript:void(0)" onclick="toggleSlug(); return false;" data-original-title="Lock/Unlock Menu Slug" data-container="body">
                                 <i id="toggleSlug" class="fa fa-#prc.menu.isLoaded() ? "lock" : "unlock"#"></i>
                             </a>
@@ -142,26 +142,26 @@ data-provider="#provider#"
                     </div>
                 </div>
                 #html.textfield(
-			label        = "CSS Classes:",
-			name         = "menuClass",
-			bind         = prc.menu,
-			maxlength    = "100",
-			title        = "Additional CSS classes to use for the main menu HTML element",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textfield(
-			label        = "List CSS Classes:",
-			name         = "listClass",
-			bind         = prc.menu,
-			maxlength    = "100",
-			title        = "CSS classes to apply to all list elements (ul/ol) within this menu",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#
+		label        = "CSS Classes:",
+		name         = "menuClass",
+		bind         = prc.menu,
+		maxlength    = "100",
+		title        = "Additional CSS classes to use for the main menu HTML element",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textfield(
+		label        = "List CSS Classes:",
+		name         = "listClass",
+		bind         = prc.menu,
+		maxlength    = "100",
+		title        = "CSS classes to apply to all list elements (ul/ol) within this menu",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#
                 <div class="actionBar">
                     <input type="hidden" name="saveEvent" id="saveEvent" value="#prc.xehMenuEditor#" />
                     <a class="btn btn-default"  id="submitSave">Save</a>
@@ -171,7 +171,7 @@ data-provider="#provider#"
         </div>
     </div>
 </div>
-#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->     
+#html.endForm()#<!--- CONTEXT MENU TEMPLATE --->      
 <div id="context-menu" class="dropdown clearfix" style="position: absolute;display:none;">
     <ul class="dropdown-menu" role="menu" style="display:block;margin-bottom:5px;">
 
@@ -194,7 +194,7 @@ data-provider="#provider#"
     </ul>
 </div>
 
-<!--- PREVIEW DIALOG --->     
+<!--- PREVIEW DIALOG --->      
 <div id="previewDialog" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">

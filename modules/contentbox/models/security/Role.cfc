@@ -21,6 +21,7 @@ component
 		name="permissionService"
 		inject="provider:permissionService@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES
 	 **********************************************************************/
@@ -33,6 +34,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="role"
 		column="role"
@@ -42,6 +44,7 @@ component
 		unique="true"
 		default=""
 		index="idx_roleName";
+
 	property
 		name="description"
 		column="description"
@@ -49,6 +52,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -66,6 +70,7 @@ component
 		fkcolumn="FK_roleID"
 		linktable="cb_rolePermissions"
 		inversejoincolumn="FK_permissionID";
+
 	/**********************************************************************
 	 * **							CALUCLATED FIELDS
 	 **********************************************************************/
@@ -73,9 +78,11 @@ component
 	property
 		name="numberOfPermissions"
 		formula="select count(*) from cb_rolePermissions as rolePermissions where rolePermissions.FK_roleID=roleID";
+
 	property
 		name="numberOfAuthors"
 		formula="select count(*) from cb_author as author where author.FK_roleID=roleID";
+
 	/**********************************************************************
 	 * **							NON PERSISTED PROPERTIES
 	 **********************************************************************/

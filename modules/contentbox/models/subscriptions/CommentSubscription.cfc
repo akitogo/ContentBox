@@ -22,6 +22,7 @@ component
 		name="commentSubscriptionService"
 		inject="provider:commentSubscriptionService@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **                          RELATIONSHIPS
 	 **********************************************************************/

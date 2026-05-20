@@ -1,13 +1,13 @@
 <cfoutput>
 	<script>
 window.authentication = #toJSON( prc.jwtTokens )#window.assignedTemplate = #(
-		!isNull( prc.oContent.getContentTemplate() )
-			? toJSON( prc
-					.oContent
-					.getContentTemplate()
-					.getMemento() )
-			: booleanFormat( false )
-	)#// Editor alerts model
+	!isNull( prc.oContent.getContentTemplate() )
+		? toJSON( prc
+				.oContent
+				.getContentTemplate()
+				.getMemento() )
+		: booleanFormat( false )
+)#// Editor alerts model
 function alertsModel(){
 	return {
 		alerts : [],

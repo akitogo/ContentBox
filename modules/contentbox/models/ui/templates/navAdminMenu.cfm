@@ -2,7 +2,7 @@
 	<ul class="nav nav-pills nav-stacked">
 	<cfloop array="#local.thisMenu#" index="local.topMenu">
 		<cfif !len( local.topMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.topMenu.permissions )>
-			<!--- LI --->     <li
+			<!--- LI --->      <li
 class="
 			<cfif arrayLen( local.topMenu.subMenu )>
 				nav-dropdown
@@ -68,8 +68,7 @@ class="
 			<cfif arrayLen( local.topMenu.subMenu )>
 				<ul class="nav-sub">
 				<cfloop array="#local.topMenu.submenu#" index="local.thisSubMenu">
-					<cfif !len( local.thisSubMenu.permissions ) ||
-						prc.oCurrentAuthor.hasPermission( local.thisSubMenu.permissions )>
+					<cfif !len( local.thisSubMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.thisSubMenu.permissions )>
 						<li
 class="
 						<cfif event.getPrivateValue( "tab#local.topMenu.name#_#local.thisSubMenu.name#", false )>
@@ -81,10 +80,10 @@ class="
 
 								<a
 									href="#(
-							isCustomFunction( local.thisSubMenu.href )
-								? local.thisSubMenu.href( local.thisSubMenu, event )
-								: local.thisSubMenu.href
-						)#"
+	isCustomFunction( local.thisSubMenu.href )
+		? local.thisSubMenu.href( local.thisSubMenu, event )
+		: local.thisSubMenu.href
+)#"
 
 
 

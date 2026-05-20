@@ -22,10 +22,12 @@ component
 		name="authorService"
 		inject="provider:authorService@contentbox"
 		persistent="false";
+
 	property
 		name="avatar"
 		inject="provider:Avatar@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES
 	 **********************************************************************/
@@ -38,18 +40,21 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="firstName"
 		column="firstName"
 		length="100"
 		notnull="true"
 		default="";
+
 	property
 		name="lastName"
 		column="lastName"
 		length="100"
 		notnull="true"
 		default="";
+
 	property
 		name="email"
 		column="email"
@@ -57,6 +62,7 @@ component
 		notnull="true"
 		index="idx_email"
 		default="";
+
 	property
 		name="username"
 		column="username"
@@ -65,6 +71,7 @@ component
 		index="idx_login"
 		unique="true"
 		default="";
+
 	property
 		name="password"
 		column="password"
@@ -72,6 +79,7 @@ component
 		notnull="true"
 		index="idx_login"
 		default="";
+
 	property
 		name="isActive"
 		column="isActive"
@@ -79,11 +87,13 @@ component
 		notnull="true"
 		default="false"
 		index="idx_login,idx_activeAuthor";
+
 	property
 		name="lastLogin"
 		column="lastLogin"
 		ormtype="timestamp"
 		notnull="false";
+
 	property
 		name="biography"
 		column="biography"
@@ -91,6 +101,7 @@ component
 		notnull="false"
 		length="8000"
 		default="";
+
 	property
 		name="preferences"
 		column="preferences"
@@ -98,6 +109,7 @@ component
 		notnull="false"
 		length="8000"
 		default="";
+
 	property
 		name="isPasswordReset"
 		column="isPasswordReset"
@@ -105,6 +117,7 @@ component
 		notnull="true"
 		default="false"
 		index="idx_passwordReset";
+
 	property
 		name="is2FactorAuth"
 		column="is2FactorAuth"
@@ -112,6 +125,7 @@ component
 		notnull="true"
 		default="false"
 		index="idx_2factorauth";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -129,6 +143,7 @@ component
 		cascade="save-update"
 		batchsize="10"
 		orderby="publishedDate DESC";
+
 	// O2M -> Pages
 	property
 		name="pages"
@@ -142,6 +157,7 @@ component
 		cascade="save-update"
 		batchsize="10"
 		orderby="publishedDate DESC";
+
 	// M20 -> Role
 	property
 		name="role"
@@ -150,6 +166,7 @@ component
 		cfc="contentbox.models.security.Role"
 		fkcolumn="FK_roleID"
 		lazy="true";
+
 	// M2M -> A-la-carte Author Permissions
 	property
 		name="permissions"
@@ -162,6 +179,7 @@ component
 		linktable="cb_authorPermissions"
 		inversejoincolumn="FK_permissionID"
 		orderby="permission";
+
 	// M2M -> A-la-carte Author Permission Groups
 	property
 		name="permissionGroups"
@@ -176,6 +194,7 @@ component
 		linktable="cb_authorPermissionGroups"
 		inversejoincolumn="FK_permissionGroupID"
 		orderby="name";
+
 	/**********************************************************************
 	 * **							CALCULATED FIELDS
 	 **********************************************************************/
@@ -190,6 +209,7 @@ component
 		persistent="false"
 		default="false"
 		type="boolean";
+
 	property name="permissionList" persistent="false";
 	/**********************************************************************
 	 * **							PK + CONSTRAINTS + MEMENTO

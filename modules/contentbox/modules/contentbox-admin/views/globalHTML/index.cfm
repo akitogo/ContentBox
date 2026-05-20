@@ -33,187 +33,187 @@
                             <a href="##pages" data-toggle="tab" class="nav-link"><i class="fa fa-file-alt fa-lg"></i> <span class="hidden-xs">Pages</span></a>
                         </li>
 					</ul>#html.startForm(
-			name   = "globalHTMLForm",
-			action = prc.xehSaveHTML,
-			class  = "form-vertical"
-		)#<!-- End Tabs -->
+		name   = "globalHTMLForm",
+		action = prc.xehSaveHTML,
+		class  = "form-vertical"
+	)#<!-- End Tabs -->
 <!-- Tab Content -->
-<div class="tab-content" id="tab-content"><!--- Global HTML Page --->     <div class="tab-pane active" id="global">
+<div class="tab-content" id="tab-content"><!--- Global HTML Page --->      <div class="tab-pane active" id="global">
 <fieldset>#html.textarea(
-			name         = "cb_html_beforeHeadEnd",
-			label        = "Before Head End: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_beforeHeadEnd,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_afterBodyStart",
-			label        = "After Body Start: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_afterBodyStart,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_beforeBodyEnd",
-			label        = "Before Body End: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_beforeBodyEnd,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_beforeContent",
-			label        = "Before Any Content: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_beforeContent,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_afterContent",
-			label        = "After Any Content: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_afterContent,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_beforeSideBar",
-			label        = "Before SideBar: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_beforeSideBar,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_afterSideBar",
-			label        = "After SideBar: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_afterSideBar,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_afterFooter",
-			label        = "After Footer: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_afterFooter,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#</fieldset>
-</div><!--- Entry --->     <div class="tab-pane" id="entry">
+		name         = "cb_html_beforeHeadEnd",
+		label        = "Before Head End: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_beforeHeadEnd,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_afterBodyStart",
+		label        = "After Body Start: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_afterBodyStart,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_beforeBodyEnd",
+		label        = "Before Body End: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_beforeBodyEnd,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_beforeContent",
+		label        = "Before Any Content: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_beforeContent,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_afterContent",
+		label        = "After Any Content: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_afterContent,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_beforeSideBar",
+		label        = "Before SideBar: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_beforeSideBar,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_afterSideBar",
+		label        = "After SideBar: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_afterSideBar,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_afterFooter",
+		label        = "After Footer: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_afterFooter,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</fieldset>
+</div><!--- Entry --->      <div class="tab-pane" id="entry">
 <fieldset>#html.textarea(
-			name         = "cb_html_preEntryDisplay",
-			label        = "Before A Blog Entry: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_preEntryDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_postEntryDisplay",
-			label        = "After A Blog Entry: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_postEntryDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_preIndexDisplay",
-			label        = "Before Blog Index: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_preIndexDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_postIndexDisplay",
-			label        = "After Blog Index: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_postIndexDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_preArchivesDisplay",
-			label        = "Before Blog Archives: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_preArchivesDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_postArchivesDisplay",
-			label        = "After Blog Archives: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_postArchivesDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#</fieldset>
-</div><!--- Comments --->     <div class="tab-pane" id="comments">
+		name         = "cb_html_preEntryDisplay",
+		label        = "Before A Blog Entry: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_preEntryDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_postEntryDisplay",
+		label        = "After A Blog Entry: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_postEntryDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_preIndexDisplay",
+		label        = "Before Blog Index: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_preIndexDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_postIndexDisplay",
+		label        = "After Blog Index: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_postIndexDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_preArchivesDisplay",
+		label        = "Before Blog Archives: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_preArchivesDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_postArchivesDisplay",
+		label        = "After Blog Archives: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_postArchivesDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</fieldset>
+</div><!--- Comments --->      <div class="tab-pane" id="comments">
 <fieldset>#html.textarea(
-			name         = "cb_html_preCommentForm",
-			label        = "Before The Comment Form: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_preCommentForm,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_postCommentForm",
-			label        = "After The Comment Form: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_postCommentForm,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#</fieldset>
-</div><!--- Pages --->     <div class="tab-pane" id="pages">
+		name         = "cb_html_preCommentForm",
+		label        = "Before The Comment Form: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_preCommentForm,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_postCommentForm",
+		label        = "After The Comment Form: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_postCommentForm,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</fieldset>
+</div><!--- Pages --->      <div class="tab-pane" id="pages">
 <fieldset>#html.textarea(
-			name         = "cb_html_prePageDisplay",
-			label        = "Before Any Page: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_prePageDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "cb_html_postPageDisplay",
-			label        = "After Any Page: ",
-			rows         = "6",
-			class        = "form-control",
-			value        = prc.cbSiteSettings.cb_html_postPageDisplay,
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#</fieldset>
+		name         = "cb_html_prePageDisplay",
+		label        = "Before Any Page: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_prePageDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "cb_html_postPageDisplay",
+		label        = "After Any Page: ",
+		rows         = "6",
+		class        = "form-control",
+		value        = prc.cbSiteSettings.cb_html_postPageDisplay,
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</fieldset>
                        </div>
                    </div>
                    <!-- End Tab Content -->
                </div>
-<!-- End Vertical Nav --><!--- Button Bar --->     <div class="form-actions">#html.submitButton( value = "Save Global HTML",
-			class = "btn btn-primary" )#</div>#html.endForm()#</div>
+<!-- End Vertical Nav --><!--- Button Bar --->      <div class="form-actions">#html.submitButton( value = "Save Global HTML",
+		class = "btn btn-primary" )#</div>#html.endForm()#</div>
         </div>
     </div>
 </div>

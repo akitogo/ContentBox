@@ -3,14 +3,14 @@
 
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->     <div class="panel-heading"><!--- Top Actions --->     <div class="float-right mt10"><!--- Back button --->     <a
+	<div class="panel panel-default"><!--- Heading --->      <div class="panel-heading"><!--- Top Actions --->      <div class="float-right mt10"><!--- Back button --->      <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehSecurityRules )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Panel Title --->     <div class="size16 p10">
+</div><!--- Panel Title --->      <div class="size16 p10">
 <i class="fa fa-passport"></i>
 	<cfif prc.rule.isLoaded()>
 		Update
@@ -29,11 +29,11 @@ href="#event.buildLink( prc.xehSecurityRules )#"
 			<div class="panel-body">
 
 				#cbMessageBox().renderit()##html.startForm(
-			name       = "ruleEditForm",
-			action     = prc.xehRuleSave,
-			novalidate = "novalidate",
-			class      = "form-vertical"
-		)##html.hiddenField( name = "ruleID", bind = prc.rule )#<!--- Usage --->     
+		name       = "ruleEditForm",
+		action     = prc.xehRuleSave,
+		novalidate = "novalidate",
+		class      = "form-vertical"
+	)##html.hiddenField( name = "ruleID", bind = prc.rule )#<!--- Usage --->      
 					<div class="alert alert-danger">
 						<i class="fa fa-exclamation-triangle fa-lg"></i>
 						Please remember that the secure and white lists are lists of
@@ -44,10 +44,10 @@ href="#event.buildLink( prc.xehSecurityRules )#"
 
 					<div class="form-group">
 						#html.label(
-			field   = "match",
-			content = "Match Type:",
-			class   = "control-label"
-		)#
+		field   = "match",
+		content = "Match Type:",
+		class   = "control-label"
+	)#
 						<div class="controls">
 
 							<div class="mb5">
@@ -55,52 +55,52 @@ href="#event.buildLink( prc.xehSecurityRules )#"
 							</div>
 
 							#html.radioButton(
-			name  = "match",
-			value = "url",
-			bind  = prc.rule
-		)# URL
+		name  = "match",
+		value = "url",
+		bind  = prc.rule
+	)# URL
 
 							#html.radioButton(
-			name  = "match",
-			value = "event",
-			bind  = prc.rule
-		)# Event
+		name  = "match",
+		value = "event",
+		bind  = prc.rule
+	)# Event
 						</div>
 					</div>
 
 					#html.textField(
-			name         = "secureList",
-			label        = "*Secure List:",
-			bind         = prc.rule,
-			required     = "required",
-			maxlength    = "255",
-			class        = "form-control",
-			size         = "100",
-			title        = "The list of regular expressions that if matched it will trigger security for this rule.",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textField(
-			name         = "whiteList",
-			label        = "White List:",
-			bind         = prc.rule,
-			maxlength    = "255",
-			class        = "form-control",
-			size         = "100",
-			title        = "The list of regular expressions that if matched it will allow them through for this rule.",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textField(
-			name         = "order",
-			label        = "Firing Order Index:",
-			bind         = prc.rule,
-			size         = "5",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.startFieldset( legend = "Authorizations" )#
+		name         = "secureList",
+		label        = "*Secure List:",
+		bind         = prc.rule,
+		required     = "required",
+		maxlength    = "255",
+		class        = "form-control",
+		size         = "100",
+		title        = "The list of regular expressions that if matched it will trigger security for this rule.",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textField(
+		name         = "whiteList",
+		label        = "White List:",
+		bind         = prc.rule,
+		maxlength    = "255",
+		class        = "form-control",
+		size         = "100",
+		title        = "The list of regular expressions that if matched it will allow them through for this rule.",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textField(
+		name         = "order",
+		label        = "Firing Order Index:",
+		bind         = prc.rule,
+		size         = "5",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.startFieldset( legend = "Authorizations" )#
 
 						<div class="form-group">
 							<label for="permissions">
@@ -210,61 +210,61 @@ value="#thisPerm.getPermission()#"
                     #html.endFieldset()##html.startFieldset( legend = "Relocation Data" )#
                         <div class="form-group">
                             #html.label(
-			field   = "useSSL",
-			content = "Redirect using SSL:",
-			class   = "control-label"
-		)#
+		field   = "useSSL",
+		content = "Redirect using SSL:",
+		class   = "control-label"
+	)#
                             <div class="controls">
                                 #html.radioButton(
-			name  = "useSSL",
-			value = true,
-			bind  = prc.rule
-		)# Yes
+		name  = "useSSL",
+		value = true,
+		bind  = prc.rule
+	)# Yes
                                 #html.radioButton(
-			name  = "useSSL",
-			value = false,
-			bind  = prc.rule
-		)# No
+		name  = "useSSL",
+		value = false,
+		bind  = prc.rule
+	)# No
                             </div>
                         </div>
 
                         #html.textField(
-			name         = "redirect",
-			label        = "*Redirect Pattern:",
-			required     = "required",
-			bind         = prc.rule,
-			maxlength    = "255",
-			class        = "form-control",
-			size         = "100",
-			title        = "The URL pattern to redirect to if user does not have access to this rule.",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group",
-			placeholder  = "cbadmin/security/login"
-		)##html.select(
-			name          = "messageType",
-			label         = "Relocation Message Type:",
-			bind          = prc.rule,
-			options       = "Info,Warn,Error,Fatal,Debug",
-			selectedValue = "Warn",
-			class         = "form-control input-lg",
-			title         = "The message type of the relocation",
-			wrapper       = "div class=controls",
-			labelClass    = "control-label",
-			groupWrapper  = "div class=form-group"
-		)##html.textField(
-			name         = "message",
-			label        = "Relocation Message:",
-			bind         = prc.rule,
-			maxlength    = "255",
-			class        = "form-control",
-			size         = "100",
-			title        = "The message to show the user upon relocation",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group",
-			placeholder  = "Sorry! You don't have the right authorizations"
-		)##html.endFieldset()#<!--- Action Bar --->     
+		name         = "redirect",
+		label        = "*Redirect Pattern:",
+		required     = "required",
+		bind         = prc.rule,
+		maxlength    = "255",
+		class        = "form-control",
+		size         = "100",
+		title        = "The URL pattern to redirect to if user does not have access to this rule.",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group",
+		placeholder  = "cbadmin/security/login"
+	)##html.select(
+		name          = "messageType",
+		label         = "Relocation Message Type:",
+		bind          = prc.rule,
+		options       = "Info,Warn,Error,Fatal,Debug",
+		selectedValue = "Warn",
+		class         = "form-control input-lg",
+		title         = "The message type of the relocation",
+		wrapper       = "div class=controls",
+		labelClass    = "control-label",
+		groupWrapper  = "div class=form-group"
+	)##html.textField(
+		name         = "message",
+		label        = "Relocation Message:",
+		bind         = prc.rule,
+		maxlength    = "255",
+		class        = "form-control",
+		size         = "100",
+		title        = "The message to show the user upon relocation",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group",
+		placeholder  = "Sorry! You don't have the right authorizations"
+	)##html.endFieldset()#<!--- Action Bar --->      
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success">Save</button>
 					</div>

@@ -8,25 +8,45 @@
 component accessors="true" singleton threadSafe {
 	// DI
 	property name="categoryService" inject="categoryService@contentbox";
+
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="commentService" inject="commentService@contentbox";
+
 	property name="contentStoreService" inject="contentStoreService@contentbox";
+
 	property name="widgetService" inject="widgetService@contentbox";
+
 	property name="moduleService" inject="moduleService@contentbox";
+
 	property name="themeService" inject="themeService@contentbox";
+
 	property name="mobileDetector" inject="mobileDetector@contentbox";
+
 	property name="menuService" inject="menuService@contentbox";
+
 	property name="menuItemService" inject="menuItemService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="requestService" inject="coldbox:requestService";
+
 	property name="wirebox" inject="wirebox";
+
 	property name="controller" inject="coldbox";
+
 	property name="cbResourceService" inject="resourceService@cbi18n";
+
 	property name="securityService" inject="securityService@contentbox";
+
 	property name="markdown" inject="Processor@cbmarkdown";
+
 	property name="requestStorage" inject="requestStorage@cbstorages";
 
 	/**
@@ -1142,27 +1162,27 @@ component accessors="true" singleton threadSafe {
 		var content = "";
 		// cfformat-ignore-start
 		savecontent variable="content" {
-	writeOutput(
-		"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
-	);
-	writeOutput(
-		"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
-	);
-	writeOutput(
-		"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
-	);
+writeOutput(
+	"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
+);
+writeOutput(
+	"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
+);
+writeOutput(
+	"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
+);
 
-	if ( len( getContentURL() ) ) {
-		writeOutput(
-			"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
-		);
-	}
+if ( len( getContentURL() ) ) {
+	writeOutput(
+		"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
+	);
+}
 
-	if ( len( getContentImageURL() ) ) {
-		writeOutput(
-			"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
-		);
-	}
+if ( len( getContentImageURL() ) ) {
+	writeOutput(
+		"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
+	);
+}
 }
 		// cfformat-ignore-end
 

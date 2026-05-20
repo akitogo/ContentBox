@@ -25,6 +25,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="permission"
 		column="permission"
@@ -34,6 +35,7 @@ component
 		unique="true"
 		default=""
 		index="idx_permissionName";
+
 	property
 		name="description"
 		column="description"
@@ -41,6 +43,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	/**********************************************************************
 	 * **							CALCULATED FIELDS
 	 **********************************************************************/
@@ -48,10 +51,12 @@ component
 	property
 		name="numberOfPermissionGroups"
 		formula="select count(*) from cb_groupPermissions as gp where gp.FK_permissionID=permissionID";
+
 	property
 		name="numberOfRoles"
 		formula="select count(*) from cb_rolePermissions as rolePermissions
 						where rolePermissions.FK_permissionID=permissionID";
+
 	property
 		name="numberOfGroups"
 		formula="select count(*) from cb_groupPermissions as groupPermissions

@@ -8,6 +8,7 @@
 component extends="cborm.models.VirtualEntityService" singleton {
 	// DI
 	property name="permissionService" inject="permissionService@contentbox";
+
 	property name="dateUtil" inject="DateUtil@contentbox";
 
 	/**

@@ -7,10 +7,10 @@
     </div>
     <div class="modal-body">
         <div class="widget-detail" id="widget-detail" style="display:none;"></div>#view(
-		view          = "widgets/widgetList",
-		args          = { mode: "insert", cols: 3 },
-		prePostExempt = true
-	)#</div>
+	view          = "widgets/widgetList",
+	args          = { mode: "insert", cols: 3 },
+	prePostExempt = true
+)#</div>
         <div class="modal-footer">
             <div class="widget-footer-left">
                 <a id="widget-button-back" style="display:none;" href="javascript:void(0);" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back to Widgets</a>&nbsp;

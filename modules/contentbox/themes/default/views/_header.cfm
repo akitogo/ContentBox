@@ -21,7 +21,7 @@
 	
 		</div>
 
-		<!--- Generate Menu --->     
+		<!--- Generate Menu --->      
 		<div class="collapse navbar-collapse" id="cb-nav-collapse">
 			<ul class="nav navbar-nav navbar-right">
 
@@ -34,10 +34,10 @@
 		<cfif structKeyExists( menuItem, "subPageMenu" )>
 			<li class="dropdown">
 <a href="#menuItem.link#" class="dropdown-toggle" data-toggle="dropdown">#menuItem.title# <b class="caret"></b></a>#buildSubMenu(
-				menuData    = menuItem.subPageMenu,
-				parentLink  = menuItem.link,
-				parentTitle = menuItem.title
-			)#</li>
+	menuData    = menuItem.subPageMenu,
+	parentLink  = menuItem.link,
+	parentTitle = menuItem.title
+)#</li>
 		<cfelse>
 			<cfif cb.isPageView() && event.buildLink( cb.getCurrentPage().getSlug() ) EQ menuItem.link>
 				<li class="active">
@@ -87,7 +87,7 @@
 			<!--- Blog Search Form ---
 				<form id="searchForm" class="navbar-form navbar-right" name="searchForm" method="post" action="#cb.linkSearch()#">
 					<input type="text" class="form-control col-lg-8" placeholder="Search">
-				</form> --->     
+				</form> --->      
 		</div>
 	</div>
 </nav>
@@ -98,7 +98,7 @@
 
 
 	<cfif cb.themeSetting( "showSiteSearch", true )>
-		<!--- Search Bar --->     <div id="body-search">
+		<!--- Search Bar --->      <div id="body-search">
 <div class="container">
 	<form id="searchForm" name="searchForm" method="post" action="#cb.linkContentSearch()#">
 <div class="input-group">
@@ -112,32 +112,32 @@
 </div>
 	</cfif>
 	<cfscript>
-		any function buildSubMenu(
-			required menuData,
-			required parentLink,
-			required parentTitle
-		) {
-			var menu = "<ul class=""dropdown-menu"">";
+	any function buildSubMenu(
+		required menuData,
+		required parentLink,
+		required parentTitle
+	) {
+		var menu = "<ul class=""dropdown-menu"">";
 
-			// Parent
-			menu &= "<li><a href=""#parentLink#""><i class=""fa fa-chevron-down""></i> <strong>#parentTitle#</strong></a></li><li role=""separator"" class=""divider""></li>";
+		// Parent
+		menu &= "<li><a href=""#parentLink#""><i class=""fa fa-chevron-down""></i> <strong>#parentTitle#</strong></a></li><li role=""separator"" class=""divider""></li>";
 
-			for ( var menuItem in arguments.menuData ) {
-				if ( !structKeyExists( menuItem, "subPageMenu" ) ) {
-					menu &= "<li><a href=""#menuItem.link#"">#menuItem.title#</a></li>";
-				} else {
-					menu &= "<li class=""dropdown-submenu""><a href=""#menuItem.link#"" class=""dropdown-toggle"" data-toggle=""dropdown"">#menuItem.title#</a>";
-					menu &= buildSubMenu(
-						menuItem.subPageMenu,
-						menuItem.link,
-						menuItem.parentTitle
-					);
-					menu &= "</li>";
-				}
+		for ( var menuItem in arguments.menuData ) {
+			if ( !structKeyExists( menuItem, "subPageMenu" ) ) {
+				menu &= "<li><a href=""#menuItem.link#"">#menuItem.title#</a></li>";
+			} else {
+				menu &= "<li class=""dropdown-submenu""><a href=""#menuItem.link#"" class=""dropdown-toggle"" data-toggle=""dropdown"">#menuItem.title#</a>";
+				menu &= buildSubMenu(
+					menuItem.subPageMenu,
+					menuItem.link,
+					menuItem.parentTitle
+				);
+				menu &= "</li>";
 			}
-			menu &= "</ul>";
-
-			return menu;
 		}
-	</cfscript>
+		menu &= "</ul>";
+
+		return menu;
+	}
+</cfscript>
 </cfoutput>

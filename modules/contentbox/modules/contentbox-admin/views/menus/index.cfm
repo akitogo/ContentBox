@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
         #html.startForm( name = "menuForm", action = prc.xehMenuRemove )##html.hiddenField( name = "menuID",
-			value = "" )#
+		value = "" )#
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -32,10 +32,10 @@
 						<div class="col-md-6 col-xs-4">
                             <div class="form-group form-inline no-margin">
                                 #html.textField(
-			name        = "menuSearch",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#
+		name        = "menuSearch",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#
                             </div>
 						</div>
 
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <!--- entries container --->     
+                    <!--- entries container --->      
                     <div id="menuTableContainer">
 						<p class="text-center">
 							<i id="contentLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>
@@ -116,14 +116,14 @@
 
 	<cfif prc.oCurrentAuthor.hasPermission( "MENUS_ADMIN,TOOLS_IMPORT" )>
 		#view(
-			view          = "_tags/dialog/import",
-			args          = {
-				title      : "Import Menus",
-				contentArea: "menu",
-				action     : prc.xehMenuImport,
-				contentInfo: "Choose the ContentBox <strong>JSON</strong> menu file to import."
-			},
-			prePostExempt = true
-		)#
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Menus",
+		contentArea: "menu",
+		action     : prc.xehMenuImport,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> menu file to import."
+	},
+	prePostExempt = true
+)#
 	</cfif>
 </cfoutput>

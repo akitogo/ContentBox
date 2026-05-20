@@ -10,14 +10,14 @@
                	<i class="fa fa-history fa-lg"></i>
 				Comparing Version <strong>#prc.currentVersion#</strong> and <strong>#prc.oldVersion#</strong>
 > #prc
-		.currentContent
-		.getRelatedContent()
-		.getTitle()#</h4>
+	.currentContent
+	.getRelatedContent()
+	.getTitle()#</h4>
 </div>
 
          <!--body-->
          <div class="modal-body">
-             <h3>Version Info Comparison</h3><!--- Info Table --->     <table class="table table-hover table-bordered">
+             <h3>Version Info Comparison</h3><!--- Info Table --->      <table class="table table-hover table-bordered">
 <tbody>
 <tr class="info">
 	<th class="text-center" width="150">Info</th>
@@ -41,7 +41,7 @@
 <td>#prc.currentContent.getChangeLog()#</td>
 	</tr>
 	</tbody>
-</table><!--- Legend --->     <h3>Content Differences</h3>
+</table><!--- Legend --->      <h3>Content Differences</h3>
 <div id="legend">
 	<dl>
 		<dt /><dd>Unmodified</dd>
@@ -49,7 +49,7 @@
 		<dt class="del"/><dd>Removed</dd>
 		<dt class="upd"/><dd>Modified</dd>
 	</dl>
-</div><!--- Simple Comparisons --->     <table class="diff table ">
+</div><!--- Simple Comparisons --->      <table class="diff table ">
 <thead>
 	<tr>
 		<th colspan="2" class="text-center">Version #prc.oldVersion#</th>
@@ -59,11 +59,11 @@
 <tbody>
 	<cfloop from="1" to="#prc.maxA#" index="x">
 		<cfset codeCSS = getCodeCSS(
-			prc.rightA,
-			prc.leftA,
-			x
-		)>
-		<tr><!--- Left --->     <td class="linenum">
+	prc.rightA,
+	prc.leftA,
+	x
+)>
+		<tr><!--- Left --->      <td class="linenum">
 		<cfif arrayIsDefined( prc.leftA, x )>
 			#x#
 		<cfelse>
@@ -93,7 +93,7 @@
 									</div>
 								</td>
 
-								<!--- Right --->     
+								<!--- Right --->      
 								<td class="linenum">
 
 

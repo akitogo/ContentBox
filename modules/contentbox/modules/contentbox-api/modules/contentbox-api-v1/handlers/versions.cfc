@@ -10,6 +10,7 @@ component
 {
 	// DI
 	property name="ormService" inject="contentVersionService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
 	// The default sorting order string: permission, name, data desc, etc.
 	variables.sortOrder = "version DESC";

@@ -7,11 +7,17 @@
  */
 component accessors="true" {
 	property name="name";
+
 	property name="version";
+
 	property name="description";
+
 	property name="author";
+
 	property name="authorURL";
+
 	property name="category";
+
 	property name="icon";
 
 	Widget function init() {

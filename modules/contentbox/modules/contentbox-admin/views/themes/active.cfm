@@ -5,7 +5,7 @@
 <div class="pull-right mt10">
    	<button class="btn btn-primary"
    			onclick="popup( '#event.buildLink( prc.xehPreview )#/l/#encodeForJavaScript( prc.activeTheme.name )#/h/#hash( prc.oCurrentAuthor.getAuthorID() )#');return false;">#cbAdminComponent( "ui/Icon",
-		{ name: "Eye" } )# 
+	{ name: "Eye" } )# 
 			Preview
 	</button>
 </div>
@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-		    <div class="panel-body">#cbMessageBox().renderit()#<!--- screenshot --->     <div id="theme-screenshot" class="pull-right">
+		    <div class="panel-body">#cbMessageBox().renderit()#<!--- screenshot --->      <div id="theme-screenshot" class="pull-right">
 	<cfif len( prc.activeTheme.screenShotURL )>
 		<a href="#encodeForHTMLAttribute( prc.activeTheme.screenShotURL )#" target="_blank">
 <img src="#encodeForHTMLAttribute( prc.activeTheme.screenShotURL )#" alt="screenshot" height="200" border="0" class="img-screenshot img-thumbnail"/>
@@ -32,23 +32,23 @@
 	
 				</div>
 
-				<!--- Description --->     
+				<!--- Description --->      
 				<blockquote id="theme-description">#encodeForHTML( prc.activeTheme.description )#</blockquote>
 
-				<!--- Author --->     
+				<!--- Author --->      
 				<div id="theme-author">
 					<i class="fa fa-user mr5"></i>
 					<strong>Author: </strong> <a href="#encodeForHTMLAttribute( prc.activeTheme.authorURL )#" title="#encodeForHTMLAttribute( prc.activeTheme.AuthorURL )#" target="_blank">#encodeForHTML( prc.activeTheme.Author )#</a>
 				</div>
 
-				<!--- Version --->     
+				<!--- Version --->      
 				<div id="theme-version>">
 					<i class="fa fa-history mr5"></i>
 					<strong>Version: </strong>
 					#encodeForHTML( prc.activeTheme.version )#
 				</div>
 
-				<!--- ForgeBox Slug --->     
+				<!--- ForgeBox Slug --->      
 				<div id="theme-forgebox>">
 					<i class="fa fa-cloud mr5"></i>
 					<strong>ForgeBox Slug: </strong>
@@ -69,7 +69,7 @@
 	
 				</div>
 
-				<!--- Interceptions --->     
+				<!--- Interceptions --->      
 				<div id="theme-interceptions">
 					<i class="fa fa-bullhorn mr5"></i>
 					<strong>Registered Interceptions: </strong>
@@ -90,7 +90,7 @@
 	
 				</div>
 
-				<!--- Widgets --->     
+				<!--- Widgets --->      
 				<div id="theme-widgets">
 					<i class="fa fa-magic mr5"></i>
 					<strong>Theme Widgets: </strong>
@@ -111,7 +111,7 @@
 	
 				</div>
 
-				<!--- Modules --->     
+				<!--- Modules --->      
 				<div id="theme-modules">
 					<i class="fa fa-bolt mr5"></i>
 					<strong>Theme Modules: </strong>
@@ -134,18 +134,16 @@
 
 				#announce( "cbadmin_onThemeInfo", { theme: prc.activeTheme } )#
 	<cfif prc
-		.activeTheme
-		.settings
-		.len()>
+	.activeTheme
+	.settings
+	.len()>
 		<h1>Theme Settings:</h1>#html.startForm( action = prc.xehSaveSettings,
-				name = "layoutSettingsForm" )##html.hiddenField(
-				name  = "themeName",
-				value = encodeForHTMLAttribute( prc.activeTheme.name )
-			)##prc.themeService.buildSettingsForm( prc.activeTheme )##announce(
-			"cbadmin_onThemeSettings",
-			{ theme: prc.activeTheme }
-		)#<div class="form-group text-center">#html.submitButton( value = "Save Settings",
-				class = "btn btn-primary btn-lg" )#</div>#html.endForm()#
+		name = "layoutSettingsForm" )##html.hiddenField(
+		name  = "themeName",
+		value = encodeForHTMLAttribute( prc.activeTheme.name )
+	)##prc.themeService.buildSettingsForm( prc.activeTheme )##announce( "cbadmin_onThemeSettings",
+	{ theme: prc.activeTheme } )#<div class="form-group text-center">#html.submitButton( value = "Save Settings",
+		class = "btn btn-primary btn-lg" )#</div>#html.endForm()#
 	</cfif>
 	
 	

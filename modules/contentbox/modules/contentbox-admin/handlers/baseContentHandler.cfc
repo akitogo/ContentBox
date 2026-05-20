@@ -13,12 +13,19 @@ component extends="baseHandler" {
 	 */
 
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="themeService" inject="themeService@contentbox";
+
 	property name="HTMLHelper" inject="HTMLHelper@coldbox";
+
 	property name="categoryService" inject="categoryService@contentbox";
+
 	property name="customFieldService" inject="customFieldService@contentbox";
+
 	property name="editorService" inject="editorService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
+
 	property name="templateService" inject="ContentTemplateService@contentbox";
 	/**
 	 * --------------------------------------------------------------------------

@@ -32,11 +32,11 @@
 			<cfloop array="#prc.availableTemplates#" item="template" index="i">
 				<option value="#template[ "templateID" ]#"
 				<cfif !isNull( prc.oContent.getContentTemplate() ) &&
-					prc
-							.oContent
-							.getContentTemplate()
-							.getTemplateID() ==
-						template[ "templateID" ]>
+	prc
+			.oContent
+			.getContentTemplate()
+			.getTemplateID() ==
+		template[ "templateID" ]>
 					selected
 				</cfif>
 				
@@ -71,7 +71,7 @@
 No Content Templates are Currently Available
 <br/><br/>
 <a class="btn btn-secondary btn-sm" href="#event.buildLink( prc.xehTemplates & "##create-" & prc.oContent.getContentType() )#" target="_blank">#cbAdminComponent( "ui/Icon",
-				{ name: "PlusSmall", size: "sm" } )#Create Template</a>
+	{ name: "PlusSmall", size: "sm" } )#Create Template</a>
 </p>
 		</cfif>
 		
@@ -104,11 +104,11 @@ No Content Templates are Currently Available
 				<cfloop array="#prc.availableTemplates#" item="template" index="i">
 					<option value="#template[ "templateID" ]#"
 					<cfif !isNull( prc.oContent.getChildContentTemplate() ) &&
-						prc
-								.oContent
-								.getChildContentTemplate()
-								.getTemplateID() ==
-							template[ "templateID" ]>
+	prc
+			.oContent
+			.getChildContentTemplate()
+			.getTemplateID() ==
+		template[ "templateID" ]>
 						selected
 					</cfif>
 					
@@ -140,7 +140,7 @@ No Content Templates are Currently Available
 No Content Templates are Currently Available
 <br/><br/>
 <a class="btn btn-secondary btn-sm" href="#event.buildLink( prc.xehTemplates & "##create-" & prc.oContent.getContentType() )#" target="_blank">#cbAdminComponent( "ui/Icon",
-					{ name: "PlusSmall", size: "sm" } )#Create Template
+	{ name: "PlusSmall", size: "sm" } )#Create Template
 	</a>
 </p>
 			</cfif>
@@ -151,7 +151,7 @@ No Content Templates are Currently Available
 			
 
 					</div>
-					<!--- Parent --->     
+					<!--- Parent --->      
 					<div class="form-group">
 						<label for="parentContent" class="control-label">
 							<i class="fa fa-sitemap"></i>
@@ -165,11 +165,11 @@ No Content Templates are Currently Available
 							<option value="null">- No Parent -</option>
 
 							#html.options(
-					values        = prc.allContent,
-					column        = "contentID",
-					nameColumn    = "slug",
-					selectedValue = prc.parentcontentID
-				)#
+		values        = prc.allContent,
+		column        = "contentID",
+		nameColumn    = "slug",
+		selectedValue = prc.parentcontentID
+	)#
 						</select>
 					</div>
 
@@ -180,8 +180,7 @@ No Content Templates are Currently Available
 		<cfelse>
 			#html.hiddenField( name = "parentContent", value = "null" )#
 		</cfif>
-		<cfif prc.oContent.isLoaded() &&
-			prc.oCurrentAuthor.hasPermission( "CONTENTSTORE_ADMIN,ENTRIES_ADMIN,PAGES_ADMIN" )>
+		<cfif prc.oContent.isLoaded() && prc.oCurrentAuthor.hasPermission( "CONTENTSTORE_ADMIN,ENTRIES_ADMIN,PAGES_ADMIN" )>
 			<div class="form-group">
 <label for="creatorID" class="control-label">
 	<i class="fa fa-user"></i>
@@ -196,10 +195,10 @@ No Content Templates are Currently Available
 				<option
 value="#author.getAuthorID()#"
 				<cfif prc
-						.oContent
-						.getCreator()
-						.getAuthorID() EQ
-					author.getAuthorID()>
+		.oContent
+		.getCreator()
+		.getAuthorID() EQ
+	author.getAuthorID()>
 					selected="selected"
 				</cfif>
 				
@@ -235,23 +234,23 @@ value="#author.getAuthorID()#"
 	<i class="fa fa-comments"></i>
 	Allow Comments:
 </label>#html.select(
-					name          = "allowComments",
-					options       = "Yes,No",
-					selectedValue = yesNoFormat( prc.oContent.getAllowComments() ),
-					class         = "form-control input-sm"
-				)#</div>
+		name          = "allowComments",
+		options       = "Yes,No",
+		selectedValue = yesNoFormat( prc.oContent.getAllowComments() ),
+		class         = "form-control input-sm"
+	)#</div>
 		</cfif>
 		<cfif !prc.oContent.isContentStore()>
 			<div class="form-group">
 <label for="passwordProtection">
 	<i class="fa fa-key"></i> Password Protection:
 </label>#html.textfield(
-					name      = "passwordProtection",
-					bind      = prc.oContent,
-					title     = "Basic Password protect your content, leave empty for none",
-					class     = "form-control",
-					maxlength = "100"
-				)#</div>
+		name      = "passwordProtection",
+		bind      = prc.oContent,
+		title     = "Basic Password protect your content, leave empty for none",
+		class     = "form-control",
+		maxlength = "100"
+	)#</div>
 		</cfif>
 		<cfif structKeyExists( prc.oContent, "getOrder" )>
 			<div class="form-group">
@@ -259,15 +258,15 @@ value="#author.getAuthorID()#"
 	<i class="fa fa-sort"></i>
 	Retrieval Order:
 </label>#html.inputfield(
-					type  = "number",
-					name  = "order",
-					bind  = prc.oContent,
-					title = "The ordering index",
-					class = "form-control",
-					size  = "5",
-					min   = "0",
-					max   = "2000"
-				)#</div>
+		type  = "number",
+		name  = "order",
+		bind  = prc.oContent,
+		title = "The ordering index",
+		class = "form-control",
+		size  = "5",
+		min   = "0",
+		max   = "2000"
+	)#</div>
 		</cfif>
 		
 		

@@ -9,20 +9,20 @@
 </div>
 
 <div class="panel-body">#cbMessageBox().renderit()#<p>#cb.r( "resetpassword.instructions@security" )#</p>#html.startForm(
-			action     = prc.xehPasswordChange,
-			name       = "passwordResetForm",
-			novalidate = "novalidate",
-			class      = "form-horizontal"
-		)##html.hiddenField(
-			name  = "token",
-			value = encodeForHTMLAttribute( rc.token )
-		)##html.hiddenField( name = "_csrftoken", value = csrfToken() )#<div class="form-group">
+		action     = prc.xehPasswordChange,
+		name       = "passwordResetForm",
+		novalidate = "novalidate",
+		class      = "form-horizontal"
+	)##html.hiddenField(
+		name  = "token",
+		value = encodeForHTMLAttribute( rc.token )
+	)##html.hiddenField( name = "_csrftoken", value = csrfToken() )#<div class="form-group">
 <div class="col-md-12 controls">#html.passwordField(
-			name         = "password",
-			required     = "required",
-			class        = "form-control pwcheck",
-			autocomplete = "off"
-		)#<i class="fa fa-key"></i>
+		name         = "password",
+		required     = "required",
+		class        = "form-control pwcheck",
+		autocomplete = "off"
+	)#<i class="fa fa-key"></i>
 	</div>
 </div>
 
@@ -33,13 +33,13 @@
 </div>
 
 <div class="col-md-12">#html.passwordField(
-			name         = "password_confirmation",
-			required     = "required",
-			class        = "form-control pwcheck",
-			autocomplete = "off"
-		)#<i class="fa fa-key"></i>
+		name         = "password_confirmation",
+		required     = "required",
+		class        = "form-control pwcheck",
+		autocomplete = "off"
+	)#<i class="fa fa-key"></i>
 	</div>
-</div><!--- Show Rules --->     <div id="passwordRules" class="well well-sm" data-min-length="#prc.cbSettings.cb_security_min_password_length#">
+</div><!--- Show Rules --->      <div id="passwordRules" class="well well-sm" data-min-length="#prc.cbSettings.cb_security_min_password_length#">
 <span class="badge" id="pw_rule_lower">abc</span>
 <span class="badge" id="pw_rule_upper">ABC</span>
 <span class="badge" id="pw_rule_digit">123</span>
@@ -50,10 +50,10 @@
 
 <div class="form-group">
 	<div class="col-md-12 text-center">#html.button(
-			type  = "submit",
-			value = "#cb.r( "resetpassword@security" )#",
-			class = "btn btn-primary btn-lg"
-		)#</div>
+		type  = "submit",
+		value = "#cb.r( "resetpassword@security" )#",
+		class = "btn btn-primary btn-lg"
+	)#</div>
 </div>
 
 <a href="#event.buildLink( prc.xehLogin )#">

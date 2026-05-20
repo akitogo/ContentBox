@@ -8,18 +8,31 @@
 component singleton {
 	// Dependencies
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="cacheStorage" inject="cacheStorage@cbStorages";
+
 	property name="cookieStorage" inject="cookieStorage@cbStorages";
+
 	property name="requestStorage" inject="RequestStorage@cbstorages";
+
 	property name="mailService" inject="mailService@cbmailservices";
+
 	property name="renderer" inject="coldbox:renderer";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="cache" inject="cachebox:template";
+
 	property name="bCrypt" inject="BCrypt@BCrypt";
+
 	property name="cbCSRF" inject="@cbcsrf";
+
 	// Properties
 	property name="encryptionKey";
 	// Static key to identify an author in a request: more for api interaction than web.
@@ -78,9 +91,7 @@ component singleton {
 		// If we found an authorID, load it up and check it
 		if ( len( authorID ) ) {
 			// try to get it with that ID
-			var author = variables.authorService.findWhere(
-					{ authorID: authorID, isActive: true, isDeleted: false }
-				);
+			var author = variables.authorService.findWhere( { authorID: authorID, isActive: true, isDeleted: false } );
 			// If user found? Inflate them back
 			if ( !isNull( author ) ) {
 				return login( author );

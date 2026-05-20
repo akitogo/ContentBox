@@ -36,27 +36,27 @@
 <div class="row">
     <div class="col-md-9">
         #html.startForm(
-			name   = "commentForm",
-			action = prc.xehCommentRemove,
-			class  = "form-vertical"
-		)##html.hiddenField( name = "commentStatus", value = "" )##html.hiddenField( name = "page", value = rc.page )#
+		name   = "commentForm",
+		action = prc.xehCommentRemove,
+		class  = "form-vertical"
+	)##html.hiddenField( name = "commentStatus", value = "" )##html.hiddenField( name = "page", value = rc.page )#
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
 
-						<!--- Quick Filter --->     
+						<!--- Quick Filter --->      
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-			name        = "commentSearch",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Filter"
-		)#
+		name        = "commentSearch",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Filter"
+	)#
 							</div>
 						</div>
 
-						<!--- Bulk Actions --->     
+						<!--- Bulk Actions --->      
 						<div class="col-md-6 col-xs-8">
 
 
@@ -108,7 +108,7 @@
 				</div>
 
 				<div class="panel-body">
-					<!--- comments table --->     
+					<!--- comments table --->      
 					<table
 						name="comments"
 						id="comments"
@@ -147,17 +147,17 @@
 		
 		
 		 data-commentID="#comment.getCommentID()#">
-								<!--- Delete Checkbox with PK --->     
+								<!--- Delete Checkbox with PK --->      
 								<td class="text-center">
 									<input type="checkbox" name="commentID" id="commentID" value="#comment.getCommentID()#" />
 								</td>
 								<td>
 
 									#getInstance( "Avatar@contentbox" ).renderAvatar(
-				email = comment.getAuthorEmail(),
-				size  = "30",
-				class = "img img-circle"
-			)#
+		email = comment.getAuthorEmail(),
+		size  = "30",
+		class = "img img-circle"
+	)#
 
 									&nbsp;
 									<a href="mailto:#comment.getAUthorEmail()#" title="#comment.getAUthorEmail()#">#comment.getAuthor()#</a>
@@ -270,13 +270,13 @@
 													<span class="visually-hidden">Actions</span>
 												</button>
 												<ul class="dropdown-menu text-left pull-right">
-													<!--- Edit Command --->     
+													<!--- Edit Command --->      
 													<li>
 														<a href="javascript:openRemoteModal('#event.buildLink( prc.xehCommentEditor )#',{commentID:'#comment.getCommentID()#'} );" title="Edit Comment">
 															<i class="fas fa-pen fa-lg"></i> Edit
 														</a>
 													</li>
-													<li><!--- Delete Command --->     
+													<li><!--- Delete Command --->      
 														<a title="Delete Comment Permanently" href="javascript:remove('#comment.getCommentID()#')" class="confirmIt" data-title="<i class='fa fa-trash'></i> Delete Comment?">
 															<i id="delete_#comment.getCommentID()#" class="fa fa-trash fa-lg"></i> Delete
 														</a>
@@ -316,10 +316,10 @@
 						</tbody>
 					</table>
 					#prc.oPaging.renderit(
-			foundRows = prc.commentsCount,
-			link      = prc.pagingLink,
-			asList    = true
-		)#
+		foundRows = prc.commentsCount,
+		link      = prc.pagingLink,
+		asList    = true
+	)#
 				</div>
 			</div>
 		#html.endForm()#
@@ -343,20 +343,20 @@
 	
 	">
 		    	#html.startForm(
-			name   = "commentSearchForm",
-			action = prc.xehComments,
-			class  = "form-vertical",
-			method = "get"
-		)#
+		name   = "commentSearchForm",
+		action = prc.xehComments,
+		class  = "form-vertical",
+		method = "get"
+	)#
 					<div class="form-group">
 						#html.textField(
-			label = "Search:",
-			name  = "searchComments",
-			class = "form-control",
-			size  = "16",
-			title = "Search all authors, author emails and content",
-			value = event.getValue( "searchComments", "" )
-		)#
+		label = "Search:",
+		name  = "searchComments",
+		class = "form-control",
+		size  = "16",
+		title = "Search all authors, author emails and content",
+		value = event.getValue( "searchComments", "" )
+	)#
 					</div>
 
 					<div class="text-center">
@@ -384,13 +384,13 @@
 	
 	">
 		    	#html.startForm(
-			name   = "commentFilterForm",
-			action = prc.xehComments,
-			class  = "form-vertical",
-			method = "get"
-		)#
+		name   = "commentFilterForm",
+		action = prc.xehComments,
+		class  = "form-vertical",
+		method = "get"
+	)#
 			    	<div class="form-group">
-			    		<!--- Status --->     
+			    		<!--- Status --->      
 						<label for="fStatus">Comment Status: </label>
 						<select name="fStatus" id="fStatus" class="form-control input-sm">
 							<option value="any"

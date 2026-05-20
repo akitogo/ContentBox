@@ -28,12 +28,12 @@ id="contentID-#thisContent.getContentID()#"
 		
 		>
 			<td>
-				<!--- Title --->     
+				<!--- Title --->      
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title --->     
+				<!--- Title --->      
 				<div class="mt5">
 					<div class="text-muted">
 
@@ -72,10 +72,10 @@ id="contentID-#thisContent.getContentID()#"
 
 			<td class="text-center">
 				#view(
-			view          = "_components/content/TableStatus",
-			args          = { content: thisContent },
-			prepostExempt = true
-		)#
+	view          = "_components/content/TableStatus",
+	args          = { content: thisContent },
+	prepostExempt = true
+)#
 			</td>
 
 			<td class="text-center">
@@ -116,8 +116,8 @@ id="contentID-#thisContent.getContentID()#"
 </table>
 
 #prc.oPaging.renderit(
-			foundRows = prc.contentCount,
-			link      = prc.pagingLink,
-			asList    = true
-		)#
+		foundRows = prc.contentCount,
+		link      = prc.pagingLink,
+		asList    = true
+	)#
 </cfoutput>

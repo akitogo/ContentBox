@@ -26,12 +26,14 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="hits"
 		column="hits"
 		notnull="false"
 		ormtype="long"
 		default="0";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/

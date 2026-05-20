@@ -29,6 +29,7 @@ component
 		notnull="false"
 		length="200"
 		default="";
+
 	/**
 	 * The ordering numeric sequence
 	 */
@@ -38,6 +39,7 @@ component
 		notnull="false"
 		ormtype="integer"
 		default="0";
+
 	/**
 	 * If true, this page is used when building automated menus. Else it is ignored.
 	 */
@@ -48,6 +50,7 @@ component
 		ormtype="boolean"
 		default="true"
 		index="idx_showInMenu";
+
 	/**
 	 * The excerpt for this page. This can be empty.
 	 */
@@ -58,6 +61,7 @@ component
 		ormtype="text"
 		default=""
 		length="8000";
+
 	/**********************************************************************
 	 * **							NON PERSISTED PROPERTIES
 	 **********************************************************************/

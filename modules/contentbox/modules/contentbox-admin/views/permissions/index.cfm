@@ -24,10 +24,10 @@ Permissions (#arrayLen( prc.permissions )#)
 <div class="row">
     <div class="col-md-12">
     	#html.startForm(
-			name   = "permissionForm",
-			action = prc.xehPermissionRemove,
-			class  = "form-vertical"
-		)##html.hiddenField( name = "permissionID", value = "" )#
+		name   = "permissionForm",
+		action = prc.xehPermissionRemove,
+		class  = "form-vertical"
+	)##html.hiddenField( name = "permissionID", value = "" )#
 
         	<div class="panel panel-default">
 
@@ -37,10 +37,10 @@ Permissions (#arrayLen( prc.permissions )#)
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-			name        = "permissionFilter",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#
+		name        = "permissionFilter",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#
 							</div>
 						</div>
 
@@ -105,7 +105,7 @@ Permissions (#arrayLen( prc.permissions )#)
 				</div>
 
 				<div class="panel-body">
-					<!--- permissions --->     
+					<!--- permissions --->      
 					<table name="permissions" id="permissions" class="table table-striped-removed table-hover " width="100%">
 						<thead>
 							<tr>
@@ -125,7 +125,7 @@ Permissions (#arrayLen( prc.permissions )#)
 
 
 	<cfloop array="#prc.permissions#" index="permission">
-		<tr><!--- check box --->     <td class="text-center">
+		<tr><!--- check box --->      <td class="text-center">
 <input
 	type="checkbox"
 	name="permissionID"
@@ -178,7 +178,7 @@ Permissions (#arrayLen( prc.permissions )#)
 	<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 	<span class="visually-hidden">Actions</span>
 </button>
-  	<ul class="dropdown-menu text-left pull-right"><!--- Edit Command --->     <li>
+  	<ul class="dropdown-menu text-left pull-right"><!--- Edit Command --->      <li>
 <a
 	class=""
 	href="javascript:edit(
@@ -199,7 +199,7 @@ title="Edit #permission.getPermission()#">
 	</a>
 </li>
 			</cfif>
-			<!--- Delete Command --->     
+			<!--- Delete Command --->      
 												<li>
 													<a
 														class="confirmIt"
@@ -248,62 +248,62 @@ title="Edit #permission.getPermission()#">
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN" )>
-		<!--- Permissions Editor --->     <div id="permissionEditorContainer" class="modal fade" tabindex="-1" role="dialog">
+		<!--- Permissions Editor --->      <div id="permissionEditorContainer" class="modal fade" tabindex="-1" role="dialog">
 <div class="modal-dialog">
     <div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<h4><i class="fa fa-key"></i> Permission Editor</h4>
 		</div>#html.startForm(
-				action     = prc.xehPermissionSave,
-				name       = "permissionEditor",
-				novalidate = "novalidate",
-				class      = "form-vertical"
-			)#<div class="modal-body">#html.hiddenField( name = "permissionID", value = "" )##html.textField(
-				name         = "permission",
-				label        = "Permission:",
-				required     = "required",
-				maxlength    = "255",
-				size         = "30",
-				class        = "form-control",
-				title        = "The unique permission name",
-				wrapper      = "div class=controls",
-				labelClass   = "control-label",
-				groupWrapper = "div class=form-group"
-			)##html.textArea(
-				name         = "description",
-				label        = "Description:",
-				cols         = "20",
-				rows         = "3",
-				class        = "form-control",
-				required     = "required",
-				title        = "A short permission description",
-				wrapper      = "div class=controls",
-				labelClass   = "control-label",
-				groupWrapper = "div class=form-group"
-			)#</div> <div class="modal-footer">#html.resetButton(
-				name    = "btnReset",
-				value   = "Cancel",
-				class   = "btn btn-default",
-				onclick = "closeModal( $('##permissionEditorContainer') )"
-			)##html.submitButton(
-				name  = "btnSave",
-				value = "Save",
-				class = "btn btn-primary"
-			)#</div>#html.endForm()#</div>
+		action     = prc.xehPermissionSave,
+		name       = "permissionEditor",
+		novalidate = "novalidate",
+		class      = "form-vertical"
+	)#<div class="modal-body">#html.hiddenField( name = "permissionID", value = "" )##html.textField(
+		name         = "permission",
+		label        = "Permission:",
+		required     = "required",
+		maxlength    = "255",
+		size         = "30",
+		class        = "form-control",
+		title        = "The unique permission name",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textArea(
+		name         = "description",
+		label        = "Description:",
+		cols         = "20",
+		rows         = "3",
+		class        = "form-control",
+		required     = "required",
+		title        = "A short permission description",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#</div> <div class="modal-footer">#html.resetButton(
+		name    = "btnReset",
+		value   = "Cancel",
+		class   = "btn btn-default",
+		onclick = "closeModal( $('##permissionEditorContainer') )"
+	)##html.submitButton(
+		name  = "btnSave",
+		value = "Save",
+		class = "btn btn-primary"
+	)#</div>#html.endForm()#</div>
 	</div>
 </div>
 	</cfif>
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT" )>
 		#view(
-			view          = "_tags/dialog/import",
-			args          = {
-				title      : "Import Permissions",
-				contentArea: "permissions",
-				action     : prc.xehImportAll,
-				contentInfo: "Choose the ContentBox <strong>JSON</strong> permissions file to import."
-			},
-			prePostExempt = true
-		)#
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Permissions",
+		contentArea: "permissions",
+		action     : prc.xehImportAll,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> permissions file to import."
+	},
+	prePostExempt = true
+)#
 	</cfif>
 </cfoutput>

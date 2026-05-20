@@ -25,6 +25,7 @@
 component extends="cborm.models.VirtualEntityService" singleton {
 	// DI
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
 
 	/**

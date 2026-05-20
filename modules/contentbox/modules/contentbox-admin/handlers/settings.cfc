@@ -8,15 +8,23 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="settingsService" inject="settingService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="editorService" inject="editorService@contentbox";
+
 	property name="mediaService" inject="mediaService@contentbox";
+
 	property name="LoginTrackerService" inject="LoginTrackerService@contentbox";
+
 	property name="mailService" inject="mailservice@cbMailservices";
+
 	property
 		name="markdownEditor"
 		inject="markdownEditor@contentbox-markdowneditor";
+
 	property name="twoFactorService" inject="twoFactorService@contentbox";
 
 	/**

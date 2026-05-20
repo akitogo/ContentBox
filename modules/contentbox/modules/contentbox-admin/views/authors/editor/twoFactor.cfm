@@ -1,13 +1,13 @@
 <cfoutput>
 	<div class="tab-pane" id="twofactor" style="min-height: 400px">#html.startForm(
-			name       = "twofactorForm",
-			action     = prc.author.getIs2FactorAuth() ? prc.xehUnenrollTwoFactor : prc.xehEnrollTwoFactor,
-			novalidate = "novalidate",
-			class      = "form-vertical"
-		)##html.hiddenField( name = "authorID", bind = prc.author )##html.hiddenField(
-			name  = "relocationURL",
-			value = event.buildLink( prc.xehTwoFactorRelocation )
-		)#<fieldset>
+		name       = "twofactorForm",
+		action     = prc.author.getIs2FactorAuth() ? prc.xehUnenrollTwoFactor : prc.xehEnrollTwoFactor,
+		novalidate = "novalidate",
+		class      = "form-vertical"
+	)##html.hiddenField( name = "authorID", bind = prc.author )##html.hiddenField(
+		name  = "relocationURL",
+		value = event.buildLink( prc.xehTwoFactorRelocation )
+	)#<fieldset>
 <p>
 	Increase your account's security by enabling Two-Factor Authentication (2FA).
 </p>
@@ -20,10 +20,10 @@
 </div>
 	<cfelse>
 		<div class="form-group">#html.label(
-				class   = "control-label",
-				field   = "is2FactorAuth",
-				content = "Status:"
-			)#
+		class   = "control-label",
+		field   = "is2FactorAuth",
+		content = "Status:"
+	)#
 		<cfif prc.author.getIs2FactorAuth()>
 			<span class="label label-success">Enrolled</span>
 		<cfelse>
@@ -41,13 +41,13 @@
 
 
 	</cfif>
-	<!--- Provider Name --->     
+	<!--- Provider Name --->      
 			<div class="form-group">
 				<label>Provider: </label>
 				<span class="label label-info">#prc.twoFactorProvider.getDisplayName()#</span><br/>
 			</div>
 
-			<!--- Provider Setup Help --->     
+			<!--- Provider Setup Help --->      
 			<div class="form-group">
 				<label>Provider Instructions: </label><br>
 				#prc.twoFactorProvider.getAuthorSetupHelp( prc.author )#
@@ -78,21 +78,21 @@
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
-		prc.author.getAuthorID() EQ prc.oCurrentAuthor.getAuthorID()>
+	prc.author.getAuthorID() EQ prc.oCurrentAuthor.getAuthorID()>
 		<div class="form-actions">
 <div class="form-group">
 		<cfif prc.author.getIs2FactorAuth()>
 			#html.button(
-					type  = "submit",
-					value = "Un-enroll",
-					class = "btn btn-danger"
-				)#
+		type  = "submit",
+		value = "Un-enroll",
+		class = "btn btn-danger"
+	)#
 		<cfelseif prc.author.getAuthorId() EQ prc.oCurrentAuthor.getAuthorId()>
 			#html.button(
-					type  = "submit",
-					value = "Enroll",
-					class = "btn btn-primary"
-				)#
+		type  = "submit",
+		value = "Enroll",
+		class = "btn btn-primary"
+	)#
 		</cfif>
 		
 		

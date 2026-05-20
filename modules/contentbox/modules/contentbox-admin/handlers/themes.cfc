@@ -4,6 +4,7 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="themeService" inject="themeService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
 
 	/**

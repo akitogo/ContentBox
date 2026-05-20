@@ -14,24 +14,24 @@
 
 	}"
 >#cbAdminComponent( "editor/QuickActionsBar" )##html.startForm(
-			action     = prc.xehContentSave,
-			name       = "contentForm",
-			novalidate = "novalidate",
-			class      = "form-vertical mt5",
-			role       = "form"
-		)#<div class="row" x-data="window">  <div
+		action     = prc.xehContentSave,
+		name       = "contentForm",
+		novalidate = "novalidate",
+		class      = "form-vertical mt5",
+		role       = "form"
+	)#<div class="row" x-data="window">  <div
 	id="main-content-slot"
 	x-data="{
 	}"
 	:class="{ 'col-md-12' : isFocusMode, 'col-md-8' : !isFocusMode }"
-><!--- MessageBox Alerts --->     <div class="messages" x-data="alertsModel()" @add-alert.window="addAlert">#cbMessageBox().renderit()#<template x-for="alert in alerts">
+><!--- MessageBox Alerts --->      <div class="messages" x-data="alertsModel()" @add-alert.window="addAlert">#cbMessageBox().renderit()#<template x-for="alert in alerts">
 		<div :class="`alert alert-${alert.class} text=center`" x-text="alert.message"></div>
 	</template>
 </div>#html.hiddenField( name = "siteID", bind = prc.oContent )##html.hiddenField( name = "contentID",
-			bind = prc.oContent )##html.hiddenField( name = "contentType",
-			bind = prc.oContent )##html.hiddenField( name = "isPublished",
-			bind = prc.oContent )##html.hiddenField( name = "saveAsTemplate",
-			value = "false" )##html.hiddenField( name = "sluggerURL", value = event.buildLink( prc.xehSlugify ) )#<div
+		bind = prc.oContent )##html.hiddenField( name = "contentType",
+		bind = prc.oContent )##html.hiddenField( name = "isPublished",
+		bind = prc.oContent )##html.hiddenField( name = "saveAsTemplate",
+		value = "false" )##html.hiddenField( name = "sluggerURL", value = event.buildLink( prc.xehSlugify ) )#<div
 class="panel p10"
 :class="{ 'border-solid border-2' : isFocusMode }"
 >
@@ -43,7 +43,7 @@ class="panel p10"
 		role="tablist"
 		id="tablist"
 		x-show="!isFocusMode"
-	><!--- Main Editor --->     <li role="presentation" class="nav-item active">
+	><!--- Main Editor --->      <li role="presentation" class="nav-item active">
 <a href="##editor" aria-controls="editor" role="tab" data-toggle="tab" class="nav-link">
 	<i class="fas fa-pen"></i> #prc.oContent.getContentType()#</a>
 </li>
@@ -79,13 +79,13 @@ class="panel p10"
 	#announce( "cbadmin_ContentEditorNav" )#
 						</ul>
 
-						<!--- Nav Content --->     
+						<!--- Nav Content --->      
 						<div
 							class="tab-content"
 							id="tab-content"
 						>
 
-							<!--- Editor Tab --->     
+							<!--- Editor Tab --->      
 							<div
 								role="tabpanel"
 								class="tab-pane active"
@@ -95,22 +95,22 @@ class="panel p10"
 									id="editorMeta"
 									x-show="!isFocusMode"
 								>
-									<!--- title --->     
+									<!--- title --->      
 									<div class="form-group">
 										<label class="control-label" for="title">Title:</label>
 										<div class="controls">
 											#html.textfield(
-			name      = "title",
-			bind      = prc.oContent,
-			maxlength = "500",
-			required  = "required",
-			title     = "The title for this content",
-			class     = "form-control"
-		)#
+		name      = "title",
+		bind      = prc.oContent,
+		maxlength = "500",
+		required  = "required",
+		title     = "The title for this content",
+		class     = "form-control"
+	)#
 										</div>
 									</div>
 
-									<!--- slug --->     
+									<!--- slug --->      
 									<div class="form-group">
 
 										<label for="slug" class="control-label">
@@ -126,9 +126,9 @@ class="panel p10"
 	</cfif>
 	<cfif prc.oContent.hasParent()>
 		<small>#prc
-			.oContent
-			.getParent()
-			.getSlug()#/</small>
+	.oContent
+	.getParent()
+	.getSlug()#/</small>
 	</cfif>
 	
 	
@@ -141,13 +141,13 @@ class="panel p10"
 											<div id='slugCheckErrors'></div>
 											<div class="input-group">
 												#html.textfield(
-			name      = "slug",
-			bind      = prc.oContent,
-			maxlength = "1000",
-			class     = "form-control",
-			title     = "The unique slug for this content",
-			disabled  = "#prc.oContent.isLoaded() && prc.oContent.getIsPublished() ? "true" : "false"#"
-		)#
+		name      = "slug",
+		bind      = prc.oContent,
+		maxlength = "1000",
+		class     = "form-control",
+		title     = "The unique slug for this content",
+		disabled  = "#prc.oContent.isLoaded() && prc.oContent.getIsPublished() ? "true" : "false"#"
+	)#
 												<a title=""
 													class="input-group-addon"
 													href="javascript:void(0)"
@@ -173,12 +173,12 @@ class="panel p10"
 		<div class="form-group">
 <label class="control-label" for="description">Short Description:</label>
 <div class="controls">#html.textarea(
-				name  = "description",
-				bind  = prc.oContent,
-				rows  = 1,
-				class = "form-control",
-				title = "A short description for metadata purposes"
-			)#</div>
+		name  = "description",
+		bind  = prc.oContent,
+		rows  = 1,
+		class = "form-control",
+		title = "A short description for metadata purposes"
+	)#</div>
 </div>
 	</cfif>
 	
@@ -188,15 +188,15 @@ class="panel p10"
 	
 								</div>
 
-								#cbAdminComponent( "editor/ContentToolBar" )#<!--- CONTENT EDITOR --->     
+								#cbAdminComponent( "editor/ContentToolBar" )#<!--- CONTENT EDITOR --->      
 								<div class="form-group">
 									<div class="controls">
 										#html.textarea(
-			name  = "content",
-			value = htmlEditFormat( prc.oContent.getContent() ),
-			rows  = "25",
-			class = "form-control"
-		)#
+		name  = "content",
+		value = htmlEditFormat( prc.oContent.getContent() ),
+		rows  = "25",
+		class = "form-control"
+	)#
 									</div>
 								</div>
 
@@ -209,11 +209,11 @@ class="panel p10"
 		<div class="form-group">
 <label class="control-label" for="description">Excerpt:</label>
 <div class="controls">#html.textarea(
-				name  = "excerpt",
-				value = htmlEditFormat( prc.oContent.getExcerpt() ),
-				rows  = "10",
-				class = "form-control"
-			)#</div>
+		name  = "excerpt",
+		value = htmlEditFormat( prc.oContent.getExcerpt() ),
+		rows  = "10",
+		class = "form-control"
+	)#</div>
 </div>
 	</cfif>
 	
@@ -223,22 +223,22 @@ class="panel p10"
 	
 							</div>
 
-							<!--- Custom Fields Tab --->     
+							<!--- Custom Fields Tab --->      
 							<div
 								role="tabpanel"
 								class="tab-pane"
 								id="custom_fields"
 							>
 								#cbAdminComponent(
-		"editor/CustomFields",
-		{
-			fieldType   : "content",
-			customFields: prc.oContent.getCustomFields()
-		}
-	)#
+	"editor/CustomFields",
+	{
+		fieldType   : "content",
+		customFields: prc.oContent.getCustomFields()
+	}
+)#
 							</div>
 
-							<!--- SEO --->     
+							<!--- SEO --->      
 							<div
 								role="tabpanel"
 								class="tab-pane"
@@ -253,7 +253,7 @@ class="panel p10"
 
 
 	<cfif prc.oContent.isLoaded()>
-		<!--- Version History Tab --->     <div
+		<!--- Version History Tab --->      <div
 	role="tabpanel"
 	class="tab-pane"
 	id="history"
@@ -277,7 +277,7 @@ class="panel p10"
 				#announce( "cbadmin_contentEditorFooter" )#
 			</div>
 
-			<!--- Content SideBar --->     
+			<!--- Content SideBar --->      
 			<div
 				id="main-content-sidebar"
 				x-show="!isFocusMode"
@@ -291,7 +291,7 @@ class="panel p10"
 						<h3 class="panel-title"><i class="fa fa-info-circle"></i> #prc.oContent.getContentType()# Details</h3>
 					</div>
 					<div class="panel-body">
-						#cbAdminComponent( "editor/sidebar/PublishingPanel" )#<!--- Accordion --->     
+						#cbAdminComponent( "editor/sidebar/PublishingPanel" )#<!--- Accordion --->      
 						<div id="accordion" class="panel-group accordion" data-stateful="content-sidebar">
 
 

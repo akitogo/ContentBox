@@ -16,11 +16,11 @@
 
 		<div class="panel panel-default">
 		    <div class="panel-body">#html.startForm( name = "widgetForm",
-			action = prc.xehWidgetRemove )##html.hiddenField( name = "widgetFile" )##view(
-		view          = "widgets/widgetList",
-		args          = { mode: "edit", cols: 2 },
-		prePostExempt = true
-	)##html.endForm()#</div>
+		action = prc.xehWidgetRemove )##html.hiddenField( name = "widgetFile" )##view(
+	view          = "widgets/widgetList",
+	args          = { mode: "edit", cols: 2 },
+	prePostExempt = true
+)##html.endForm()#</div>
 		</div>
 	</div>
 

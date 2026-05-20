@@ -25,6 +25,7 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" singleton {
 	// DI
 	property name="wirebox" inject="wirebox";
+
 	/**
 	 * The providers struct holder
 	 */

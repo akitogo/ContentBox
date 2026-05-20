@@ -8,27 +8,27 @@
 </div>
 
 <div class="panel-body">#cbMessageBox().renderit()#<p>#cb.r( "lostpassword.instructions@security" )#</p>#html.startForm(
-			action     = prc.xehDoLostPassword,
-			name       = "lostPasswordForm",
-			novalidate = "novalidate",
-			class      = "form-horizontal"
-		)##html.hiddenField( name = "_csrftoken", value = csrfToken() )#<div class="form-group">
+		action     = prc.xehDoLostPassword,
+		name       = "lostPasswordForm",
+		novalidate = "novalidate",
+		class      = "form-horizontal"
+	)##html.hiddenField( name = "_csrftoken", value = csrfToken() )#<div class="form-group">
 <div class="col-md-12 controls">#html.textfield(
-			name         = "email",
-			required     = "required",
-			class        = "form-control",
-			placeholder  = cb.r( "common.email@security" ),
-			autocomplete = "off"
-		)#<i class="fa fa-envelope"></i>
+		name         = "email",
+		required     = "required",
+		class        = "form-control",
+		placeholder  = cb.r( "common.email@security" ),
+		autocomplete = "off"
+	)#<i class="fa fa-envelope"></i>
     </div>
 </div>
 
 <div class="form-group">
    <div class="col-md-offset-3 col-md-6 text-center">#html.button(
-			type  = "submit",
-			value = "#cb.r( "resetpassword@security" )#",
-			class = "btn btn-primary btn-lg btn-block"
-		)#</div>
+		type  = "submit",
+		value = "#cb.r( "resetpassword@security" )#",
+		class = "btn btn-primary btn-lg btn-block"
+	)#</div>
 </div>#html.endForm()##announce( "cbadmin_afterLostPasswordForm" )#<a href="#event.buildLink( prc.xehLogin )#" class="">
 <i class="fa fa-chevron-left"></i> #cb.r( "backtologin@security" )#</a>#announce( "cbadmin_afterBackToLogin" )#</div>
         </div>

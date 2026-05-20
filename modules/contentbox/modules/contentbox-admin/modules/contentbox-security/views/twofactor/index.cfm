@@ -11,20 +11,20 @@
         </div>
 
         <div class="panel-body">#cbMessageBox().renderit()##html.startForm(
-			action     = prc.xehValidate,
-			ssl        = event.isSSL(),
-			name       = "twofactorForm",
-			novalidate = "novalidate",
-			class      = "form-horizontal"
-		)##announce( "cbadmin_beforeTwoFactorForm" )# <p>#prc.provider.getVerificationHelp()#</p>
+		action     = prc.xehValidate,
+		ssl        = event.isSSL(),
+		name       = "twofactorForm",
+		novalidate = "novalidate",
+		class      = "form-horizontal"
+	)##announce( "cbadmin_beforeTwoFactorForm" )# <p>#prc.provider.getVerificationHelp()#</p>
 
 <div class="form-group">
     <div class="col-md-12 controls">#html.textfield(
-			name         = "twofactorcode",
-			required     = "required",
-			class        = "form-control",
-			autocomplete = "off"
-		)#<i class="fa fa-key"></i>
+		name         = "twofactorcode",
+		required     = "required",
+		class        = "form-control",
+		autocomplete = "off"
+	)#<i class="fa fa-key"></i>
     </div>
 </div>
 

@@ -7,6 +7,7 @@
 component extends="baseHandler" {
 	// DI
 	property name="ormService" inject="CommentService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
 	// The default sorting order string: permission, name, data desc, etc.
 	variables.sortOrder = "createdDate DESC";

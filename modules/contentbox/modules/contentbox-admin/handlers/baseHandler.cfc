@@ -13,8 +13,11 @@ component extends="coldbox.system.RestHandler" {
 	 */
 
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
+
 	property name="paginator" inject="Paging@contentbox";
 
 	/**

@@ -25,9 +25,12 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property name="slug" notnull="true" length="500" default="";
+
 	/** An optional manual target - may be used if no content is assigned **/
 	property name="target" notnull="false" length="500" default="";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -38,6 +41,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_siteID"
 		fetch="join";
+
 	// O2O -> Content
 	property
 		name="relatedContent"

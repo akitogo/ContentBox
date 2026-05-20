@@ -76,10 +76,7 @@ component extends="baseHandler" {
 			// save permission
 			permissionService.save( oPermission );
 			// announce event
-			announce(
-				"cbadmin_postPermissionSave",
-				{ permission: oPermission }
-			);
+			announce( "cbadmin_postPermissionSave", { permission: oPermission } );
 			// messagebox
 			cbMessageBox().setMessage( "info", "Permission saved!" );
 		} else {

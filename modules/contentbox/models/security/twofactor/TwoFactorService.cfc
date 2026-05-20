@@ -8,10 +8,15 @@
 component accessors="true" threadSafe singleton {
 	// DI
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="securityService" inject="securityService@contentbox";
+
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="cookieStorage" inject="cookieStorage@cbStorages";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	/**
 	 * Providers registry
 	 */

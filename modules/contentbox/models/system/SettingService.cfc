@@ -13,16 +13,23 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" threadsafe singleton {
 	// DI properties
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="cachebox" inject="cachebox";
+
 	property name="moduleSettings" inject="coldbox:setting:modules";
+
 	property name="appName" inject="coldbox:setting:appName";
+
 	property name="contentboxSettings" inject="coldbox:moduleSettings:contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	/**
 	 * The cache provider name to use for settings caching. Defaults to 'template' cache.
 	 * This can also be set in the global ContentBox settings page to any CacheBox cache.
 	 */
 	property name="cacheProviderName" default="template";
+
 	/**
 	 * Bit that detects if CB has been installed or not
 	 */

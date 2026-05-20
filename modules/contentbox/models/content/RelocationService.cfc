@@ -25,6 +25,7 @@
 component extends="cborm.models.VirtualEntityService" singleton {
 	// DI
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
 
 	/**

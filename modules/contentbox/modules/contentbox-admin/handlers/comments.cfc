@@ -8,6 +8,7 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="commentService" inject="commentService@contentbox";
+
 	property name="settingsService" inject="settingService@contentbox";
 	// Public properties
 	this.preHandler_except = "pager";
@@ -280,10 +281,7 @@ component extends="baseHandler" {
 						commentService.delete( oComment );
 						arrayAppend( data.messages, "Comment #thisCommentID# removed" );
 
-						announce(
-							"cbadmin_postCommentRemove",
-							{ commentID: thisCommentID }
-						);
+						announce( "cbadmin_postCommentRemove", { commentID: thisCommentID } );
 					}
 				}
 			);

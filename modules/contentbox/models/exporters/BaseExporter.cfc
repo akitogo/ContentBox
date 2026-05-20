@@ -8,26 +8,32 @@
 component accessors="#true#" {
 	// DI
 	property name="log" inject="logbox:logger:{this}";
+
 	/**
 	 * Export filename
 	 */
 	property name="fileName" type="string";
+
 	/**
 	 * Human readable name used in the UI
 	 */
 	property name="displayName" type="string";
+
 	/**
 	 * The format of the file to export
 	 */
 	property name="format" type="string";
+
 	/**
 	 * The priority level of the export
 	 */
 	property name="priority" type="numeric";
+
 	/**
 	 * The name of the exporter
 	 */
 	property name="name" type="string";
+
 	/**
 	 * The allowed export formats the exporter defines
 	 */

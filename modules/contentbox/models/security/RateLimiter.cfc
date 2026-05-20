@@ -8,7 +8,9 @@
 component extends="coldbox.system.Interceptor" {
 	// DI
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="securityService" inject="id:securityService@contentbox";
+
 	property name="cachebox" inject="Cachebox";
 
 	/**

@@ -8,10 +8,15 @@
 component extends="content" {
 	// DI
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="relocationService" inject="RelocationService@contentbox";
+
 	property name="searchService" inject="SearchService@contentbox";
+
 	property name="securityService" inject="securityService@contentbox";
+
 	property name="mobileDetector" inject="mobileDetector@contentbox";
+
 	property name="themeService" inject="themeService@contentbox";
 	// Pre Handler Exceptions
 	this.preHandler_except = "preview";

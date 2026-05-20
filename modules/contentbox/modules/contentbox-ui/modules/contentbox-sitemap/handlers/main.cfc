@@ -8,9 +8,13 @@
 component {
 	// DI
 	property name="entryService" inject="id:entryService@contentbox";
+
 	property name="pageService" inject="id:pageService@contentbox";
+
 	property name="contentService" inject="id:contentService@contentbox";
+
 	property name="CBHelper" inject="id:CBHelper@contentbox";
+
 	property name="settingService" inject="id:settingService@contentbox";
 
 	/**

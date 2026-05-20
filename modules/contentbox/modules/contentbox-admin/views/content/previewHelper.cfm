@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom Javascript --->     <script>
+	<!--- Custom Javascript --->      <script>
 ( () => {
 	// Take height for iframe
     var height = $( "##modal" ).data( 'height' );

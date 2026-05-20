@@ -3,7 +3,7 @@
 Copyright since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldbox.org | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
--------------------------------------------------------------------- --->     
+-------------------------------------------------------------------- --->      
 <cfoutput>
 	<script>
 
@@ -350,22 +350,22 @@ fbInit = () => {
 
 
 	<cfif isNumeric( prc
-			.fbSettings
-			.html5uploads
-			.maxfiles )>
+		.fbSettings
+		.html5uploads
+		.maxfiles )>
 		maxfiles: #prc
-			.fbSettings
-			.html5uploads
-			.maxfiles#,
+	.fbSettings
+	.html5uploads
+	.maxfiles#,
 	</cfif>
 	<cfif isNumeric( prc
-			.fbSettings
-			.html5uploads
-			.maxfilesize )>
+		.fbSettings
+		.html5uploads
+		.maxfilesize )>
 		maxfilesize: #prc
-			.fbSettings
-			.html5uploads
-			.maxfilesize#, // in mb
+	.fbSettings
+	.html5uploads
+	.maxfilesize#, // in mb
 	</cfif>
 	<cfif len( prc.fbSettings.acceptMimeTypes )>
 		allowedfiletypes : "#prc.fbSettings.acceptMimeTypes#".split( "," ),
@@ -409,27 +409,27 @@ fbInit = () => {
 					break;
 				case 'TooManyFiles':
 					alert( '#$r(
-		resource = "jsmessages.toomanyfiles@fb",
-		values   = prc
-			.fbSettings
-			.html5uploads
-			.maxfiles
-	)#' );
+	resource = "jsmessages.toomanyfiles@fb",
+	values   = prc
+		.fbSettings
+		.html5uploads
+		.maxfiles
+)#' );
 					break;
 				case 'FileTooLarge':
 					alert( file.name + ' #$r(
-		resource = "jsmessages.toolarge@fb",
-		values   = prc
-			.fbSettings
-			.html5uploads
-			.maxfilesize
-	)#');
+	resource = "jsmessages.toolarge@fb",
+	values   = prc
+		.fbSettings
+		.html5uploads
+		.maxfilesize
+)#');
 					break;
 				case 'FileTypeNotAllowed':
 					alert( file.type + ' #$r(
-		resource = "jsmessages.invalidtype@fb",
-		values   = prc.fbSettings.acceptMimeTypes
-	)#' );
+	resource = "jsmessages.invalidtype@fb",
+	values   = prc.fbSettings.acceptMimeTypes
+)#' );
 					break;
 				default:
 					break;

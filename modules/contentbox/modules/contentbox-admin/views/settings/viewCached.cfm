@@ -8,7 +8,7 @@
 	</div>
 
        <div class="modal-body">
-           <h4>Cached Metadata</h4><!--- settings --->     <table class="table table-hover  table-striped-removed" >
+           <h4>Cached Metadata</h4><!--- settings --->      <table class="table table-hover  table-striped-removed" >
 <thead>
 	<tr>
 		<th>Hits</th>
@@ -35,7 +35,7 @@
 <div style="overflow: auto">
 	<cfdump var="#prc.settings#">
 	</div>
-</div><!--- Button Bar --->     <div class="modal-footer">
+</div><!--- Button Bar --->      <div class="modal-footer">
         	<button class="btn btn-danger" onclick="closeRemoteModal()"> Close </button>
         </div>
     </div>

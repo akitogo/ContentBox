@@ -1,9 +1,9 @@
 <cfoutput>
-	<!--- Custom Javascript --->     <script>
+	<!--- Custom Javascript --->      <script>
 document.addEventListener( "DOMContentLoaded", () => {
 	<cfif prc.oCurrentAuthor.hasPermission(
-			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
-		)>
+		"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
+	)>
 		// Load My Latest Drafts
 $( "##latestSystemEdits" ).load( '#event.buildLink( prc.xehLatestSystemEdits )#' );
 // Load Future Published Content
@@ -32,8 +32,8 @@ $( "##latestUserDrafts" ).load( '#event.buildLink( prc.xehLatestUserDrafts )#' )
 $( "##latestComments" ).load( '#event.buildLink( prc.xehLatestComments )#' );
 	</cfif>
 	<cfif prc.oCurrentAuthor.hasPermission(
-			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR,COMMENTS_ADMIN"
-		)>
+		"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR,COMMENTS_ADMIN"
+	)>
 		// Load snapshots
 $( "##latestSnapshot" ).load( '#event.buildLink( prc.xehLatestSnapshot )#' );
 	</cfif>

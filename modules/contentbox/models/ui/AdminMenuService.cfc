@@ -10,34 +10,42 @@ component accessors="true" threadSafe singleton {
 	 * This holds the top menu structure
 	 */
 	property name="topMenu" type="array";
+
 	/**
 	 * This is a reference map of the topMenu array
 	 */
 	property name="topMenuMap" type="struct";
+
 	/**
 	 * This holds the header menu structure
 	 */
 	property name="headerMenu" type="array";
+
 	/**
 	 * This holds the support menu structure
 	 */
 	property name="supportMenu" type="array";
+
 	/**
 	 * This holds the utils menu structure
 	 */
 	property name="utilsMenu" type="array";
+
 	/**
 	 * This holds the profile menu structure
 	 */
 	property name="profileMenu" type="array";
+
 	/**
 	 * This is a reference map of the headerMenu array
 	 */
 	property name="headerMenuMap" type="struct";
+
 	/**
 	 * Injected Avatar
 	 */
 	property name="avatar" type="any" inject="Avatar@contentbox";
+
 	// DI
 	property name="log" inject="logbox:logger:{this}";
 	// Top Menu Slugs

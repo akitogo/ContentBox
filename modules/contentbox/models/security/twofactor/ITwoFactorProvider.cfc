@@ -10,33 +10,33 @@ interface {
 	/**
 	 * Get the internal name of a provider, used for registration, internal naming and more.
 	 */
-	default function getName();
+	function getName();
 
 	/**
 	 * Get the display name for the provider.  Used in all UI screens
 	 */
-	default function getDisplayName();
+	function getDisplayName();
 
 	/**
 	 * Returns html to display to the user for required two-factor fields
 	 */
-	default function getAuthorSetupForm( required author );
+	function getAuthorSetupForm( required author );
 
 	/**
 	 * Get the display help for the provider.  Used in the UI setup screens for the author
 	 */
-	default function getAuthorSetupHelp( required author );
+	function getAuthorSetupHelp( required author );
 
 	/**
 	 * Get the verification help for the provider.  Used in the UI verification screen.
 	 */
-	default function getVerificationHelp();
+	function getVerificationHelp();
 
 	/**
 	 * If true, then ContentBox will set a tracking cookie for the authentication provider user browser.
 	 * If the user, logs in and the device is within the trusted timespan, then no two-factor authentication validation will occur.
 	 */
-	default boolean function allowTrustedDevice();
+	boolean function allowTrustedDevice();
 
 	/**
 	 * Send a challenge via the 2 factor auth implementation.
@@ -46,7 +46,7 @@ interface {
 	 *
 	 * @return struct:{ error:boolean, messages=string }
 	 */
-	default struct function sendChallenge( required author );
+	struct function sendChallenge( required author );
 
 	/**
 	 * Leverage the default provider to verify a challenge for the specific user.
@@ -57,7 +57,7 @@ interface {
 	 *
 	 * @return struct:{ error:boolean, messages:string }
 	 */
-	default struct function verifyChallenge( required string code, required author );
+	struct function verifyChallenge( required string code, required author );
 
 	/**
 	 * This method is called once a two factor challenge is accepted and valid.
@@ -66,5 +66,5 @@ interface {
 	 * @code   The verification code
 	 * @author The author to verify challenge
 	 */
-	default function finalize( required string code, required author );
+	function finalize( required string code, required author );
 }

@@ -21,7 +21,7 @@
 </div>
 	</cfif>
 	#html.startForm( name = "entryForm", action = prc.xehEntryRemove )##html.hiddenField( name = "contentStatus",
-			value = "" )##html.hiddenField( name = "contentID", value = "" )#
+		value = "" )##html.hiddenField( name = "contentID", value = "" )#
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -30,10 +30,10 @@
 						<div class="col-md-6 col-xs-4">
 							<div class="form-group form-inline no-margin">
 								#html.textField(
-			name        = "searchContent",
-			class       = "form-control rounded quicksearch",
-			placeholder = "Quick Search"
-		)#
+		name        = "searchContent",
+		class       = "form-control rounded quicksearch",
+		placeholder = "Quick Search"
+	)#
 							</div>
 						</div>
 
@@ -175,7 +175,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<!--- entries container --->     
+					<!--- entries container --->      
     				<div id="contentTableContainer">
     					<p class="text-center"><i id="entryLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i></p>
     				</div>
@@ -192,11 +192,11 @@
 			<div class="panel-body">
 				<div id="filterBox">
 					#html.startForm(
-			name   = "entryFilterForm",
-			action = prc.xehEntrySearch,
-			class  = "form-vertical",
-			role   = "form"
-		)# 
+		name   = "entryFilterForm",
+		action = prc.xehEntrySearch,
+		class  = "form-vertical",
+		role   = "form"
+	)# 
 						<div class="form-group">
 					        <label for="fAuthors" class="control-label">Authors:</label>
 							<div class="controls">
@@ -219,7 +219,7 @@
 							</div>
 						</div>
 
-					    <!--- Creators --->     
+					    <!--- Creators --->      
 					    <div class="form-group">
 							<label for="fCreators" class="control-label">Creators: </label>
 							<select name="fCreators" id="fCreators" class="form-control input-sm" title="Filter on who created content">
@@ -240,7 +240,7 @@
 							</select>
 						</div>
 
-						<!--- Categories --->     
+						<!--- Categories --->      
 						<div class="form-group">
 					        <label for="fCategories" class="control-label">Categories:</label>
 					        <div class="controls">
@@ -264,7 +264,7 @@
 					        </div>
 						</div>
 
-						<!--- Status --->     
+						<!--- Status --->      
 						<div class="form-group">
 					        <label for="fStatus" class="control-label">Status:</label>
 					        <div class="controls">
@@ -286,7 +286,7 @@
 			</div>
 		</div>
 
-		<!--- Help Tips --->     
+		<!--- Help Tips --->      
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		        <h3 class="panel-title"><i class="fa fas fa-life-ring"></i> Help Tips</h3>
@@ -307,30 +307,30 @@
 
 	<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_EDITOR,ENTRIES_ADMIN" )>
 		#view(
-			view          = "_tags/dialog/clone",
-			args          = {
-				title       : "Blog Entry Cloning",
-				infoMsg     : "",
-				action      : prc.xehEntryClone,
-				titleLabel  : "Title",
-				publishLabel: "Publish",
-				publishInfo : "By default all cloned entries are saved as drafts."
-			},
-			prePostExempt = true
-		)#
+	view          = "_tags/dialog/clone",
+	args          = {
+		title       : "Blog Entry Cloning",
+		infoMsg     : "",
+		action      : prc.xehEntryClone,
+		titleLabel  : "Title",
+		publishLabel: "Publish",
+		publishInfo : "By default all cloned entries are saved as drafts."
+	},
+	prePostExempt = true
+)#
 	</cfif>
 	<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_ADMIN,TOOLS_IMPORT" )>
 		#view(
-			view          = "_tags/dialog/import",
-			args          = {
-				title      : "Import Blog Entries",
-				contentArea: "entry",
-				action     : prc.xehEntryImport,
-				contentInfo: "Choose the ContentBox <strong>JSON</strong> entries file to import. The creator of the entry is matched via their <strong>username</strong> and
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Blog Entries",
+		contentArea: "entry",
+		action     : prc.xehEntryImport,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> entries file to import. The creator of the entry is matched via their <strong>username</strong> and
                 entry overrides are matched via their <strong>slug</strong>.
                 If the importer cannot find the username from the import file in your installation, then it will ignore the record."
-			},
-			prePostExempt = true
-		)#
+	},
+	prePostExempt = true
+)#
 	</cfif>
 </cfoutput>

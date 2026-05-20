@@ -20,10 +20,12 @@ component
 		name="provider"
 		persistent="false"
 		inject="provider:contentbox.models.menu.providers.ContentProvider";
+
 	property
 		name="contentService"
 		persistent="false"
 		inject="provider:contentService@contentbox";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -34,12 +36,14 @@ component
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property
 		name="target"
 		column="target"
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property
 		name="urlClass"
 		column="urlClass"

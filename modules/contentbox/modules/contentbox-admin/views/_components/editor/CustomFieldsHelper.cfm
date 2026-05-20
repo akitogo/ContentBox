@@ -4,9 +4,9 @@
 function customFieldsModel(){
 	return {
 		customFields : #toJSON( prc
-			.oContent
-			.getCustomFields()
-			.map( ( field ) => arguments.field.getMemento() ) )#,
+		.oContent
+		.getCustomFields()
+		.map( ( field ) => arguments.field.getMemento() ) )#,
 isTemplatedField : field => window.assignedTemplate
 							&& window.assignedTemplate.definition.customFields
 							&& window.assignedTemplate.definition.customFields.value.some( item => item.name == field.key.trim() ),

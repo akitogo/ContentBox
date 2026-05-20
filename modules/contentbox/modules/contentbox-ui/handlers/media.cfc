@@ -8,6 +8,7 @@
 component singleton {
 	// DI
 	property name="mediaService" inject="id:mediaService@contentbox";
+
 	property name="settingService" inject="id:settingService@contentbox";
 
 	/**

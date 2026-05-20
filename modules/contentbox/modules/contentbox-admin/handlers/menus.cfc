@@ -8,7 +8,9 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="menuService" inject="menuService@contentbox";
+
 	property name="menuItemService" inject="menuItemService@contentbox";
+
 	property name="HTMLHelper" inject="HTMLHelper@coldbox";
 	// Public properties
 	this.preHandler_except = "pager";
@@ -218,10 +220,7 @@ component extends="baseHandler" {
 		populate( model = oMenu, exclude = "menuID,menuItems" );
 		oMenu.populateMenuItems( deserializeJSON( rc.menuItems ) );
 		// announce event
-		announce(
-			"cbadmin_preMenuSave",
-			{ menu: oMenu, menuID: rc.menuID }
-		);
+		announce( "cbadmin_preMenuSave", { menu: oMenu, menuID: rc.menuID } );
 		// save menu
 		variables.menuService.save( oMenu.setSite( prc.oCurrentSite ) );
 		// announce event
@@ -291,10 +290,7 @@ component extends="baseHandler" {
 				var menuID = oMenu.getMenuID();
 				var title = oMenu.getSlug();
 				// announce event
-				announce(
-					"cbadmin_preMenuRemove",
-					{ menu: oMenu, menuID: menuID }
-				);
+				announce( "cbadmin_preMenuRemove", { menu: oMenu, menuID: menuID } );
 				// Delete it
 				variables.menuService.delete( oMenu );
 				arrayAppend( messages, "Menu '#title#' removed" );

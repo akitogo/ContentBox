@@ -21,6 +21,7 @@ component
 		name="contentService"
 		inject="provider:contentService@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES
 	 **********************************************************************/
@@ -33,6 +34,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="name"
 		column="name"
@@ -40,6 +42,7 @@ component
 		notnull="true"
 		length="255"
 		default="";
+
 	property
 		name="slug"
 		column="slug"
@@ -49,6 +52,7 @@ component
 		unique="true"
 		default=""
 		index="idx_siteSlug";
+
 	property
 		name="description"
 		column="description"
@@ -56,6 +60,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="keywords"
 		column="keywords"
@@ -63,6 +68,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="domain"
 		column="domain"
@@ -70,6 +76,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="domainRegex"
 		column="domainRegex"
@@ -77,6 +84,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="domainAliases"
 		column="domainAliases"
@@ -84,6 +92,7 @@ component
 		notnull="false"
 		length="8000"
 		default="";
+
 	property
 		name="tagline"
 		column="tagline"
@@ -91,6 +100,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="homepage"
 		column="homepage"
@@ -98,42 +108,49 @@ component
 		notnull="false"
 		default="cbBlog"
 		length="255";
+
 	property
 		name="isBlogEnabled"
 		column="isBlogEnabled"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="isSitemapEnabled"
 		column="isSitemapEnabled"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="poweredByHeader"
 		column="poweredByHeader"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="adminBar"
 		column="adminBar"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="isSSL"
 		column="isSSL"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	property
 		name="isActive"
 		column="isActive"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="activeTheme"
 		column="activeTheme"
@@ -141,6 +158,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="notificationEmails"
 		column="notificationEmails"
@@ -148,24 +166,28 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="notifyOnEntries"
 		column="notifyOnEntries"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="notifyOnPages"
 		column="notifyOnPages"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="notifyOnContentStore"
 		column="notifyOnContentStore"
 		ormtype="boolean"
 		notnull="true"
 		default="true";
+
 	property
 		name="mediaDisk"
 		column="mediaDisk"
@@ -173,6 +195,7 @@ component
 		notnull="false"
 		default="contentbox"
 		length="50";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -189,6 +212,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> Categories
 	property
 		name="categories"
@@ -201,6 +225,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> Entries
 	property
 		name="entries"
@@ -213,6 +238,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> Pages
 	property
 		name="pages"
@@ -225,6 +251,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> ContentStore
 	property
 		name="contentStore"
@@ -236,6 +263,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	// O2M -> menus
 	property
 		name="menus"
@@ -248,6 +276,7 @@ component
 		fkcolumn="FK_siteID"
 		inverse="true"
 		cascade="all-delete-orphan";
+
 	/**********************************************************************
 	 * **							CALUCLATED FIELDS
 	 **********************************************************************/
@@ -258,23 +287,27 @@ component
 				from cb_entry as entry, cb_content as content
 				where entry.contentID=content.contentID
 					and content.FK_siteID = siteID";
+
 	property
 		name="numberOfPages"
 		formula="select count(*)
 				from cb_page as page, cb_content as content
 				where page.contentID=content.contentID
 					and content.FK_siteID = siteID";
+
 	property
 		name="numberOfContentStore"
 		formula="select count(*)
 				from cb_contentStore as contentStore, cb_content as content
 				where contentStore.contentID=content.contentID
 					and content.FK_siteID = siteID";
+
 	property
 		name="numberOfMenus"
 		formula="select count(*)
 		from cb_menu as menu
 		where menu.FK_siteID = siteID";
+
 	property
 		name="numberOfCategories"
 		formula="select count(*)

@@ -21,22 +21,27 @@ component
 		name="categoryService"
 		inject="provider:categoryService@contentbox"
 		persistent="false";
+
 	property
 		name="pageService"
 		inject="provider:pageService@contentbox"
 		persistent="false";
+
 	property
 		name="entryService"
 		inject="provider:entryService@contentbox"
 		persistent="false";
+
 	property
 		name="contentStoreService"
 		inject="provider:contentStoreService@contentbox"
 		persistent="false";
+
 	property
 		name="settingService"
 		inject="provider:settingService@contentbox"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES
 	 **********************************************************************/
@@ -49,18 +54,21 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="category"
 		column="category"
 		notnull="true"
 		length="200"
 		index="idx_categoryName";
+
 	property
 		name="slug"
 		column="slug"
 		notnull="true"
 		length="200"
 		index="idx_categorySlug";
+
 	property
 		name="isPublic"
 		column="isPublic"
@@ -68,6 +76,7 @@ component
 		notnull="false"
 		default="true"
 		index="idx_isPublic";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/

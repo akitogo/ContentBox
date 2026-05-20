@@ -28,6 +28,7 @@ component
 		generator="uuid"
 		length="36"
 		update="false";
+
 	property
 		name="name"
 		column="name"
@@ -37,6 +38,7 @@ component
 		unique="true"
 		default=""
 		index="idx_permissionGroupName";
+
 	property
 		name="description"
 		column="description"
@@ -44,6 +46,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -61,6 +64,7 @@ component
 		fkcolumn="FK_permissionGroupID"
 		linktable="cb_groupPermissions"
 		inversejoincolumn="FK_permissionID";
+
 	// M2M -> Authors
 	property
 		name="authors"
@@ -73,6 +77,7 @@ component
 		fkcolumn="FK_permissionGroupID"
 		linktable="cb_authorPermissionGroups"
 		inversejoincolumn="FK_authorID";
+
 	/**********************************************************************
 	 * **							CALCULATED FIELDS
 	 **********************************************************************/
@@ -81,9 +86,11 @@ component
 		name="numberOfPermissions"
 		formula="select count(*) from cb_groupPermissions as groupPermissions
 						 where groupPermissions.FK_permissionGroupID = permissionGroupID";
+
 	property
 		name="numberOfAuthors"
 		formula="select count(*) from cb_authorPermissionGroups as pg where pg.FK_permissionGroupID = permissionGroupID";
+
 	/**********************************************************************
 	 * **							NON PERSISTED PROPERTIES
 	 **********************************************************************/

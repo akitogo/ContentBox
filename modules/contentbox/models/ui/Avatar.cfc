@@ -4,6 +4,7 @@
 component singleton {
 	// DI
 	property name="requestService" inject="coldbox:requestService";
+
 	property name="requestStorage" inject="requestStorage@cbStorages";
 
 	/**

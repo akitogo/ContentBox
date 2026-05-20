@@ -12,10 +12,10 @@
 		<cfif len( content.get( "featuredImageURL" ) )>
 			<image:image>
 <image:loc>#xmlFormat( prc.siteBaseURL & "/" & reReplace(
-					content.get( "featuredImageURL" ),
-					"^/",
-					""
-				) )#</image:loc>
+		content.get( "featuredImageURL" ),
+		"^/",
+		""
+	) )#</image:loc>
 </image:image>
 		</cfif>
 		
@@ -41,10 +41,10 @@
 			<cfif len( content.get( "featuredImageURL" ) )>
 				<image:image>
 <image:loc>#xmlFormat( prc.siteBaseURL & "/" & reReplace(
-						content.get( "featuredImageURL" ),
-						"^/",
-						""
-					) )#</image:loc>
+		content.get( "featuredImageURL" ),
+		"^/",
+		""
+	) )#</image:loc>
 </image:image>
 			</cfif>
 			

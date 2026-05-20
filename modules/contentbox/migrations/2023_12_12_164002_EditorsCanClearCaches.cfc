@@ -62,9 +62,7 @@ component {
 			qb
 				.newQuery()
 				.from( "cb_rolePermissions" )
-				.insert(
-					{ "FK_roleID": admin.roleID, "FK_permissionID": permID }
-				);
+				.insert( { "FK_roleID": admin.roleID, "FK_permissionID": permID } );
 			systemOutput( "√ - Admin role updated with new permissions", true );
 		}
 
@@ -86,9 +84,7 @@ component {
 			qb
 				.newQuery()
 				.from( "cb_rolePermissions" )
-				.insert(
-					{ "FK_roleID": editor.roleID, "FK_permissionID": permID }
-				);
+				.insert( { "FK_roleID": editor.roleID, "FK_permissionID": permID } );
 			systemOutput( "√ - Editor role updated with new permissions", true );
 		}
 	}

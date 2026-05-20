@@ -8,28 +8,39 @@
 component accessors="true" singleton threadSafe {
 	// Dependecnies
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="moduleSettings" inject="coldbox:setting:modules";
+
 	property name="moduleService" inject="ModuleService@contentbox";
+
 	property name="themeService" inject="themeService@contentbox";
+
 	property name="wirebox" inject="wirebox";
+
 	property name="coldbox" inject="coldbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	/**
 	 * The core widgets location path
 	 */
 	property name="coreWidgetsPath" type="string";
+
 	/**
 	 * The custom widgets location path
 	 */
 	property name="customWidgetsPath" type="string";
+
 	/**
 	 * The core widgets map
 	 */
 	property name="coreWidgetsMap" type="struct";
+
 	/**
 	 * The custom widgets map
 	 */
 	property name="customWidgetsMap" type="struct";
+
 	/**
 	 * The loaded widgets in the entire system: core, custom, theme, modules
 	 */

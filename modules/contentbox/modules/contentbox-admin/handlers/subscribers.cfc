@@ -10,6 +10,7 @@ component extends="baseHandler" {
 	property
 		name="commentSubscriptionService"
 		inject="commentSubscriptionService@contentbox";
+
 	property name="subscriberService" inject="subscriberService@contentbox";
 
 	// pre handler

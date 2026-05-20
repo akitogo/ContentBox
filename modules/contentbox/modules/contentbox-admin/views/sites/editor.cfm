@@ -2,14 +2,14 @@
 	<div class="row">
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->     <div class="panel-heading"><!--- Top Actions --->     <div class="float-right mt10"><!--- Back button --->     <a
+	<div class="panel panel-default"><!--- Heading --->      <div class="panel-heading"><!--- Top Actions --->      <div class="float-right mt10"><!--- Back button --->      <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehSitesManager )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Title --->     <div class="size16 p10 flex gap-x-2">
+</div><!--- Title --->      <div class="size16 p10 flex gap-x-2">
 
 <i class="fa fa-globe"></i>
 
@@ -34,32 +34,32 @@ href="#event.buildLink( prc.xehSitesManager )#"
 				<div class="panel-body">
 
 					#cbMessageBox().renderit()##html.startForm(
-			name       = "siteForm",
-			id         = "siteForm",
-			action     = prc.xehSiteSave,
-			novalidate = "novalidate",
-			class      = "form-vertical"
-		)##html.startFieldset( legend = "Site Details" )##html.hiddenField( name = "siteID",
-			bind = prc.site )##html.textField(
-			name         = "name",
-			bind         = prc.site,
-			label        = "*Name:",
-			required     = "required",
-			size         = "255",
-			class        = "form-control",
-			title        = "The human readable name",
-			placeholder  = "My Awesome Site",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)#
+		name       = "siteForm",
+		id         = "siteForm",
+		action     = prc.xehSiteSave,
+		novalidate = "novalidate",
+		class      = "form-vertical"
+	)##html.startFieldset( legend = "Site Details" )##html.hiddenField( name = "siteID",
+		bind = prc.site )##html.textField(
+		name         = "name",
+		bind         = prc.site,
+		label        = "*Name:",
+		required     = "required",
+		size         = "255",
+		class        = "form-control",
+		title        = "The human readable name",
+		placeholder  = "My Awesome Site",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)#
 
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "slug",
-			content = "*Unique Slug:"
-		)#
+		class   = "control-label",
+		field   = "slug",
+		content = "*Unique Slug:"
+	)#
 	<cfif prc.site.isLoaded()>
 		<div class="alert alert-warning">
 	The slug cannot be changed once the site has been created.
@@ -70,49 +70,49 @@ href="#event.buildLink( prc.xehSitesManager )#"
 </div>
 	</cfif>
 	#html.textField(
-			name        = "slug",
-			bind        = prc.site,
-			required    = "required",
-			size        = "255",
-			title       = "The internal unique identifier for the site",
-			class       = "form-control",
-			wrapper     = "div class=controls",
-			placeholder = "my-awesome-site",
-			disabled    = prc.site.isLoaded() ? true : false
-		)#
+		name        = "slug",
+		bind        = prc.site,
+		required    = "required",
+		size        = "255",
+		title       = "The internal unique identifier for the site",
+		class       = "form-control",
+		wrapper     = "div class=controls",
+		placeholder = "my-awesome-site",
+		disabled    = prc.site.isLoaded() ? true : false
+	)#
 							</div>
 
 							#html.textField(
-			name         = "tagline",
-			bind         = prc.site,
-			label        = "Tag Line:",
-			size         = "255",
-			class        = "form-control",
-			title        = "A cool tag line that can appear anywhere in your site",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "description",
-			label        = "Description:",
-			bind         = prc.site,
-			rows         = "3",
-			class        = "form-control mde",
-			title        = "Your site description, also used in the HTML description meta tag",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.textarea(
-			name         = "keywords",
-			label        = "Keywords:",
-			bind         = prc.site,
-			rows         = "3",
-			class        = "form-control",
-			title        = "A comma delimited list of keywords to be used in the HTML keywords meta tag",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group"
-		)##html.endFieldset()##html.startFieldset( legend = "Site Detection" )#
+		name         = "tagline",
+		bind         = prc.site,
+		label        = "Tag Line:",
+		size         = "255",
+		class        = "form-control",
+		title        = "A cool tag line that can appear anywhere in your site",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "description",
+		label        = "Description:",
+		bind         = prc.site,
+		rows         = "3",
+		class        = "form-control mde",
+		title        = "Your site description, also used in the HTML description meta tag",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.textarea(
+		name         = "keywords",
+		label        = "Keywords:",
+		bind         = prc.site,
+		rows         = "3",
+		class        = "form-control",
+		title        = "A comma delimited list of keywords to be used in the HTML keywords meta tag",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group"
+	)##html.endFieldset()##html.startFieldset( legend = "Site Detection" )#
 
 							<p>
 								Site detection is done against the incoming domain name found in the <code>cgi</code> scope.
@@ -121,25 +121,25 @@ href="#event.buildLink( prc.xehSitesManager )#"
 							</p>
 
 							#html.textField(
-			name         = "domainRegex",
-			bind         = prc.site,
-			label        = "*Domain Expression(s):",
-			required     = "required",
-			size         = "255",
-			title        = "A domain name or regular expression that will be used to match the incoming domain with.",
-			class        = "form-control",
-			wrapper      = "div class=controls",
-			labelClass   = "control-label",
-			groupWrapper = "div class=form-group",
-			placeholder  = "mycoolsite\.com"
-		)#
+		name         = "domainRegex",
+		bind         = prc.site,
+		label        = "*Domain Expression(s):",
+		required     = "required",
+		size         = "255",
+		title        = "A domain name or regular expression that will be used to match the incoming domain with.",
+		class        = "form-control",
+		wrapper      = "div class=controls",
+		labelClass   = "control-label",
+		groupWrapper = "div class=form-group",
+		placeholder  = "mycoolsite\.com"
+	)#
 
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "domain",
-			content = "*Domain Base URL:"
-		)#
+		class   = "control-label",
+		field   = "domain",
+		content = "*Domain Base URL:"
+	)#
 
 								<p>
 									The domain base URL so we can construct URLs to this site.
@@ -158,9 +158,9 @@ href="#event.buildLink( prc.xehSitesManager )#"
 								</div>
 							</div>
 
-							<!--- Domain Aliases Component --->     
+							<!--- Domain Aliases Component --->      
 							<div x-data="domainAliases()">
-								<!--- The property holder --->     
+								<!--- The property holder --->      
 								<input type="hidden" name="domainAliases" x-model="domainAliases">
 								<button type="button" class="btn btn-info" @click="addDomainAlias()">+ Add Domain Alias</button>
 
@@ -410,13 +410,13 @@ value="#disk#"
 								</div>
 							</div>
 
-							<!--- Blog Enabled --->     
+							<!--- Blog Enabled --->      
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "isBlogEnabled",
-			content = "Enable Blog:"
-		)#
+		class   = "control-label",
+		field   = "isBlogEnabled",
+		content = "Enable Blog:"
+	)#
 
 								<p>
 									Every ContentBox site can have a blog enabled by default.
@@ -424,20 +424,20 @@ value="#disk#"
 
 								<div class="controls">
 									#html.checkbox(
-			name    = "isBlogEnabled_toggle",
-			data    = { toggle: "toggle", match: "isBlogEnabled" },
-			checked = prc.site.getIsBlogEnabled()
-		)##html.hiddenField( name = "isBlogEnabled", value = prc.site.getIsBlogEnabled() )#
+		name    = "isBlogEnabled_toggle",
+		data    = { toggle: "toggle", match: "isBlogEnabled" },
+		checked = prc.site.getIsBlogEnabled()
+	)##html.hiddenField( name = "isBlogEnabled", value = prc.site.getIsBlogEnabled() )#
 								</div>
 							</div>
 
-							<!--- Sitemap --->     
+							<!--- Sitemap --->      
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "isSitemapEnabled",
-			content = "Enable Sitemap Features:"
-		)#
+		class   = "control-label",
+		field   = "isSitemapEnabled",
+		content = "Enable Sitemap Features:"
+	)#
 
 								<p>
 									If enabled, you will be able to access the site map via <code>/sitemap</code> and can even add format extensions, e.g: <code>sitemap.json, sitemap.xml, sitemap.txt</code>
@@ -445,20 +445,20 @@ value="#disk#"
 
 								<div class="controls">
 									#html.checkbox(
-			name    = "isSitemapEnabled_toggle",
-			data    = { toggle: "toggle", match: "isSitemapEnabled" },
-			checked = prc.site.getIsSitemapEnabled()
-		)##html.hiddenField( name = "isSitemapEnabled", value = prc.site.getIsSitemapEnabled() )#
+		name    = "isSitemapEnabled_toggle",
+		data    = { toggle: "toggle", match: "isSitemapEnabled" },
+		checked = prc.site.getIsSitemapEnabled()
+	)##html.hiddenField( name = "isSitemapEnabled", value = prc.site.getIsSitemapEnabled() )#
 								</div>
 							</div>
 
-							<!--- Site Admin Bar --->     
+							<!--- Site Admin Bar --->      
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "adminBar",
-			content = "Enable Site Admin Bar:"
-		)#
+		class   = "control-label",
+		field   = "adminBar",
+		content = "Enable Site Admin Bar:"
+	)#
 
 								<p>
 									If enabled, logged in and with the right permissions, you will see a ContentBox Floating Admin Bar in your site to help you edit and manage content from the UI.
@@ -466,20 +466,20 @@ value="#disk#"
 
 								<div class="controls">
 									#html.checkbox(
-			name    = "adminBar_toggle",
-			data    = { toggle: "toggle", match: "adminBar" },
-			checked = prc.site.getAdminBar()
-		)##html.hiddenField( name = "adminBar", bind = prc.site )#
+		name    = "adminBar_toggle",
+		data    = { toggle: "toggle", match: "adminBar" },
+		checked = prc.site.getAdminBar()
+	)##html.hiddenField( name = "adminBar", bind = prc.site )#
 								</div>
 							</div>
 
-							<!--- Site SSL --->     
+							<!--- Site SSL --->      
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "isSSL",
-			content = "Site Force SSL (Secure Sockets Layer):"
-		)#
+		class   = "control-label",
+		field   = "isSSL",
+		content = "Site Force SSL (Secure Sockets Layer):"
+	)#
 
 								<p>
 									You can force SSL encryption for the entire site. If a non-secure request is made ContentBox will relocate it and enforce SSL.
@@ -488,20 +488,20 @@ value="#disk#"
 
 								<div class="controls">
 									#html.checkbox(
-			name    = "isSSL_toggle",
-			data    = { toggle: "toggle", match: "isSSL" },
-			checked = prc.site.getIsSSL()
-		)##html.hiddenField( name = "isSSL", bind = prc.site )#
+		name    = "isSSL_toggle",
+		data    = { toggle: "toggle", match: "isSSL" },
+		checked = prc.site.getIsSSL()
+	)##html.hiddenField( name = "isSSL", bind = prc.site )#
 								</div>
 							</div>
 
-							<!--- Powered by Header --->     
+							<!--- Powered by Header --->      
 							<div class="form-group">
 								#html.label(
-			class   = "control-label",
-			field   = "poweredByHeader",
-			content = "Send ContentBox Identity Header:"
-		)#
+		class   = "control-label",
+		field   = "poweredByHeader",
+		content = "Send ContentBox Identity Header:"
+	)#
 
 								<p>
 									ContentBox will emit an indentiy header <code>x-powered-by:contentbox</code> if enabled.
@@ -509,10 +509,10 @@ value="#disk#"
 
 								<div class="controls">
 									#html.checkbox(
-			name    = "poweredByHeader_toggle",
-			data    = { toggle: "toggle", match: "poweredByHeader" },
-			checked = prc.site.getPoweredByHeader()
-		)##html.hiddenField( name = "poweredByHeader", bind = prc.site )#
+		name    = "poweredByHeader_toggle",
+		data    = { toggle: "toggle", match: "poweredByHeader" },
+		checked = prc.site.getPoweredByHeader()
+	)##html.hiddenField( name = "poweredByHeader", bind = prc.site )#
 								</div>
 							</div>
 
@@ -524,21 +524,21 @@ value="#disk#"
 
 	<cfif prc.site.getSlug() NEQ "default">
 		<div class="form-group alert alert-danger">#html.label(
-				class   = "control-label",
-				field   = "isActive",
-				content = "Site Enabled:"
-			)#<p>
+		class   = "control-label",
+		field   = "isActive",
+		content = "Site Enabled:"
+	)#<p>
 	ContentBox can disable a site from being served by disabling it. Diabling a site does not delete or unpublish any items. It is a nice toggle switch.
 </p>
 
 <div class="controls">#html.checkbox(
-				name    = "isActive_toggle",
-				data    = { toggle: "toggle", match: "isActive" },
-				checked = prc.site.getIsActive()
-			)##html.hiddenField( name = "isActive", bind = prc.site )#</div>
+		name    = "isActive_toggle",
+		data    = { toggle: "toggle", match: "isActive" },
+		checked = prc.site.getIsActive()
+	)##html.hiddenField( name = "isActive", bind = prc.site )#</div>
 </div>
 	</cfif>
-	#html.endFieldSet()#<!--- Action Bar --->     
+	#html.endFieldSet()#<!--- Action Bar --->      
 						<div class="form-actions">
 							<button
 								class="btn btn-default"

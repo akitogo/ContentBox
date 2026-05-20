@@ -21,14 +21,17 @@ component
 		name="menuService"
 		inject="provider:menuService@contentbox"
 		persistent="false";
+
 	property
 		name="menuItemService"
 		inject="provider:menuItemService@contentbox"
 		persistent="false";
+
 	property
 		name="ORMService"
 		inject="provider:entityservice"
 		persistent="false";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -41,6 +44,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="title"
 		column="title"
@@ -49,6 +53,7 @@ component
 		length="200"
 		default=""
 		index="idx_menutitle";
+
 	property
 		name="slug"
 		column="slug"
@@ -57,24 +62,28 @@ component
 		length="200"
 		default=""
 		index="idx_menuslug";
+
 	property
 		name="menuClass"
 		column="menuClass"
 		ormtype="string"
 		length="160"
 		default="";
+
 	property
 		name="listClass"
 		column="listClass"
 		ormtype="string"
 		length="160"
 		default="";
+
 	property
 		name="listType"
 		column="listType"
 		ormtype="string"
 		length="20"
 		default="ul";
+
 	/**********************************************************************
 	 * **                          RELATIONSHIPS
 	 **********************************************************************/
@@ -87,6 +96,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_siteID"
 		lazy="true";
+
 	// O2M -> Comments
 	property
 		name="menuItems"

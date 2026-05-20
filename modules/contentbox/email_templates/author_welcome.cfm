@@ -1,7 +1,7 @@
 <cfoutput>
 	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
 	#ETH.text(
-			"
+		"
         <p>Dear @name@,</p>
 
         <p>
@@ -22,5 +22,5 @@
             account email: <strong>@email@</strong>.
         </div>
     "
-		)#
+	)#
 </cfoutput>

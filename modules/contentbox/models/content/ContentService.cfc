@@ -8,24 +8,41 @@
 component extends="cborm.models.VirtualEntityService" singleton {
 	// DI
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="cacheBox" inject="cachebox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="customFieldService" inject="customFieldService@contentbox";
+
 	property name="categoryService" inject="categoryService@contentbox";
+
 	property name="commentService" inject="commentService@contentbox";
+
 	property name="contentVersionService" inject="contentVersionService@contentbox";
+
 	property name="authorService" inject="authorService@contentbox";
+
 	property name="contentStoreService" inject="contentStoreService@contentbox";
+
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="systemUtil" inject="SystemUtil@contentbox";
+
 	property name="statsService" inject="statsService@contentbox";
+
 	property name="dateUtil" inject="DateUtil@contentbox";
+
 	property
 		name="commentSubscriptionService"
 		inject="CommentSubscriptionService@contentbox";
+
 	property name="subscriberService" inject="subscriberService@contentbox";
+
 	property name="relocationService" inject="RelocationService@contentbox";
+
 	property name="asyncManager" inject="coldbox:asyncManager";
 
 	/**
@@ -1248,9 +1265,9 @@ component extends="cborm.models.VirtualEntityService" singleton {
 										composeRelationships = false
 									);
 								var oEditor = variables.authorService.findByEmail( thisVersion.author.email );
-								return oVersion.setAuthor( isNull( oEditor )
-											? oAuthor
-											: oEditor ).setRelatedContent( oContent );
+								return oVersion.setAuthor(
+										isNull( oEditor ) ? oAuthor : oEditor
+									).setRelatedContent( oContent );
 							}
 						)
 				);

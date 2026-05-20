@@ -8,7 +8,9 @@
 component extends  ="coldbox.system.Interceptor" accessors="true" {
 	// DI
 	property name="commentService" inject="id:commentService@contentbox";
+
 	property name="subscriberService" inject="id:subscriberService@contentbox";
+
 	property
 		name="commentSubscriptionService"
 		inject="id:commentSubscriptionService@contentbox";

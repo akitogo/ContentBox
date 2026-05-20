@@ -6,31 +6,26 @@
 		<cfset itemDefaults = { "class": "dropdown-toggle" }>
 		
 <#local.topMenu.itemType# #buildItemAttributes(
-			event,
-			local.topMenu,
-			itemDefaults
-		)#>#(
-			isCustomFunction( local.topMenu.label ) ? local.topMenu.label() : local.topMenu.label
-		)#</#local.topMenu.itemType#>
+	event,
+	local.topMenu,
+	itemDefaults
+)#>#( isCustomFunction( local.topMenu.label ) ? local.topMenu.label() : local.topMenu.label )#</#local.topMenu.itemType#>
 
 		<cfif arrayLen( local.topMenu.subMenu )>
 			<ul class="dropdown-menu">
 
 			<cfloop array="#local.topMenu.submenu#" index="local.thisSubMenu">
-				<cfif !len( local.thisSubMenu.permissions ) ||
-					prc.oCurrentAuthor.hasPermission( local.thisSubMenu.permissions )>
+				<cfif !len( local.thisSubMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.thisSubMenu.permissions )>
 					
 <li #buildLIAttributes( event, local.thisSubMenu )#>
 					<cfset itemDefaults = {}>
 					<#local.thisSubMenu.itemType# #buildItemAttributes(
-						event,
-						local.thisSubMenu,
-						itemDefaults
-					)#>#(
-						isCustomFunction( local.thisSubMenu.label )
-							? local.thisSubMenu.label()
-							: local.thisSubMenu.label
-					)#</#local.thisSubMenu.itemType#>
+	event,
+	local.thisSubMenu,
+	itemDefaults
+)#>#(
+	isCustomFunction( local.thisSubMenu.label ) ? local.thisSubMenu.label() : local.thisSubMenu.label
+)#</#local.thisSubMenu.itemType#>
 </li>
 
 				</cfif>

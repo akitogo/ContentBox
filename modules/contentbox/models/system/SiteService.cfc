@@ -8,15 +8,25 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" threadsafe singleton {
 	// DI
 	property name="cacheStorage" inject="cacheStorage@cbStorages";
+
 	property name="cookieStorage" inject="cookieStorage@cbStorages";
+
 	property name="requestStorage" inject="requestStorage@cbStorages";
+
 	property name="loadedModules" inject="coldbox:setting:modules";
+
 	property name="requestService" inject="coldbox:requestService";
+
 	property name="settingService" inject="provider:settingService@contentbox";
+
 	property name="categoryService" inject="provider:categoryService@contentbox";
+
 	property name="contentService" inject="provider:contentService@contentbox";
+
 	property name="menuService" inject="provider:menuService@contentbox";
+
 	property name="themeService" inject="provider:themeService@contentbox";
+
 	property name="mediaService" inject="provider:mediaService@contentbox";
 
 	/**

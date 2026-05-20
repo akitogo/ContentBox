@@ -25,18 +25,21 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="key"
 		column="key"
 		notnull="true"
 		ormtype="string"
 		length="255";
+
 	property
 		name="value"
 		column="value"
 		notnull="true"
 		ormtype="text"
 		length="8000";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/

@@ -8,11 +8,17 @@
 component extends="baseHandler" {
 	// DI
 	property name="moduleService" inject="moduleService@contentbox";
+
 	property name="themeService" inject="themeService@contentbox";
+
 	property name="widgetService" inject="widgetService@contentbox";
+
 	property name="roleService" inject="roleService@contentbox";
+
 	property name="templateService" inject="emailtemplateService@contentbox";
+
 	property name="HTMLHelper" inject="HTMLHelper@coldbox";
+
 	property name="staticExporter" inject="staticExporter@contentbox";
 
 	// pre handler

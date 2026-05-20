@@ -13,22 +13,22 @@ interface {
 	 * @rule       The security rule being tested for
 	 * @controller The ColdBox controller calling the validation
 	 */
-	default boolean function validateSecurity( struct rule, securedValue, any controller );
+	boolean function validateSecurity( struct rule, securedValue, any controller );
 
 	/**
 	 * Get an author from session, or returns a new empty author entity
 	 */
-	default Author function getAuthorSession();
+	Author function getAuthorSession();
 
 	/**
 	 * Logs in a user into persistence storages for tracking purposes
 	 */
-	default ISecurityService function login( required Author author );
+	ISecurityService function login( required Author author );
 
 	/**
 	 * Delete author session
 	 */
-	default ISecurityService function logout();
+	ISecurityService function logout();
 
 	/**
 	 * Authenticate an author via ContentBox credentials. If the user is not valid an InvalidCredentials is thrown. Required for JWT services
@@ -46,7 +46,7 @@ interface {
 	 *
 	 * @throws InvalidCredentials
 	 */
-	default Author function authenticate(
+	Author function authenticate(
 		required username,
 		required password,
 		boolean logThemIn = false
@@ -55,7 +55,7 @@ interface {
 	/**
 	 * Send password reminder for an author
 	 */
-	default struct function sendPasswordReminder(
+	struct function sendPasswordReminder(
 		required Author author,
 		boolean adminIssued = false,
 		Author issuer
@@ -66,7 +66,7 @@ interface {
 	 *
 	 * @return {error:boolean, messages:string}
 	 */
-	default struct function resetUserPassword(
+	struct function resetUserPassword(
 		required token,
 		required Author author,
 		required password
@@ -75,10 +75,10 @@ interface {
 	/**
 	 * Check to authorize a user to view a content entry or page
 	 */
-	default boolean function authorizeContent( required content, required password );
+	boolean function authorizeContent( required content, required password );
 
 	/**
 	 * Checks Whether a content entry or page is protected and user has credentials for it
 	 */
-	default boolean function isContentViewable( required content );
+	boolean function isContentViewable( required content );
 }

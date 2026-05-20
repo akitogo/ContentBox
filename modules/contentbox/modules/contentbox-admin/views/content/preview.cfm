@@ -12,7 +12,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 text-center"><!--- Responsive Previews --->     <div class="btn-group" role="group" aria-label="Preview Resizer" style="min-width: 200px">
+			<div class="col-md-6 text-center"><!--- Responsive Previews --->      <div class="btn-group" role="group" aria-label="Preview Resizer" style="min-width: 200px">
 				<button href="javascript:void( 0 )"
 						role="group"
 						title="Desktop View"
@@ -62,19 +62,19 @@
 </div>
 
 <div class="modal-body">#html.startForm(
-			name   = "previewForm",
-			action = prc.xehPreview,
-			target = "previewFrame",
-			class  = "hidden",
-			ssl    = event.isSSL()
-		)##html.hiddenField( name = "h", value = prc.h )##html.hiddenField( name = "content",
-			value = urlEncodedFormat( rc.content ) )##html.hiddenField( name = "contentType",
-			value = rc.contentType )##html.hiddenField( name = "layout",
-			value = rc.layout )##html.hiddenField( name = "title", value = rc.title )##html.hiddenField( name = "slug",
-			value = rc.slug )##html.hiddenField( name = "markup",
-			value = rc.markup )##html.hiddenField( name = "parentContent",
-			value = rc.parentContent )##html.hiddenField( name = "siteID",
-			value = prc.oCurrentSite.getsiteID() )##html.endForm()#<!--- hidden iframe for preview --->     <iframe
+		name   = "previewForm",
+		action = prc.xehPreview,
+		target = "previewFrame",
+		class  = "hidden",
+		ssl    = event.isSSL()
+	)##html.hiddenField( name = "h", value = prc.h )##html.hiddenField( name = "content",
+		value = urlEncodedFormat( rc.content ) )##html.hiddenField( name = "contentType",
+		value = rc.contentType )##html.hiddenField( name = "layout",
+		value = rc.layout )##html.hiddenField( name = "title", value = rc.title )##html.hiddenField( name = "slug",
+		value = rc.slug )##html.hiddenField( name = "markup",
+		value = rc.markup )##html.hiddenField( name = "parentContent",
+		value = rc.parentContent )##html.hiddenField( name = "siteID",
+		value = prc.oCurrentSite.getsiteID() )##html.endForm()#<!--- hidden iframe for preview --->      <iframe
 				id="previewFrame"
 				name="previewFrame"
 				width="100%"

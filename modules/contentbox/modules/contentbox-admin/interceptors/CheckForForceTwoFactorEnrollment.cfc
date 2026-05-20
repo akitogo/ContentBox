@@ -8,6 +8,7 @@
 component extends="coldbox.system.Interceptor" {
 	// DI
 	property name="twoFactorService" inject="id:TwoFactorService@contentbox";
+
 	property name="securityService" inject="id:securityService@contentbox";
 	// static ecluded event patterns
 	variables.EXCLUDED_EVENT_PATTERNS = [

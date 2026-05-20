@@ -37,7 +37,9 @@
 component extends="cborm.models.resources.BaseHandler" {
 	// DI
 	property name="settings" inject="coldbox:moduleSettings:cborm";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="cb" inject="CBHelper@contentbox";
 	// Use native getOrFail() or getByIdOrSlugOrFail()
 	variables.useGetOrFail = true;

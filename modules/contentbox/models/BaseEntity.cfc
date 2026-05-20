@@ -18,6 +18,7 @@ component mappedsuperclass="true" accessors       ="true" extends         ="Base
 		notnull="true"
 		update="false"
 		persistent="true";
+
 	property
 		name="modifiedDate"
 		column="modifiedDate"
@@ -25,6 +26,7 @@ component mappedsuperclass="true" accessors       ="true" extends         ="Base
 		ormtype="timestamp"
 		notnull="true"
 		persistent=true;
+
 	property
 		name="isDeleted"
 		column="isDeleted"

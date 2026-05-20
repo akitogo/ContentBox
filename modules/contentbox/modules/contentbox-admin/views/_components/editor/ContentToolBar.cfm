@@ -49,9 +49,9 @@
 
 	</cfif>
 	#html.hiddenField(
-			name  = "markup",
-			value = prc.oContent.isLoaded() ? prc.oContent.getMarkup() : prc.defaultMarkup
-		)#
+		name  = "markup",
+		value = prc.oContent.isLoaded() ? prc.oContent.getMarkup() : prc.defaultMarkup
+	)#
 	<div class="btn-group btn-group-sm">
 		<a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="##">
 			<i class="fa fa-code"></i>
@@ -90,7 +90,7 @@
 		</ul>
 	</div>
 
-	<!--- Auto Save Operations --->     
+	<!--- Auto Save Operations --->      
 	<div class="btn-group btn-group-sm" id="contentAutoSave">
 		<a class="btn btn-secondary btn-sm dropdown-toggle autoSaveBtn" data-toggle="dropdown" href="##">
 			<i class="fa fa-save"></i>
@@ -102,7 +102,7 @@
 		</ul>
 	</div>
 
-	<!--- Focus Mode --->     
+	<!--- Focus Mode --->      
 	<button
 		class="btn btn-secondary btn-sm"
 		@click="toggleFocusMode()"
@@ -113,7 +113,7 @@
 		Focus Mode
 	</button>
 
-	<!--- Preview Panel --->     
+	<!--- Preview Panel --->      
 		<button
 			onclick="previewContent()"
 			class="btn btn-secondary btn-sm"

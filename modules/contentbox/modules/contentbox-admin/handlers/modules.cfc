@@ -8,6 +8,7 @@
 component extends="baseHandler" {
 	// Dependencies
 	property name="moduleService" inject="moduleService@contentbox";
+
 	property name="routingService" inject="coldbox:routingService";
 	// PrePost Actions
 	this.prehandler_except = "execute";

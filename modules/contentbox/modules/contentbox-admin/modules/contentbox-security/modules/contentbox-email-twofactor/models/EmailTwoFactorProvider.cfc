@@ -14,6 +14,7 @@ component
 {
 	// DI
 	property name="mailService" inject="mailService@cbmailservices";
+
 	property name="cache" inject="cachebox:template";
 	// Static Variables
 	variables.ALLOW_TRUSTED_DEVICE = true;

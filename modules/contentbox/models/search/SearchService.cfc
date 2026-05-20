@@ -8,6 +8,7 @@
 component accessors="true" {
 	// DI
 	property name="wirebox" inject="wirebox";
+
 	property name="settingService" inject="settingService@contentbox";
 
 	/**

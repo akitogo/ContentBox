@@ -43,9 +43,12 @@
 component accessors="true" singleton threadsafe {
 	// DI
 	property name="controller" inject="coldbox";
+
 	property name="settingService" inject="settingService@contentbox";
+
 	// Properties
 	property name="pagingMaxRows";
+
 	property name="PagingBandGap";
 
 	/**

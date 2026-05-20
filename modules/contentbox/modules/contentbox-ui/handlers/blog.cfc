@@ -8,7 +8,9 @@
 component extends="content" {
 	// DI
 	property name="entryService" inject="id:entryService@contentbox";
+
 	property name="relocationService" inject="RelocationService@contentbox";
+
 	property name="paginator" inject="Paging@contentbox";
 	// Pre Handler Exceptions
 	this.preHandler_except = "preview";

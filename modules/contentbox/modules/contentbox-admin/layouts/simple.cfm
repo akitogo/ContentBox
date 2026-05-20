@@ -41,7 +41,7 @@
               </a>
           </div>
       </header>
-  </section><!--- Login Container --->     <section id="login-container">#announce( "cbadmin_beforeLoginContent" )##view()##announce( "cbadmin_afterLoginContent" )#</section>
+  </section><!--- Login Container --->      <section id="login-container">#announce( "cbadmin_beforeLoginContent" )##view()##announce( "cbadmin_afterLoginContent" )#</section>
 
 
 	<cfinclude template="#prc.cbroot#/layouts/inc/HTMLBodyEnd.cfm">

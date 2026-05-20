@@ -8,18 +8,29 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" singleton {
 	// DI
 	property name="bCrypt" inject="BCrypt@BCrypt";
+
 	property name="dateUtil" inject="DateUtil@contentbox";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
+
 	property name="mailService" inject="mailService@cbmailservices";
+
 	property name="permissionService" inject="permissionService@contentbox";
+
 	property
 		name="permissionGroupService"
 		inject="permissionGroupService@contentbox";
+
 	property name="renderer" inject="coldbox:renderer";
+
 	property name="requestService" inject="coldbox:requestService";
+
 	property name="roleService" inject="roleService@contentbox";
+
 	property name="settingService" inject="provider:settingService@contentbox";
+
 	property name="securityService" inject="provider:securityService@contentbox";
+
 	property name="siteService" inject="provider:siteService@contentbox";
 
 	/**

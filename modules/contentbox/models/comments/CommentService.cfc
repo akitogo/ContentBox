@@ -8,11 +8,17 @@
 component extends="cborm.models.VirtualEntityService" singleton {
 	// DI
 	property name="mailService" inject="mailService@cbmailservices";
+
 	property name="renderer" inject="coldbox:renderer";
+
 	property name="settingService" inject="id:settingService@contentbox";
+
 	property name="securityService" inject="id:securityService@contentbox";
+
 	property name="CBHelper" inject="id:CBHelper@contentbox";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	property name="interceptorService" inject="coldbox:interceptorService";
 
 	/**
@@ -399,10 +405,10 @@ component extends="cborm.models.VirtualEntityService" singleton {
 		// Check if user has already an approved comment. If they do, then approve them
 		// cfformat-ignore-start
 		if (
-	inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
+inSettings.cb_comments_moderation_whitelist && userHasPreviousAcceptedComment( inComment.getAuthorEmail() )
 ) {
-	inComment.setIsApproved( true );
-	return true;
+inComment.setIsApproved( true );
+return true;
 }
 		// cfformat-ignore-end
 

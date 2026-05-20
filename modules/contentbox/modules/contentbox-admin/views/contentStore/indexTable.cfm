@@ -5,8 +5,8 @@
 	<i class="fa fa-home fa-lg"></i>
 </a>#getInstance( "PageBreadcrumbVisitor@cbadmin" ).visit( prc.oParent )#</div>
 	</cfif>
-	#html.hiddenField( name = "parent",
-			value = event.getValue( "parent", "" ) )##html.hiddenField( name = "contenCount", value = prc.contentCount )#<!--- content --->     
+	#html.hiddenField( name = "parent", value = event.getValue( "parent", "" ) )##html.hiddenField( name = "contenCount",
+		value = prc.contentCount )#<!--- content --->      
 <table
 	name="content"
 	id="content"
@@ -37,11 +37,11 @@
 
 
 	<cfloop array="#prc.content#" index="content">
-		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->     id="contentID-#content.getContentID().replace(
-				"-",
-				"_",
-				"all"
-			)#"
+		<tr<!--- We convert the - in the id to _ since the order plugin doesn't like dashes --->      id="contentID-#content.getContentID().replace(
+		"-",
+		"_",
+		"all"
+	)#"
 data-contentID="#content.getContentID()#"
 
 		<cfif content.getNumberOfChildren()>
@@ -62,7 +62,7 @@ data-contentID="#content.getContentID()#"
 		
 		
 		>
-			<!--- check box --->     
+			<!--- check box --->      
 			<td class="text-center">
 				<input type="checkbox" name="contentID" value="#content.getContentID()#" />
 			</td>
@@ -94,23 +94,23 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 			<span class="size18">#content.getTitle()#</span>
 		</cfif>
 		#view(
-			view          = "_components/content/TableCreationInfo",
-			args          = { content: content, showDescription: true },
-			prepostExempt = true
-		)#
+	view          = "_components/content/TableCreationInfo",
+	args          = { content: content, showDescription: true },
+	prepostExempt = true
+)#
 
 			</td>
 
 			<td class="text-center">
 				#view(
-			view          = "_components/content/TableStatus",
-			args          = { content: content },
-			prepostExempt = true
-		)#
+	view          = "_components/content/TableStatus",
+	args          = { content: content },
+	prepostExempt = true
+)#
 			</td>
 
 			<td class="text-center flex">
-				<!--- Drag Handle --->     
+				<!--- Drag Handle --->      
 				<a 	href="##"
 					onclick="return false;"
 					class="dragHandle btn btn-icon btn-sm float-left"
@@ -119,7 +119,7 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 					<i class="fa fa-sort" aria-hidden="true"></i>
 				</a>
 
-				<!--- content Actions --->     
+				<!--- content Actions --->      
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Content Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -132,7 +132,7 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "CONTENTSTORE_EDITOR,CONTENTSTORE_ADMIN" )>
-			<!--- Clone Command --->     <li>
+			<!--- Clone Command --->      <li>
 <a
 	href="javascript:contentListHelper.openCloneDialog(
 		'#encodeForJavaScript( content.getContentID() )#',
@@ -141,19 +141,19 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 	>
 		<i class="fa fa-clone fa-lg"></i> Clone
 	</a>
-</li><!--- Create Child --->     <li>
+</li><!--- Create Child --->      <li>
 <a href="#event.buildLink( prc.xehContentEditor )#/parentID/#content.getContentID()#">
 		<i class="fa fa-sitemap fa-lg"></i> Create Child
 	</a>
 </li>
 			<cfif prc.oCurrentAuthor.hasPermission( "CONTENTSTORE_ADMIN" )>
-				<!--- Delete Command --->     <li>
+				<!--- Delete Command --->      <li>
 <a href="javascript:contentListHelper.remove( '#content.getContentID()#' )" class="confirmIt" data-title="<i class='fa fa-trash fa-lg'></i> Delete Content?">
 <i id="delete_#content.getContentID()#" class="fa fa-trash fa-lg" ></i> Delete
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command --->     
+			<!--- Edit Command --->      
 							<li>
 								<a href="#event.buildLink( prc.xehContentEditor )#/contentID/#content.getContentID()#">
 									<i class="fas fa-pen fa-lg"></i> Edit
@@ -166,13 +166,13 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 
 		</cfif>
 		<cfif prc.oCurrentAuthor.hasPermission( "CONTENTSTORE_ADMIN,TOOLS_EXPORT" )>
-			<!--- Export --->     <li>
+			<!--- Export --->      <li>
 <a href="#event.buildLink( prc.xehContentExport )#/contentID/#content.getContentID()#.json" target="_blank">
 		<i class="fas fa-file-export fa-lg"></i> Export
 	</a>
 </li>
 		</cfif>
-		<!--- History Command --->     
+		<!--- History Command --->      
 						<li>
 							<a href="#event.buildLink( prc.xehContentHistory )#/contentID/#content.getContentID()#">
 								<i class="fa fa-history fa-lg"></i> History
@@ -203,10 +203,10 @@ href="#event.buildLink( prc.xehContentStoreEditor )#/contentID/#content.getConte
 
 	<cfif !rc.showAll>
 		#prc.oPaging.renderit(
-				foundRows = prc.contentCount,
-				link      = prc.pagingLink,
-				asList    = true
-			)#
+		foundRows = prc.contentCount,
+		link      = prc.pagingLink,
+		asList    = true
+	)#
 	<cfelse>
 		<span class="label label-info">Total Records: #prc.contentCount#</span>
 	</cfif>

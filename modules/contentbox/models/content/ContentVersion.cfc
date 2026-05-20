@@ -30,6 +30,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="content"
 		column="content"
@@ -37,6 +38,7 @@ component
 		ormtype="text"
 		length="8000"
 		default="";
+
 	property
 		name="changelog"
 		column="changelog"
@@ -44,6 +46,7 @@ component
 		ormtype="text"
 		length="8000"
 		default="";
+
 	property
 		name="version"
 		column="version"
@@ -51,6 +54,7 @@ component
 		ormtype="integer"
 		default="1"
 		index="idx_version";
+
 	property
 		name="isActive"
 		column="isActive"
@@ -58,6 +62,7 @@ component
 		ormtype="boolean"
 		default="false"
 		index="idx_activeContentVersion,idx_contentVersions";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/
@@ -70,6 +75,7 @@ component
 		fieldtype="many-to-one"
 		fkcolumn="FK_authorID"
 		fetch="join";
+
 	// M20 -> relatedContent
 	property
 		name="relatedContent"
@@ -79,6 +85,7 @@ component
 		fkcolumn="FK_contentID"
 		lazy="true"
 		index="idx_contentVersions";
+
 	/**********************************************************************
 	 * **							NON PERSISTED PROPERTIES
 	 **********************************************************************/

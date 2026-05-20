@@ -10,13 +10,13 @@
 	</div>
 
           <div class="panel-body">#cbMessageBox().renderit()##html.startForm(
-			action     = prc.xehDoLogin,
-			ssl        = event.isSSL(),
-			name       = "loginForm",
-			novalidate = "novalidate",
-			class      = "form-horizontal"
-		)##html.hiddenField( name = "_securedURL", value = rc._securedURL )##html.hiddenField( name = "_csrftoken",
-			value = csrfToken() )#
+		action     = prc.xehDoLogin,
+		ssl        = event.isSSL(),
+		name       = "loginForm",
+		novalidate = "novalidate",
+		class      = "form-horizontal"
+	)##html.hiddenField( name = "_securedURL", value = rc._securedURL )##html.hiddenField( name = "_csrftoken",
+		value = csrfToken() )#
 	<cfif len( prc.signInText )>
 		#prc.signInText#
 	</cfif>
@@ -25,25 +25,25 @@
 	                <div class="form-group">
 	                    <div class="col-md-12 controls">
 	                        #html.textfield(
-			name         = "username",
-			required     = "required",
-			class        = "form-control",
-			value        = prc.rememberMe,
-			placeholder  = cb.r( "common.username@security" ),
-			autocomplete = "off"
-		)#
+		name         = "username",
+		required     = "required",
+		class        = "form-control",
+		value        = prc.rememberMe,
+		placeholder  = cb.r( "common.username@security" ),
+		autocomplete = "off"
+	)#
 	                        <i class="fa fa-user" aria-hidden="true"></i>
 	                    </div>
 	                </div>
 	                <div class="form-group">
 	                   <div class="col-md-12 controls">
 	                        #html.passwordField(
-			name         = "password",
-			required     = "required",
-			class        = "form-control",
-			placeholder  = cb.r( "common.password@security" ),
-			autocomplete = "off"
-		)#
+		name         = "password",
+		required     = "required",
+		class        = "form-control",
+		placeholder  = cb.r( "common.password@security" ),
+		autocomplete = "off"
+	)#
 	                        <i class="fa fa-key" aria-hidden="true"></i>
 	                    </div>
 
@@ -64,16 +64,16 @@
 							<label class="checkbox">
 								#cb.r( "rememberme@security" )#<br>
 	                            #html.select(
-			name    = "rememberMe",
-			class   = "form-control input-sm",
-			options = html.option(
-					value   = "0",
-					content = cb.r( "rememberme.session@security" )
-				) & html.option( value = "1", content = cb.r( "rememberme.day@security" ) ) & html.option( value = "7",
-					content = cb.r( "rememberme.week@security" ) ) & html.option( value = "30",
-					content = cb.r( "rememberme.month@security" ) ) & html.option( value = "365",
-					content = cb.r( "rememberme.year@security" ) )
-		)#
+		name    = "rememberMe",
+		class   = "form-control input-sm",
+		options = html.option(
+				value   = "0",
+				content = cb.r( "rememberme.session@security" )
+			) & html.option( value = "1", content = cb.r( "rememberme.day@security" ) ) & html.option( value = "7",
+				content = cb.r( "rememberme.week@security" ) ) & html.option( value = "30",
+				content = cb.r( "rememberme.month@security" ) ) & html.option( value = "365",
+				content = cb.r( "rememberme.year@security" ) )
+	)#
 							</label>
 						</div>
 					</div>

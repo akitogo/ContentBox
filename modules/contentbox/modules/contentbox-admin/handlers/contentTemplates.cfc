@@ -1,5 +1,6 @@
 component extends="baseHandler" {
 	property name="templateService" inject="ContentTemplateService@contentbox";
+
 	property name="categoryService" inject="CategoryService@contentbox";
 
 	function preHandler( event, rc, prc ) {

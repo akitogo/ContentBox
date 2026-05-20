@@ -20,6 +20,7 @@ component
 		name="provider"
 		persistent="false"
 		inject="provider:contentbox.models.menu.providers.JSProvider";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -30,6 +31,7 @@ component
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property
 		name="urlClass"
 		column="urlClass"

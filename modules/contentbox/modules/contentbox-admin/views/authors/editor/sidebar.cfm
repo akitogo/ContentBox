@@ -3,11 +3,11 @@
 
  	<div class="panel panel-primary">
 
-<div class="panel-body"><!--- Big Profile Picture --->     <div class="text-center mb20">#getInstance( "Avatar@contentbox" ).renderAvatar(
-			email = prc.author.getEmail(),
-			size  = "100",
-			class = "img img-circle mb10"
-		)#<div class="mt10 mb10">
+<div class="panel-body"><!--- Big Profile Picture --->      <div class="text-center mb20">#getInstance( "Avatar@contentbox" ).renderAvatar(
+		email = prc.author.getEmail(),
+		size  = "100",
+		class = "img img-circle mb10"
+	)#<div class="mt10 mb10">
 <span class="label label-default size16">#prc.author.getFullName()#</span>
 	</div>
 </div>
@@ -18,7 +18,7 @@
 	This user has been marked for password reset upon login.
 </div>
 	</cfif>
-	<!--- Persisted Info --->     
+	<!--- Persisted Info --->      
 				<table class="table table-hover table-striped-removed mt10">
 					<tr>
 						<th width="125" class="text-right">Last Login</th>
@@ -52,9 +52,9 @@
 						<th class="text-right">Role</th>
 						<td>
 							#prc
-		.author
-		.getRole()
-		.getRole()#
+	.author
+	.getRole()
+	.getRole()#
 						</td>
 					</tr>
 

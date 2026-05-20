@@ -9,7 +9,7 @@
 <div class="label label-info" title="Environment">#getSetting( "Environment" )#</div>
 </div>
 
-   <div class="col-md-12"><!--- messageBox --->     <div class="clearfix">#cbMessageBox().renderit()#</div>
+   <div class="col-md-12"><!--- messageBox --->      <div class="clearfix">#cbMessageBox().renderit()#</div>
 
 	<cfif flash.exists( "importLog" )>
 		<div class="consoleLog">#flash.get( "importLog" )#</div>
@@ -41,7 +41,7 @@
 
                     <!-- Tab Content -->
                     <div class="tab-content">
-                        <!--- Raw Settings Pane --->     
+                        <!--- Raw Settings Pane --->      
 						<div class="tab-pane active" id="raw">
 
                             <p>
@@ -59,11 +59,11 @@
 
                                         <div class="form-group m0 mr5">
                                             #html.textField(
-			name        = "settingSearch",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search",
-			value       = event.getValue( "search", "" )
-		)#
+		name        = "settingSearch",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search",
+		value       = event.getValue( "search", "" )
+	)#
                                         </div>
 
 										<div class="form-group m0">
@@ -179,11 +179,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--- settings load --->     
+                                <!--- settings load --->      
                                 <div id="settingsTableContainer">
                                     <i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
                                 </div>
-                            #html.endForm()#<!--- Settings Editor --->     
+                            #html.endForm()#<!--- Settings Editor --->      
                             <div id="settingEditorContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document" >
                                     <div class="modal-content">
@@ -195,11 +195,11 @@
                                         </div>
                                         <div class="modal-body">
                                             #html.startForm(
-			action     = prc.xehSettingsave,
-			name       = "settingEditor",
-			novalidate = "novalidate",
-			class      = "vertical-form"
-		)#
+		action     = prc.xehSettingsave,
+		name       = "settingEditor",
+		novalidate = "novalidate",
+		class      = "vertical-form"
+	)#
 												<input type="hidden" name="settingID" id="settingID" value="" />
 
                                                 <div class="form-group">
@@ -250,23 +250,23 @@
                                         </div>
                                         <div class="modal-footer">
                                             #html.resetButton(
-			name    = "btnReset",
-			value   = "Cancel",
-			class   = "btn btn-default",
-			onclick = "closeModal( $('##settingEditorContainer') )"
-		)##html.button(
-			name    = "btnSave",
-			value   = "Save",
-			class   = "btn btn-primary",
-			onclick = "submitSettingForm()"
-		)#
+		name    = "btnReset",
+		value   = "Cancel",
+		class   = "btn btn-default",
+		onclick = "closeModal( $('##settingEditorContainer') )"
+	)##html.button(
+		name    = "btnSave",
+		value   = "Save",
+		class   = "btn btn-primary",
+		onclick = "submitSettingForm()"
+	)#
                                         </div>
                                     </div>
                                 </div>
                             </div>
 						</div>
 
-                        <!--- CacheBox Pane --->     
+                        <!--- CacheBox Pane --->      
                         <div class="tab-pane" id="cachebox">
                             <br>
 
@@ -280,10 +280,10 @@
 cacheFactory = "#controller.getCacheBox()#"
 baseURL = "#event.buildLink( prc.xehRawSettings )#"
 enableMonitor = false />
-		<cfcatch type="any">
+		
+	<cfcatch type="any">
 			Can't render charting: #cfcatch.message# #cfcatch.detail#
-		</cfcatch>
-	</cftry>
+		</cfcatch></cftry>
 	
 	
 	
@@ -292,7 +292,7 @@ enableMonitor = false />
 
 						</div>
 
-                        <!--- ContentBox Events Docs --->     
+                        <!--- ContentBox Events Docs --->      
                         <div class="tab-pane" id="_events">
                             <br>
                             <p>Here you can see all the registered interception events that ContentBox offers and you can implement in
@@ -302,16 +302,16 @@ enableMonitor = false />
                                 <div class="col-md-12">
                                     <div class="form-group no-margin">
                                         #html.textField(
-			name        = "eventFilter",
-			size        = "30",
-			class       = "form-control",
-			placeholder = "Quick Filter"
-		)#
+		name        = "eventFilter",
+		size        = "30",
+		class       = "form-control",
+		placeholder = "Quick Filter"
+	)#
                                     </div>
                                 </div>
 							</div>
 
-                            #html.startForm( name = "eventsForm" )#<!--- events --->     
+                            #html.startForm( name = "eventsForm" )#<!--- events --->      
                                 <table name="eventsList" id="eventsList" class="table table-striped-removed table-hover " width="100%">
                                     <thead>
                                         <tr>
@@ -343,8 +343,8 @@ enableMonitor = false />
 <td>
 			<cfif structKeyExists( controller.getInterceptorService().getInterceptionStates(), thisEvent )>
 				<cfdump
-					var="#structKeyArray( controller.getInterceptorService().getInterceptionStates()[ thisEvent ].getMetadataMap() )#"
-				>
+	var="#structKeyArray( controller.getInterceptorService().getInterceptionStates()[ thisEvent ].getMetadataMap() )#"
+>
 			<cfelse>
 				<span class="badge badge-inverse">0</badge>
 			</cfif>
@@ -383,13 +383,13 @@ enableMonitor = false />
 </div>
 
 #view(
-		view          = "_tags/dialog/import",
-		args          = {
-			title      : "Import Settings",
-			contentArea: "settings",
-			action     : prc.xehSettingsImport,
-			contentInfo: "Choose the ContentBox <strong>JSON</strong> settings file to import."
-		},
-		prePostExempt = true
-	)#
+	view          = "_tags/dialog/import",
+	args          = {
+		title      : "Import Settings",
+		contentArea: "settings",
+		action     : prc.xehSettingsImport,
+		contentInfo: "Choose the ContentBox <strong>JSON</strong> settings file to import."
+	},
+	prePostExempt = true
+)#
 </cfoutput>

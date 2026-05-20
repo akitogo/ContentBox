@@ -24,7 +24,7 @@
  */
 interface {
 
-	default function execute(
+	function execute(
 		required dsn,
 		dsnUsername     = "",
 		dsnPassword     = "",

@@ -19,6 +19,7 @@ component
 		name="provider"
 		persistent="false"
 		inject="provider:contentbox.models.menu.providers.MediaProvider";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -29,12 +30,14 @@ component
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property
 		name="target"
 		column="target"
 		notnull="false"
 		ormtype="string"
 		default="";
+
 	property
 		name="urlClass"
 		column="urlClass"

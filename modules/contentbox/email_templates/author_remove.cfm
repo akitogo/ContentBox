@@ -1,12 +1,12 @@
 <cfoutput>
 	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
 	#ETH.author(
-			email   = args.gravatarEmail,
-			content = "
+		email   = args.gravatarEmail,
+		content = "
         <strong>@currentAuthor@</strong> removed an author from your system
     "
-		)##ETH.divider()##ETH.heading( content = "Author Details" )##ETH.text(
-			"
+	)##ETH.divider()##ETH.heading( content = "Author Details" )##ETH.text(
+		"
         <table cellpadding='3' cellspacing='3'>
             <tbody>
                 <tr>
@@ -24,5 +24,5 @@
             </tbody>
         </table>
     "
-		)#
+	)#
 </cfoutput>

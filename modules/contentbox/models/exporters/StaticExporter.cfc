@@ -8,14 +8,23 @@
 component accessors="#true#" threadSafe singleton {
 	// DI
 	property name="settingService" inject="SettingService@contentbox";
+
 	property name="pageService" inject="PageService@contentbox";
+
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="themeService" inject="ThemeService@contentbox";
+
 	property name="categoryService" inject="CategoryService@contentbox";
+
 	property name="uiConfig" inject="coldbox:moduleconfig:contentbox-ui";
+
 	property name="interceptorService" inject="coldbox:interceptorService";
+
 	property name="zipUtil" inject="zipUtil@contentbox";
+
 	property name="Renderer" inject="Provider:Renderer@coldbox";
 
 	/**

@@ -24,18 +24,21 @@ component
 		ormtype="timestamp"
 		notnull="true"
 		update="false";
+
 	property
 		name="modifiedDate"
 		column="modifiedDate"
 		type="date"
 		ormtype="timestamp"
 		notnull="true";
+
 	property
 		name="isDeleted"
 		column="isDeleted"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	/**********************************************************************
 	 * **                          PROPERTIES
 	 **********************************************************************/
@@ -48,6 +51,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	/**
 	 * This token identifies subscribers (emails) to appropriate subscriptions
 	 */
@@ -57,10 +61,12 @@ component
 		ormtype="string"
 		length="255"
 		notnull="true";
+
 	/**
 	 * The type of subscriptions. Available subscriptions are : comment
 	 */
 	property name="type" column="type" ormtype="string" notnull="true";
+
 	/**********************************************************************
 	 * **                          RELATIONSHIPS
 	 **********************************************************************/

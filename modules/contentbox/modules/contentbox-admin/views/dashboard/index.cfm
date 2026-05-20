@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8"><!--- Dashboard welcome body --->     <p class="lead">#prc.welcomeBody#</p>#cbMessageBox().renderit()##announce( "cbadmin_preDashboardContent" )#
+    <div class="col-md-8"><!--- Dashboard welcome body --->      <p class="lead">#prc.welcomeBody#</p>#cbMessageBox().renderit()##announce( "cbadmin_preDashboardContent" )#
 	<cfif prc.oCurrentAuthor.hasPermission( "SYSTEM_TAB" ) && prc.installerCheck>
 		<div class="alert alert-danger" id="installerCheck">
 <button
@@ -40,8 +40,8 @@
 
 
 	<cfif prc.oCurrentAuthor.hasPermission(
-			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
-		)>
+		"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
+	)>
 		<li class="nav-item">
 <a href="##contentReports" data-toggle="tab" class="nav-link">
 	<i class="fa fa-archive"></i> <span class="hidden-xs">#$r( "dashboard.index.nav-tabs.head1@admin" )#</span>
@@ -70,8 +70,8 @@
 					<div class="tab-content">
 						#announce( "cbadmin_preDashboardTabContent" )#
 	<cfif prc.oCurrentAuthor.hasPermission(
-			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
-		)>
+		"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR"
+	)>
 		<div class="tab-pane" id="contentReports">
 	<div class="m5" id="latestSystemEdits">
 		<div class="panel panel-primary">
@@ -128,7 +128,7 @@
 	<i class="fa fa-spin fa-circle-o-notch fa-lg fa-2x text-muted"></i>
 </div>
 	</cfif>
-	<!--- ****************************************************************************************** --->     
+	<!--- ****************************************************************************************** --->      
 						<div class="tab-pane" id="latestNews">
 							<i class="fa fa-spin fa-circle-o-notch fa-lg fa-2x text-muted"></i>
 						</div>
@@ -143,8 +143,8 @@
     <div class="col-md-4">
         #announce( "cbadmin_preDashboardSideBar" )#
 	<cfif prc.oCurrentAuthor.hasPermission(
-			"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR,COMMENTS_ADMIN"
-		)>
+		"ENTRIES_ADMIN,ENTRIES_EDITOR,PAGES_ADMIN,PAGES_EDITOR,CONTENTSTORE_ADMIN,CONTENTSTORE_EDITOR,COMMENTS_ADMIN"
+	)>
 		<div id="latestSnapshot">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -173,7 +173,7 @@
     </div>
 </div>
 	</cfif>
-	<!--- Info Box --->     
+	<!--- Info Box --->      
 		<div class="panel panel-primary">
 		    <div class="panel-heading">
 				<h3 class="panel-title">

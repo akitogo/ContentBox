@@ -17,6 +17,7 @@ component
 		name="contentTemplateService"
 		inject="provider:ContentTemplateService@contentbox"
 		persistent="false";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * STUPID PROPERTIES DUE TO ACF BUG
@@ -31,24 +32,28 @@ component
 		ormtype="timestamp"
 		notnull="true"
 		update="false";
+
 	property
 		name="modifiedDate"
 		column="modifiedDate"
 		type="date"
 		ormtype="timestamp"
 		notnull="true";
+
 	property
 		name="isDeleted"
 		column="isDeleted"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	property
 		name="isGlobal"
 		column="isGlobal"
 		ormtype="boolean"
 		notnull="true"
 		default="false";
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * PROPERTIES
@@ -63,6 +68,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	// The content type to restrict this template to.  If left blank, all content types are eligible
 	property
 		name="contentType"
@@ -70,23 +76,27 @@ component
 		length="50"
 		default=""
 		index="idx_templateContentType";
+
 	property
 		name="name"
 		column="name"
 		notnull="true"
 		length="225"
 		default="";
+
 	property
 		name="description"
 		column="description"
 		notnull="false"
 		length="1000";
+
 	property
 		name="definition"
 		column="definition"
 		notnull="true"
 		ormtype="text"
 		default="{}";
+
 	// M20 -> creator loaded as a proxy and fetched immediately
 	property
 		name="creator"
@@ -96,6 +106,7 @@ component
 		fkcolumn="FK_authorID"
 		insert=true
 		update=false;
+
 	// M20 -> site loaded as a proxy and fetched immediately
 	property
 		name="site"
@@ -106,11 +117,13 @@ component
 		lazy="true"
 		insert=true
 		update=false;
+
 	property
 		name="assignedContentItems"
 		ormtype="integer"
 		default=0
 		formula="select count(*) from cb_content cbc2 WHERE cbc2.FK_contentTemplateID=templateID or cbc2.FK_childContentTemplateID=templateID";
+
 	// The non-persistent schema of the JSON definition
 	property name="schema" persistent="false";
 

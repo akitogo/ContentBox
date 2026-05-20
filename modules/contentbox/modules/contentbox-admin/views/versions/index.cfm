@@ -66,10 +66,10 @@
 						<td>
 							<a href="mailto:#prc.content.getCreatorEmail()#">
 								#getInstance( "Avatar@contentbox" ).renderAvatar(
-			email = prc.content.getCreatorEmail(),
-			size  = "20",
-			class = "img img-circle"
-		)##prc.content.getCreatorName()#
+		email = prc.content.getCreatorEmail(),
+		size  = "20",
+		class = "img img-circle"
+	)##prc.content.getCreatorName()#
 							</a>
 						</td>
 					</tr>
@@ -96,10 +96,10 @@
 						<td>
 							<a href="mailto:#prc.content.getAuthorEmail()#">
 								#getInstance( "Avatar@contentbox" ).renderAvatar(
-			email = prc.content.getAuthorEmail(),
-			size  = "20",
-			class = "img img-circle"
-		)##prc.content.getAuthorName()#
+		email = prc.content.getAuthorEmail(),
+		size  = "20",
+		class = "img img-circle"
+	)##prc.content.getAuthorName()#
 							</a>
 						</td>
 					</tr>

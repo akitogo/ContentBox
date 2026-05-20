@@ -1,6 +1,6 @@
 <cfoutput>
 	<cfif arrayLen( prc.content )>
-		<!--- matches --->     <table name="content" id="#rc.contentType#" class="table table-hover table-striped-removed " >
+		<!--- matches --->      <table name="content" id="#rc.contentType#" class="table table-hover table-striped-removed " >
       <thead>
           <tr>
 		<th>
@@ -36,7 +36,7 @@ id="contentID-#content.getContentID()#"
 				title="Double click to select"
 			>
                 <td>
-                    <!--- Title --->     
+                    <!--- Title --->      
 					<div class="size16">
 						#content.getTitle()#
 					</div>
@@ -79,10 +79,10 @@ id="contentID-#content.getContentID()#"
 
 				<td class="text-center">
 					#view(
-				view          = "_components/content/TableStatus",
-				args          = { content: content },
-				prepostExempt = true
-			)#
+	view          = "_components/content/TableStatus",
+	args          = { content: content },
+	prepostExempt = true
+)#
 				</td>
 
                 <td class="text-center">
@@ -132,8 +132,8 @@ id="contentID-#content.getContentID()#"
   </div>
 	</cfif>
 	#prc.oPaging.renderit(
-			foundRows = prc.contentCount,
-			link      = prc.pagingLink,
-			asList    = true
-		)#
+		foundRows = prc.contentCount,
+		link      = prc.pagingLink,
+		asList    = true
+	)#
 </cfoutput>

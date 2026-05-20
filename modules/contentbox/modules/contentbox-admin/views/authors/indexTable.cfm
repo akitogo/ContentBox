@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- count --->     <input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#"><!--- authors --->     <table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
+	<!--- count --->      <input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#"><!--- authors --->      <table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
 <thead>
 	<tr>
 		<th id="checkboxHolder" class="{sorter:false} text-center" width="15">
@@ -24,28 +24,27 @@
 		
 		
 			data-authorID="#author.getAuthorID()#" >
-			<!--- check box --->     
+			<!--- check box --->      
 			<td class="text-center">
 				<input type="checkbox" name="authorID" id="authorID" value="#author.getAuthorID()#" />
 			</td>
 			<td class="pb5 pt5">
 				<div class="pull-left">
 					#getInstance( "Avatar@contentbox" ).renderAvatar(
-				email = author.getEmail(),
-				size  = "40",
-				class = "gravatar img img-circle mr10"
-			)#
+		email = author.getEmail(),
+		size  = "40",
+		class = "gravatar img img-circle mr10"
+	)#
 				</div>
 
-				<!--- Display Link if Admin Or yourself --->     
+				<!--- Display Link if Admin Or yourself --->      
 				<div>
 
 
 
 
 
-		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
-			prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
+		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) || prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
 			<a href="#event.buildLink( prc.xehAuthorEditor )#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">#author.getFullName()#</a>
 		<cfelse>
 			#author.getFullName()#
@@ -79,7 +78,7 @@
 			</td>
 
 			<td class="text-center">
-				<!--- Actions --->     
+				<!--- Actions --->      
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="User Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -91,8 +90,7 @@
 
 
 
-		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) ||
-			prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
+		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) || prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
 			<cfif prc.oCurrentAuthor.getAuthorID() NEQ author.getAuthorID()>
 				<li>
 <a 	title="Delete Author"
@@ -113,7 +111,7 @@
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command --->     
+			<!--- Edit Command --->      
 							<li>
 								<a href="#event.buildLink( prc.xehAuthorEditor )#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">
 									<i class="fas fa-pen fa-lg"></i> Edit
@@ -171,10 +169,10 @@
 
 	<cfif !rc.showAll>
 		#prc.oPaging.renderit(
-				foundRows = prc.authorCount,
-				link      = prc.pagingLink,
-				asList    = true
-			)#
+		foundRows = prc.authorCount,
+		link      = prc.pagingLink,
+		asList    = true
+	)#
 	<cfelse>
 		<span class="label label-info">Total Records: #prc.authorCount#</span>
 	</cfif>

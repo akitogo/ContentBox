@@ -7,6 +7,7 @@
 component accessors="true" singleton {
 	// Properties
 	property name="name";
+
 	property name="ormService";
 
 	/**

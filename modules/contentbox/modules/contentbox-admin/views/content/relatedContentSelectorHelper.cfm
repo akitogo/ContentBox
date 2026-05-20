@@ -18,7 +18,7 @@
 	}
 </cfscript>
 <cfoutput>
-	<!--- Custom Javascript --->     <script>
+	<!--- Custom Javascript --->      <script>
 ( () => {
 	// Shared Pointers
 	$relatedContentSelectorForm    = $( "##relatedContentSelectorForm" );

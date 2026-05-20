@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Content --->     <span class="float-right">
+	<!--- Content --->      <span class="float-right">
 	<button class="btn btn-xs btn-danger" onclick="closeSearchBox()" title="close search panel">
 		<i class="fa fa-times"></i>
 	</button>
@@ -84,13 +84,13 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#thisContent.getConten
 		<cfloop array="#prc.authors.authors#" index="thisAuthor">
 			<li class="list-group-item">
 <span class="pull-left mr5">#getInstance( "Avatar@contentbox" ).renderAvatar( email = thisAuthor.getEmail(),
-					size = "30" )#</span>
+		size = "30" )#</span>
 <span class="label label-info pull-right">#thisAuthor.getRole().getRole()#</span>
 <a 	title="#thisAuthor.getEmail()#"
 href="#event.buildLInk(
-					to          = prc.xehAuthorEditor,
-					queryString = "authorID=#thisAUthor.getAUthorID()#"
-				)#"
+		to          = prc.xehAuthorEditor,
+		queryString = "authorID=#thisAUthor.getAUthorID()#"
+	)#"
 >#thisauthor.getFullName()#</a>
 <br>#thisAuthor.getEmail()#</li>
 		</cfloop>

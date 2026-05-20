@@ -10,6 +10,7 @@ component extends="baseHandler" {
 	property
 		name="permissionGroupService"
 		inject="permissionGroupService@contentbox";
+
 	property name="permissionService" inject="permissionService@contentbox";
 
 	/**

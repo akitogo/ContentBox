@@ -8,9 +8,9 @@ function relocationsCrud(){
 isLoading : true,
 isSaving  : false,
 baseUrl   : "/cbapi/v1/sites/#prc
-		.oContent
-		.getSite()
-		.getSlug()#/relocations",
+	.oContent
+	.getSite()
+	.getSlug()#/relocations",
 relocations : [],
 showForm : false,
 globalAlert : {
@@ -21,9 +21,9 @@ formData : {
 	"slug" 				: "",
 	"relatedContent" 	: "#prc.oContent.getContentID()#",
 "site" 				: "#prc
-		.oContent
-		.getSite()
-		.getSiteID()#"
+	.oContent
+	.getSite()
+	.getSiteID()#"
 },
 authentication  : #toJson( prc.jwtTokens )#,
 

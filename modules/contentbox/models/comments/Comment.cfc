@@ -22,6 +22,7 @@ component
 		name="markdown"
 		inject="provider:Processor@cbmarkdown"
 		persistent="false";
+
 	/**********************************************************************
 	 * **							PROPERTIES
 	 **********************************************************************/
@@ -34,19 +35,25 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property name="content" ormtype="text" notnull="true";
+
 	property name="author" length="100" notnull="true";
+
 	property name="authorIP" column="authorIP" length="100" notnull="true";
+
 	property
 		name="authorEmail"
 		column="authorEmail"
 		length="255"
 		notnull="true";
+
 	property
 		name="authorURL"
 		column="authorURL"
 		length="255"
 		notnull="false";
+
 	property
 		name="isApproved"
 		column="isApproved"
@@ -54,6 +61,7 @@ component
 		ormtype="boolean"
 		default="false"
 		index="idx_contentComment,idx_approved";
+
 	/**********************************************************************
 	 * **							RELATIONSHIPS
 	 **********************************************************************/

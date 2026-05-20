@@ -22,10 +22,10 @@
 
 					<div class="col-md-6 col-xs-4">
 						<div class="form-group form-inline no-margin">#html.textField(
-			name        = "moduleFilter",
-			class       = "form-control quicksearch",
-			placeholder = "Quick Search"
-		)#</div>
+		name        = "moduleFilter",
+		class       = "form-control quicksearch",
+		placeholder = "Quick Search"
+	)#</div>
 </div>
 
 <div class="col-md-6 col-xs-8">
@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-   <div class="panel-body">#html.startForm( name = "moduleForm" )##html.hiddenField( name = "moduleName" )#<!--- modules --->     <table name="modules" id="modules" class="table table-striped-removed table-hover " width="100%">
+   <div class="panel-body">#html.startForm( name = "moduleForm" )##html.hiddenField( name = "moduleName" )#<!--- modules --->      <table name="modules" id="modules" class="table table-striped-removed table-hover " width="100%">
 <thead>
 	<tr>
 		<th class="text-center" width="50">Type</th>
@@ -96,7 +96,7 @@
 
 
 		<cfif module.getIsActive()>
-			<!--- Update Check --->     <li>
+			<!--- Update Check --->      <li>
 <a
 	class=""
 	title="Deactivate Module"

@@ -25,6 +25,7 @@ component
 		length="36"
 		ormtype="string"
 		update="false";
+
 	property
 		name="whitelist"
 		column="whitelist"
@@ -32,6 +33,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="securelist"
 		column="securelist"
@@ -39,6 +41,7 @@ component
 		notnull="true"
 		default=""
 		length="255";
+
 	property
 		name="match"
 		column="match"
@@ -47,6 +50,7 @@ component
 		default="event"
 		dbdefault="'event'"
 		length="50";
+
 	property
 		name="roles"
 		column="roles"
@@ -54,6 +58,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="permissions"
 		column="permissions"
@@ -61,6 +66,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="redirect"
 		column="redirect"
@@ -68,6 +74,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="overrideEvent"
 		column="overrideEvent"
@@ -75,12 +82,14 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="useSSL"
 		column="useSSL"
 		ormtype="boolean"
 		notnull="false"
 		default="false";
+
 	property
 		name="action"
 		column="action"
@@ -89,6 +98,7 @@ component
 		default="redirect"
 		dbdefault="'redirect'"
 		length="50";
+
 	property
 		name="module"
 		column="module"
@@ -96,6 +106,7 @@ component
 		notnull="false"
 		default=""
 		length="500";
+
 	property
 		name="httpMethods"
 		column="httpMethods"
@@ -104,6 +115,7 @@ component
 		default="*"
 		dbdefault="'*'"
 		length="255";
+
 	property
 		name="allowedIPs"
 		column="allowedIPs"
@@ -112,12 +124,14 @@ component
 		default="*"
 		dbdefault="'*'"
 		length="255";
+
 	property
 		name="order"
 		column="order"
 		ormtype="integer"
 		notnull="true"
 		default="0";
+
 	property
 		name="message"
 		column="message"
@@ -125,6 +139,7 @@ component
 		notnull="false"
 		default=""
 		length="255";
+
 	property
 		name="messageType"
 		column="messageType"

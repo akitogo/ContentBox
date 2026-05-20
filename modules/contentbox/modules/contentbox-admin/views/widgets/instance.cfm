@@ -5,9 +5,9 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4><span id="widget-title-bar"><i class="fa fa-#prc.widget.icon# fa-lg fa-2x"></i> #rc.mode# '#prc
-			.widget
-			.widget
-			.getName()#' Widget</span></h4>
+	.widget
+	.widget
+	.getName()#' Widget</span></h4>
 </div>
 <div class="modal-body">
 	</cfif>
@@ -19,9 +19,9 @@
         <div id="widget-preview-wrapper" class="row">
             <div class="widget-arguments col-md-3" id="widget-arguments">
                 #html.startForm(
-			name  = "widgetArgsForm_#prc.widget.name#",
-			class = "form-vertical"
-		)#
+		name  = "widgetArgsForm_#prc.widget.name#",
+		class = "form-vertical"
+	)#
                     <fieldset
 
 
@@ -74,106 +74,106 @@
 	</cfif>
 	<cfloop from="1" to="#arrayLen( prc.md.parameters )#" index="x">
 		<cfscript>
-			// duplicate so we don't affect real md as ACF caches this stupidity
-			thisArg = duplicate( prc.md.parameters[ x ] );
-			requiredText = "";
-			requiredValidator = "";
-			// Verify attributes
-			if ( !structKeyExists( thisArg, "label" ) ) {
-				thisArg.label = thisArg.name;
-			}
-			if ( !structKeyExists( thisArg, "required" ) ) {
-				thisArg.required = false;
-			}
-			if ( !structKeyExists( thisArg, "hint" ) ) {
-				thisArg.hint = "";
-			}
-			if ( !structKeyExists( thisArg, "type" ) ) {
-				thisArg.type = "any";
-			}
-			if ( !structKeyExists( thisArg, "default" ) ) {
-				thisArg.default = "";
-			}
-			if ( !structKeyExists( thisArg, "options" ) ) {
-				thisArg.options = "";
-			}
-			if ( !structKeyExists( thisArg, "optionsUDF" ) ) {
-				thisArg.optionsUDF = "";
-			}
-			if ( !structKeyExists( thisArg, "multiOptions" ) ) {
-				thisArg.multiOptions = "";
-			}
-			if ( !structKeyExists( thisArg, "multiOptionsUDF" ) ) {
-				thisArg.multiOptionsUDF = "";
-			}
-			// calculate default value
-			thisArg.value = structKeyExists( prc.vals, thisArg.name )
-				? prc.vals[ thisArg.name ] == "" ? thisArg.default : prc.vals[ thisArg.name ]
-				: thisArg.default;
-			// required stuff
-			if ( thisarg.required ) {
-				requiredText = "<span class='text-red'>Required</span>";
-				requiredValidator = "required";
-			}
-		</cfscript>
-		<!--- control group --->     <div class="form-group">#html.label(
-				field   = thisArg.name,
-				content = "#thisArg.label# (#thisArg.type#) #requiredText#",
-				class   = "control-label"
-			)#<div class="controls">
+	// duplicate so we don't affect real md as ACF caches this stupidity
+	thisArg = duplicate( prc.md.parameters[ x ] );
+	requiredText = "";
+	requiredValidator = "";
+	// Verify attributes
+	if ( !structKeyExists( thisArg, "label" ) ) {
+		thisArg.label = thisArg.name;
+	}
+	if ( !structKeyExists( thisArg, "required" ) ) {
+		thisArg.required = false;
+	}
+	if ( !structKeyExists( thisArg, "hint" ) ) {
+		thisArg.hint = "";
+	}
+	if ( !structKeyExists( thisArg, "type" ) ) {
+		thisArg.type = "any";
+	}
+	if ( !structKeyExists( thisArg, "default" ) ) {
+		thisArg.default = "";
+	}
+	if ( !structKeyExists( thisArg, "options" ) ) {
+		thisArg.options = "";
+	}
+	if ( !structKeyExists( thisArg, "optionsUDF" ) ) {
+		thisArg.optionsUDF = "";
+	}
+	if ( !structKeyExists( thisArg, "multiOptions" ) ) {
+		thisArg.multiOptions = "";
+	}
+	if ( !structKeyExists( thisArg, "multiOptionsUDF" ) ) {
+		thisArg.multiOptionsUDF = "";
+	}
+	// calculate default value
+	thisArg.value = structKeyExists( prc.vals, thisArg.name )
+		? prc.vals[ thisArg.name ] == "" ? thisArg.default : prc.vals[ thisArg.name ]
+		: thisArg.default;
+	// required stuff
+	if ( thisarg.required ) {
+		requiredText = "<span class='text-red'>Required</span>";
+		requiredValidator = "required";
+	}
+</cfscript>
+		<!--- control group --->      <div class="form-group">#html.label(
+		field   = thisArg.name,
+		content = "#thisArg.label# (#thisArg.type#) #requiredText#",
+		class   = "control-label"
+	)#<div class="controls">
 		<cfif len( thisArg.hint )>
 			<small>#thisArg.hint#</small><br/>
 		</cfif>
 		<cfif thisArg.type EQ "boolean">
 			#html.select(
-					name          = thisArg.name,
-					options       = "true,false",
-					selectedValue = thisArg.value,
-					class         = "form-control input-sm"
-				)#
+		name          = thisArg.name,
+		options       = "true,false",
+		selectedValue = thisArg.value,
+		class         = "form-control input-sm"
+	)#
 		<cfelseif listLen( thisArg.options )>
 			#html.select(
-					name          = thisArg.name,
-					options       = thisArg.options,
-					selectedValue = thisArg.value,
-					class         = "form-control input-sm"
-				)#
+		name          = thisArg.name,
+		options       = thisArg.options,
+		selectedValue = thisArg.value,
+		class         = "form-control input-sm"
+	)#
 		<cfelseif listLen( thisArg.optionsUDF )>
 			<cfset options = invoke( prc.widget.widget, thisArg.optionsUDF )>
 			#html.select(
-					name          = thisArg.name,
-					options       = options,
-					selectedValue = thisArg.value,
-					class         = "form-control input-sm"
-				)#
+		name          = thisArg.name,
+		options       = options,
+		selectedValue = thisArg.value,
+		class         = "form-control input-sm"
+	)#
 		<cfelseif listLen( thisArg.multiOptions )>
 			#html.select(
-					name          = thisArg.name,
-					options       = thisArg.multiOptions,
-					selectedValue = thisArg.value,
-					class         = "form-control input-sm",
-					multiple      = "true",
-					size          = "5"
-				)#
+		name          = thisArg.name,
+		options       = thisArg.multiOptions,
+		selectedValue = thisArg.value,
+		class         = "form-control input-sm",
+		multiple      = "true",
+		size          = "5"
+	)#
 		<cfelseif listLen( thisArg.multiOptionsUDF )>
 			<cfset options = invoke( prc.widget.widget, thisArg.multiOptionsUDF )>
 			#html.select(
-					name          = thisArg.name,
-					options       = options,
-					selectedValue = thisArg.value,
-					class         = "form-control input-sm",
-					multiple      = "true",
-					size          = "5"
-				)#
+		name          = thisArg.name,
+		options       = options,
+		selectedValue = thisArg.value,
+		class         = "form-control input-sm",
+		multiple      = "true",
+		size          = "5"
+	)#
 		<cfelse>
 			#html.textfield(
-					name     = thisArg.name,
-					size     = "35",
-					class    = "form-control",
-					required = requiredValidator,
-					title    = thisArg.hint,
-					value    = thisArg.value
-				)#
+		name     = thisArg.name,
+		size     = "35",
+		class    = "form-control",
+		required = requiredValidator,
+		title    = thisArg.hint,
+		value    = thisArg.value
+	)#
 		</cfif>
 		
 		
@@ -189,22 +189,22 @@
 
 	</cfloop>
 	#html.hiddenfield(
-			name  = "widgetName",
-			id    = "widgetName",
-			value = prc.widget.name
-		)##html.hiddenfield(
-			name  = "widgetIcon",
-			id    = "widgetIcon",
-			value = prc.widget.icon
-		)##html.hiddenfield(
-			name  = "widgetDisplayName",
-			id    = "widgetDisplayName",
-			value = prc
-				.widget
-				.widget
-				.getName()
-		)##html.hiddenfield( name = "widgetType", value = prc.widget.widgetType )##html.hiddenfield( name = "widgetUDF",
-			value = prc.widget.udf )##html.endFieldSet()##html.endForm()#
+		name  = "widgetName",
+		id    = "widgetName",
+		value = prc.widget.name
+	)##html.hiddenfield(
+		name  = "widgetIcon",
+		id    = "widgetIcon",
+		value = prc.widget.icon
+	)##html.hiddenfield(
+		name  = "widgetDisplayName",
+		id    = "widgetDisplayName",
+		value = prc
+			.widget
+			.widget
+			.getName()
+	)##html.hiddenfield( name = "widgetType", value = prc.widget.widgetType )##html.hiddenfield( name = "widgetUDF",
+		value = prc.widget.udf )##html.endFieldSet()##html.endForm()#
             </div>
             <div class="widget-preview col-md-9">
                 <div class="well well-sm">

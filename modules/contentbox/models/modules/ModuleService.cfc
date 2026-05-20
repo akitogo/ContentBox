@@ -8,41 +8,54 @@
 component extends  ="cborm.models.VirtualEntityService" accessors="true" singleton threadsafe {
 	// DI
 	property name="settingService" inject="settingService@contentbox";
+
 	property name="widgetService" inject="provider:widgetService@contentbox";
+
 	property name="contentBoxSettings" inject="coldbox:moduleConfig:contentbox";
+
 	property
 		name="customModuleSettings"
 		inject="coldbox:moduleConfig:contentbox-custom";
+
 	property name="coldboxModuleService" inject="coldbox:moduleService";
+
 	property name="log" inject="logbox:logger:{this}";
+
 	/**
 	 * The absolute path to custom module locations
 	 */
 	property name="customModulesPath" type="string";
+
 	/**
 	 * The invocation path for custom modules
 	 */
 	property name="customModulesInvocationPath" type="string";
+
 	/**
 	 * The absolute path to core module locations
 	 */
 	property name="coreModulesPath" type="string";
+
 	/**
 	 * The invocation path for core modules
 	 */
 	property name="coreModulesInvocationPath" type="string";
+
 	/**
 	 * The module widget cache
 	 */
 	property name="moduleWidgetCache" type="struct";
+
 	/**
 	 * ColdBox Module Registry reference
 	 */
 	property name="moduleRegistry" type="struct";
+
 	/**
 	 * ColdBox Module Config Cache reference
 	 */
 	property name="moduleConfigCache" type="struct";
+
 	/**
 	 * Module Map References
 	 */

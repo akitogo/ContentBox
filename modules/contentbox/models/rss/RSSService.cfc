@@ -8,11 +8,17 @@
 component singleton {
 	// DI
 	property name="entryService" inject="entryService@contentbox";
+
 	property name="pageService" inject="pageService@contentbox";
+
 	property name="contentService" inject="contentService@contentbox";
+
 	property name="commentService" inject="commentService@contentbox";
+
 	property name="CBHelper" inject="CBHelper@contentbox";
+
 	property name="feedGenerator" inject="feedGenerator@cbfeeds";
+
 	property name="log" inject="logbox:logger:{this}";
 
 	/**
