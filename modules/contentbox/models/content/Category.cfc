@@ -257,7 +257,7 @@ component
 					return service
 						.newCriteria()
 						.createAlias( "categories", "categories" )
-						.isEq( "categories.categoryID", getCategoryID() )
+						.isEq( "categories.categoryID", getCategoryID() ?: "" )
 						.count( "contentID" );
 				}
 			);
