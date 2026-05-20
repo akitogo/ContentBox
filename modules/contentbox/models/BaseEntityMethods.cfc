@@ -239,7 +239,7 @@ component {
 			);
 
 		// Include the helper
-		include template="#targetLocation#";
+		include( "#targetLocation#" );
 
 		return this;
 	}
