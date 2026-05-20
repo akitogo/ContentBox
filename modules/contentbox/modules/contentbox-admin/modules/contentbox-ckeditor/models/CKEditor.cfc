@@ -143,10 +143,10 @@ $( '##' + editorName ).ckeditorGet().setData( content );
 function insertEditorContent( editorName, content ){
 // if simple value, insert as html
 if( jQuery.type( content ) == 'string' )
-	$( '##' + editorName ).ckeditorGet().insertHtml( content );
+$( '##' + editorName ).ckeditorGet().insertHtml( content );
 // else insert as element
 else
-	$( '##' + editorName ).ckeditorGet().insertElement( content );
+$( '##' + editorName ).ckeditorGet().insertElement( content );
 }
 "
 );

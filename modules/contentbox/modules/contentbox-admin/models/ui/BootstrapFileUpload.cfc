@@ -49,29 +49,29 @@ component {
 			if ( structKeyExists( arguments, "label" ) && len( arguments.label ) ) {
 writeoutput(
 "#html.label(
-		field   = "#arguments.name#",
-		content = "#arguments.label#",
-		class   = "control-label"
-	)#"
+	field   = "#arguments.name#",
+	content = "#arguments.label#",
+	class   = "control-label"
+)#"
 );
 }
 			writeoutput(
 "
-           <div class=""fileinput fileinput-new input-group"" data-provides=""fileinput"">
-               <div class=""form-control"" data-trigger=""fileinput"">
-                   <i class=""fa fa-file fileinput-exists""></i> <span class=""fileinput-filename""></span>
-               </div>
-               <span class=""input-group-addon btn btn-default btn-file"">
-                   <span class=""fileinput-new"">#arguments.selectButtonText#</span>
-                   <span class=""fileinput-exists"">#arguments.changeButtonText#</span>
-                   #html.fileField(
-	name     = "#arguments.name#",
-	required = arguments.required,
-	id       = "#arguments.id#",
-	accept   = "#arguments.accept#"
+          <div class=""fileinput fileinput-new input-group"" data-provides=""fileinput"">
+              <div class=""form-control"" data-trigger=""fileinput"">
+                  <i class=""fa fa-file fileinput-exists""></i> <span class=""fileinput-filename""></span>
+              </div>
+              <span class=""input-group-addon btn btn-default btn-file"">
+                  <span class=""fileinput-new"">#arguments.selectButtonText#</span>
+                  <span class=""fileinput-exists"">#arguments.changeButtonText#</span>
+                  #html.fileField(
+name     = "#arguments.name#",
+required = arguments.required,
+id       = "#arguments.id#",
+accept   = "#arguments.accept#"
 )#
-               </span>
-       "
+              </span>
+      "
 );
 			if ( arguments.useRemoveButton ) {
 writeoutput(

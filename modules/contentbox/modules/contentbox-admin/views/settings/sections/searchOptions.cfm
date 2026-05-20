@@ -1,6 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "searchSettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-search fa-lg"></i>  Search Options</legend><!--- Max Search Results --->        <div class="form-group">
+<legend><i class="fa fa-search fa-lg"></i>  Search Options</legend><!--- Max Search Results --->         <div class="form-group">
 <label class="control-label" for="cb_search_maxResults">
     Max Search Results:
     <span class="badge badge-info" id="cb_search_maxResults_label">#prc.cbSettings.cb_search_maxResults#</span>
@@ -22,7 +22,7 @@
         <strong class="m10">50</strong>
 
     </div>
-</div><!--- Search Adapter --->        <div class="form-group">#html.label(
+</div><!--- Search Adapter --->         <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_search_adapter",
 		content = "Search Adapter: "
@@ -42,6 +42,6 @@ enter your own CFC instantiation path below.</small><br/>
 		title    = "Please remember this must be a valid ColdFusion instantiation path"
 	)#</div>
     </div>
-</fieldset><!--- Button Bar --->        <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->         <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

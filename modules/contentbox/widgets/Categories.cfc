@@ -83,11 +83,11 @@ writeOutput(
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
 if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
 writeOutput(
-	"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
 );
 
 if ( arguments.showPostCount ) {
-	writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
+writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 }
 
 writeOutput( "</option>" );
@@ -113,13 +113,13 @@ writeOutput( "<ul id=""categories""> " );
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
 if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
 writeOutput(
-	"
-	<li class=""categories"">
-		<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+"
+<li class=""categories"">
+	<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
 );
 
 if ( arguments.showPostCount ) {
-	writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
+writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 }
 
 writeOutput( "</a></li>" );

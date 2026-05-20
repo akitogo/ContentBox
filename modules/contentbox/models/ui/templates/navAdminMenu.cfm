@@ -2,7 +2,7 @@
 	<ul class="nav nav-pills nav-stacked">
 	<cfloop array="#local.thisMenu#" index="local.topMenu">
 		<cfif !len( local.topMenu.permissions ) || prc.oCurrentAuthor.hasPermission( local.topMenu.permissions )>
-			<!--- LI --->        <li
+			<!--- LI --->         <li
 class="
 			<cfif arrayLen( local.topMenu.subMenu )>
 				nav-dropdown

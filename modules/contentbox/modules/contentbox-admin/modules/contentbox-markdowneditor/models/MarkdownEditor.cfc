@@ -98,7 +98,7 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 		html.addStyleContent(
 "
 .CodeMirror{
-  height: 100% !important;
+ height: 100% !important;
 }
 .CodeMirror-fullscreen{
 z-index: 1000 !important;
@@ -149,31 +149,31 @@ simpleMDE_excerpt.codemirror.replaceRange( content, simpleMDE_excerpt.codemirror
 // Insert Widgets
 $insertCBWidget = function( editor ){
 // Open the selector widget dialog.
-		openRemoteModal(
-               getWidgetSelectorURL(),
-               { editorName : editor },
-               $( window ).width() - 200,
-               $( window ).height() - 300,
-               true
-           );
+	openRemoteModal(
+              getWidgetSelectorURL(),
+              { editorName : editor },
+              $( window ).width() - 200,
+              $( window ).height() - 300,
+              true
+          );
 };
 
 // Insert ContentStore
 $insertCBContentStore = function( editor ){
 // Open the selector widget dialog.
-		openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
+	openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
 };
 
 // Insert Entry Link
 $insertCBEntryLink = function( editor ){
 // Open the selector widget dialog.
-		openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
+	openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
 };
 
 // Insert Page Link
 $insertCBPageLink = function( editor ){
 // Open the selector widget dialog.
-		openRemoteModal( getPageSelectorURL(), { editorName: editor } );
+	openRemoteModal( getPageSelectorURL(), { editorName: editor } );
 };
 
 // Insert Media
@@ -184,9 +184,9 @@ loadAssetChooser( '$insertCBMediaContent' );
 // Choose Media
 $insertCBMediaContent = function( sPath, sURL, sType ){
 if( !sPath.length || sType === 'dir' ){
-      alert( 'Please select a file first.' );
-      return;
-  }
+     alert( 'Please select a file first.' );
+     return;
+ }
 var link = '![' + sURL.substr( sURL.lastIndexOf( '/' ) + 1 ) + ']('+ sURL + ')';
 insertEditorContent( simpleMDETargetEditor, link );
 closeRemoteModal();
@@ -276,7 +276,7 @@ simpleMDE_content.isDirty = false;
 
 // Listen for Editor Changes
 simpleMDE_content.codemirror.on( 'change', function(){
-  simpleMDE_content.isDirty = true;
+ simpleMDE_content.isDirty = true;
 } );
 "
 );

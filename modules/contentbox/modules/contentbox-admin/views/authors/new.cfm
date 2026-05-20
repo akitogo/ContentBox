@@ -4,14 +4,14 @@
 
 <div class="panel panel-default">
 
-	<div class="panel-heading"><!--- Top Actions --->        <div class="float-right mt10">#announce( "cbadmin_onNewAuthorActions" )#<!--- Back button --->        <a
+	<div class="panel-heading"><!--- Top Actions --->         <div class="float-right mt10">#announce( "cbadmin_onNewAuthorActions" )#<!--- Back button --->         <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehAuthors )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Title --->        <div class="size16 p10">
+</div><!--- Title --->         <div class="size16 p10">
 	<i class="fa fa-user"></i>
 	Create New Author
 </div>
@@ -114,7 +114,7 @@ href="#event.buildLink( prc.xehAuthors )#"
                         </div>
 
 
-                    #html.endFieldSet()#<!--- Action Bar --->        
+                    #html.endFieldSet()#<!--- Action Bar --->         
 					<div class="form-actions">
 						<input type="submit" value="Create User" class="btn btn-primary btn-lg">
 					</div>

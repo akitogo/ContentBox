@@ -16,7 +16,7 @@
 	<div class="col-md-12">
 
 		<div class="panel panel-default">
-			<div class="panel-body"><!--- Comment Details --->        <fieldset>
+			<div class="panel-body"><!--- Comment Details --->         <fieldset>
 
 <legend><i class="fa fa-eye fa-lg"></i> Details</legend>
 
@@ -25,7 +25,7 @@
 <a 	href="mailto:#encodeForHTMLAttribute( rc.comment.getAUthorEmail() )#"
 title="#encodeForHTMLAttribute( rc.comment.getAUthorEmail() )#"
 >#encodeForHtml( rc.comment.getAuthor() )#</a>
-</div><!--- Content Object --->        <div class="form-group">
+</div><!--- Content Object --->         <div class="form-group">
 <i class="fa fa-archive"></i>
 Created on <strong>#rc
 	.comment
@@ -58,14 +58,14 @@ Created on <strong>#rc
 
 
 	</cfif>
-	<!--- IP Address --->        
+	<!--- IP Address --->         
 						<div class="form-group">
 							<i class="fa fa-laptop"></i>
 							<label>IP Address: </label>
 							<a href="#prc.cbSettings.cb_comments_whoisURL#=#rc.comment.getAuthorIP()#" title="Get IP Information" target="_blank">#rc.comment.getauthorIP()#</a>
 						</div>
 
-						<!--- Date --->        
+						<!--- Date --->         
 						<div class="form-group">
 							<i class="fa fa-calendar"></i>
 							<label>Created Date: </label>
@@ -74,7 +74,7 @@ Created on <strong>#rc
 
 				</fieldset>
 
-				<!--- content --->        
+				<!--- content --->         
 				<fieldset>
 					<legend><i class="fa fa-comment"></i> Comment</legend>
 					<div>
@@ -85,7 +85,7 @@ Created on <strong>#rc
 				#html.startForm( name = "commentForm", action = prc.xehCommentstatus )##html.hiddenField( name = "commentID",
 		bind = rc.comment )##html.hiddenField( name = "commentStatus", value = "approve" )#
 					<div class="form-actions">
-						<!--- Buttons --->        
+						<!--- Buttons --->         
 						<button
 							type="submit"
 							class="btn btn-danger btn-lg"

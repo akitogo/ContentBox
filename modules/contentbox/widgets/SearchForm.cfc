@@ -65,16 +65,16 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 writeOutput(
 "
 #html.startForm(
-	name   = "searchForm",
-	action = action,
-	class  = arguments.formcss
+name   = "searchForm",
+action = action,
+class  = arguments.formcss
 )#
 <div class=""input-group"">
 #html.textField(
-	name        = "q",
-	placeholder = "Search",
-	value       = local.q,
-	class       = "form-control"
+name        = "q",
+placeholder = "Search",
+value       = local.q,
+class       = "form-control"
 )#
 <span class=""input-group-btn"">
 <button class=""btn btn-primary"" type=""submit"">

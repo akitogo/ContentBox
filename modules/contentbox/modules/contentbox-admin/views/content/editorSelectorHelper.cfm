@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom Javascript --->        <script>
+	<!--- Custom Javascript --->         <script>
 ( () => {
 	// keyup quick search
 	$( "##contentSearch" ).keyup(
