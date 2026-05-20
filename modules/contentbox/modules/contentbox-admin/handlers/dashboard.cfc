@@ -59,37 +59,30 @@ component extends="baseHandler" {
 	 * @return html
 	 */
 	function latestSnapshot( event, rc, prc ) {
-		var siteID = prc.oCurrentSite.getsiteID();
+		var siteID = prc.oCurrentSite.getsiteID()
 
-		prc.entriesCount = variables.entryService.getTotalContentCount( siteID );
-		prc.pagesCount = variables.pageService.getTotalContentCount( siteID );
-		prc.commentsCount = variables.commentService.getTotalCount( siteID );
-		prc.commentsApprovedCount = variables.commentService.getApprovedCount( siteID );
-		prc.commentsUnApprovedCount = variables.commentService.getUnApprovedCount( siteID );
-		prc.categoriesCount = variables.categoryService.getTotalCategoryCount( siteID );
+		prc.entriesCount = variables.entryService.getTotalContentCount( siteID )
+		prc.pagesCount = variables.pageService.getTotalContentCount( siteID )
+		prc.commentsCount = variables.commentService.getTotalCount( siteID )
+		prc.commentsApprovedCount = variables.commentService.getApprovedCount( siteID )
+		prc.commentsUnApprovedCount = variables.commentService.getUnApprovedCount( siteID )
+		prc.categoriesCount = variables.categoryService.getTotalCategoryCount( siteID )
 
 		// Few Reports
-		prc.topContent = variables.contentService.getTopVisitedContent( max = 5, siteID = siteID );
-		prc.topCommented = variables.contentService.getTopCommentedContent( max = 5, siteID = siteID );
+		prc.topContent = variables.contentService.getTopVisitedContent( max = 5, siteID = siteID )
+		prc.topCommented = variables.contentService.getTopCommentedContent( max = 5, siteID = siteID )
 
 		// convert report to chart data
-		prc.aTopContent = [];
-		prc.aTopContentTotalHits = 0;
+		prc.aTopContent = []
+		prc.aTopContentTotalHits = 0
 
 		for ( var thisContent in prc.topContent ) {
-			arrayAppend(
-				prc.aTopContent,
-				{
-					"label": thisContent.getTitle(),
-					"value": thisContent.getNumberOfHits()
-				}
-			);
-			prc.aTopContentTotalHits += thisContent.getNumberOfHits();
+			prc.aTopContentTotalHits += thisContent.hits
 		}
-		prc.aTopContent = serializeJSON( prc.aTopContent );
+		prc.aTopContent = serializeJSON( prc.aTopContent )
 
-		prc.aTopCommented = [];
-		prc.aTopCommentedTotalHits = 0;
+		prc.aTopCommented = []
+		prc.aTopCommentedTotalHits = 0
 
 		for ( var thisContent in prc.topCommented ) {
 			arrayAppend(
@@ -98,13 +91,13 @@ component extends="baseHandler" {
 					"label": thisContent.getTitle(),
 					"value": thisContent.getNumberOfComments()
 				}
-			);
-			prc.aTopCommentedTotalHits += thisContent.getNumberOfComments();
+			)
+			prc.aTopCommentedTotalHits += thisContent.getNumberOfComments()
 		}
-		prc.aTopCommented = serializeJSON( prc.aTopCommented );
+		prc.aTopCommented = serializeJSON( prc.aTopCommented )
 
 		// render view out.
-		event.setView( view = "dashboard/latestSnapshot", layout = "ajax" );
+		event.setView( view = "dashboard/latestSnapshot", layout = "ajax" )
 	}
 
 	/**

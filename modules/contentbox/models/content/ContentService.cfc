@@ -772,17 +772,27 @@ component extends="cborm.models.VirtualEntityService" singleton {
 	 *
 	 * @max    The maximum to retrieve, defaults to 5 entries
 	 * @siteID The site to filter on
+	 *
+	 * @return An array of structures with contentId, label and hits keys
 	 */
 	array function getTopVisitedContent( numeric max = 5, string siteID = "" ) {
-		return newCriteria()
+		return variables.statsService
+			.newCriteria()
 			.when(
 				len( arguments.siteID ),
-				function( c ) {
-					c.isEq( "site.siteID", siteID );
+				( c ) => {
+					c
+					.joinTo( "relatedContent", "relatedContent" )
+					.isEq( "relatedContent.site.siteID", siteID );
 				}
 			)
-			.joinTo( "stats", "stats" )
-			.list( max = arguments.max, sortOrder = "stats.hits desc" );
+			.list( max = arguments.max, sortOrder = "hits desc" )
+			.map( ( stat ) => { return {
+				"contentId" : stat.getRelatedContent().getContentID(),
+				"label" : stat.getRelatedContent().getTitle(),
+				"hits"  : stat.getHits(),
+				"content" : stat.getRelatedContent()
+			} } )
 	}
 
 	/**
