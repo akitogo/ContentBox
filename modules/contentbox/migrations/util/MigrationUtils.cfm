@@ -23,22 +23,37 @@
 	 * @targetcolumn The column to check
 	 */
 	boolean function hasColumn( targetTable, targetColumn ) {
-		// Check for column created
-		dbinfo name ="local.qSettingColumns" type ="columns" table="#arguments.targetTable#";
 
-		if (
-			qSettingColumns.filter(
-						( thisRow ) => {
-							return thisRow.column_name == targetColumn;
-						}
-					)// systemOutput( thisRow, true );
+		try{
+			// Use information_schema directly so the check is dialect-safe and preserves
+			// identifier case (cfdbinfo lowercases table names which breaks on PostgreSQL).
+			var result = queryExecute(
+				"SELECT 1 FROM information_schema.columns WHERE table_name = :tableName AND column_name = :columnName",
+				{
+					tableName  : arguments.targetTable,
+					columnName : arguments.targetColumn
+				}
+			)
+			return result.recordCount > 0
+		} catch ( any e ) {
+			// If not, fall back to the this method.
+			// Check for column created
+			dbinfo name ="local.qSettingColumns" type ="columns" table="#arguments.targetTable#";
 
-					.recordCount >
-				0
-		) {
-			return true;
+			if (
+				qSettingColumns.filter(
+							( thisRow ) => {
+								return thisRow.column_name == targetColumn;
+							}
+						)// systemOutput( thisRow, true );
+
+						.recordCount >
+					0
+			) {
+				return true
+			}
+			return false
 		}
-		return false;
 	}
 
 	/**

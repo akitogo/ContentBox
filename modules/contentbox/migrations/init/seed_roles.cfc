@@ -1,22 +1,25 @@
 component {
 
 	function seed( schema, query ) {
+		var falseBinding = query.getGrammar().convertToBooleanType( false )
+		var trueBinding = query.getGrammar().convertToBooleanType( true )
+
 		var admin = {
 			"roleID"      : createUUID(),
-			"isDeleted"   : 0,
+			"isDeleted"   : falseBinding,
 			"createdDate" : now(),
 			"modifiedDate": now(),
 			"role"        : "Administrator",
 			"description" : "A ContentBox Administrator"
-		};
+		}
 		var editor = {
 			"roleID"      : createUUID(),
-			"isDeleted"   : 0,
+			"isDeleted"   : falseBinding,
 			"createdDate" : now(),
 			"modifiedDate": now(),
 			"role"        : "Editor",
 			"description" : "A ContentBox Editor"
-		};
+		}
 
 		// ADMIN ROLE
 

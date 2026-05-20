@@ -182,21 +182,22 @@ component {
 				"permission" : "WIDGET_ADMIN",
 				"description": "Ability to manage widgets, default is view only"
 			}
-		];
+		]
 
+		var falseBinding = query.getGrammar().convertToBooleanType( false )
 		perms = perms.map(
 				( thisPerm ) => {
-					thisPerm[ "permissionID" ] = createUUID();
-					thisPerm[ "isDeleted" ] = 0;
-					thisPerm[ "createdDate" ] = thisPerm[ "modifiedDate" ] = now();
-					return thisPerm;
+					thisPerm[ "permissionID" ] = createUUID()
+					thisPerm[ "isDeleted" ] = falseBinding
+					thisPerm[ "createdDate" ] = thisPerm[ "modifiedDate" ] = now()
+					return thisPerm
 				}
-			);
+			)
 
 		query
 			.newQuery()
 			.from( "cb_permission" )
-			.insert( perms );
+			.insert( perms )
 	}
 
 }
