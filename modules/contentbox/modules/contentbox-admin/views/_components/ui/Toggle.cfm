@@ -8,7 +8,7 @@
 	<label for="#args.name#" class="flex items-center cursor-pointer">
 <div class="pr5">#args.label#</div>
 <!-- toggle -->
-<div class="relative"><!--- Input --->         <input
+<div class="relative"><!--- Input --->          <input
 id="#args.name#"
 name="#args.name#"
 class="hidden"

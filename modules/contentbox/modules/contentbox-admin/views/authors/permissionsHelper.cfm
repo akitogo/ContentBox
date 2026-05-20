@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Custom JS --->         <script>
+	<!--- Custom JS --->          <script>
 ( () => {
 	$permissionForm = $( "##permissionForm" );
 	$groupsForm 	= $( "##groupsForm" );

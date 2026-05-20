@@ -1,5 +1,5 @@
 <cfoutput>
-	<div class="modal-dialog modal-lg" role="document" ><!--- Modal Content --->         <div class="modal-content"><!--- Header --->         <div class="modal-header">
+	<div class="modal-dialog modal-lg" role="document" ><!--- Modal Content --->          <div class="modal-content"><!--- Header --->          <div class="modal-header">
     <button
     	type="button"
     	class="close"
@@ -8,7 +8,7 @@
     <h4>
 		<i class="fa fa-comments"></i> Comment Quick Look
 	</h4>
-</div><!--- Body --->         <div class="modal-body">
+</div><!--- Body --->          <div class="modal-body">
 <div class="row">
 	<div class="col-md-6">#getInstance( "Avatar@contentbox" ).renderAvatar(
 		email = encodeForHTMLAttribute( rc.comment.getAuthorEmail() ),
@@ -66,7 +66,7 @@ title="#encodeForHTMLAttribute( rc.comment.getAUthorEmail() )#"
 			#rc.comment.getDisplayContent()#
 		</div>
 
-		<!--- Button Bar --->         
+		<!--- Button Bar --->          
 		<div class="modal-footer">
 			<button class="btn btn-default" onclick="closeRemoteModal()"> Close </button>
 		</div>

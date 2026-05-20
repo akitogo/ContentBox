@@ -12,7 +12,7 @@
 		</h3>
 	</div>
 
-       <div class="modal-body">#html.startForm( name = "relatedContentSelectorForm" )#<!--- Filter --->         <div class="form-group">
+       <div class="modal-body">#html.startForm( name = "relatedContentSelectorForm" )#<!--- Filter --->          <div class="form-group">
 <div class="input-group input-group-sm">
 	<input
 		type="text"
@@ -32,9 +32,9 @@
 			<i class="fa fa-times-circle fa-lg"></i>
 		</span>
 	</div>
-</div><!--- Loader --->         <div class="loaders float-right" id="relatedContentLoader">
+</div><!--- Loader --->          <div class="loaders float-right" id="relatedContentLoader">
     <i class="fa fa-circle-o-notch fa-spin fa-lg"></i>
-</div><!--- Render tables out --->         <div id="contentContainer" class="tabs">
+</div><!--- Render tables out --->          <div id="contentContainer" class="tabs">
 
 <ul class="nav nav-tabs" id="contentTypes">
 	<cfset types = listToArray( rc.contentType )>
@@ -103,7 +103,7 @@
         #html.endForm()#
 		</div>
 
-        <!--- Button Bar --->         
+        <!--- Button Bar --->          
         <div class="modal-footer">
             <button class="btn btn-default" onclick="closeRemoteModal()"> Close </button>
 		</div>

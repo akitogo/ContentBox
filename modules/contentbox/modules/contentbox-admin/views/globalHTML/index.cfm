@@ -38,7 +38,7 @@
 		class  = "form-vertical"
 	)#<!-- End Tabs -->
 <!-- Tab Content -->
-<div class="tab-content" id="tab-content"><!--- Global HTML Page --->         <div class="tab-pane active" id="global">
+<div class="tab-content" id="tab-content"><!--- Global HTML Page --->          <div class="tab-pane active" id="global">
 <fieldset>#html.textarea(
 		name         = "cb_html_beforeHeadEnd",
 		label        = "Before Head End: ",
@@ -112,7 +112,7 @@
 		labelClass   = "control-label",
 		groupWrapper = "div class=form-group"
 	)#</fieldset>
-</div><!--- Entry --->         <div class="tab-pane" id="entry">
+</div><!--- Entry --->          <div class="tab-pane" id="entry">
 <fieldset>#html.textarea(
 		name         = "cb_html_preEntryDisplay",
 		label        = "Before A Blog Entry: ",
@@ -168,7 +168,7 @@
 		labelClass   = "control-label",
 		groupWrapper = "div class=form-group"
 	)#</fieldset>
-</div><!--- Comments --->         <div class="tab-pane" id="comments">
+</div><!--- Comments --->          <div class="tab-pane" id="comments">
 <fieldset>#html.textarea(
 		name         = "cb_html_preCommentForm",
 		label        = "Before The Comment Form: ",
@@ -188,7 +188,7 @@
 		labelClass   = "control-label",
 		groupWrapper = "div class=form-group"
 	)#</fieldset>
-</div><!--- Pages --->         <div class="tab-pane" id="pages">
+</div><!--- Pages --->          <div class="tab-pane" id="pages">
 <fieldset>#html.textarea(
 		name         = "cb_html_prePageDisplay",
 		label        = "Before Any Page: ",
@@ -212,7 +212,7 @@
                    </div>
                    <!-- End Tab Content -->
                </div>
-<!-- End Vertical Nav --><!--- Button Bar --->         <div class="form-actions">#html.submitButton( value = "Save Global HTML",
+<!-- End Vertical Nav --><!--- Button Bar --->          <div class="form-actions">#html.submitButton( value = "Save Global HTML",
 		class = "btn btn-primary" )#</div>#html.endForm()#</div>
         </div>
     </div>

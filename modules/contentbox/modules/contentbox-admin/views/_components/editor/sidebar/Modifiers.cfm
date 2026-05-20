@@ -151,7 +151,7 @@ No Content Templates are Currently Available
 			
 
 					</div>
-					<!--- Parent --->         
+					<!--- Parent --->          
 					<div class="form-group">
 						<label for="parentContent" class="control-label">
 							<i class="fa fa-sitemap"></i>

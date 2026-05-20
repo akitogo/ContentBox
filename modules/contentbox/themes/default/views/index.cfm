@@ -16,18 +16,18 @@
 	
 <div id="body-header" style="#bodyHeaderStyle#">
 	<div class="container">
-		<!--- Title --->         
+		<!--- Title --->          
 		<div class="underlined-title">
 			<h1 style="#bodyHeaderH1Style#">Blog</h1>
 		</div>
 	</div>
 </div>
 
-<!--- Body Main --->         
+<!--- Body Main --->          
 <section id="body-main">
 	<div class="container">
 		<div class="row">
-			<!--- Content --->         
+			<!--- Content --->          
 			<div class="col-sm-9">
 
 				#cb.event( "cbui_preIndexDisplay" )#

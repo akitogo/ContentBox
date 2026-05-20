@@ -115,7 +115,7 @@ if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
 writeOutput(
 "
 <li class=""categories"">
-	<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
 );
 
 if ( arguments.showPostCount ) {

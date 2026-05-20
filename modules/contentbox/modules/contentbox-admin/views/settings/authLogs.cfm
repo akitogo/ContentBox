@@ -45,7 +45,7 @@ href="#event.buildLink( prc.xehTruncate )#"
 
 
 	<cfif prc.featureEnabled>
-		<!--- templates --->         <table name="templates" id="templates" class="table table-striped-removed table-hover ">
+		<!--- templates --->          <table name="templates" id="templates" class="table table-striped-removed table-hover ">
 <thead>
 	<tr>
 		<th>Username / IP</th>

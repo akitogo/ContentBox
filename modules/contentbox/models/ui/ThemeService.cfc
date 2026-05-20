@@ -731,20 +731,20 @@ writeOutput( "</div></div></div>" );
 writeOutput( "<div class=""panel panel-default"">" );
 if ( thisSettingMD.group != "" ) {
 writeOutput(
-	"
-				<div class=""panel-heading"">
-					<h4 class=""panel-title"">
-				<a 	class=""accordion-toggle""
-					data-toggle=""collapse""
-					data-parent=""##settings-accordion""
-					href=""##settingtab-#hash( thisSettingMD.group )#""
-					style=""display: block""
-				>
-					#thisSettingMD.group#
-				</a>
-					</h4>
-				</div>
-			"
+"
+			<div class=""panel-heading"">
+				<h4 class=""panel-title"">
+			<a 	class=""accordion-toggle""
+				data-toggle=""collapse""
+				data-parent=""##settings-accordion""
+				href=""##settingtab-#hash( thisSettingMD.group )#""
+				style=""display: block""
+			>
+				#thisSettingMD.group#
+			</a>
+				</h4>
+			</div>
+		"
 );
 }
 
@@ -752,14 +752,14 @@ writeOutput(
 writeOutput(
 "
 <div id=""settingtab-#hash( thisSettingMD.group )#"" class=""panel-collapse collapse #firstPanel ? "in" : ""#"" role=""tabpanel"">
-	<div class=""panel-body"">
+<div class=""panel-body"">
 "
 );
 
 // Show group intro if there is one
 if ( len( thisSettingMD.groupIntro ) ) {
 writeOutput(
-	"<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>"
+"<div class=""themeGroupInfo"">" & thisSettingMD.groupIntro & "</div>"
 );
 }
 
@@ -774,8 +774,8 @@ writeOutput( "<div class=""form-group marginTop25"">" );
 // write out label
 writeOutput(
 html.label(
-	field   = settingName,
-	content = "#thisSettingMD.label# #requiredText#"
+field   = settingName,
+content = "#thisSettingMD.label# #requiredText#"
 )
 );
 
@@ -795,13 +795,13 @@ writeOutput( "<div class=""pb5"">" & thisSettingMD.fieldDescription & "</div>" )
 switch ( thisSettingMD.type ) {
 case "boolean": {
 writeOutput(
-	html.select(
-			name          = settingName,
-			options       = "true,false",
-			selectedValue = thisSettingMD.defaultValue,
-			title         = thisSettingMD.title,
-			class         = "form-control input-lg"
-		)
+html.select(
+		name          = settingName,
+		options       = "true,false",
+		selectedValue = thisSettingMD.defaultValue,
+		title         = thisSettingMD.title,
+		class         = "form-control input-lg"
+	)
 );
 break;
 }
@@ -809,58 +809,58 @@ case "select": {
 var options = "";
 // Check options UDF
 if ( structKeyExists( thisSettingMD, "optionsUDF" ) ) {
-	options = invoke( oTheme, thisSettingMD.optionsUDF );
+options = invoke( oTheme, thisSettingMD.optionsUDF );
 } else if ( structKeyExists( thisSettingMD, "options" ) ) {
-	options = thisSettingMD.options;
+options = thisSettingMD.options;
 }
 writeOutput(
-	html.select(
-			name          = settingName,
-			options       = options,
-			selectedValue = thisSettingMD.defaultValue,
-			title         = thisSettingMD.title,
-			class         = "form-control input-lg"
-		)
+html.select(
+		name          = settingName,
+		options       = options,
+		selectedValue = thisSettingMD.defaultValue,
+		title         = thisSettingMD.title,
+		class         = "form-control input-lg"
+	)
 );
 break;
 }
 case "textarea": {
 writeOutput(
-	html.textarea(
-			name     = settingName,
-			required = requiredValidator,
-			title    = thisSettingMD.title,
-			value    = thisSettingMD.defaultValue,
-			class    = "form-control",
-			rows     = 5
-		)
+html.textarea(
+		name     = settingName,
+		required = requiredValidator,
+		title    = thisSettingMD.title,
+		value    = thisSettingMD.defaultValue,
+		class    = "form-control",
+		rows     = 5
+	)
 );
 break;
 }
 case "color": {
 writeOutput(
-	html.inputField(
-			name     = settingName,
-			class    = "textfield",
-			required = requiredValidator,
-			title    = thisSettingMD.title,
-			value    = thisSettingMD.defaultValue,
-			class    = "form-control",
-			type     = "color"
-		)
+html.inputField(
+		name     = settingName,
+		class    = "textfield",
+		required = requiredValidator,
+		title    = thisSettingMD.title,
+		value    = thisSettingMD.defaultValue,
+		class    = "form-control",
+		type     = "color"
+	)
 );
 break;
 }
 default: {
 writeOutput(
-	html.textfield(
-			name     = settingName,
-			class    = "textfield",
-			required = requiredValidator,
-			title    = thisSettingMD.title,
-			value    = thisSettingMD.defaultValue,
-			class    = "form-control"
-		)
+html.textfield(
+		name     = settingName,
+		class    = "textfield",
+		required = requiredValidator,
+		title    = thisSettingMD.title,
+		value    = thisSettingMD.defaultValue,
+		class    = "form-control"
+	)
 );
 }
 }
@@ -898,18 +898,18 @@ writeOutput( "</div>" );
 		// cfformat-ignore-start
 		return "<div class=""modal fade"" tabindex=""-1"" role=""dialog"" id=""help_#arguments.settingName#"">
 <div class=""modal-dialog"" role=""document"">
-  <div class=""modal-content"">
-    <div class=""modal-header"">
-      <button type=""button"" class=""close"" data-dismiss=""modal"" aria-label=""Close""><span aria-hidden=""true"">&times;</span></button>
-      <h4 class=""modal-title"">#arguments.thisSettingMD.label#</h4>
-    </div>
-    <div class=""modal-body"">
-     #arguments.thisSettingMD.fieldHelp#
-    </div>
-    <div class=""modal-footer"">
-      <button type=""button"" class=""btn btn-default"" data-dismiss=""modal"">Close</button>
-    </div>
-  </div><!-- /.modal-content -->
+ <div class=""modal-content"">
+   <div class=""modal-header"">
+     <button type=""button"" class=""close"" data-dismiss=""modal"" aria-label=""Close""><span aria-hidden=""true"">&times;</span></button>
+     <h4 class=""modal-title"">#arguments.thisSettingMD.label#</h4>
+   </div>
+   <div class=""modal-body"">
+    #arguments.thisSettingMD.fieldHelp#
+   </div>
+   <div class=""modal-footer"">
+     <button type=""button"" class=""btn btn-default"" data-dismiss=""modal"">Close</button>
+   </div>
+ </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->";
 

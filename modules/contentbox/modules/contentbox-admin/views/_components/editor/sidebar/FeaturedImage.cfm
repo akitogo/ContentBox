@@ -16,13 +16,13 @@
 	id="featuredImagePanel"
 	class="panel-collapse collapse">
 	<div class="panel-body">
-		<div class="form-group text-center"><!--- Select and Cancel Buttons --->         <button
+		<div class="form-group text-center"><!--- Select and Cancel Buttons --->          <button
 	class="btn btn-primary"
 	onclick="loadAssetChooser( 'featuredImageCallback' )"
 	type="button"
 >
 	Select Image
-</button><!--- Featured Image Selection --->         <div
+</button><!--- Featured Image Selection --->          <div
 class="
 		<cfif !len( prc.oContent.getFeaturedImage() )>
 			hide
@@ -34,7 +34,7 @@ class="
 		 form-group"
 						id="featuredImageControls"
 					>
-						#html.hiddenField( name = "featuredImage", bind = prc.oContent )#<!--- Image Preview --->         
+						#html.hiddenField( name = "featuredImage", bind = prc.oContent )#<!--- Image Preview --->          
 						<div class="m10">
 
 
@@ -54,7 +54,7 @@ class="
 		
 						</div>
 
-						<!--- Clear Image --->         
+						<!--- Clear Image --->          
 						<a class="btn btn-danger" href="javascript:cancelFeaturedImage()">Clear Image</a>
 					</div>
 				</div>

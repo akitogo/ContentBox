@@ -3,7 +3,7 @@
 		name   = "notificationsSettingsForm",
 		action = prc.xehSaveSettings
 	)#<fieldset>
-<legend><i class="fa fa-bell fa-lg"></i> Notifications</legend><!--- Site Email --->         <div class="form-group">#html.label(
+<legend><i class="fa fa-bell fa-lg"></i> Notifications</legend><!--- Site Email --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_email",
 		content = "Administrator Email:"
@@ -15,7 +15,7 @@
 		required = "required",
 		title    = "The email that receives all notifications"
 	)#</div>
-</div><!--- Outgoing Email --->         <div class="form-group">#html.label(
+</div><!--- Outgoing Email --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_site_outgoingEmail",
 		content = "Outgoing Email:"
@@ -28,7 +28,7 @@
 		title    = "The email that sends all email notifications out",
 		type     = "email"
 	)#</div>
-</div><!--- Notification on User Create --->         <div class="form-group">#html.label(
+</div><!--- Notification on User Create --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_notify_author",
 		content = "<i class='fa fa-user'></i> Send a notification when a user has been created or removed:"
@@ -37,7 +37,7 @@
 		data    = { toggle: "toggle", match: "cb_notify_author" },
 		checked = prc.cbSettings.cb_notify_author
 	)##html.hiddenField( name = "cb_notify_author", value = prc.cbSettings.cb_notify_author )#</div>
-</div><!--- Notification on Entry Create --->         <div class="form-group">#html.label(
+</div><!--- Notification on Entry Create --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_notify_entry",
 		content = "<i class='fas fa-blog'></i> Send a notification when a blog entry has been created or removed:"
@@ -46,7 +46,7 @@
 		data    = { toggle: "toggle", match: "cb_notify_entry" },
 		checked = prc.cbSettings.cb_notify_entry
 	)##html.hiddenField( name = "cb_notify_entry", value = prc.cbSettings.cb_notify_entry )#</div>
-</div><!--- Notification on Page Create --->         <div class="form-group">#html.label(
+</div><!--- Notification on Page Create --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_notify_page",
 		content = "<i class='fa fa-file'></i> Send a notification when a page has been created or removed:"
@@ -55,7 +55,7 @@
 		data    = { toggle: "toggle", match: "cb_notify_page" },
 		checked = prc.cbSettings.cb_notify_page
 	)##html.hiddenField( name = "cb_notify_page", value = prc.cbSettings.cb_notify_page )#</div>
-</div><!--- Notification on ContentStore Create --->         <div class="form-group">#html.label(
+</div><!--- Notification on ContentStore Create --->          <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_notify_contentstore",
 		content = "<i class='fa fa-hdd'></i> Send a notification when a content store object has been created or removed:"
@@ -68,6 +68,6 @@
 		value = prc.cbSettings.cb_notify_contentstore
 	)#</div>
     </div>
-</fieldset><!--- Button Bar --->         <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->          <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

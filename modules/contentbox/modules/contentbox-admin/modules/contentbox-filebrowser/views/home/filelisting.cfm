@@ -143,7 +143,7 @@
 	}
 </cfscript>
 <cfoutput>
-	<div class="clear-both"><!--- Current Root --->         <input type="hidden" name="fbRoot" id="fbRoot" value="#prc.fbSafeCurrentRoot#">#announce( "fb_preFileListing" )##cbMessageBox().renderit()#<!--- Location Bar --->         <div id="locationBar" class="clear-both mb10 well well-sm">#announce( "fb_preLocationBar" )#
+	<div class="clear-both"><!--- Current Root --->          <input type="hidden" name="fbRoot" id="fbRoot" value="#prc.fbSafeCurrentRoot#">#announce( "fb_preFileListing" )##cbMessageBox().renderit()#<!--- Location Bar --->          <div id="locationBar" class="clear-both mb10 well well-sm">#announce( "fb_preLocationBar" )#
 	<cfset crumbDir = "">
 	<cfset rootPath = replaceNoCase(
 	prc.fbCurrentRoot,
@@ -224,11 +224,11 @@
 			<cfset relURL = $getUrlRelativeToPath( prc.fbwebRootPath, plainURL )>
 			<cfset mediaURL = ( ( prc.fbSettings.useMediaPath ) ? $getURLMediaPath( prc.fbDirRoot, plainURL ) : relURL )>
 			<cfif prc.fbPreferences.listType EQ "grid">
-				<!--- Grid Listing --->         <div class="fbItemBox filterDiv rounded">
+				<!--- Grid Listing --->          <div class="fbItemBox filterDiv rounded">
 <div class="fbItemBoxPreview">
 
 				<cfif item.type EQ "directory">
-					<!--- Folder --->         <div id="fb-dir-#validIDName#"
+					<!--- Folder --->          <div id="fb-dir-#validIDName#"
 onClick="javascript:return false;"
 class="folders"
 title="#item.name#"
@@ -243,7 +243,7 @@ onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
 <a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/directory.png" border="0"  alt="Folder"></a>
 <br/>#item.name#</div>
 				<cfelseif prc.fbSettings.showFiles>
-					<!--- Display the DiV --->         <div id="fb-file-#validIDName#"
+					<!--- Display the DiV --->          <div id="fb-file-#validIDName#"
 class="files"
 data-type="file"
 data-name="#item.Name#"
@@ -272,12 +272,12 @@ src="#prc.fbModRoot#/includes/images/bigfile.png"
 	alt="file"
 >
 					</cfif>
-					<!--- FileName --->         
+					<!--- FileName --->          
 								<div class="mt5">
 									#item.name#
 								</div>
 
-								<!--- File Size --->         
+								<!--- File Size --->          
 								<div class="text-muted mt5">
 									(#numberFormat( item.size / 1024 )# kb)
 								</div>
@@ -302,7 +302,7 @@ src="#prc.fbModRoot#/includes/images/bigfile.png"
 
 			<cfelse>
 				<cfif item.type EQ "directory">
-					<!--- Folder --->         <div id="fb-dir-#validIDName#"
+					<!--- Folder --->          <div id="fb-dir-#validIDName#"
 class="folders filterDiv"
 data-type="dir"
 data-name="#item.Name#"
@@ -314,7 +314,7 @@ data-quickview="false"
 onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
 <a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/folder.png" border="0"  alt="Folder"></a>#item.name#</div>
 				<cfelseif prc.fbSettings.showFiles>
-					<!--- Display the DiV --->         <div id="fb-file-#validIDName#"
+					<!--- Display the DiV --->          <div id="fb-file-#validIDName#"
 class="files filterDiv"
 data-type="file"
 data-name="#item.Name#"
@@ -337,7 +337,7 @@ alt="file">#item.name#</div>
 	</cfif>
 	#announce( "fb_postFileListing" )#
 </div>
-<!--- Hidden upload iframe --->         
+<!--- Hidden upload iframe --->          
 <iframe name="upload-iframe" id="upload-iframe" style="display: none"></iframe>
 <form 	id="upload-form"
 		name="upload-form"
