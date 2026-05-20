@@ -1,11 +1,11 @@
 {
     "app":{
-        "cfengine":"lucee@5",
-        "serverHomeDirectory":".engines/lucee5"
+        "cfengine":"lucee@7",
+        "serverHomeDirectory":".engines/lucee7"
     },
-    "name":"contentbox-lucee5",
+    "name":"contentbox-lucee7",
     "JVM":{
-        "javaVersion":"openjdk11_jre",
+        "javaVersion":"openjdk21_jre",
         "heapSize":"1024",
         "args":"-Dcom.sun.net.ssl.enableECC=false"
     },

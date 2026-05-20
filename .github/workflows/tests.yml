@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfengine: [ "lucee@5", "adobe@2023", "adobe@2025" ]
+        cfengine: [ "lucee@6", "adobe@2023", "adobe@2025" ]
         coldboxVersion: [ "^8" ]
         jdkVersion: [ "21" ]
         experimental: [ false ]
@@ -32,8 +32,8 @@ jobs:
             coldboxVersion: "^8"
             jdkVersion: "21"
             experimental: true
-          # Lucee 6 has a regression
-          - cfengine: "lucee@6"
+          # Lucee 7
+          - cfengine: "lucee@7"
             coldboxVersion: "^8"
             jdkVersion: "21"
             experimental: true
@@ -43,7 +43,7 @@ jobs:
             coldboxVersion: "be"
             jdkVersion: "21"
             experimental: true
-          - cfengine: "lucee@6"
+          - cfengine: "lucee@7"
             coldboxVersion: "be"
             jdkVersion: "21"
             experimental: true
