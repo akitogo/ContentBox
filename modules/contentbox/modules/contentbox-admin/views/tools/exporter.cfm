@@ -19,7 +19,7 @@
 		target     = "_blank"
 	)#<div class="panel panel-default">
 
-<div class="panel-heading"><!--- Title --->      <div class="size16 p10">
+<div class="panel-heading"><!--- Title --->       <div class="size16 p10">
 		<i class="fa fa-archive"></i> Box Archives
 	</div>
 </div>
@@ -30,7 +30,7 @@
 		From this panel you can choose to export your entire ContentBox site or parts of it as a <strong>*.box</strong> archive package.
 	</p>
 
-	<div class="row"><!--- EVERYTHING --->      <div class="col-md-6">
+	<div class="row"><!--- EVERYTHING --->       <div class="col-md-6">
 <div class="well well-sm text-center alert-success rounded" style="min-height: 185px">
 	<h2>Option ##1: Everything!</h2>
 	<small>No mess, no fuss, just a full export of EVERYTHING! </small><br /><br />
@@ -42,7 +42,7 @@
 	)# Export Everything
 		</label>
 	</div>
-</div><!--- Mr Picky --->      <div class="col-md-6">
+</div><!--- Mr Picky --->       <div class="col-md-6">
 <div class="well well-sm text-center rounded" style="min-height: 185px">
 	<h2>Option ##2: Mr. Picky</h2>
 	<small>For the more discriminating, select only the bits that you want to export.</small><br />
@@ -54,7 +54,7 @@
 			</label>
 		</div>
 	</div>
-</div><!--- Mr Picky Controls --->      <fieldset style="display:none;" id="selective_controls" class="well">
+</div><!--- Mr Picky Controls --->       <fieldset style="display:none;" id="selective_controls" class="well">
 <div class="row">
 	<div class="col-md-3">
 		<h4><i class="fa fa-file fa-lg"></i> Pages</h4>
@@ -400,7 +400,7 @@
 											</cfif>
 											<cfset counter++>
 										</cfif>
-										</cfloop> --->      
+										</cfloop> --->       
 										<!-- for() loop-->
 
 
@@ -457,7 +457,7 @@
 
 					</fieldset>
 
-					<!--- Submit Button --->      
+					<!--- Submit Button --->       
 					<div class="actionBar" id="uploadBar">
 						<button
 							type 	= "button"
@@ -478,7 +478,7 @@
 						</button>
 					</div>
 
-					<!--- Loader --->      
+					<!--- Loader --->       
 					<div class="loaders" id="uploadBarLoader">
 						<i class="fa fa-spinner fa-spin fa-lg icon-4x"></i><br/>
 					   <h2> Doing some awesome exporting action, please wait...</h2><br>
@@ -493,7 +493,7 @@
 			<div class="panel panel-default">
 
 				<div class="panel-heading">
-					<!--- Title --->      
+					<!--- Title --->       
 					<div class="size16 p10">
 						<i class="fa fa-cloud-download-alt"></i> Static Site Generator
 					</div>
@@ -508,7 +508,7 @@
 						</label>
 					</div>
 
-					<!--- Submit Button --->      
+					<!--- Submit Button --->       
 					<div class="actionBar" id="siteGeneratorBar">
 						#html.button(
 		type    = "button",
@@ -518,7 +518,7 @@
 	)#
 					</div>
 
-					<!--- Loader --->      
+					<!--- Loader --->       
 					<div class="text-center loaders" id="siteGeneratorLoader">
 						<i class="fa fa-spinner fa-spin fa-4x"></i><br/>
 						<h2>Building your beautiful static site, please wait...</h2><br>
@@ -533,7 +533,7 @@
 	</div>
 </div>
 
-<!--- ************************************************************************************************ --->      
+<!--- ************************************************************************************************ --->       
 <div id="exportPreviewDialog" class="modal fade" role="dialog" tabindex="-1">
 	<div class="modal-dialog modal-lg">
 

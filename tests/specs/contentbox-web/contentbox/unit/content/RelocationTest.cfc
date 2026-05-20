@@ -6,6 +6,7 @@
  */
 component extends ="tests.resources.BaseTest" autowire="true" {
 	property name="relocationService" inject="RelocationService@contentbox";
+
 	property name="siteService" inject="SiteService@contentbox";
 
 	function run( testResults, testBox ) {

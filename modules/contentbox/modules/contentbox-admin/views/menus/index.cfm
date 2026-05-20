@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <!--- entries container --->      
+                    <!--- entries container --->       
                     <div id="menuTableContainer">
 						<p class="text-center">
 							<i id="contentLoader" class="fa fa-spinner fa-spin fa-lg icon-4x"></i>

@@ -2,7 +2,7 @@
 	<cfscript>
 
 </cfscript>
-	<!--- Publishing Panel Component --->      <div
+	<!--- Publishing Panel Component --->       <div
 id="publishingPanel"
 x-data="{
 	isPublished : #( prc.oContent.isLoaded() && prc.oContent.getIsPublished() ? "true" : "false" )#,
@@ -11,7 +11,7 @@ x-data="{
 			this.publishingPanelOpen = !this.publishingPanelOpen
 		}
 	}"
-><!--- Publishing Bar --->      <div
+><!--- Publishing Bar --->       <div
 	id="publishingBar"
 	class="well well-sm"
 	x-show="publishingPanelOpen"
@@ -21,7 +21,7 @@ x-data="{
 
 	<h4>
 		<i class="fa fa-calendar"></i> Publishing Details
-	</h4><!--- publish date --->      <div>#html.label(
+	</h4><!--- publish date --->       <div>#html.label(
 		class   = "control-label",
 		field   = "publishedDate",
 		content = "Publish Date (<a href='javascript:publishNow()'>Now</a>)"
@@ -58,7 +58,7 @@ x-data="{
 			</div>
 		</div>
 	</div>
-</div><!--- expire date --->      <div>#html.label(
+</div><!--- expire date --->       <div>#html.label(
 		class   = "control-label",
 		field   = "expireDate",
 		content = "Expiration Date"
@@ -92,7 +92,7 @@ x-data="{
 			</div>
 		</div>
 	</div>
-</div><!--- Changelog --->      <div class="form-group">
+</div><!--- Changelog --->       <div class="form-group">
 <label for="changelog" class="control-label">Commit Changelog:</label>
 <div class="controls">#html.textField(
 		name  = "changelog",
@@ -120,14 +120,14 @@ x-data="{
 		</button>
 	</div>
 
-</div><!--- Action Bar --->      <div
+</div><!--- Action Bar --->       <div
 	class="actionBar"
 	id="actionBar"
 	x-show="!publishingPanelOpen"
 	x-cloak
 	x-transition
 >
-	<div class="btn-group"><!--- QUICK SAVE OPTIONS --->      <button
+	<div class="btn-group"><!--- QUICK SAVE OPTIONS --->       <button
 			type="button"
 			class="btn dropdown-toggle"
 			:class="isPublished ? 'btn-default' : 'btn-secondary'"
@@ -167,7 +167,7 @@ x-data="{
 	>
 		Publish
 	</button>
-</div><!--- Loader --->      <div class="loaders" id="uploadBarLoader">
+</div><!--- Loader --->       <div class="loaders" id="uploadBarLoader">
 		<i class="fa fa-spinner fa-spin fa-lg fa-2x"></i>
 		<div id="uploadBarLoaderStatus" class="center text-red">Saving...</div>
 	</div>

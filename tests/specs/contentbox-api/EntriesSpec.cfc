@@ -1,6 +1,8 @@
 component extends="tests.resources.BaseApiTest" {
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="categoryService" inject="categoryService@contentbox";
+
 	property name="entryService" inject="entryService@contentbox";
 
 	/*********************************** LIFE CYCLE Methods ***********************************/
@@ -216,10 +218,8 @@ component extends="tests.resources.BaseApiTest" {
 								then(
 									"it should display an error message",
 									() => {
-										var event = this.post(
-												"cbapi/v1/sites/default/entries",
-												{ slug: "A nice site" }
-											);
+										var event = this.post( "cbapi/v1/sites/default/entries",
+												{ slug: "A nice site" } );
 										expect( event.getResponse() ).toHaveStatus( 400,
 												event.getResponse().getMessagesString() );
 										// debug( event.getResponse().getMemento() );

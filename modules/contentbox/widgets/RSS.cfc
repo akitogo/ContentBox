@@ -96,14 +96,14 @@ writeOutput( "<ul class=""rssItems"">
 " );
 // iterate and create
 for ( var x = 1; x LTE arguments.entries.recordcount; x++ ) {
-	writeOutput(
-		"<li class=""rssItem"">
+writeOutput(
+	"<li class=""rssItem"">
 <a href=""#arguments.entries.URL[ x ]#"" target=""#arguments.linkTarget#"">#arguments.entries.title[ x ]#"
-	);
-	if ( arguments.showBody ) {
-		writeOutput( "<br/>#arguments.entries.body[ x ]#" );
-	}
-	writeOutput( "
+);
+if ( arguments.showBody ) {
+	writeOutput( "<br/>#arguments.entries.body[ x ]#" );
+}
+writeOutput( "
 </li>
 " );
 }

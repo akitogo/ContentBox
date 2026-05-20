@@ -1,11 +1,11 @@
 <cfoutput>
-	<!--- post --->      <div class="post" id="post_#entry.getContentID()#"><!--- Title --->      <div class="post-title"><!--- Title --->      <h2>
+	<!--- post --->       <div class="post" id="post_#entry.getContentID()#"><!--- Title --->       <div class="post-title"><!--- Title --->       <h2>
 <a
 	href="#cb.linkEntry( entry )#"
 rel="bookmark"
 title="#entry.getTitle()#"
 >#entry.getTitle()#</a>
-</h2><!--- Post detail --->      <div class="row">
+</h2><!--- Post detail --->       <div class="row">
 <div class="col-sm-7 pull-left">
 	<span class="text-muted">Posted by</span>
 	<i class="icon-user"></i>
@@ -13,7 +13,7 @@ title="#entry.getTitle()#"
 </div>
 <div class="col-sm-5 pull-right text-right">
 	<i class="fa fa-calendar"></i> #entry.getDisplayPublishedDate()#</div>
-</div><!--- content --->      <div class="post-content">
+</div><!--- content --->       <div class="post-content">
 	<cfif entry.hasExcerpt()>
 		#entry.renderExcerpt()#<div class="post-more">
 <a href="#cb.linkEntry( entry )#" title="Read The Full Entry!">
@@ -52,7 +52,7 @@ title="#entry.getTitle()#"
 			<a href="#cb.linkEntry(entry)###comments" title="View Comments"><i class="icon-comments icon-2x"></i> #entry.getNumberOfApprovedComments()#</a>
 			</cfif>
 		<!--- </div> --->
-	</div> --->      
+	</div> --->       
 
 </div>
 

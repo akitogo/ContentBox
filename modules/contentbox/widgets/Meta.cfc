@@ -105,12 +105,12 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 writeOutput( "<ul id=""meta"">" );
 // iterate and create
 for ( var x = 1; x LTE arrayLen( arguments.links ); x++ ) {
-	writeOutput(
-		"<li class=""archives"">
-		<a href=""#links[ x ].link#"">#links[ x ].title#</a>
-		</li>
-	"
-	);
+writeOutput(
+	"<li class=""archives"">
+	<a href=""#links[ x ].link#"">#links[ x ].title#</a>
+	</li>
+"
+);
 }
 // close ul
 writeOutput( "</ul>" );

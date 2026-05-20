@@ -1,6 +1,6 @@
 <cfoutput>
 	#html.startForm( name = "securitySettingsForm", action = prc.xehSaveSettings )#<fieldset>
-<legend><i class="fa fa-key fa-lg"></i> Password Options</legend><!--- Min Password Length --->      <div class="form-group">
+<legend><i class="fa fa-key fa-lg"></i> Password Options</legend><!--- Min Password Length --->       <div class="form-group">
 <label class="control-label" for="cb_security_min_password_length">
 	Minimum Password Length:
 	<span class="badge badge-info" id="cb_security_min_password_length_label">#prc.cbSettings.cb_security_min_password_length#</span>
@@ -24,7 +24,7 @@
 			<strong class="m10">50</strong>
 		</div>
 	</div>
-</div><!--- Password Reset Token Expiration --->      <div class="form-group">
+</div><!--- Password Reset Token Expiration --->       <div class="form-group">
 <label class="control-label" for="cb_security_password_reset_expiration">
 	Reset Password Token Expiration:
 	<span class="badge badge-info" id="cb_security_password_reset_expiration_label">#prc.cbSettings.cb_security_password_reset_expiration#</span>
@@ -55,7 +55,7 @@
 </fieldset>
 
 <fieldset>
-	<legend><i class="fa fa-paw fa-lg"></i> Login Tracker</legend><!--- Login Blocker --->      <div class="form-group">#html.label(
+	<legend><i class="fa fa-paw fa-lg"></i> Login Tracker</legend><!--- Login Blocker --->       <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_security_login_blocker",
 		content = "Enable Login Tracker:"
@@ -68,7 +68,7 @@
 		name  = "cb_security_login_blocker",
 		value = prc.cbSettings.cb_security_login_blocker
 	)#</div>
-</div><!--- Max Attempts --->      <div class="form-group">
+</div><!--- Max Attempts --->       <div class="form-group">
      <label class="control-label" for="cb_security_max_attempts">
 Max Invalid Attempts To Block:
 <span class="badge badge-info" id="cb_security_max_attempts_label">#prc.cbSettings.cb_security_max_attempts#</span>
@@ -89,7 +89,7 @@ Max Invalid Attempts To Block:
 >
 <strong class="m10">50</strong>
      </div>
- </div><!--- Block Time --->      <div class="form-group">
+ </div><!--- Block Time --->       <div class="form-group">
      <label class="control-label" for="cb_security_blocktime">
 Minutes To Block:
 <span class="badge badge-info" id="cb_security_blocktime_label">#prc.cbSettings.cb_security_blocktime#</span>
@@ -110,7 +110,7 @@ Minutes To Block:
 >
 <strong class="m10">60</strong>
      </div>
- </div><!--- Max Auth Logs --->      <div class="form-group">
+ </div><!--- Max Auth Logs --->       <div class="form-group">
      <label class="control-label" for="cb_security_max_auth_logs">
 Max Auth Logs:
 <span class="badge badge-info" id="cb_security_max_auth_logs_label">#prc.cbSettings.cb_security_max_auth_logs#</span>
@@ -137,7 +137,7 @@ Max Auth Logs:
 </fieldset>
 
 <fieldset>
-	<legend><i class="fa fa-filter"></i> <strong>Rate Limiter</strong></legend><!--- Rate Limiter --->      <div class="form-group">#html.label(
+	<legend><i class="fa fa-filter"></i> <strong>Rate Limiter</strong></legend><!--- Rate Limiter --->       <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_security_rate_limiter",
 		content = "Enable Rate Limiter:"
@@ -150,7 +150,7 @@ Max Auth Logs:
 		name  = "cb_security_rate_limiter",
 		value = prc.cbSettings.cb_security_rate_limiter
 	)#</div>
-</div><!--- Rate Limiter logging --->      <div class="form-group">#html.label(
+</div><!--- Rate Limiter logging --->       <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_security_rate_limiter_logging",
 		content = "Enable Rate Limiter Logging:"
@@ -166,7 +166,7 @@ Max Auth Logs:
 		name  = "cb_security_rate_limiter_logging",
 		value = prc.cbSettings.cb_security_rate_limiter_logging
 	)#</div>
-</div><!--- Bot Limiter --->      <div class="form-group">#html.label(
+</div><!--- Bot Limiter --->       <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_security_rate_limiter_bots_only",
 		content = "Enable For Automated Requests Only:"
@@ -182,7 +182,7 @@ Max Auth Logs:
 		name  = "cb_security_rate_limiter_bots_only",
 		value = prc.cbSettings.cb_security_rate_limiter_bots_only
 	)#</div>
-</div><!--- Limiter Count --->      <div class="form-group">
+</div><!--- Limiter Count --->       <div class="form-group">
      <label class="control-label" for="cb_security_rate_limiter_count">
 Limiter Count:
 <span class="badge badge-info" id="cb_security_rate_limiter_count_label">#prc.cbSettings.cb_security_rate_limiter_count#</span>
@@ -203,7 +203,7 @@ Limiter Count:
 		>
 		<strong class="m10">25</strong>
        </div>
-</div><!--- Limiter Duration --->      <div class="form-group">
+</div><!--- Limiter Duration --->       <div class="form-group">
      <label class="control-label" for="cb_security_rate_limiter_duration">
 Limiter Duration (Seconds):
 <span class="badge badge-info" id="cb_security_rate_limiter_duration_label">#prc.cbSettings.cb_security_rate_limiter_duration#</span>
@@ -224,7 +224,7 @@ Limiter Duration (Seconds):
 		>
 		<strong class="m10">60</strong>
        </div>
-</div><!--- Limiter Message --->      <div class="form-group">#html.label(
+</div><!--- Limiter Message --->       <div class="form-group">#html.label(
 		field   = "cb_security_rate_limiter_message",
 		class   = "control-label",
 		content = "Limiter Message:"
@@ -252,7 +252,7 @@ Limiter Duration (Seconds):
 </fieldset>
 
 <fieldset>
-    <legend><i class="fa fa-key fa-lg"></i>  Secure Sockets Layer (SSL) Encryption</legend><!--- Admin SSL --->      <div class="form-group">#html.label(
+    <legend><i class="fa fa-key fa-lg"></i>  Secure Sockets Layer (SSL) Encryption</legend><!--- Admin SSL --->       <div class="form-group">#html.label(
 		class   = "control-label",
 		field   = "cb_admin_ssl",
 		content = "Admin Force SSL (Secure Sockets Layer):"
@@ -263,6 +263,6 @@ Limiter Duration (Seconds):
 		checked = prc.cbSettings.cb_admin_ssl
 	)##html.hiddenField( name = "cb_admin_ssl", value = prc.cbSettings.cb_admin_ssl )#</div>
     </div>
-</fieldset><!--- Button Bar --->      <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
+</fieldset><!--- Button Bar --->       <div class="form-actions mt20">#html.submitButton( value = "Save Settings",
 		class = "btn btn-danger" )#</div>#html.endForm()#
 </cfoutput>

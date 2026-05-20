@@ -1,17 +1,17 @@
 <cfoutput>
-	<!--- Snapshot Box --->      <div class="panel panel-primary">
+	<!--- Snapshot Box --->       <div class="panel panel-primary">
   <div class="panel-heading">
 <h3 class="panel-title">
 	<i class="fa fa-flag-checkered fa-lg"></i> #$r( "dashboard.latestSnapshot.title@admin" )#</h3>
 </div>
 
-   <div class="panel-body panel-group accordion" id="accordion"><!--- Begin Top Visited --->      <div class="panel panel-default">
+   <div class="panel-body panel-group accordion" id="accordion"><!--- Begin Top Visited --->       <div class="panel panel-default">
 <div class="panel-heading">
     <a class="accordion-toggle block" data-toggle="collapse" data-parent="##accordion" href="##topcontent">
         <i class="fa fa-chart-pie fa-lg"></i> #$r( "dashboard.latestSnapshot.topHitsAndComments.head@admin" )#</a>
 </div>
 <div id="topcontent" class="panel-collapse collapse active in">
-    <div class="panel-body"><!--- Top Visited Content Chart --->      <div id="top-visited-chart"></div><!--- Table Report --->      <table class="table  table-hover table-striped" width="100%">
+    <div class="panel-body"><!--- Top Visited Content Chart --->       <div id="top-visited-chart"></div><!--- Table Report --->       <table class="table  table-hover table-striped" width="100%">
 <thead>
     <tr>
         <th>#$r(
@@ -38,9 +38,9 @@
 	
                         </tbody>
                     </table>
-                    <!--- Top Visited Content Chart --->      
+                    <!--- Top Visited Content Chart --->       
                     <div id="top-commented-chart"></div>
-                    <!--- Table Report --->      
+                    <!--- Table Report --->       
                     <table class="table  table-hover table-striped" width="100%">
                         <thead>
                             <tr>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <!--- Begin Discussions --->      
+        <!--- Begin Discussions --->       
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a class="accordion-toggle block" data-toggle="collapse" data-parent="##accordion" href="##discussion">
@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <!--- Begin Content --->      
+        <!--- Begin Content --->       
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a class="accordion-toggle block" data-toggle="collapse" data-parent="##accordion" href="##content">
@@ -149,7 +149,7 @@
                 </div>
             </div>
         </div>
-        <!--- End Content --->      
+        <!--- End Content --->       
     </div>
 </div>
 

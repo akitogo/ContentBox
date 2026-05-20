@@ -51,15 +51,15 @@ component extends="contentbox.models.ui.BaseWidget" singleton {
 		saveContent variable="rString" {
 // title
 if ( len( arguments.title ) ) {
-	writeOutput(
-		"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
-	);
+writeOutput(
+	"<h#arguments.titlelevel#>#arguments.title#</h#arguments.titlelevel#>"
+);
 }
 // Build Type
 if ( arguments.dropdown ) {
-	writeOutput( buildDropDown( categories, arguments.showPostCount ) );
+writeOutput( buildDropDown( categories, arguments.showPostCount ) );
 } else {
-	writeOutput( buildList( categories, arguments.showPostCount ) );
+writeOutput( buildList( categories, arguments.showPostCount ) );
 }
 }
 		// cfformat-ignore-end
@@ -73,25 +73,25 @@ if ( arguments.dropdown ) {
 		// cfformat-ignore-start
 		saveContent variable="rString" {
 writeOutput(
-	"
-	<select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
-		<option value=""##"">Select Category</option>
+"
+<select name=""categories"" id=""categories"" onchange=""window.location=this.value"">
+	<option value=""##"">Select Category</option>
 "
 );
 
 // iterate and create
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
-	if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-		writeOutput(
-			"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-		);
+if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
+	writeOutput(
+		"<option value=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+	);
 
-		if ( arguments.showPostCount ) {
-			writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-		}
-
-		writeOutput( "</option>" );
+	if ( arguments.showPostCount ) {
+		writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 	}
+
+	writeOutput( "</option>" );
+}
 }
 
 // close
@@ -111,19 +111,19 @@ writeOutput( "</select>" );
 writeOutput( "<ul id=""categories""> " );
 
 for ( var x = 1; x LTE arrayLen( arguments.categories ); x++ ) {
-	if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
-		writeOutput(
-			"
-			<li class=""categories"">
-				<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
-		);
+if ( arguments.categories[ x ].getNumberOfEntries() GT 0 ) {
+	writeOutput(
+		"
+		<li class=""categories"">
+			<a href=""#cb.linkCategory( arguments.categories[ x ] )#"">#arguments.categories[ x ].getCategory()#"
+	);
 
-		if ( arguments.showPostCount ) {
-			writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
-		}
-
-		writeOutput( "</a></li>" );
+	if ( arguments.showPostCount ) {
+		writeOutput( " (#arguments.categories[ x ].getNumberOfEntries()#)" );
 	}
+
+	writeOutput( "</a></li>" );
+}
 }
 
 // close ul

@@ -90,8 +90,9 @@ component extends="tests.resources.BaseTest" {
 						expect( arrayLen( r.entries ) ).toBeFalse( "Year 2000" );
 
 						// year
-						var r = model.findPublishedEntriesByDate( year = dateFormat( entry.getPublishedDate(),
-									"yyyy" ) );
+						var r = model.findPublishedEntriesByDate(
+								year = dateFormat( entry.getPublishedDate(), "yyyy" )
+							);
 						expect( arrayLen( r.entries ) ).toBeGTE( 1, "Using entry publish year" );
 
 						// year + Month

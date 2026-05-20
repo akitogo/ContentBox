@@ -1,16 +1,16 @@
 <cfparam name="args.showDescription" default="false">
 <cfoutput>
-	<!--- Trigger --->      <button
+	<!--- Trigger --->       <button
 class="btn btn-more btn-sm"
 onclick="toggleMoreInfoPanel( '#args.content.getContentId()#' ); return false"
 	title="Click for More Info"
 >
 	<i id="moreInfoOpenButton-#args.content.getContentId()#" class="fa fa-ellipsis-h"></i>
 <i id="moreInfoCloseButton-#args.content.getContentId()#" class="fa fa-times-circle hidden"></i>
-</button><!--- More Panel --->      <div
+</button><!--- More Panel --->       <div
 class="text-muted hidden"
 id="moreInfo-#args.content.getContentId()#"
-><!--- Authors --->      <div class="mt10 mb5">
+><!--- Authors --->       <div class="mt10 mb5">
 <a
 	href="mailto:#args.content.getCreatorEmail()#"
 class="text-muted"
@@ -21,7 +21,7 @@ title="Created by #args.content.getCreatorName()#"
 		class = "img img-circle"
 	)#<span class="ml5">#args.content.getCreatorName()#</span>
 	</a>
-</div><!--- Created Date --->      <div
+</div><!--- Created Date --->       <div
 	class="mt10 mb5 ml5"
 	title="Created Date"
 >
@@ -35,7 +35,7 @@ title="Created by #args.content.getCreatorName()#"
 	</div>
 </div>
 	</cfif>
-	<!--- Slug --->      
+	<!--- Slug --->       
 		<div class="mt5">
 			<div class="text-muted">
 				<span title="Slug">

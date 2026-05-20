@@ -47,7 +47,7 @@
 
 
 		<cfelse>
-			<!--- MessageBox --->      <div class="alert alert-warning">You don't currently have any active subscriptions</div>
+			<!--- MessageBox --->       <div class="alert alert-warning">You don't currently have any active subscriptions</div>
 		</cfif>
 	</cfif>
 	

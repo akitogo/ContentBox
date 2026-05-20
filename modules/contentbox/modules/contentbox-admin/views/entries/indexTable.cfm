@@ -1,9 +1,9 @@
 <cfoutput>
-	<!--- Entries Count --->      <input
+	<!--- Entries Count --->       <input
 type="hidden"
 name="contentCount"
 id="contentCount"
-value="#prc.contentCount#"><!--- entries --->      <table
+value="#prc.contentCount#"><!--- entries --->       <table
 name="entries"
 id="entries"
 class="table table-striped-removed table-hover "
@@ -53,7 +53,7 @@ width="100%">
 		
 		
 		>
-			<!--- check box --->      
+			<!--- check box --->       
 			<td class="text-center">
 				<input type="checkbox" name="contentID" value="#entry.getContentID()#" />
 			</td>
@@ -84,7 +84,7 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#entry.getContentID()#
 )#
 			</td>
 
-			<!--- Status --->      
+			<!--- Status --->       
 			<td class="text-center">
 				#view(
 	view          = "_components/content/TableStatus",
@@ -93,7 +93,7 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#entry.getContentID()#
 )#
 			</td>
 
-			<!--- Show in Search --->      
+			<!--- Show in Search --->       
 			<td class="text-center">
 				#view(
 	view          = "_components/content/TableSearchStatus",
@@ -102,19 +102,19 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#entry.getContentID()#
 )#
 			</td>
 
-			<!--- hits --->      
+			<!--- hits --->       
 			<td class="text-center hidden-sm hidden-xs">
 				<span class="badge badge-info">#entry.getNumberOfHits()#</span>
 			</td>
 
-			<!--- Comments --->      
+			<!--- Comments --->       
 			<td class="text-center hidden-sm hidden-xs">
 				<span class="badge badge-info">#entry.getNumberOfComments()#</span>
 			</td>
 
-			<!--- Actions --->      
+			<!--- Actions --->       
 			<td class="text-center">
-				<!--- Entry Actions --->      
+				<!--- Entry Actions --->       
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Entry Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -127,7 +127,7 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#entry.getContentID()#
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_EDITOR,ENTRIES_ADMIN" )>
-			<!--- Clone Command --->      <li>
+			<!--- Clone Command --->       <li>
 <a
 	href="javascript:contentListHelper.openCloneDialog(
 		'#encodeForJavascript( entry.getContentID() )#',
@@ -138,7 +138,7 @@ href="#event.buildLink( prc.xehEntriesEditor )#/contentID/#entry.getContentID()#
 	</a>
 </li>
 			<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_ADMIN" )>
-				<!--- Delete Command --->      <li>
+				<!--- Delete Command --->       <li>
 <a
 	href="javascript:contentListHelper.remove( '#entry.getContentID()#' )"
 class="confirmIt"
@@ -147,7 +147,7 @@ data-title="<i class='fa fa-trash'></i> Delete Entry?">
 	</a>
 </li>
 			</cfif>
-			<!--- Edit Command --->      
+			<!--- Edit Command --->       
 						<li>
 							<a href="#event.buildLink( prc.xehEntryEditor )#/contentID/#entry.getContentID()#">
 								<i class="fas fa-pen fa-lg"></i> Edit
@@ -160,7 +160,7 @@ data-title="<i class='fa fa-trash'></i> Delete Entry?">
 
 		</cfif>
 		<cfif prc.oCurrentAuthor.hasPermission( "ENTRIES_ADMIN,TOOLS_EXPORT" )>
-			<!--- Export --->      <li>
+			<!--- Export --->       <li>
 <a
 	href="#event.buildLink( prc.xehEntryExport )#/contentID/#entry.getContentID()#.json"
 		target="_blank">
@@ -168,7 +168,7 @@ data-title="<i class='fa fa-trash'></i> Delete Entry?">
 	</a>
 </li>
 		</cfif>
-		<!--- History Command --->      
+		<!--- History Command --->       
 						<li>
 							<a href="#event.buildLink( prc.xehContentHistory )#/contentID/#entry.getContentID()#">
 								<i class="fa fa-history fa-lg"></i> History
@@ -180,7 +180,7 @@ data-title="<i class='fa fa-trash'></i> Delete Entry?">
 								<i class="fa fa-recycle fa-lg"></i> Reset Hits
 							</a>
 						</li>
-						<!--- View in Site --->      
+						<!--- View in Site --->       
 						<li>
 							<a
 								href="#prc.CBHelper.linkEntry( entry )#"

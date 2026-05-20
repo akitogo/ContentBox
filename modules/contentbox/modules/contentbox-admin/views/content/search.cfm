@@ -1,5 +1,5 @@
 <cfoutput>
-	<!--- Content --->      <span class="float-right">
+	<!--- Content --->       <span class="float-right">
 	<button class="btn btn-xs btn-danger" onclick="closeSearchBox()" title="close search panel">
 		<i class="fa fa-times"></i>
 	</button>

@@ -109,53 +109,53 @@ component accessors="true" singleton {
 		savecontent variable="results" {
 // Render out the results or error if the results had errors
 if ( arguments.searchResults.getError() ) {
-	writeOutput(
-		"
-		<div class='searchResults'>
-			<h2>Error Running Search</h2>
-			<p>
-				#arrayToList( arguments.searchResults.getErrorMessages(), "<br>" )#
-			</p>
-		</div>
+writeOutput(
 	"
-	);
-} else {
-	writeOutput(
-		"
-	<div class=""searchResults"">
-		<div class=""well well-sm searchResultsCount"">
-			Found <strong>#total#</strong> results in <strong>#arguments.searchResults.getSearchTime()#</strong>ms!
+	<div class='searchResults'>
+		<h2>Error Running Search</h2>
+		<p>
+			#arrayToList( arguments.searchResults.getErrorMessages(), "<br>" )#
+		</p>
 	</div>
+"
+);
+} else {
+writeOutput(
 	"
-	);
+<div class=""searchResults"">
+	<div class=""well well-sm searchResultsCount"">
+		Found <strong>#total#</strong> results in <strong>#arguments.searchResults.getSearchTime()#</strong>ms!
+</div>
+"
+);
 }
 
 // Render out the items
 for ( var item in searchItems ) {
-	writeOutput(
-		"
-		<div class=""panel panel-default"">
-			<div class=""panel-heading"">
-				<a href=""#cb.linkContent( item )#"" class=""panel-title"">#item.getTitle()#</a>
-			</div>
-			<div class=""panel-body"">
-				<p>#highlightSearchTerm( searchTerm, stripHTML( item.renderContent() ) )#</p>
-				<cite><span class=""label label-primary"">#item.getContentType()#</span> : <a href=""#cb.linkContent( item )#"">#cb.linkContent( item )#</a></cite><br/>
-			</div>
+writeOutput(
 	"
-	);
+	<div class=""panel panel-default"">
+		<div class=""panel-heading"">
+			<a href=""#cb.linkContent( item )#"" class=""panel-title"">#item.getTitle()#</a>
+		</div>
+		<div class=""panel-body"">
+			<p>#highlightSearchTerm( searchTerm, stripHTML( item.renderContent() ) )#</p>
+			<cite><span class=""label label-primary"">#item.getContentType()#</span> : <a href=""#cb.linkContent( item )#"">#cb.linkContent( item )#</a></cite><br/>
+		</div>
+"
+);
 
-	if ( item.hasCategories() ) {
-		writeOutput( "<div class=""panel-footer""><cite>Categories: " );
-		for ( var categoryItem in item.getCategoriesList() ) {
-			writeOutput(
-				" <span class=""label label-primary"">#categoryItem#</span>"
-			);
-		}
-		writeOutput( "</cite></div>" );
+if ( item.hasCategories() ) {
+	writeOutput( "<div class=""panel-footer""><cite>Categories: " );
+	for ( var categoryItem in item.getCategoriesList() ) {
+		writeOutput(
+			" <span class=""label label-primary"">#categoryItem#</span>"
+		);
 	}
+	writeOutput( "</cite></div>" );
+}
 
-	writeOutput( "</div>" );
+writeOutput( "</div>" );
 }
 
 writeOutput( "</div>" );

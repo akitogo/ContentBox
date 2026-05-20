@@ -1,5 +1,6 @@
 component extends="tests.resources.BaseApiTest" {
 	property name="siteService" inject="siteService@contentbox";
+
 	property name="RelocationService" inject="RelocationService@contentbox";
 
 	/*********************************** LIFE CYCLE Methods ***********************************/

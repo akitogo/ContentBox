@@ -8,7 +8,7 @@
 	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" )>
 		<div class="m5 mb20 row well well-info rounded">
 
-<legend>Admin Fields</legend><!--- Active User --->      <div class="col-md-6">#html.label(
+<legend>Admin Fields</legend><!--- Active User --->       <div class="col-md-6">#html.label(
 		class   = "control-label",
 		field   = "isActive",
 		content = "Active User:"
@@ -17,7 +17,7 @@
 		data    = { toggle: "toggle", match: "isActive" },
 		checked = prc.author.getIsActive()
 	)##html.hiddenField( name = "isActive", bind = prc.author )#</div>
-</div><!--- Roles --->      <div class="col-md-6">#html.select(
+</div><!--- Roles --->       <div class="col-md-6">#html.select(
 		label      = "User Role:",
 		name       = "roleID",
 		options    = prc.roles,

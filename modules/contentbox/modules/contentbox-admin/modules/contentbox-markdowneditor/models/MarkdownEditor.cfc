@@ -96,100 +96,100 @@ component implements="contentbox.models.ui.editors.IEditor" accessors ="true" si
 		// Custom Styles
 		// cfformat-ignore-start
 		html.addStyleContent(
-	"
+"
 .CodeMirror{
-    height: 100% !important;
+   height: 100% !important;
 }
 .CodeMirror-fullscreen{
-	z-index: 1000 !important;
+z-index: 1000 !important;
 }
 div.fullscreen{
-	z-index: 1000 !important;
+z-index: 1000 !important;
 }
 ",
-	true
+true
 );
 		savecontent variable="js" {
 writeOutput(
-	"
+"
 function getContentEditor(){
-	return simpleMDE_content.codemirror;
+return simpleMDE_content.codemirror;
 }
 function getExcerptEditor(){
-	return simpleMDE_excerpt.codemirror;
+return simpleMDE_excerpt.codemirror;
 }
 function checkIsDirty(){
-	return simpleMDE_content.isDirty;
+return simpleMDE_content.isDirty;
 }
 function getEditorContent(){
-	return simpleMDE_content.value();
+return simpleMDE_content.value();
 }
 function getEditorExcerpt(){
-	return simpleMDE_excerpt.value();
+return simpleMDE_excerpt.value();
 }
 function updateEditorContent(){
 }
 function updateEditorExcerpt(){
 }
 function setEditorContent( editorName, content ){
-	if( editorName.indexOf( 'content' ) >= 0 ){
-		simpleMDE_content.value( content );
-	} else {
-		simpleMDE_excerpt.value( content );
-	}
+if( editorName.indexOf( 'content' ) >= 0 ){
+	simpleMDE_content.value( content );
+} else {
+	simpleMDE_excerpt.value( content );
+}
 }
 function insertEditorContent( editorName, content ){
-	if( editorName.indexOf( 'content' ) >= 0 ){
-		simpleMDE_content.codemirror.replaceRange( content, simpleMDE_content.codemirror.getCursor() );
-	} else {
-		simpleMDE_excerpt.codemirror.replaceRange( content, simpleMDE_excerpt.codemirror.getCursor() );
-	}
+if( editorName.indexOf( 'content' ) >= 0 ){
+	simpleMDE_content.codemirror.replaceRange( content, simpleMDE_content.codemirror.getCursor() );
+} else {
+	simpleMDE_excerpt.codemirror.replaceRange( content, simpleMDE_excerpt.codemirror.getCursor() );
+}
 }
 
 // Insert Widgets
 $insertCBWidget = function( editor ){
-	// Open the selector widget dialog.
- 			openRemoteModal(
-                 getWidgetSelectorURL(),
-                 { editorName : editor },
-                 $( window ).width() - 200,
-                 $( window ).height() - 300,
-                 true
-             );
+// Open the selector widget dialog.
+			openRemoteModal(
+                getWidgetSelectorURL(),
+                { editorName : editor },
+                $( window ).width() - 200,
+                $( window ).height() - 300,
+                true
+            );
 };
 
 // Insert ContentStore
 $insertCBContentStore = function( editor ){
-	// Open the selector widget dialog.
- 			openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
+// Open the selector widget dialog.
+			openRemoteModal( getContentStoreSelectorURL(), { editorName: editor } );
 };
 
 // Insert Entry Link
 $insertCBEntryLink = function( editor ){
-	// Open the selector widget dialog.
- 			openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
+// Open the selector widget dialog.
+			openRemoteModal( getEntrySelectorURL(), { editorName: editor } );
 };
 
 // Insert Page Link
 $insertCBPageLink = function( editor ){
-	// Open the selector widget dialog.
- 			openRemoteModal( getPageSelectorURL(), { editorName: editor } );
+// Open the selector widget dialog.
+			openRemoteModal( getPageSelectorURL(), { editorName: editor } );
 };
 
 // Insert Media
 $insertCBMedia = function( editor ){
-	simpleMDETargetEditor = editor;
-	loadAssetChooser( '$insertCBMediaContent' );
+simpleMDETargetEditor = editor;
+loadAssetChooser( '$insertCBMediaContent' );
 };
 // Choose Media
 $insertCBMediaContent = function( sPath, sURL, sType ){
-	if( !sPath.length || sType === 'dir' ){
-        alert( 'Please select a file first.' );
-        return;
-    }
-	var link = '![' + sURL.substr( sURL.lastIndexOf( '/' ) + 1 ) + ']('+ sURL + ')';
-	insertEditorContent( simpleMDETargetEditor, link );
-	closeRemoteModal();
+if( !sPath.length || sType === 'dir' ){
+       alert( 'Please select a file first.' );
+       return;
+   }
+var link = '![' + sURL.substr( sURL.lastIndexOf( '/' ) + 1 ) + ']('+ sURL + ')';
+insertEditorContent( simpleMDETargetEditor, link );
+closeRemoteModal();
 }
 "
 );
@@ -207,17 +207,17 @@ $insertCBMediaContent = function( sPath, sURL, sType ){
 		// cfformat-ignore-start
 		savecontent variable="js" {
 writeOutput(
-	"
-	// Activate on content object
-	simpleMDE_content.toTextArea();
-	simpleMDE_content = null;
-	// Active Excerpts
-	try{
-		simpleMDE_excerpt.toTextArea();
-		simpleMDE_excerpt = null;
-	} catch( error ){
-		// ignore.
-	}
+"
+// Activate on content object
+simpleMDE_content.toTextArea();
+simpleMDE_content = null;
+// Active Excerpts
+try{
+	simpleMDE_excerpt.toTextArea();
+	simpleMDE_excerpt = null;
+} catch( error ){
+	// ignore.
+}
 "
 );
 }
@@ -240,34 +240,34 @@ writeOutput(
 		// cfformat-ignore-start
 		savecontent variable="js" {
 writeOutput(
-	"
+"
 // Activate on content object
 simpleMDE_content = new SimpleMDE( {
-	#extraConfig#
-	element 		: document.getElementById( 'content' ),
-	autosave 		: { enabled : false },
-	promptURLs 		: true,
-	tabSize 		: 4,
-	forceSync 		: true,
-	placeholder 	: 'Type here...',
-	spellChecker 	: false,
-	toolbar 		: #arguments.iData.toolbar#
+#extraConfig#
+element 		: document.getElementById( 'content' ),
+autosave 		: { enabled : false },
+promptURLs 		: true,
+tabSize 		: 4,
+forceSync 		: true,
+placeholder 	: 'Type here...',
+spellChecker 	: false,
+toolbar 		: #arguments.iData.toolbar#
 } );
 
 // Active Excerpts
 if( $withExcerpt ){
-	// Activate on content object
-	simpleMDE_excerpt = new SimpleMDE( {
-		#extraConfig#
-		element  		: document.getElementById( 'excerpt' ),
-		autosave  		: { enabled : false },
-		promptURLs  	: true,
-		tabSize  		: 4,
-		forceSync  		: true,
-		placeholder 	: 'Type here...',
-		spellChecker  	: false,
-		toolbar 		: #arguments.iData.excerptToolbar#
-	} );
+// Activate on content object
+simpleMDE_excerpt = new SimpleMDE( {
+	#extraConfig#
+	element  		: document.getElementById( 'excerpt' ),
+	autosave  		: { enabled : false },
+	promptURLs  	: true,
+	tabSize  		: 4,
+	forceSync  		: true,
+	placeholder 	: 'Type here...',
+	spellChecker  	: false,
+	toolbar 		: #arguments.iData.excerptToolbar#
+} );
 };
 
 // Global Configuration Variables
@@ -276,7 +276,7 @@ simpleMDE_content.isDirty = false;
 
 // Listen for Editor Changes
 simpleMDE_content.codemirror.on( 'change', function(){
-    simpleMDE_content.isDirty = true;
+   simpleMDE_content.isDirty = true;
 } );
 "
 );
@@ -295,22 +295,22 @@ simpleMDE_content.codemirror.on( 'change', function(){
 		// cfformat-ignore-start
 		return "[
 {
-	name : 'cbSave',
-	action : function(){ quickSave(); },
-	className : 'fa fa-save',
-	title : 'ContentBox Quick Save'
+name : 'cbSave',
+action : function(){ quickSave(); },
+className : 'fa fa-save',
+title : 'ContentBox Quick Save'
 },
 {
-	name : 'cbUndo',
-	action : function(){ simpleMDE_#arguments.editor#.undo(); },
-	className : 'fa fa-undo',
-	title : 'Undo'
+name : 'cbUndo',
+action : function(){ simpleMDE_#arguments.editor#.undo(); },
+className : 'fa fa-undo',
+title : 'Undo'
 },
 {
-	name : 'cbRedo',
-	action : function(){ simpleMDE_#arguments.editor#.redo(); },
-	className : 'fa fa-repeat',
-	title : 'Redo'
+name : 'cbRedo',
+action : function(){ simpleMDE_#arguments.editor#.redo(); },
+className : 'fa fa-repeat',
+title : 'Redo'
 },
 '|',
 'bold', 'italic', 'strikethrough', 'heading', 'heading-smaller', 'heading-bigger', '|',
@@ -318,41 +318,41 @@ simpleMDE_content.codemirror.on( 'change', function(){
 'link', 'image', 'table', 'horizontal-rule', '|',
 'preview', 'side-by-side', 'fullscreen',
 {
-	name : 'cbLivePreview',
-	action : function(){ previewContent(); },
-	className : 'fa fa-bolt',
-	title : 'ContentBox Responsive Preview'
+name : 'cbLivePreview',
+action : function(){ previewContent(); },
+className : 'fa fa-bolt',
+title : 'ContentBox Responsive Preview'
 },
 '|',
 {
-	name : 'cbWidget',
-	action : function(){ $insertCBWidget( '#arguments.editor#' ); },
-	className : 'fa fa-magic',
-	title : 'Insert a ContentBox Widget'
+name : 'cbWidget',
+action : function(){ $insertCBWidget( '#arguments.editor#' ); },
+className : 'fa fa-magic',
+title : 'Insert a ContentBox Widget'
 },
 {
-	name : 'cbContentStore',
-	action : function(){ $insertCBContentStore( '#arguments.editor#' ); },
-	className : 'fa fa-hdd',
-	title : 'Insert ContentBox Content Store Item'
+name : 'cbContentStore',
+action : function(){ $insertCBContentStore( '#arguments.editor#' ); },
+className : 'fa fa-hdd',
+title : 'Insert ContentBox Content Store Item'
 },
 {
-	name : 'cbEntryLink',
-	action : function(){ $insertCBEntryLink( '#arguments.editor#' ); },
-	className : 'fas fa-blog',
-	title : 'Insert ContentBox Entry Link'
+name : 'cbEntryLink',
+action : function(){ $insertCBEntryLink( '#arguments.editor#' ); },
+className : 'fas fa-blog',
+title : 'Insert ContentBox Entry Link'
 },
 {
-	name : 'cbPageLink',
-	action : function(){ $insertCBPageLink( '#arguments.editor#' ); },
-	className : 'fa fa-file-o',
-	title : 'Insert ContentBox Page Link'
+name : 'cbPageLink',
+action : function(){ $insertCBPageLink( '#arguments.editor#' ); },
+className : 'fa fa-file-o',
+title : 'Insert ContentBox Page Link'
 },
 {
-	name : 'cbMediaManager',
-	action : function(){ $insertCBMedia( '#arguments.editor#' ); },
-	className : 'fa fa-database',
-	title : 'Insert ContentBox Media'
+name : 'cbMediaManager',
+action : function(){ $insertCBMedia( '#arguments.editor#' ); },
+className : 'fa fa-database',
+title : 'Insert ContentBox Media'
 }
 ]";
 

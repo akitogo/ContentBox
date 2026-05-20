@@ -54,7 +54,7 @@
 
 
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-		<!--- Global --->      <div class="btn-group">
+		<!--- Global --->       <div class="btn-group">
   	<button class="btn dropdown-toggle btn-default" data-toggle="dropdown">
 	Bulk Actions <span class="caret"></span>
 </button>
@@ -106,13 +106,13 @@
 
 				<div class="panel-body">
 
-					<!--- Info Bar --->      
+					<!--- Info Bar --->       
 					<div class="alert alert-warning">
 						<i class="fa fa-exclamation-circle fa-lg"></i>
 						Once you delete a permission group all assigned permissions and authors will be unassigned.
 					</div>
 
-					<!--- groups --->      
+					<!--- groups --->       
 					<table name="groups" id="groups" class="table table-striped-removed table-hover">
 
 						<thead>
@@ -134,7 +134,7 @@
 
 
 	<cfloop array="#prc.aGroups#" index="group">
-		<tr><!--- check box --->      <td class="text-center">
+		<tr><!--- check box --->       <td class="text-center">
 <input
 	type="checkbox"
 	name="permissionGroupID"
@@ -172,7 +172,7 @@ title="Edit #group.getName()#"
 								</td>
 
 								<td class="text-center">
-									<!--- Actions --->      
+									<!--- Actions --->       
 									<div class="btn-group">
 								    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="Group Actions">
 											<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
@@ -185,14 +185,14 @@ title="Edit #group.getName()#"
 
 
 		<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_EXPORT" )>
-			<!--- Delete Command --->      <li>
+			<!--- Delete Command --->       <li>
 <a 	href="javascript:remove( '#group.getPermissionGroupID()#' )"
 	class="confirmIt"
 	data-title="<i class='fa fa-trash'></i> Delete Group?"
 >
 	<i class="fa fa-trash fa-lg" id="delete_#group.getPermissionGroupID()#"></i> Delete
 	</a>
-</li><!--- Edit Command --->      <li>
+</li><!--- Edit Command --->       <li>
 <a
 	href="#event.buildLink(
 		prc.xehGroupEditor & "/permissionGroupID/#group.getPermissionGroupId()#"

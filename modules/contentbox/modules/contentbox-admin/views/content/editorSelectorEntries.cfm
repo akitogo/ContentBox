@@ -28,12 +28,12 @@ id="contentID-#thisContent.getContentID()#"
 		
 		>
 			<td>
-				<!--- Title --->      
+				<!--- Title --->       
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title --->      
+				<!--- Title --->       
 				<div class="mt5">
 					<div class="text-muted">
 

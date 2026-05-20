@@ -1163,25 +1163,25 @@ component accessors="true" singleton threadSafe {
 		// cfformat-ignore-start
 		savecontent variable="content" {
 writeOutput(
-	"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
+"<meta property=""og:title"" content=""#getContentTitle()#"" />#chr( 10 )#"
 );
 writeOutput(
-	"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
+"<meta property=""og:type"" content=""#getContentOGType()#"" />#chr( 10 )#"
 );
 writeOutput(
-	"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
+"<meta property=""og:description"" content=""#getContentDescription()#"" />#chr( 10 )#"
 );
 
 if ( len( getContentURL() ) ) {
-	writeOutput(
-		"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
-	);
+writeOutput(
+	"<meta property=""og:url"" content=""#getContentURL()#"" />#chr( 10 )#"
+);
 }
 
 if ( len( getContentImageURL() ) ) {
-	writeOutput(
-		"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
-	);
+writeOutput(
+	"<meta property=""og:image"" content=""#getContentImageURL()#"" />#chr( 10 )#"
+);
 }
 }
 		// cfformat-ignore-end

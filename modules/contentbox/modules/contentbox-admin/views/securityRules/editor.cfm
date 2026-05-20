@@ -3,14 +3,14 @@
 
 <div class="col-md-12" id="main-content-slot">
 
-	<div class="panel panel-default"><!--- Heading --->      <div class="panel-heading"><!--- Top Actions --->      <div class="float-right mt10"><!--- Back button --->      <a
+	<div class="panel panel-default"><!--- Heading --->       <div class="panel-heading"><!--- Top Actions --->       <div class="float-right mt10"><!--- Back button --->       <a
 class="btn btn-sm btn-default"
 href="#event.buildLink( prc.xehSecurityRules )#"
 		title="Back to listing"
 	>
 		<i class="fa fa-chevron-left"></i> Cancel
 	</a>
-</div><!--- Panel Title --->      <div class="size16 p10">
+</div><!--- Panel Title --->       <div class="size16 p10">
 <i class="fa fa-passport"></i>
 	<cfif prc.rule.isLoaded()>
 		Update
@@ -33,7 +33,7 @@ href="#event.buildLink( prc.xehSecurityRules )#"
 		action     = prc.xehRuleSave,
 		novalidate = "novalidate",
 		class      = "form-vertical"
-	)##html.hiddenField( name = "ruleID", bind = prc.rule )#<!--- Usage --->      
+	)##html.hiddenField( name = "ruleID", bind = prc.rule )#<!--- Usage --->       
 					<div class="alert alert-danger">
 						<i class="fa fa-exclamation-triangle fa-lg"></i>
 						Please remember that the secure and white lists are lists of
@@ -264,7 +264,7 @@ value="#thisPerm.getPermission()#"
 		labelClass   = "control-label",
 		groupWrapper = "div class=form-group",
 		placeholder  = "Sorry! You don't have the right authorizations"
-	)##html.endFieldset()#<!--- Action Bar --->      
+	)##html.endFieldset()#<!--- Action Bar --->       
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success">Save</button>
 					</div>
