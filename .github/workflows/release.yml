@@ -49,11 +49,12 @@ jobs:
           java-version: "21"
 
       - name: Setup CommandBox
-        uses: Ortus-Solutions/setup-commandbox@v2.0.1
+        uses: ortus-boxlang/setup-boxlang@main
         with:
+          with-commandbox: true
           forgeboxAPIKey: ${{ secrets.FORGEBOX_API_TOKEN }}
 
-      - name: Install CFML Dependencies
+      - name: Install Dependencies
         run: |
           box install --production
           box install commandbox-docbox
@@ -109,18 +110,18 @@ jobs:
       - name: Start Docs Server
         if: env.SNAPSHOT == 'false'
         run: |
-          box server start serverConfigFile="server-lucee@5.json" openBrowser=false saveSettings=false
+          box server start serverConfigFile="server-boxlang-cfml@1.json" openBrowser=false saveSettings=false
 
       - name: Build API Docs
         run: |
           # Normalize swagger doc results if they exist
-          if test -f tests/results/contentbox-test-results-lucee@5-coldbox^8-experimental-false/contentbox-swagger.json; then
-            cp -v tests/results/contentbox-test-results-lucee@5-coldbox^8-experimental-false/contentbox-swagger.json tests/results/
+          if test -f tests/results/contentbox-test-results-boxlang-cfml@1-coldbox^8-experimental-true/contentbox-swagger.json; then
+            cp -v tests/results/contentbox-test-results-boxlang-cfml@1-coldbox^8-experimental-true/contentbox-swagger.json tests/results/
           else
-            echo "File tests/results/contentbox-test-results-lucee@5-coldbox^8-experimental-false/contentbox-swagger.json does not exist"
+            echo "File tests/results/contentbox-test-results-boxlang-cfml@1-coldbox^8-experimental-true/contentbox-swagger.json does not exist"
           fi
           # Run Docs Build
-          box run-script build:allDocs
+          box run-script build:apiDocs
 
       - name: Update changelog [unreleased] with latest version
         uses: thomaseizinger/keep-a-changelog-new-release@3.1.0
