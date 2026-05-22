@@ -1,9 +1,9 @@
 {
     "app":{
-        "cfengine":"boxlang@1",
-        "serverHomeDirectory":".engines/boxlang-cfml"
+        "cfengine":"boxlang@be",
+        "serverHomeDirectory":".engines/boxlang@be"
     },
-    "name":"contentbox-boxlang-cfml",
+    "name":"contentbox-boxlang-be",
     "JVM":{
         "javaVersion":"openjdk21_jre",
         "heapSize":"1024",
