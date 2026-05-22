@@ -1,7 +1,6 @@
 <cfoutput>
-	<cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
-	#ETH.text(
-		"
+    <cfset ETH = getInstance( "EmailTemplateHelper@contentbox" )>
+    #ETH.text( "
         <p>Dear @name@,</p>
 
         <p>
@@ -21,6 +20,5 @@
             following the reset password link: <a href='@resetLink@'>Reset Password</a> and entering your
             account email: <strong>@email@</strong>.
         </div>
-    "
-	)#
+    " )#
 </cfoutput>
