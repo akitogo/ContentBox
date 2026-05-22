@@ -64,7 +64,7 @@ component {
 		variables.cbi18n = { resourceBundles: { "cbcore": "#moduleMapping#/i18n/cbcore" } };
 
 		// CB Module Conventions
-		conventions = { layoutsLocation: "themes", viewsLocation: "themes" };
+		variables.conventions = { layoutsLocation: "themes", viewsLocation: "themes" };
 
 		// Parent Affected Settings
 		variables.parentSettings = {
