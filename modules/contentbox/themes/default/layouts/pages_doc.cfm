@@ -1,11 +1,31 @@
 <cfoutput>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>#cb.quickView( "_pageIncludes" )##cb.event( "cbui_beforeHeadEnd" )#</head>
-<body>#cb.event( "cbui_afterBodyStart" )##cb.event( "cbui_beforeContent" )##cb.mainView( args = {
-			sidebar: true,
-			print: true
-		} )##cb.event( "cbui_afterContent" )##cb.quickView( view = "_footer" )##cb.event( "cbui_beforeBodyEnd" )#	
+<head>
+	<!--- Page Includes --->
+	#cb.quickView( "_pageIncludes" )#
+
+	<!--- ContentBoxEvent --->
+	#cb.event( "cbui_beforeHeadEnd" )#
+</head>
+<body>
+	<!--- ContentBoxEvent --->
+	#cb.event( "cbui_afterBodyStart" )#
+
+	<!--- ContentBoxEvent --->
+	#cb.event( "cbui_beforeContent" )#
+
+	<!--- Main View --->
+	#cb.mainView( args={ sidebar=true, print=true } )#
+
+	<!--- ContentBoxEvent --->
+	#cb.event( "cbui_afterContent" )#
+	
+	<!--- Footer --->
+	#cb.quickView( view='_footer' )#
+
+	<!--- ContentBoxEvent --->
+	#cb.event( "cbui_beforeBodyEnd" )#	
 </body>
 </html>
 </cfoutput>
