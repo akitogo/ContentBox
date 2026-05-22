@@ -35,14 +35,16 @@
         "route-visualizer":"*"
     },
     "installPaths":{
-        "testbox":"testbox/",
-        "coldbox":"coldbox/",
-        "cbdebugger":"modules/cbdebugger/",
-        "route-visualizer":"modules/route-visualizer/"
+        "testbox":"lib/testbox/",
+        "coldbox":"lib/coldbox/",
+        "cbdebugger":"lib/modules/cbdebugger/",
+        "route-visualizer":"lib/modules/route-visualizer/"
+    },
+	"installPathConventions":{
+        "modules":"lib/modules"
     },
     "ignores":[],
     "scripts":{
-        "release":"recipe build/release.boxr",
         "build:allDocs":"task run taskFile=build/BuildDocs.cfc :version=`package show version`",
         "build:apidocs":"task run taskFile=build/BuildDocs.cfc target=apiDocs :version=`package show version`",
         "build:swagger":"task run taskFile=build/BuildDocs.cfc target=swagger :version=`package show version`",

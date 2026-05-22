@@ -75,7 +75,7 @@ component {
 	 * - cborm : Where the cborm library is installed: Needed for ORM Event Handling.
 	 */
 	this.mappings[ "/cbapp" ]      = COLDBOX_APP_ROOT_PATH;
-	this.mappings[ "/coldbox" ]    = COLDBOX_APP_ROOT_PATH & "coldbox";
+	this.mappings[ "/coldbox" ]    = COLDBOX_APP_ROOT_PATH & "lib/coldbox";
 	this.mappings[ "/contentbox" ] = COLDBOX_APP_ROOT_PATH & "modules/contentbox";
 	this.mappings[ "/cborm" ]      = this.mappings[ "/contentbox" ] & "/modules/contentbox-deps/modules/cborm";
 

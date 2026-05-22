@@ -38,7 +38,7 @@ component {
 			// Extension Points
 			applicationHelper       : "",
 			viewsHelper             : "",
-			modulesExternalLocation : [],
+			modulesExternalLocation : [ "/lib/modules" ],
 			viewsExternalLocation   : "",
 			layoutsExternalLocation : "",
 			handlersExternalLocation: "",

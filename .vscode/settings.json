@@ -1,25 +1,8 @@
 {
-	"cfml.mappings": [
-		{
-			"logicalPath": "/contentbox",
-			"directoryPath": "./modules/contentbox",
-			"isPhysicalDirectoryPath" :false
-		},
-		{
-			"logicalPath": "/coldbox",
-			"directoryPath": "./coldbox",
-			"isPhysicalDirectoryPath" :false
-		},
-		{
-			"logicalPath": "/cborm",
-			"directoryPath": "./modules/cborm",
-			"isPhysicalDirectoryPath" :false
-		},
-		{
-			"logicalPath": "/testbox",
-			"directoryPath": "./testbox",
-			"isPhysicalDirectoryPath" :false
-		}
-    ],
-    "boxlang.debugger.moduleVersion": "1.1.1+2"
+	"boxlang.mappings": {
+		"/coldbox" : "./lib/coldbox",
+		"/testbox" : "./lib/testbox",
+		"/cborm" : "./modules/contentbox/modules/contentbox-deps/modules/cborm",
+		"/contentbox" : "./modules/contentbox"
+	}
 }

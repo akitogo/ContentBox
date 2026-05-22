@@ -35,6 +35,10 @@
 	"devDependencies":{
     },
     "installPaths":{
+		"coldbox":"lib/coldbox/"
+    },
+	"installPathConventions":{
+        "modules":"lib/modules"
     },
     "ignores":[
 	],
