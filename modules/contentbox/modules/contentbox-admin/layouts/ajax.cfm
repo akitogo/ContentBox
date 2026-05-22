@@ -1,5 +1,3 @@
-<cfsetting showdebugoutput="false">
+﻿<cfsetting showdebugoutput="false">
 <cfcontent reset="true">
-<cfoutput>
-	#view()#
-</cfoutput>
+<cfoutput>#view()#</cfoutput>
