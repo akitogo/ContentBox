@@ -1,5 +1,5 @@
-<cfoutput>
-	<script>
+﻿<cfoutput>
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// form validators
 	$( "##commentSettingsForm" ).validate( {

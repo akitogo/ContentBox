@@ -1,343 +1,261 @@
 <cfscript>
-	/**
-	 * --------------------------------------------------------------------------
-	 * CODLFUSION HELPER METHODS
-	 * --------------------------------------------------------------------------
-	 */
-	function $getBackPath( inPath ) {
-		arguments.inPath = replace(
-			arguments.inPath,
-			"\",
-			"/",
-			"all"
-		);
-		var backPath = listToArray( arguments.inPath, "/" );
-		backPath.deleteAt( backPath.len() );
-		return URLEncodedFormat( backPath.toList( "/" ) );
-	}
-	function $getUrlRelativeToPath(
-		required basePath,
-		required filePath,
-		encodeURL = false
-	) {
-		var URLOut = "";
-		var strURLOut = "/";
-		var arrPath = [];
-		var p = "";
-		URLOut = replace(
-			replacenocase(
-				arguments.filePath,
-				arguments.basePath,
-				"/",
-				"one"
-			),
-			"\",
-			"/",
-			"all"
-		);
-		if ( arguments.encodeURL ) {
-			arrPath = listtoarray( URLOut, "/" );
-			for ( p in arrPath ) {
-				strURLOut = listAppend(
-					strURLOut,
-					replacenocase(
-						urlencodedformat( p ),
-						"%2e",
-						".",
-						"all"
-					),
-					"/"
-				);
-			}
-			URLOut = strURLOut;
+/**
+ * --------------------------------------------------------------------------
+ * CODLFUSION HELPER METHODS
+ * --------------------------------------------------------------------------
+ */
+function $getBackPath( inPath ){
+	arguments.inPath = replace( arguments.inPath, "\", "/", "all" );
+	var backPath = listToArray( arguments.inPath, "/" );
+	backPath.deleteAt( backPath.len() );
+	return URLEncodedFormat( backPath.toList( "/" ) );
+}
+function $getUrlRelativeToPath( required basePath, required filePath, encodeURL=false ){
+	var URLOut = "";
+	var strURLOut = "/";
+	var arrPath = [];
+	var p = "";
+	URLOut = replace( replacenocase( arguments.filePath, arguments.basePath, "/", "one" ), "\", "/", "all" );
+	if ( arguments.encodeURL ){
+		arrPath=listtoarray( URLOut, "/" );
+		for( p in arrPath ){
+			strURLOut = listAppend( strURLOut, replacenocase( urlencodedformat( p ), "%2e", ".", "all" ), "/" );
 		}
-		URLOut = replacenocase(
-			URLOut,
-			"//",
-			"",
-			"all"
-		);
-		return URLOut;
+		URLOut = strURLOut;
 	}
-	function $getURLMediaPath( required fbDirRoot, required filePath ) {
-		var URLOut = replaceNoCase(
-			arguments.filePath,
-			arguments.fbDirRoot,
-			"",
-			"all"
-		);
-		if ( len( URLOut ) ) {
-			// set our drive prefix and trim leading slashes on the path
-			URLOut = prc.fbSettings.mediaPath & "/" & prc.activeDisk.getName() & ":" & listToArray( URLOut,
-				"/" ).toList( "/" );
-		}
-		return URLOut;
+	URLOut = replacenocase( URLOut, "//", "", "all" );
+	return URLOut;
+}
+function $getURLMediaPath( required fbDirRoot, required filePath ){
+	var URLOut = replaceNoCase( arguments.filePath, arguments.fbDirRoot, "", "all" );
+	if( len( URLOut ) ){
+		// set our drive prefix and trim leading slashes on the path
+		URLOut = prc.fbSettings.mediaPath & "/" & prc.activeDisk.getName() & ":" & listToArray( URLOut, "/" ).toList( "/" );
 	}
-	function validQuickView( ext ) {
-		return ( listFindNoCase( "png,jpg,jpeg,bmp,gif", arguments.ext ) ? true : false );
+	return URLOut;
+}
+function validQuickView( ext ){
+	return ( listFindNoCase( "png,jpg,jpeg,bmp,gif", arguments.ext ) ? true : false );
+}
+function getImageFile( ext ){
+	switch( arguments.ext ){
+		case "doc" : case "docx" : case "pages" : { return "word.png"; }
+		case "ppt" : case "pptx" : case "keynote" : { return "ppt.png"; }
+		case "xls" : case "xlsx" : case "numbers" : { return "xls.png"; }
+		case "pdf" : { return "pdf.png"; }
+		case "png": case "jpg" : case "jpeg" : case "gif" : case "bmp" : { return "Picture.png"; }
+		case "cfc": case "cfm" : case "cfml" : { return "coldfusion.png"; }
+		case "html" : case "htm" : case "aspx" : case "asp" : case "php" : case "rb" : case "py" : case "xml" :{ return "code.png"; }
+		default : return "file.png";
 	}
-	function getImageFile( ext ) {
-		switch ( arguments.ext ) {
-			case "doc":
-
-			case "docx":
-
-			case "pages": {
-				return "word.png";
-			}
-			case "ppt":
-
-			case "pptx":
-
-			case "keynote": {
-				return "ppt.png";
-			}
-			case "xls":
-
-			case "xlsx":
-
-			case "numbers": {
-				return "xls.png";
-			}
-			case "pdf": {
-				return "pdf.png";
-			}
-			case "png":
-
-			case "jpg":
-
-			case "jpeg":
-
-			case "gif":
-
-			case "bmp": {
-				return "Picture.png";
-			}
-			case "cfc":
-
-			case "cfm":
-
-			case "cfml": {
-				return "coldfusion.png";
-			}
-			case "html":
-
-			case "htm":
-
-			case "aspx":
-
-			case "asp":
-
-			case "php":
-
-			case "rb":
-
-			case "py":
-
-			case "xml": {
-				return "code.png";
-			}
-			default:
-				return "file.png";
-		}
-	}
+}
 </cfscript>
 <cfoutput>
-	<div class="clear-both"><!--- Current Root --->          <input type="hidden" name="fbRoot" id="fbRoot" value="#prc.fbSafeCurrentRoot#">#announce( "fb_preFileListing" )##cbMessageBox().renderit()#<!--- Location Bar --->          <div id="locationBar" class="clear-both mb10 well well-sm">#announce( "fb_preLocationBar" )#
-	<cfset crumbDir = "">
-	<cfset rootPath = replaceNoCase(
-	prc.fbCurrentRoot,
-	prc.fbSettings.directoryRoot,
-	""
-)>
-	/&nbsp;
-	<cfif rootPath NEQ "">
-		&nbsp;<i class="fa fa-chevron-right text-info"></i>&nbsp;
-	</cfif>
-	<cfloop list="#rootPath#" delimiters="/" index="crumb">
-		<cfif crumbDir NEQ "">
-			&nbsp;<i class="fa fa-chevron-right text-info"></i>&nbsp;
-		</cfif>
-		<cfset crumbDir = crumbDir & crumb & "/">
-		<cfif ( !prc.fbSettings.traversalSecurity || findNoCase( prc.fbSettings.directoryRoot, crumbDir ) )>
-			<a href="javascript:fbDrilldown('#JSStringFormat( crumbDir )#')">#crumb#</a>
-		<cfelse>
-			#crumb#
-		</cfif>
-	</cfloop>
-	
-	
-	
-	
-	
+<div class="clear-both">
+	<!--- Current Root --->
+	<input type="hidden" name="fbRoot" id="fbRoot" value="#prc.fbSafeCurrentRoot#">
+
+	<!--- Event --->
+	#announce( "fb_preFileListing" )#
+
+	<!--- Messagebox --->
+	#cbMessageBox().renderit()#
+
+	<!--- Location Bar --->
+	<div id="locationBar" class="clear-both mb10 well well-sm">
+		#announce( "fb_preLocationBar" )#
+		<cfset crumbDir = "">
+		<cfset rootPath = replaceNoCase( prc.fbCurrentRoot, prc.fbSettings.directoryRoot, "" )>
+		/&nbsp;<cfif rootPath neq "">&nbsp;<i class="fa fa-chevron-right text-info"></i>&nbsp;</cfif>
+		<cfloop list="#rootPath#" delimiters="/" index="crumb">
+			<cfif crumbDir neq "">
+				&nbsp;<i class="fa fa-chevron-right text-info"></i>&nbsp;
+			</cfif>
+			<cfset crumbDir = crumbDir & crumb & "/">
+			<cfif ( !prc.fbSettings.traversalSecurity OR findNoCase(prc.fbSettings.directoryRoot, crumbDir ) )>
+				<a href="javascript:fbDrilldown('#JSStringFormat( crumbDir )#')">#crumb#</a>
+			<cfelse>
+				#crumb#
+			</cfif>
+		</cfloop>
 		(#prc.fbListing.len()# #$r( "items@fb" )#)
 		#announce( "fb_postLocationBar" )#
 	</div>
 
-
-
-
-
-
+	<!--- Display back links --->
 	<cfif prc.fbCurrentRoot NEQ "">
-		<cfif prc.fbPreferences.listType EQ "grid">
+		<cfif prc.fbPreferences.listType eq "grid">
 			<div class="fbItemBox">
-<div class="fbItemBoxPreview">
-	<a href="javascript:fbDrilldown('#$getBackPath( prc.fbCurrentRoot )#')" title="#$r( "back@fb" )#">
-<img src="#prc.fbModRoot#/includes/images/directory.png" border="0"  alt="Folder">
-</a>
-<br>
-<a href="javascript:fbDrilldown('#$getBackPath( prc.fbCurrentRoot )#')" title="Go Back"> <- #$r( "back@fb" )#</a>
-	</div>
-</div>
+				<div class="fbItemBoxPreview">
+					<a href="javascript:fbDrilldown('#$getBackPath(prc.fbCurrentRoot)#')" title="#$r( "back@fb" )#">
+						<img src="#prc.fbModRoot#/includes/images/directory.png" border="0"  alt="Folder">
+					</a>
+					<br>
+					<a href="javascript:fbDrilldown('#$getBackPath(prc.fbCurrentRoot)#')" title="Go Back"> <- #$r( "back@fb" )#
+					</a>
+				</div>
+			</div>
 		<cfelse>
-			<a href="javascript:fbDrilldown('#$getBackPath( prc.fbCurrentRoot )#')" title="#$r( "back@fb" )#">
-<img src="#prc.fbModRoot#/includes/images/folder.png" border="0"  alt="Folder">
-</a>
-<a href="javascript:fbDrilldown('#$getBackPath( prc.fbCurrentRoot )#')" title="#$r( "back@fb" )#">..</a><br>
+			<a href="javascript:fbDrilldown('#$getBackPath(prc.fbCurrentRoot)#')" title="#$r( "back@fb" )#">
+				<img src="#prc.fbModRoot#/includes/images/folder.png" border="0"  alt="Folder">
+			</a>
+			<a href="javascript:fbDrilldown('#$getBackPath(prc.fbCurrentRoot)#')" title="#$r( "back@fb" )#">..</a><br>
 		</cfif>
 	</cfif>
+
+	<!--- Display directories --->
 	<cfif prc.fbListing.len()>
 		<cfloop array="#prc.fbListing#" item="item" index="i">
+
+			<!--- Skip Exclude Filters --->
 			<cfset skipExcludes = false>
 			<cfloop array="#listToArray( prc.fbSettings.excludeFilter )#" index="thisFilter">
 				<cfif reFindNoCase( thisFilter, item.name )>
-					<cfset skipExcludes = true>
-					<cfbreak>
+					<cfset skipExcludes = true><cfbreak>
 				</cfif>
 			</cfloop>
 			<cfif skipExcludes>
 				<cfcontinue>
 			</cfif>
-			<cfif !reFindNoCase( prc.fbNameFilter, item.name )>
-				<cfcontinue>
-			</cfif>
-			<cfset validIDName = encodeForHTMLAttribute(
-	reReplace(
-		item.name,
-		"[^0-9A-Za-z]",
-		"-",
-		"all"
-	)
-)>
+
+			<!--- Include Filters --->
+			<cfif NOT reFindNoCase( prc.fbNameFilter, item.name )><cfcontinue></cfif>
+
+			<!--- ID Name of the div --->
+			<cfset validIDName = encodeForHTMLAttribute( reReplace( item.name, "[^0-9A-Za-z]", "-", "all" ) ) >
+
+			<!--- URL used for selection --->
 			<cfset plainURL = prc.fbCurrentRoot & "/" & item.name>
 			<cfset relURL = $getUrlRelativeToPath( prc.fbwebRootPath, plainURL )>
 			<cfset mediaURL = ( ( prc.fbSettings.useMediaPath ) ? $getURLMediaPath( prc.fbDirRoot, plainURL ) : relURL )>
-			<cfif prc.fbPreferences.listType EQ "grid">
-				<!--- Grid Listing --->          <div class="fbItemBox filterDiv rounded">
-<div class="fbItemBoxPreview">
 
-				<cfif item.type EQ "directory">
-					<!--- Folder --->          <div id="fb-dir-#validIDName#"
-onClick="javascript:return false;"
-class="folders"
-title="#item.name#"
-data-type="dir"
-data-name="#item.Name#"
-data-fullURL="#plainURL#"
-data-relURL="#relURL#"
-data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
-data-size="#numberFormat( item.size / 1024 )#"
-data-quickview="false"
-onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
-<a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/directory.png" border="0"  alt="Folder"></a>
-<br/>#item.name#</div>
-				<cfelseif prc.fbSettings.showFiles>
-					<!--- Display the DiV --->          <div id="fb-file-#validIDName#"
-class="files"
-data-type="file"
-data-name="#item.Name#"
-title="#item.name# (#numberFormat( item.size / 1024 )# kb)"
-data-fullURL="#plainURL#"
-data-relURL="#mediaURL#"
-data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
-data-size="#numberFormat( item.size / 1024 )#"
-data-quickview="#validQuickView( listLast( item.name, "." ) )#"
-		onClick="javascript:return false;"
-		onDblclick="fbChoose()"
->
-					<cfif validQuickView( listLast( item.name, "." ) )>
-						<img
-src="#event.buildLink( prc.xehFBDownload )#?path=#plainURL#"
-	border="0"
-	alt="quickview"
-	class="mt5"
-	style="max-width: 140px; max-height: 100px"
->
-					<cfelse>
-						<img
-src="#prc.fbModRoot#/includes/images/bigfile.png"
-	border="0"
-	class="mt5"
-	alt="file"
->
-					</cfif>
-					<!--- FileName --->          
+			<!--- ************************************************* --->
+			<!--- GRID --->
+			<!--- ************************************************* --->
+			<cfif prc.fbPreferences.listType eq "grid">
+				<!---Grid Listing --->
+				<div class="fbItemBox filterDiv rounded">
+					<div class="fbItemBoxPreview">
+
+						<!--- ************************************************* --->
+						<!--- DIRECTORY --->
+						<!--- ************************************************* --->
+						<cfif item.type eq "directory">
+							<!--- Folder --->
+							<div id="fb-dir-#validIDName#"
+									onClick="javascript:return false;"
+									class="folders"
+									title="#item.name#"
+									data-type="dir"
+									data-name="#item.Name#"
+									data-fullURL="#plainURL#"
+									data-relURL="#relURL#"
+									data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
+									data-size="#numberFormat( item.size / 1024 )#"
+									data-quickview="false"
+									onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
+								<a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/directory.png" border="0"  alt="Folder"></a>
+								<br/>
+								#item.name#
+							</div>
+						<!--- ************************************************* --->
+						<!--- FILES --->
+						<!--- ************************************************* --->
+						<cfelseif prc.fbSettings.showFiles>
+							<!--- Display the DiV --->
+							<div id="fb-file-#validIDName#"
+									class="files"
+									data-type="file"
+									data-name="#item.Name#"
+									title="#item.name# (#numberFormat( item.size / 1024 )# kb)"
+									data-fullURL="#plainURL#"
+									data-relURL="#mediaURL#"
+									data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
+									data-size="#numberFormat( item.size / 1024 )#"
+									data-quickview="#validQuickView( listLast( item.name, "." ) )#"
+									onClick="javascript:return false;"
+									onDblclick="fbChoose()"
+							>
+								<!--- Preview --->
+								<cfif validQuickView( listLast( item.name, "." ) )>
+									<img
+										src="#event.buildLink( prc.xehFBDownload )#?path=#plainURL#"
+										border="0"
+										alt="quickview"
+										class="mt5"
+										style="max-width: 140px; max-height: 100px"
+									>
+								<cfelse>
+									<img
+										src="#prc.fbModRoot#/includes/images/bigfile.png"
+										border="0"
+										class="mt5"
+										alt="file"
+									>
+								</cfif>
+
+								<!--- FileName --->
 								<div class="mt5">
 									#item.name#
 								</div>
 
-								<!--- File Size --->          
+								<!--- File Size --->
 								<div class="text-muted mt5">
 									(#numberFormat( item.size / 1024 )# kb)
 								</div>
 							</div>
-
-
-
-
-
-				</cfif>
-				
-				
-				
-				
-				
+						</cfif>
 					</div>
 				</div>
-
-
-
-
-
+			<!--- ************************************************* --->
+			<!--- LISTING --->
+			<!--- ************************************************* --->
 			<cfelse>
-				<cfif item.type EQ "directory">
-					<!--- Folder --->          <div id="fb-dir-#validIDName#"
-class="folders filterDiv"
-data-type="dir"
-data-name="#item.Name#"
-data-fullURL="#plainURL#"
-data-relURL="#relURL#"
-data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
-data-size="#numberFormat( item.size / 1024 )#"
-data-quickview="false"
-onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
-<a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/folder.png" border="0"  alt="Folder"></a>#item.name#</div>
+				<!--- Directory or File --->
+				<cfif item.type eq "directory">
+					<!--- Folder --->
+					<div id="fb-dir-#validIDName#"
+							class="folders filterDiv"
+							data-type="dir"
+							data-name="#item.Name#"
+							data-fullURL="#plainURL#"
+							data-relURL="#relURL#"
+							data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
+							data-size="#numberFormat( item.size / 1024 )#"
+							data-quickview="false"
+							onDblclick="fbDrilldown('#JSStringFormat( plainURL )#')">
+						<a href="javascript:fbDrilldown('#JSStringFormat( plainURL )#')"><img src="#prc.fbModRoot#/includes/images/folder.png" border="0"  alt="Folder"></a>
+						#item.name#
+					</div>
 				<cfelseif prc.fbSettings.showFiles>
-					<!--- Display the DiV --->          <div id="fb-file-#validIDName#"
-class="files filterDiv"
-data-type="file"
-data-name="#item.Name#"
-data-fullURL="#plainURL#"
-data-relURL="#mediaURL#"
-data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
-data-size="#numberFormat( item.size / 1024 )#"
-data-quickview="#validQuickView( listLast( item.name, "." ) )#"
-	onDblclick="fbChoose()"
->
-<img
-	src="#prc.fbModRoot#/includes/images/#getImageFile( listLast( item.name, "." ) )#"
-border="0"
-alt="file">#item.name#</div>
+					<!--- Display the DiV --->
+					<div id="fb-file-#validIDName#"
+							class="files filterDiv"
+							data-type="file"
+							data-name="#item.Name#"
+							data-fullURL="#plainURL#"
+							data-relURL="#mediaURL#"
+							data-lastModified="#dateFormat( item.lastModified, "medium" )# #timeFormat( item.lastModified, "medium" )#"
+							data-size="#numberFormat( item.size / 1024 )#"
+							data-quickview="#validQuickView( listLast( item.name, "." ) )#"
+							onDblclick="fbChoose()"
+						>
+						<img
+							src="#prc.fbModRoot#/includes/images/#getImageFile( listLast( item.name, "." ) )#"
+							border="0"
+							alt="file">
+						#item.name#
+					</div>
 				</cfif>
 			</cfif>
 		</cfloop>
 	<cfelse>
 		<em>#$r( "emptydirectory@fb" )#</em>
 	</cfif>
+
 	#announce( "fb_postFileListing" )#
 </div>
-<!--- Hidden upload iframe --->          
+<!--- Hidden upload iframe --->
 <iframe name="upload-iframe" id="upload-iframe" style="display: none"></iframe>
 <form 	id="upload-form"
 		name="upload-form"
@@ -462,9 +380,4 @@ alt="file">#item.name#</div>
 
 } )();
 </script>
-
-
-
-
-
 </cfoutput>

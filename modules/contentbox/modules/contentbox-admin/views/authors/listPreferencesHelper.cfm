@@ -1,5 +1,6 @@
 <cfoutput>
-	<!--- Custom JS --->          <script>
+<!--- Custom JS --->
+<script>
 function toggleRawPreferences(){
 	$( "##rawPreferences" ).slideToggle();
 }

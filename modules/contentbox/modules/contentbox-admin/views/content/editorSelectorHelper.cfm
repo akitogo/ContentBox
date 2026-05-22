@@ -1,5 +1,6 @@
 <cfoutput>
-	<!--- Custom Javascript --->          <script>
+<!--- Custom Javascript --->
+<script>
 ( () => {
 	// keyup quick search
 	$( "##contentSearch" ).keyup(
@@ -13,11 +14,6 @@
 	<cfif len( rc.search )>
 		$( "##contentSearch" ).focus();
 	</cfif>
-	
-	
-	
-	
-	
 } )();
 
 function clearSearch(){
@@ -94,9 +90,4 @@ function selectCBContent( slug, title, type ){
 	return false;
 }
 </script>
-
-
-
-
-
 </cfoutput>

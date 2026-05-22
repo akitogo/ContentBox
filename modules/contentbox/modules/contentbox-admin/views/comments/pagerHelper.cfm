@@ -1,5 +1,6 @@
-<cfoutput>
-	<!--- Custom JS --->          <script>
+﻿<cfoutput>
+<!--- Custom JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// quick look
 	$( "##comments_pager" )
@@ -16,27 +17,27 @@ document.addEventListener( "DOMContentLoaded", () => {
 			}
 		} );
 } );
-	<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
-		function commentPagerChangeStatus( status, recordID ){
-// update icon
-$( "##status_"+ recordID)
-	.removeClass( "fa fa-minus-circle" )
-	.addClass( "fa fa-spinner fa-spin" );
-// ajax status change
-$.post(
-	"#event.buildlink( to = prc.xehCommentPagerStatus )#",
-{
-	commentStatus : status,
-	commentID     : recordID
-},
-function( data ){
-	if( data.ERROR ){
-		adminNotifier( "error", data.MESSAGES, 3000 );
-	} else {
-		adminNotifier( "info", data.MESSAGES );
-	}
-	hideAllTooltips();
-	commentPagerLink( #rc.page# );
+<cfif prc.oCurrentAuthor.hasPermission( "COMMENTS_ADMIN" )>
+function commentPagerChangeStatus( status, recordID ){
+	// update icon
+	$( "##status_"+ recordID)
+		.removeClass( "fa fa-minus-circle" )
+		.addClass( "fa fa-spinner fa-spin" );
+	// ajax status change
+	$.post(
+		"#event.buildlink(to=prc.xehCommentPagerStatus)#",
+		{
+			commentStatus : status,
+			commentID     : recordID
+		},
+		function( data ){
+			if( data.ERROR ){
+				adminNotifier( "error", data.MESSAGES, 3000 );
+			} else {
+				adminNotifier( "info", data.MESSAGES );
+			}
+			hideAllTooltips();
+			commentPagerLink( #rc.page# );
 		}
 	);
 }
@@ -48,25 +49,20 @@ function commentPagerRemove( recordID ){
 	// ajax remove change
 	$.post(
 		"#event.buildlink( prc.xehCommentPagerRemove )#",
-{
-	commentID : recordID
-},
-function( data ){
-	if( data.ERROR ){
-		adminNotifier( "error", data.MESSAGES, 3000 );
-	} else {
-		adminNotifier( "info", data.MESSAGES );
-	}
-	hideAllTooltips();
-	commentPagerLink( #rc.page# );
+		{
+			commentID : recordID
+		},
+		function( data ){
+			if( data.ERROR ){
+				adminNotifier( "error", data.MESSAGES, 3000 );
+			} else {
+				adminNotifier( "info", data.MESSAGES );
+			}
+			hideAllTooltips();
+			commentPagerLink( #rc.page# );
 	} );
 }
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 function commentPagerLink( page ){
 	$( "##commentsPagerLoader" ).fadeIn( "fast" );
 	$('##pagerComments')
@@ -86,9 +82,4 @@ function commentPagerLink( page ){
 		);
 }
 </script>
-
-
-
-
-
 </cfoutput>

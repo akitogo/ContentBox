@@ -1,17 +1,12 @@
 <cfoutput>
-	<script>
-	<cfif args.mode EQ "edit">
-		document.addEventListener( "DOMContentLoaded", setupWidgetListing );
-	<cfelse>
-		( () => {
+<script>
+<cfif args.mode eq "edit">
+document.addEventListener( "DOMContentLoaded", setupWidgetListing );
+<cfelse>
+( () => {
 	setupWidgetListing();
 })();
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 
 function setupWidgetListing(){
     // Widget Filter by text input
@@ -122,32 +117,17 @@ function clearFilter(){
 	} );
 }
 
-
-
-
-
-
-	<cfif args.mode EQ "edit">
-		function testWidgetCode( name, type ){
-// Test it
-$widgetEditorForm = $( "##widgetEditForm" );
-return openRemoteModal( '#event.buildLink( prc.xehWidgetTest )#', {
-		modal       : true,
-		mode        : 'Test',
-		widgetName  : name,
-		widgetType  : type
-	} );
-}
-	</cfif>
-	
-	
-	
-	
-	
+<cfif args.mode eq "edit">
+	function testWidgetCode( name, type ){
+		// Test it
+		$widgetEditorForm = $( "##widgetEditForm" );
+		return openRemoteModal( '#event.buildLink( prc.xehWidgetTest )#', {
+			modal       : true,
+			mode        : 'Test',
+			widgetName  : name,
+			widgetType  : type
+		} );
+	}
+</cfif>
 </script>
-
-
-
-
-
 </cfoutput>

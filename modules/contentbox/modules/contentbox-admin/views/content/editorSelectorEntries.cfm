@@ -1,81 +1,54 @@
 <cfoutput>
-	<table name="content" id="content" class="table  table-striped-removed table-hover">
-<thead>
-	<tr>
-		<th>
-			Title
-		</th>
-		<th width="60" class="text-center">
-			Status
-		</th>
-		<th width="100" class="text-center">
-			Insert
-		</th>
-	</tr>
-</thead>
+<table name="content" id="content" class="table  table-striped-removed table-hover">
+	<thead>
+		<tr>
+			<th>
+				Title
+			</th>
+			<th width="60" class="text-center">
+				Status
+			</th>
+			<th width="100" class="text-center">
+				Insert
+			</th>
+		</tr>
+	</thead>
 
-<tbody>
-	<cfloop array="#prc.content#" index="thisContent">
+	<tbody>
+		<cfloop array="#prc.content#" index="thisContent">
 		<tr
-id="contentID-#thisContent.getContentID()#"
-		<cfif !thisContent.getIsPublished()>
-			class="warning"
-		</cfif>
-		
-		
-		
-		
-		
+			id="contentID-#thisContent.getContentID()#"
+			<cfif NOT thisContent.getIsPublished()>class="warning"</cfif>
 		>
 			<td>
-				<!--- Title --->          
+				<!--- Title --->
 				<div class="size16">
 					#thisContent.getTitle()#
 				</div>
 
-				<!--- Title --->          
+				<!--- Title --->
 				<div class="mt5">
 					<div class="text-muted">
-
-
-
-
-
-		<cfif structKeyExists( thisContent, "getDescription" )>
-			#thisContent.getDescription()#
-		<cfelse>
-			<cfif thisContent.hasExcerpt()>
-				#prc.cbHelper.stripHTML( left( thisContent.getExcerpt(), 100 ) )#
-			<cfelse>
-				#prc.cbHelper.stripHTML( left( thisContent.getContent(), 100 ) )#
-			</cfif>
-			
-			
-			
-			
-			
+					<cfif structKeyExists( thisContent, "getDescription" )>
+						#thisContent.getDescription()#
+					<cfelse>
+						<cfif thisContent.hasExcerpt()>
+							#prc.cbHelper.stripHTML( left( thisContent.getExcerpt(), 100 ) )#
+						<cfelse>
+							#prc.cbHelper.stripHTML( left( thisContent.getContent(), 100 ) )#
+						</cfif>
 						...
-
-
-
-
-
-		</cfif>
-		
-		
-		
-		
-		
+					</cfif>
 					</div>
 				</div>
 			</td>
 
 			<td class="text-center">
 				#view(
-	view          = "_components/content/TableStatus",
-	args          = { content: thisContent },
-	prepostExempt = true
-)#
+					view : "_components/content/TableStatus",
+					args : { content : thisContent },
+					prepostExempt : true
+				)#
 			</td>
 
 			<td class="text-center">
@@ -101,23 +74,14 @@ id="contentID-#thisContent.getContentID()#"
 				</button>
 			</td>
 		</tr>
-
-
-
-
-
-	</cfloop>
-	
-	
-	
-	
-	
+		</cfloop>
 	</tbody>
 </table>
 
+<!--- Paging --->
 #prc.oPaging.renderit(
-		foundRows = prc.contentCount,
-		link      = prc.pagingLink,
-		asList    = true
-	)#
+	foundRows : prc.contentCount,
+	link      : prc.pagingLink,
+	asList    : true
+)#
 </cfoutput>

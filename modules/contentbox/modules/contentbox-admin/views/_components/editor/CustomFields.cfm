@@ -1,22 +1,30 @@
 <cfoutput>
-	<cfif prc.oCurrentAuthor.hasPermission( "EDITORS_CUSTOM_FIELDS" )>
-		<p>
-You can add as many name-value pairs of custom fields (metadata) to this #args.fieldType# that can later be used by your layout themes, widgets, events, etc via
+<cfif prc.oCurrentAuthor.hasPermission( "EDITORS_CUSTOM_FIELDS" )>
+<p>
+	You can add as many name-value pairs of custom fields (metadata) to this #args.fieldType# that can later be used by your layout themes, widgets, events, etc via
 	the CB Helper:
 	<code>cb.quickCustomFields() or cb.getCustomField( key, [defaultValue] )</code>
-</p><!--- CustomFields Holder --->          <div id="customFields" x-data="customFieldsModel()">
+</p>
 
-<input type="hidden" name="customFieldsCount" :value="customFields.length"/>
+<!--- CustomFields Holder --->
+<div id="customFields" x-data="customFieldsModel()">
 
-<div @add-custom-field.window="addCustomField" class="mb10"><!--- Add CustomField --->          <button
-	type="button"
-	class="btn btn-sm btn-primary"
-	title="Add Custom Field"
-	id="addCustomFieldButton"
-	@click="addCustomField"
->
-	<i class="fa fa-plus fa-lg"></i> Add
-</button><!--- Remove All Custom Fields --->          <button
+	<input type="hidden" name="customFieldsCount" :value="customFields.length"/>
+
+	<div @add-custom-field.window="addCustomField" class="mb10">
+		<!--- Add CustomField --->
+		<button
+			type="button"
+			class="btn btn-sm btn-primary"
+			title="Add Custom Field"
+			id="addCustomFieldButton"
+			@click="addCustomField"
+		>
+			<i class="fa fa-plus fa-lg"></i> Add
+		</button>
+
+		<!--- Remove All Custom Fields --->
+		<button
 			type="button"
 			id="removeCustomFieldsButton"
 			class="btn btn-sm btn-danger"
@@ -65,5 +73,5 @@ You can add as many name-value pairs of custom fields (metadata) to this #args.f
 	</template>
 	<div id="beacon"></div>
 </div>
-	</cfif>
+</cfif>
 </cfoutput>

@@ -1,5 +1,5 @@
-<cfoutput>
-	<script>
+﻿<cfoutput>
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$versionsPagerForm 	= $( "##versionsPagerForm" );
 	$versionsPager 		= $( "##versionsHistoryTable" );
@@ -20,12 +20,12 @@ function versionsPagerDiff(){
 	openRemoteModal( '#event.buildLink( prc.xehVersionDiff )#', { oldVersion : oldVersion, version : cVersion }, '95%' );
 	return false;
 }
-	<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_DELETE" )>
-		function versionsPagerRemove( versionID ){
-$( '##version_delete_' + versionID ).removeClass( "fa fa-minus-circle" ).addClass( "fa-spin fa-spinner" );
-// ajax remove change
-$.post(
-	"#event.buildlink( prc.xehVersionRemove )#",
+<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_DELETE" )>
+function versionsPagerRemove( versionID ){
+	$( '##version_delete_' + versionID ).removeClass( "fa fa-minus-circle" ).addClass( "fa-spin fa-spinner" );
+	// ajax remove change
+	$.post(
+		"#event.buildlink( prc.xehVersionRemove )#",
 		{ versionID : versionID},
 		function( data ){
 			closeConfirmations();
@@ -40,13 +40,13 @@ $.post(
 		"json"
 	);
 }
-	</cfif>
-	<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_ROLLBACK" )>
-		function versionsPagerRollback( versionID ){
-$( '##version_rollback_' + versionID ).addClass( "fa-spin" );
-// ajax rollback change
-$.post(
-	"#event.buildlink( prc.xehVersionRollback )#",
+</cfif>
+<cfif prc.oCurrentAuthor.hasPermission( "VERSIONS_ROLLBACK" )>
+function versionsPagerRollback( versionID ){
+	$( '##version_rollback_' + versionID ).addClass( "fa-spin" );
+	// ajax rollback change
+	$.post(
+		"#event.buildlink( prc.xehVersionRollback )#",
 		{ revertID : versionID },
 		function( data ){
 			closeConfirmations();
@@ -61,16 +61,6 @@ $.post(
 		"json"
 	);
 }
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 </script>
-
-
-
-
-
 </cfoutput>

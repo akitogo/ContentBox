@@ -1,5 +1,5 @@
-<cfoutput>
-	<script>
+﻿<cfoutput>
+<script>
 "use strict";
 document.addEventListener( "DOMContentLoaded", () => {
 	let $siteForm = $( "##siteForm" );

@@ -1,28 +1,25 @@
 <cfoutput>
-	<cfparam name="args.checked" default="false">
-	<cfparam name="args.label" default="Toggle Me">
-	<cfparam name="args.xmodel" default="">
-	
+<cfparam name="args.checked" 	default="false">
+<cfparam name="args.label" 		default="Toggle Me">
+<cfparam name="args.xmodel" 	default="">
+
 <toggle x-data="{ toggle: #args.checked# }">
-<div>
-	<label for="#args.name#" class="flex items-center cursor-pointer">
-<div class="pr5">#args.label#</div>
-<!-- toggle -->
-<div class="relative"><!--- Input --->          <input
-id="#args.name#"
-name="#args.name#"
-class="hidden"
-type="checkbox"
-@click="toggle = !toggle"
-:checked="toggle"
-	<cfif len( args.xmodel )>
-		x-model="#args.xmodel#"
-	</cfif>
-	
-	
-	
-	
-	
+	<div>
+		<label for="#args.name#" class="flex items-center cursor-pointer">
+			<div class="pr5">#args.label#</div>
+			<!-- toggle -->
+			<div class="relative">
+				<!--- Input --->
+				<input
+					id="#args.name#"
+					name="#args.name#"
+					class="hidden"
+					type="checkbox"
+					@click="toggle = !toggle"
+					:checked="toggle"
+					<cfif len( args.xmodel )>
+						x-model="#args.xmodel#"
+					</cfif>
 				/>
 				<!-- path -->
 				<div
@@ -36,9 +33,4 @@ type="checkbox"
 		</label>
 	</div>
 </toggle>
-
-
-
-
-
 </cfoutput>

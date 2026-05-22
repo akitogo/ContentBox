@@ -1,5 +1,6 @@
-<cfoutput>
-	<!--- Custom JS --->          <script>
+﻿<cfoutput>
+<!--- Custom JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importDialog = $( "##importDialog" );
 	// table sorting + filtering
@@ -24,28 +25,18 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN" )>
-		// form id
-$permissionEditor = $( "##permissionEditor" );
-// form validator
-$permissionEditor.validate();
-// reset
-$( '##btnReset' ).click( function() {
-	$permissionEditor.find( "##permissionID" ).val( '' );
-} );
+	// form id
+	$permissionEditor = $( "##permissionEditor" );
+	// form validator
+	$permissionEditor.validate();
+	// reset
+	$( '##btnReset' ).click( function() {
+		$permissionEditor.find( "##permissionID" ).val( '' );
+	} );
 	</cfif>
-	
-	
-	
-	
-	
 } );
-
-
-
-
-
-	<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-		function edit(permissionID,permission,description){
+<cfif prc.oCurrentAuthor.hasPermission( "PERMISSIONS_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
+function edit(permissionID,permission,description){
 	openModal( $( "##permissionEditorContainer" ), 500, 200 );
 	$permissionEditor.find( "##permissionID" ).val( permissionID );
 	$permissionEditor.find( "##permission" ).val( permission );
@@ -76,16 +67,6 @@ function exportSelected( exportEvent ){
 		alert( "Please select something to export!" );
 	}
 }
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 </script>
-
-
-
-
-
 </cfoutput>

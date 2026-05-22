@@ -1,5 +1,5 @@
-<cfoutput>
-	<script>
+﻿<cfoutput>
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// Setup view
 	setupView( {
@@ -135,8 +135,8 @@ function contentLoad( criteria ){
 		}
 	);
 }
-	<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
-		function removeAuthor( authorID ){
+<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_IMPORT" )>
+function removeAuthor( authorID ){
 	$( "##delete_"+ authorID )
 		.removeClass( "fa fa-trash" )
 		.addClass( "fa fa-spinner fa-spin" );
@@ -156,16 +156,6 @@ function exportSelected( exportEvent ){
 		alert( "Please select something to export!" );
 	}
 }
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 </script>
-
-
-
-
-
 </cfoutput>

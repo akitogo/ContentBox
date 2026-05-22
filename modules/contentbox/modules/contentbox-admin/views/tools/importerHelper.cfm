@@ -1,5 +1,5 @@
-<cfoutput>
-	<script>
+﻿<cfoutput>
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$importForm	 	= $( "##importerForm" );
 	$importDialog 	= $( "##importDialog" );
@@ -27,28 +27,28 @@ document.addEventListener( "DOMContentLoaded", () => {
 					// get reference to newly created frame
 					var hiddenUpload = $( '##uploadIframe' );
 					$importForm.attr( 'action', "#event.buildLink( rc.xehCBPreImport )#" );
-	$importForm.attr( 'target', 'uploadIframe' );
-	// now handle the action and response with a load listener
-	hiddenUpload.on( "load", function() {
-		var response = hiddenUpload.contents().find( 'body' ).html();
-		openModal( $importDialog, 900 );
-		$importDialog.find( '##modalContent' ).html( response );
-	} );
-	if ( $importForm.valid() ) {
-		activateLoaders();
-	}
-}
-else {
-	$( '##overwrite' ).val( $overrideContent.val() );
-	$importForm.attr( 'action', '#event.buildLink( rc.xehCBImport )#' );
-		$importForm.attr( 'target', '' );
-		$importDialog.find( "##importButtonBar" ).slideUp();
-		$importDialog.find( "##importBarLoader" ).slideDown();
-	}
-	break;
-case 'database':
-	addDatabaseValidations();
-	$importForm.attr( 'action', '#event.buildLink( rc.xehDataImport )#' );
+					$importForm.attr( 'target', 'uploadIframe' );
+					// now handle the action and response with a load listener
+					hiddenUpload.on( "load", function() {
+						var response = hiddenUpload.contents().find( 'body' ).html();
+						openModal( $importDialog, 900 );
+						$importDialog.find( '##modalContent' ).html( response );
+					} );
+					if ( $importForm.valid() ) {
+						activateLoaders();
+					}
+				}
+				else {
+					$( '##overwrite' ).val( $overrideContent.val() );
+					$importForm.attr( 'action', '#event.buildLink( rc.xehCBImport )#' );
+					$importForm.attr( 'target', '' );
+					$importDialog.find( "##importButtonBar" ).slideUp();
+					$importDialog.find( "##importBarLoader" ).slideDown();
+				}
+				break;
+			case 'database':
+				addDatabaseValidations();
+				$importForm.attr( 'action', '#event.buildLink( rc.xehDataImport )#' );
 				break;
 		}
 

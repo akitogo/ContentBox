@@ -1,65 +1,56 @@
 <cfoutput>
-	<!--- count --->          <input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#"><!--- authors --->          <table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
-<thead>
-	<tr>
-		<th id="checkboxHolder" class="{sorter:false} text-center" width="15">
-			<input name="checkAll" type="checkbox" onclick="window.checkAll(this.checked,'authorID')"/>
-		</th>
-		<th>Name</th>
-		<th>Role</th>
-		<th>Last Login</th>
-		<th width="65" class="text-center {sorter: false}">Actions</th>
-	</tr>
-</thead>
+<!--- count --->
+<input type="hidden" name="authorCount" id="authorCount" value="#prc.authorCount#">
+<!--- authors --->
+<table name="authors" id="authors" class="table table-striped-removed table-hover " width="100%">
+	<thead>
+		<tr>
+			<th id="checkboxHolder" class="{sorter:false} text-center" width="15">
+				<input name="checkAll" type="checkbox" onclick="window.checkAll(this.checked,'authorID')"/>
+			</th>
+			<th>Name</th>
+			<th>Role</th>
+			<th>Last Login</th>
+			<th width="65" class="text-center {sorter: false}">Actions</th>
+		</tr>
+	</thead>
 
-<tbody>
-	<cfloop array="#prc.authors#" index="author">
+	<tbody>
+		<cfloop array="#prc.authors#" index="author">
 		<tr
-		<cfif !author.getIsActive()>
-			class="danger"
-		</cfif>
-		
-		
-		
-		
-		
+			<cfif !author.getIsActive()>
+				class="danger"
+			</cfif>
 			data-authorID="#author.getAuthorID()#" >
-			<!--- check box --->          
+			<!--- check box --->
 			<td class="text-center">
 				<input type="checkbox" name="authorID" id="authorID" value="#author.getAuthorID()#" />
 			</td>
 			<td class="pb5 pt5">
 				<div class="pull-left">
-					#getInstance( "Avatar@contentbox" ).renderAvatar(
-		email = author.getEmail(),
-		size  = "40",
-		class = "gravatar img img-circle mr10"
-	)#
+					#getInstance( "Avatar@contentbox" )
+						.renderAvatar(
+							email = author.getEmail(),
+							size  = "40",
+							class = "gravatar img img-circle mr10"
+						)#
 				</div>
 
-				<!--- Display Link if Admin Or yourself --->          
+				<!--- Display Link if Admin Or yourself --->
 				<div>
+					<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) OR prc.oCurrentAuthor.getAuthorID() eq author.getAuthorID()>
+						<a href="#event.buildLink(prc.xehAuthorEditor)#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">#author.getFullName()#</a>
+					<cfelse>
+						#author.getFullName()#
+					</cfif>
 
+					<cfif prc.oCurrentAuthor.getAuthorID() eq author.getAuthorID()>
+						<i class="fa fa-star fa-lg text-orange" title="That's you!"></i>
+					</cfif>
 
-
-
-
-		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) || prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
-			<a href="#event.buildLink( prc.xehAuthorEditor )#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">#author.getFullName()#</a>
-		<cfelse>
-			#author.getFullName()#
-		</cfif>
-		<cfif prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
-			<i class="fa fa-star fa-lg text-orange" title="That's you!"></i>
-		</cfif>
-		<cfif author.getIs2FactorAuth()>
-			<i class="fa fa-mobile fa-lg" title="2 Factor Auth Enabled"></i>
-		</cfif>
-		
-		
-		
-		
-		
+					<cfif author.getIs2FactorAuth()>
+						<i class="fa fa-mobile fa-lg" title="2 Factor Auth Enabled"></i>
+					</cfif>
 
 					<div class="mt5">
 						<a href="mailto:#author.getEmail()#" class="text-muted underline">
@@ -78,102 +69,73 @@
 			</td>
 
 			<td class="text-center">
-				<!--- Actions --->          
+				<!--- Actions --->
 				<div class="btn-group btn-group-sm">
 			    	<button class="btn btn-sm btn-icon btn-more dropdown-toggle" data-toggle="dropdown" title="User Actions">
 						<i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
 						<span class="visually-hidden">User Actions</span>
 					</button>
 			    	<ul class="dropdown-menu text-left pull-right">
+						<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) OR prc.oCurrentAuthor.getAuthorID() eq author.getAuthorID()>
+							<!--- Delete Command --->
+							<cfif prc.oCurrentAuthor.getAuthorID() neq author.getAuthorID()>
+								<li>
+									<a 	title="Delete Author"
+										href="javascript:removeAuthor( '#author.getAuthorID()#' )"
+										class="confirmIt"
+										data-title="<i class='fa fa-trash'></i> Delete Author?"
+									>
+										<i id="delete_#author.getAuthorID()#" class="fa fa-trash fa-lg"></i> Delete
+									</a>
+								</li>
+							<cfelse>
+								<li>
+									<a 	title="Can't Delete Yourself"
+										href="javascript:alert('Can\'t delete yourself buddy!')"
+										class="text-red"
+									>
+										<i id="delete_#author.getAuthorID()#" class="fa fa-trash fa-lg"></i> Can't Delete
+									</a>
+								</li>
+							</cfif>
 
-
-
-
-
-		<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN" ) || prc.oCurrentAuthor.getAuthorID() EQ author.getAuthorID()>
-			<cfif prc.oCurrentAuthor.getAuthorID() NEQ author.getAuthorID()>
-				<li>
-<a 	title="Delete Author"
-	href="javascript:removeAuthor( '#author.getAuthorID()#' )"
-	class="confirmIt"
-	data-title="<i class='fa fa-trash'></i> Delete Author?"
->
-	<i id="delete_#author.getAuthorID()#" class="fa fa-trash fa-lg"></i> Delete
-	</a>
-</li>
-			<cfelse>
-				<li>
-<a 	title="Can't Delete Yourself"
-	href="javascript:alert('Can\'t delete yourself buddy!')"
-	class="text-red"
->
-	<i id="delete_#author.getAuthorID()#" class="fa fa-trash fa-lg"></i> Can't Delete
-	</a>
-</li>
-			</cfif>
-			<!--- Edit Command --->          
+							<!--- Edit Command --->
 							<li>
 								<a href="#event.buildLink( prc.xehAuthorEditor )#/authorID/#author.getAuthorID()#" title="Edit #author.getFullName()#">
 									<i class="fas fa-pen fa-lg"></i> Edit
 								</a>
 							</li>
 
-
-
-
-
-
-			<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
-				<li>
-<a href="#event.buildLink( prc.xehExport )#/authorID/#author.getAuthorID()#.json" target="_blank">
-		<i class="fas fa-file-export fa-lg"></i> Export
-	</a>
-</li>
-<li>
-	<a href="#event.buildLink( prc.xehPasswordReset )#/authorID/#author.getAuthorID()#"
-		title="Email User a password reset token and link to reset password.">
-		<i class="fa fa-key fa-lg"></i> Reset Password
-	</a>
-</li>
-			</cfif>
-		<cfelse>
-			<li><a href="javascript:void(0)"><em>No available actions</em></a></li>
-		</cfif>
-		
-		
-		
-		
-		
+							<!--- Export --->
+							<cfif prc.oCurrentAuthor.hasPermission( "AUTHOR_ADMIN,TOOLS_EXPORT" )>
+							<li>
+								<a href="#event.buildLink( prc.xehExport )#/authorID/#author.getAuthorID()#.json" target="_blank">
+									<i class="fas fa-file-export fa-lg"></i> Export
+								</a>
+							</li>
+							<li>
+								<a href="#event.buildLink( prc.xehPasswordReset )#/authorID/#author.getAuthorID()#"
+									title="Email User a password reset token and link to reset password.">
+									<i class="fa fa-key fa-lg"></i> Reset Password
+								</a>
+							</li>
+							</cfif>
+						<cfelse>
+							<li><a href="javascript:void(0)"><em>No available actions</em></a></li>
+						</cfif>
 			    	</ul>
 			    </div>
 			</td>
 		</tr>
-
-
-
-
-
-	</cfloop>
-	
-	
-	
-	
-	
+		</cfloop>
 	</tbody>
 </table>
 
+<!--- Paging --->
+<cfif !rc.showAll>
+	#prc.oPaging.renderit(foundRows=prc.authorCount, link=prc.pagingLink, asList=true)#
+<cfelse>
+	<span class="label label-info">Total Records: #prc.authorCount#</span>
+</cfif>
 
-
-
-
-
-	<cfif !rc.showAll>
-		#prc.oPaging.renderit(
-		foundRows = prc.authorCount,
-		link      = prc.pagingLink,
-		asList    = true
-	)#
-	<cfelse>
-		<span class="label label-info">Total Records: #prc.authorCount#</span>
-	</cfif>
 </cfoutput>

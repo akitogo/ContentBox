@@ -1,5 +1,7 @@
 <cfoutput>
-	<!--- page JS --->          <script>
+
+<!--- page JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
     // Setup content view
     setupView( {

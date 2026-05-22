@@ -1,5 +1,6 @@
-<cfoutput>
-	<!--- Custom JS --->          <script>
+﻿<cfoutput>
+<!--- Custom JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$( "##roles" ).dataTable( {
 		"paging": false,
@@ -15,13 +16,8 @@ document.addEventListener( "DOMContentLoaded", () => {
 	} );
 
 	<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN" )>
-		$importDialog = $( "##importDialog" );
+	$importDialog = $( "##importDialog" );
 	</cfif>
-	
-	
-	
-	
-	
 
 	// table sorting + filtering
 	$( "##roleFilter" ).keyup(
@@ -33,13 +29,8 @@ document.addEventListener( "DOMContentLoaded", () => {
         )
 	);
 } );
-
-
-
-
-
-	<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
-		function remove( roleID ){
+<cfif prc.oCurrentAuthor.hasPermission( "ROLES_ADMIN,TOOLS_IMPORT,TOOLS_EXPORT" )>
+function remove( roleID ){
 	var $roleForm = $( "##roleForm" );
 	$( "##delete_"+ roleID )
 		.removeClass( "fa-trash-o" )
@@ -59,16 +50,6 @@ function exportSelected( exportEvent ){
 		alert( "Please select something to export!" );
 	}
 }
-	</cfif>
-	
-	
-	
-	
-	
+</cfif>
 </script>
-
-
-
-
-
 </cfoutput>

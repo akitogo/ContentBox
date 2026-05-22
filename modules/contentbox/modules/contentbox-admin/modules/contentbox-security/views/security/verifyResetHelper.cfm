@@ -1,5 +1,6 @@
 <cfoutput>
-	<!--- Custom JS --->          <script>
+<!--- Custom JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$passwordResetForm 	= $( "##passwordResetForm" );
 
@@ -11,15 +12,15 @@ document.addEventListener( "DOMContentLoaded", () => {
     	'pwcheck',
     	passwordValidator,
 		'#cb.r( "resetpassword.confirm@security" )#'
-);
+	);
 
-   // Password match validator
-   $.validator.addMethod(
-   	'password',
-   	function( value, element ){
-       	return (value==$( "[name=password]" ).val()) ? true : false;
-   	},
-   	'#cb.r( "resetpassword.match@security" )#'
+    // Password match validator
+    $.validator.addMethod(
+    	'password',
+    	function( value, element ){
+        	return (value==$( "[name=password]" ).val()) ? true : false;
+    	},
+    	'#cb.r( "resetpassword.match@security" )#'
     );
 
     // Validation

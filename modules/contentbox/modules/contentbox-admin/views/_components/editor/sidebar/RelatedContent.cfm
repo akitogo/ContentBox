@@ -1,46 +1,42 @@
 <cfoutput>
-	<cfif prc.oCurrentAuthor.hasPermission( "EDITORS_RELATED_CONTENT" )>
-		<div class="panel panel-default">
+<cfif prc.oCurrentAuthor.hasPermission( "EDITORS_RELATED_CONTENT" )>
+<div class="panel panel-default">
 
-<div class="panel-heading">
-	<h4 class="panel-title">
-		<a
-			class="accordion-toggle collapsed block"
-			data-toggle="collapse"
-			data-parent="##accordion"
-			href="##relatedcontent">
-			<i class="fa fa-sitemap"></i> Related Content
-		</a>
-	</h4>
-</div>
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a
+				class="accordion-toggle collapsed block"
+				data-toggle="collapse"
+				data-parent="##accordion"
+				href="##relatedcontent">
+				<i class="fa fa-sitemap"></i> Related Content
+			</a>
+		</h4>
+	</div>
 
-<div id="relatedcontent" class="panel-collapse collapse">
-	<div class="panel-body">
-		<button class="btn btn-sm btn-secondary" type="button" id="add-related-content">#cbAdminComponent( "ui/Icon",
-	{ name: "PlusSmall", size: "sm" } )#Add related content
-</button>
+	<div id="relatedcontent" class="panel-collapse collapse">
+		<div class="panel-body">
+			<button class="btn btn-sm btn-secondary" type="button" id="add-related-content">
+				#cbAdminComponent( "ui/Icon", { name : "PlusSmall", size : "sm" } )#
+				Add related content
+			</button>
 
-<br /><br />
+			<br /><br />
 
-<table class="table table-hover table-striped-removed" id="relatedContent-items">
-	<tbody>
-		<cfloop array="#prc.relatedContent#" index="content">
-			<cfset publishedClass = content.isContentPublished() ? "published" : "selected">
-			<cfset publishedTitle = content.isContentPublished() ? "" : "Content is not published!">
-			<tr id="content_#content.getContentID()#" class="related-content" title="#publishedTitle#">
-<td width="14" class="center #publishedClass#">
-			<cfif content.getContentType() EQ "Page">
-				<i class="fa fa-file icon-small" title="Page"></i>
-			<cfelseif content.getContentType() EQ "Entry">
-				<i class="fas fa-blog icon-small" title="Entry"></i>
-			<cfelseif content.getContentType() EQ "ContentStore">
-				<i class="fa fa-hdd icon-small" title="ContentStore"></i>
-			</cfif>
-			
-			
-			
-			
-			
+			<table class="table table-hover table-striped-removed" id="relatedContent-items">
+				<tbody>
+					<cfloop array="#prc.relatedContent#" index="content">
+						<cfset publishedClass = content.isContentPublished() ? "published" : "selected">
+						<cfset publishedTitle = content.isContentPublished() ? "" : "Content is not published!">
+						<tr id="content_#content.getContentID()#" class="related-content" title="#publishedTitle#">
+							<td width="14" class="center #publishedClass#">
+								<cfif content.getContentType() eq "Page">
+									<i class="fa fa-file icon-small" title="Page"></i>
+								<cfelseif content.getContentType() eq "Entry">
+									<i class="fas fa-blog icon-small" title="Entry"></i>
+								<cfelseif content.getContentType() eq "ContentStore">
+									<i class="fa fa-hdd icon-small" title="ContentStore"></i>
+								</cfif>
 							</td>
 							<td class="#publishedClass#">#content.getTitle()#</td>
 							<td width="14" class="center #publishedClass#">
@@ -48,17 +44,7 @@
 								<input type="hidden" name="relatedContentIDs" value="#content.getContentID()#" />
 							</td>
 						</tr>
-
-
-
-
-
-		</cfloop>
-		
-		
-		
-		
-		
+					</cfloop>
 				</tbody>
 			</table>
 
@@ -68,19 +54,9 @@
 
 	<script>
 		document.addEventListener( "DOMContentLoaded", () => {
-
-
-
-
-
-		<cfif structKeyExists( rc, "contentID" ) && len( rc.contentID )>
-			var currentContentID = "#rc.contentID#";
-		</cfif>
-		
-		
-		
-		
-		
+			<cfif structKeyExists( rc, "contentID" ) and len( rc.contentID )>
+				var currentContentID = "#rc.contentID#";
+			</cfif>
 			// listener for add button
 			$( '##add-related-content' ).on( 'click', function() {
 				var baseURL = '#event.buildLink( prc.xehShowRelatedContentSelector )#';
@@ -169,12 +145,7 @@
 		}
 	</script>
 </div>
-
-
-
-
-
-	<cfelse>
-		#html.hiddenField( name = "relatedContentIDs", value = prc.relatedContentIDs )#
-	</cfif>
+<cfelse>
+	#html.hiddenField( name="relatedContentIDs", value=prc.relatedContentIDs )#
+</cfif>
 </cfoutput>

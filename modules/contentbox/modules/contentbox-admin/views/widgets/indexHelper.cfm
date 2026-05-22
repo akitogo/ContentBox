@@ -1,5 +1,6 @@
-<cfoutput>
-	<!--- Custom JS --->          <script>
+﻿<cfoutput>
+<!--- Custom JS --->
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	$uploadForm = $( "##widgetUploadForm" );
 	$widgetForm = $( "##widgetForm" );

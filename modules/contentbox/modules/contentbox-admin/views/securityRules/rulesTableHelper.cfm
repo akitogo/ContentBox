@@ -1,5 +1,5 @@
 <cfoutput>
-	<script>
+<script>
 document.addEventListener( "DOMContentLoaded", () => {
 	// Setup Count Container
 	$( "##rulesCountContainer" ).html( "(" + $( "##rulesCount" ).val() + ")" );

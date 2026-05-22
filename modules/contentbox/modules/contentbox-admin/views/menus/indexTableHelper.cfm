@@ -1,5 +1,5 @@
 <cfoutput>
-	<script>
+<script>
 ( () => {
     // tables references
     $menu = $( "##menu" );
