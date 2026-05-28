@@ -545,10 +545,13 @@ component extends="baseHandler" {
 	 */
 	function clone( event, rc, prc, required relocateTo ) {
 		// Defaults
-		event.paramValue( "site", prc.oCurrentSite.getsiteID() );
+		event.paramValue( "site", prc.oCurrentSite.getsiteID() )
+			.paramValue( "contentID", "" )
+			.paramValue( "title", "" )
+			.paramValue( "contentStatus", "draft" );
 
 		// validation
-		if ( !event.valueExists( "title" ) || !event.valueExists( "contentID" ) ) {
+		if ( !len( rc.contentID ) || !len( rc.title ) ) {
 			cbMessageBox().warn(
 					"Can't clone the unclonable, meaning no contentID or title passed."
 				);
