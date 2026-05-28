@@ -173,3 +173,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: artifacts/**/*.xml
+          compare_to_earlier_commit: false
