@@ -94,22 +94,16 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 	 * we make sure all proper settings are created and configured.
 	 *
 	 * @site          A persisted or new site object
-	 * @transactional Transaction the call or leave as is, useful for imports, bulk saves, etc.
 	 */
-	Site function save( required site, boolean transactional = true ) {
-		// Added this due to issue in CFML engines and mixed quuery+orm nested transactions. Remove once issue is fixed
-		if ( arguments.transactional ) {
-			transaction {
-				_save( arguments.site );
-			}
-		} else {
-			_save( arguments.site );
+	Site function save( required site ) {
+		transaction {
+			_save( arguments.site )
 		}
 
 		// flush cache to rebuild site settings
-		variables.settingService.flushSettingsCache();
+		variables.settingService.flushSettingsCache()
 
-		return arguments.site;
+		return arguments.site
 	}
 
 	/**
@@ -619,12 +613,12 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 	private function _save( required site ) {
 		// Create all site settings if this is a new site
 		if ( !arguments.site.isLoaded() ) {
-			variables.settingService.saveAll(
+			arguments.site.setSettings(
 					variables
 						.settingService
 						.getSiteSettingDefaults()
 						.reduce(
-							function( result, setting, value ) {
+							( result, setting, value ) => {
 								arguments.result.append(
 										variables.settingService.new(
 												{
@@ -634,22 +628,25 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 													site  : site
 												}
 											)
-									);
-								return arguments.result;
+									)
+								return arguments.result
 							},
 							[]
 						)
-				);
+				)
 		}
 
 		// Persist the site
-		super.save( arguments.site );
+		super.save( arguments.site )
 
 		// Activate the site's theme
-		variables.themeService.startupTheme( name = arguments.site.getActiveTheme(), site = arguments.site );
+		variables.themeService.startupTheme(
+			name = arguments.site.getActiveTheme(),
+			site = arguments.site
+		)
 
 		// Create media root folder for the site
-		ensureSiteMediaFolder( arguments.site );
+		ensureSiteMediaFolder( arguments.site )
 	}
 
 }

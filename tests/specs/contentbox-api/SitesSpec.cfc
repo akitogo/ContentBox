@@ -271,55 +271,49 @@ component extends="tests.resources.BaseApiTest" {
 					}
 				); // end edit story
 
-				story(
-					"I want to delete a site",
-					() => {
-						given(
-							"a valid id/slug",
-							() => {
-								then(
-									"then I should see the confirmation",
-									() => {
-										var siteId = createUUID();
-										var testSite = variables.siteService.save(
-												variables.siteService.new(
-														{
-															name         : "bddtest-#siteId#",
-															slug         : "bddtest-#siteId#",
-															description  : "my bdd test site",
-															domain       : "bddtest.com",
-															domainRegex  : "bddtest\.com",
-															domainAliases: "[]",
-															activeTheme  : "default",
-															homepage     : "cbBlog"
-														}
-													)
-											);
-										// clear the session to make sure our delete is working with a new entity
-										ormClearSession();
-										var event = this.delete( "/cbapi/v1/sites/#testSite.getSiteId()#" );
-										expect( event.getResponse() ).toHaveStatus( 200,
-												event.getResponse().getMessagesString() );
-										expect( event.getResponse().getMessagesString() ).toInclude( "deleted" );
-									}
-								);
-							}
-						);
-						given(
-							"an invalid id or slug",
-							() => {
-								then(
-									"then I should see an error message",
-									() => {
-										var event = this.delete( "/cbapi/v1/sites/123" );
-										expect( event.getResponse() ).toHaveStatus( 404,
-												event.getResponse().getMessagesString() );
-									}
-								);
-							}
-						);
-					}
-				); // end delete story
+				story( "I want to delete a site", () => {
+					given( "a valid id/slug", () => {
+							then(
+								"then I should see the confirmation",
+								() => {
+									var siteId = createUUID();
+									var testSite = variables.siteService.save(
+											variables.siteService.new(
+													{
+														name         : "bddtest-#siteId#",
+														slug         : "bddtest-#siteId#",
+														description  : "my bdd test site",
+														domain       : "bddtest.com",
+														domainRegex  : "bddtest\.com",
+														domainAliases: "[]",
+														activeTheme  : "default",
+														homepage     : "cbBlog"
+													}
+												)
+										);
+									// clear the session to make sure our delete is working with a new entity
+									ormClearSession();
+									var event = this.delete( "/cbapi/v1/sites/#testSite.getSiteId()#" );
+									expect( event.getResponse() ).toHaveStatus( 200, event.getResponse().getMessagesString() );
+									expect( event.getResponse().getMessagesString() ).toInclude( "deleted" );
+								}
+							);
+					} );
+					given(
+						"an invalid id or slug",
+						() => {
+							then(
+								"then I should see an error message",
+								() => {
+									var event = this.delete( "/cbapi/v1/sites/123" );
+									expect( event.getResponse() ).toHaveStatus( 404,
+											event.getResponse().getMessagesString() );
+								}
+							);
+						}
+					);
+				} );
+				// end delete story
 			}
 		); // end describe
 	}

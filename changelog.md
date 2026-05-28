@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - https://contentbox.ortusbooks.com/readme/release-history/7.0.0
 
+### Fixed
+
+- Site creation now attaches default settings to the new site before persistence so ORM cascades insert the parent site before child settings.
+
 ## [6.3.2] - 2025-12-05
 
 ### Fixed
