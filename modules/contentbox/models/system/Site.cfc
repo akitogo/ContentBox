@@ -512,10 +512,10 @@ component
 		if (
 			getDomainAliases().some(
 					( alias ) => alias.keyExists( "domainRegex" ) &&
-						reFindNoCase( alias.domainRegex, this.getServerName() )
+						reFindNoCase( alias.domainRegex, getServerName() )
 				)
 		) {
-			domainName = this.getServerName();
+			domainName = getServerName();
 		}
 
 		// Return the appropriate site Uri
