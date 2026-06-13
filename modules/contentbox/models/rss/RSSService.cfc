@@ -236,10 +236,11 @@ component singleton {
 
 		// Attach permalinks
 		for ( var i = 1; i LTE entryResults.count; i++ ) {
+			var entrySlug = entryResults.content[ i ].getSlug();
 			// build URL to entry
-			qEntries.link[ i ] = variables.CBHelper.linkEntry( qEntries.slug[ i ] );
+			qEntries.link[ i ] = variables.CBHelper.linkEntry( entrySlug );
 			qEntries.guid_permalink[ i ] = false;
-			qEntries.guid_string[ i ] = variables.CBHelper.linkEntry( qEntries.slug[ i ] );
+			qEntries.guid_string[ i ] = variables.CBHelper.linkEntry( entrySlug );
 
 			qEntries.author[ i ] = "#entryResults.content[ i ].getAuthorEmail()# (#entryResults.content[ i ].getAuthorName()#)";
 			qEntries.linkComments[ i ] = variables.CBHelper.linkComments( entryResults.content[ i ] );
@@ -338,13 +339,14 @@ component singleton {
 
 		// Attach permalinks
 		for ( var i = 1; i LTE pageResults.count; i++ ) {
+			var pageSlug = pageResults.content[ i ].getSlug();
 			// build URL to entry
-			qPages.link[ i ] = variables.CBHelper.linkPage( qPages.slug );
+			qPages.link[ i ] = variables.CBHelper.linkPage( pageSlug );
 			qPages.author[ i ] = "#pageResults.content[ i ].getAuthorEmail()# (#pageResults.content[ i ].getAuthorName()#)";
 			qPages.linkComments[ i ] = variables.CBHelper.linkComments( pageResults.content[ i ] );
 			qPages.categories[ i ] = pageResults.content[ i ].getCategoriesList();
 			qPages.guid_permalink[ i ] = false;
-			qPages.guid_string[ i ] = variables.CBHelper.linkPage( qPages.slug );
+			qPages.guid_string[ i ] = variables.CBHelper.linkPage( pageSlug );
 			if ( pageResults.content[ i ].hasExcerpt() ) {
 				qPages.content[ i ] = pageResults.content[ i ].renderExcerpt();
 			} else {
