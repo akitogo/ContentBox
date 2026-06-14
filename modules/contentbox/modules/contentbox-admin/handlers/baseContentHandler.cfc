@@ -427,7 +427,7 @@ component extends="baseHandler" {
 			.populate(
 				target           = oContent,
 				memento          = rc,
-				exclude          = "contentID,siteID",
+				exclude          = "contentID,siteID,contentVersions,activeContentVersions",
 				nullEmptyInclude = "expireDate"
 			)
 			.addJoinedPublishedtime( rc.publishedTime )
@@ -545,13 +545,10 @@ component extends="baseHandler" {
 	 */
 	function clone( event, rc, prc, required relocateTo ) {
 		// Defaults
-		event.paramValue( "site", prc.oCurrentSite.getsiteID() )
-			.paramValue( "contentID", "" )
-			.paramValue( "title", "" )
-			.paramValue( "contentStatus", "draft" );
+		event.paramValue( "site", prc.oCurrentSite.getsiteID() );
 
 		// validation
-		if ( !len( rc.contentID ) || !len( rc.title ) ) {
+		if ( !event.valueExists( "title" ) || !event.valueExists( "contentID" ) ) {
 			cbMessageBox().warn(
 					"Can't clone the unclonable, meaning no contentID or title passed."
 				);
