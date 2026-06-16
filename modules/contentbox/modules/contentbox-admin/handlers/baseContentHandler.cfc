@@ -544,71 +544,46 @@ component extends="baseHandler" {
 	 * @relocateTo Where to relocate to when saving is done
 	 */
 	function clone( event, rc, prc, required relocateTo ) {
-		// Default all required incoming RC values so we never hit undefined-variable errors
-		// later in this method, regardless of what the caller supplies.
-		event.paramValue( "site", prc.oCurrentSite.getsiteID() );
-		// Default contentID to an empty string so the existence+length checks below work
-		// consistently even when the parameter is completely absent from the request.
-		event.paramValue( "contentID", "" );
-		// Default title to an empty string for the same reason; an empty title would
-		// produce a blank slug and is therefore unusable.
-		event.paramValue( "title", "" );
-		// Default contentStatus to "draft" so that a clone always has a safe publish state
-		// even when the caller omits this field (avoids a variable-not-found throw further
-		// down where clone.clone() consumes it as the `publish` argument).
-		event.paramValue( "contentStatus", "draft" );
+		// Defaults
+		event.paramValue( "site", prc.oCurrentSite.getsiteID() )
+			.paramValue( "contentID", "" )
+			.paramValue( "title", "" )
+			.paramValue( "contentStatus", "draft" );
 
-		// Validate that both contentID and title are present AND non-empty.
-		// Checking only for key existence is not sufficient because an empty contentID
-		// would cause an invalid ORM lookup, and an empty title would produce a blank slug.
-		// trim() is used to reject whitespace-only values that would otherwise pass a simple
-		// empty-string check but would still produce unusable slugs and ORM lookups.
+		// validation
 		if ( !trim( rc.contentID ).len() || !trim( rc.title ).len() ) {
-			// Warn the user with a friendly message and bail out early.
 			cbMessageBox().warn(
 				"Can't clone the unclonable, meaning no contentID or title passed."
 			);
-			// Redirect back to the listing without performing any destructive work.
 			relocate( arguments.relocateTo );
 			return;
 		}
 
-		// Retrieve the original content object from the ORM layer using the validated ID.
+		// get the content to clone
 		var original = variables.ormService.get( rc.contentID );
 
-		// If the clone is staying in the same site and the user left the title unchanged,
-		// prepend "Copy of" to avoid a duplicate-title/slug collision in the ORM.
+		// Verify new Title, else do a new copy of it, but only if it's in the same site.
 		if ( original.isSameSite( rc.site ) && rc.title EQ original.getTitle() ) {
 			rc.title = "Copy of #rc.title#";
 		}
 
-		// Build a brand-new, unsaved content object that will become the clone.
-		// The slug is derived from the (possibly prefixed) title so it is always valid.
+		// get a clone
 		var clone = variables
 			.ormService
 			.new(
 				{
-					// Use the (possibly prefixed) title as the display name for the clone.
 					title  : rc.title,
-					// Auto-generate a URL-safe slug from the title.
 					slug   : variables.HTMLHelper.slugify( rc.title ),
-					// Assign the currently logged-in author as the creator of the clone.
 					creator: prc.oCurrentAuthor,
-					// Resolve the full site object from the site ID supplied in rc.
 					site   : variables.siteService.get( rc.site )
 				}
 			)
-			// Preserve the parent relationship so the clone sits in the same hierarchy.
 			.setParent( original.getParent() );
 
-		// Perform the deep clone: copies all child versions, categories, custom fields, etc.
-		// `publish` receives rc.contentStatus which is guaranteed non-null thanks to the
-		// paramValue default above, eliminating the variable-not-found risk.
 		clone.clone(
 			author           = prc.oCurrentAuthor,
 			original         = original,
 			originalService  = variables.ormService,
-			// Use the defaulted contentStatus so this never throws on a missing RC key.
 			publish          = rc.contentStatus,
 			originalSlugRoot = original.getSlug(),
 			newSlugRoot      = clone.getSlug()
