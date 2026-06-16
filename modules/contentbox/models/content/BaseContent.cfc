@@ -845,8 +845,12 @@ component
 				);
 
 			// Get the latest content version, to increase the new version number, collection is ordered by 'version' descending
+			// Guard against simple values that BoxLang/ORM may inject into the relationship array
 			if ( hasContentVersion() ) {
-				oNewVersion.setVersion( variables.contentVersions[ 1 ].getVersion() + 1 );
+				var oLatestVersion = variables.contentVersions.filter( ( v ) => !isSimpleValue( v ) );
+				if ( oLatestVersion.len() ) {
+					oNewVersion.setVersion( oLatestVersion[ 1 ].getVersion() + 1 );
+				}
 			}
 
 			// Activate the new version
