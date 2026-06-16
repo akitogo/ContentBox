@@ -561,7 +561,9 @@ component extends="baseHandler" {
 		// Validate that both contentID and title are present AND non-empty.
 		// Checking only for key existence is not sufficient because an empty contentID
 		// would cause an invalid ORM lookup, and an empty title would produce a blank slug.
-		if ( !len( trim( rc.contentID ) ) || !len( trim( rc.title ) ) ) {
+		// trim() is used to reject whitespace-only values that would otherwise pass a simple
+		// empty-string check but would still produce unusable slugs and ORM lookups.
+		if ( !trim( rc.contentID ).len() || !trim( rc.title ).len() ) {
 			// Warn the user with a friendly message and bail out early.
 			cbMessageBox().warn(
 				"Can't clone the unclonable, meaning no contentID or title passed."
