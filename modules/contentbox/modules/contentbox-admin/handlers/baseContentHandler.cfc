@@ -427,7 +427,7 @@ component extends="baseHandler" {
 			.populate(
 				target           = oContent,
 				memento          = rc,
-				exclude          = "contentID,siteID",
+				exclude          = "contentID,siteID,contentVersions,activeContentVersions",
 				nullEmptyInclude = "expireDate"
 			)
 			.addJoinedPublishedtime( rc.publishedTime )
@@ -551,10 +551,10 @@ component extends="baseHandler" {
 			.paramValue( "contentStatus", "draft" );
 
 		// validation
-		if ( !len( rc.contentID ) || !len( rc.title ) ) {
+		if ( !trim( rc.contentID ).len() || !trim( rc.title ).len() ) {
 			cbMessageBox().warn(
-					"Can't clone the unclonable, meaning no contentID or title passed."
-				);
+				"Can't clone the unclonable, meaning no contentID or title passed."
+			);
 			relocate( arguments.relocateTo );
 			return;
 		}
@@ -581,13 +581,13 @@ component extends="baseHandler" {
 			.setParent( original.getParent() );
 
 		clone.clone(
-				author           = prc.oCurrentAuthor,
-				original         = original,
-				originalService  = variables.ormService,
-				publish          = rc.contentStatus,
-				originalSlugRoot = original.getSlug(),
-				newSlugRoot      = clone.getSlug()
-			);
+			author           = prc.oCurrentAuthor,
+			original         = original,
+			originalService  = variables.ormService,
+			publish          = rc.contentStatus,
+			originalSlugRoot = original.getSlug(),
+			newSlugRoot      = clone.getSlug()
+		);
 
 		// relocate
 		cbMessageBox().info( "#variables.entity# Cloned!" );

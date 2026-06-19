@@ -806,7 +806,8 @@ component
 		required content,
 		changelog         = "",
 		required author,
-		boolean isPreview = false
+		boolean isPreview = false,
+		array contentVersions = []
 	) {
 		// lock it for new content creation to avoid version overlaps
 		lock
@@ -815,6 +816,11 @@ component
 			timeout       ="10"
 			throwOnTimeout="#true#"
 		{
+			// Defensive guard for BoxLang populate edge cases where relationship values can become simple values.
+			if ( !isArray( variables.contentVersions ) ) {
+				variables.contentVersions = [];
+			}
+
 			// Do we already have an active version?
 			if ( hasActiveContent() ) {
 				// cap checks if not in preview mode
@@ -1041,6 +1047,11 @@ component
 	 * Override the setContentVersions
 	 */
 	BaseContent function setContentVersions( required array contentVersions ) {
+
+		if ( !isArray( arguments.contentVersions ) ) {
+			arguments.contentVersions = [];
+		}
+
 		if ( hasContentVersion() ) {
 			variables.contentVersions.clear();
 			variables.contentVersions.addAll( arguments.contentVersions );
