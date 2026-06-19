@@ -806,7 +806,8 @@ component
 		required content,
 		changelog         = "",
 		required author,
-		boolean isPreview = false
+		boolean isPreview = false,
+		array contentVersions = []
 	) {
 		// lock it for new content creation to avoid version overlaps
 		lock
@@ -815,8 +816,6 @@ component
 			timeout       ="10"
 			throwOnTimeout="#true#"
 		{
-			param variables.contentVersions = [];
-
 			// Defensive guard for BoxLang populate edge cases where relationship values can become simple values.
 			if ( !isArray( variables.contentVersions ) ) {
 				variables.contentVersions = [];
@@ -829,9 +828,8 @@ component
 					maxContentVersionChecks();
 				}
 				// deactive the curent version, we do it after in case the content versions check kick off a transaction
-				getContentVersions().filter( ( version ) => 
-						!isSimpleValue( version ) && version.getIsActive() 
-					).each( ( version ) => version.setIsActive( false ) );
+				getContentVersions().filter( ( version ) => version.getIsActive() ).each( ( version
+							 ) => version.setIsActive( false ) );
 			}
 
 			// get a new version object with our incoming content + relationships
@@ -845,12 +843,8 @@ component
 				);
 
 			// Get the latest content version, to increase the new version number, collection is ordered by 'version' descending
-			// Guard against simple values that BoxLang/ORM may inject into the relationship array
 			if ( hasContentVersion() ) {
-				var oLatestVersion = variables.contentVersions.filter( ( v ) => !isSimpleValue( v ) );
-				if ( oLatestVersion.len() ) {
-					oNewVersion.setVersion( oLatestVersion[ 1 ].getVersion() + 1 );
-				}
+				oNewVersion.setVersion( variables.contentVersions[ 1 ].getVersion() + 1 );
 			}
 
 			// Activate the new version
@@ -1053,13 +1047,10 @@ component
 	 * Override the setContentVersions
 	 */
 	BaseContent function setContentVersions( required array contentVersions ) {
-		param variables.contentVersions = [];
 
 		if ( !isArray( arguments.contentVersions ) ) {
 			arguments.contentVersions = [];
 		}
-
-		arguments.contentVersions = arguments.contentVersions.filter( ( version ) => !isSimpleValue( version ) );
 
 		if ( hasContentVersion() ) {
 			variables.contentVersions.clear();
