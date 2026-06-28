@@ -102,6 +102,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 
 		// flush cache to rebuild site settings
 		variables.settingService.flushSettingsCache()
+		flushSiteCache()
 
 		return arguments.site
 	}
@@ -150,6 +151,8 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 			super.delete( arguments.site );
 		}
 
+		flushSiteCache();
+
 		return this;
 	}
 
@@ -168,18 +171,47 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 	 * @return array of { siteID, name, slug, domainRegex, domainAliases, isActive }
 	 */
 	array function getAllFlat( boolean isActive ) {
-		return newCriteria()
-			.when(
-				!isNull( arguments.isActive ),
-				function( c ) {
-					arguments.c.isEq( "this.isActive", javacast( "boolean", isActive ) );
+		// Sites change rarely but this is queried on every front-end request via
+		// discoverSite(). Cache the flat (projection-only, no live entities) result
+		// in the SAME cache ContentBox uses for settings — settingService
+		// .getSettingsCacheProvider(), configurable via the cb_site_settings_cache
+		// setting ("template" by default). NOT cacheStorage@cbStorages, which is
+		// session-scoped and would never hit for cookieless crawlers. Invalidated
+		// on site mutations via flushSiteCache().
+		var hasActive = !isNull( arguments.isActive );
+		var activeVal = hasActive ? arguments.isActive : "";
+
+		return variables.settingService
+			.getSettingsCacheProvider()
+			.getOrSet(
+				"contentbox-sites-flat-" & ( hasActive ? activeVal : "all" ),
+				function() {
+					return newCriteria()
+						.when(
+							hasActive,
+							function( c ) {
+								arguments.c.isEq( "this.isActive", javacast( "boolean", activeVal ) );
+							}
+						)
+						.withProjections(
+							property = "siteID,name,slug,domainRegex,domainAliases,isActive"
+						)
+						.asStruct()
+						.list( sortOrder = "name" );
 				}
-			)
-			.withProjections(
-				property = "siteID,name,slug,domainRegex,domainAliases,isActive"
-			)
-			.asStruct()
-			.list( sortOrder = "name" );
+			);
+	}
+
+	/**
+	 * Flush the cached flat-site list. Called on any site mutation so the
+	 * front-end discoverSite() lookups rebuild from the database.
+	 */
+	SiteService function flushSiteCache() {
+		var cache = variables.settingService.getSettingsCacheProvider();
+		cache.clear( "contentbox-sites-flat-true" );
+		cache.clear( "contentbox-sites-flat-false" );
+		cache.clear( "contentbox-sites-flat-all" );
+		return this;
 	}
 
 	/**
@@ -421,6 +453,7 @@ component extends  ="cborm.models.VirtualEntityService" accessors="true" threads
 
 		// Rebuild Settings Cache
 		variables.settingService.flushSettingsCache();
+		flushSiteCache();
 
 		return arguments.importLog.toString();
 	}
